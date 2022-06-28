@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "London60";
+    src: url("fonts/Chalet-LondonSixty2.woff2") format('woff2');
+}
+@font-face {
+    font-family: "SignPainterHouseScript";
+    src: url("fonts/SignPainter-HouseScript2.woff2") format('woff2');
+}
+
+.frontend_menu {
+    text-align: center;
+}
+
+body {
+    background-color: #3d3d3d;
+    user-select: none;
+}
+
+button.menu_header {
+    text-align: center;
+    background-color: lightskyblue;
+    width: 540px;
+    height: 134px;
+    border: 0px;
+    margin: 0px;
+}
+button.menu_descr {
+    background-color: black;
+    color: lightskyblue;
+    font-family: 'London60';
+    font-size: 26px;
+    width: 540px;
+    height: 50px;
+    border: 0px;
+    margin: 0px;    
+}
+button.menu_button {
+    background-color: #00000040;
+    color: white;
+    font-family: 'London60';
+    font-size: 26px;
+    width: 540px;
+    height: 50px;
+    border: 0px;
+    margin: 0px;
+}
+button.menu_divider {
+    background-color: #000000;
+    width: 540px;
+    height: 5px;
+    border: 0px;
+    margin: 0px;
+    margin-bottom: 0px;
+}
+button.menu_bottom_decr {
+    background-color: #00000040;
+    color: white;
+    font-family: 'London60';
+    font-size: 26px;
+    width: 540px;
+    height: 100px;
+    border: 0px;
+    padding: 0px;
+}
+button.menu_button:hover {
+    background-color: #ffffff40;
+}
+button.menu_button:focus {
+    background-color: #ffffff;
+    color: black;
+    outline: 0px;
+}
+
+span.label_left {
+    text-align: left;
+    float: left;
+    margin-left: 14px;
+}
+span.label_right {
+    text-align: right;
+    float: right;
+    margin-right: 14px;
+}
+span.label_greyed {
+    color: darkgray;
+    text-align: left;
+    float: left;
+    margin-left: 14px;
+}
+span.menu_bottom_decr {
+    text-align: left;
+    float: left;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding: 0px;
+}
+
+p.menu_header {
+    font-family: 'SignPainterHouseScript';
+    font-size: 100px;
+    margin: 0px;
+}
