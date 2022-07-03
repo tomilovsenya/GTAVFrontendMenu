@@ -19,12 +19,27 @@
   --text-color: white;
   --text-color-selected: black;
   --focus-color: white;
-
-  --menu-wnd-width: 1300px;
+  /* --menu-wnd-width: 1300px; */
+  /* --menu-wnd-height: 645px; */
+  --menu-wnd-width: 67.8125vw;
+  --menu-wnd-height: 59.5vh;
+  --menu-box-height: 41.5625vw;
+  --menu-navbar-height: 2vw;
+  /* --menu-font-size: 19.5px; */
+  --menu-font-size: 1vw;
   --item-double-height: 78px;
   --item-height: 37.5px;
+  /* --item-height: 1.85vw; */
   --item-margin: 3px;
   --item-padding-sides: 10px;
+  --tab-height: 16.5%;
+  --tab-margin: 0.2%;
+  /* --header-text-size: 54px; */
+  /* --stats-text-size: 27.5px; */
+  /* --header-padding-top: 95px; */
+  --header-text-size: 2.85vw;
+  --stats-text-size: 1.4vw;
+  --header-padding-top: 5vw;
 }
 
 body {
@@ -46,12 +61,24 @@ div.frontend_main_menu {
   /* padding-left: 16.2%; */
   /* padding-right: 310px; */
   /* padding-right: 16.2%; */
-  padding-top: 95px;
+  /* width: var(--menu-wnd-width); */
+  /* height: var(--menu-wnd-height); */
+  padding-top: var(--header-padding-top);
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content:space-between;
   animation: fadein 0.25s;
+  overflow: hidden;
+}
+
+div.menu_box {
+  display: flex;
+  flex-direction: column;
+  width: var(--menu-wnd-width);
+  height: var(--menu-box-height);
+  /* justify-content: flex-start; */
 }
 
 @keyframes fadein {
@@ -77,75 +104,110 @@ div.frontend_main_menu {
 /* HEADER: Grand Theft Auto V / Online */
 
 div.menu_header {
+  background-color: aqua;
   text-align: left;
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 69px;
+  /* height: 8%; */
+  /* height: 69px; */
   border: 0px;
+  outline: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  outline: 0px;
+  align-items: flex-end;
+  /* float: left; */
 }
 
 p.menu_header {
   font-family: "Cologne60", "London60";
-  font-size: 54px;
+  font-size: var(--header-text-size);
   color: var(--text-color);
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 0.15vw 0.15vw 0.25vw #000000;
+  width: 75%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  /* flex-direction: column; */
+  justify-content: flex-start;
   margin: 0;
-  margin-bottom: -5px;
-}
-
-div.menu_header_avatar {
-  background-color: var(--black-bg-color);
-  width: 69px;
-  height: 69px;
-  float: right;
+  white-space: nowrap;
   overflow: hidden;
+  float: left;
+  /* margin-bottom: -5px; */
 }
 
-img.menu_header_avatar_picture {
-  width: inherit;
-  height: 90px;
-  object-fit: cover;
-  align-self: center;
-  pointer-events: none;
+div.menu_header_character {
+  width: 25%;
+  float: right;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+  ;
 }
 
 div.menu_header_stats {
   background-color: transparent;
-  width: 341px;
-  height: 69px;
-  float: right;
-  margin-right: 6px;
+  /* width: 341px; */
+  /* height: 69px; */
+  /* float: right; */
+  /* margin-right: 10px; */
+  margin-right: 0.5vw;
+  align-self: center;
 }
 
 p.menu_header_stats {
   font-family: "Cologne60", "London60";
-  font-size: 27.5px;
+  /* font-size: 27.5px; */
+  font-size: var(--stats-text-size);
   color: var(--text-color);
   text-align: right;
-  text-shadow: 2px 2px 2px #000000;
+  text-shadow: 0.15vw 0.15vw 0.15vw #000000;
   line-height: 88%;
+  white-space: nowrap;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0;
-  /* margin-top: -5px; */
+}
+
+div.menu_header_avatar {
+  background-color: var(--black-bg-color);
+  /* width: 69px; */
+  /* height: 69px; */
+  width: 3.6vw;
+  height: 3.6vw;
+  /* height: 100%; */
+  float: right;
+  overflow: hidden;
+  /* justify-content: flex-end; */
+}
+
+img.menu_header_avatar_picture {
+  width: inherit;
+  object-fit: cover;
+  align-self: center;
+  pointer-events: none;
 }
 
 /* MENU TAB BUTTONS */
 
+div.menu_navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: var(--menu-navbar-height);
+  /* align-items: ; */
+  margin-bottom: 0.8vw;
+  /* align-self: center; */
+}
+
 nav.menu_buttons {
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 39px;
+  height: var(--menu-navbar-height);
+  /* height: 39px; */
   border: 0px;
   margin-bottom: 12px;
   display: flex;
@@ -159,7 +221,7 @@ nav.menu_buttons {
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
   padding-top: 8px;
-  margin-top: -8px;
+  margin-top: -12px;
   /* scroll-padding-block-start: 2vw; */
   /* scroll-padding-block-start: 15%; */
 }
@@ -168,20 +230,19 @@ button.menu_button {
   background-color: var(--black-bg-color);
   color: var(--text-color);
   font-family: "London60";
-  font-size: 20px;
+  font-size: var(--menu-font-size);
   /* font-size: 120%; */
   text-align: center;
   width: 100%;
   height: 100%;
   /* max-height: 39px; */
-  min-width: 16.47%;
-  flex-shrink: 1;
   /* max-width: 214px; */
-  /* margin- */
-  border: 0px;
   /* margin: 0px; */
   /* margin-right: 0.24%; */
-  margin-right: 3px;
+  min-width: var(--tab-height);
+  flex-shrink: 1;
+  border: 0px;
+  margin-right: var(--tab-margin);
   scroll-snap-align: start end;
   scroll-snap-stop: normal;
   white-space: nowrap;
@@ -220,8 +281,11 @@ button#menu_arrow_left {
   background-position: center;
   background-repeat: no-repeat;
   transform: rotate(180deg);
-  margin-left: -675px;
-  margin-top: -50px;
+  margin-left: -25px;
+  /* margin-bottom: -50px; */
+  /* margin-right: calc(var(--menu-wnd-width)); */
+  /* margin-top: -4px; */
+  margin-top: -0.25vw;
   float: left;
 }
 
@@ -235,8 +299,11 @@ button#menu_arrow_right {
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
-  margin-right: -675px;
-  margin-top: -50px;
+  /* margin-right: -675px; */
+  margin-right: -25px;
+  /* margin-top: -50px; */
+  /* margin-top: -4px; */
+  margin-top: -0.25vw;
   float: right;
 }
 
@@ -245,9 +312,8 @@ button#menu_arrow_right {
 div.menu_map {
   background-color: var(--black-bg-color);
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: column;
@@ -260,7 +326,7 @@ div.menu_map {
 }
 
 img.menu_map_image {
-  width: 300%;
+  width: 150%;
   height: auto;
   min-width: 100%;
   max-width: 500%;
@@ -282,9 +348,8 @@ img.menu_map_image:active {
 div.menu_brief {
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -299,9 +364,8 @@ div.menu_brief {
 div.menu_stats {
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -491,9 +555,8 @@ div.menu_100_completion #menu_100_completion_progress_0 > .element_progress_perc
 div.menu_settings {
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -509,9 +572,8 @@ div.menu_settings {
 div.menu_game {
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -534,9 +596,8 @@ span.element_mission_name {
 div.menu_online {
   background-color: transparent;
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -551,9 +612,8 @@ div.menu_online {
 div.menu_store {
   background-color: var(--black-bg-color);
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -571,9 +631,8 @@ div.menu_store {
 div.menu_replay {
   background-color: var(--black-bg-color);
   width: var(--menu-wnd-width);
-  height: 645px;
+  height: var(--menu-wnd-height);
   border: 0px;
-  margin-top: 8px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -644,7 +703,7 @@ button.menu_entry {
   background-color: var(--black-bg-color);
   color: var(--text-color);
   font-family: "London60";
-  font-size: 19.5px;
+  font-size: var(--menu-font-size);
   text-align: left;
   border: 0px;
   width: 100%;
@@ -772,11 +831,6 @@ button.menu_arrows {
   align-self: flex-end;
 }
 
-/* button.menu_arrow_up:hover,
-button.menu_arrow_down:hover {
-  background-color: #ffffff40;
-} */
-
 /* MENU ELEMENT PROGRESS BAR AND STATS */
 
 div.element_progress {
@@ -801,7 +855,6 @@ div.element_progress_perc {
 div.element_list {
   margin-right: 5px;
   float: right;
-  /* di; */
 }
 
 div.menu_divider {
@@ -856,14 +909,3 @@ img.menu_window_picture {
   object-fit: contain;
   pointer-events: none;
 }
-
-/* div.element_list_arrow_left {
-  background-color: #134729;
-  width: 10%;
-  background-image: url(images/mp_arrowxlarge.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: rotate(180deg);
-  float: left;
-} */

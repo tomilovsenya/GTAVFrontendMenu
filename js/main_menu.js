@@ -1,4 +1,5 @@
 const GTAV = "Grand Theft Auto V";
+// const GTAV = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas excepturi atque aliquid necessitatibus nihil vero id assumenda numquam perferendis alias.';
 const GTAO = "Grand Theft Auto Online";
 const charName = "MICHAEL TOWNLEY";
 const charTime = "WEDNESDAY 18:35";
@@ -217,7 +218,7 @@ $(".menu_button").on("tabActive", function () {
   $(this).css({
     "background-color": "#ffffff",
     color: "black",
-    "box-shadow": "0px -8px " + menuColor,
+    "box-shadow": "0px -0.5vw " + menuColor,
   });
   activeTab.focus();
   switchActiveWindow($(this));
@@ -468,27 +469,6 @@ function setMissions(missionName) {
   setMission("Complications");
   setMission("Father/Son");
 }
-
-// function categoriesHandler(activeTab) {
-//   if (activeWindow.id != tabBrief.id) return; // TEMP
-//   console.log("Handling tab: " + activeTab.html());
-
-//   let tabCategories = activeWindow.window
-//     .children(".menu_categories")
-//     .children(".menu_entry");
-//   let tabElements = activeWindow.window.children(".menu_elements");
-
-//   if (activeCategory != null) {
-//     console.log("Active category ID: " + activeCategory.attr("id"));
-//   }
-
-//   if (activeCategory != null) {
-//     activeCategory.trigger("categoryDisabled");
-//   }
-
-//   activeCategory = tabCategories.first();
-//   tabCategories.eq(0).trigger("categoryActive");
-// }
 
 function categoriesHandler(activeTab) {
   let tabCategories = activeWindow.window
