@@ -78,7 +78,7 @@ div.menu_box {
   flex-direction: column;
   width: var(--menu-wnd-width);
   height: var(--menu-box-height);
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
 }
 
 @keyframes fadein {
@@ -117,6 +117,7 @@ div.menu_header {
   justify-content: space-between;
   align-items: flex-end;
   /* float: left; */
+  margin: 0;
 }
 
 p.menu_header {
@@ -161,7 +162,7 @@ p.menu_header_stats {
   font-size: var(--stats-text-size);
   color: var(--text-color);
   text-align: right;
-  text-shadow: 0.15vw 0.15vw 0.15vw #000000;
+  text-shadow: 0.1vw 0.1vw 0.1vw #000000;
   line-height: 88%;
   white-space: nowrap;
   width: 100%;
@@ -209,7 +210,6 @@ nav.menu_buttons {
   height: var(--menu-navbar-height);
   /* height: 39px; */
   border: 0px;
-  margin-bottom: 12px;
   display: flex;
   flex-direction: row;
   /* flex-grow: 1; */
@@ -219,7 +219,7 @@ nav.menu_buttons {
   flex-wrap: nowrap;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  scroll-snap-stop: always;
+  /* /* scroll-snap-stop: always; */
   padding-top: 8px;
   margin-top: -12px;
   /* scroll-padding-block-start: 2vw; */
@@ -582,6 +582,10 @@ div.menu_game {
   flex-wrap: nowrap;
 }
 
+div.menu_game .menu_entry_empty_double {
+  margin-bottom: 0;
+}
+
 span.element_mission_name {
   /* color: var(--text-color); */
   color: gold;
@@ -705,9 +709,12 @@ button.menu_entry {
   font-family: "London60";
   font-size: var(--menu-font-size);
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border: 0px;
-  width: 100%;
   outline: 0;
+  width: 100%;
   /* height: 5.675%; */
   /* margin-bottom: 4px; */
   height: var(--item-height);

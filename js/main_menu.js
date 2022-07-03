@@ -101,7 +101,7 @@ setArrows();
 // setFirstTab();
 setSingleTab();
 setActiveWindow(tabMap);
-setMissions();
+// setMissions();
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -291,6 +291,8 @@ $(".menu_categories_middle").children().on("categoryActive", setCategoryActive);
 $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
 
 function setCategoryActive() {
+  if ($(this).is($(".menu_entry_empty_double"))) return;
+  if ($(this).is($(".menu_entry_empty"))) return;
   $(this).css({
     "background-color": "#ffffff",
     color: "black",
@@ -304,7 +306,7 @@ function setCategoryActive() {
     rightText.html(arrowsText);
     // console.log("This category has right text: " + rightText.html());
   }
-  // console.log("Active category is this: " + activeCategory.html());
+  console.log("Active category is this: " + activeCategory.html());
 }
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
 
@@ -388,9 +390,9 @@ function scrollDown() {
   let tabCategories = activeWindow.window
     .children(".menu_categories")
     .children(".menu_entry");
-  if (activeCategory.attr("id") != tabCategories.last().attr("id"))
+  if (activeCategory.attr("id") != tabCategories.last().attr("id")) {
     triggerCategory(activeCategory.next());
-  else triggerCategory(tabCategories.first());
+  } else triggerCategory(tabCategories.first());
   categoriesHandler();
 }
 
@@ -399,9 +401,9 @@ function scrollUp() {
   let tabCategories = activeWindow.window
     .children(".menu_categories")
     .children(".menu_entry");
-  if (activeCategory.attr("id") != tabCategories.first().attr("id"))
+  if (activeCategory.attr("id") != tabCategories.first().attr("id")) {
     triggerCategory(activeCategory.prev());
-  else triggerCategory(tabCategories.last());
+  } else triggerCategory(tabCategories.last());
   categoriesHandler();
 }
 
@@ -456,7 +458,7 @@ function setFirstTab() {
 
 function setMission(missionName) {
   let mission = $(
-    '<button class="menu_entry menu_category"><span class="element_label">' +
+    '<button class="menu_entry menu_category_middle"><span class="element_label">' +
       missionName +
       "</span></button>"
   );
