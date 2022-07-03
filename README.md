@@ -4,6 +4,8 @@ The GTA V Pause Menu recreated using HTML, CSS and JavaScript (with some basic p
 
 Base resolution is 1920×1080. Doesn't auto-scale for bigger/smaller resolutions (yet).
 
+Demo available here: https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.html
+
 ## Current Functionality
 * Tabs scroll: Press Q/E, click Left/Right arrows or a tab itself. The scroll is animated just as in the original game
 * Categories scroll: Press W/S or Up/Down arrow, or a category itself
