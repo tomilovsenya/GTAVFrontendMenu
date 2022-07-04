@@ -218,7 +218,7 @@ $(".menu_button").on("tabActive", function () {
   $(this).css({
     "background-color": "#ffffff",
     color: "black",
-    "box-shadow": "0px -0.5vw " + menuColor,
+    "box-shadow": "0px -0.4vw " + menuColor,
   });
   activeTab.focus();
   switchActiveWindow($(this));

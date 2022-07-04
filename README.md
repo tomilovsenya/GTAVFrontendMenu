@@ -2,7 +2,7 @@
 
 The GTA V Pause Menu recreated using HTML, CSS and JavaScript (with some basic plugins).
 
-Base resolution is 1920×1080. Doesn't auto-scale for bigger/smaller resolutions (yet).
+Base resolution is 1920×1080. Auto-scales for bigger resolutions, but for smaller resolutions it's buggy (yet).
 
 Demo available here: https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.html
 
