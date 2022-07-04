@@ -478,54 +478,59 @@ function categoriesHandler(activeTab) {
     .children(".menu_entry");
 
   if (activeWindow.id == tabBrief.id) {
+    let currentLabel = activeCategory.children(".element_label").html();
+    // console.log('Current label is: ' + activeCategory.children('.element_label').html())
+
     if (activeCategory.attr("id") == tabCategories.first().attr("id")) {
-      // console.log ('Category is the first child')
       setWindowTextContents(
-        "Mission",
-        "You are not currently playing a Mission."
+        currentLabel,
+        "You are not currently playing a Mission. During a Mission, infomation will be shown here in relation to your progress and any current objectives you have."
       );
     }
     if (activeCategory.attr("id") == tabCategories.eq(1).attr("id")) {
-      // console.log ('Category is the second child')
       setWindowTextContents(
-        "Help",
-        "You do not currently have Help text available."
+        currentLabel,
+        "Check back here to see any help text that has appeared in the game."
       );
     }
     if (activeCategory.attr("id") == tabCategories.eq(2).attr("id")) {
       // console.log ('Category is the second child')
       setWindowTextContents(
-        "Dialogue",
-        "You do not currently have Dialogue text available."
+        currentLabel,
+        "Check back here to read what has been said."
       );
     }
   }
 
   if (activeWindow.id == tabStats.id) {
     let newHeight = 445.5;
-    if (activeCategory.attr("id") == tabCategories.eq(7).attr("id")) {
-      console.log("100 prc completion selected");
-      let statElements = activeWindow.window
-        .children(".menu_elements")
-        .children();
-      let hundredCompletion = activeWindow.window
-        .children(".menu_elements")
-        .children(".menu_100_completion");
-      console.log(activeWindow.window.children(".menu_elements").height());
+    let statElements = activeWindow.window
+      .children(".menu_elements")
+      .children();
+    let hundredCompletion = $(".menu_100_completion");
+    // hundredCompletion.children().hide();
+
+    if (activeCategory.attr("id") == tabCategories.eq(0).attr("id")) {
+      // hundredCompletion.hide();
+      statElements.show();
+    }
+    else {
       statElements.hide();
       hundredCompletion.show();
-      activeWindow.window.children(".menu_elements").height(newHeight);
+    }
+
+    if (activeCategory.attr("id") == tabCategories.eq(7).attr("id")) {
+      console.log("100% Completion: " + hundredCompletion.eq(0));
+      hundredCompletion.show();
+      // activeWindow.window.children(".menu_elements").height(newHeight);
     } else {
-      let hundredCompletion = activeWindow.window
-        .children(".menu_elements")
-        .children(".menu_100_completion");
       hundredCompletion.hide();
     }
   }
 }
 
 function setWindowTextContents(header, text) {
-  let currentHeader = activeWindow.window.find("p.menu_window_header");
+  let currentHeader = activeWindow.window.find("h1.menu_window_header");
   let currentText = activeWindow.window.find("span.menu_window_text");
   currentHeader.html(header);
   currentText.html(text);
