@@ -18,510 +18,514 @@
 </head>
 
 <body>
-  <div class="frontend_main_menu">
-    <div class="menu_box">
-      <div class="menu_header" tabindex="-1">
-        <p class="menu_header" id="menu_header_text">Grand Theft Auto V</p>
-        <div class="menu_header_character">
-          <div class="menu_header_stats">
-            <p class="menu_header_stats" id="menu_header_stats_text"></p>
-          </div>
-          <div class="menu_header_avatar">
-            <img class="menu_header_avatar_picture" src="images/avatar_michael.png"></img>
+  <div class="menu_bounding_box">
+    <div class="frontend_main_menu">
+      <div class="menu_box">
+        <div class="menu_header" tabindex="-1">
+          <p class="menu_header" id="menu_header_text">Grand Theft Auto V</p>
+          <div class="menu_header_character">
+            <div class="menu_header_stats">
+              <p class="menu_header_stats" id="menu_header_stats_text"></p>
+            </div>
+            <div class="menu_header_avatar">
+              <img class="menu_header_avatar_picture" src="images/avatar_michael.png"></img>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- <br /> -->
-      <div class="menu_navbar">
-        <button id="menu_arrow_left" tabindex="-1"></button>
-        <nav class="menu_buttons" tabindex="-1">
-          <button id="tab_0" class="menu_button">MAP</button>
-          <button id="tab_1" class="menu_button">BRIEF</button>
-          <button id="tab_2" class="menu_button">STATS</button>
-          <button id="tab_3" class="menu_button">SETTINGS</button>
-          <button id="tab_4" class="menu_button">GAME</button>
-          <button id="tab_5" class="menu_button">ONLINE</button>
-          <button id="tab_6" class="menu_button">FRIENDS</button>
-          <button id="tab_7" class="menu_button">GALLERY</button>
-          <button id="tab_8" class="menu_button">STORE</button>
-          <button id="tab_9" class="menu_button">ROCKSTAR EDITOR</button>
-        </nav>
-        <button id="menu_arrow_right" tabindex="-1"></button>
-      </div>
-      <!-- <nav class="menu_arrows">
+        <!-- <br /> -->
+        <div class="menu_navbar">
+          <button id="menu_arrow_left" tabindex="-1"></button>
+          <nav class="menu_buttons" tabindex="-1">
+            <button id="tab_0" class="menu_button">MAP</button>
+            <button id="tab_1" class="menu_button">BRIEF</button>
+            <button id="tab_2" class="menu_button">STATS</button>
+            <button id="tab_3" class="menu_button">SETTINGS</button>
+            <button id="tab_4" class="menu_button">GAME</button>
+            <button id="tab_5" class="menu_button">ONLINE</button>
+            <button id="tab_6" class="menu_button">FRIENDS</button>
+            <button id="tab_7" class="menu_button">GALLERY</button>
+            <button id="tab_8" class="menu_button">STORE</button>
+            <button id="tab_9" class="menu_button">ROCKSTAR EDITOR</button>
+          </nav>
+          <button id="menu_arrow_right" tabindex="-1"></button>
+        </div>
+        <!-- <nav class="menu_arrows">
         <button id="menu_arrow_left" tabindex="-1"></button>
       </nav> -->
 
-      <div class="menu_window menu_map" id="menu_map_window">
-        <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt="">
-      </div>
-
-      <div class="menu_window menu_brief">
-        <div class="menu_categories">
-          <button id="menu_brief_category_0" class="menu_entry menu_category">
-            <span class="element_label">Mission</span>
-          </button>
-          <button id="menu_brief_category_1" class="menu_entry menu_category">
-            <span class="element_label">Help</span>
-          </button>
-          <button id="menu_brief_category_2" class="menu_entry menu_category">
-            <span class="element_label">Dialogue</span>
-          </button>
-          <button id="menu_brief_category_3" class="menu_entry menu_category">
-            <span class="element_label">Notifications</span>
-          </button>
-          <button id="menu_brief_category_4" class="menu_entry menu_category">
-            <span class="element_label">Rockstar Newswire</span>
-          </button>
+        <div class="menu_window menu_map" id="menu_map_window">
+          <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt="">
         </div>
-        <!-- <div class="menu_elements_box"> -->
-        <div class="menu_elements menu_background_rockstar">
-          <div class="menu_window_text menu_window_text_full">
-            <h1 class="menu_window_header">Mission</h1>
-            <span class="menu_window_text">You are not currently playing a Mission. During a Mission, infomation will be
-              shown here in relation to your progress and any current objectives you have.</span>
+
+        <div class="menu_window menu_brief">
+          <div class="menu_categories">
+            <button id="menu_brief_category_0" class="menu_entry menu_category">
+              <span class="element_label">Mission</span>
+            </button>
+            <button id="menu_brief_category_1" class="menu_entry menu_category">
+              <span class="element_label">Help</span>
+            </button>
+            <button id="menu_brief_category_2" class="menu_entry menu_category">
+              <span class="element_label">Dialogue</span>
+            </button>
+            <button id="menu_brief_category_3" class="menu_entry menu_category">
+              <span class="element_label">Notifications</span>
+            </button>
+            <button id="menu_brief_category_4" class="menu_entry menu_category">
+              <span class="element_label">Rockstar Newswire</span>
+            </button>
+          </div>
+          <!-- <div class="menu_elements_box"> -->
+          <div class="menu_elements menu_background_rockstar">
+            <div class="menu_window_text menu_window_text_full">
+              <h1 class="menu_window_header">Mission</h1>
+              <span class="menu_window_text">You are not currently playing a Mission. During a Mission, infomation will
+                be
+                shown here in relation to your progress and any current objectives you have.</span>
+            </div>
+          </div>
+          <button class="menu_arrows" tabindex="-1">
+        </div>
+
+        <div class="menu_window menu_stats">
+          <div class="menu_categories">
+            <button id="menu_stats_category_0" class="menu_entry menu_category_list">
+              <span class="element_label">Skills</span>
+              <div class="element_list">
+                <span class="element_label_right">Michael</span>
+              </div>
+            </button>
+            <button id="menu_stats_category_1" class="menu_entry menu_category_list">
+              <span class="element_label">General</span>
+              <div class="element_list"></div>
+            </button>
+            <button id="menu_stats_category_2" class="menu_entry menu_category_list">
+              <span class="element_label">Crimes</span>
+              <div class="element_list"></div>
+            </button>
+            <button id="menu_stats_category_3" class="menu_entry menu_category_list">
+              <span class="element_label">Vehicles</span>
+              <div class="element_list"></div>
+            </button>
+            <button id="menu_stats_category_4" class="menu_entry menu_category_list">
+              <span class="element_label">Cash</span>
+              <div class="element_list"></div>
+            </button>
+            <button id="menu_stats_category_5" class="menu_entry menu_category_list">
+              <span class="element_label">Combat</span>
+              <div class="element_list"></div>
+            </button>
+            <button id="menu_stats_category_6" class="menu_entry menu_category_list">
+              <span class="element_label">Weapons</span>
+              <div class="element_list"></div>
+            </button>
+            <button id="menu_stats_category_7" class="menu_entry menu_category">
+              <span class="element_label">100% Checklist</span>
+            </button>
+          </div>
+          <div class="menu_elements">
+            <button class="menu_entry menu_entry_empty menu_element_stat">
+              <span class="element_label">Special</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Stamina</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Shooting</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Strength</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Stealth</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Flying</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Driving</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Lung Capacity</span>
+              <div class="element_stat">
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc"></div>
+                <div class="element_stat_perc element_stat_perc_semi">
+                  <div class="element_stat_perc_semi_filled"></div>
+                </div>
+                <div class="element_stat_perc element_stat_perc_empty"></div>
+              </div>
+            </button>
+            <div class="menu_divider"></div>
+            <div class="element_info" tabindex="-1">
+              <span class="element_info_text">Special: How long Franklin's Special Ability can remain active when fully
+                charged. Store more charge for a greater maximum duration. Increase by driving against the flow of
+                traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.
+              </span>
+              <img class="element_info_icon" src="images/info.svg" alt="">
+            </div>
+
+            <div class="menu_100_completion">
+              <div class="menu_element_zone_top">
+                <div class="menu_element_zone_left">
+                  <button class="menu_entry menu_entry_empty"></button>
+                  <button class="menu_entry menu_entry_empty menu_element_list">
+                    <span class="element_label">Michael</span>
+                    <div class="element_list">
+                      <span class="element_label_right">0d 11h 3m 48</span>
+                    </div>
+                  </button>
+                  <button class="menu_entry menu_entry_empty menu_element_list">
+                    <span class="element_label">Franklin</span>
+                    <div class="element_list">
+                      <span class="element_label_right">0d 11h 3m 48</span>
+                    </div>
+                  </button>
+                  <button class="menu_entry menu_entry_empty menu_element_list">
+                    <span class="element_label">Trevor</span>
+                    <div class="element_list">
+                      <span class="element_label_right">0d 11h 3m 48</span>
+                    </div>
+                  </button>
+                  <button class="menu_entry menu_entry_empty"></button>
+                </div>
+                <div class="menu_element_zone_right">
+                  <div class="menu_100_completion_chart">
+                    <canvas id="menu_100_completion_chart"></canvas>
+                    <span class="menu_100_completion_chart_percentage">100%</span>
+                  </div>
+                </div>
+              </div>
+              <button class="menu_entry menu_entry_empty menu_element_list_bar">
+                <div class="menu_element_list_bar_left">
+                  <span class="element_label">Missions</span>
+                  <div class="element_list">
+                    <span class="element_label_right">69 / 69</span>
+                  </div>
+                </div>
+                <div id="menu_100_completion_progress_0" class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_element_list_bar">
+                <div class="menu_element_list_bar_left">
+                  <span class="element_label">Hobbies and Pastimes</span>
+                  <div class="element_list">
+                    <span class="element_label_right">42 / 42</span>
+                  </div>
+                </div>
+                <div id="menu_100_completion_progress_1" class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_element_list_bar">
+                <div class="menu_element_list_bar_left">
+                  <span class="element_label">Strangers and Freaks</span>
+                  <div class="element_list">
+                    <span class="element_label_right">20 / 20</span>
+                  </div>
+                </div>
+                <div id="menu_100_completion_progress_2" class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_element_list_bar">
+                <div class="menu_element_list_bar_left">
+                  <span class="element_label">Random Events</span>
+                  <div class="element_list">
+                    <span class="element_label_right">14 / 14</span>
+                  </div>
+                </div>
+                <div id="menu_100_completion_progress_3" class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_element_list_bar">
+                <div class="menu_element_list_bar_left">
+                  <span class="element_label">Miscellaneous</span>
+                  <div class="element_list">
+                    <span class="element_label_right">16 / 16</span>
+                  </div>
+                </div>
+                <div id="menu_100_completion_progress_4" class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+            </div>
           </div>
         </div>
-        <button class="menu_arrows" tabindex="-1">
-      </div>
 
-      <div class="menu_window menu_stats">
-        <div class="menu_categories">
-          <button id="menu_stats_category_0" class="menu_entry menu_category_list">
-            <span class="element_label">Skills</span>
-            <div class="element_list">
-              <span class="element_label_right">Michael</span>
-            </div>
-          </button>
-          <button id="menu_stats_category_1" class="menu_entry menu_category_list">
-            <span class="element_label">General</span>
-            <div class="element_list"></div>
-          </button>
-          <button id="menu_stats_category_2" class="menu_entry menu_category_list">
-            <span class="element_label">Crimes</span>
-            <div class="element_list"></div>
-          </button>
-          <button id="menu_stats_category_3" class="menu_entry menu_category_list">
-            <span class="element_label">Vehicles</span>
-            <div class="element_list"></div>
-          </button>
-          <button id="menu_stats_category_4" class="menu_entry menu_category_list">
-            <span class="element_label">Cash</span>
-            <div class="element_list"></div>
-          </button>
-          <button id="menu_stats_category_5" class="menu_entry menu_category_list">
-            <span class="element_label">Combat</span>
-            <div class="element_list"></div>
-          </button>
-          <button id="menu_stats_category_6" class="menu_entry menu_category_list">
-            <span class="element_label">Weapons</span>
-            <div class="element_list"></div>
-          </button>
-          <button id="menu_stats_category_7" class="menu_entry menu_category">
-            <span class="element_label">100% Checklist</span>
-          </button>
-        </div>
-        <div class="menu_elements">
-          <button class="menu_entry menu_entry_empty menu_element_stat">
-            <span class="element_label">Special</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Stamina</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Shooting</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Strength</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Stealth</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Flying</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Driving</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <button class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-            <span class="element_label">Lung Capacity</span>
-            <div class="element_stat">
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc"></div>
-              <div class="element_stat_perc element_stat_perc_semi">
-                <div class="element_stat_perc_semi_filled"></div>
-              </div>
-              <div class="element_stat_perc element_stat_perc_empty"></div>
-            </div>
-          </button>
-          <div class="menu_divider"></div>
-          <div class="element_info" tabindex="-1">
-            <span class="element_info_text">Special: How long Franklin's Special Ability can remain active when fully
-              charged. Store more charge for a greater maximum duration. Increase by driving against the flow of
-              traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.
-            </span>
-            <img class="element_info_icon" src="images/info.svg" alt="">
+        <div class="menu_window menu_settings">
+          <div class="menu_categories">
+            <button id="menu_settings_category_0" class="menu_entry menu_category">
+              <span class="element_label">Gamepad</span>
+            </button>
+            <button id="menu_settings_category_1" class="menu_entry menu_category">
+              <span class="element_label">Keyboard / Mouse</span>
+            </button>
+            <button id="menu_settings_category_2" class="menu_entry menu_category">
+              <span class="element_label">Key Bindings</span>
+            </button>
+            <button id="menu_settings_category_3" class="menu_entry menu_category">
+              <span class="element_label">Audio</span>
+            </button>
+            <button id="menu_settings_category_4" class="menu_entry menu_category">
+              <span class="element_label">Camera</span>
+            </button>
+            <button id="menu_settings_category_5" class="menu_entry menu_category">
+              <span class="element_label">Display</span>
+            </button>
+            <button id="menu_settings_category_6" class="menu_entry menu_category">
+              <span class="element_label">Graphics</span>
+            </button>
+            <button id="menu_settings_category_7" class="menu_entry menu_category">
+              <span class="element_label">Advanced Graphics</span>
+            </button>
+            <button id="menu_settings_category_8" class="menu_entry menu_category">
+              <span class="element_label">Voice Chat</span>
+            </button>
+            <button id="menu_settings_category_9" class="menu_entry menu_category">
+              <span class="element_label">Notifications</span>
+            </button>
+            <button id="menu_settings_category_10" class="menu_entry menu_category">
+              <span class="element_label">Rockstar Editor</span>
+            </button>
+            <button id="menu_settings_category_11" class="menu_entry menu_category">
+              <span class="element_label">Saving And Startup</span>
+            </button>
+            <button id="menu_settings_category_12" class="menu_entry menu_category">
+              <span class="element_label">Facebook</span>
+            </button>
+            <button id="menu_settings_category_13" class="menu_entry menu_category">
+              <span class="element_label">Exclusive Content</span>
+            </button>
           </div>
-
-          <div class="menu_100_completion">
-            <div class="menu_element_zone_top">
-              <div class="menu_element_zone_left">
-                <button class="menu_entry menu_entry_empty"></button>
-                <button class="menu_entry menu_entry_empty menu_element_list">
-                  <span class="element_label">Michael</span>
-                  <div class="element_list">
-                    <span class="element_label_right">0d 11h 3m 48</span>
-                  </div>
-                </button>
-                <button class="menu_entry menu_entry_empty menu_element_list">
-                  <span class="element_label">Franklin</span>
-                  <div class="element_list">
-                    <span class="element_label_right">0d 11h 3m 48</span>
-                  </div>
-                </button>
-                <button class="menu_entry menu_entry_empty menu_element_list">
-                  <span class="element_label">Trevor</span>
-                  <div class="element_list">
-                    <span class="element_label_right">0d 11h 3m 48</span>
-                  </div>
-                </button>
-                <button class="menu_entry menu_entry_empty"></button>
-              </div>
-              <div class="menu_element_zone_right">
-                <div class="menu_100_completion_chart">
-                  <canvas id="menu_100_completion_chart"></canvas>
-                  <span class="menu_100_completion_chart_percentage">100%</span>
-                </div>
-              </div>
-            </div>
-            <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
-                <span class="element_label">Missions</span>
-                <div class="element_list">
-                  <span class="element_label_right">69 / 69</span>
-                </div>
-              </div>
-              <div id="menu_100_completion_progress_0" class="element_progress">
+          <div class="menu_elements menu_elements_header">
+            <button class="menu_entry menu_entry_empty menu_entry_empty_double" tabindex="-1">
+              <span class="element_label">Video Memory: 2676 MB / 6143 MB</span>
+              <div class="element_progress">
                 <div class="element_progress_perc"></div>
               </div>
             </button>
-            <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
-                <span class="element_label">Hobbies and Pastimes</span>
-                <div class="element_list">
-                  <span class="element_label_right">42 / 42</span>
-                </div>
-              </div>
-              <div id="menu_100_completion_progress_1" class="element_progress">
+          </div>
+          <div class="menu_elements menu_elements_scrollable">
+            <button class="menu_entry">
+              <span class="element_label">Population Density</span>
+              <div class="element_progress">
                 <div class="element_progress_perc"></div>
               </div>
             </button>
-            <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
-                <span class="element_label">Strangers and Freaks</span>
-                <div class="element_list">
-                  <span class="element_label_right">20 / 20</span>
-                </div>
-              </div>
-              <div id="menu_100_completion_progress_2" class="element_progress">
-                <div class="element_progress_perc"></div>
-              </div>
+            <button class="menu_entry">
+              <span class="element_label">Population Variety</span>
             </button>
-            <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
-                <span class="element_label">Random Events</span>
-                <div class="element_list">
-                  <span class="element_label_right">14 / 14</span>
-                </div>
-              </div>
-              <div id="menu_100_completion_progress_3" class="element_progress">
-                <div class="element_progress_perc"></div>
-              </div>
-            </button>
-            </button>
-            <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
-                <span class="element_label">Miscellaneous</span>
-                <div class="element_list">
-                  <span class="element_label_right">16 / 16</span>
-                </div>
-              </div>
-              <div id="menu_100_completion_progress_4" class="element_progress">
-                <div class="element_progress_perc"></div>
-              </div>
+            <button class="menu_entry">
+              <span class="element_label">Distance Scaling</span>
             </button>
             <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+            <button class="menu_entry">
+              <span class="element_label">Texture Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Shader Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Shadow Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Reflection Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Reflection MSAA</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Water Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Particles Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Grass Quality</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Soft Shadows</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Post FX</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Motion Blur</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">Motion Blur Strength</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">MSAA</span>
+            </button>
+            <button class="menu_entry">
+              <span class="element_label">TXAA</span>
+            </button>
+          </div>
+          <button class="menu_arrows" tabindex="-1">
+        </div>
+
+        <div class="menu_window menu_game">
+          <div class="menu_categories">
+            <button id="menu_game_category_0" class="menu_entry menu_category">
+              <span class="element_label">Replay Mission</span>
+            </button>
+            <button id="menu_game_category_1" class="menu_entry menu_category">
+              <span class="element_label">Replay Strangers and Freaks</span>
+            </button>
+            <button id="menu_game_category_2" class="menu_entry menu_category">
+              <span class="element_label">Load Game</span>
+            </button>
+            <button id="menu_game_category_3" class="menu_entry menu_category">
+              <span class="element_label">New Game</span>
+            </button>
+            <button id="menu_game_category_4" class="menu_entry menu_category">
+              <span class="element_label">Exit Game</span>
+            </button>
+          </div>
+          <div class="menu_categories_middle">
+            <button class="menu_entry menu_category_middle">
+              <span class="element_label">Prologue</span>
+            </button>
+            <button class="menu_entry menu_category_middle">
+              <span class="element_label">Franklin & Lamar</span>
+            </button>
+          </div>
+          <div class="menu_categories_right">
+            <button class="menu_entry menu_entry_empty_double">
+              <span class="element_mission_name">Prologue</span>
+            </button>
+            <div class="menu_divider"></div>
+            <button class="menu_entry menu_entry_empty">
+              <span class="element_label">Result - Silver Medal</span>
+            </button>
           </div>
         </div>
-      </div>
 
-      <div class="menu_window menu_settings">
-        <div class="menu_categories">
-          <button id="menu_settings_category_0" class="menu_entry menu_category">
-            <span class="element_label">Gamepad</span>
-          </button>
-          <button id="menu_settings_category_1" class="menu_entry menu_category">
-            <span class="element_label">Keyboard / Mouse</span>
-          </button>
-          <button id="menu_settings_category_2" class="menu_entry menu_category">
-            <span class="element_label">Key Bindings</span>
-          </button>
-          <button id="menu_settings_category_3" class="menu_entry menu_category">
-            <span class="element_label">Audio</span>
-          </button>
-          <button id="menu_settings_category_4" class="menu_entry menu_category">
-            <span class="element_label">Camera</span>
-          </button>
-          <button id="menu_settings_category_5" class="menu_entry menu_category">
-            <span class="element_label">Display</span>
-          </button>
-          <button id="menu_settings_category_6" class="menu_entry menu_category">
-            <span class="element_label">Graphics</span>
-          </button>
-          <button id="menu_settings_category_7" class="menu_entry menu_category">
-            <span class="element_label">Advanced Graphics</span>
-          </button>
-          <button id="menu_settings_category_8" class="menu_entry menu_category">
-            <span class="element_label">Voice Chat</span>
-          </button>
-          <button id="menu_settings_category_9" class="menu_entry menu_category">
-            <span class="element_label">Notifications</span>
-          </button>
-          <button id="menu_settings_category_10" class="menu_entry menu_category">
-            <span class="element_label">Rockstar Editor</span>
-          </button>
-          <button id="menu_settings_category_11" class="menu_entry menu_category">
-            <span class="element_label">Saving And Startup</span>
-          </button>
-          <button id="menu_settings_category_12" class="menu_entry menu_category">
-            <span class="element_label">Facebook</span>
-          </button>
-          <button id="menu_settings_category_13" class="menu_entry menu_category">
-            <span class="element_label">Exclusive Content</span>
-          </button>
-        </div>
-        <div class="menu_elements menu_elements_header">
-          <button class="menu_entry menu_entry_empty menu_entry_empty_double" tabindex="-1">
-            <span class="element_label">Video Memory: 2676 MB / 6143 MB</span>
-            <div class="element_progress">
-              <div class="element_progress_perc"></div>
+        <div class="menu_window menu_online">
+          <div class="menu_categories">
+            <button id="menu_online_category_0" class="menu_entry menu_category">
+              <span class="element_label">Go</span>
+            </button>
+            <button class="menu_entry menu_category">
+              <span class="element_label">Invite Only Session</span>
+            </button>
+            <button id="menu_online_category_1" class="menu_entry menu_category_list">
+              <span class="element_label">Crew Session</span>
+              <div class="element_list">
+                <span class="element_label_right">2</span>
+              </div>
+            </button>
+            <button id="menu_online_category_2" class="menu_entry menu_category">
+              <span class="element_label">Closed Crew Session</span>
+            </button>
+            <button id="menu_online_category_3" class="menu_entry menu_category">
+              <span class="element_label">Solo Session</span>
+            </button>
+          </div>
+          <!-- <div class="menu_elements_box"> -->
+          <div class="menu_elements menu_background_rockstar">
+            <div class="menu_window_text menu_window_text_full">
+              <h1 class="menu_window_header">Go</h1>
+              <span class="menu_window_text">Head straight into GTA Online.</span>
             </div>
-          </button>
+          </div>
+          <button class="menu_arrows" tabindex="-1">
         </div>
-        <div class="menu_elements menu_elements_scrollable">
-          <button class="menu_entry">
-            <span class="element_label">Population Density</span>
-            <div class="element_progress">
-              <div class="element_progress_perc"></div>
-            </div>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Population Variety</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Distance Scaling</span>
-          </button>
-          <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-          <button class="menu_entry">
-            <span class="element_label">Texture Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Shader Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Shadow Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Reflection Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Reflection MSAA</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Water Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Particles Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Grass Quality</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Soft Shadows</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Post FX</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Motion Blur</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">Motion Blur Strength</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">MSAA</span>
-          </button>
-          <button class="menu_entry">
-            <span class="element_label">TXAA</span>
-          </button>
-        </div>
-        <button class="menu_arrows" tabindex="-1">
-      </div>
 
-      <div class="menu_window menu_game">
-        <div class="menu_categories">
-          <button id="menu_game_category_0" class="menu_entry menu_category">
-            <span class="element_label">Replay Mission</span>
-          </button>
-          <button id="menu_game_category_1" class="menu_entry menu_category">
-            <span class="element_label">Replay Strangers and Freaks</span>
-          </button>
-          <button id="menu_game_category_2" class="menu_entry menu_category">
-            <span class="element_label">Load Game</span>
-          </button>
-          <button id="menu_game_category_3" class="menu_entry menu_category">
-            <span class="element_label">New Game</span>
-          </button>
-          <button id="menu_game_category_4" class="menu_entry menu_category">
-            <span class="element_label">Exit Game</span>
-          </button>
-        </div>
-        <div class="menu_categories_middle">
-          <button class="menu_entry menu_category_middle">
-            <span class="element_label">Prologue</span>
-          </button>
-          <button class="menu_entry menu_category_middle">
-            <span class="element_label">Franklin & Lamar</span>
-          </button>
-        </div>
-        <div class="menu_categories_right">
-          <button class="menu_entry menu_entry_empty_double">
-            <span class="element_mission_name">Prologue</span>
-          </button>
-          <div class="menu_divider"></div>
-          <button class="menu_entry menu_entry_empty">
-            <span class="element_label">Result - Silver Medal</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="menu_window menu_online">
-        <div class="menu_categories">
-          <button id="menu_online_category_0" class="menu_entry menu_category">
-            <span class="element_label">Go</span>
-          </button>
-          <button class="menu_entry menu_category">
-            <span class="element_label">Invite Only Session</span>
-          </button>
-          <button id="menu_online_category_1" class="menu_entry menu_category_list">
-            <span class="element_label">Crew Session</span>
-            <div class="element_list">
-              <span class="element_label_right">2</span>
-            </div>
-          </button>
-          <button id="menu_online_category_2" class="menu_entry menu_category">
-            <span class="element_label">Closed Crew Session</span>
-          </button>
-          <button id="menu_online_category_3" class="menu_entry menu_category">
-            <span class="element_label">Solo Session</span>
-          </button>
-        </div>
-        <!-- <div class="menu_elements_box"> -->
-        <div class="menu_elements menu_background_rockstar">
-          <div class="menu_window_text menu_window_text_full">
-            <h1 class="menu_window_header">Go</h1>
-            <span class="menu_window_text">Head straight into GTA Online.</span>
+        <div class="menu_window menu_store menu_background_rockstar">
+          <div class="menu_window_text">
+            <h1 class="menu_window_header">Now Open!</h1>
           </div>
         </div>
-        <button class="menu_arrows" tabindex="-1">
-      </div>
 
-      <div class="menu_window menu_store menu_background_rockstar">
-        <div class="menu_window_text">
-          <h1 class="menu_window_header">Now Open!</h1>
-        </div>
-      </div>
-
-      <div class="menu_window menu_replay menu_background_rockstar">
-        <div class="menu_window_text">
-          <h1 class="menu_window_header">Rockstar Editor</h1>
-          <span class="menu_window_text">Press ||||| to enter the Rockstar Editor and start creating
-            videos using clips of your GTAV and GTA Online experiences. Capture GTAV Story Mode or GTA Online gameplay
-            moments, or launch Director Mode to create custom scenarios and capture unique clips. To begin capturing
-            clips in game, hold ||||| to select your capture mode and start recording.<br><br>Once
-            you've captured some clips, add them to a New Project and edit as you wish. You can crop clips, add color
-            filters and change camera angles and effects. Rearrange your clips to get the ideal sequence, then add
-            custom text to appear whenever you want. Add GTAV score or radio tracks to create a soundtrack that will
-            bring your project to life. When you're satisfied, export your creations as videos to share via the Rockstar
-            Games Social Club and YouTube.
-          </span>
-        </div>
-        <div class="menu_window_picture">
-          <img class="menu_window_picture" src="images/replay_logoscreen.png" alt="">
+        <div class="menu_window menu_replay menu_background_rockstar">
+          <div class="menu_window_text">
+            <h1 class="menu_window_header">Rockstar Editor</h1>
+            <span class="menu_window_text">Press ||||| to enter the Rockstar Editor and start creating
+              videos using clips of your GTAV and GTA Online experiences. Capture GTAV Story Mode or GTA Online gameplay
+              moments, or launch Director Mode to create custom scenarios and capture unique clips. To begin capturing
+              clips in game, hold ||||| to select your capture mode and start recording.<br><br>Once
+              you've captured some clips, add them to a New Project and edit as you wish. You can crop clips, add color
+              filters and change camera angles and effects. Rearrange your clips to get the ideal sequence, then add
+              custom text to appear whenever you want. Add GTAV score or radio tracks to create a soundtrack that will
+              bring your project to life. When you're satisfied, export your creations as videos to share via the
+              Rockstar
+              Games Social Club and YouTube.
+            </span>
+          </div>
+          <div class="menu_window_picture">
+            <img class="menu_window_picture" src="images/replay_logoscreen.png" alt="">
+          </div>
         </div>
       </div>
     </div>

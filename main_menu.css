@@ -76,7 +76,7 @@ body {
   background-repeat: no-repeat;
   backdrop-filter: blur(0.25vw);
   height: 100%;
-  /* animation: fadeInAnimation ease 0.25s; */  
+  /* animation: fadeInAnimation ease 0.25s; */
 }
 
 @keyframes fadeInAnimation {
@@ -97,19 +97,31 @@ body {
    }
 }
 
+div.menu_bounding_box {
+  width: 100%;
+  /* min-width: 70%; */
+  height: 100%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1440px) {
+  .menu_bounding_box {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .menu_bounding_box {
+    width: 100%;
+  }
+}
+
 /*#endregion Main*/
 
 /*#region MainMenu*/
 div.frontend_main_menu {
-  /* padding-left: 310px; */
-  /* padding-left: 16.2%; */
-  /* padding-right: 310px; */
-  /* padding-right: 16.2%; */
-  /* width: var(--menu-wnd-width); */
-  /* height: var(--menu-wnd-height); */
   padding-top: var(--menu-box-padding-top);
   padding-bottom: var(--menu-box-padding-bottom);
-  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
