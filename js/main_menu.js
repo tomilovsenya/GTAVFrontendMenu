@@ -87,6 +87,7 @@ let scrollKeyDown = false;
 let activeTab = null;
 let activeCategory = null;
 let activeCategoryMiddle = null;
+let activeElement = null;
 let activeCategoriesList = null;
 let activeWindow = tabMap;
 
@@ -112,9 +113,13 @@ function setActiveWindow(tabName) {
   console.log("Active window first: " + activeWindow.name);
   activeWindow.window.hide();
   activeWindow = tabName;
-  // activeWindow.window.show()
-  activeWindow.window.fadeIn(250);
+  activeWindow.window.show()
+  // activeWindow.window.fadeIn(250);
   console.log("Active window: " + activeWindow.name);
+}
+
+function fadeInWindow(window) {
+  $(this).addClass("fade_in")
 }
 
 function switchActiveWindow(tabActive) {
@@ -201,7 +206,11 @@ document.addEventListener(
 // TABS LOGIC
 //
 
-$(".menu_button").click(function () {
+$(".menu_button").click(clickTab);
+$(".menu_button").on("tabActive", setTabActive);
+$(".menu_button").on("tabDisabled", setTabDisabled);
+
+function clickTab() {
   if (activeTab == null || activeTab == $(this)) {
     activeTab = $(this);
     activeTab.trigger("tabActive");
@@ -212,9 +221,9 @@ $(".menu_button").click(function () {
     activeTab.trigger("tabActive");
     // console.log('Other tab clicked')
   }
-});
+}
 
-$(".menu_button").on("tabActive", function () {
+function setTabActive() {
   $(this).css({
     "background-color": "#ffffff",
     color: "black",
@@ -234,15 +243,15 @@ $(".menu_button").on("tabActive", function () {
   activeCategory.trigger("categoryActive");
   categoriesHandler(activeTab);
   // console.log('Active tab is this: ' + $(this))
-});
+}
 
-$(".menu_button").on("tabDisabled", function () {
+function setTabDisabled() {
   $(this).css({
     "background-color": "",
     color: "",
     "box-shadow": "",
   });
-});
+}
 
 //
 // CATEGORIES LOGIC
