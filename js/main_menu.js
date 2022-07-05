@@ -10,6 +10,8 @@ const tab2Name = "STATS";
 const tab3Name = "SETTINGS";
 const tab4Name = "GAME";
 const tab5Name = "ONLINE";
+const tab6Name = "FRIENDS";
+const tab7Name = "GALLERY";
 const tab8Name = "STORE";
 const tab9Name = "ROCKSTAR EDITOR";
 
@@ -71,17 +73,12 @@ const tabReplay = {
   window: $(".menu_replay"),
 };
 
-// const menuColor = 'red'
-const menuColor = "lightskyblue";
-
 const menuPage = document.documentElement;
-
 const leftArrow = $("#menu_arrow_left");
 const rightArrow = $("#menu_arrow_right");
-const menuTabsBar = document.querySelectorAll(".menu_buttons")[0];
-const menuTabs = document.querySelectorAll(".menu_button")[0];
-const menuTabsAll = document.querySelectorAll(".menu_button");
-const menuHeaderText = document.querySelector("#menu_header_text");
+// const menuColor = 'red'
+const menuColor = "lightskyblue";
+menuPage.style.setProperty("--menu-color", menuColor);
 
 let scrollKeyDown = false;
 let activeTab = null;
@@ -102,7 +99,7 @@ setArrows();
 // setFirstTab();
 setSingleTab();
 setActiveWindow(tabMap);
-// setMissions();
+setMissions();
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -113,13 +110,13 @@ function setActiveWindow(tabName) {
   console.log("Active window first: " + activeWindow.name);
   activeWindow.window.hide();
   activeWindow = tabName;
-  activeWindow.window.show()
+  activeWindow.window.show();
   // activeWindow.window.fadeIn(250);
   console.log("Active window: " + activeWindow.name);
 }
 
 function fadeInWindow(window) {
-  $(this).addClass("fade_in")
+  $(this).addClass("fade_in");
 }
 
 function switchActiveWindow(tabActive) {
@@ -153,11 +150,13 @@ function switchActiveWindow(tabActive) {
 // EVENT LISTENERS
 //
 
-menuHeaderText.ondblclick = function goFullScreen() {
+$("#menu_header_text").dblclick("dblclick", goFullScreen)
+
+function goFullScreen() {
   if (menuPage.requestFullscreen) {
     menuPage.requestFullscreen();
   }
-};
+}
 
 rightArrow.click("click", scrollRight);
 leftArrow.click("click", scrollLeft);
@@ -522,8 +521,7 @@ function categoriesHandler(activeTab) {
     if (activeCategory.attr("id") == tabCategories.eq(0).attr("id")) {
       // hundredCompletion.hide();
       statElements.show();
-    }
-    else {
+    } else {
       statElements.hide();
       hundredCompletion.show();
     }
