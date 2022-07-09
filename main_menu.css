@@ -42,7 +42,7 @@
   --menu-font-size: 1.025vw;
   --menu-header-font-size: calc(var(--menu-font-size) * 4.18);
   --menu-letter-spacing: -0.007em;
- 
+
   /* --item-height: 5.8%; */
   /* --item-double-height: 12.125%; */
   --item-margin: 0.1625vw;
@@ -73,7 +73,7 @@ body {
   overflow-x: hidden;
   margin: 0 auto;
   padding: 0px;
-  background-image: url("images/background2.jpg");
+  background-image: url("images/background5.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(0.25vw);
@@ -83,20 +83,22 @@ body {
 
 @keyframes fadeInAnimation {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
+
   100% {
-      opacity: 1;
-   }
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInMapAnimation {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
+
   100% {
-      opacity: 0.5;
-   }
+    opacity: 0.5;
+  }
 }
 
 div.menu_bounding_box {
@@ -381,6 +383,7 @@ button.menu_entry {
   white-space: nowrap;
   scroll-snap-align: start end;
 }
+
 button.menu_entry:hover {
   background-color: var(--hover-color);
 }
@@ -390,6 +393,7 @@ button.menu_entry_empty_double {
   min-height: var(--item-double-height);
   align-self: flex-start;
 }
+
 button.menu_entry_empty_double:hover,
 button.menu_entry_empty:hover {
   /* background-color: var(--black-bg-color); */
@@ -399,14 +403,15 @@ button.menu_entry_empty:hover {
 button.menu_entry_empty {
   background-color: transparent;
 }
+
 button.menu_entry_empty_even:nth-child(even) {
   background-color: #00000040;
 }
 
-div.menu_elements_header button.menu_entry { 
+div.menu_elements_header button.menu_entry {
   margin: 0;
   background-color: transparent;
-  background-clip: padding-box;  
+  background-clip: padding-box;
 }
 
 div.element_progress {
@@ -414,7 +419,7 @@ div.element_progress {
   width: 22.5%;
   height: 30%;
   float: right;
-  background-color: rgba(109, 185, 215, 0.295);
+  background-color: #6db9d74b;
   /* margin: auto; */
   /* margin-right: 8px; */
   /* margin-top: 5px; */
@@ -438,6 +443,15 @@ div.menu_divider {
   height: var(--item-margin);
 }
 
+button.menu_entry_arrows {
+  background-color: var(--black-bg-color);
+  height: var(--item-height);
+  border: 0;
+  outline: 0;
+  margin-top: var(--item-margin);
+  /* justify-self: flex-end; */
+}
+
 button.menu_arrows {
   background-color: var(--black-bg-color);
   width: 66.6%;
@@ -450,6 +464,25 @@ button.menu_arrows {
   background-position: center;
   background-repeat: no-repeat;
   align-self: flex-end;
+}
+
+img.menu_entry_arrow_left {
+  width: 0.45vw;
+  /* height: 50%; */
+  transform: rotate(180deg);
+  filter: invert();
+  align-self: center;
+  display: inline-block;
+  pointer-events: none;
+}
+
+img.menu_entry_arrow_right {
+  width: 0.45vw;
+  /* height: 50%; */
+  filter: invert();
+  align-self: center;
+  display: inline-block;
+  pointer-events: none;
 }
 
 /*#endregion MenuBaseEntries */
@@ -579,8 +612,10 @@ div.menu_elements {
   /* align-self: stretch; */
   scroll-snap-type: mandatory;
 }
-div.menu_elements_scrollable { 
+
+div.menu_elements_scrollable {
   max-height: 87.5%;
+  flex-direction: column;
 }
 
 div.menu_background_rockstar {
@@ -591,6 +626,7 @@ div.menu_background_rockstar {
   /* background-repeat: repeat round; */
   /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.52), rgba(255, 255, 255, 0)) */
 }
+
 /*#endregion MenuContent*/
 
 /*#region MenuTabMap*/
@@ -611,6 +647,7 @@ div.menu_map {
   /* display: none; */
   animation: 250ms ease 0ms 1 normal none running fadeInMapAnimation;
 }
+
 div.menu_map:active {
   opacity: 100%;
 }
@@ -650,9 +687,10 @@ div.menu_brief {
   /* opacity: 50%; */
 }
 
-div.menu_brief > div.menu_elements {
+div.menu_brief>div.menu_elements {
   height: 100%;
 }
+
 /*#endregion MenuTabBrief*/
 
 /*#region MenuTabStats*/
@@ -685,7 +723,7 @@ div.element_stat {
   /* height: 9px; */
   height: 25%;
   float: right;
-  background-color: rgba(109, 185, 215, 0.295);
+  background-color: #6db9d74b;
   /* margin-right: 5px; */
   /* margin-top: 5px; */
   display: flex;
@@ -696,23 +734,23 @@ div.element_stat_perc {
   width: 19%;
   height: 100%;
   border: 0px;
-  background-color: rgb(109, 185, 215);
+  background-color: #6db9d7;
 }
 
 div.element_stat_perc_empty {
   /* opacity: 25%; */
-  background-color: rgba(109, 185, 215, 0.25);
+  background-color: #6db9d740;
 }
 
 div.element_stat_perc_semi {
-  background-color: rgba(109, 185, 215, 0.25);
+  background-color: #6db9d740;
 }
 
 div.element_stat_perc_semi_filled {
   width: 20%;
   height: 100%;
   border: 0;
-  background-color: rgb(109, 185, 215);
+  background-color: #6db9d7;
   opacity: 100%;
   float: left;
   z-index: 1;
@@ -847,11 +885,38 @@ span.menu_100_completion_chart_percentage {
 }
 
 div.menu_100_completion #menu_100_completion_progress_0 {
-  background-color: rgba(255, 217, 0, 0.25);
+  background-color: #ffd90040;
+}
+div.menu_100_completion #menu_100_completion_progress_0>.element_progress_perc {
+  background-color: gold;
 }
 
-div.menu_100_completion #menu_100_completion_progress_0>.element_progress_perc {
-  background-color: rgb(255, 217, 0);
+div.menu_100_completion #menu_100_completion_progress_1 {
+  background-color: #90ee9040;
+}
+div.menu_100_completion #menu_100_completion_progress_1>.element_progress_perc {
+  background-color: lightgreen;
+}
+
+div.menu_100_completion #menu_100_completion_progress_2 {
+  background-color: #87cefa40;
+}
+div.menu_100_completion #menu_100_completion_progress_2>.element_progress_perc {
+  background-color: lightskyblue;
+}
+
+div.menu_100_completion #menu_100_completion_progress_3 {
+  background-color: #ffa07a40;
+}
+div.menu_100_completion #menu_100_completion_progress_3>.element_progress_perc {
+  background-color: lightsalmon;
+}
+
+div.menu_100_completion #menu_100_completion_progress_4 {
+  background-color: #8b000040;
+}
+div.menu_100_completion #menu_100_completion_progress_4>.element_progress_perc {
+  background-color: darkred;
 }
 
 /*#endregion MenuTabStats*/
@@ -877,26 +942,29 @@ div.menu_settings .menu_elements_header {
   margin-bottom: var(--item-margin);
 }
 
-div.menu_settings > div.menu_elements .menu_entry {
+div.menu_settings>div.menu_elements .menu_entry {
   background-color: transparent;
 }
-div.menu_settings > div.menu_elements .menu_entry:hover {
+
+div.menu_settings>div.menu_elements .menu_entry:hover {
   background-color: var(--hover-color);
 }
-div.menu_settings > div.menu_elements .menu_entry:focus {
+
+div.menu_settings>div.menu_elements .menu_entry:focus {
   /* background-color: var(--focus-color); */
   /* color: var(--text-color-selected); */
 }
 
-div.menu_settings > div.menu_elements .menu_entry_empty:focus {
+div.menu_settings>div.menu_elements .menu_entry_empty:focus {
   background-color: transparent;
   color: var(--text-color);
 }
-div.menu_settings > div.menu_elements .menu_entry_empty:hover {
+
+div.menu_settings>div.menu_elements .menu_entry_empty:hover {
   background-color: transparent;
 }
 
-div.menu_settings > div.menu_elements button:last-of-type {
+div.menu_settings>div.menu_elements button:last-of-type {
   margin-bottom: 0;
 }
 
@@ -905,9 +973,10 @@ div.menu_gamepad_settings {
   /* height: 100%; */
 }
 
-div.menu_gamepad_settings > .menu_elements_header {
+div.menu_gamepad_settings>.menu_elements_header {
   background-color: var(--black-bg-color);
   display: flex;
+  flex-direction: column;
   /* height: 50%; */
   height: calc(var(--item-height) * 8 + var(--item-margin) * 7);
   justify-content: center;
@@ -924,8 +993,7 @@ div.menu_gamepad_settings img {
   height: 75%;
 }
 
-
-/*#endregion MenuTabMap*/
+/*#endregion MenuTabSettings*/
 
 /*#region MenuTabGame*/
 div.menu_game {
@@ -951,6 +1019,54 @@ div.menu_game .menu_categories_right .menu_entry:last-of-type {
 
 div.menu_game .menu_entry_empty_double {
   margin-bottom: 0;
+}
+
+div.menu_game>div.menu_elements {
+  width: 33.2%;
+  /* height: 100%; */
+  /* height: 170%; */
+  /* height: fit-content; */
+  flex-direction: column;
+  background-color: transparent;
+  /* background-color: violet; */
+  /* scroll-snap-type: mandatory; */
+}
+
+div.menu_game .menu_entries_middle {
+  width: 100%;
+  /* height: 100%; */
+  overflow: hidden;
+  justify-self: flex-start;
+  background-color: transparent;
+}
+
+div.menu_game div.menu_elements_scrollable {
+  max-height: 100%;
+}
+
+div.menu_game .menu_entries_middle button {
+  scroll-snap-align: start end;
+}
+
+div.menu_game>.menu_elements .element_list {
+  width: 1vw;
+  height: 1vw;
+}
+
+div.menu_settings .menu_elements button:last-of-type {
+  margin-bottom: 0;
+}
+
+.element_medal_right {
+  height: 100%;
+  width: 100%;
+  background-color: silver;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.element_medal_gold {
+  background-color: gold;
 }
 
 div.menu_game .element_mission_name {

@@ -99,7 +99,7 @@ setArrows();
 // setFirstTab();
 setSingleTab();
 setActiveWindow(tabMap);
-setMissions();
+// setMissions();
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -256,6 +256,11 @@ function setTabDisabled() {
 // CATEGORIES LOGIC
 //
 
+let leftArrowSvg = "<img class=\"menu_entry_arrow_left\" src=\"images/arrow_right.svg\"> ";
+let rightArrowSvg = " <img class=\"menu_entry_arrow_right\" src=\"images/arrow_right.svg\">";
+let noArrowsTextCategory = "No Arrows (FALLBACK)";
+let noArrowsTextEntry = "No Arrows (FALLBACK)";
+
 // let menuCategories = $('.menu_categories').children()
 
 $(".menu_categories").children().click(updateMenuCategories);
@@ -292,6 +297,7 @@ function updateMenuEntriesMiddle() {
     activeEntryMiddle.trigger("categoryActive");
     // console.log('Other category clicked')
   }
+  console.log('Clicked: ' + $(this).html())
 }
 
 $(".menu_categories").children().on("categoryActive", setCategoryActive);
@@ -311,7 +317,8 @@ function setEntryActive() {
 
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) {
-    let arrowsText = "\u2b9c" + rightText.html() + "\u2b9e";
+    let arrowsText = leftArrowSvg + rightText.html() + rightArrowSvg;
+    noArrowsTextEntry = rightText.html();
     rightText.html(arrowsText);
     // console.log("This category has right text: " + rightText.html());
   }
@@ -326,7 +333,7 @@ function setEntryDisabled() {
   });
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) {
-    rightText.html(rightText.html().substring(1, rightText.html().length - 1));
+    rightText.html(noArrowsTextEntry);
     console.log(
       "This category has right text arrows removed: " + rightText.html()
     );
@@ -345,7 +352,9 @@ function setCategoryActive() {
 
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) {
-    let arrowsText = "\u2b9c" + rightText.html() + "\u2b9e";
+    // let arrowsText = "\u2b9c" + rightText.html() + "\u2b9e";
+    let arrowsText = leftArrowSvg + rightText.html() + rightArrowSvg;
+    noArrowsTextCategory = rightText.html();
     rightText.html(arrowsText);
     // console.log("This category has right text: " + rightText.html());
   }
@@ -361,7 +370,8 @@ function setCategoryDisabled() {
   });
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) {
-    rightText.html(rightText.html().substring(1, rightText.html().length - 1));
+    // rightText.html(rightText.html().substring(1, rightText.html().length - 1));
+    rightText.html(noArrowsTextCategory);
     console.log(
       "This category has right text arrows removed: " + rightText.html()
     );
@@ -579,7 +589,7 @@ function categoriesHandler(activeTab) {
       statElements.show();
     } else {
       statElements.hide();
-      hundredCompletion.show();
+      // hundredCompletion.show();
     }
 
     if (activeCategory.attr("id") == tabCategories.eq(7).attr("id")) {
@@ -648,7 +658,7 @@ const data = {
     {
       label: "100% Completion",
       data: [50, 10, 15, 25],
-      backgroundColor: ["yellow", "lightgreen", "lightblue", "black"],
+      backgroundColor: ["gold", "lightgreen", "lightblue", "black"],
       // hoverOffset: 50,
     },
   ],
