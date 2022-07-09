@@ -2,6 +2,7 @@
 @font-face {
   font-family: "London60";
   src: url("fonts/Chalet-LondonSixty2.woff2") format("woff2");
+  /* src: url("fonts/Chalet-LondonNineteenSixty-Game.ttf") format("truetype"); */
 }
 
 @font-face {
@@ -31,6 +32,7 @@
   /* --stats-font-size: 27.5px; */
   /* --menu-box-padding-top: 95px; */
   /* --item-margin: 3px; */
+
   --menu-wnd-width: 67.8125vw;
   --menu-wnd-height: 33.55vw;
   /* --menu-box-height: 41.5625vw; */
@@ -71,7 +73,7 @@ body {
   overflow-x: hidden;
   margin: 0 auto;
   padding: 0px;
-  background-image: url("images/background3.jpg");
+  background-image: url("images/background2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(0.25vw);
@@ -101,25 +103,30 @@ div.menu_bounding_box {
   width: 100%;
   /* min-width: 70%; */
   height: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  display: flex;
+  justify-content: center;
 }
 
-@media only screen and (min-width: 1440px) {
-  .menu_bounding_box {
-    width: 100%;
+/* @media only screen and (max-width: 1280px) {
+  :root {
+    --menu-wnd-width: 100%;
+    --menu-wnd-height: 100%;
   }
-}
-
-@media only screen and (min-width: 1440px) {
   .menu_bounding_box {
-    width: 100%;
+    min-width: 100%;
   }
-}
+  .frontend_main_menu {
+    min-width: 70%;
+  }
+} */
 
 /*#endregion Main*/
 
 /*#region MainMenu*/
 div.frontend_main_menu {
+  width: 100%;
+  height: 100%;
   padding-top: var(--menu-box-padding-top);
   padding-bottom: var(--menu-box-padding-bottom);
   display: flex;
@@ -403,7 +410,7 @@ div.menu_elements_header button.menu_entry {
 }
 
 div.element_progress {
-  margin-right: var(--item-padding-sides);
+  /* margin-right: var(--item-padding-sides); */
   width: 22.5%;
   height: 30%;
   float: right;
@@ -525,7 +532,7 @@ div.menu_categories {
   align-self: flex-start;
 }
 
-div.menu_categories_middle {
+div.menu_entries_middle {
   background-color: transparent;
   /* width: 431px; */
   /* height: 520px; */
@@ -866,7 +873,7 @@ div.menu_settings {
   /* display: none; */
 }
 
-div.menu_settings div.menu_elements_header {
+div.menu_settings .menu_elements_header {
   margin-bottom: var(--item-margin);
 }
 
@@ -877,8 +884,8 @@ div.menu_settings > div.menu_elements .menu_entry:hover {
   background-color: var(--hover-color);
 }
 div.menu_settings > div.menu_elements .menu_entry:focus {
-  background-color: var(--focus-color);
-  color: var(--text-color-selected);
+  /* background-color: var(--focus-color); */
+  /* color: var(--text-color-selected); */
 }
 
 div.menu_settings > div.menu_elements .menu_entry_empty:focus {
@@ -892,6 +899,31 @@ div.menu_settings > div.menu_elements .menu_entry_empty:hover {
 div.menu_settings > div.menu_elements button:last-of-type {
   margin-bottom: 0;
 }
+
+div.menu_gamepad_settings {
+  background-color: transparent;
+  /* height: 100%; */
+}
+
+div.menu_gamepad_settings > .menu_elements_header {
+  background-color: var(--black-bg-color);
+  display: flex;
+  /* height: 50%; */
+  height: calc(var(--item-height) * 8 + var(--item-margin) * 7);
+  justify-content: center;
+  align-items: center;
+}
+
+div.menu_gamepad_settings .menu_elements {
+  /* background-color: transparent; */
+  width: 100%;
+}
+
+div.menu_gamepad_settings img {
+  pointer-events: none;
+  height: 75%;
+}
+
 
 /*#endregion MenuTabMap*/
 
