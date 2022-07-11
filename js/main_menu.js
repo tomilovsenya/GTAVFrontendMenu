@@ -24,6 +24,16 @@ const tab_online = 5;
 const tab_store = 8;
 const tab_replay = 9;
 
+const catsSettings = [
+  $("#menu_settings_gamepad"),
+  $("#menu_settings_keyboard"),
+  $("#menu_settings_keybind"),
+  $("#menu_settings_audio"),
+  $("#menu_settings_camera"),
+  $("#menu_settings_display"),
+  $("#menu_settings_graphics"),
+];
+
 const tabMap = {
   tab: tab_map,
   id: $("#tab_0"),
@@ -47,6 +57,7 @@ const tabSettings = {
   id: $("#tab_3"),
   name: tab3Name,
   window: $(".menu_settings"),
+  cats: catsSettings,
 };
 const tabGame = {
   tab: tab_game,
@@ -84,6 +95,7 @@ let isScrollDown = false;
 let isCategorySelected = false;
 let activeTab = null;
 let activeCategory = null;
+let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeElement = null;
 let activeCategoriesList = null;
@@ -299,11 +311,12 @@ function updateMenuCategories() {
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
   if ($(this).is(activeCategory) && !isCategorySelected) {
-    activeEntryMiddle = activeWindow.window
+    let selectedCategory = activeWindow.cats[$(this).index()];
+    activeCategoryElements = selectedCategory;
+    activeEntryMiddle = selectedCategory
       .children(".menu_elements_scrollable")
       .children(".menu_entry")
       .eq(0);
-    console.log("0th is this: " + activeEntryMiddle.html());
     activeEntryMiddle.trigger("categoryActive");
     isCategorySelected = true;
   } else if (isCategorySelected) {
@@ -485,7 +498,8 @@ function scrollDown() {
     categoriesHandler(activeTab);
   } else {
     if (activeEntryMiddle == null) return;
-    let tabElements = activeWindow.window
+    // let tabElements = activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
+    let tabElements = activeCategoryElements
       .children(".menu_elements_scrollable")
       .children(".menu_entry[id]");
     // triggerEntry(activeEntryMiddle.next());
@@ -512,9 +526,11 @@ function scrollUp() {
     categoriesHandler(activeTab);
   } else {
     if (activeEntryMiddle == null) return;
-    let tabElements = activeWindow.window
+    // let tabElements = activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
+    let tabElements = activeCategoryElements
       .children(".menu_elements_scrollable")
       .children(".menu_entry[id]");
+
     // triggerEntry(activeEntryMiddle.next());
     // activeEntryMiddle.scrollIntoView(false);
     if (activeEntryMiddle.attr("id") != tabElements.first().attr("id")) {
@@ -624,7 +640,7 @@ function categoriesHandler(activeTab) {
 
   if (activeWindow.id == tabSettings.id) {
     let gamepadSettings = activeWindow.window.children(
-      ".menu_gamepad_settings"
+      "#menu_settings_gamepad"
     );
     // .children();
 

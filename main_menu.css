@@ -642,11 +642,17 @@ div.menu_elements {
 }
 
 div.menu_elements_scrollable {
+  width: 100%;
+  background-color: var(--black-bg-color);
   max-height: 87.5%;
   flex-direction: column;
   scroll-snap-type: mandatory;
   scroll-snap-align: start end;
   /* overflow: scroll; */
+}
+
+div.menu_elements_scrollable .menu_entry {
+  background-color: transparent;
 }
 
 div.menu_background_rockstar {
@@ -977,10 +983,17 @@ div.menu_settings {
 
 div.menu_settings .menu_elements_header {
   margin-bottom: var(--item-margin);
+  background-color: var(--black-bg-color);
+}
+
+div.menu_settings > .menu_elements {
+  background-color: transparent;
+  /* width: 100%; */
 }
 
 div.menu_settings>div.menu_elements .menu_entry {
-  background-color: transparent;
+  /* background-color: transparent; */
+  /* width: 100%; */
 }
 
 div.menu_settings>div.menu_elements .menu_entry:hover {
@@ -1005,12 +1018,12 @@ div.menu_settings>div.menu_elements button:last-of-type {
   margin-bottom: 0;
 }
 
-div.menu_gamepad_settings {
+div#menu_settings_gamepad {
   background-color: transparent;
   /* height: 100%; */
 }
 
-div.menu_gamepad_settings>.menu_elements_header {
+div#menu_settings_gamepad>.menu_elements_header {
   background-color: var(--black-bg-color);
   display: flex;
   flex-direction: column;
@@ -1020,12 +1033,12 @@ div.menu_gamepad_settings>.menu_elements_header {
   align-items: center;
 }
 
-div.menu_gamepad_settings .menu_elements {
+div#menu_settings_gamepad .menu_elements {
   /* background-color: transparent; */
   width: 100%;
 }
 
-div.menu_gamepad_settings img {
+div#menu_settings_gamepad img {
   pointer-events: none;
   height: 75%;
 }
