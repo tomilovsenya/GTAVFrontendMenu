@@ -381,7 +381,7 @@ button.menu_entry {
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
   white-space: nowrap;
-  scroll-snap-align: start end;
+  scroll-snap-align: start;
 }
 
 button.menu_entry:hover {
@@ -449,7 +449,17 @@ button.menu_entry_arrows {
   border: 0;
   outline: 0;
   margin-top: var(--item-margin);
+  padding-right: var(--item-padding-sides);
   /* justify-self: flex-end; */
+}
+
+div.element_arrows {
+  width: 5%;
+  height: 90%;
+  background-image: url(images/arrows_vertical.svg);
+  /* background-position: right; */
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 button.menu_arrows {
@@ -483,6 +493,24 @@ img.menu_entry_arrow_right {
   align-self: center;
   display: inline-block;
   pointer-events: none;
+}
+
+div.menu_loading_spinner {
+  background-image: url(images/gtav_savingspinner_ib.png);
+  background-size: contain;
+  width: 3vw;
+  height: 3vw;
+  animation: spin 1000ms infinite linear;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
 
 /*#endregion MenuBaseEntries */
@@ -616,6 +644,9 @@ div.menu_elements {
 div.menu_elements_scrollable {
   max-height: 87.5%;
   flex-direction: column;
+  scroll-snap-type: mandatory;
+  scroll-snap-align: start end;
+  /* overflow: scroll; */
 }
 
 div.menu_background_rockstar {
@@ -802,6 +833,7 @@ div.menu_100_completion {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  animation: fadeInAnimation ease 0.25s;
 }
 
 div.menu_100_completion button.menu_entry {
@@ -889,6 +921,7 @@ div.menu_100_completion #menu_100_completion_progress_0 {
 }
 div.menu_100_completion #menu_100_completion_progress_0>.element_progress_perc {
   background-color: gold;
+  width: 10%;
 }
 
 div.menu_100_completion #menu_100_completion_progress_1 {
@@ -896,6 +929,7 @@ div.menu_100_completion #menu_100_completion_progress_1 {
 }
 div.menu_100_completion #menu_100_completion_progress_1>.element_progress_perc {
   background-color: lightgreen;
+  width: 20%;
 }
 
 div.menu_100_completion #menu_100_completion_progress_2 {
@@ -903,6 +937,7 @@ div.menu_100_completion #menu_100_completion_progress_2 {
 }
 div.menu_100_completion #menu_100_completion_progress_2>.element_progress_perc {
   background-color: lightskyblue;
+  width: 30%;
 }
 
 div.menu_100_completion #menu_100_completion_progress_3 {
@@ -910,6 +945,7 @@ div.menu_100_completion #menu_100_completion_progress_3 {
 }
 div.menu_100_completion #menu_100_completion_progress_3>.element_progress_perc {
   background-color: lightsalmon;
+  width: 40%;
 }
 
 div.menu_100_completion #menu_100_completion_progress_4 {
@@ -917,6 +953,7 @@ div.menu_100_completion #menu_100_completion_progress_4 {
 }
 div.menu_100_completion #menu_100_completion_progress_4>.element_progress_perc {
   background-color: darkred;
+  width: 50%;
 }
 
 /*#endregion MenuTabStats*/
@@ -1021,13 +1058,15 @@ div.menu_game .menu_entry_empty_double {
   margin-bottom: 0;
 }
 
-div.menu_game>div.menu_elements {
+div.menu_game .menu_elements {
   width: 33.2%;
   /* height: 100%; */
   /* height: 170%; */
   /* height: fit-content; */
+  min-height: 100%;
   flex-direction: column;
   background-color: transparent;
+  overflow: visible;
   /* background-color: violet; */
   /* scroll-snap-type: mandatory; */
 }
@@ -1035,13 +1074,25 @@ div.menu_game>div.menu_elements {
 div.menu_game .menu_entries_middle {
   width: 100%;
   /* height: 100%; */
-  overflow: hidden;
-  justify-self: flex-start;
-  background-color: transparent;
+  /* overflow: hidden; */
+  /* justify-self: flex-start; */
+  /* background-color: transparent; */
 }
 
 div.menu_game div.menu_elements_scrollable {
-  max-height: 100%;
+  /* max-height: 100%; */
+  min-height: 100%;
+  overflow: hidden;
+}
+
+div.menu_game .menu_entry_arrows {
+  /* max-height: 100%; */
+  min-height: var(--item-height);
+}
+
+div.menu_game .menu_entry_arrows:hover {
+  /* max-height: 100%; */
+  background-color: var(--black-bg-color);
 }
 
 div.menu_game .menu_entries_middle button {

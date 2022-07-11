@@ -80,7 +80,8 @@ const rightArrow = $("#menu_arrow_right");
 const menuColor = "lightskyblue";
 menuPage.style.setProperty("--menu-color", menuColor);
 
-let scrollKeyDown = false;
+let isScrollDown = false;
+let isCategorySelected = false;
 let activeTab = null;
 let activeCategory = null;
 let activeEntryMiddle = null;
@@ -164,8 +165,8 @@ leftArrow.click("click", scrollLeft);
 window.addEventListener(
   "keydown",
   function (e) {
-    if (scrollKeyDown) return;
-    scrollKeyDown = true;
+    if (isScrollDown) return;
+    isScrollDown = true;
     if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
       e.preventDefault();
     }
@@ -189,6 +190,9 @@ window.addEventListener(
         .children()
         .on("categoryActive", setCategoryActive);
     }
+    if (["Escape", "Backspace"].indexOf(e.code) > -1) {
+      escapeMenuEntriesMiddle();
+    }
   },
   false
 );
@@ -196,7 +200,7 @@ window.addEventListener(
 document.addEventListener(
   "keyup",
   function (e) {
-    scrollKeyDown = false;
+    isScrollDown = false;
   },
   false
 );
@@ -231,6 +235,8 @@ function setTabActive() {
   activeTab.focus();
   switchActiveWindow($(this));
 
+  isCategorySelected = false;
+  escapeMenuEntriesMiddle();
   let tabCategories = activeWindow.window
     .children(".menu_categories")
     .children(".menu_entry");
@@ -256,8 +262,10 @@ function setTabDisabled() {
 // CATEGORIES LOGIC
 //
 
-let leftArrowSvg = "<img class=\"menu_entry_arrow_left\" src=\"images/arrow_right.svg\"> ";
-let rightArrowSvg = " <img class=\"menu_entry_arrow_right\" src=\"images/arrow_right.svg\">";
+let leftArrowSvg =
+  '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
+let rightArrowSvg =
+  ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
 let noArrowsTextCategory = "No Arrows (FALLBACK)";
 let noArrowsTextEntry = "No Arrows (FALLBACK)";
 
@@ -276,10 +284,31 @@ function triggerCategory(category) {
   }
 }
 
+function triggerEntry(category) {
+  if ($(this).is($(".menu_entry_empty"))) return;
+  if (activeEntryMiddle == null || activeEntryMiddle == category) {
+    activeEntryMiddle.trigger("categoryActive");
+  } else if (activeEntryMiddle != category) {
+    activeEntryMiddle.trigger("categoryDisabled");
+    activeEntryMiddle = category;
+    activeEntryMiddle.trigger("categoryActive");
+  }
+}
+
 function updateMenuCategories() {
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
-  if ($(this).is(activeCategory)) return;
+  if ($(this).is(activeCategory) && !isCategorySelected) {
+    activeEntryMiddle = activeWindow.window
+      .children(".menu_elements_scrollable")
+      .children(".menu_entry")
+      .eq(0);
+    console.log("0th is this: " + activeEntryMiddle.html());
+    activeEntryMiddle.trigger("categoryActive");
+    isCategorySelected = true;
+  } else if (isCategorySelected) {
+    escapeMenuEntriesMiddle();
+  }
   triggerCategory($(this));
   categoriesHandler(activeTab);
 }
@@ -297,7 +326,13 @@ function updateMenuEntriesMiddle() {
     activeEntryMiddle.trigger("categoryActive");
     // console.log('Other category clicked')
   }
-  console.log('Clicked: ' + $(this).html())
+  isCategorySelected = true;
+  console.log("Clicked: " + $(this).html());
+}
+
+function escapeMenuEntriesMiddle() {
+  if (activeEntryMiddle) activeEntryMiddle.trigger("categoryDisabled");
+  isCategorySelected = false;
 }
 
 $(".menu_categories").children().on("categoryActive", setCategoryActive);
@@ -322,7 +357,7 @@ function setEntryActive() {
     rightText.html(arrowsText);
     // console.log("This category has right text: " + rightText.html());
   }
-  console.log("Active category is this: " + activeEntryMiddle.html());
+  // console.log("Active category is this: " + activeEntryMiddle.html());
 }
 
 function setEntryDisabled() {
@@ -334,9 +369,9 @@ function setEntryDisabled() {
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) {
     rightText.html(noArrowsTextEntry);
-    console.log(
-      "This category has right text arrows removed: " + rightText.html()
-    );
+    // console.log(
+    //   "This category has right text arrows removed: " + rightText.html()
+    // );
   }
 }
 
@@ -358,7 +393,7 @@ function setCategoryActive() {
     rightText.html(arrowsText);
     // console.log("This category has right text: " + rightText.html());
   }
-  console.log("Active category is this: " + activeCategory.html());
+  // console.log("Active category is this: " + activeCategory.html());
 }
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
 
@@ -372,9 +407,9 @@ function setCategoryDisabled() {
   if (rightText.length != 0) {
     // rightText.html(rightText.html().substring(1, rightText.html().length - 1));
     rightText.html(noArrowsTextCategory);
-    console.log(
-      "This category has right text arrows removed: " + rightText.html()
-    );
+    // console.log(
+    //   "This category has right text arrows removed: " + rightText.html()
+    // );
   }
 }
 
@@ -440,24 +475,56 @@ function scrollRight() {
 
 function scrollDown() {
   if (activeCategory == null) return;
-  let tabCategories = activeWindow.window
-    .children(".menu_categories")
-    .children(".menu_entry");
-  if (activeCategory.attr("id") != tabCategories.last().attr("id")) {
-    triggerCategory(activeCategory.next());
-  } else triggerCategory(tabCategories.first());
-  categoriesHandler(activeTab);
+  if (!isCategorySelected) {
+    let tabCategories = activeWindow.window
+      .children(".menu_categories")
+      .children(".menu_entry");
+    if (activeCategory.attr("id") != tabCategories.last().attr("id")) {
+      triggerCategory(activeCategory.next());
+    } else triggerCategory(tabCategories.first());
+    categoriesHandler(activeTab);
+  } else {
+    if (activeEntryMiddle == null) return;
+    let tabElements = activeWindow.window
+      .children(".menu_elements_scrollable")
+      .children(".menu_entry[id]");
+    // triggerEntry(activeEntryMiddle.next());
+    // activeEntryMiddle.scrollIntoView(false);
+    if (activeEntryMiddle.attr("id") != tabElements.last().attr("id")) {
+      let nextEntry = activeEntryMiddle.next();
+      if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
+      else triggerEntry(nextEntry);
+    } else triggerEntry(tabElements.first());
+    // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
+    activeEntryMiddle[0].scrollIntoView(false);
+  }
 }
 
 function scrollUp() {
   if (activeCategory == null) return;
-  let tabCategories = activeWindow.window
-    .children(".menu_categories")
-    .children(".menu_entry");
-  if (activeCategory.attr("id") != tabCategories.first().attr("id")) {
-    triggerCategory(activeCategory.prev());
-  } else triggerCategory(tabCategories.last());
-  categoriesHandler(activeTab);
+  if (!isCategorySelected) {
+    let tabCategories = activeWindow.window
+      .children(".menu_categories")
+      .children(".menu_entry");
+    if (activeCategory.attr("id") != tabCategories.first().attr("id")) {
+      triggerCategory(activeCategory.prev());
+    } else triggerCategory(tabCategories.last());
+    categoriesHandler(activeTab);
+  } else {
+    if (activeEntryMiddle == null) return;
+    let tabElements = activeWindow.window
+      .children(".menu_elements_scrollable")
+      .children(".menu_entry[id]");
+    // triggerEntry(activeEntryMiddle.next());
+    // activeEntryMiddle.scrollIntoView(false);
+    if (activeEntryMiddle.attr("id") != tabElements.first().attr("id")) {
+      let nextEntry = activeEntryMiddle.prev();
+      if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
+      else triggerEntry(nextEntry);
+    } else triggerEntry(tabElements.last());
+    // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
+    activeEntryMiddle[0].scrollIntoView(false);
+  }
 }
 
 function setheaderTitle(title) {
@@ -556,13 +623,13 @@ function categoriesHandler(activeTab) {
   }
 
   if (activeWindow.id == tabSettings.id) {
-    let gamepadSettings = activeWindow.window
-      .children(".menu_gamepad_settings")
-      // .children();
+    let gamepadSettings = activeWindow.window.children(
+      ".menu_gamepad_settings"
+    );
+    // .children();
 
-    let graphicsSettings = activeWindow.window
-      .children(".menu_elements")
-      // .children();
+    let graphicsSettings = activeWindow.window.children(".menu_elements");
+    // .children();
 
     if (activeCategory.attr("id") == tabCategories.eq(6).attr("id")) {
       graphicsSettings.show();

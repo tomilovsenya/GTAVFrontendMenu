@@ -8,13 +8,16 @@
   <link rel="preload" href="/fonts/Chalet-LondonSixty2.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/SignPainter-HouseScript2.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/images/h4_fake_islandx.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/images/V_FakePrologueLand.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/images/rockstar_bg.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/images/replay_logoscreen.png" as="image" type="image/png">
+  <link rel="preload" href="/images/background5.jpg" as="image" type="image/jpeg">
   <link rel="stylesheet" href="main_menu.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.structure.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.theme.css" />
   <meta name="description" content="GTA V Frontend Menu Menu." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -54,7 +57,8 @@
       </nav> -->
 
         <div class="menu_window menu_map" id="menu_map_window">
-          <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt="">
+          <!-- <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt=""> -->
+          <img class="menu_map_image" src="images/V_FakePrologueLand.svg" alt="">
         </div>
 
         <div class="menu_window menu_brief">
@@ -373,49 +377,49 @@
               <img src="images/gamepad_calibration_i6.png" alt="">
             </div>
             <div class="menu_elements menu_elements_scrollable menu_entries_middle">
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_0" class="menu_entry">
                 <span class="element_label">Show Controls For</span>
                 <div class="element_list">
                   <span class="element_label_right">On Foot (Third Person)</span>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_1" class="menu_entry">
                 <span class="element_label">Targeting Mode</span>
                 <div class="element_list">
                   <span class="element_label_right">Free Aim</span>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_2" class="menu_entry">
                 <span class="element_label">Vibration</span>
                 <div class="element_list">
                   <span class="element_label_right">On</span>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_3" class="menu_entry">
                 <span class="element_label">Invert Look</span>
                 <div class="element_list">
                   <span class="element_label_right">Off</span>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_4" class="menu_entry">
                 <span class="element_label">Third Person Control Type</span>
                 <div class="element_list">
                   <span class="element_label_right">Standard</span>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_5" class="menu_entry">
                 <span class="element_label">First Person Control Type</span>
                 <div class="element_list">
                   <span class="element_label_right">Standard</span>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_6" class="menu_entry">
                 <span class="element_label">Third Person Aiming Sensitivity</span>
                 <div class="element_progress">
                   <div class="element_progress_perc"></div>
                 </div>
               </button>
-              <button class="menu_entry">
+              <button id="menu_settings_gamepad_element_7" class="menu_entry">
                 <span class="element_label">First Person Look-Around Sensitivity</span>
                 <div class="element_progress">
                   <div class="element_progress_perc"></div>
@@ -433,59 +437,143 @@
             </button>
           </div>
           <div class="menu_elements menu_elements_scrollable menu_entries_middle">
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_0" class="menu_entry">
+              <span class="element_label">Ignore Suggested Limits</span>
+              <div class="element_list">
+                <span class="element_label_right">Off</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_1" class="menu_entry">
+              <span class="element_label">DirectX Version</span>
+              <div class="element_list">
+                <span class="element_label_right">DirectX 12</span>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+            <button id="menu_settings_graphics_element_2" class="menu_entry">
+              <span class="element_label">Screen Type</span>
+              <div class="element_list">
+                <span class="element_label_right">Windowed Borderless</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_3" class="menu_entry">
+              <span class="element_label">Resolution</span>
+              <div class="element_list">
+                <span class="element_label_right">3840 x 2160</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_4" class="menu_entry">
+              <span class="element_label">Aspect Ratio</span>
+              <div class="element_list">
+                <span class="element_label_right">Auto</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_5" class="menu_entry">
+              <span class="element_label">Refresh Rate</span>
+              <div class="element_list">
+                <span class="element_label_right">Auto</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_6" class="menu_entry">
+              <span class="element_label">Output Monitor</span>
+              <div class="element_list">
+                <span class="element_label_right">1</span>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+            <button id="menu_settings_graphics_element_7" class="menu_entry">
+              <span class="element_label">FXAA</span>
+              <div class="element_list">
+                <span class="element_label_right">Off</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_8" class="menu_entry">
+              <span class="element_label">MSAA</span>
+              <div class="element_list">
+                <span class="element_label_right">X4</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_9" class="menu_entry">
+              <span class="element_label">NVIDIA TXAA</span>
+              <div class="element_list">
+                <span class="element_label_right">Off</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_10" class="menu_entry">
+              <span class="element_label">VSync</span>
+              <div class="element_list">
+                <span class="element_label_right">On</span>
+              </div>
+            </button>
+            <button id="menu_settings_graphics_element_11" class="menu_entry">
+              <span class="element_label">Pause Game On Focus Loss</span>
+              <div class="element_list">
+                <span class="element_label_right">On</span>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+            <button id="menu_settings_graphics_element_12" class="menu_entry">
               <span class="element_label">Population Density</span>
               <div class="element_progress">
                 <div class="element_progress_perc"></div>
               </div>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_13" class="menu_entry">
               <span class="element_label">Population Variety</span>
+              <div class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_14" class="menu_entry">
               <span class="element_label">Distance Scaling</span>
+              <div class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
             </button>
             <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_15" class="menu_entry">
               <span class="element_label">Texture Quality</span>
+              <div class="element_list">
+                <span class="element_label_right">Very High</span>
+              </div>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_16" class="menu_entry">
               <span class="element_label">Shader Quality</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_17" class="menu_entry">
               <span class="element_label">Shadow Quality</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_18" class="menu_entry">
               <span class="element_label">Reflection Quality</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_19" class="menu_entry">
               <span class="element_label">Reflection MSAA</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_20" class="menu_entry">
               <span class="element_label">Water Quality</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_21" class="menu_entry">
               <span class="element_label">Particles Quality</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_22" class="menu_entry">
               <span class="element_label">Grass Quality</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_23" class="menu_entry">
               <span class="element_label">Soft Shadows</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_24" class="menu_entry">
               <span class="element_label">Post FX</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_25" class="menu_entry">
               <span class="element_label">Motion Blur</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_26" class="menu_entry">
               <span class="element_label">Motion Blur Strength</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_27" class="menu_entry">
               <span class="element_label">MSAA</span>
             </button>
-            <button class="menu_entry">
+            <button id="menu_settings_graphics_element_28" class="menu_entry">
               <span class="element_label">TXAA</span>
             </button>
           </div>
@@ -608,8 +696,17 @@
                   <div class="element_medal_right"></div>
                 </div>
               </button>
+              <button class="menu_entry menu_entry_middle">
+                <span class="element_label">Nervous Ron 2</span>
+                <div class="element_list">
+                  <div class="element_medal_right"></div>
+                </div>
+              </button>
             </div>
-            <button class="menu_entry_arrows"></button>
+            <button class="menu_entry menu_entry_empty menu_entry_arrows">
+              <span class="element_label">2 / 16</span>
+              <div class="element_arrows"></div>
+            </button>
           </div>
           <div class="menu_categories_right">
             <button class="menu_entry menu_entry_empty_double">
@@ -656,6 +753,7 @@
         <div class="menu_window menu_store menu_background_rockstar">
           <div class="menu_window_text">
             <h1 class="menu_window_header">Now Open!</h1>
+            <div class="menu_loading_spinner"></div>
           </div>
         </div>
 
