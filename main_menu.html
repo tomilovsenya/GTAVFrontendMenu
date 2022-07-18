@@ -80,12 +80,23 @@
             </button>
           </div>
           <!-- <div class="menu_elements_box"> -->
-          <div class="menu_elements menu_background_rockstar">
+          <div id="menu_brief_mission" class="menu_elements menu_background_rockstar">
             <div class="menu_window_text menu_window_text_full">
               <h1 class="menu_window_header">Mission</h1>
-              <span class="menu_window_text">You are not currently playing a Mission. During a Mission, infomation will
-                be
+              <span class="menu_window_text">You are not currently playing a Mission. During a Mission, infomation will be
                 shown here in relation to your progress and any current objectives you have.</span>
+            </div>
+          </div>
+          <div id="menu_brief_help" class="menu_elements menu_background_rockstar">
+            <div class="menu_window_text menu_window_text_full">
+              <h1 class="menu_window_header">Help</h1>
+              <span class="menu_window_text">Check back here to see any help text that has appeared in the game.</span>
+            </div>
+          </div>
+          <div id="menu_brief_dialogue" class="menu_elements menu_background_rockstar">
+            <div class="menu_window_text menu_window_text_full">
+              <h1 class="menu_window_header">Dialogue</h1>
+              <span class="menu_window_text">Check back here to read what has been said.</span>
             </div>
           </div>
           <button class="menu_arrows" tabindex="-1">
@@ -127,7 +138,8 @@
               <span class="element_label">100% Checklist</span>
             </button>
           </div>
-          <div class="menu_elements">
+
+          <div id="menu_stats_skills" class="menu_elements">
             <button class="menu_entry menu_entry_empty menu_element_stat">
               <span class="element_label">Special</span>
               <div class="element_stat">
@@ -231,97 +243,97 @@
                 traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.
               </span>
               <img class="element_info_icon" src="images/info.svg" alt="">
-            </div>
-
-            <div class="menu_100_completion">
-              <div class="menu_element_zone_top">
-                <div class="menu_element_zone_left">
-                  <button class="menu_entry menu_entry_empty"></button>
-                  <button class="menu_entry menu_entry_empty menu_element_list">
-                    <span class="element_label">Michael</span>
-                    <div class="element_list">
-                      <span class="element_label_right">0d 11h 3m 48</span>
-                    </div>
-                  </button>
-                  <button class="menu_entry menu_entry_empty menu_element_list">
-                    <span class="element_label">Franklin</span>
-                    <div class="element_list">
-                      <span class="element_label_right">0d 11h 3m 48</span>
-                    </div>
-                  </button>
-                  <button class="menu_entry menu_entry_empty menu_element_list">
-                    <span class="element_label">Trevor</span>
-                    <div class="element_list">
-                      <span class="element_label_right">0d 11h 3m 48</span>
-                    </div>
-                  </button>
-                  <button class="menu_entry menu_entry_empty"></button>
-                </div>
-                <div class="menu_element_zone_right">
-                  <div class="menu_100_completion_chart">
-                    <canvas id="menu_100_completion_chart"></canvas>
-                    <span class="menu_100_completion_chart_percentage">100%</span>
+            </div>            
+          </div>
+          
+          <div id="menu_stats_100_completion" class="menu_elements">
+            <div class="menu_element_zone_top">
+              <div class="menu_element_zone_left">
+                <button class="menu_entry menu_entry_empty"></button>
+                <button class="menu_entry menu_entry_empty menu_element_list">
+                  <span class="element_label">Michael</span>
+                  <div class="element_list">
+                    <span class="element_label_right">0d 11h 3m 48</span>
                   </div>
+                </button>
+                <button class="menu_entry menu_entry_empty menu_element_list">
+                  <span class="element_label">Franklin</span>
+                  <div class="element_list">
+                    <span class="element_label_right">0d 11h 3m 48</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty menu_element_list">
+                  <span class="element_label">Trevor</span>
+                  <div class="element_list">
+                    <span class="element_label_right">0d 11h 3m 48</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty"></button>
+              </div>
+              <div class="menu_element_zone_right">
+                <div class="menu_stats_100_completion_chart">
+                  <canvas id="menu_stats_100_completion_chart"></canvas>
+                  <span class="menu_stats_100_completion_chart_percentage">100%</span>
                 </div>
               </div>
-              <button class="menu_entry menu_entry_empty menu_element_list_bar">
-                <div class="menu_element_list_bar_left">
-                  <span class="element_label">Missions</span>
-                  <div class="element_list">
-                    <span class="element_label_right">69 / 69</span>
-                  </div>
-                </div>
-                <div id="menu_100_completion_progress_0" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_element_list_bar">
-                <div class="menu_element_list_bar_left">
-                  <span class="element_label">Hobbies and Pastimes</span>
-                  <div class="element_list">
-                    <span class="element_label_right">42 / 42</span>
-                  </div>
-                </div>
-                <div id="menu_100_completion_progress_1" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_element_list_bar">
-                <div class="menu_element_list_bar_left">
-                  <span class="element_label">Strangers and Freaks</span>
-                  <div class="element_list">
-                    <span class="element_label_right">20 / 20</span>
-                  </div>
-                </div>
-                <div id="menu_100_completion_progress_2" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_element_list_bar">
-                <div class="menu_element_list_bar_left">
-                  <span class="element_label">Random Events</span>
-                  <div class="element_list">
-                    <span class="element_label_right">14 / 14</span>
-                  </div>
-                </div>
-                <div id="menu_100_completion_progress_3" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_element_list_bar">
-                <div class="menu_element_list_bar_left">
-                  <span class="element_label">Miscellaneous</span>
-                  <div class="element_list">
-                    <span class="element_label_right">16 / 16</span>
-                  </div>
-                </div>
-                <div id="menu_100_completion_progress_4" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
             </div>
+            <button class="menu_entry menu_entry_empty menu_element_list_bar">
+              <div class="menu_element_list_bar_left">
+                <span class="element_label">Missions</span>
+                <div class="element_list">
+                  <span class="element_label_right">69 / 69</span>
+                </div>
+              </div>
+              <div id="menu_stats_100_completion_progress_0" class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_element_list_bar">
+              <div class="menu_element_list_bar_left">
+                <span class="element_label">Hobbies and Pastimes</span>
+                <div class="element_list">
+                  <span class="element_label_right">42 / 42</span>
+                </div>
+              </div>
+              <div id="menu_stats_100_completion_progress_1" class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_element_list_bar">
+              <div class="menu_element_list_bar_left">
+                <span class="element_label">Strangers and Freaks</span>
+                <div class="element_list">
+                  <span class="element_label_right">20 / 20</span>
+                </div>
+              </div>
+              <div id="menu_stats_100_completion_progress_2" class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_element_list_bar">
+              <div class="menu_element_list_bar_left">
+                <span class="element_label">Random Events</span>
+                <div class="element_list">
+                  <span class="element_label_right">14 / 14</span>
+                </div>
+              </div>
+              <div id="menu_stats_100_completion_progress_3" class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
+            </button>
+            </button>
+            <button class="menu_entry menu_entry_empty menu_element_list_bar">
+              <div class="menu_element_list_bar_left">
+                <span class="element_label">Miscellaneous</span>
+                <div class="element_list">
+                  <span class="element_label_right">16 / 16</span>
+                </div>
+              </div>
+              <div id="menu_stats_100_completion_progress_4" class="element_progress">
+                <div class="element_progress_perc"></div>
+              </div>
+            </button>
+            <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
           </div>
         </div>
 
@@ -421,6 +433,30 @@
               </button>
               <button id="menu_settings_gamepad_element_7" class="menu_entry">
                 <span class="element_label">First Person Look-Around Sensitivity</span>
+                <div class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div id="menu_settings_keyboard" class="menu_elements">
+            <div class="menu_elements menu_elements_scrollable menu_entries_middle">
+              <button id="menu_settings_keyboard_element_0" class="menu_entry">
+                <span class="element_label">Mouse Input Method</span>
+                <div class="element_list">
+                  <span class="element_label_right">Raw Input</span>
+                </div>
+              </button>
+              <button id="menu_settings_keyboard_element_1" class="menu_entry">
+                <span class="element_label">Mouse Look Sensitivity</span>
+                <div class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
+              </button>
+              </button>
+              <button id="menu_settings_keyboard_element_2" class="menu_entry">
+                <span class="element_label">Mouse Smoothing Scale</span>
                 <div class="element_progress">
                   <div class="element_progress_perc"></div>
                 </div>

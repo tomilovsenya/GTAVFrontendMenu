@@ -24,6 +24,23 @@ const tab_online = 5;
 const tab_store = 8;
 const tab_replay = 9;
 
+const catsBrief = [
+  $("#menu_brief_mission"),
+  $("#menu_brief_help"),
+  $("#menu_brief_dialogue"),
+  $("#menu_brief_notifications"),
+  $("#menu_brief_newswire"),
+];
+const catsStats = [
+  $("#menu_stats_skills"),
+  $("#menu_stats_general"),
+  $("#menu_stats_crimes"),
+  $("#menu_stats_vehicles"),
+  $("#menu_stats_cash"),
+  $("#menu_stats_combat"),
+  $("#menu_stats_weapons"),
+  $("#menu_stats_100_completion"),
+];
 const catsSettings = [
   $("#menu_settings_gamepad"),
   $("#menu_settings_keyboard"),
@@ -45,12 +62,14 @@ const tabBrief = {
   id: $("#tab_1"),
   name: tab1Name,
   window: $(".menu_brief"),
+  cats: catsBrief,
 };
 const tabStats = {
   tab: tab_stats,
   id: $("#tab_2"),
   name: tab2Name,
   window: $(".menu_stats"),
+  cats: catsStats,
 };
 const tabSettings = {
   tab: tab_settings,
@@ -395,6 +414,7 @@ function setCategoryActive() {
     "background-color": "#ffffff",
     color: "black",
   });
+  if (activeWindow.cats) activeCategoryElements = activeWindow.cats[$(this).index()];
   activeCategory = $(this);
   activeCategory.focus();
 
@@ -609,79 +629,19 @@ function setMissions(missionName) {
 }
 
 function categoriesHandler(activeTab) {
-  let tabCategories = activeWindow.window
-    .children(".menu_categories")
-    .children(".menu_entry");
-
   if (activeWindow.id == tabBrief.id) {
-    let currentLabel = activeCategory.children(".element_label").html();
-    // console.log('Current label is: ' + activeCategory.children('.element_label').html())
-
-    if (activeCategory.attr("id") == tabCategories.first().attr("id")) {
-      setWindowTextContents(
-        currentLabel,
-        "You are not currently playing a Mission. During a Mission, infomation will be shown here in relation to your progress and any current objectives you have."
-      );
-    }
-    if (activeCategory.attr("id") == tabCategories.eq(1).attr("id")) {
-      setWindowTextContents(
-        currentLabel,
-        "Check back here to see any help text that has appeared in the game."
-      );
-    }
-    if (activeCategory.attr("id") == tabCategories.eq(2).attr("id")) {
-      // console.log ('Category is the second child')
-      setWindowTextContents(
-        currentLabel,
-        "Check back here to read what has been said."
-      );
-    }
-  }
-
-  if (activeWindow.id == tabSettings.id) {
-    let gamepadSettings = activeWindow.window.children(
-      "#menu_settings_gamepad"
-    );
-    // .children();
-
-    let graphicsSettings = activeWindow.window.children(".menu_elements");
-    // .children();
-
-    if (activeCategory.attr("id") == tabCategories.eq(6).attr("id")) {
-      graphicsSettings.show();
-    } else {
-      graphicsSettings.hide();
-    }
-
-    if (activeCategory.attr("id") == tabCategories.eq(0).attr("id")) {
-      gamepadSettings.show();
-    } else {
-      gamepadSettings.hide();
-    }
+    activeWindow.window.children(".menu_elements").hide();
+    if (activeCategoryElements) activeCategoryElements.show();
   }
 
   if (activeWindow.id == tabStats.id) {
-    let statElements = activeWindow.window
-      .children(".menu_elements")
-      .children();
-    let hundredCompletion = $(".menu_100_completion");
-    // hundredCompletion.children().hide();
+    activeWindow.window.children(".menu_elements").hide();
+    if (activeCategoryElements) activeCategoryElements.show();
+  }
 
-    if (activeCategory.attr("id") == tabCategories.eq(0).attr("id")) {
-      // hundredCompletion.hide();
-      statElements.show();
-    } else {
-      statElements.hide();
-      // hundredCompletion.show();
-    }
-
-    if (activeCategory.attr("id") == tabCategories.eq(7).attr("id")) {
-      console.log("100% Completion: " + hundredCompletion.eq(0));
-      hundredCompletion.show();
-      // activeWindow.window.children(".menu_elements").height(newHeight);
-    } else {
-      hundredCompletion.hide();
-    }
+  if (activeWindow.id == tabSettings.id) {
+    activeWindow.window.children(".menu_elements").hide();
+    if (activeCategoryElements) activeCategoryElements.show();
   }
 }
 
@@ -733,7 +693,9 @@ mapImage.draggable({
 // 100% COMPLETION CHART
 //
 
-var ctx = document.getElementById("menu_100_completion_chart").getContext("2d");
+var ctx = document
+  .getElementById("menu_stats_100_completion_chart")
+  .getContext("2d");
 
 const data = {
   labels: ["Red", "Blue", "Yellow"],
@@ -747,7 +709,7 @@ const data = {
   ],
 };
 
-var menu_100_completion_chart = new Chart(ctx, {
+var menu_stats_100_completion_chart = new Chart(ctx, {
   type: "doughnut",
   data: data,
   options: {

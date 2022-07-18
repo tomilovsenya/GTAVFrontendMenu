@@ -833,22 +833,20 @@ img.element_info_icon {
 
 /* MENU STATS: 100% COMPLETION */
 
-div.menu_100_completion {
-  width: 100%;
-  height: 100%;
+div#menu_stats_100_completion {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   animation: fadeInAnimation ease 0.25s;
 }
 
-div.menu_100_completion button.menu_entry {
+div#menu_stats_100_completion button.menu_entry {
   padding-right: 0;
   background-color: transparent;
   width: 100%;
 }
 
-div.menu_100_completion button.menu_element_list_bar {
+div#menu_stats_100_completion button.menu_element_list_bar {
   background-color: transparent;
   display: flex;
   width: 100%;
@@ -862,7 +860,7 @@ div.menu_100_completion button.menu_element_list_bar {
   float: right;
 }
 
-div.menu_100_completion div.menu_element_zone_top {
+div#menu_stats_100_completion div.menu_element_zone_top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -870,7 +868,7 @@ div.menu_100_completion div.menu_element_zone_top {
   width: 100%;
 }
 
-div.menu_100_completion div.menu_element_zone_left {
+div#menu_stats_100_completion div.menu_element_zone_left {
   /* display: flex; */
   /* flex-direction: column; */
   float: left;
@@ -878,17 +876,17 @@ div.menu_100_completion div.menu_element_zone_left {
   /* height: 25%; */
 }
 
-div.menu_100_completion .menu_element_list_bar_left {
+div#menu_stats_100_completion .menu_element_list_bar_left {
   min-width: 75%;
   /* display: flex; */
   /* justify-content: space-between; */
 }
 
-div.menu_100_completion div.element_progress {
+div#menu_stats_100_completion div.element_progress {
   margin-right: var(--item-padding-sides);
 }
 
-div.menu_100_completion div.menu_element_zone_right {
+div#menu_stats_100_completion div.menu_element_zone_right {
   /* padding-top: 10%; */
   /* vertical-align: top; */
   display: flex;
@@ -898,7 +896,7 @@ div.menu_100_completion div.menu_element_zone_right {
   width: 25%;
 }
 
-div.menu_100_completion_chart {
+div.menu_stats_100_completion_chart {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -909,55 +907,55 @@ div.menu_100_completion_chart {
   width: 60%;
 }
 
-canvas#menu_100_completion_chart {
+canvas#menu_stats_100_completion_chart {
   /* image-rendering: pixelated; */
   position: absolute;
   z-index: 1;
 }
 
-span.menu_100_completion_chart_percentage {
+span.menu_stats_100_completion_chart_percentage {
   font-family: "London60";
   font-size: calc(var(--menu-font-size) * 1.5);
   color: var(--text-color);
   z-index: 2;
 }
 
-div.menu_100_completion #menu_100_completion_progress_0 {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_0 {
   background-color: #ffd90040;
 }
-div.menu_100_completion #menu_100_completion_progress_0>.element_progress_perc {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_0>.element_progress_perc {
   background-color: gold;
   width: 10%;
 }
 
-div.menu_100_completion #menu_100_completion_progress_1 {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_1 {
   background-color: #90ee9040;
 }
-div.menu_100_completion #menu_100_completion_progress_1>.element_progress_perc {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_1>.element_progress_perc {
   background-color: lightgreen;
   width: 20%;
 }
 
-div.menu_100_completion #menu_100_completion_progress_2 {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_2 {
   background-color: #87cefa40;
 }
-div.menu_100_completion #menu_100_completion_progress_2>.element_progress_perc {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_2>.element_progress_perc {
   background-color: lightskyblue;
   width: 30%;
 }
 
-div.menu_100_completion #menu_100_completion_progress_3 {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_3 {
   background-color: #ffa07a40;
 }
-div.menu_100_completion #menu_100_completion_progress_3>.element_progress_perc {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_3>.element_progress_perc {
   background-color: lightsalmon;
   width: 40%;
 }
 
-div.menu_100_completion #menu_100_completion_progress_4 {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_4 {
   background-color: #8b000040;
 }
-div.menu_100_completion #menu_100_completion_progress_4>.element_progress_perc {
+div#menu_stats_100_completion #menu_stats_100_completion_progress_4>.element_progress_perc {
   background-color: darkred;
   width: 50%;
 }
@@ -1089,7 +1087,7 @@ div.menu_game .menu_entries_middle {
   /* height: 100%; */
   /* overflow: hidden; */
   /* justify-self: flex-start; */
-  /* background-color: transparent; */
+  background-color: var(--black-bg-color);
 }
 
 div.menu_game div.menu_elements_scrollable {
