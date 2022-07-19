@@ -1,0 +1,196 @@
+[
+  {
+    "gxt": "tab_0",
+    "american": "MAP",
+    "russian": "КАРТА"
+  },
+  {
+    "gxt": "tab_1",
+    "american": "BRIEF",
+    "russian": "ИСТОРИЯ"
+  },
+  {
+    "gxt": "tab_2",
+    "american": "STATS",
+    "russian": "СТАТИСТИКА"
+  },
+  {
+    "gxt": "tab_3",
+    "american": "SETTINGS",
+    "russian": "НАСТРОЙКИ"
+  },
+  {
+    "gxt": "tab_4",
+    "american": "GAME",
+    "russian": "ИГРА"
+  },
+  {
+    "gxt": "tab_5",
+    "american": "ONLINE",
+    "russian": "СЕТЬ"
+  },
+  {
+    "gxt": "tab_6",
+    "american": "FRIENDS",
+    "russian": "ДРУЗЬЯ"
+  },
+  {
+    "gxt": "tab_7",
+    "american": "GALLERY",
+    "russian": "ГАЛЕРЕЯ"
+  },
+  {
+    "gxt": "tab_8",
+    "american": "STORE",
+    "russian": "МАГАЗИН"
+  },
+  {
+    "gxt": "tab_9",
+    "american": "ROCKSTAR EDITOR",
+    "russian": "РЕДАКТОР ROCKSTAR"
+  },
+
+  {
+    "gxt": "menu_brief_category_0",
+    "american": "Mission",
+    "russian": "Задание"
+  },
+  {
+    "gxt": "menu_brief_category_1",
+    "american": "Help",
+    "russian": "Справка"
+  },
+  {
+    "gxt": "menu_brief_category_2",
+    "american": "Dialogue",
+    "russian": "Диалоги"
+  },
+  {
+    "gxt": "menu_brief_category_3",
+    "american": "Notifications",
+    "russian": "Уведомления"
+  },
+  {
+    "gxt": "menu_brief_category_4",
+    "american": "Rockstar Newswire",
+    "russian": "Rockstar Newswire"
+  },
+
+  {
+    "gxt": "menu_stats_category_0",
+    "american": "Skills",
+    "russian": "Навыки"
+  },  
+  {
+    "gxt": "menu_stats_category_1",
+    "american": "General",
+    "russian": "Общие"
+  },
+  {
+    "gxt": "menu_stats_category_2",
+    "american": "Crimes",
+    "russian": "Преступления"
+  },
+  {
+    "gxt": "menu_stats_category_3",
+    "american": "Vehicles",
+    "russian": "Транспорт"
+  },
+  {
+    "gxt": "menu_stats_category_4",
+    "american": "Cash",
+    "russian": "Деньги"
+  },
+  {
+    "gxt": "menu_stats_category_5",
+    "american": "Combat",
+    "russian": "Бой"
+  },  
+  {
+    "gxt": "menu_stats_category_6",
+    "american": "Weapons",
+    "russian": "Оружие"
+  },
+  {
+    "gxt": "menu_stats_category_7",
+    "american": "100% Checklist",
+    "russian": "Прохождение на 100%"
+  },
+  {
+    "gxt": "menu_stats_skills_element_1",
+    "american": "Special",
+    "russian": "Спецспособность"
+  },
+  {
+    "gxt": "menu_stats_skills_element_2",
+    "american": "Stamina",
+    "russian": "Выносливость"
+  },
+  {
+    "gxt": "menu_stats_skills_element_3",
+    "american": "Shooting",
+    "russian": "Стрельба"
+  },
+  {
+    "gxt": "menu_stats_skills_element_4",
+    "american": "Strength",
+    "russian": "Сила"
+  },
+  {
+    "gxt": "menu_stats_skills_element_5",
+    "american": "Stealth",
+    "russian": "Скрытность"
+  },
+  {
+    "gxt": "menu_stats_skills_element_6",
+    "american": "Flying",
+    "russian": "Полет"
+  },
+  {
+    "gxt": "menu_stats_skills_element_7",
+    "american": "Driving",
+    "russian": "Вождение"
+  },
+  {
+    "gxt": "menu_stats_skills_element_8",
+    "american": "Lung Capacity",
+    "russian": "Обьем легких"
+  },
+  {
+    "gxt": "menu_stats_skills_element_info_1",
+    "american": "Special: How long Franklin's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by driving against the flow of traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.",
+    "russian": "Спецспособность: от этого параметра зависит, как долго Майкл может применять свою спецспособность. Шкала заполняется, когда он попадает противнику в голову, вырубает его или ездит на большой скорости. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
+  },
+
+  {
+    "gxt": "menu_brief_mission_header",
+    "american": "Mission",
+    "russian": "Задание"
+  },
+  {
+    "gxt": "menu_brief_help_header",
+    "american": "Help",
+    "russian": "Справка"
+  },
+  {
+    "gxt": "menu_brief_dialogue_header",
+    "american": "Dialogue",
+    "russian": "Диалог"
+  },
+
+  {
+    "gxt": "menu_brief_mission_text",
+    "american": "You are not currently playing a Mission. During a Mission, infomation will be shown here in relation to your progress and any current objectives you have.",
+    "russian": "Сейчас вы не на задании. Во время выполнения задания здесь будет отображаться информация о вашем прогрессе и текущих целях."
+  },
+  {
+    "gxt": "menu_brief_help_text",
+    "american": "Check back here to see any help text that has appeared in the game.",
+    "russian": "Здесь будет отображаться справочный текст, который появляется в игре."
+  },
+  {
+    "gxt": "menu_brief_dialogue_text",
+    "american": "Check back here to read what has been said.",
+    "russian": "Здесь будут отображаться реплики персонажей."
+  }
+]

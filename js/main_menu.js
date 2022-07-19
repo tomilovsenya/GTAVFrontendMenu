@@ -3,17 +3,7 @@ const GTAV = "Grand Theft Auto V";
 const GTAO = "Grand Theft Auto Online";
 const charName = "MICHAEL TOWNLEY";
 const charTime = "WEDNESDAY 18:35";
-const charCash = "BANK $550,590 CASH $530";
-const tab0Name = "MAP";
-const tab1Name = "BRIEF";
-const tab2Name = "STATS";
-const tab3Name = "SETTINGS";
-const tab4Name = "GAME";
-const tab5Name = "ONLINE";
-const tab6Name = "FRIENDS";
-const tab7Name = "GALLERY";
-const tab8Name = "STORE";
-const tab9Name = "ROCKSTAR EDITOR";
+const charCash = "BANK $550,590  CASH $530";
 
 const tab_map = 0;
 const tab_brief = 1;
@@ -61,58 +51,50 @@ const catsSettings = [
 const tabMap = {
   tab: tab_map,
   id: $("#tab_0"),
-  name: tab0Name,
   window: $(".menu_map"),
 };
 const tabBrief = {
   tab: tab_brief,
   id: $("#tab_1"),
-  name: tab1Name,
   window: $(".menu_brief"),
   cats: catsBrief,
 };
 const tabStats = {
   tab: tab_stats,
   id: $("#tab_2"),
-  name: tab2Name,
   window: $(".menu_stats"),
   cats: catsStats,
 };
 const tabSettings = {
   tab: tab_settings,
   id: $("#tab_3"),
-  name: tab3Name,
   window: $(".menu_settings"),
   cats: catsSettings,
 };
 const tabGame = {
   tab: tab_game,
   id: $("#tab_4"),
-  name: tab4Name,
   window: $(".menu_game"),
 };
 const tabOnline = {
   tab: tab_game,
   id: $("#tab_5"),
-  name: tab5Name,
   window: $(".menu_online"),
 };
 const tabStore = {
   tab: tab_store,
   id: $("#tab_8"),
-  name: tab8Name,
   window: $(".menu_store"),
 };
 const tabReplay = {
   tab: tab_replay,
   id: $("#tab_9"),
-  name: tab9Name,
   window: $(".menu_replay"),
 };
 
-const menuPage = document.documentElement;
 const leftArrow = $("#menu_arrow_left");
 const rightArrow = $("#menu_arrow_right");
+const menuPage = document.documentElement;
 // const menuColor = 'red'
 const menuColor = "lightskyblue";
 menuPage.style.setProperty("--menu-color", menuColor);
@@ -128,12 +110,37 @@ let activeCategoriesList = null;
 let activeWindow = tabMap;
 
 //
+// MENU LOCALIZATION
+//
+
+let menuLanguages = ["american", "russian"];
+let menuLanguage = menuLanguages[0];
+
+function localizeMenu() {
+  fetch("js/lang.json")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      for (var i = 0; i < data.length; i++) {
+        let gxtID = "#" + data[i].gxt;
+        let gxtElement = $(gxtID);
+
+        if (gxtElement.children().length > 0)
+          gxtElement.children().eq(0).text(data[i][menuLanguage]);
+        else gxtElement.text(data[i][menuLanguage]);
+      }
+    });
+}
+
+localizeMenu();
+
+//
 // STARTUP FUNCTIONS
 //
 
 setheaderTitle(GTAV);
 setHeaderStats();
-setTabNames();
 setArrows();
 // setFirstTab();
 setSingleTab();
@@ -582,14 +589,6 @@ function setTabName(index, name) {
   let tab = $(".menu_button").eq(index);
   tab.html(name);
   // console.log(tab.html())
-}
-function setTabNames() {
-  setTabName(0, tab0Name);
-  setTabName(1, tab1Name);
-  setTabName(2, tab2Name);
-  setTabName(3, tab3Name);
-  setTabName(4, tab4Name);
-  setTabName(5, tab5Name);
 }
 function setTabNameStar(index) {
   setTabName(index, "&starf; " + $(".menu_button").html());

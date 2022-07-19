@@ -291,6 +291,7 @@ button.menu_button {
   font-size: var(--menu-font-size);
   /* font-size: 120%; */
   text-align: center;
+  padding: 0;
   width: 100%;
   height: 100%;
   /* max-height: 39px; */
@@ -508,7 +509,7 @@ div.menu_loading_spinner {
   pointer-events: none;
   z-index: -1;
   position: absolute;
-  display: flex; 
+  display: flex;
   align-self: center;
   justify-self: center;
   display: none;
@@ -516,10 +517,11 @@ div.menu_loading_spinner {
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -833,8 +835,8 @@ span.element_info_text {
 }
 
 img.element_info_icon {
-  width: 4%;
-  height: 4%;
+  width: 3%;
+  height: 3%;
   float: right;
   /* padding-top: 6px; */
   vertical-align: top;
@@ -933,6 +935,7 @@ span.menu_stats_100_completion_chart_percentage {
 div#menu_stats_100_completion #menu_stats_100_completion_progress_0 {
   background-color: #ffd90040;
 }
+
 div#menu_stats_100_completion #menu_stats_100_completion_progress_0>.element_progress_perc {
   background-color: gold;
   width: 10%;
@@ -941,6 +944,7 @@ div#menu_stats_100_completion #menu_stats_100_completion_progress_0>.element_pro
 div#menu_stats_100_completion #menu_stats_100_completion_progress_1 {
   background-color: #90ee9040;
 }
+
 div#menu_stats_100_completion #menu_stats_100_completion_progress_1>.element_progress_perc {
   background-color: lightgreen;
   width: 20%;
@@ -949,6 +953,7 @@ div#menu_stats_100_completion #menu_stats_100_completion_progress_1>.element_pro
 div#menu_stats_100_completion #menu_stats_100_completion_progress_2 {
   background-color: #87cefa40;
 }
+
 div#menu_stats_100_completion #menu_stats_100_completion_progress_2>.element_progress_perc {
   background-color: lightskyblue;
   width: 30%;
@@ -957,6 +962,7 @@ div#menu_stats_100_completion #menu_stats_100_completion_progress_2>.element_pro
 div#menu_stats_100_completion #menu_stats_100_completion_progress_3 {
   background-color: #ffa07a40;
 }
+
 div#menu_stats_100_completion #menu_stats_100_completion_progress_3>.element_progress_perc {
   background-color: lightsalmon;
   width: 40%;
@@ -965,6 +971,7 @@ div#menu_stats_100_completion #menu_stats_100_completion_progress_3>.element_pro
 div#menu_stats_100_completion #menu_stats_100_completion_progress_4 {
   background-color: #8b000040;
 }
+
 div#menu_stats_100_completion #menu_stats_100_completion_progress_4>.element_progress_perc {
   background-color: darkred;
   width: 50%;
@@ -994,7 +1001,7 @@ div.menu_settings .menu_elements_header {
   background-color: var(--black-bg-color);
 }
 
-div.menu_settings > .menu_elements {
+div.menu_settings>.menu_elements {
   background-color: transparent;
   /* width: 100%; */
 }
@@ -1103,8 +1110,9 @@ div.menu_game .menu_entries_middle {
 div.menu_game .menu_entries_middle .menu_entry {
   background-color: var(--black-bg-color);
 }
+
 div.menu_game .menu_entries_middle .menu_entry:hover {
-  background-color: var(--hover-color); 
+  background-color: var(--hover-color);
 }
 
 div.menu_game div.menu_elements_scrollable {
