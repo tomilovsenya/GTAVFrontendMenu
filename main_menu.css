@@ -459,12 +459,11 @@ button.menu_entry_arrows {
 }
 
 div.element_arrows {
-  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   height: 90%;
-  background-image: url(images/arrows_vertical.svg);
-  /* background-position: right; */
-  background-repeat: no-repeat;
-  background-size: contain;
+  pointer-events: none;
 }
 
 button.menu_arrows {
