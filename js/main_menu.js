@@ -128,7 +128,7 @@ function localizeMenu() {
 
         if (gxtElement.children().length > 0)
           gxtElement.children().eq(0).text(data[i][menuLanguage]);
-        else gxtElement.text(data[i][menuLanguage]);
+        else gxtElement.html(data[i][menuLanguage]);
       }
     });
 }

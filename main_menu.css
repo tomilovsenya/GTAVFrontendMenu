@@ -1,8 +1,8 @@
 /*#region Main*/
 @font-face {
   font-family: "London60";
-  src: url("fonts/Chalet-LondonSixty2.woff2") format("woff2");
-  /* src: url("fonts/Chalet-LondonNineteenSixty-Game.ttf") format("truetype"); */
+  /* src: url("fonts/Chalet-LondonSixty2.woff2") format("woff2"); */
+  src: url("fonts/Chalet-LondonNineteenSixty-Game.otf") format("opentype");
 }
 
 @font-face {
@@ -482,9 +482,9 @@ button.menu_arrows {
 }
 
 img.menu_entry_arrow_left {
+  transform: scaleX(-1);
   width: 0.45vw;
   /* height: 50%; */
-  transform: rotate(180deg);
   filter: invert();
   align-self: center;
   display: inline-block;

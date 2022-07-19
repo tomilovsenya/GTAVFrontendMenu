@@ -80,7 +80,12 @@
     "gxt": "menu_stats_category_0",
     "american": "Skills",
     "russian": "Навыки"
-  },  
+  },
+  {
+    "gxt": "menu_stats_category_0_0",
+    "american": "Michael",
+    "russian": "Майкл"
+  },
   {
     "gxt": "menu_stats_category_1",
     "american": "General",
@@ -192,5 +197,22 @@
     "gxt": "menu_brief_dialogue_text",
     "american": "Check back here to read what has been said.",
     "russian": "Здесь будут отображаться реплики персонажей."
+  },
+
+  {
+    "gxt": "menu_store_header",
+    "american": "Now Open!",
+    "russian": "Открыт!"
+  },
+
+  {
+    "gxt": "menu_replay_header",
+    "american": "Rockstar Editor",
+    "russian": "Редактор Rockstar"
+  },
+  {
+    "gxt": "menu_replay_text",
+    "american": "Press ||||| to enter the Rockstar Editor and start creating videos using clips of your GTAV and GTA Online experiences. Capture GTAV Story Mode or GTA Online gameplay moments, or launch Director Mode to create custom scenarios and capture unique clips. To begin capturing clips in game, hold ||||| to select your capture mode and start recording.<br><br>Once you've captured some clips, add them to a New Project and edit as you wish. You can crop clips, add color filters and change camera angles and effects. Rearrange your clips to get the ideal sequence, then add custom text to appear whenever you want. Add GTAV score or radio tracks to create a soundtrack that will bring your project to life. When you're satisfied, export your creations as videos to share via the Rockstar Games Social Club and YouTube.",
+    "russian": "Нажмите |||||, чтобы войти в редактор Rockstar и создать видео из клипов, записанных вами в GTA V и GTA Online. Запишите игру в сюжетном режиме GTA V или режиме режиссера, чтобы создать собственные сценарии и уникальные клипы. Для начала удерживайте |||||, чтобы выбрать режим \"Захвата\" и начать запись.<br><br>После записи клипов, добавьте их в \"Новый проект\" и редактируйте на усмотрение. Вы можете урезать клипы, добавлять цветовые фильтры, изменять ракурсы камеры и эффекты. Кроме того, вы можете изменять компоновку клипов, чтобы получить идеальный ряд, и добавлять собственный текст, который сможет появляться в любом месте. К своему проекту вы можете добавить оригинальную и лицензионную музыку из игры. Если вы довольны, то можете экспортировать ваше творение как видео и для других игроков на Rockstar Games Social Club и YouTube."
   }
 ]
