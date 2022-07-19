@@ -200,6 +200,37 @@
   },
 
   {
+    "gxt": "menu_game_elements_missions_0",
+    "american": "Prologue",
+    "russian": "Пролог"
+  },
+  {
+    "gxt": "menu_game_elements_missions_1",
+    "american": "Franklin & Lamar",
+    "russian": "Франклин и Ламар"
+  },
+  {
+    "gxt": "menu_game_elements_missions_2",
+    "american": "Repossession",
+    "russian": "Конфискация"
+  },
+  {
+    "gxt": "menu_game_elements_missions_3",
+    "american": "Complications",
+    "russian": "Затруднения"
+  },
+  {
+    "gxt": "menu_game_elements_missions_4",
+    "american": "Father/Son",
+    "russian": "Отец и сын"
+  },
+  {
+    "gxt": "menu_game_elements_missions_5",
+    "american": "Chop",
+    "russian": "Чоп"
+  },
+
+  {
     "gxt": "menu_store_header",
     "american": "Now Open!",
     "russian": "Открыт!"

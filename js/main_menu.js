@@ -114,7 +114,7 @@ let activeWindow = tabMap;
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage = menuLanguages[0];
+let menuLanguage = menuLanguages[1];
 
 function localizeMenu() {
   fetch("js/lang.json")
@@ -373,6 +373,7 @@ function updateMenuEntriesMiddle() {
     // console.log('Other category clicked')
   }
   isCategorySelected = true;
+  categoriesHandler(activeTab);
   console.log("Clicked: " + $(this).html());
 }
 
@@ -536,6 +537,7 @@ function scrollDown() {
     // let tabElements = activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
     let tabElements = activeCategoryElements
       .children(".menu_elements_scrollable")
+      // .children(".menu_entry[id]");
       .children(".menu_entry[id]");
     // triggerEntry(activeEntryMiddle.next());
     // activeEntryMiddle.scrollIntoView(false);
@@ -545,6 +547,7 @@ function scrollDown() {
       else triggerEntry(nextEntry);
     } else triggerEntry(tabElements.first());
     // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
+    categoriesHandler(activeTab);
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }
@@ -574,6 +577,7 @@ function scrollUp() {
       else triggerEntry(nextEntry);
     } else triggerEntry(tabElements.last());
     // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
+    categoriesHandler(activeTab);
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }
@@ -650,13 +654,37 @@ function categoriesHandler(activeTab) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
   }
+
+  if (activeWindow.id == tabGame.id) {
+    updateMissionCounter();
+    updateMissionName();
+    if ($("#menu_game_elements_missions").children().length <= 16)
+      activeWindow.window
+        .children(".menu_elements")
+        .children(".menu_entry_arrows")
+        .hide();
+  }
 }
 
-function setWindowTextContents(header, text) {
-  let currentHeader = activeWindow.window.find("h1.menu_window_header");
-  let currentText = activeWindow.window.find("span.menu_window_text");
-  currentHeader.html(header);
-  currentText.html(text);
+function updateMissionCounter() {
+  let totalMissions = $("#menu_game_elements_missions").children().length;
+  let currentMission = 1;
+  let focusedElement = $("#menu_game_elements_missions").children(":focus");
+  if (focusedElement.length != 0) currentMission = focusedElement.index() + 1;
+  else currentMission = 1;
+  console.log("Counter updated");
+  let counterString = currentMission + " / " + totalMissions;
+  $("#menu_game_elements_missions_counter").text(counterString);
+}
+
+function updateMissionName() {
+  let missionName = $(".element_mission_name");
+  let focusedElement = $("#menu_game_elements_missions").children(":focus");
+  if (focusedElement.length == 0) {
+    focusedElement = $("#menu_game_elements_missions").children().eq(0);
+    console.log("Now null");
+  } else focusedElement = $("#menu_game_elements_missions").children(":focus");
+  missionName.text(focusedElement.text());
 }
 
 //
