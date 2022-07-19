@@ -49,6 +49,13 @@ const catsSettings = [
   $("#menu_settings_camera"),
   $("#menu_settings_display"),
   $("#menu_settings_graphics"),
+  $("#menu_settings_adv_graphics"),
+  $("#menu_settings_voice_chat"),
+  $("#menu_settings_notifications"),
+  $("#menu_settings_replay"),
+  $("#menu_settings_saving"),
+  $("#menu_settings_facebook"),
+  $("#menu_settings_exclusive"),
 ];
 
 const tabMap = {
@@ -414,7 +421,8 @@ function setCategoryActive() {
     "background-color": "#ffffff",
     color: "black",
   });
-  if (activeWindow.cats) activeCategoryElements = activeWindow.cats[$(this).index()];
+  if (activeWindow.cats)
+    activeCategoryElements = activeWindow.cats[$(this).index()];
   activeCategory = $(this);
   activeCategory.focus();
 

@@ -436,6 +436,10 @@ button.menu_entry_empty_double div.element_progress {
   height: 15%;
 }
 
+button.menu_entry_centered {
+  justify-content: center;
+}
+
 div.menu_divider {
   background: white;
   width: 100%;
@@ -502,6 +506,12 @@ div.menu_loading_spinner {
   height: 3vw;
   animation: spin 1000ms infinite linear;
   pointer-events: none;
+  z-index: -1;
+  position: absolute;
+  display: flex; 
+  align-self: center;
+  justify-self: center;
+  display: none;
 }
 
 @keyframes spin {
@@ -837,7 +847,7 @@ div#menu_stats_100_completion {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  animation: fadeInAnimation ease 0.25s;
+  /* animation: fadeInAnimation ease 0.25s; */
 }
 
 div#menu_stats_100_completion button.menu_entry {
@@ -1027,7 +1037,7 @@ div#menu_settings_gamepad>.menu_elements_header {
   flex-direction: column;
   /* height: 50%; */
   height: calc(var(--item-height) * 8 + var(--item-margin) * 7);
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -1087,7 +1097,14 @@ div.menu_game .menu_entries_middle {
   /* height: 100%; */
   /* overflow: hidden; */
   /* justify-self: flex-start; */
+  /* background-color: var(--black-bg-color); */
+}
+
+div.menu_game .menu_entries_middle .menu_entry {
   background-color: var(--black-bg-color);
+}
+div.menu_game .menu_entries_middle .menu_entry:hover {
+  background-color: var(--hover-color); 
 }
 
 div.menu_game div.menu_elements_scrollable {
