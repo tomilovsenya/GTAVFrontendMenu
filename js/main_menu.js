@@ -526,40 +526,6 @@ function scrollRight() {
   activeTab[0].scrollIntoView(false);
 }
 
-let tabElements = $("#menu_brief_dialogue").children(
-  ".menu_brief_dialogue_entry"
-);
-
-let maxElementsOnScreen = 8;
-let currentOverflowBottom = 8;
-let currentOverflowTop = -1;
-
-function scrollDownDialogue() {
-  if (tabElements.length <= maxElementsOnScreen) return;
-  if (tabElements.length <= currentOverflowBottom) return;
-  // console.log("Scrolling down to: " + (currentOverflowBottom))
-  tabElements[currentOverflowBottom].scrollIntoView(false);
-  currentOverflowBottom++;
-  currentOverflowTop++;
-}
-
-function scrollUpDialogue() {
-  if (tabElements.length <= maxElementsOnScreen) return;
-  if (currentOverflowTop < 0) return;
-  // console.log("Scrolling up to: " + currentOverflowTop)
-  tabElements[currentOverflowTop].scrollIntoView(true);
-  currentOverflowBottom--;
-  currentOverflowTop--;
-}
-
-$("#menu_brief_dialogue").bind("mousewheel", function (e) {
-  if (e.originalEvent.wheelDelta / 120 > 0) {
-    scrollUpDialogue();
-  } else {
-    scrollDownDialogue();
-  }
-});
-
 function scrollDown() {
   if (activeCategory == null) return;
   if (!isCategorySelected) {
@@ -619,6 +585,66 @@ function scrollUp() {
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }
+
+//
+// SCROLL ELEMENTS
+//
+
+let tabElements = $("#menu_brief_dialogue").children(
+  ".menu_brief_dialogue_entry"
+);
+
+let maxElementsOnScreen = 8;
+let currentOverflowBottom = 8;
+let currentOverflowTop = -1;
+
+function scrollDownDialogue() {
+  if (tabElements.length <= maxElementsOnScreen) return;
+  if (tabElements.length <= currentOverflowBottom) return;
+  // console.log("Scrolling down to: " + (currentOverflowBottom))
+  tabElements[currentOverflowBottom].scrollIntoView(false);
+  currentOverflowBottom++;
+  currentOverflowTop++;
+}
+
+function scrollUpDialogue() {
+  if (tabElements.length <= maxElementsOnScreen) return;
+  if (currentOverflowTop < 0) return;
+  // console.log("Scrolling up to: " + currentOverflowTop)
+  tabElements[currentOverflowTop].scrollIntoView(true);
+  currentOverflowBottom--;
+  currentOverflowTop--;
+}
+
+$("#menu_brief_dialogue").bind("wheel", function (e) {
+  if (e.originalEvent.deltaY < 0) {
+    scrollUpDialogue();
+  } else {
+    scrollDownDialogue();
+  }
+});
+
+$(".menu_categories").bind("wheel", function (e) {
+  if (isCategorySelected) return;
+  if (e.originalEvent.deltaY < 0) {
+    scrollUp();
+  } else {
+    scrollDown();
+  }
+});
+
+$(".menu_elements_scrollable").bind("wheel", function (e) {
+  if (!isCategorySelected) return;
+  if (e.originalEvent.deltaY < 0) {
+    scrollUp();
+  } else {
+    scrollDown();
+  }
+});
+
+//
+// OTHER FUNCTIONS
+//
 
 function setheaderTitle(title) {
   $("#menu_header_text").html(title);
