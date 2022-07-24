@@ -434,6 +434,10 @@ function setCategoryActive() {
   activeCategory = $(this);
   activeCategory.focus();
 
+  // Only show element_list for active category
+  $(".menu_category_list_active_only").children(".element_list").hide();
+  activeCategory.children(".element_list").show();
+
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) {
     // let arrowsText = "\u2b9c" + rightText.html() + "\u2b9e";
@@ -520,6 +524,30 @@ function scrollRight() {
     activeTab.trigger("tabActive");
   }
   activeTab[0].scrollIntoView(false);
+}
+
+let tabElements = $("#menu_brief_dialogue").children(
+  ".menu_brief_dialogue_entry"
+);
+
+let maxElementsOnScreen = 8;
+let currentOverflowBottom = 7;
+let currentOverflowTop = -1;
+
+function scrollDownDialogue() {
+  if (tabElements.length <= maxElementsOnScreen) return;
+  if (tabElements.length <= currentOverflowBottom + 1) return;
+  tabElements[currentOverflowBottom + 1].scrollIntoView(false);
+  currentOverflowBottom++;
+  currentOverflowTop++;
+}
+
+function scrollUpDialogue() {
+  if (tabElements.length <= 8) return;
+  if (currentOverflowTop < 0) return;
+  tabElements[currentOverflowTop].scrollIntoView(true);
+  currentOverflowBottom--;
+  currentOverflowTop--;
 }
 
 function scrollDown() {

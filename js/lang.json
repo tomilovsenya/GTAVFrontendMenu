@@ -92,6 +92,11 @@
     "russian": "Общие"
   },
   {
+    "gxt": "menu_stats_category_1_0",
+    "american": "Michael",
+    "russian": "Майкл"
+  },
+  {
     "gxt": "menu_stats_category_2",
     "american": "Crimes",
     "russian": "Преступления"
@@ -165,6 +170,47 @@
     "gxt": "menu_stats_skills_element_info_1",
     "american": "Special: How long Franklin's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by driving against the flow of traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.",
     "russian": "Спецспособность: от этого параметра зависит, как долго Майкл может применять свою спецспособность. Шкала заполняется, когда он попадает противнику в голову, вырубает его или ездит на большой скорости. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
+  },
+
+  {
+    "gxt": "menu_stats_100_completion_element_0",
+    "american": "Michael",
+    "russian": "Майкл"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_1",
+    "american": "Franklin",
+    "russian": "Франклин"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_2",
+    "american": "Trevor",
+    "russian": "Тревор"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_3",
+    "american": "Missions",
+    "russian": "Задания"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_4",
+    "american": "Hobbies and Pastimes",
+    "russian": "Хобби и развлечения"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_5",
+    "american": "Strangers and Freaks",
+    "russian": "Чудаки и прочие незнакомцы"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_6",
+    "american": "Random Events",
+    "russian": "Случайные события"
+  },
+  {
+    "gxt": "menu_stats_100_completion_element_7",
+    "american": "Miscellaneous",
+    "russian": "Прочее"
   },
 
   {

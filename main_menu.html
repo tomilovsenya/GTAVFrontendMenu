@@ -57,6 +57,11 @@
         <button id="menu_arrow_left" tabindex="-1"></button>
       </nav> -->
 
+        <map name="menu_arrows_map">
+          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpDialogue()">
+          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownDialogue()">
+        </map>
+
         <div class="menu_window menu_map" id="menu_map_window">
           <!-- <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt=""> -->
           <img class="menu_map_image" src="images/V_FakePrologueLand.svg" alt="">
@@ -93,44 +98,129 @@
               <span id="menu_brief_help_text" class="menu_window_text"></span>
             </div>
           </div>
-          <div id="menu_brief_dialogue" class="menu_elements menu_background_rockstar">
+          <div id="menu_brief_dialogue_inactive" class="menu_elements menu_background_rockstar">
             <div class="menu_window_text menu_window_text_full">
               <h1 id="menu_brief_dialogue_header" class="menu_window_header"></h1>
               <span id="menu_brief_dialogue_text" class="menu_window_text"></span>
             </div>
           </div>
+          <div id="menu_brief_dialogue" class="menu_elements">
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">So, all that prep work for nothing?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Okay, I'll get rid of the stuff. Call me if you want to set up the
+                  thing again.</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+            <div class="menu_brief_dialogue_entry">
+              <div class="dialogue_entry_string">
+                <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+              </div>
+            </div>
+          </div>
+          <div id="menu_brief_notifications" class="menu_elements">
+            <div class="menu_brief_notifications_entry">
+              <span>You have 2 friends playing in other GTA Online sessions.</span>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_header">
+                <img class="notification_header_img" src="images/dia_police.png" alt="">
+                <span class="notification_header_text">Police</span>
+              </div>
+              <span>You are under arrest. Surrender now.</span>
+            </div>
+          </div>
           <button class="menu_arrows" tabindex="-1">
+            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
+          </button>
         </div>
 
         <div class="menu_window menu_stats">
           <div class="menu_categories">
-            <button id="menu_stats_category_0" class="menu_entry menu_category_list">
+            <button id="menu_stats_category_0" class="menu_entry menu_category_list menu_category_list_active_only">
               <span class="element_label"></span>
               <div class="element_list">
-                <span id="menu_stats_category_0_0" class="element_label_right">Michael</span>
+                <span id="menu_stats_category_0_0" class="element_label_right"></span>
               </div>
             </button>
-            <button id="menu_stats_category_1" class="menu_entry menu_category_list">
+            <button id="menu_stats_category_1" class="menu_entry menu_category_list menu_category_list_active_only">
+              <span class="element_label"></span>
+              <div class="element_list">
+                <span id="menu_stats_category_1_0" class="element_label_right"></span>
+              </div>
+            </button>
+            <button id="menu_stats_category_2" class="menu_entry menu_category_list menu_category_list_active_only">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_2" class="menu_entry menu_category_list">
+            <button id="menu_stats_category_3" class="menu_entry menu_category_list menu_category_list_active_only">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_3" class="menu_entry menu_category_list">
+            <button id="menu_stats_category_4" class="menu_entry menu_category_list menu_category_list_active_only">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_4" class="menu_entry menu_category_list">
+            <button id="menu_stats_category_5" class="menu_entry menu_category_list menu_category_list_active_only">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_5" class="menu_entry menu_category_list">
-              <span class="element_label"></span>
-              <div class="element_list"></div>
-            </button>
-            <button id="menu_stats_category_6" class="menu_entry menu_category_list">
+            <button id="menu_stats_category_6" class="menu_entry menu_category_list menu_category_list_active_only">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
@@ -152,7 +242,8 @@
                 <div class="element_stat_perc element_stat_perc_empty"></div>
               </div>
             </button>
-            <button id="menu_stats_skills_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_2"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stamina</span>
               <div class="element_stat">
                 <div class="element_stat_perc"></div>
@@ -176,7 +267,8 @@
                 <div class="element_stat_perc element_stat_perc_empty"></div>
               </div>
             </button>
-            <button id="menu_stats_skills_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_4"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Strength</span>
               <div class="element_stat">
                 <div class="element_stat_perc"></div>
@@ -188,7 +280,8 @@
                 <div class="element_stat_perc element_stat_perc_empty"></div>
               </div>
             </button>
-            <button id="menu_stats_skills_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_5"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stealth</span>
               <div class="element_stat">
                 <div class="element_stat_perc"></div>
@@ -200,7 +293,8 @@
                 <div class="element_stat_perc element_stat_perc_empty"></div>
               </div>
             </button>
-            <button id="menu_stats_skills_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_6"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Flying</span>
               <div class="element_stat">
                 <div class="element_stat_perc"></div>
@@ -212,7 +306,8 @@
                 <div class="element_stat_perc element_stat_perc_empty"></div>
               </div>
             </button>
-            <button id="menu_stats_skills_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_7"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Driving</span>
               <div class="element_stat">
                 <div class="element_stat_perc"></div>
@@ -224,7 +319,8 @@
                 <div class="element_stat_perc element_stat_perc_empty"></div>
               </div>
             </button>
-            <button id="menu_stats_skills_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_8"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Lung Capacity</span>
               <div class="element_stat">
                 <div class="element_stat_perc"></div>
@@ -238,31 +334,145 @@
             </button>
             <div class="menu_divider"></div>
             <div id="menu_stats_skills_element_info_1" class="element_info" tabindex="-1">
-              <span class="element_info_text">Special: How long Franklin's Special Ability can remain active when fully
-                charged. Store more charge for a greater maximum duration. Increase by driving against the flow of
-                traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.
-              </span>
+              <span class="element_info_text"></span>
               <img class="element_info_icon" src="images/info.svg" alt="">
             </div>
+          </div>
+
+          <div id="menu_stats_general" class="menu_elements">
+            <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Time played as character</span>
+              <div class="element_list">
+                <span class="element_label_right">0d 5h 55m 55s</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Time played in first person</span>
+              <div class="element_list">
+                <span class="element_label_right">0d 2h 5m 24s</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Missions passed</span>
+              <div class="element_list">
+                <span class="element_label_right">33</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Last Mission completed</span>
+              <div class="element_list">
+                <span class="element_label_right">Derailed</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Letter scraps</span>
+              <div class="element_list">
+                <span class="element_label_right">4 / 50</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Peyote plants</span>
+              <div class="element_list">
+                <span class="element_label_right">1 / 27</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Wildlife photographs</span>
+              <div class="element_list">
+                <span class="element_label_right">2 / 20</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Times saved</span>
+              <div class="element_list">
+                <span class="element_label_right">95</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Cheat codes activated</span>
+              <div class="element_list">
+                <span class="element_label_right">0</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Total deaths</span>
+              <div class="element_list">
+                <span class="element_label_right">1</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Deaths by explosion</span>
+              <div class="element_list">
+                <span class="element_label_right">0</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Deaths by falling</span>
+              <div class="element_list">
+                <span class="element_label_right">0</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Deaths by fire</span>
+              <div class="element_list">
+                <span class="element_label_right">0</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Deaths by traffic</span>
+              <div class="element_list">
+                <span class="element_label_right">1</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Deaths by drowning</span>
+              <div class="element_list">
+                <span class="element_label_right">0</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Time swimming</span>
+              <div class="element_list">
+                <span class="element_label_right">0d 0h 1m 0s</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Distance traveled swimming</span>
+              <div class="element_list">
+                <span class="element_label_right">0.13 miles</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Time underwater</span>
+              <div class="element_list">
+                <span class="element_label_right">0d 0h 0m 20s</span>
+              </div>
+            </button>
+            <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
+              <span class="element_label">Time walking</span>
+              <div class="element_list">
+                <span class="element_label_right">0d 0h 24m 39s</span>
+              </div>
+            </button>
           </div>
 
           <div id="menu_stats_100_completion" class="menu_elements">
             <div class="menu_element_zone_top">
               <div class="menu_element_zone_left">
                 <button class="menu_entry menu_entry_empty"></button>
-                <button class="menu_entry menu_entry_empty menu_element_list">
+                <button id="menu_stats_100_completion_element_0" class="menu_entry menu_entry_empty menu_element_list">
                   <span class="element_label">Michael</span>
                   <div class="element_list">
                     <span class="element_label_right">0d 11h 3m 48</span>
                   </div>
                 </button>
-                <button class="menu_entry menu_entry_empty menu_element_list">
+                <button id="menu_stats_100_completion_element_1" class="menu_entry menu_entry_empty menu_element_list">
                   <span class="element_label">Franklin</span>
                   <div class="element_list">
                     <span class="element_label_right">0d 11h 3m 48</span>
                   </div>
                 </button>
-                <button class="menu_entry menu_entry_empty menu_element_list">
+                <button id="menu_stats_100_completion_element_2" class="menu_entry menu_entry_empty menu_element_list">
                   <span class="element_label">Trevor</span>
                   <div class="element_list">
                     <span class="element_label_right">0d 11h 3m 48</span>
@@ -278,7 +488,7 @@
               </div>
             </div>
             <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
+              <div id="menu_stats_100_completion_element_3" class="menu_element_list_bar_left">
                 <span class="element_label">Missions</span>
                 <div class="element_list">
                   <span class="element_label_right">69 / 69</span>
@@ -289,7 +499,7 @@
               </div>
             </button>
             <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
+              <div id="menu_stats_100_completion_element_4" class="menu_element_list_bar_left">
                 <span class="element_label">Hobbies and Pastimes</span>
                 <div class="element_list">
                   <span class="element_label_right">42 / 42</span>
@@ -300,7 +510,7 @@
               </div>
             </button>
             <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
+              <div id="menu_stats_100_completion_element_5" class="menu_element_list_bar_left">
                 <span class="element_label">Strangers and Freaks</span>
                 <div class="element_list">
                   <span class="element_label_right">20 / 20</span>
@@ -311,7 +521,7 @@
               </div>
             </button>
             <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
+              <div id="menu_stats_100_completion_element_6" class="menu_element_list_bar_left">
                 <span class="element_label">Random Events</span>
                 <div class="element_list">
                   <span class="element_label_right">14 / 14</span>
@@ -323,7 +533,7 @@
             </button>
             </button>
             <button class="menu_entry menu_entry_empty menu_element_list_bar">
-              <div class="menu_element_list_bar_left">
+              <div id="menu_stats_100_completion_element_7" class="menu_element_list_bar_left">
                 <span class="element_label">Miscellaneous</span>
                 <div class="element_list">
                   <span class="element_label_right">16 / 16</span>
@@ -388,7 +598,7 @@
               <button id="menu_settings_gamepad_element_0" class="menu_entry menu_entry_empty menu_entry_centered">
                 <span class="element_label">ON FOOT</span>
               </button>
-              <img src="images/gamepad_calibration_i6.png" alt="">
+              <img src="images/controller.png" alt="">
             </div>
             <div class="menu_elements menu_elements_scrollable menu_entries_middle">
               <button id="menu_settings_gamepad_element_0" class="menu_entry">
@@ -618,6 +828,8 @@
             </div>
           </div>
           <button class="menu_arrows" tabindex="-1">
+            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
+          </button>
         </div>
 
         <div class="menu_window menu_game">
@@ -746,7 +958,7 @@
             <button class="menu_entry menu_entry_empty menu_entry_arrows">
               <span id="menu_game_elements_missions_counter" class="element_label">2 / 16</span>
               <div class="element_arrows">
-                <img src="images/arrows_vertical.svg" alt="">
+                <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
               </div>
             </button>
           </div>
@@ -790,6 +1002,8 @@
             </div>
           </div>
           <button class="menu_arrows" tabindex="-1">
+            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
+          </button>
         </div>
 
         <div class="menu_window menu_store menu_background_rockstar">

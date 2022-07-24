@@ -73,7 +73,7 @@ body {
   overflow-x: hidden;
   margin: 0 auto;
   padding: 0px;
-  background-image: url("images/background5.jpg");
+  background-image: url("images/background2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(0.25vw);
@@ -291,6 +291,9 @@ button.menu_button {
   font-size: var(--menu-font-size);
   /* font-size: 120%; */
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   width: 100%;
   height: 100%;
@@ -382,7 +385,7 @@ button.menu_entry {
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
   white-space: nowrap;
-  scroll-snap-align: start;
+  scroll-snap-align: start end;
 }
 
 button.menu_entry:hover {
@@ -463,7 +466,7 @@ div.element_arrows {
   justify-content: center;
   align-content: center;
   height: 90%;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 button.menu_arrows {
@@ -473,11 +476,15 @@ button.menu_arrows {
   border: 0px;
   margin-top: var(--item-margin);
   float: right;
-  background-image: url(images/arrows_vertical.svg);
-  background-size: auto 90%;
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   align-self: flex-end;
+  /* pointer-events: none; */
+}
+
+button.menu_arrows img {
+  height: 90%;
 }
 
 img.menu_entry_arrow_left {
@@ -520,7 +527,7 @@ div.menu_loading_spinner {
   }
 
   to {
-    transform: rotate(360deg);
+    transform` rotate(360deg);
   }
 }
 
@@ -737,6 +744,85 @@ div.menu_brief {
 
 div.menu_brief>div.menu_elements {
   height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  scroll-snap-type: block mandatory;
+  scroll-behavior: smooth;
+}
+
+div.menu_brief .menu_brief_dialogue_entry {
+  color: var(--text-color);
+  font-family: "London60";
+  font-size: var(--menu-font-size);
+  width: 100%;
+  height: fit-content;
+  min-height: var(--item-double-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding-left: var(--item-padding-sides);
+  margin-bottom: var(--item-margin);
+}
+
+div.menu_brief .menu_brief_dialogue_entry:last-of-type {
+  margin-bottom: 0;
+}
+
+div.menu_brief .dialogue_entry_string {
+  display: flex;
+  flex-direction: row;
+  pointer-events: none;
+}
+
+div.menu_brief .dialogue_entry_img {
+  /* height: 75%; */
+  height: 3.2vw;
+  animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
+
+}
+
+div.menu_brief .dialogue_entry_text {
+  align-self: flex-start;
+  padding-left: var(--item-padding-sides);
+  padding-right: var(--item-padding-sides);
+  line-height: 150%;
+  letter-spacing: var(--menu-letter-spacing);
+}
+
+div.menu_brief .menu_brief_notifications_entry {
+  color: var(--text-color);
+  font-family: "London60";
+  font-size: var(--menu-font-size);
+  width: 100%;
+  height: fit-content;
+  min-height: var(--item-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding-left: var(--item-padding-sides);
+  margin-bottom: calc(var(--item-margin) * 2);
+}
+
+div.menu_brief .notification_header {
+  display: flex;
+  pointer-events: none;
+  margin-bottom: calc(var(--item-margin) * 2);
+}
+
+.notification_header_img {
+  width: 3vw;
+}
+
+.notification_header_text {
+  font-size: 1.2vw;
+  justify-self: flex-start;
+  padding-left: var(--item-padding-sides);
 }
 
 /*#endregion MenuTabBrief*/
@@ -755,6 +841,8 @@ div.menu_stats {
   flex-wrap: nowrap;
   /* opacity: 50%; */
 }
+
+/* MENU STATS: SKILLS */
 
 button.menu_element_stat {
   display: flex;
@@ -840,6 +928,18 @@ img.element_info_icon {
   /* padding-top: 6px; */
   vertical-align: top;
   pointer-events: none;
+}
+
+/* MENU STATS: GENERAL */
+
+div#menu_stats_general {
+  overflow-y: scroll;
+  scroll-behavior: auto;
+  scroll-snap-type: y mandatory;
+}
+
+div#menu_stats_general .menu_entry:last-of-type {
+  margin-bottom: 0;
 }
 
 /* MENU STATS: 100% COMPLETION */
@@ -1054,7 +1154,7 @@ div#menu_settings_gamepad .menu_elements {
 
 div#menu_settings_gamepad img {
   pointer-events: none;
-  height: 75%;
+  height: 100%;
 }
 
 /*#endregion MenuTabSettings*/
