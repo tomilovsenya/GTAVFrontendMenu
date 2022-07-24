@@ -531,24 +531,34 @@ let tabElements = $("#menu_brief_dialogue").children(
 );
 
 let maxElementsOnScreen = 8;
-let currentOverflowBottom = 7;
+let currentOverflowBottom = 8;
 let currentOverflowTop = -1;
 
 function scrollDownDialogue() {
   if (tabElements.length <= maxElementsOnScreen) return;
-  if (tabElements.length <= currentOverflowBottom + 1) return;
-  tabElements[currentOverflowBottom + 1].scrollIntoView(false);
+  if (tabElements.length <= currentOverflowBottom) return;
+  // console.log("Scrolling down to: " + (currentOverflowBottom))
+  tabElements[currentOverflowBottom].scrollIntoView(false);
   currentOverflowBottom++;
   currentOverflowTop++;
 }
 
 function scrollUpDialogue() {
-  if (tabElements.length <= 8) return;
+  if (tabElements.length <= maxElementsOnScreen) return;
   if (currentOverflowTop < 0) return;
+  // console.log("Scrolling up to: " + currentOverflowTop)
   tabElements[currentOverflowTop].scrollIntoView(true);
   currentOverflowBottom--;
   currentOverflowTop--;
 }
+
+$("#menu_brief_dialogue").bind("mousewheel", function (e) {
+  if (e.originalEvent.wheelDelta / 120 > 0) {
+    scrollUpDialogue();
+  } else {
+    scrollDownDialogue();
+  }
+});
 
 function scrollDown() {
   if (activeCategory == null) return;
