@@ -11,6 +11,7 @@ const tab_stats = 2;
 const tab_settings = 3;
 const tab_game = 4;
 const tab_online = 5;
+const tab_friends = 6;
 const tab_gallery = 7;
 const tab_store = 8;
 const tab_replay = 9;
@@ -48,6 +49,24 @@ const catsSettings = [
   $("#menu_settings_facebook"),
   $("#menu_settings_exclusive"),
 ];
+const catsFriends = [
+  $("#menu_friends_player_0"),
+  $("#menu_friends_player_1"),
+  $("#menu_friends_player_2"),
+  $("#menu_friends_player_3"),
+  $("#menu_friends_player_4"),
+  $("#menu_friends_player_5"),
+  $("#menu_friends_player_6"),
+  $("#menu_friends_player_7"),
+  $("#menu_friends_player_8"),
+  $("#menu_friends_player_9"),
+  $("#menu_friends_player_10"),
+  $("#menu_friends_player_11"),
+  $("#menu_friends_player_12"),
+  $("#menu_friends_player_13"),
+  $("#menu_friends_player_14"),
+  $("#menu_friends_player_15"),
+];
 
 const tabMap = {
   tab: tab_map,
@@ -78,9 +97,15 @@ const tabGame = {
   window: $(".menu_game"),
 };
 const tabOnline = {
-  tab: tab_game,
+  tab: tab_online,
   id: $("#tab_5"),
   window: $(".menu_online"),
+};
+const tabFriends = {
+  tab: tab_friends,
+  id: $("#tab_6"),
+  window: $(".menu_friends"),
+  cats: catsFriends,
 };
 const tabGallery = {
   tab: tab_gallery,
@@ -189,6 +214,9 @@ function switchActiveWindow(tabActive) {
   }
   if (tabActive.is(tabOnline.id)) {
     setActiveWindow(tabOnline);
+  }
+  if (tabActive.is(tabFriends.id)) {
+    setActiveWindow(tabFriends);
   }
   if (tabActive.is(tabGallery.id)) {
     setActiveWindow(tabGallery);
