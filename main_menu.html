@@ -7,11 +7,15 @@
   <link rel="preload" href="/fonts/ChaletComprime-CologneSixty.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/fonts/Chalet-LondonSixty2.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/SignPainter-HouseScript2.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/images/h4_fake_islandx.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="/images/V_FakePrologueLand.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/images/maps/h4_fake_islandx.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/images/maps/V_FakePrologueLand.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/images/rockstar_bg.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/images/replay_logoscreen.png" as="image" type="image/png">
-  <link rel="preload" href="/images/background5.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background2.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background3.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background4.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background5.jpg" as="image" type="image/jpeg">
   <link rel="stylesheet" href="main_menu.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.structure.css" />
@@ -64,7 +68,7 @@
 
         <div class="menu_window menu_map" id="menu_map_window">
           <!-- <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt=""> -->
-          <img class="menu_map_image" src="images/V_FakePrologueLand.svg" alt="">
+          <img class="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt="">
         </div>
 
         <div class="menu_window menu_brief">
@@ -174,15 +178,83 @@
             </div>
           </div>
           <div id="menu_brief_notifications" class="menu_elements">
-            <div class="menu_brief_notifications_entry">
+            <!-- <div class="menu_brief_notifications_entry">
               <span>You have 2 friends playing in other GTA Online sessions.</span>
-            </div>
-            <div class="menu_brief_notifications_entry">
+            </div> -->
+            <div class="menu_brief_notifications_entry_double">
               <div class="notification_header">
                 <img class="notification_header_img" src="images/dia_police.png" alt="">
-                <span class="notification_header_text">Police</span>
+                <span class="notification_header_text">Police Alert</span>
               </div>
-              <span>You are under arrest. Surrender now.</span>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry_double">
+              <div class="notification_header">
+                <img class="notification_header_img" src="images/hc_n_lester.png" alt="">
+                <span class="notification_header_text">Lester</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Hey, let's do the heist! Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Vel dolores, modi nobis dolorum incidunt dolore id ad assumenda minus quisquam
+                  molestias et explicabo excepturi asperiores saepe blanditiis nemo non. Eaque!</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 1 left.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 2 left.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 3 left.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 4 left.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 4 killed Player 3.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry_double">
+              <div class="notification_header">
+                <img class="notification_header_img" src="images/dia_police.png" alt="">
+                <span class="notification_header_text">Police Alert</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 4 killed Player 3.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 4 killed Player 3.</span>
+              </div>
+            </div>
+            <div class="menu_brief_notifications_entry">
+              <div class="notification_string">
+                <span class="notification_string_text">Player 4 killed Player 3.</span>
+              </div>
             </div>
           </div>
           <button class="menu_arrows" tabindex="-1">
@@ -1002,6 +1074,58 @@
             </div>
           </div>
           <button class="menu_arrows" tabindex="-1">
+            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
+          </button>
+        </div>
+
+        <div class="menu_window menu_gallery">
+          <div class="menu_gallery_entries">
+            <div class="menu_gallery_photos">
+              <div id="menu_gallery_photo_0" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_1" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_2" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_3" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_4" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_5" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_6" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_7" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_8" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_9" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_10" class="menu_gallery_photo"></div>
+              <div id="menu_gallery_photo_11" class="menu_gallery_photo"></div>
+            </div>
+            <div class="menu_gallery_info">
+              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                <span class="element_label">Title</span>
+                <div class="element_list">
+                  <span class="element_label_right">North Yankton</span>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                <span class="element_label">Created</span>
+                <div class="element_list">
+                  <span class="element_label_right">Today</span>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                <span class="element_label">Location</span>
+                <div class="element_list">
+                  <span class="element_label_right">North Yankton</span>
+                </div>
+              </button>
+              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                <span class="element_label">Track</span>
+                <div class="element_list">
+                  <span class="element_label_right">TANGERINE DREAM - North Yankton Memories</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="menu_gallery_map">
+            <img src="images/maps/V_FakePrologueLand.svg" alt="">
+          </div>
+          <button class="menu_arrows menu_arrows_gallery" tabindex="-1">
+            <span class="element_label">1/12</span>
             <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
           </button>
         </div>

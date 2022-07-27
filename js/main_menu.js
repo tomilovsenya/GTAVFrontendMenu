@@ -11,6 +11,7 @@ const tab_stats = 2;
 const tab_settings = 3;
 const tab_game = 4;
 const tab_online = 5;
+const tab_gallery = 7;
 const tab_store = 8;
 const tab_replay = 9;
 
@@ -81,6 +82,11 @@ const tabOnline = {
   id: $("#tab_5"),
   window: $(".menu_online"),
 };
+const tabGallery = {
+  tab: tab_gallery,
+  id: $("#tab_7"),
+  window: $(".menu_gallery"),
+};
 const tabStore = {
   tab: tab_store,
   id: $("#tab_8"),
@@ -114,7 +120,7 @@ let activeWindow = tabMap;
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage = menuLanguages[1];
+let menuLanguage = menuLanguages[0];
 
 function localizeMenu() {
   fetch("js/lang.json")
@@ -183,6 +189,9 @@ function switchActiveWindow(tabActive) {
   }
   if (tabActive.is(tabOnline.id)) {
     setActiveWindow(tabOnline);
+  }
+  if (tabActive.is(tabGallery.id)) {
+    setActiveWindow(tabGallery);
   }
   if (tabActive.is(tabStore.id)) {
     setActiveWindow(tabStore);
@@ -737,7 +746,7 @@ function updateMissionCounter() {
   if (focusedElement.length != 0) currentMission = focusedElement.index() + 1;
   else currentMission = 1;
   console.log("Counter updated");
-  let counterString = currentMission + " / " + totalMissions;
+  let counterString = currentMission + "/" + totalMissions;
   $("#menu_game_elements_missions_counter").text(counterString);
 }
 
