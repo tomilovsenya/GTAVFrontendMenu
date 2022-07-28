@@ -51,6 +51,7 @@ const catsSettings = [
 ];
 const catsGame = [
   $("#menu_game_replay_mission"),
+  $("#menu_game_replay_strangers"),
 ];
 const catsFriends = [
   $("#menu_friends_player_0"),
@@ -593,7 +594,6 @@ function scrollDown() {
     } else triggerEntry(tabElements.first());
     // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
     categoriesHandler(activeTab);
-    console.log("Active entry middle: " + activeEntryMiddle.parent().attr("id"))
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }
@@ -624,7 +624,6 @@ function scrollUp() {
     } else triggerEntry(tabElements.last());
     // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
     categoriesHandler(activeTab);
-    console.log("Active entry middle: " + activeEntryMiddle.parent().attr("id"))
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }
@@ -771,7 +770,16 @@ function categoriesHandler(activeTab) {
         .children(".menu_entry_arrows")
         .hide();
   }
+
+  if (activeWindow.id == tabFriends.id) {
+    updateFriendCounter();
+    updateFriendName();
+  }
 }
+
+//
+// GAME TAB FUNCTIONS
+//
 
 function updateMissionCounter() {
   let totalMissions = $("#menu_game_elements_missions").children().length;
@@ -792,6 +800,31 @@ function updateMissionName() {
     console.log("Now null");
   } else focusedElement = $("#menu_game_elements_missions").children(":focus");
   missionName.text(focusedElement.text());
+}
+
+//
+// FRIENDS TAB FUNCTIONS
+//
+
+function updateFriendCounter() {
+  let totalFriends = $("#menu_friends_list").children().length;
+  let currentFriend = 1;
+  let focusedElement = $("#menu_friends_list").children(":focus");
+  if (focusedElement.length != 0) currentFriend = focusedElement.index() + 1;
+  else currentFriend = 1;
+  console.log("Counter updated");
+  let counterString = currentFriend + "/" + totalFriends;
+  $("#menu_friends_player_counter").text(counterString);
+}
+
+function updateFriendName() {
+  let friendName = $(".element_player_name");
+  let focusedElement = $("#menu_friends_list").children(":focus");
+  if (focusedElement.length == 0) {
+    focusedElement = $("#menu_friends_list").children().eq(0);
+    console.log("Now null");
+  } else focusedElement = $("#menu_friends_list").children(":focus");
+  friendName.text(focusedElement.text());
 }
 
 //

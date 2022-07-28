@@ -1111,7 +1111,7 @@
         </div>
 
         <div class="menu_window menu_friends">
-          <div class="menu_categories">
+          <div id="menu_friends_list" class="menu_categories">
             <button id="menu_friends_player_0" class="menu_entry menu_category">
               <span class="player_label">tomilovsenya</span>
             </button>
@@ -1170,7 +1170,7 @@
             <div class="menu_friends_info">
               <div class="menu_friends_info_100_completion_chart">
                 <button id="menu_friends_info_100_completion_header" class="menu_entry menu_entry_empty">
-                  <span class="player_label">tomilovsenya</span>
+                  <span class="player_label element_player_name">tomilovsenya</span>
                 </button>
                 <div class="menu_divider"></div>
                 <div class="menu_stats_100_completion_chart">
@@ -1179,12 +1179,20 @@
                 </div>
               </div>
               <div class="menu_friends_info_100_completion_perc">
-
+                <button class="menu_entry menu_entry_empty">
+                  <span class="element_label">Missions</span>
+                  <div class="element_list">
+                    <span class="element_label_right">69/69</span>
+                  </div>
+                </button>
+                <div id="menu_friends_info_100_completion_perc_progress_0" class="element_progress">
+                  <div class="element_progress_perc"></div>
+                </div>
               </div>
             </div>
           </div>
           <button class="menu_arrows menu_arrows_friends" tabindex="-1">
-            <span class="element_label">1/16</span>
+            <span id="menu_friends_player_counter" class="element_label">1/16</span>
             <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
           </button>
         </div>
