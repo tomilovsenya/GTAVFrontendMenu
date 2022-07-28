@@ -130,6 +130,26 @@ div.menu_bounding_box {
 
 /*#endregion Main*/
 
+/*#region TextMarkup*/
+mark.text_red {
+  color: rgb(224,	50,	50);
+  background-color: transparent;
+}
+
+mark.text_green {
+  color: rgb(114,	204,	114);
+  background-color: transparent;
+}
+
+mark.text_cologne {
+  font-family: "Cologne60";
+  font-size: larger;
+  color: inherit;
+  background-color: inherit;
+}
+
+/*#endregion TextMarkup*/
+
 /*#region MainMenu*/
 div.frontend_main_menu {
   width: 100%;
@@ -759,6 +779,35 @@ div#menu_brief_dialogue img {
   /* height: 75%; */
   height: 3.2vw;
   animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
+}
+
+/* MENU BRIEF: MISSION */
+
+div#menu_brief_mission .menu_elements_scrollable {
+  background-color: transparent;
+}
+
+div#menu_brief_mission .menu_elements_scrollable:first-child {
+  margin-top: 0.35vw;
+}
+
+div.menu_brief .menu_brief_mission_entry {
+  color: var(--text-color);
+  font-family: "London60";
+  font-size: var(--menu-font-size);
+  line-height: 140%;
+  width: 98%;
+  height: fit-content;
+  min-height: var(--item-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding-left: var(--item-padding-sides);
+  padding-right: var(--item-padding-sides);
+  margin-bottom: var(--item-margin);
 }
 
 /* MENU BRIEF: DIALOGUE */
