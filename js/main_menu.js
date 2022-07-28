@@ -136,7 +136,6 @@ const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 const MENU_PAGE = document.documentElement;
 const MENU_COLOR = "lightskyblue";
-MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
 
 let isScrollDown = false;
 let isCategorySelected = false;
@@ -178,6 +177,7 @@ localizeMenu();
 // STARTUP FUNCTIONS
 //
 
+MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
 setheaderTitle(HEADER_GTAV);
 setHeaderStats();
 setArrows();
