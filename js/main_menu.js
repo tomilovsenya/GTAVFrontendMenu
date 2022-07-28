@@ -20,6 +20,18 @@ const TAB_GALLERY = 7;
 const TAB_STORE = 8;
 const TAB_REPLAY = 9;
 
+const TAB_STATS_CATEGORY_SKILLS = {
+  id: $("#menu_stats_skills"),
+  category: $("#menu_stats_category_0"),
+  items: [
+    $("#menu_stats_category_0_0"),
+    $("#menu_stats_category_0_1"),
+    $("#menu_stats_category_0_2"),
+    $("#menu_stats_category_0_3"),
+  ],
+  activeItem: 0,
+};
+
 const TAB_BRIEF_CATEGORIES = [
   $("#menu_brief_mission"),
   $("#menu_brief_help"),
@@ -28,7 +40,8 @@ const TAB_BRIEF_CATEGORIES = [
   $("#menu_brief_newswire"),
 ];
 const TAB_STATS_CATEGORIES = [
-  $("#menu_stats_skills"),
+  // $("#menu_stats_skills"),
+  TAB_STATS_CATEGORY_SKILLS.id,
   $("#menu_stats_general"),
   $("#menu_stats_crimes"),
   $("#menu_stats_vehicles"),
@@ -141,6 +154,8 @@ let isScrollDown = false;
 let isCategorySelected = false;
 let activeTab = null;
 let activeCategory = null;
+let activeCategoryListItems = null;
+let activeCategoryListItemCurrent = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeElement = null;
@@ -217,10 +232,6 @@ function setActiveWindow(tabName) {
   console.log("Active window: " + activeWindow.name);
 }
 
-function fadeInWindow(window) {
-  $(this).addClass("fade_in");
-}
-
 function switchActiveWindow(tabActive) {
   if (tabActive.is(MENU_TAB_MAP.id)) {
     setActiveWindow(MENU_TAB_MAP);
@@ -266,8 +277,8 @@ function goFullScreen() {
   }
 }
 
-NAVBAR_RIGHT_ARROW.click("click", scrollRight);
-NAVBAR_LEFT_ARROW.click("click", scrollLeft);
+NAVBAR_RIGHT_ARROW.click("click", scrollTabRight);
+NAVBAR_LEFT_ARROW.click("click", scrollTabLeft);
 
 window.addEventListener(
   "keydown",
@@ -285,11 +296,19 @@ window.addEventListener(
       e.preventDefault();
       scrollUp();
     }
-    if (["KeyQ"].indexOf(e.code) > -1) {
+    if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
+      e.preventDefault();
       scrollLeft();
     }
-    if (["KeyE"].indexOf(e.code) > -1) {
+    if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
+      e.preventDefault();
       scrollRight();
+    }
+    if (["KeyQ"].indexOf(e.code) > -1) {
+      scrollTabLeft();
+    }
+    if (["KeyE"].indexOf(e.code) > -1) {
+      scrollTabRight();
     }
     if (["KeyF"].indexOf(e.code) > -1) {
       setMission("New mission");
@@ -371,13 +390,6 @@ function setTabDisabled() {
 // CATEGORIES LOGIC
 //
 
-let leftArrowSvg =
-  '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
-let rightArrowSvg =
-  ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
-let noArrowsTextCategory = "No Arrows (FALLBACK)";
-let noArrowsTextEntry = "No Arrows (FALLBACK)";
-
 // let menuCategories = $('.menu_categories').children()
 
 $(".menu_categories").children().click(updateMenuCategories);
@@ -451,6 +463,24 @@ $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
 $(".menu_entries_middle").children().on("categoryActive", setEntryActive);
 $(".menu_entries_middle").children().on("categoryDisabled", setEntryDisabled);
 
+let leftArrowSvg =
+  '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
+let rightArrowSvg =
+  ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
+
+function setRightTextArrows(text) {
+  if (!text.is($(".element_label_arrowed")))
+    text.addClass("element_label_arrowed");
+  $(".element_label_arrowed").before(leftArrowSvg);
+  $(".element_label_arrowed").after(rightArrowSvg);
+}
+
+function removeRightTextArrows(text) {
+  text.removeClass("element_label_arrowed");
+  text.prev(".menu_entry_arrow_left").remove();
+  text.next(".menu_entry_arrow_right").remove();
+}
+
 function setEntryActive() {
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
@@ -461,14 +491,9 @@ function setEntryActive() {
   activeEntryMiddle = $(this);
   activeEntryMiddle.focus();
 
-  let rightText = $(this).find(".element_label_right");
-  if (rightText.length != 0) {
-    let arrowsText = leftArrowSvg + rightText.html() + rightArrowSvg;
-    noArrowsTextEntry = rightText.html();
-    rightText.html(arrowsText);
-    // console.log("This category has right text: " + rightText.html());
-  }
-  // console.log("Active category is this: " + activeEntryMiddle.html());
+  let rightText = $(this).find(".element_label_right").first();
+  rightText.nextAll().hide();
+  if (rightText.length != 0) setRightTextArrows(rightText);
 }
 
 function setEntryDisabled() {
@@ -477,13 +502,8 @@ function setEntryDisabled() {
     color: "",
     "box-shadow": "",
   });
-  let rightText = $(this).find(".element_label_right");
-  if (rightText.length != 0) {
-    rightText.html(noArrowsTextEntry);
-    // console.log(
-    //   "This category has right text arrows removed: " + rightText.html()
-    // );
-  }
+  let rightText = $(this).find(".element_label_right").first();
+  if (rightText.length != 0) removeRightTextArrows(rightText);
 }
 
 function setCategoryActive() {
@@ -502,17 +522,32 @@ function setCategoryActive() {
   $(".menu_category_list_active_only").children(".element_list").hide();
   activeCategory.children(".element_list").show();
 
-  let rightText = $(this).find(".element_label_right");
-  if (rightText.length != 0) {
-    // let arrowsText = "\u2b9c" + rightText.html() + "\u2b9e";
-    let arrowsText = leftArrowSvg + rightText.html() + rightArrowSvg;
-    noArrowsTextCategory = rightText.html();
-    rightText.html(arrowsText);
-    // console.log("This category has right text: " + rightText.html());
+  // Right text (list) handling
+  let listItems = $(this).children(".element_list");
+  if (listItems.length > 0) {
+    updateListItems(listItems);
+    // activeCategoryListItems = $(this).find(".element_label_right");
+    // activeCategoryListItemCurrent = activeCategoryListItems.eq(0);
+    // let rightText = activeCategoryListItems.first();
+    // rightText.nextAll().hide();
+    // if (rightText.length != 0) setRightTextArrows(rightText);
   }
-  // console.log("Active category is this: " + activeCategory.html());
 }
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
+
+function updateListItems(listItems) {
+  let currentItem;
+  if (listItems.children(".element_label_right").length > 1)
+    currentItem = listItems
+      .children(".element_label_right")
+      .eq(TAB_STATS_CATEGORY_SKILLS.activeItem);
+  else currentItem = listItems.children(".element_label_right").eq(0);
+  let arrowedItem = listItems.children(".element_label_arrowed");
+  listItems.children().hide();
+  removeRightTextArrows(arrowedItem);
+  currentItem.show();
+  setRightTextArrows(currentItem);
+}
 
 function setCategoryDisabled() {
   $(this).css({
@@ -521,13 +556,7 @@ function setCategoryDisabled() {
     "box-shadow": "",
   });
   let rightText = $(this).find(".element_label_right");
-  if (rightText.length != 0) {
-    // rightText.html(rightText.html().substring(1, rightText.html().length - 1));
-    rightText.html(noArrowsTextCategory);
-    // console.log(
-    //   "This category has right text arrows removed: " + rightText.html()
-    // );
-  }
+  if (rightText.length != 0) removeRightTextArrows(rightText);
 }
 
 function setCategoryListActive() {
@@ -557,7 +586,7 @@ function setCategoryListActive() {
 //   activeTab.trigger
 // }
 
-function scrollLeft() {
+function scrollTabLeft() {
   if ($(".menu_buttons").children().length <= 1) return;
   if (activeTab == null) {
     activeTab = $(".menu_buttons").children().last();
@@ -573,7 +602,7 @@ function scrollLeft() {
   }
   activeTab[0].scrollIntoView(false);
 }
-function scrollRight() {
+function scrollTabRight() {
   if ($(".menu_buttons").children().length <= 1) return;
   if (activeTab == null) {
     activeTab = $(".menu_buttons").children().first();
@@ -606,6 +635,37 @@ function scrollDownElements() {
 function scrollUpElements() {
   if (!isCategorySelected) return;
   scrollUp();
+}
+
+let currentItemList = TAB_STATS_CATEGORY_SKILLS.category
+  .children(".element_list")
+  .children(".element_label_right");
+let activeItem = TAB_STATS_CATEGORY_SKILLS.activeItem;
+
+function scrollLeft() {
+  let listItemsLength = activeCategory
+    .children(".element_list")
+    .children(".element_label_right").length;
+  if (listItemsLength <= 1) return;
+  if (TAB_STATS_CATEGORY_SKILLS.activeItem == 0)
+    TAB_STATS_CATEGORY_SKILLS.activeItem =
+      TAB_STATS_CATEGORY_SKILLS.items.length - 1;
+  else TAB_STATS_CATEGORY_SKILLS.activeItem--;
+  updateListItems(activeCategory.children(".element_list"));
+}
+
+function scrollRight() {
+  let listItemsLength = activeCategory
+    .children(".element_list")
+    .children(".element_label_right").length;
+  if (listItemsLength <= 1) return;
+  if (
+    TAB_STATS_CATEGORY_SKILLS.activeItem ==
+    TAB_STATS_CATEGORY_SKILLS.items.length - 1
+  )
+    TAB_STATS_CATEGORY_SKILLS.activeItem = 0;
+  else TAB_STATS_CATEGORY_SKILLS.activeItem++;
+  updateListItems(activeCategory.children(".element_list"));
 }
 
 function scrollDown() {
@@ -672,9 +732,9 @@ function scrollUp() {
 // SCROLL ELEMENTS
 //
 
-let tabElements = $("#menu_brief_dialogue").children(".menu_elements_scrollable").children(
-  ".menu_brief_dialogue_entry"
-);
+let tabElements = $("#menu_brief_dialogue")
+  .children(".menu_elements_scrollable")
+  .children(".menu_brief_dialogue_entry");
 
 let maxElementsOnScreen = 8;
 let currentOverflowBottom = 8;
@@ -790,7 +850,9 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_BRIEF.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
-    if (activeCategoryElements.children(".menu_elements_scrollable").length == 0)
+    if (
+      activeCategoryElements.children(".menu_elements_scrollable").length == 0
+    )
       $("#menu_arrows_brief").hide();
     else $("#menu_arrows_brief").show();
   }
