@@ -174,6 +174,22 @@ function localizeMenu() {
 localizeMenu();
 
 //
+// SOUNDS
+//
+
+let canPlaySounds = false;
+
+const SFX_TAB_NAVIGATE = new Audio("sfx/TAB_NAVIGATE.wav");
+const SFX_MENU_MUSIC = new Audio("sfx/MENU_MUSIC.mp3");
+SFX_TAB_NAVIGATE.volume = 0.25;
+SFX_MENU_MUSIC.volume = 0.1;
+
+function playSFX(sfx) {
+  if (!canPlaySounds) return;
+  sfx.play();
+}
+
+//
 // STARTUP FUNCTIONS
 //
 
@@ -185,6 +201,7 @@ setArrows();
 setSingleTab();
 setActiveWindow(MENU_TAB_MAP);
 // setMissions();
+playSFX(SFX_MENU_MUSIC);
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -304,6 +321,7 @@ $(".menu_button").on("tabActive", setTabActive);
 $(".menu_button").on("tabDisabled", setTabDisabled);
 
 function clickTab() {
+  if ($(this).is(activeTab)) return;
   if (activeTab == null || activeTab == $(this)) {
     activeTab = $(this);
     activeTab.trigger("tabActive");
@@ -323,6 +341,7 @@ function setTabActive() {
     "box-shadow": "0px -0.4vw " + MENU_COLOR,
   });
   activeTab.focus();
+  playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
 
   isCategorySelected = false;
