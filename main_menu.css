@@ -78,7 +78,7 @@ body {
   overflow-x: hidden;
   margin: 0 auto;
   padding: 0px;
-  background-image: url("images/bg/background.jpg");
+  background-image: url("images/bg/background3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(0.25vw);
@@ -665,7 +665,6 @@ div.menu_elements {
 div.menu_elements_scrollable {
   width: 100%;
   background-color: var(--black-bg-color);
-  max-height: 87.5%;
   flex-direction: column;
   scroll-snap-type: mandatory;
   scroll-snap-align: start end;
@@ -755,14 +754,21 @@ div.menu_brief>div.menu_elements {
   scroll-behavior: smooth;
 }
 
-#menu_brief_notifications img,
-#menu_brief_dialogue img {
+div#menu_brief_notifications img,
+div#menu_brief_dialogue img {
   /* height: 75%; */
   height: 3.2vw;
   animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
 }
 
 /* MENU BRIEF: DIALOGUE */
+
+div#menu_brief_dialogue .menu_elements_scrollable {
+  background-color: transparent;
+  height: fit-content;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
 
 div.menu_brief .menu_brief_dialogue_entry {
   color: var(--text-color);
@@ -1213,6 +1219,10 @@ div#menu_settings_gamepad .menu_elements {
 div#menu_settings_gamepad img {
   pointer-events: none;
   height: 100%;
+}
+
+div#menu_settings_graphics .menu_elements_scrollable {
+  max-height: 87.5%;
 }
 
 /*#endregion MenuTabSettings*/

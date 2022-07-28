@@ -672,7 +672,7 @@ function scrollUp() {
 // SCROLL ELEMENTS
 //
 
-let tabElements = $("#menu_brief_dialogue").children(
+let tabElements = $("#menu_brief_dialogue").children(".menu_elements_scrollable").children(
   ".menu_brief_dialogue_entry"
 );
 
@@ -790,6 +790,9 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_BRIEF.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
+    if (activeCategoryElements.children(".menu_elements_scrollable").length == 0)
+      $("#menu_arrows_brief").hide();
+    else $("#menu_arrows_brief").show();
   }
 
   if (activeWindow.id == MENU_TAB_STATS.id) {
@@ -805,11 +808,9 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_GAME.id) {
     updateMissionCounter();
     updateMissionName();
+
     if ($("#menu_game_elements_missions").children().length <= 16)
-      activeWindow.window
-        .children(".menu_elements")
-        .children(".menu_entry_arrows")
-        .hide();
+      $("#menu_arrows_game_replay_mission").hide();
   }
 
   if (activeWindow.id == MENU_TAB_FRIENDS.id) {

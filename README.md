@@ -15,29 +15,32 @@ Demo available here: https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.h
 * Map dragging
 
 ### BRIEF
-* Right-side content change depending on active category (for testing, not finished)
+* All categories (WIP)
 
 ### STATS
-* Skills category
+* Skills category (WIP)
+* General category (WIP)
 * 100% Completion category
 
 ### SETTINGS
-* Graphics category (not full yet)
+* Gamepad category (WIP)
+* Mouse/Keyboard category (WIP)
+* Graphics category (WIP)
 
 ### GAME
-* Mission Replay category
+* Mission Replay category (WIP)
 
 ### ONLINE
-* Go category
+* Go category (WIP)
 
 ### FRIENDS
-* Not implemented yet
+* Friends screen (WIP)
 
 ### GALLERY
-* Not implemented yet
+* Gallery screen (WIP)
 
 ### STORE
 * Now Open!
 
 ### ROCKSTAR EDITOR
-* Rockstar Editor window
+* Rockstar Editor screen
