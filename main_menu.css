@@ -1351,6 +1351,8 @@ div.menu_game .menu_game_mission_info_objectives {
   background-color: var(--black-bg-color);
   width: 100%;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 div.menu_game .menu_game_mission_info_objectives .menu_entry {
@@ -1361,8 +1363,24 @@ div.menu_game .menu_game_mission_info_objectives .menu_entry:last-of-type {
   margin-bottom: 0;
 }
 
-button.menu_entry_objective {
+.menu_entry_objective {
+  width: 100%;
   height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.menu_entry_objective .menu_entry_objective_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu_entry_objective .menu_entry_objective_list span {
+  margin-right: 1vw;
 }
 
 button.menu_arrows_game {
