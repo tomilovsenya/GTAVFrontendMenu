@@ -1,29 +1,33 @@
-const GTAV = "Grand Theft Auto V";
-// const GTAV = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas excepturi atque aliquid necessitatibus nihil vero id assumenda numquam perferendis alias.';
-const GTAO = "Grand Theft Auto Online";
-const charName = "MICHAEL TOWNLEY";
-const charTime = "WEDNESDAY 18:35";
-const charCash = "BANK $550,590  CASH $530";
+//
+// CONSTANTS
+//
 
-const tab_map = 0;
-const tab_brief = 1;
-const tab_stats = 2;
-const tab_settings = 3;
-const tab_game = 4;
-const tab_online = 5;
-const tab_friends = 6;
-const tab_gallery = 7;
-const tab_store = 8;
-const tab_replay = 9;
+const HEADER_GTAV = "Grand Theft Auto V";
+// const HEADER_GTAV = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas excepturi atque aliquid necessitatibus nihil vero id assumenda numquam perferendis alias.';
+const HEADER_GTAO = "Grand Theft Auto Online";
+const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
+const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
+const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
 
-const catsBrief = [
+const TAB_MAP = 0;
+const TAB_BRIEF = 1;
+const TAB_STATS = 2;
+const TAB_SETTINGS = 3;
+const TAB_GAME = 4;
+const TAB_ONLINE = 5;
+const TAB_FRIENDS = 6;
+const TAB_GALLERY = 7;
+const TAB_STORE = 8;
+const TAB_REPLAY = 9;
+
+const TAB_BRIEF_CATEGORIES = [
   $("#menu_brief_mission"),
   $("#menu_brief_help"),
   $("#menu_brief_dialogue"),
   $("#menu_brief_notifications"),
   $("#menu_brief_newswire"),
 ];
-const catsStats = [
+const TAB_STATS_CATEGORIES = [
   $("#menu_stats_skills"),
   $("#menu_stats_general"),
   $("#menu_stats_crimes"),
@@ -33,7 +37,7 @@ const catsStats = [
   $("#menu_stats_weapons"),
   $("#menu_stats_100_completion"),
 ];
-const catsSettings = [
+const TAB_SETTINGS_CATEGORIES = [
   $("#menu_settings_gamepad"),
   $("#menu_settings_keyboard"),
   $("#menu_settings_keybind"),
@@ -49,11 +53,11 @@ const catsSettings = [
   $("#menu_settings_facebook"),
   $("#menu_settings_exclusive"),
 ];
-const catsGame = [
+const TAB_GAME_CATEGORIES = [
   $("#menu_game_replay_mission"),
   $("#menu_game_replay_strangers"),
 ];
-const catsFriends = [
+const TAB_FRIENDS_CATEGORIES = [
   $("#menu_friends_player_0"),
   $("#menu_friends_player_1"),
   $("#menu_friends_player_2"),
@@ -72,68 +76,67 @@ const catsFriends = [
   $("#menu_friends_player_15"),
 ];
 
-const tabMap = {
-  tab: tab_map,
+const MENU_TAB_MAP = {
+  tab: TAB_MAP,
   id: $("#tab_0"),
   window: $(".menu_map"),
 };
-const tabBrief = {
-  tab: tab_brief,
+const MENU_TAB_BRIEF = {
+  tab: TAB_BRIEF,
   id: $("#tab_1"),
   window: $(".menu_brief"),
-  cats: catsBrief,
+  cats: TAB_BRIEF_CATEGORIES,
 };
-const tabStats = {
-  tab: tab_stats,
+const MENU_TAB_STATS = {
+  tab: TAB_STATS,
   id: $("#tab_2"),
   window: $(".menu_stats"),
-  cats: catsStats,
+  cats: TAB_STATS_CATEGORIES,
 };
-const tabSettings = {
-  tab: tab_settings,
+const MENU_TAB_SETTINGS = {
+  tab: TAB_SETTINGS,
   id: $("#tab_3"),
   window: $(".menu_settings"),
-  cats: catsSettings,
+  cats: TAB_SETTINGS_CATEGORIES,
 };
-const tabGame = {
-  tab: tab_game,
+const MENU_TAB_GAME = {
+  tab: TAB_GAME,
   id: $("#tab_4"),
   window: $(".menu_game"),
-  cats: catsGame,
+  cats: TAB_GAME_CATEGORIES,
 };
-const tabOnline = {
-  tab: tab_online,
+const MENU_TAB_ONLINE = {
+  tab: TAB_ONLINE,
   id: $("#tab_5"),
   window: $(".menu_online"),
 };
-const tabFriends = {
-  tab: tab_friends,
+const MENU_TAB_FRIENDS = {
+  tab: TAB_FRIENDS,
   id: $("#tab_6"),
   window: $(".menu_friends"),
-  cats: catsFriends,
+  cats: TAB_FRIENDS_CATEGORIES,
 };
-const tabGallery = {
-  tab: tab_gallery,
+const MENU_TAB_GALLERY = {
+  tab: TAB_GALLERY,
   id: $("#tab_7"),
   window: $(".menu_gallery"),
 };
-const tabStore = {
-  tab: tab_store,
+const MENU_TAB_STORE = {
+  tab: TAB_STORE,
   id: $("#tab_8"),
   window: $(".menu_store"),
 };
-const tabReplay = {
-  tab: tab_replay,
+const MENU_TAB_REPLAY = {
+  tab: TAB_REPLAY,
   id: $("#tab_9"),
   window: $(".menu_replay"),
 };
 
-const leftArrow = $("#menu_arrow_left");
-const rightArrow = $("#menu_arrow_right");
-const menuPage = document.documentElement;
-// const menuColor = 'red'
-const menuColor = "lightskyblue";
-menuPage.style.setProperty("--menu-color", menuColor);
+const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
+const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
+const MENU_PAGE = document.documentElement;
+const MENU_COLOR = "lightskyblue";
+MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
 
 let isScrollDown = false;
 let isCategorySelected = false;
@@ -143,7 +146,7 @@ let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeElement = null;
 let activeCategoriesList = null;
-let activeWindow = tabMap;
+let activeWindow = MENU_TAB_MAP;
 
 //
 // MENU LOCALIZATION
@@ -175,12 +178,12 @@ localizeMenu();
 // STARTUP FUNCTIONS
 //
 
-setheaderTitle(GTAV);
+setheaderTitle(HEADER_GTAV);
 setHeaderStats();
 setArrows();
 // setFirstTab();
 setSingleTab();
-setActiveWindow(tabMap);
+setActiveWindow(MENU_TAB_MAP);
 // setMissions();
 
 //
@@ -202,35 +205,35 @@ function fadeInWindow(window) {
 }
 
 function switchActiveWindow(tabActive) {
-  if (tabActive.is(tabMap.id)) {
-    setActiveWindow(tabMap);
+  if (tabActive.is(MENU_TAB_MAP.id)) {
+    setActiveWindow(MENU_TAB_MAP);
   }
-  if (tabActive.is(tabBrief.id)) {
-    setActiveWindow(tabBrief);
+  if (tabActive.is(MENU_TAB_BRIEF.id)) {
+    setActiveWindow(MENU_TAB_BRIEF);
   }
-  if (tabActive.is(tabStats.id)) {
-    setActiveWindow(tabStats);
+  if (tabActive.is(MENU_TAB_STATS.id)) {
+    setActiveWindow(MENU_TAB_STATS);
   }
-  if (tabActive.is(tabSettings.id)) {
-    setActiveWindow(tabSettings);
+  if (tabActive.is(MENU_TAB_SETTINGS.id)) {
+    setActiveWindow(MENU_TAB_SETTINGS);
   }
-  if (tabActive.is(tabGame.id)) {
-    setActiveWindow(tabGame);
+  if (tabActive.is(MENU_TAB_GAME.id)) {
+    setActiveWindow(MENU_TAB_GAME);
   }
-  if (tabActive.is(tabOnline.id)) {
-    setActiveWindow(tabOnline);
+  if (tabActive.is(MENU_TAB_ONLINE.id)) {
+    setActiveWindow(MENU_TAB_ONLINE);
   }
-  if (tabActive.is(tabFriends.id)) {
-    setActiveWindow(tabFriends);
+  if (tabActive.is(MENU_TAB_FRIENDS.id)) {
+    setActiveWindow(MENU_TAB_FRIENDS);
   }
-  if (tabActive.is(tabGallery.id)) {
-    setActiveWindow(tabGallery);
+  if (tabActive.is(MENU_TAB_GALLERY.id)) {
+    setActiveWindow(MENU_TAB_GALLERY);
   }
-  if (tabActive.is(tabStore.id)) {
-    setActiveWindow(tabStore);
+  if (tabActive.is(MENU_TAB_STORE.id)) {
+    setActiveWindow(MENU_TAB_STORE);
   }
-  if (tabActive.is(tabReplay.id)) {
-    setActiveWindow(tabReplay);
+  if (tabActive.is(MENU_TAB_REPLAY.id)) {
+    setActiveWindow(MENU_TAB_REPLAY);
   }
 }
 
@@ -241,13 +244,13 @@ function switchActiveWindow(tabActive) {
 $("#menu_header_text").dblclick("dblclick", goFullScreen);
 
 function goFullScreen() {
-  if (menuPage.requestFullscreen) {
-    menuPage.requestFullscreen();
+  if (MENU_PAGE.requestFullscreen) {
+    MENU_PAGE.requestFullscreen();
   }
 }
 
-rightArrow.click("click", scrollRight);
-leftArrow.click("click", scrollLeft);
+NAVBAR_RIGHT_ARROW.click("click", scrollRight);
+NAVBAR_LEFT_ARROW.click("click", scrollLeft);
 
 window.addEventListener(
   "keydown",
@@ -317,7 +320,7 @@ function setTabActive() {
   $(this).css({
     "background-color": "#ffffff",
     color: "black",
-    "box-shadow": "0px -0.4vw " + menuColor,
+    "box-shadow": "0px -0.4vw " + MENU_COLOR,
   });
   activeTab.focus();
   switchActiveWindow($(this));
@@ -692,7 +695,7 @@ function setheaderTitle(title) {
   $("#menu_header_text").html(title);
 }
 function setHeaderStats() {
-  let headerStats = charName + "<br>" + charTime + "<br>" + charCash;
+  let headerStats = HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
   $("#menu_header_stats_text").html(headerStats);
 }
 function setTabName(index, name) {
@@ -746,22 +749,22 @@ function setMissions(missionName) {
 }
 
 function categoriesHandler(activeTab) {
-  if (activeWindow.id == tabBrief.id) {
+  if (activeWindow.id == MENU_TAB_BRIEF.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
   }
 
-  if (activeWindow.id == tabStats.id) {
+  if (activeWindow.id == MENU_TAB_STATS.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
   }
 
-  if (activeWindow.id == tabSettings.id) {
+  if (activeWindow.id == MENU_TAB_SETTINGS.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
   }
 
-  if (activeWindow.id == tabGame.id) {
+  if (activeWindow.id == MENU_TAB_GAME.id) {
     updateMissionCounter();
     updateMissionName();
     if ($("#menu_game_elements_missions").children().length <= 16)
@@ -771,7 +774,7 @@ function categoriesHandler(activeTab) {
         .hide();
   }
 
-  if (activeWindow.id == tabFriends.id) {
+  if (activeWindow.id == MENU_TAB_FRIENDS.id) {
     updateFriendCounter();
     updateFriendName();
   }
