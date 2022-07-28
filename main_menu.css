@@ -561,13 +561,14 @@ div.menu_window_text_full {
 }
 
 h1.menu_window_header {
-  width: 66%;
+  width: 100%;
   color: var(--text-color);
   font-family: "London60";
   font-weight: 100;
   /* font-size: 84px; */
   font-size: var(--menu-header-font-size);
   text-align: left;
+  white-space: nowrap;
   margin: 0;
   padding: 0;
   align-self: flex-start;

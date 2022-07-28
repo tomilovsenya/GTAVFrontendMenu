@@ -228,6 +228,11 @@
     "american": "Dialogue",
     "russian": "Диалог"
   },
+  {
+    "gxt": "menu_brief_newswire_header",
+    "american": "Rockstar Newswire",
+    "russian": "Rockstar Newswire"
+  },
 
   {
     "gxt": "menu_brief_mission_text",
@@ -243,6 +248,11 @@
     "gxt": "menu_brief_dialogue_text",
     "american": "Check back here to read what has been said.",
     "russian": "Здесь будут отображаться реплики персонажей."
+  },
+  {
+    "gxt": "menu_brief_newswire_text",
+    "american": "Rockstar Newswire should be here.",
+    "russian": "Здесь должна быть новостная лента Rockstar."
   },
 
   {
