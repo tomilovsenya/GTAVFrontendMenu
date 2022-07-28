@@ -396,7 +396,7 @@ function updateMenuCategories() {
       .children(".menu_entry")
       .eq(0);
     activeEntryMiddle.trigger("categoryActive");
-    isCategorySelected = true;
+    isCategorySelected = !$(this).is($(".menu_category_unselectable"));
   } else if (isCategorySelected) {
     escapeMenuEntriesMiddle();
   }
@@ -713,7 +713,8 @@ function setheaderTitle(title) {
   $("#menu_header_text").html(title);
 }
 function setHeaderStats() {
-  let headerStats = HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
+  let headerStats =
+    HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
   $("#menu_header_stats_text").html(headerStats);
 }
 function setTabName(index, name) {
