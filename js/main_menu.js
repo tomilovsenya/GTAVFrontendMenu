@@ -49,6 +49,9 @@ const catsSettings = [
   $("#menu_settings_facebook"),
   $("#menu_settings_exclusive"),
 ];
+const catsGame = [
+  $("#menu_game_replay_mission"),
+];
 const catsFriends = [
   $("#menu_friends_player_0"),
   $("#menu_friends_player_1"),
@@ -95,6 +98,7 @@ const tabGame = {
   tab: tab_game,
   id: $("#tab_4"),
   window: $(".menu_game"),
+  cats: catsGame,
 };
 const tabOnline = {
   tab: tab_online,
@@ -589,6 +593,7 @@ function scrollDown() {
     } else triggerEntry(tabElements.first());
     // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
     categoriesHandler(activeTab);
+    console.log("Active entry middle: " + activeEntryMiddle.parent().attr("id"))
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }
@@ -619,6 +624,7 @@ function scrollUp() {
     } else triggerEntry(tabElements.last());
     // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
     categoriesHandler(activeTab);
+    console.log("Active entry middle: " + activeEntryMiddle.parent().attr("id"))
     activeEntryMiddle[0].scrollIntoView(false);
   }
 }

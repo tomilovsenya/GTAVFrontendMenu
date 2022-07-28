@@ -45,6 +45,7 @@
 
   --menu-categories-width: 33.25%;
   --menu-elements-width: 66.55%;
+  --menu-elements-half-width: 49.825%;
 
   /* --item-height: 5.8%; */
   /* --item-double-height: 12.125%; */
@@ -481,7 +482,7 @@ div.element_arrows {
 
 button.menu_arrows {
   background-color: var(--black-bg-color);
-  width: 66.6%;
+  width: var(--menu-elements-width);
   height: var(--item-height);
   border: 0px;
   margin-top: var(--item-margin);
@@ -639,19 +640,6 @@ div.menu_entries_middle {
   justify-content: flex-start;
   align-self: baseline;
   overflow-y: hidden;
-}
-
-div.menu_categories_right {
-  background-color: var(--black-bg-color);
-  width: 33.15%;
-  height: fit-content;
-  max-height: 100%;
-  border: 0px;
-  float: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden;
 }
 
 div.menu_elements {
@@ -1238,6 +1226,7 @@ div.menu_game {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  display: none;
   /* display: none; */
   flex-wrap: nowrap;
 }
@@ -1255,20 +1244,23 @@ div.menu_game .menu_entry_empty_double {
 }
 
 div.menu_game .menu_elements {
-  width: 33.2%;
+  width: var(--menu-elements-width);
   /* height: 100%; */
   /* height: 170%; */
   /* height: fit-content; */
   min-height: 100%;
-  flex-direction: column;
+  flex-direction: row;
   background-color: transparent;
-  overflow: visible;
+  justify-content: space-between;
+  /* overflow: visible; */
   /* background-color: violet; */
   /* scroll-snap-type: mandatory; */
 }
 
 div.menu_game .menu_entries_middle {
-  width: 100%;
+  width: var(--menu-elements-half-width);
+  display: flex;
+  flex-direction: column;
   /* height: 100%; */
   /* overflow: hidden; */
   /* justify-self: flex-start; */
@@ -1277,30 +1269,11 @@ div.menu_game .menu_entries_middle {
 
 div.menu_game .menu_entries_middle .menu_entry {
   background-color: var(--black-bg-color);
+  scroll-snap-align: start end;
 }
 
 div.menu_game .menu_entries_middle .menu_entry:hover {
   background-color: var(--hover-color);
-}
-
-div.menu_game div.menu_elements_scrollable {
-  /* max-height: 100%; */
-  min-height: 100%;
-  overflow: hidden;
-}
-
-div.menu_game .menu_entry_arrows {
-  /* max-height: 100%; */
-  min-height: var(--item-height);
-}
-
-div.menu_game .menu_entry_arrows:hover {
-  /* max-height: 100%; */
-  background-color: var(--black-bg-color);
-}
-
-div.menu_game .menu_entries_middle button {
-  scroll-snap-align: start end;
 }
 
 div.menu_game>.menu_elements .element_list {
@@ -1308,7 +1281,7 @@ div.menu_game>.menu_elements .element_list {
   height: 1vw;
 }
 
-div.menu_settings .menu_elements button:last-of-type {
+div.menu_game .menu_entries_middle .menu_entry:last-of-type {
   margin-bottom: 0;
 }
 
@@ -1324,6 +1297,47 @@ div.menu_settings .menu_elements button:last-of-type {
   background-color: gold;
 }
 
+.element_checkbox_empty {
+  width: 1vw;
+  height: 1vw;
+  background-image: url(images/icons/checkbox_empty.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.element_checkbox_ticked {
+  width: 1vw;
+  height: 1vw;
+  background-image: url(images/icons/checkbox_ticked.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.menu_game .menu_game_mission_info {
+  background-color: transparent;
+  width: var(--menu-elements-half-width);
+  height: fit-content;
+  max-height: 100%;
+  border: 0px;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-self: flex-end;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+div.menu_game .menu_game_mission_info button {
+  background-color: var(--black-bg-color);
+}
+
+div.menu_game .menu_entry_empty_double {
+  background-color: transparent;
+  margin-bottom: var(--item-margin);
+}
+
 div.menu_game .element_mission_name {
   /* color: var(--text-color); */
   color: gold;
@@ -1333,6 +1347,33 @@ div.menu_game .element_mission_name {
   margin-left: var(--item-margin);
 }
 
+div.menu_game .menu_game_mission_info_objectives {
+  background-color: var(--black-bg-color);
+  width: 100%;
+  height: fit-content;
+}
+
+div.menu_game .menu_game_mission_info_objectives .menu_entry {
+  background-color: transparent;
+}
+
+div.menu_game .menu_game_mission_info_objectives .menu_entry:last-of-type {
+  margin-bottom: 0;
+}
+
+button.menu_entry_objective {
+  height: fit-content;
+}
+
+button.menu_arrows_game {
+  width: 33.15%;
+  color: var(--text-color);
+  float: left;
+  justify-content: space-between;
+  margin-left: calc(var(--menu-categories-width) + var(--tab-margin));
+  padding-left: var(--item-padding-sides);
+  padding-right: var(--item-padding-sides);
+}
 /*#endregion MenuTabGame*/
 
 /*#region MenuTabOnline*/
@@ -1385,7 +1426,7 @@ div.menu_friends .menu_elements {
 
 div.menu_friends_character {
   background-color: var(--black-bg-color);
-  width: 49.825%;
+  width: var(--menu-elements-half-width);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -1393,7 +1434,7 @@ div.menu_friends_character {
 }
 
 div.menu_friends_info {
-  width: 49.825%;
+  width: var(--menu-elements-half-width);
   height: 100%;
 }
 
@@ -1471,7 +1512,7 @@ div.menu_gallery_photo {
 }
 
 div.menu_gallery_photo:hover {
-  /* background-color: var(--hover-color); */
+  background-color: var(--hover-color);
   box-shadow: inset 0 0 10vw 0 var(--hover-color);
 }
 
@@ -1532,6 +1573,7 @@ div.menu_gallery_map img {
 }
 
 button.menu_arrows_gallery {
+  width: var(--menu-elements-width);;
   float: left;
   justify-content: space-between;
   color: var(--text-color);
