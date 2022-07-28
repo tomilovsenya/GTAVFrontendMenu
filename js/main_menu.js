@@ -571,6 +571,24 @@ function scrollRight() {
   activeTab[0].scrollIntoView(false);
 }
 
+function scrollDownCategory() {
+  if (isCategorySelected) return;
+  scrollDown();
+}
+function scrollUpCategory() {
+  if (isCategorySelected) return;
+  scrollUp();
+}
+
+function scrollDownElements() {
+  if (!isCategorySelected) return;
+  scrollDown();
+}
+function scrollUpElements() {
+  if (!isCategorySelected) return;
+  scrollUp();
+}
+
 function scrollDown() {
   if (activeCategory == null) return;
   if (!isCategorySelected) {
