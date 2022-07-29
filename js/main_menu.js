@@ -1105,15 +1105,10 @@ setFirstTab();
 //
 
 function drawMap() {
-  var mapImage = new Image();
-  // mapImage.src = "/images/maps/h4_fake_islandx.svg";
-  mapImage.src = "/images/maps/V_FakePrologueLand.svg";
-
-  // var mapImageUrl = "/images/maps/V_FakePrologueLand.svg";
-  var mapWidth = 2375;
-  var mapHeight = 1250;
-  // var mapWidth = 1990;
-  // var mapHeight = 1994;
+  var mapImage = $("#menu_map_image");
+  var mapImageUrl = mapImage.attr("src");
+  var mapWidth = mapImage.width();
+  var mapHeight = mapImage.height();
 
   var map = L.map("menu_map_window", {
     center: [mapWidth / 2, mapHeight / 2],
@@ -1130,16 +1125,12 @@ function drawMap() {
   });
 
   var mapImageBounds = [
-    [0, 0], // ?, Left width offset
-    [mapHeight, mapWidth], // Top height offset, ?
+    [0, 0],
+    [mapHeight, mapWidth],
   ];
-  var mapImageBounds2 = [
-    [0, 0], // ?, Left width offset
-    [mapHeight, mapWidth], // Top height offset, ?
-  ];
-  L.imageOverlay(mapImage.src, mapImageBounds).addTo(map);
-  map.setMaxBounds(mapImageBounds2);
-  map.fitBounds(mapImageBounds2);
+  L.imageOverlay(mapImageUrl, mapImageBounds).addTo(map);
+  map.setMaxBounds(mapImageBounds);
+  map.fitBounds(mapImageBounds);
   map.invalidateSize();
 }
 

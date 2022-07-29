@@ -754,22 +754,8 @@ div.menu_map {
   /* animation: 250ms ease 0ms 1 normal none running fadeInMapAnimation; */
 }
 
-img.menu_map_image {
-  width: 150%;
-  height: auto;
-  min-width: 100%;
-  max-width: 500%;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  cursor: grab;
-  /* pointer-events: none; */
-  scroll-behavior: smooth;
-  opacity: 100%;
-}
-
-img.menu_map_image:active {
-  cursor: grabbing;
+#menu_map_image {
+  display: none;
 }
 
 /*#endregion MenuTabMap*/
