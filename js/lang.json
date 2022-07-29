@@ -82,34 +82,33 @@
     "russian": "Навыки"
   },
   {
-    "gxt": "menu_stats_category_0_0",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_category_0_0", "menu_stats_category_1_0"],
     "american": "Michael",
     "russian": "Майкл"
   },
   {
-    "gxt": "menu_stats_category_0_1",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_category_0_1", "menu_stats_category_1_1"],
     "american": "Franklin",
     "russian": "Франклин"
   },
   {
-    "gxt": "menu_stats_category_0_2",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_category_0_2", "menu_stats_category_1_2"],
     "american": "Trevor",
     "russian": "Тревор"
   },
   {
-    "gxt": "menu_stats_category_0_3",
-    "american": "Brad",
-    "russian": "Брэд"
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_category_0_3", "menu_stats_category_1_3"],
+    "american": "Online Character",
+    "russian": "Сетевой персонаж"
   },
   {
     "gxt": "menu_stats_category_1",
     "american": "General",
     "russian": "Общие"
-  },
-  {
-    "gxt": "menu_stats_category_1_0",
-    "american": "Michael",
-    "russian": "Майкл"
   },
   {
     "gxt": "menu_stats_category_2",

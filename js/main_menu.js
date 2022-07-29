@@ -23,7 +23,12 @@ const TAB_REPLAY = 9;
 const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_0"),
-  items: [$("#menu_stats_category_0_0"), $("#menu_stats_category_0_1"), $("#menu_stats_category_0_2")],
+  items: [
+    $("#menu_stats_category_0_0"),
+    $("#menu_stats_category_0_1"),
+    $("#menu_stats_category_0_2"),
+    $("#menu_stats_category_0_3"),
+  ],
   wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -32,7 +37,12 @@ const TAB_STATS_CATEGORY_GENERAL = {
   // id: $("#menu_stats_general"),
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_1"),
-  items: [$("#menu_stats_category_1_0"), $("#menu_stats_category_1_1"), $("#menu_stats_category_1_2")],
+  items: [
+    $("#menu_stats_category_1_0"),
+    $("#menu_stats_category_1_1"),
+    $("#menu_stats_category_1_2"),
+    $("#menu_stats_category_1_3"),
+  ],
   wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -168,7 +178,7 @@ let activeWindow = MENU_TAB_MAP;
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage = menuLanguages[0];
+let menuLanguage = menuLanguages[1];
 
 function localizeMenu() {
   fetch("js/lang.json")
@@ -220,15 +230,35 @@ function playSFX(sfx) {
 // STARTUP FUNCTIONS
 //
 
-MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
-setheaderTitle(HEADER_GTAV);
-setHeaderStats();
-setArrows();
-// setFirstTab();
-setSingleTab();
-setActiveWindow(MENU_TAB_MAP);
-// setMissions();
-playSFX(SFX_MENU_MUSIC);
+const FRONTEND_MAIN_MENU = $(".frontend_main_menu");
+const MENU_LOADING_SPINNER = $(".menu_loading_spinner");
+
+function showLoadingSpinner() {
+  MENU_LOADING_SPINNER.show();
+}
+
+function loadMenu() {
+  FRONTEND_MAIN_MENU.hide();
+  MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
+  setheaderTitle(HEADER_GTAV);
+  setHeaderStats();
+  setArrows();
+  // setFirstTab();
+  setSingleTab();
+  setActiveWindow(MENU_TAB_MAP);
+  // setMissions();
+  playSFX(SFX_MENU_MUSIC);
+}
+
+function showMenu() {
+  MENU_LOADING_SPINNER.hide();
+  FRONTEND_MAIN_MENU.show();
+}
+
+loadMenu();
+showLoadingSpinner();
+// window.onload = setTimeout(showMenu, 2000);
+window.onload = showMenu;
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -400,7 +430,7 @@ function setTabDisabled() {
 
 // let menuCategories = $('.menu_categories').children()
 
-$(".menu_categories").children().click(updateMenuCategories);
+$(".menu_categories").children().click(clickCategory);
 $(".menu_entries_middle").children().click(updateMenuEntriesMiddle);
 
 function triggerCategory(category) {
@@ -424,11 +454,15 @@ function triggerEntry(category) {
   }
 }
 
-function updateMenuCategories() {
+function clickCategory() {
+  // Return if empty
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
-  if ($(this).is(activeCategory) && !isCategorySelected) {
+  // Scroll if contains items
+  if ($(this).is($(".menu_category_list")) && $(this).is(activeCategory)) scrollRight();
+  else if ($(this).is(activeCategory) && !isCategorySelected) {
     let selectedCategory = activeWindow.cats[$(this).index()];
+    // let selectedCategory = activeWindow.cats[$(this).index()].id;
     activeCategoryElements = selectedCategory;
     activeEntryMiddle = selectedCategory.children(".menu_elements_scrollable").children(".menu_entry").eq(0);
     activeEntryMiddle.trigger("categoryActive");
@@ -758,7 +792,7 @@ function scrollUpDialogue() {
 }
 
 $("#menu_brief_dialogue").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY < 0) {
+  if (e.originalEvent.deltaY / 40 < 0) {
     scrollUpDialogue();
   } else {
     scrollDownDialogue();
@@ -767,7 +801,7 @@ $("#menu_brief_dialogue").bind("wheel", function (e) {
 
 $(".menu_categories").bind("wheel", function (e) {
   if (isCategorySelected) return;
-  if (e.originalEvent.deltaY < 0) {
+  if (e.originalEvent.deltaY / 40 < 0) {
     scrollUp();
   } else {
     scrollDown();
@@ -776,7 +810,7 @@ $(".menu_categories").bind("wheel", function (e) {
 
 $(".menu_elements_scrollable").bind("wheel", function (e) {
   if (!isCategorySelected) return;
-  if (e.originalEvent.deltaY < 0) {
+  if (e.originalEvent.deltaY / 40 < 0) {
     scrollUp();
   } else {
     scrollDown();
@@ -1047,6 +1081,16 @@ function populateStatsBars() {
   generateStatsBar($("#menu_stats_skills_2_element_5"), 21, "bg_color_trevor", "bg_color_trevor_alpha");
   generateStatsBar($("#menu_stats_skills_2_element_6"), 14, "bg_color_trevor", "bg_color_trevor_alpha");
   generateStatsBar($("#menu_stats_skills_2_element_7"), 17, "bg_color_trevor", "bg_color_trevor_alpha");
+
+  generateStatsBar($("#menu_stats_skills_3_element_0"), 5, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_1"), 10, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_2"), 15, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_3"), 20, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_4"), 25, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_5"), 80, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_6"), 85, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_7"), 90, "bg_color_freemode", "bg_color_freemode_alpha");
+  generateStatsBar($("#menu_stats_skills_3_element_8"), 95, "bg_color_freemode", "bg_color_freemode_alpha");
 }
 
 //

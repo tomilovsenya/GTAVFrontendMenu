@@ -26,7 +26,9 @@
 
 <body>
   <div class="menu_bounding_box">
-    <div class="menu_loading_spinner"></div>
+    <div class="menu_loading_spinner">
+      <img src="images/gtav_savingspinner_ib.png" alt="">
+    </div>
     <div class="frontend_main_menu">
       <div class="menu_box">
         <div class="menu_header" tabindex="-1">
@@ -306,21 +308,23 @@
 
         <div class="menu_window menu_stats">
           <div class="menu_categories">
-            <button id="menu_stats_category_0" class="menu_entry menu_category_list menu_category_unselectable">
+            <button id="menu_stats_category_0" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list">
                 <span id="menu_stats_category_0_0" class="element_label_right"></span>
                 <span id="menu_stats_category_0_1" class="element_label_right"></span>
                 <span id="menu_stats_category_0_2" class="element_label_right"></span>
+                <span id="menu_stats_category_0_3" class="element_label_right"></span>
               </div>
             </button>
             <button id="menu_stats_category_1"
               class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list">
-                <span id="menu_stats_category_1_0" class="element_label_right">Michael 2</span>
-                <span id="menu_stats_category_1_1" class="element_label_right">Franklin 2</span>
-                <span id="menu_stats_category_1_2" class="element_label_right">Trevor 2</span>
+                <span id="menu_stats_category_1_0" class="element_label_right"></span>
+                <span id="menu_stats_category_1_1" class="element_label_right"></span>
+                <span id="menu_stats_category_1_2" class="element_label_right"></span>
+                <span id="menu_stats_category_1_3" class="element_label_right"></span>
               </div>
             </button>
             <button id="menu_stats_category_2"
@@ -466,8 +470,52 @@
               <span class="element_label">Lung Capacity</span>
             </button>
             <div class="menu_divider"></div>
-            <div id="menu_stats_skills_1_element_info_1" class="element_info" tabindex="-1">
+            <div id="menu_stats_skills_2_element_info_1" class="element_info" tabindex="-1">
               <span class="element_info_text">Trevor's stats</span>
+              <img class="element_info_icon" src="images/info.svg" alt="">
+            </div>
+          </div>
+
+          <div id="menu_stats_skills_3" class="menu_elements">
+            <button id="menu_stats_skills_3_element_0"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Special</span>
+            </button>
+            <button id="menu_stats_skills_3_element_1"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Stamina</span>
+            </button>
+            <button id="menu_stats_skills_3_element_2"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Shooting</span>
+            </button>
+            <button id="menu_stats_skills_3_element_3"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Strength</span>
+            </button>
+            <button id="menu_stats_skills_3_element_4"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Stealth</span>
+            </button>
+            <button id="menu_stats_skills_3_element_5"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Flying</span>
+            </button>
+            <button id="menu_stats_skills_3_element_6"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Driving</span>
+            </button>
+            <button id="menu_stats_skills_3_element_7"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Lung Capacity</span>
+            </button>
+            <button id="menu_stats_skills_3_element_8"
+              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+              <span class="element_label">Mental State</span>
+            </button>
+            <div class="menu_divider"></div>
+            <div id="menu_stats_skills_3_element_info_1" class="element_info" tabindex="-1">
+              <span class="element_info_text">Freemode stats</span>
               <img class="element_info_icon" src="images/info.svg" alt="">
             </div>
           </div>

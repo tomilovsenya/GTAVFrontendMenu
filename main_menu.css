@@ -131,7 +131,7 @@ div.menu_bounding_box {
 
 /*#endregion Main*/
 
-/*#region TextMarkup*/
+/*#region Markup*/
 mark.text_red {
   color: rgb(224, 50, 50);
   background-color: transparent;
@@ -149,7 +149,35 @@ mark.text_cologne {
   background-color: inherit;
 }
 
-/*#endregion TextMarkup*/
+.bg_color_michael {
+  background-color: rgb(101, 180, 212);
+}
+.bg_color_michael_alpha {
+  background-color: rgba(101, 180, 212, 0.25);
+}
+
+.bg_color_franklin {
+  background-color: rgb(171, 237, 171);
+}
+.bg_color_franklin_alpha {
+  background-color: rgba(171, 237, 171, 0.25);
+}
+
+.bg_color_trevor {
+  background-color: rgb(255, 163, 87);
+}
+.bg_color_trevor_alpha {
+  background-color: rgba(255, 163, 87, 0.25);
+}
+
+.bg_color_freemode {
+  background-color: rgb(45, 110, 185);
+}
+.bg_color_freemode_alpha {
+  background-color: rgba(45, 110, 185, 0.25);
+}
+
+/*#endregion Markup*/
 
 /*#region MainMenu*/
 div.frontend_main_menu {
@@ -539,18 +567,21 @@ img.menu_entry_arrow_right {
 }
 
 div.menu_loading_spinner {
-  background-image: url(images/gtav_savingspinner_ib.png);
-  background-size: contain;
-  width: 3vw;
-  height: 3vw;
-  animation: spin 1000ms infinite linear;
+  /* background-color: blue; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   pointer-events: none;
   z-index: -1;
-  position: absolute;
-  display: flex;
-  align-self: center;
-  justify-self: center;
-  display: none;
+  /* display: none; */
+}
+
+div.menu_loading_spinner img {
+  width: 3vw;
+  height: 3vw;
+  animation: spin 750ms infinite linear;
 }
 
 @keyframes spin {
@@ -975,30 +1006,6 @@ div.element_stat {
   /* margin-top: 5px; */
   display: flex;
   justify-content: space-between;
-}
-
-.bg_color_michael {
-  background-color: rgb(101, 180, 212);
-}
-
-.bg_color_michael_alpha {
-  background-color: rgba(101, 180, 212, 0.25);
-}
-
-.bg_color_franklin {
-  background-color: rgb(171, 237, 171);
-}
-
-.bg_color_franklin_alpha {
-  background-color: rgba(171, 237, 171, 0.25);
-}
-
-.bg_color_trevor {
-  background-color: rgb(255, 163, 87);
-}
-
-.bg_color_trevor_alpha {
-  background-color: rgba(255, 163, 87, 0.25)
 }
 
 div.element_stat_perc {
