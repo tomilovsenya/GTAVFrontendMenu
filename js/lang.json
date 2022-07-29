@@ -87,6 +87,21 @@
     "russian": "Майкл"
   },
   {
+    "gxt": "menu_stats_category_0_1",
+    "american": "Franklin",
+    "russian": "Франклин"
+  },
+  {
+    "gxt": "menu_stats_category_0_2",
+    "american": "Trevor",
+    "russian": "Тревор"
+  },
+  {
+    "gxt": "menu_stats_category_0_3",
+    "american": "Brad",
+    "russian": "Брэд"
+  },
+  {
     "gxt": "menu_stats_category_1",
     "american": "General",
     "russian": "Общие"
@@ -127,42 +142,42 @@
     "russian": "Прохождение на 100%"
   },
   {
-    "gxt": "menu_stats_skills_element_1",
+    "gxt": "menu_stats_skills_element_0",
     "american": "Special",
     "russian": "Спецспособность"
   },
   {
-    "gxt": "menu_stats_skills_element_2",
+    "gxt": "menu_stats_skills_element_1",
     "american": "Stamina",
     "russian": "Выносливость"
   },
   {
-    "gxt": "menu_stats_skills_element_3",
+    "gxt": "menu_stats_skills_element_2",
     "american": "Shooting",
     "russian": "Стрельба"
   },
   {
-    "gxt": "menu_stats_skills_element_4",
+    "gxt": "menu_stats_skills_element_3",
     "american": "Strength",
     "russian": "Сила"
   },
   {
-    "gxt": "menu_stats_skills_element_5",
+    "gxt": "menu_stats_skills_element_4",
     "american": "Stealth",
     "russian": "Скрытность"
   },
   {
-    "gxt": "menu_stats_skills_element_6",
+    "gxt": "menu_stats_skills_element_5",
     "american": "Flying",
     "russian": "Полет"
   },
   {
-    "gxt": "menu_stats_skills_element_7",
+    "gxt": "menu_stats_skills_element_6",
     "american": "Driving",
     "russian": "Вождение"
   },
   {
-    "gxt": "menu_stats_skills_element_8",
+    "gxt": "menu_stats_skills_element_7",
     "american": "Lung Capacity",
     "russian": "Обьем легких"
   },

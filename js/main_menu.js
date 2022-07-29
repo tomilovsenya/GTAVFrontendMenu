@@ -23,12 +23,8 @@ const TAB_REPLAY = 9;
 const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_0"),
-  items: [
-    $("#menu_stats_category_0_0"),
-    $("#menu_stats_category_0_1"),
-    $("#menu_stats_category_0_2"),
-    $("#menu_stats_category_0_3"),
-  ],
+  items: [$("#menu_stats_category_0_0"), $("#menu_stats_category_0_1"), $("#menu_stats_category_0_2"), $("#menu_stats_category_0_3")],
+  wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
 
@@ -66,10 +62,7 @@ const TAB_SETTINGS_CATEGORIES = [
   $("#menu_settings_facebook"),
   $("#menu_settings_exclusive"),
 ];
-const TAB_GAME_CATEGORIES = [
-  $("#menu_game_replay_mission"),
-  $("#menu_game_replay_strangers"),
-];
+const TAB_GAME_CATEGORIES = [$("#menu_game_replay_mission"), $("#menu_game_replay_strangers")];
 const TAB_FRIENDS_CATEGORIES = [
   $("#menu_friends_player_0"),
   $("#menu_friends_player_1"),
@@ -167,7 +160,7 @@ let activeWindow = MENU_TAB_MAP;
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage = menuLanguages[0];
+let menuLanguage = menuLanguages[1];
 
 function localizeMenu() {
   fetch("js/lang.json")
@@ -179,8 +172,7 @@ function localizeMenu() {
         let gxtID = "#" + data[i].gxt;
         let gxtElement = $(gxtID);
 
-        if (gxtElement.children().length > 0)
-          gxtElement.children().eq(0).text(data[i][menuLanguage]);
+        if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(data[i][menuLanguage]);
         else gxtElement.html(data[i][menuLanguage]);
       }
     });
@@ -312,9 +304,7 @@ window.addEventListener(
     }
     if (["KeyF"].indexOf(e.code) > -1) {
       setMission("New mission");
-      $(".menu_entries_middle")
-        .children()
-        .on("categoryActive", setCategoryActive);
+      $(".menu_entries_middle").children().on("categoryActive", setCategoryActive);
     }
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       escapeMenuEntriesMiddle();
@@ -365,9 +355,7 @@ function setTabActive() {
 
   isCategorySelected = false;
   escapeMenuEntriesMiddle();
-  let tabCategories = activeWindow.window
-    .children(".menu_categories")
-    .children(".menu_entry");
+  let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
   if (activeCategory != null) {
     // console.log("Not null: " + activeCategory);
     activeCategory.trigger("categoryDisabled");
@@ -422,10 +410,7 @@ function updateMenuCategories() {
   if ($(this).is(activeCategory) && !isCategorySelected) {
     let selectedCategory = activeWindow.cats[$(this).index()];
     activeCategoryElements = selectedCategory;
-    activeEntryMiddle = selectedCategory
-      .children(".menu_elements_scrollable")
-      .children(".menu_entry")
-      .eq(0);
+    activeEntryMiddle = selectedCategory.children(".menu_elements_scrollable").children(".menu_entry").eq(0);
     activeEntryMiddle.trigger("categoryActive");
     isCategorySelected = !$(this).is($(".menu_category_unselectable"));
   } else if (isCategorySelected) {
@@ -463,14 +448,11 @@ $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
 $(".menu_entries_middle").children().on("categoryActive", setEntryActive);
 $(".menu_entries_middle").children().on("categoryDisabled", setEntryDisabled);
 
-let leftArrowSvg =
-  '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
-let rightArrowSvg =
-  ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
+let leftArrowSvg = '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
+let rightArrowSvg = ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
 
 function setRightTextArrows(text) {
-  if (!text.is($(".element_label_arrowed")))
-    text.addClass("element_label_arrowed");
+  if (!text.is($(".element_label_arrowed"))) text.addClass("element_label_arrowed");
   $(".element_label_arrowed").before(leftArrowSvg);
   $(".element_label_arrowed").after(rightArrowSvg);
 }
@@ -513,8 +495,7 @@ function setCategoryActive() {
     "background-color": "#ffffff",
     color: "black",
   });
-  if (activeWindow.cats)
-    activeCategoryElements = activeWindow.cats[$(this).index()];
+  if (activeWindow.cats) activeCategoryElements = activeWindow.cats[$(this).index()];
   activeCategory = $(this);
   activeCategory.focus();
 
@@ -538,9 +519,7 @@ function setCategoryActive() {
 function updateListItems(listItems) {
   let currentItem;
   if (listItems.children(".element_label_right").length > 1)
-    currentItem = listItems
-      .children(".element_label_right")
-      .eq(TAB_STATS_CATEGORY_SKILLS.activeItem);
+    currentItem = listItems.children(".element_label_right").eq(TAB_STATS_CATEGORY_SKILLS.activeItem);
   else currentItem = listItems.children(".element_label_right").eq(0);
   let arrowedItem = listItems.children(".element_label_arrowed");
   listItems.children().hide();
@@ -637,43 +616,33 @@ function scrollUpElements() {
   scrollUp();
 }
 
-let currentItemList = TAB_STATS_CATEGORY_SKILLS.category
-  .children(".element_list")
-  .children(".element_label_right");
+let currentItemList = TAB_STATS_CATEGORY_SKILLS.category.find(".element_label_right");
 let activeItem = TAB_STATS_CATEGORY_SKILLS.activeItem;
 
 function scrollLeft() {
-  let listItemsLength = activeCategory
-    .children(".element_list")
-    .children(".element_label_right").length;
+  let listItemsLength = activeCategory.find(".element_label_right").length;
   if (listItemsLength <= 1) return;
-  if (TAB_STATS_CATEGORY_SKILLS.activeItem == 0)
-    TAB_STATS_CATEGORY_SKILLS.activeItem =
-      TAB_STATS_CATEGORY_SKILLS.items.length - 1;
+  if (TAB_STATS_CATEGORY_SKILLS.activeItem == 0) TAB_STATS_CATEGORY_SKILLS.activeItem = TAB_STATS_CATEGORY_SKILLS.items.length - 1;
   else TAB_STATS_CATEGORY_SKILLS.activeItem--;
   updateListItems(activeCategory.children(".element_list"));
+  activeCategoryElements = TAB_STATS_CATEGORY_SKILLS.wnds[TAB_STATS_CATEGORY_SKILLS.activeItem];
+  categoriesHandler(activeTab);
 }
 
 function scrollRight() {
-  let listItemsLength = activeCategory
-    .children(".element_list")
-    .children(".element_label_right").length;
+  let listItemsLength = activeCategory.find(".element_label_right").length;
   if (listItemsLength <= 1) return;
-  if (
-    TAB_STATS_CATEGORY_SKILLS.activeItem ==
-    TAB_STATS_CATEGORY_SKILLS.items.length - 1
-  )
-    TAB_STATS_CATEGORY_SKILLS.activeItem = 0;
+  if (TAB_STATS_CATEGORY_SKILLS.activeItem == TAB_STATS_CATEGORY_SKILLS.items.length - 1) TAB_STATS_CATEGORY_SKILLS.activeItem = 0;
   else TAB_STATS_CATEGORY_SKILLS.activeItem++;
   updateListItems(activeCategory.children(".element_list"));
+  activeCategoryElements = TAB_STATS_CATEGORY_SKILLS.wnds[TAB_STATS_CATEGORY_SKILLS.activeItem];
+  categoriesHandler(activeTab);
 }
 
 function scrollDown() {
   if (activeCategory == null) return;
   if (!isCategorySelected) {
-    let tabCategories = activeWindow.window
-      .children(".menu_categories")
-      .children(".menu_entry");
+    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
     if (activeCategory.attr("id") != tabCategories.last().attr("id")) {
       triggerCategory(activeCategory.next());
     } else triggerCategory(tabCategories.first());
@@ -701,9 +670,7 @@ function scrollDown() {
 function scrollUp() {
   if (activeCategory == null) return;
   if (!isCategorySelected) {
-    let tabCategories = activeWindow.window
-      .children(".menu_categories")
-      .children(".menu_entry");
+    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
     if (activeCategory.attr("id") != tabCategories.first().attr("id")) {
       triggerCategory(activeCategory.prev());
     } else triggerCategory(tabCategories.last());
@@ -711,9 +678,7 @@ function scrollUp() {
   } else {
     if (activeEntryMiddle == null) return;
     // let tabElements = activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
-    let tabElements = activeCategoryElements
-      .children(".menu_elements_scrollable")
-      .children(".menu_entry[id]");
+    let tabElements = activeCategoryElements.children(".menu_elements_scrollable").children(".menu_entry[id]");
 
     // triggerEntry(activeEntryMiddle.next());
     // activeEntryMiddle.scrollIntoView(false);
@@ -732,9 +697,7 @@ function scrollUp() {
 // SCROLL ELEMENTS
 //
 
-let tabElements = $("#menu_brief_dialogue")
-  .children(".menu_elements_scrollable")
-  .children(".menu_brief_dialogue_entry");
+let tabElements = $("#menu_brief_dialogue").find(".menu_brief_dialogue_entry");
 
 let maxElementsOnScreen = 8;
 let currentOverflowBottom = 8;
@@ -792,8 +755,7 @@ function setheaderTitle(title) {
   $("#menu_header_text").html(title);
 }
 function setHeaderStats() {
-  let headerStats =
-    HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
+  let headerStats = HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
   $("#menu_header_stats_text").html(headerStats);
 }
 function setTabName(index, name) {
@@ -831,11 +793,7 @@ function setFirstTab() {
 }
 
 function setMission(missionName) {
-  let mission = $(
-    '<button class="menu_entry menu_entry_middle"><span class="element_label">' +
-      missionName +
-      "</span></button>"
-  );
+  let mission = $('<button class="menu_entry menu_entry_middle"><span class="element_label">' + missionName + "</span></button>");
   $(".menu_game > .menu_entries_middle").append(mission);
   console.log("Mission added: " + missionName);
   // console.log(menuCategories)
@@ -850,16 +808,15 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_BRIEF.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
-    if (
-      activeCategoryElements.children(".menu_elements_scrollable").length == 0
-    )
-      $("#menu_arrows_brief").hide();
+    if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
     else $("#menu_arrows_brief").show();
   }
 
   if (activeWindow.id == MENU_TAB_STATS.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
+    activeCategoryElements.find(".element_stat").remove();
+    populateStatsBars();
   }
 
   if (activeWindow.id == MENU_TAB_SETTINGS.id) {
@@ -871,8 +828,7 @@ function categoriesHandler(activeTab) {
     updateMissionCounter();
     updateMissionName();
 
-    if ($("#menu_game_elements_missions").children().length <= 16)
-      $("#menu_arrows_game_replay_mission").hide();
+    if ($("#menu_game_elements_missions").children().length <= 16) $("#menu_arrows_game_replay_mission").hide();
   }
 
   if (activeWindow.id == MENU_TAB_FRIENDS.id) {
@@ -932,6 +888,119 @@ function updateFriendName() {
 }
 
 //
+// STATS TAB FUNCTIONS
+//
+
+function generateStatsBar(parent, percent, bg_color, bg_alpha) {
+  let elementStat = $('<div class="element_stat"></div>');
+  let elementStatPerc = $('<div class="element_stat_perc"></div>');
+  let elementStatPercSemi = $('<div class="element_stat_perc element_stat_perc_semi">');
+  let elementStatPercSemiFilled = $('<div class="element_stat_perc_semi_filled"></div>');
+  let elementStatPercEmpty = $('<div class="element_stat_perc element_stat_perc_empty"></div>');
+  let barPerc = [];
+  let statPerc;
+  let barsFilled;
+  let barSemiFilled;
+
+  // Set colors
+  elementStat.addClass(bg_alpha);
+  elementStatPerc.addClass(bg_color);
+  elementStatPercSemi.addClass(bg_alpha);
+  elementStatPercSemiFilled.addClass(bg_color);
+  elementStatPercEmpty.addClass(bg_alpha);
+  // Insert elements
+  parent.append(elementStat);
+  elementStatPercSemi.append(elementStatPercSemiFilled);
+
+  if (percent == 0) {
+    // Determine how many bars are filled and which one is semi-filled
+    barsFilled = 0;
+    barSemiFilled = -1;
+  } else if (percent < 20) {
+    barsFilled = 0;
+    barSemiFilled = 0;
+  } else if (percent >= 20 && percent < 40) {
+    barsFilled = 1;
+    barSemiFilled = 1;
+  } else if (percent >= 40 && percent < 60) {
+    barsFilled = 2;
+    barSemiFilled = 2;
+  } else if (percent >= 60 && percent < 80) {
+    barsFilled = 3;
+    barSemiFilled = 3;
+  } else if (percent >= 80 && percent < 100) {
+    barsFilled = 4;
+    barSemiFilled = 4;
+  } else if (percent >= 100) {
+    barsFilled = 5;
+    barSemiFilled = -1;
+  }
+
+  if (barsFilled == 0) {
+    barPerc[0] = elementStatPercEmpty;
+    barPerc[1] = elementStatPercEmpty.clone();
+    barPerc[2] = elementStatPercEmpty.clone();
+    barPerc[3] = elementStatPercEmpty.clone();
+    barPerc[4] = elementStatPercEmpty.clone();
+  } else if (barsFilled == 1) {
+    barPerc[0] = elementStatPerc;
+    barPerc[1] = elementStatPercEmpty;
+    barPerc[2] = elementStatPercEmpty.clone();
+    barPerc[3] = elementStatPercEmpty.clone();
+    barPerc[4] = elementStatPercEmpty.clone();
+  } else if (barsFilled == 2) {
+    barPerc[0] = elementStatPerc;
+    barPerc[1] = elementStatPerc.clone();
+    barPerc[2] = elementStatPercEmpty;
+    barPerc[3] = elementStatPercEmpty.clone();
+    barPerc[4] = elementStatPercEmpty.clone();
+  } else if (barsFilled == 3) {
+    barPerc[0] = elementStatPerc;
+    barPerc[1] = elementStatPerc.clone();
+    barPerc[2] = elementStatPerc.clone();
+    barPerc[3] = elementStatPercEmpty;
+    barPerc[4] = elementStatPercEmpty.clone();
+  } else if (barsFilled == 4) {
+    barPerc[0] = elementStatPerc;
+    barPerc[1] = elementStatPerc.clone();
+    barPerc[2] = elementStatPerc.clone();
+    barPerc[3] = elementStatPerc.clone();
+    barPerc[4] = elementStatPercEmpty;
+  } else if (barsFilled == 5) {
+    barPerc[0] = elementStatPerc;
+    barPerc[1] = elementStatPerc.clone();
+    barPerc[2] = elementStatPerc.clone();
+    barPerc[3] = elementStatPerc.clone();
+    barPerc[4] = elementStatPerc.clone();
+  }
+
+  barPerc[barSemiFilled] = elementStatPercSemi; // Set elementStatPercSemi by index in barPerc
+  statPerc = 5 * (percent - 20 * barsFilled); // Width in % of elementStatPercSemiFilled
+  elementStatPercSemiFilled.css({ width: statPerc + "%" }); // Set CSS width of elementStatPercSemiFilled
+  elementStat.append(barPerc);
+}
+
+function populateStatsBars() {
+  generateStatsBar($("#menu_stats_skills_element_0"), 5, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_1"), 10, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_2"), 20, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_3"), 30, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_4"), 40, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_5"), 50, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_6"), 60, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_7"), 70, "bg_color_blue", "bg_color_blue_alpha");
+
+  generateStatsBar($("#menu_stats_skills_1_element_0"), 70, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_1"), 60, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_2"), 50, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_3"), 40, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_4"), 30, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_5"), 20, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_6"), 10, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_7"), 5, "bg_color_green", "bg_color_green_alpha");
+}
+
+//
 // STARTUP FUNCTIONS AFTER EVERYTHING IS SET
 //
 
@@ -943,21 +1012,10 @@ setFirstTab();
 
 const mapWindow = $(".menu_map");
 const mapImage = $(".menu_map_image");
-const mapOffsets = [
-  mapImage.width() * 0.000625,
-  mapImage.height() * 0.005,
-  0,
-  mapImage.height() * 0.000625,
-];
+const mapOffsets = [mapImage.width() * 0.000625, mapImage.height() * 0.005, 0, mapImage.height() * 0.000625];
 const cont = [
-  mapWindow.position().left +
-    mapWindow.width() -
-    mapImage.width() +
-    mapOffsets[0],
-  mapWindow.position().top +
-    mapWindow.height() -
-    mapImage.height() +
-    mapOffsets[1],
+  mapWindow.position().left + mapWindow.width() - mapImage.width() + mapOffsets[0],
+  mapWindow.position().top + mapWindow.height() - mapImage.height() + mapOffsets[1],
   mapWindow.position().left + mapOffsets[2],
   mapWindow.position().top + mapOffsets[3],
 ];
@@ -972,9 +1030,7 @@ mapImage.draggable({
 // 100% COMPLETION CHART
 //
 
-var ctx = document
-  .getElementById("menu_stats_100_completion_chart")
-  .getContext("2d");
+var ctx = document.getElementById("menu_stats_100_completion_chart").getContext("2d");
 
 const data = {
   labels: ["Red", "Blue", "Yellow"],
