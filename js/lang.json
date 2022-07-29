@@ -130,7 +130,7 @@
     "gxt": "menu_stats_category_5",
     "american": "Combat",
     "russian": "Бой"
-  },  
+  },
   {
     "gxt": "menu_stats_category_6",
     "american": "Weapons",
@@ -142,44 +142,52 @@
     "russian": "Прохождение на 100%"
   },
   {
-    "gxt": "menu_stats_skills_element_0",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_0", "menu_stats_skills_1_element_0", "menu_stats_skills_2_element_0"],
     "american": "Special",
     "russian": "Спецспособность"
   },
   {
-    "gxt": "menu_stats_skills_element_1",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_1", "menu_stats_skills_1_element_1", "menu_stats_skills_2_element_1"],
     "american": "Stamina",
     "russian": "Выносливость"
   },
   {
-    "gxt": "menu_stats_skills_element_2",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_2", "menu_stats_skills_1_element_2", "menu_stats_skills_2_element_2"],
     "american": "Shooting",
     "russian": "Стрельба"
   },
   {
-    "gxt": "menu_stats_skills_element_3",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_3", "menu_stats_skills_1_element_3", "menu_stats_skills_2_element_3"],
     "american": "Strength",
     "russian": "Сила"
   },
   {
-    "gxt": "menu_stats_skills_element_4",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_4", "menu_stats_skills_1_element_4", "menu_stats_skills_2_element_4"],
     "american": "Stealth",
     "russian": "Скрытность"
   },
   {
-    "gxt": "menu_stats_skills_element_5",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_5", "menu_stats_skills_1_element_5", "menu_stats_skills_2_element_5"],
     "american": "Flying",
     "russian": "Полет"
   },
   {
-    "gxt": "menu_stats_skills_element_6",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_6", "menu_stats_skills_1_element_6", "menu_stats_skills_2_element_6"],
     "american": "Driving",
     "russian": "Вождение"
   },
   {
-    "gxt": "menu_stats_skills_element_7",
+    "multiple_gxt": true,
+    "gxt": ["menu_stats_skills_element_7", "menu_stats_skills_1_element_7", "menu_stats_skills_2_element_7"],
     "american": "Lung Capacity",
-    "russian": "Обьем легких"
+    "russian": "Объем легких"
   },
   {
     "gxt": "menu_stats_skills_element_info_1",

@@ -23,12 +23,7 @@ const TAB_REPLAY = 9;
 const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_0"),
-  items: [
-    $("#menu_stats_category_0_0"),
-    $("#menu_stats_category_0_1"),
-    $("#menu_stats_category_0_2"),
-    $("#menu_stats_category_0_3"),
-  ],
+  items: [$("#menu_stats_category_0_0"), $("#menu_stats_category_0_1"), $("#menu_stats_category_0_2")],
   wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -37,12 +32,7 @@ const TAB_STATS_CATEGORY_GENERAL = {
   // id: $("#menu_stats_general"),
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_1"),
-  items: [
-    $("#menu_stats_category_1_0"),
-    $("#menu_stats_category_1_1"),
-    $("#menu_stats_category_1_2"),
-    $("#menu_stats_category_1_3"),
-  ],
+  items: [$("#menu_stats_category_1_0"), $("#menu_stats_category_1_1"), $("#menu_stats_category_1_2")],
   wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -187,11 +177,28 @@ function localizeMenu() {
     })
     .then((data) => {
       for (var i = 0; i < data.length; i++) {
-        let gxtID = "#" + data[i].gxt;
-        let gxtElement = $(gxtID);
+        // let allGXT = JSON.parse(data.gxt);
+        // let gxtLength = allGXT.length;
+        // if (gxtLength > 1) {
+        //   console.log("More than 1 GXT: " + data[i].gxt + " " + gxtLength);
+        // }
+        let gxtID;
+        let gxtElement;
 
-        if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(data[i][menuLanguage]);
-        else gxtElement.html(data[i][menuLanguage]);
+        if (data[i].multiple_gxt) {
+          // console.log("Multiple GXT of length " + data[i].gxt.length + ": " + data[i].gxt);
+          for (var j = 0; j < data[i].gxt.length; j++) {
+            gxtID = "#" + data[i].gxt[j];
+            gxtElement = $(gxtID);
+            if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(data[i][menuLanguage]);
+            else gxtElement.html(data[i][menuLanguage]);
+          }
+        } else {
+          gxtID = "#" + data[i].gxt;
+          gxtElement = $(gxtID);
+          if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(data[i][menuLanguage]);
+          else gxtElement.html(data[i][menuLanguage]);
+        }
       }
     });
 }
