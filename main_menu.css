@@ -747,18 +747,11 @@ div.menu_map {
   margin-bottom: 0px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* display: none; */
   white-space: nowrap;
   display: flex;
-  opacity: 50%;
   overflow: hidden;
   /* display: none; */
-  animation: 250ms ease 0ms 1 normal none running fadeInMapAnimation;
-}
-
-div.menu_map:active {
-  opacity: 100%;
+  /* animation: 250ms ease 0ms 1 normal none running fadeInMapAnimation; */
 }
 
 img.menu_map_image {

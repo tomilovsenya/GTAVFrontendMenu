@@ -253,6 +253,7 @@ function loadMenu() {
 function showMenu() {
   MENU_LOADING_SPINNER.hide();
   FRONTEND_MAIN_MENU.show();
+  drawMap();
 }
 
 loadMenu();
@@ -353,8 +354,8 @@ window.addEventListener(
       scrollTabRight();
     }
     if (["KeyF"].indexOf(e.code) > -1) {
-      setMission("New mission");
-      $(".menu_entries_middle").children().on("categoryActive", setCategoryActive);
+      // setMission("New mission");
+      // $(".menu_entries_middle").children().on("categoryActive", setCategoryActive);
     }
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       escapeMenuEntriesMiddle();
@@ -1100,24 +1101,49 @@ function populateStatsBars() {
 setFirstTab();
 
 //
-// DRAGGABLE MAP
+// NEW MAP
 //
 
-const mapWindow = $(".menu_map");
-const mapImage = $(".menu_map_image");
-const mapOffsets = [mapImage.width() * 0.000625, mapImage.height() * 0.005, 0, mapImage.height() * 0.000625];
-const cont = [
-  mapWindow.position().left + mapWindow.width() - mapImage.width() + mapOffsets[0],
-  mapWindow.position().top + mapWindow.height() - mapImage.height() + mapOffsets[1],
-  mapWindow.position().left + mapOffsets[2],
-  mapWindow.position().top + mapOffsets[3],
-];
+function drawMap() {
+  var mapImage = new Image();
+  // mapImage.src = "/images/maps/h4_fake_islandx.svg";
+  mapImage.src = "/images/maps/V_FakePrologueLand.svg";
 
-mapImage.draggable({
-  containment: cont,
-  grid: [2.5, 2.5],
-  drag: function (event, ui) {},
-});
+  // var mapImageUrl = "/images/maps/V_FakePrologueLand.svg";
+  var mapWidth = 2375;
+  var mapHeight = 1250;
+  // var mapWidth = 1990;
+  // var mapHeight = 1994;
+
+  var map = L.map("menu_map_window", {
+    center: [mapWidth / 2, mapHeight / 2],
+    zoom: 2,
+    zoomControl: false,
+    minZoom: 0,
+    maxZoom: 2,
+    zoomSnap: 0,
+    doubleClickZoom: false,
+    maxBoundsViscosity: 1,
+    crs: L.CRS.Simple,
+    wheelDebounceTime: 1,
+    wheelPxPerZoomLevel: 50,
+  });
+
+  var mapImageBounds = [
+    [0, 0], // ?, Left width offset
+    [mapHeight, mapWidth], // Top height offset, ?
+  ];
+  var mapImageBounds2 = [
+    [0, 0], // ?, Left width offset
+    [mapHeight, mapWidth], // Top height offset, ?
+  ];
+  L.imageOverlay(mapImage.src, mapImageBounds).addTo(map);
+  map.setMaxBounds(mapImageBounds2);
+  map.fitBounds(mapImageBounds2);
+  map.invalidateSize();
+}
+
+// window.onload = drawMap;
 
 //
 // 100% COMPLETION CHART
