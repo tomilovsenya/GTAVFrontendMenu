@@ -23,7 +23,26 @@ const TAB_REPLAY = 9;
 const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_0"),
-  items: [$("#menu_stats_category_0_0"), $("#menu_stats_category_0_1"), $("#menu_stats_category_0_2"), $("#menu_stats_category_0_3")],
+  items: [
+    $("#menu_stats_category_0_0"),
+    $("#menu_stats_category_0_1"),
+    $("#menu_stats_category_0_2"),
+    $("#menu_stats_category_0_3"),
+  ],
+  wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
+  activeItem: 0,
+};
+
+const TAB_STATS_CATEGORY_GENERAL = {
+  // id: $("#menu_stats_general"),
+  id: $("#menu_stats_skills"),
+  category: $("#menu_stats_category_1"),
+  items: [
+    $("#menu_stats_category_1_0"),
+    $("#menu_stats_category_1_1"),
+    $("#menu_stats_category_1_2"),
+    $("#menu_stats_category_1_3"),
+  ],
   wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -37,8 +56,9 @@ const TAB_BRIEF_CATEGORIES = [
 ];
 const TAB_STATS_CATEGORIES = [
   // $("#menu_stats_skills"),
-  TAB_STATS_CATEGORY_SKILLS.id,
-  $("#menu_stats_general"),
+  TAB_STATS_CATEGORY_SKILLS,
+  // $("#menu_stats_general"),
+  TAB_STATS_CATEGORY_GENERAL,
   $("#menu_stats_crimes"),
   $("#menu_stats_vehicles"),
   $("#menu_stats_cash"),
@@ -147,8 +167,6 @@ let isScrollDown = false;
 let isCategorySelected = false;
 let activeTab = null;
 let activeCategory = null;
-let activeCategoryListItems = null;
-let activeCategoryListItemCurrent = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeElement = null;
@@ -488,16 +506,25 @@ function setEntryDisabled() {
   if (rightText.length != 0) removeRightTextArrows(rightText);
 }
 
+let activeCategoryObject = null;
+
 function setCategoryActive() {
+  // Return if empty
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
+  // Set CSS
   $(this).css({
     "background-color": "#ffffff",
     color: "black",
   });
-  if (activeWindow.cats) activeCategoryElements = activeWindow.cats[$(this).index()];
+  if (activeWindow.cats && activeWindow.cats[$(this).index()].id != undefined) {
+    // activeCategoryElements = activeWindow.cats[$(this).index()].id;
+    activeCategoryObject = activeWindow.cats[$(this).index()];
+    activeCategoryElements = activeCategoryObject.wnds[activeCategoryObject.activeItem];
+  } else activeCategoryElements = activeWindow.cats[$(this).index()];
   activeCategory = $(this);
   activeCategory.focus();
+  // console.log("Active category object: " + activeCategoryObject.activeItem);
 
   // Only show element_list for active category
   $(".menu_category_list_active_only").children(".element_list").hide();
@@ -507,26 +534,9 @@ function setCategoryActive() {
   let listItems = $(this).children(".element_list");
   if (listItems.length > 0) {
     updateListItems(listItems);
-    // activeCategoryListItems = $(this).find(".element_label_right");
-    // activeCategoryListItemCurrent = activeCategoryListItems.eq(0);
-    // let rightText = activeCategoryListItems.first();
-    // rightText.nextAll().hide();
-    // if (rightText.length != 0) setRightTextArrows(rightText);
   }
 }
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
-
-function updateListItems(listItems) {
-  let currentItem;
-  if (listItems.children(".element_label_right").length > 1)
-    currentItem = listItems.children(".element_label_right").eq(TAB_STATS_CATEGORY_SKILLS.activeItem);
-  else currentItem = listItems.children(".element_label_right").eq(0);
-  let arrowedItem = listItems.children(".element_label_arrowed");
-  listItems.children().hide();
-  removeRightTextArrows(arrowedItem);
-  currentItem.show();
-  setRightTextArrows(currentItem);
-}
 
 function setCategoryDisabled() {
   $(this).css({
@@ -536,6 +546,18 @@ function setCategoryDisabled() {
   });
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) removeRightTextArrows(rightText);
+}
+
+function updateListItems(listItems) {
+  let currentItem;
+  if (listItems.children(".element_label_right").length > 1)
+    currentItem = listItems.children(".element_label_right").eq(activeCategoryObject.activeItem);
+  else currentItem = listItems.children(".element_label_right").eq(0);
+  let arrowedItem = listItems.children(".element_label_arrowed");
+  listItems.children().hide();
+  removeRightTextArrows(arrowedItem);
+  currentItem.show();
+  setRightTextArrows(currentItem);
 }
 
 function setCategoryListActive() {
@@ -616,27 +638,39 @@ function scrollUpElements() {
   scrollUp();
 }
 
-let currentItemList = TAB_STATS_CATEGORY_SKILLS.category.find(".element_label_right");
-let activeItem = TAB_STATS_CATEGORY_SKILLS.activeItem;
+let currentItemList;
+let activeItem;
 
 function scrollLeft() {
+  if (activeCategoryObject) {
+    currentItemList = activeCategoryObject.category.find(".element_label_right");
+    activeItem = activeCategoryObject.activeItem;
+  }
   let listItemsLength = activeCategory.find(".element_label_right").length;
   if (listItemsLength <= 1) return;
-  if (TAB_STATS_CATEGORY_SKILLS.activeItem == 0) TAB_STATS_CATEGORY_SKILLS.activeItem = TAB_STATS_CATEGORY_SKILLS.items.length - 1;
-  else TAB_STATS_CATEGORY_SKILLS.activeItem--;
+  if (activeCategoryObject.activeItem == 0) activeCategoryObject.activeItem = activeCategoryObject.items.length - 1;
+  else activeCategoryObject.activeItem--;
   updateListItems(activeCategory.children(".element_list"));
-  activeCategoryElements = TAB_STATS_CATEGORY_SKILLS.wnds[TAB_STATS_CATEGORY_SKILLS.activeItem];
+  activeCategoryElements = activeCategoryObject.wnds[activeCategoryObject.activeItem];
   categoriesHandler(activeTab);
+  // console.log("Active category activeItem: " + activeCategoryObject.activeItem);
+  // console.log("Active category: " + activeCategoryObject.category.attr("id"));
 }
 
 function scrollRight() {
+  if (activeCategoryObject) {
+    currentItemList = activeCategoryObject.category.find(".element_label_right");
+    activeItem = activeCategoryObject.activeItem;
+  }
   let listItemsLength = activeCategory.find(".element_label_right").length;
   if (listItemsLength <= 1) return;
-  if (TAB_STATS_CATEGORY_SKILLS.activeItem == TAB_STATS_CATEGORY_SKILLS.items.length - 1) TAB_STATS_CATEGORY_SKILLS.activeItem = 0;
-  else TAB_STATS_CATEGORY_SKILLS.activeItem++;
+  if (activeCategoryObject.activeItem == activeCategoryObject.items.length - 1) activeCategoryObject.activeItem = 0;
+  else activeCategoryObject.activeItem++;
   updateListItems(activeCategory.children(".element_list"));
-  activeCategoryElements = TAB_STATS_CATEGORY_SKILLS.wnds[TAB_STATS_CATEGORY_SKILLS.activeItem];
+  activeCategoryElements = activeCategoryObject.wnds[activeCategoryObject.activeItem];
   categoriesHandler(activeTab);
+  // console.log("Active category activeItem: " + activeCategoryObject.activeItem);
+  // console.log("Active category: " + activeCategoryObject.category.attr("id"));
 }
 
 function scrollDown() {
@@ -793,7 +827,9 @@ function setFirstTab() {
 }
 
 function setMission(missionName) {
-  let mission = $('<button class="menu_entry menu_entry_middle"><span class="element_label">' + missionName + "</span></button>");
+  let mission = $(
+    '<button class="menu_entry menu_entry_middle"><span class="element_label">' + missionName + "</span></button>"
+  );
   $(".menu_game > .menu_entries_middle").append(mission);
   console.log("Mission added: " + missionName);
   // console.log(menuCategories)
@@ -817,6 +853,8 @@ function categoriesHandler(activeTab) {
     if (activeCategoryElements) activeCategoryElements.show();
     activeCategoryElements.find(".element_stat").remove();
     populateStatsBars();
+    // console.log("Active category:" + activeCategory.attr("id"));
+    // console.log("Active category elements:" + activeCategoryElements.attr("id"));
   }
 
   if (activeWindow.id == MENU_TAB_SETTINGS.id) {
