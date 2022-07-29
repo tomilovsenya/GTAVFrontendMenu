@@ -133,12 +133,12 @@ div.menu_bounding_box {
 
 /*#region TextMarkup*/
 mark.text_red {
-  color: rgb(224,	50,	50);
+  color: rgb(224, 50, 50);
   background-color: transparent;
 }
 
 mark.text_green {
-  color: rgb(114,	204,	114);
+  color: rgb(114, 204, 114);
   background-color: transparent;
 }
 
@@ -977,18 +977,28 @@ div.element_stat {
   justify-content: space-between;
 }
 
-.bg_color_blue {
-  background-color: #6db9d7;
-}
-.bg_color_blue_alpha {
-  background-color: #6db9d740;
+.bg_color_michael {
+  background-color: rgb(101, 180, 212);
 }
 
-.bg_color_green {
-  background-color: #90ee90;
+.bg_color_michael_alpha {
+  background-color: rgba(101, 180, 212, 0.25);
 }
-.bg_color_green_alpha {
-  background-color: #90ee9040;
+
+.bg_color_franklin {
+  background-color: rgb(171, 237, 171);
+}
+
+.bg_color_franklin_alpha {
+  background-color: rgba(171, 237, 171, 0.25);
+}
+
+.bg_color_trevor {
+  background-color: rgb(255, 163, 87);
+}
+
+.bg_color_trevor_alpha {
+  background-color: rgba(255, 163, 87, 0.25)
 }
 
 div.element_stat_perc {
@@ -1467,6 +1477,7 @@ button.menu_arrows_game {
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
 }
+
 /*#endregion MenuTabGame*/
 
 /*#region MenuTabOnline*/
@@ -1680,7 +1691,8 @@ div.menu_gallery_map img {
 }
 
 button.menu_arrows_gallery {
-  width: var(--menu-elements-width);;
+  width: var(--menu-elements-width);
+  ;
   float: left;
   justify-content: space-between;
   color: var(--text-color);

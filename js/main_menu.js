@@ -168,7 +168,7 @@ let activeWindow = MENU_TAB_MAP;
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage = menuLanguages[1];
+let menuLanguage = menuLanguages[0];
 
 function localizeMenu() {
   fetch("js/lang.json")
@@ -177,11 +177,6 @@ function localizeMenu() {
     })
     .then((data) => {
       for (var i = 0; i < data.length; i++) {
-        // let allGXT = JSON.parse(data.gxt);
-        // let gxtLength = allGXT.length;
-        // if (gxtLength > 1) {
-        //   console.log("More than 1 GXT: " + data[i].gxt + " " + gxtLength);
-        // }
         let gxtID;
         let gxtElement;
 
@@ -948,7 +943,7 @@ function generateStatsBar(parent, percent, bg_color, bg_alpha) {
   let barSemiFilled;
 
   // Set colors
-  elementStat.addClass(bg_alpha);
+  // elementStat.addClass(bg_alpha); // Verify if background should be colored
   elementStatPerc.addClass(bg_color);
   elementStatPercSemi.addClass(bg_alpha);
   elementStatPercSemiFilled.addClass(bg_color);
@@ -1026,23 +1021,32 @@ function generateStatsBar(parent, percent, bg_color, bg_alpha) {
 }
 
 function populateStatsBars() {
-  generateStatsBar($("#menu_stats_skills_element_0"), 5, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_1"), 10, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_2"), 20, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_3"), 30, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_4"), 40, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_5"), 50, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_6"), 60, "bg_color_blue", "bg_color_blue_alpha");
-  generateStatsBar($("#menu_stats_skills_element_7"), 70, "bg_color_blue", "bg_color_blue_alpha");
+  generateStatsBar($("#menu_stats_skills_element_0"), 5, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_1"), 10, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_2"), 20, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_3"), 30, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_4"), 40, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_5"), 50, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_6"), 60, "bg_color_michael", "bg_color_michael_alpha");
+  generateStatsBar($("#menu_stats_skills_element_7"), 70, "bg_color_michael", "bg_color_michael_alpha");
 
-  generateStatsBar($("#menu_stats_skills_1_element_0"), 70, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_1"), 60, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_2"), 50, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_3"), 40, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_4"), 30, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_5"), 20, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_6"), 10, "bg_color_green", "bg_color_green_alpha");
-  generateStatsBar($("#menu_stats_skills_1_element_7"), 5, "bg_color_green", "bg_color_green_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_0"), 70, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_1"), 60, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_2"), 50, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_3"), 40, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_4"), 30, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_5"), 20, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_6"), 10, "bg_color_franklin", "bg_color_franklin_alpha");
+  generateStatsBar($("#menu_stats_skills_1_element_7"), 5, "bg_color_franklin", "bg_color_franklin_alpha");
+
+  generateStatsBar($("#menu_stats_skills_2_element_0"), 69, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_1"), 85, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_2"), 11, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_3"), 25, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_4"), 30, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_5"), 21, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_6"), 14, "bg_color_trevor", "bg_color_trevor_alpha");
+  generateStatsBar($("#menu_stats_skills_2_element_7"), 17, "bg_color_trevor", "bg_color_trevor_alpha");
 }
 
 //
