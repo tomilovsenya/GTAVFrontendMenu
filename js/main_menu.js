@@ -230,8 +230,8 @@ function playSFX(sfx) {
 // STARTUP FUNCTIONS
 //
 
-const FRONTEND_MAIN_MENU = $(".frontend_main_menu");
-const MENU_LOADING_SPINNER = $(".menu_loading_spinner");
+const FRONTEND_MAIN_MENU = $("div.frontend_main_menu");
+const MENU_LOADING_SPINNER = $("div.menu_loading_spinner");
 
 function showLoadingSpinner() {
   MENU_LOADING_SPINNER.show();
