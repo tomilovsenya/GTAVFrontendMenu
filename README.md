@@ -1,26 +1,33 @@
 # GTAVFrontendMenu
 
-The GTA V Pause Menu recreated using HTML, CSS and JavaScript (with some basic plugins).
+The ```GTA V Pause Menu``` recreated using HTML, CSS and JavaScript (with some basic plugins).
 
 Base resolution is 1920×1080. Auto-scales for bigger resolutions, but for smaller resolutions it's buggy (yet).
 
 Demo available here: https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.html
 
+## Controls
+* ```Q / E``` Change Tab
+* ```W / ↑ / Mouse Wheel Up``` Scroll Up
+* ```S / ↓ / Mouse Wheel Down``` Scroll Down
+* ```A / ←``` Scroll Item Left
+* ```D / →``` Scroll Item Right
+
 ## Current Functionality
-* Tabs scroll: Press Q/E, click Left/Right arrows or a tab itself. The scroll is animated just as in the original game
-* Categories scroll: Press W/S or Up/Down arrow, or a category itself
-* Less tabs mode: If there are less than 6 tabs specified, they are auto-sized to fill the navbar; if there's only one, it hides the scroll arrows 
+* Less tabs mode: If there are less than 6 tabs specified, they are auto-sized to fill the navbar; if there's only one, it hides the scroll arrows
+* Menu localization + preferred language detection: 2 languages – Russian & English
+* Instructional buttons (WIP)
 
 ### MAP
-* Map dragging
+* Leaflet based draggable map
 
 ### BRIEF
 * All categories (WIP)
 
 ### STATS
-* Skills category (WIP)
-* General category (WIP)
-* 100% Completion category
+* Skills category: Skill progress bars auto generation
+* General category
+* 100% Completion category: Completion chart, completion progress bars auto generation
 
 ### SETTINGS
 * Gamepad category (WIP)
@@ -44,3 +51,8 @@ Demo available here: https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.h
 
 ### ROCKSTAR EDITOR
 * Rockstar Editor screen
+
+## Used Plugins
+* JQuery
+* [Leaflet](https://github.com/Leaflet/Leaflet)
+* [Chart.js](https://github.com/chartjs/Chart.js)
