@@ -178,7 +178,15 @@ let activeWindow = MENU_TAB_MAP;
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage = menuLanguages[1];
+// let menuLanguage = menuLanguages[1];
+let menuLanguage;
+
+function setDefaultLanguage() {
+  let preferredLanguage = navigator.language || navigator.userLanguage;
+  console.log(preferredLanguage);
+  if (preferredLanguage == "ru") menuLanguage = menuLanguages[1];
+  else menuLanguage = menuLanguages[0];
+}
 
 function localizeMenu() {
   fetch("js/lang.json")
@@ -208,6 +216,7 @@ function localizeMenu() {
     });
 }
 
+setDefaultLanguage();
 localizeMenu();
 
 //
