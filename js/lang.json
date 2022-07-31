@@ -142,51 +142,56 @@
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_0", "menu_stats_skills_1_element_0", "menu_stats_skills_2_element_0"],
+    "gxt": ["menu_stats_skills_element_0", "menu_stats_skills_1_element_0", "menu_stats_skills_2_element_0", "menu_stats_skills_3_element_0"],
     "american": "Special",
     "russian": "Спецспособность"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_1", "menu_stats_skills_1_element_1", "menu_stats_skills_2_element_1"],
+    "gxt": ["menu_stats_skills_element_1", "menu_stats_skills_1_element_1", "menu_stats_skills_2_element_1", "menu_stats_skills_3_element_1"],
     "american": "Stamina",
     "russian": "Выносливость"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_2", "menu_stats_skills_1_element_2", "menu_stats_skills_2_element_2"],
+    "gxt": ["menu_stats_skills_element_2", "menu_stats_skills_1_element_2", "menu_stats_skills_2_element_2", "menu_stats_skills_3_element_2"],
     "american": "Shooting",
     "russian": "Стрельба"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_3", "menu_stats_skills_1_element_3", "menu_stats_skills_2_element_3"],
+    "gxt": ["menu_stats_skills_element_3", "menu_stats_skills_1_element_3", "menu_stats_skills_2_element_3", "menu_stats_skills_3_element_3"],
     "american": "Strength",
     "russian": "Сила"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_4", "menu_stats_skills_1_element_4", "menu_stats_skills_2_element_4"],
+    "gxt": ["menu_stats_skills_element_4", "menu_stats_skills_1_element_4", "menu_stats_skills_2_element_4", "menu_stats_skills_3_element_4"],
     "american": "Stealth",
     "russian": "Скрытность"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_5", "menu_stats_skills_1_element_5", "menu_stats_skills_2_element_5"],
+    "gxt": ["menu_stats_skills_element_5", "menu_stats_skills_1_element_5", "menu_stats_skills_2_element_5", "menu_stats_skills_3_element_5"],
     "american": "Flying",
     "russian": "Полет"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_6", "menu_stats_skills_1_element_6", "menu_stats_skills_2_element_6"],
+    "gxt": ["menu_stats_skills_element_6", "menu_stats_skills_1_element_6", "menu_stats_skills_2_element_6", "menu_stats_skills_3_element_6"],
     "american": "Driving",
     "russian": "Вождение"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_skills_element_7", "menu_stats_skills_1_element_7", "menu_stats_skills_2_element_7"],
+    "gxt": ["menu_stats_skills_element_7", "menu_stats_skills_1_element_7", "menu_stats_skills_2_element_7", "menu_stats_skills_3_element_7"],
     "american": "Lung Capacity",
     "russian": "Объем легких"
+  },
+  {
+    "gxt": ["menu_stats_skills_3_element_8"],
+    "american": "Mental State",
+    "russian": "Психика"
   },
   {
     "gxt": "menu_stats_skills_element_info_1",

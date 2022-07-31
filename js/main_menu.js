@@ -43,7 +43,7 @@ const TAB_STATS_CATEGORY_GENERAL = {
     $("#menu_stats_category_1_2"),
     $("#menu_stats_category_1_3"),
   ],
-  wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
+  wnds: [$("#menu_stats_general"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
 
@@ -768,35 +768,96 @@ function scrollUp() {
 // SCROLL ELEMENTS
 //
 
-let tabElements = $("#menu_brief_dialogue").find(".menu_brief_dialogue_entry");
+let currentOverflows = {
+  // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
+  overflowsDialogue: [-1, 8],
+  overflowsStats: [-1, 16],
+};
 
-let maxElementsOnScreen = 8;
-let currentOverflowBottom = 8;
-let currentOverflowTop = -1;
+function scrollDownScrollableElements(scrollableElements, maxOnScreen, currentOverflows) {
+  currentOverflowTop = currentOverflows[0];
+  currentOverflowBottom = currentOverflows[1];
 
-function scrollDownDialogue() {
-  if (tabElements.length <= maxElementsOnScreen) return;
-  if (tabElements.length <= currentOverflowBottom) return;
-  // console.log("Scrolling down to: " + (currentOverflowBottom))
-  tabElements[currentOverflowBottom].scrollIntoView(false);
+  if (scrollableElements.length <= maxOnScreen) return;
+  if (scrollableElements.length <= currentOverflowBottom) return;
+  // console.log("Scrolling down to: " + currentOverflowBottom);
+  scrollableElements[currentOverflowBottom].scrollIntoView(false);
   currentOverflowBottom++;
   currentOverflowTop++;
+
+  currentOverflows[0] = currentOverflowTop;
+  currentOverflows[1] = currentOverflowBottom;
+}
+
+function scrollUpScrollableElements(scrollableElements, maxOnScreen, currentOverflows) {
+  currentOverflowTop = currentOverflows[0];
+  currentOverflowBottom = currentOverflows[1];
+
+  if (scrollableElements.length <= maxOnScreen) return;
+  if (currentOverflowTop < 0) return;
+  // console.log("Scrolling up to: " + currentOverflowTop)
+  scrollableElements[currentOverflowTop].scrollIntoView(true);
+  currentOverflowBottom--;
+  currentOverflowTop--;
+
+  currentOverflows[0] = currentOverflowTop;
+  currentOverflows[1] = currentOverflowBottom;
+}
+
+let dialogueElements = $("#menu_brief_dialogue").find(".menu_brief_dialogue_entry");
+let statsElements = $("#menu_stats_general").find(".menu_elements_scrollable").children(".menu_entry");
+
+function scrollDownDialogue() {
+  scrollDownScrollableElements(dialogueElements, 8, currentOverflows.overflowsDialogue);
 }
 
 function scrollUpDialogue() {
-  if (tabElements.length <= maxElementsOnScreen) return;
-  if (currentOverflowTop < 0) return;
-  // console.log("Scrolling up to: " + currentOverflowTop)
-  tabElements[currentOverflowTop].scrollIntoView(true);
-  currentOverflowBottom--;
-  currentOverflowTop--;
+  scrollUpScrollableElements(dialogueElements, 8, currentOverflows.overflowsDialogue);
 }
+
+function scrollDownStats() {
+  if (currentOverflows.overflowsStats[1] >= statsElements.length) return; // Return if the last element is already seen
+  // Little trick to preserve even elements darker background
+  if (currentOverflows.overflowsStats[1] % 2 == 0) {
+    statsElements.even().css({ "background-color": "#00000040" });
+    statsElements.odd().css({ "background-color": "transparent" });
+  } else {
+    statsElements.even().css({ "background-color": "" });
+    statsElements.odd().css({ "background-color": "" });
+  }
+  scrollDownScrollableElements(statsElements, 16, currentOverflows.overflowsStats);
+}
+
+function scrollUpStats() {
+  if (currentOverflows.overflowsStats[0] < 0) return; // Return if the first element is already seen
+  // Little trick to preserve even elements darker background
+  if (currentOverflows.overflowsStats[1] % 2 != 0) {
+    statsElements.even().css({ "background-color": "" });
+    statsElements.odd().css({ "background-color": "" });
+  } else {
+    statsElements.even().css({ "background-color": "#00000040" });
+    statsElements.odd().css({ "background-color": "transparent" });
+  }
+  scrollUpScrollableElements(statsElements, 16, currentOverflows.overflowsStats);
+}
+
+//
+// Bind to mouse wheel
+//
 
 $("#menu_brief_dialogue").bind("wheel", function (e) {
   if (e.originalEvent.deltaY / 40 < 0) {
     scrollUpDialogue();
   } else {
     scrollDownDialogue();
+  }
+});
+
+$("#menu_stats_general").bind("wheel", function (e) {
+  if (e.originalEvent.deltaY / 40 < 0) {
+    scrollUpStats();
+  } else {
+    scrollDownStats();
   }
 });
 
@@ -890,6 +951,9 @@ function categoriesHandler(activeTab) {
     if (activeCategoryElements) activeCategoryElements.show();
     activeCategoryElements.find(".element_stat").remove();
     populateStatsBars();
+    if (activeCategoryElements.children(".menu_elements_scrollable").children().length <= 16)
+      $("#menu_arrows_stats").hide();
+    else $("#menu_arrows_stats").show();
     // console.log("Active category:" + activeCategory.attr("id"));
     // console.log("Active category elements:" + activeCategoryElements.attr("id"));
   }
@@ -1115,13 +1179,16 @@ function drawMap() {
     zoom: 2,
     zoomControl: false,
     minZoom: 0,
-    maxZoom: 2,
+    maxZoom: 5,
+    boxZoom: false,
     zoomSnap: 0,
+    zoomAnimation: false,
     doubleClickZoom: false,
+    bounceAtZoomLimits: false,
     maxBoundsViscosity: 1,
     crs: L.CRS.Simple,
     wheelDebounceTime: 1,
-    wheelPxPerZoomLevel: 50,
+    wheelPxPerZoomLevel: 500,
   });
 
   var mapImageBounds = [

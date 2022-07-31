@@ -16,6 +16,7 @@
 }
 
 :root {
+  --menu-background: url("images/bg/background5.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
@@ -79,7 +80,7 @@ body {
   overflow-x: hidden;
   margin: 0 auto;
   padding: 0px;
-  background-image: url("images/bg/background3.jpg");
+  background-image: var(--menu-background);
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(0.25vw);
@@ -152,6 +153,7 @@ mark.text_cologne {
 .bg_color_michael {
   background-color: rgb(101, 180, 212);
 }
+
 .bg_color_michael_alpha {
   background-color: rgba(101, 180, 212, 0.25);
 }
@@ -159,6 +161,7 @@ mark.text_cologne {
 .bg_color_franklin {
   background-color: rgb(171, 237, 171);
 }
+
 .bg_color_franklin_alpha {
   background-color: rgba(171, 237, 171, 0.25);
 }
@@ -166,6 +169,7 @@ mark.text_cologne {
 .bg_color_trevor {
   background-color: rgb(255, 163, 87);
 }
+
 .bg_color_trevor_alpha {
   background-color: rgba(255, 163, 87, 0.25);
 }
@@ -173,6 +177,7 @@ mark.text_cologne {
 .bg_color_freemode {
   background-color: rgb(45, 110, 185);
 }
+
 .bg_color_freemode_alpha {
   background-color: rgba(45, 110, 185, 0.25);
 }
@@ -452,6 +457,10 @@ span.element_label {
   text-align: left;
 }
 
+div.element_list {
+  float: right;
+}
+
 button.menu_entry_empty_double {
   /* height: 12%; */
   min-height: var(--item-double-height);
@@ -716,7 +725,7 @@ div.menu_elements {
 
 div.menu_elements_scrollable {
   width: 100%;
-  background-color: var(--black-bg-color);
+  /* background-color: var(--black-bg-color); */
   flex-direction: column;
   scroll-snap-type: mandatory;
   scroll-snap-align: start end;
@@ -724,7 +733,7 @@ div.menu_elements_scrollable {
 }
 
 div.menu_elements_scrollable .menu_entry {
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 
 div.menu_background_rockstar {
@@ -971,18 +980,16 @@ button.menu_element_stat {
   align-items: center;
 }
 
-button.menu_element_stat:last-of-type {
-  /* margin-bottom: 0; */
+div.menu_stats .menu_elements .menu_element_stat:last-of-type {
+  margin-bottom: 0;
 }
 
 div.element_stat {
-  width: 28%;
-  /* height: 9px; */
-  height: 25%;
+  width: 12.25vw;
+  height: 0.5vw;
+  /* width: 28%; */
+  /* height: 25%; */
   float: right;
-  /* background-color: #6db9d74b; */
-  /* margin-right: 5px; */
-  /* margin-top: 5px; */
   display: flex;
   justify-content: space-between;
 }
@@ -1054,7 +1061,7 @@ img.element_info_icon {
 /* MENU STATS: GENERAL */
 
 div#menu_stats_general {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   scroll-behavior: auto;
   scroll-snap-type: y mandatory;
 }
@@ -1086,10 +1093,6 @@ div#menu_stats_100_completion button.menu_element_list_bar {
   flex-direction: row;
   /* vertical-align: middle; */
   align-items: center;
-}
-
-.element_list {
-  float: right;
 }
 
 div#menu_stats_100_completion div.menu_element_zone_top {
@@ -1227,6 +1230,10 @@ div.menu_settings .menu_elements_header img {}
 div.menu_settings>.menu_elements {
   background-color: transparent;
   /* width: 100%; */
+}
+
+div.menu_settings .menu_elements_scrollable .menu_entry {
+  background-color: transparent;
 }
 
 div.menu_settings>div.menu_elements .menu_entry {

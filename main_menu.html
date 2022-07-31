@@ -67,6 +67,10 @@
           <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpDialogue()">
           <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownDialogue()">
         </map>
+        <map name="menu_arrows_stats_map">
+          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpStats()">
+          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownStats()">
+        </map>
         <map name="menu_arrows_settings_map">
           <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpElements()">
           <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownElements()">
@@ -80,7 +84,9 @@
           <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownCategory()">
         </map>
 
-        <img id="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt="">
+        <!-- <img id="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
+        <img id="menu_map_image" src="images/maps/h4_fake_islandx.svg" alt="">
+        <!-- <img id="menu_map_image" src="images/maps/V_Mainmap.svg" alt=""> -->
         <div id="menu_map_window" class="menu_window menu_map">
           <!-- <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt=""> -->
           <!-- <img class="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
@@ -526,120 +532,134 @@
           </div>
 
           <div id="menu_stats_general" class="menu_elements">
-            <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Time played as character</span>
-              <div class="element_list">
-                <span class="element_label_right">0d 5h 55m 55s</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Time played in first person</span>
-              <div class="element_list">
-                <span class="element_label_right">0d 2h 5m 24s</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Missions passed</span>
-              <div class="element_list">
-                <span class="element_label_right">33</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Last Mission completed</span>
-              <div class="element_list">
-                <span class="element_label_right">Derailed</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Letter scraps</span>
-              <div class="element_list">
-                <span class="element_label_right">4 / 50</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Peyote plants</span>
-              <div class="element_list">
-                <span class="element_label_right">1 / 27</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Wildlife photographs</span>
-              <div class="element_list">
-                <span class="element_label_right">2 / 20</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Times saved</span>
-              <div class="element_list">
-                <span class="element_label_right">95</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Cheat codes activated</span>
-              <div class="element_list">
-                <span class="element_label_right">0</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Total deaths</span>
-              <div class="element_list">
-                <span class="element_label_right">1</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Deaths by explosion</span>
-              <div class="element_list">
-                <span class="element_label_right">0</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Deaths by falling</span>
-              <div class="element_list">
-                <span class="element_label_right">0</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Deaths by fire</span>
-              <div class="element_list">
-                <span class="element_label_right">0</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Deaths by traffic</span>
-              <div class="element_list">
-                <span class="element_label_right">1</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Deaths by drowning</span>
-              <div class="element_list">
-                <span class="element_label_right">0</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Time swimming</span>
-              <div class="element_list">
-                <span class="element_label_right">0d 0h 1m 0s</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Distance traveled swimming</span>
-              <div class="element_list">
-                <span class="element_label_right">0.13 miles</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Time underwater</span>
-              <div class="element_list">
-                <span class="element_label_right">0d 0h 0m 20s</span>
-              </div>
-            </button>
-            <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
-              <span class="element_label">Time walking</span>
-              <div class="element_list">
-                <span class="element_label_right">0d 0h 24m 39s</span>
-              </div>
-            </button>
+            <div class="menu_elements_scrollable">
+              <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time played as character</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 5h 55m 55s</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time played in first person</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 2h 5m 24s</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Missions passed</span>
+                <div class="element_list">
+                  <span class="element_label_right">33</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Last Mission completed</span>
+                <div class="element_list">
+                  <span class="element_label_right">Derailed</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Letter scraps</span>
+                <div class="element_list">
+                  <span class="element_label_right">4 / 50</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Peyote plants</span>
+                <div class="element_list">
+                  <span class="element_label_right">1 / 27</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Wildlife photographs</span>
+                <div class="element_list">
+                  <span class="element_label_right">2 / 20</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Times saved</span>
+                <div class="element_list">
+                  <span class="element_label_right">95</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Cheat codes activated</span>
+                <div class="element_list">
+                  <span class="element_label_right">0</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Total deaths</span>
+                <div class="element_list">
+                  <span class="element_label_right">1</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Deaths by explosion</span>
+                <div class="element_list">
+                  <span class="element_label_right">0</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Deaths by falling</span>
+                <div class="element_list">
+                  <span class="element_label_right">0</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Deaths by fire</span>
+                <div class="element_list">
+                  <span class="element_label_right">0</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Deaths by traffic</span>
+                <div class="element_list">
+                  <span class="element_label_right">1</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Deaths by drowning</span>
+                <div class="element_list">
+                  <span class="element_label_right">0</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time swimming</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 0h 1m 0s</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Distance traveled swimming</span>
+                <div class="element_list">
+                  <span class="element_label_right">0.13 miles</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time underwater</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 0h 0m 20s</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time walking</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 0h 24m 39s</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time walking 2</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 0h 24m 39s</span>
+                </div>
+              </button>
+              <button id="menu_stats_general_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                <span class="element_label">Time walking 3</span>
+                <div class="element_list">
+                  <span class="element_label_right">0d 0h 24m 39s</span>
+                </div>
+              </button>
+            </div>
           </div>
 
           <div id="menu_stats_100_completion" class="menu_elements">
@@ -731,6 +751,9 @@
             </button>
             <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
           </div>
+          <button id="menu_arrows_stats" class="menu_arrows" tabindex="-1">
+            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_stats_map">
+          </button>
         </div>
 
         <div class="menu_window menu_settings">
