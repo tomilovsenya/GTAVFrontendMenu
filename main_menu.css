@@ -579,14 +579,10 @@ div.menu_elements_header button.menu_entry {
 }
 
 div.element_progress {
-  /* margin-right: var(--item-padding-sides); */
   width: 22.5%;
-  height: 30%;
+  height: 0.5vw;
   float: right;
   background-color: #6db9d74b;
-  /* margin: auto; */
-  /* margin-right: 8px; */
-  /* margin-top: 5px; */
 }
 
 div.element_progress_perc {
@@ -1252,7 +1248,7 @@ canvas#menu_stats_100_completion_chart {
   z-index: 1;
 }
 
-span.menu_stats_100_completion_chart_percentage {
+#menu_stats_100_completion_chart_percentage {
   font-family: "London60";
   font-size: calc(var(--menu-font-size) * 1.5);
   color: var(--text-color);

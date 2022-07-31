@@ -174,6 +174,12 @@ let activeCategoriesList = null;
 let activeWindow = MENU_TAB_MAP;
 
 //
+// MODULES IMPORT
+//
+
+import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_completion.js";
+
+//
 // MENU LOCALIZATION
 //
 
@@ -935,12 +941,14 @@ function categoriesHandler(activeTab) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
     activeCategoryElements.find(".element_stat").remove();
-    populateStatsBars();
+
     if (activeCategoryElements.children(".menu_elements_scrollable").children().length <= 16)
       $("#menu_arrows_stats").hide();
     else $("#menu_arrows_stats").show();
-    // console.log("Active category:" + activeCategory.attr("id"));
-    // console.log("Active category elements:" + activeCategoryElements.attr("id"));
+
+    if (activeCategoryElements.is($("#menu_stats_100_completion"))) fillHundredCompletionWindow();
+
+    populateStatsBars();
   }
 
   if (activeWindow.id == MENU_TAB_SETTINGS.id) {
@@ -1202,44 +1210,3 @@ function drawMap() {
 }
 
 // window.onload = drawMap;
-
-//
-// 100% COMPLETION CHART
-//
-
-var ctx = document.getElementById("menu_stats_100_completion_chart").getContext("2d");
-
-const data = {
-  labels: ["Red", "Blue", "Yellow"],
-  datasets: [
-    {
-      label: "100% Completion",
-      data: [50, 10, 15, 25],
-      backgroundColor: ["gold", "lightgreen", "lightblue", "black"],
-      // hoverOffset: 50,
-    },
-  ],
-};
-
-var menu_stats_100_completion_chart = new Chart(ctx, {
-  type: "doughnut",
-  data: data,
-  options: {
-    cutout: "62.5%",
-    animation: false,
-    events: [],
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    tooltips: {
-      enabled: false,
-    },
-    elements: {
-      arc: {
-        borderWidth: 0,
-      },
-    },
-  },
-});
