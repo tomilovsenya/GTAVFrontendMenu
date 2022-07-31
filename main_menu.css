@@ -45,8 +45,10 @@
   --menu-header-font-size: calc(var(--menu-font-size) * 4.18);
   --menu-letter-spacing: -0.007em;
 
-  --menu-categories-width: 33.25%;
-  --menu-elements-width: 66.55%;
+  /* --menu-categories-width: 33.25%; */
+  /* --menu-elements-width: 66.55%; */
+  --menu-categories-width: calc(var(--tab-width) * 2 + var(--tab-margin));
+  --menu-elements-width: calc(var(--tab-width) * 4 + var(--tab-margin) * 3);
   --menu-elements-half-width: 49.825%;
 
   /* --item-height: 5.8%; */
@@ -383,6 +385,16 @@ button.menu_button:hover {
   background-color: var(--hover-color);
 }
 
+button.menu_button_active {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  box-shadow: var(--menu-color) 0px -0.4vw;
+}
+
+button.menu_button_active:hover {
+  background-color: white !important;
+}
+
 button.menu_button:focus {
   /* background-color: #ffffff; */
   /* color: black; */
@@ -455,6 +467,11 @@ button.menu_entry {
 
 button.menu_entry:hover {
   background-color: var(--hover-color);
+}
+
+button.menu_entry_active {
+  background-color: white !important; 
+  color: black !important;
 }
 
 span.element_label {

@@ -178,10 +178,9 @@ let activeWindow = MENU_TAB_MAP;
 //
 
 let menuLanguages = ["american", "russian"];
-// let menuLanguage = menuLanguages[1];
 let menuLanguage;
 
-function setDefaultLanguage() {
+function getPreferredLanguage() {
   let preferredLanguage = navigator.language || navigator.userLanguage;
   console.log(preferredLanguage);
   if (preferredLanguage == "ru") menuLanguage = menuLanguages[1];
@@ -215,9 +214,6 @@ function localizeMenu() {
       }
     });
 }
-
-setDefaultLanguage();
-localizeMenu();
 
 //
 // SOUNDS
@@ -255,8 +251,10 @@ function loadMenu() {
   // setFirstTab();
   setSingleTab();
   setActiveWindow(MENU_TAB_MAP);
+  getPreferredLanguage();
+  localizeMenu();
   // setMissions();
-  playSFX(SFX_MENU_MUSIC);
+  // playSFX(SFX_MENU_MUSIC);
 }
 
 function showMenu() {
@@ -405,11 +403,7 @@ function clickTab() {
 }
 
 function setTabActive() {
-  $(this).css({
-    "background-color": "#ffffff",
-    color: "black",
-    "box-shadow": "0px -0.4vw " + MENU_COLOR,
-  });
+  $(this).addClass("menu_button_active");
   activeTab.focus();
   playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
@@ -428,11 +422,7 @@ function setTabActive() {
 }
 
 function setTabDisabled() {
-  $(this).css({
-    "background-color": "",
-    color: "",
-    "box-shadow": "",
-  });
+  $(this).removeClass("menu_button_active");
 }
 
 //
@@ -510,8 +500,8 @@ function escapeMenuEntriesMiddle() {
 
 $(".menu_categories").children().on("categoryActive", setCategoryActive);
 $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
-$(".menu_entries_middle").children().on("categoryActive", setEntryActive);
-$(".menu_entries_middle").children().on("categoryDisabled", setEntryDisabled);
+$(".menu_entries_middle").children(".menu_entry").on("categoryActive", setEntryActive);
+$(".menu_entries_middle").children(".menu_entry").on("categoryDisabled", setEntryDisabled);
 
 let leftArrowSvg = '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
 let rightArrowSvg = ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
@@ -531,10 +521,7 @@ function removeRightTextArrows(text) {
 function setEntryActive() {
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
-  $(this).css({
-    "background-color": "#ffffff",
-    color: "black",
-  });
+  $(this).addClass("menu_entry_active");
   activeEntryMiddle = $(this);
   activeEntryMiddle.focus();
 
@@ -544,11 +531,7 @@ function setEntryActive() {
 }
 
 function setEntryDisabled() {
-  $(this).css({
-    "background-color": "",
-    color: "",
-    "box-shadow": "",
-  });
+  $(this).removeClass("menu_entry_active");
   let rightText = $(this).find(".element_label_right").first();
   if (rightText.length != 0) removeRightTextArrows(rightText);
 }
@@ -559,11 +542,7 @@ function setCategoryActive() {
   // Return if empty
   if ($(this).is($(".menu_entry_empty_double"))) return;
   if ($(this).is($(".menu_entry_empty"))) return;
-  // Set CSS
-  $(this).css({
-    "background-color": "#ffffff",
-    color: "black",
-  });
+  $(this).addClass("menu_entry_active");
   if (activeWindow.cats && activeWindow.cats[$(this).index()].id != undefined) {
     // activeCategoryElements = activeWindow.cats[$(this).index()].id;
     activeCategoryObject = activeWindow.cats[$(this).index()];
@@ -586,11 +565,7 @@ function setCategoryActive() {
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
 
 function setCategoryDisabled() {
-  $(this).css({
-    "background-color": "",
-    color: "",
-    "box-shadow": "",
-  });
+  $(this).removeClass("menu_entry_active");
   let rightText = $(this).find(".element_label_right");
   if (rightText.length != 0) removeRightTextArrows(rightText);
 }
