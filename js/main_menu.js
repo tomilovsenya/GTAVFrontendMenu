@@ -819,11 +819,11 @@ function scrollDownStats() {
   if (currentOverflows.overflowsStats[1] >= statsElements.length) return; // Return if the last element is already seen
   // Little trick to preserve even elements darker background
   if (currentOverflows.overflowsStats[1] % 2 == 0) {
-    statsElements.even().css({ "background-color": "#00000040" });
-    statsElements.odd().css({ "background-color": "transparent" });
+    statsElements.removeClass("menu_entry_empty_even");
+    statsElements.addClass("menu_entry_empty_odd");
   } else {
-    statsElements.even().css({ "background-color": "" });
-    statsElements.odd().css({ "background-color": "" });
+    statsElements.removeClass("menu_entry_empty_odd");
+    statsElements.addClass("menu_entry_empty_even");
   }
   scrollDownScrollableElements(statsElements, 16, currentOverflows.overflowsStats);
 }
@@ -832,11 +832,11 @@ function scrollUpStats() {
   if (currentOverflows.overflowsStats[0] < 0) return; // Return if the first element is already seen
   // Little trick to preserve even elements darker background
   if (currentOverflows.overflowsStats[1] % 2 != 0) {
-    statsElements.even().css({ "background-color": "" });
-    statsElements.odd().css({ "background-color": "" });
+    statsElements.removeClass("menu_entry_empty_odd");
+    statsElements.addClass("menu_entry_empty_even");
   } else {
-    statsElements.even().css({ "background-color": "#00000040" });
-    statsElements.odd().css({ "background-color": "transparent" });
+    statsElements.removeClass("menu_entry_empty_even");
+    statsElements.addClass("menu_entry_empty_odd");
   }
   scrollUpScrollableElements(statsElements, 16, currentOverflows.overflowsStats);
 }
