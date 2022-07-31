@@ -20,9 +20,7 @@
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.structure.css" />
   <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.theme.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-    crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
   <meta name="description" content="GTA V Frontend Menu Menu." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -95,19 +93,19 @@
         <div class="menu_window menu_brief">
           <div class="menu_categories">
             <button id="menu_brief_category_0" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_label"></span>
+              <span class="element_simple_text"></span>
             </button>
             <button id="menu_brief_category_1" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_label"></span>
+              <span class="element_simple_text"></span>
             </button>
             <button id="menu_brief_category_2" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_label"></span>
+              <span class="element_simple_text"></span>
             </button>
             <button id="menu_brief_category_3" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_label"></span>
+              <span class="element_simple_text"></span>
             </button>
             <button id="menu_brief_category_4" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_label"></span>
+              <span class="element_simple_text"></span>
             </button>
           </div>
 
@@ -121,6 +119,25 @@
           <div id="menu_brief_mission" class="menu_elements">
             <div class="menu_elements_scrollable">
               <div class="menu_brief_mission_entry">
+                <span class="element_simple_text">
+                  Press <button class="instructional_button">E</button> to cut the painting.
+                  <br>
+                  Press <button class="instructional_button instructional_button_small">Esc</button> to exit.</span>
+                <!-- <button class="instructional_button">Caps</button> -->
+              </div>
+            </div>
+          </div>
+
+          <div id="menu_brief_help_inactive" class="menu_elements menu_background_rockstar">
+            <div class="menu_window_text menu_window_text_full">
+              <h1 id="menu_brief_help_header" class="menu_window_header"></h1>
+              <span id="menu_brief_help_text" class="menu_window_text"></span>
+            </div>
+          </div>
+
+          <div id="menu_brief_help" class="menu_elements">
+            <div class="menu_elements_scrollable">
+              <div class="menu_brief_mission_entry">
                 <span class="element_label">Kill <red>Trevor.</red></span>
               </div>
               <div class="menu_brief_mission_entry">
@@ -129,13 +146,6 @@
               <div class="menu_brief_mission_entry">
                 <span class="element_label">Help <C>Franklin</C> protect <blu>Dr. Dre.</blu></span>
               </div>
-            </div>
-          </div>
-
-          <div id="menu_brief_help" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 id="menu_brief_help_header" class="menu_window_header"></h1>
-              <span id="menu_brief_help_text" class="menu_window_text"></span>
             </div>
           </div>
 
@@ -280,15 +290,7 @@
               </div>
               <div class="menu_brief_notifications_entry">
                 <div class="notification_string">
-                  <span class="notification_string_text">Police Alert: you are under arrest, surrender now! Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Quos minus, corporis animi qui consequatur, ad cum
-                    ipsam alias ratione facere quibusdam laudantium aliquam nostrum numquam consequuntur perferendis ab
-                    repellendus laborum deserunt. Similique ab totam nisi dignissimos. Sapiente eaque quidem accusamus
-                    quam, quaerat deserunt architecto autem, similique necessitatibus cupiditate expedita unde ratione
-                    debitis ipsum in neque sint id aliquam saepe ipsam, magni reprehenderit placeat dolores voluptates.
-                    Suscipit fugit dignissimos, animi, dolorum laborum fugiat omnis molestiae sit repellendus, tempora
-                    similique eum. Animi consectetur culpa, et nemo nulla laudantium sunt exercitationem, aperiam magnam
-                    vero, ad necessitatibus beatae cumque tempore dolores consequuntur quos quidem.</span>
+                  <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
                 </div>
               </div>
               <div class="menu_brief_notifications_entry">
@@ -323,8 +325,7 @@
 
         <div class="menu_window menu_stats">
           <div class="menu_categories">
-            <button id="menu_stats_category_0"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_0" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list">
                 <span id="menu_stats_category_0_0" class="element_label_right"></span>
@@ -333,8 +334,7 @@
                 <span id="menu_stats_category_0_3" class="element_label_right"></span>
               </div>
             </button>
-            <button id="menu_stats_category_1"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_1" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list">
                 <span id="menu_stats_category_1_0" class="element_label_right"></span>
@@ -343,28 +343,23 @@
                 <span id="menu_stats_category_1_3" class="element_label_right"></span>
               </div>
             </button>
-            <button id="menu_stats_category_2"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_2" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_3"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_3" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_4"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_4" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_5"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_5" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
-            <button id="menu_stats_category_6"
-              class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
+            <button id="menu_stats_category_6" class="menu_entry menu_category_list menu_category_list_active_only menu_category_unselectable">
               <span class="element_label"></span>
               <div class="element_list"></div>
             </button>
@@ -377,32 +372,25 @@
             <button id="menu_stats_skills_element_0" class="menu_entry menu_entry_empty menu_element_stat">
               <span class="element_label">Special</span>
             </button>
-            <button id="menu_stats_skills_element_1"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stamina</span>
             </button>
-            <button id="menu_stats_skills_element_2"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Shooting</span>
             </button>
-            <button id="menu_stats_skills_element_3"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Strength</span>
             </button>
-            <button id="menu_stats_skills_element_4"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stealth</span>
             </button>
-            <button id="menu_stats_skills_element_5"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Flying</span>
             </button>
-            <button id="menu_stats_skills_element_6"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Driving</span>
             </button>
-            <button id="menu_stats_skills_element_7"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Lung Capacity</span>
             </button>
             <div class="menu_divider"></div>
@@ -413,36 +401,28 @@
           </div>
 
           <div id="menu_stats_skills_1" class="menu_elements">
-            <button id="menu_stats_skills_1_element_0"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Special</span>
             </button>
-            <button id="menu_stats_skills_1_element_1"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stamina</span>
             </button>
-            <button id="menu_stats_skills_1_element_2"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Shooting</span>
             </button>
-            <button id="menu_stats_skills_1_element_3"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Strength</span>
             </button>
-            <button id="menu_stats_skills_1_element_4"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stealth</span>
             </button>
-            <button id="menu_stats_skills_1_element_5"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Flying</span>
             </button>
-            <button id="menu_stats_skills_1_element_6"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Driving</span>
             </button>
-            <button id="menu_stats_skills_1_element_7"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_1_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Lung Capacity</span>
             </button>
             <div class="menu_divider"></div>
@@ -453,36 +433,28 @@
           </div>
 
           <div id="menu_stats_skills_2" class="menu_elements">
-            <button id="menu_stats_skills_2_element_0"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Special</span>
             </button>
-            <button id="menu_stats_skills_2_element_1"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stamina</span>
             </button>
-            <button id="menu_stats_skills_2_element_2"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Shooting</span>
             </button>
-            <button id="menu_stats_skills_2_element_3"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Strength</span>
             </button>
-            <button id="menu_stats_skills_2_element_4"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stealth</span>
             </button>
-            <button id="menu_stats_skills_2_element_5"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Flying</span>
             </button>
-            <button id="menu_stats_skills_2_element_6"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Driving</span>
             </button>
-            <button id="menu_stats_skills_2_element_7"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_2_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Lung Capacity</span>
             </button>
             <div class="menu_divider"></div>
@@ -493,40 +465,31 @@
           </div>
 
           <div id="menu_stats_skills_3" class="menu_elements">
-            <button id="menu_stats_skills_3_element_0"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Special</span>
             </button>
-            <button id="menu_stats_skills_3_element_1"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stamina</span>
             </button>
-            <button id="menu_stats_skills_3_element_2"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Shooting</span>
             </button>
-            <button id="menu_stats_skills_3_element_3"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Strength</span>
             </button>
-            <button id="menu_stats_skills_3_element_4"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Stealth</span>
             </button>
-            <button id="menu_stats_skills_3_element_5"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Flying</span>
             </button>
-            <button id="menu_stats_skills_3_element_6"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Driving</span>
             </button>
-            <button id="menu_stats_skills_3_element_7"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Lung Capacity</span>
             </button>
-            <button id="menu_stats_skills_3_element_8"
-              class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <button id="menu_stats_skills_3_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Mental State</span>
             </button>
             <div class="menu_divider"></div>
@@ -1413,9 +1376,7 @@
 <script src="js/jquery-3.6.0.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.13.1/jquery-ui.js" type="text/javascript"></script>
 <script src="js/chart.js" type="text/javascript"></script>
-<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
 <script src="js/main_menu.js" type="text/javascript"></script>
 
 </html>

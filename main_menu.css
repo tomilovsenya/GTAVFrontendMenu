@@ -463,6 +463,14 @@ span.element_label {
   text-align: left;
 }
 
+span.element_simple_text {
+  width: 100%;
+  font-family: "London60";
+  font-size: var(--menu-font-size);
+  text-align: left;
+  line-height: 150%;
+}
+
 div.element_list {
   float: right;
 }
@@ -528,6 +536,24 @@ div.menu_divider {
   width: 100%;
   min-height: var(--item-margin);
   height: var(--item-margin);
+}
+
+button.instructional_button {
+  min-width: 1.4vw;
+  height: 1.4vw;
+  font-family: "London60";
+  /* font-size: 0.8vw; */
+  font-size: smaller;
+  padding: 0;
+  padding-left: 0.25vw;
+  padding-right: 0.25vw;
+  border: 0;
+  border-radius: 0.125vw;
+  pointer-events: none;
+}
+
+button.instructional_button_small {
+  font-size: 0.6vw;
 }
 
 button.menu_entry_arrows {
@@ -811,15 +837,15 @@ div#menu_brief_dialogue img {
   animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
 }
 
+div.menu_brief .menu_elements_scrollable {
+  margin-top: 0.35vw;
+}
+
 /* MENU BRIEF: MISSION */
 
 div#menu_brief_mission .menu_elements_scrollable {
-  background-color: transparent;
+  /* background-color: transparent; */
   /* overflow-y: scroll; */
-}
-
-div#menu_brief_mission .menu_elements_scrollable:first-child {
-  margin-top: 0.35vw;
 }
 
 div.menu_brief .menu_brief_mission_entry {
@@ -848,6 +874,7 @@ div#menu_brief_dialogue .menu_elements_scrollable {
   background-color: transparent;
   height: fit-content;
   overflow: hidden;
+  margin-top: 0;
   scroll-behavior: smooth;
 }
 
