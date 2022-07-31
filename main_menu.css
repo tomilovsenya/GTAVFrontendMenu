@@ -77,7 +77,9 @@
 }
 
 body {
-  background-color: grey;
+  background-color: rgb(60, 60, 60);
+  width: 100vw;
+  height: 100vh;
   user-select: none;
   overflow-x: hidden;
   margin: 0 auto;
@@ -85,7 +87,6 @@ body {
   background-image: var(--menu-background);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
   /* animation: fadeInAnimation ease 0.25s; */
 }
 
@@ -113,6 +114,7 @@ div.menu_bounding_box {
   width: 100vw;
   /* min-width: 70%; */
   height: 100vh;
+  max-height: 56.25vw;
   /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
