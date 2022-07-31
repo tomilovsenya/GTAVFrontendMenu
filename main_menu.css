@@ -77,15 +77,14 @@
 }
 
 body {
-  background-color: #16251c;
+  background-color: grey;
   user-select: none;
   overflow-x: hidden;
   margin: 0 auto;
-  padding: 0px;
+  padding: 0;
   background-image: var(--menu-background);
   background-size: cover;
   background-repeat: no-repeat;
-  backdrop-filter: blur(0.25vw);
   height: 100%;
   /* animation: fadeInAnimation ease 0.25s; */
 }
@@ -111,12 +110,66 @@ body {
 }
 
 div.menu_bounding_box {
-  width: 100%;
+  width: 100vw;
   /* min-width: 70%; */
-  height: 100%;
+  height: 100vh;
   /* margin: 0 auto; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  backdrop-filter: blur(0.25vw);
+}
+
+div.instructional_buttons {
+  background-color: var(--black-bg-color);
+  color: white;
+  /* width: 500px; */
+  height: 2.25vw;
+  border-radius: 0.2vw;
+  align-self: flex-end;
+  justify-self: flex-end;
+  z-index: 10;
+  /* margin-top: -35px; */
+  margin-bottom: 0.8vw;
+  margin-right: 1.5vw;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5vw;
+}
+
+span.instructional_button_prompt {
+  font-size: 0.95vw !important;
+  margin-right: 0.25vw;
+  word-wrap: nowrap;
+}
+
+div.instructional_button_container {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-right: 1vw;
+}
+
+div.instructional_button_container:hover {
+  background-color: var(--hover-color);
+}
+
+div.instructional_button_container .instructional_button {
+  min-width: 1.575vw;
+  max-width: fit-content;
+  height: 1.575vw;
+  max-height: 1.575vw;
+  margin-right: 0.25vw;
+}
+
+div.instructional_button_container .instructional_button:last-of-type {
+  margin-right: 0;
+}
+
+div.instructional_button_container:last-of-type {
+  margin-right: 0;
 }
 
 /* @media only screen and (max-width: 1280px) {
@@ -197,13 +250,14 @@ div.frontend_main_menu {
   width: 100%;
   height: 100%;
   padding-top: var(--menu-box-padding-top);
-  padding-bottom: var(--menu-box-padding-bottom);
+  /* padding-bottom: var(--menu-box-padding-bottom); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   animation: fadeInAnimation ease 0.25s;
   overflow: hidden;
+  z-index: 1;
 }
 
 div.menu_box {
@@ -556,21 +610,33 @@ div.menu_divider {
 }
 
 button.instructional_button {
-  min-width: 1.4vw;
-  height: 1.4vw;
+  min-width: 1.25vw;
+  height: 1.25vw;
+  max-width: fit-content;
+  max-height: 1.575vw;
   font-family: "London60";
   /* font-size: 0.8vw; */
-  font-size: smaller;
+  font-size: 0.9vw;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   padding-left: 0.25vw;
   padding-right: 0.25vw;
   border: 0;
-  border-radius: 0.125vw;
+  outline: 0;
+  border-radius: 0.1vw;
+  pointer-events: none;
+}
+
+img.instructional_button {
   pointer-events: none;
 }
 
 button.instructional_button_small {
-  font-size: 0.6vw;
+  max-width: 1.25vw;
+  font-size: 0.75vw;
 }
 
 button.menu_entry_arrows {
@@ -882,7 +948,7 @@ div.menu_brief .menu_brief_mission_entry {
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
   /* margin-bottom: var(--item-margin); */
-  margin-bottom: 0.5vh;
+  margin-bottom: 0.75vh;
 }
 
 /* MENU BRIEF: DIALOGUE */
