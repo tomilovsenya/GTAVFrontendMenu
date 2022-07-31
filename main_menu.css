@@ -133,17 +133,23 @@ div.menu_bounding_box {
 /*#endregion Main*/
 
 /*#region Markup*/
-mark.text_red {
+ylw {
+  color: rgb(240, 200, 80);
+}
+
+red {
   color: rgb(224, 50, 50);
-  background-color: transparent;
 }
 
-mark.text_green {
+grn {
   color: rgb(114, 204, 114);
-  background-color: transparent;
 }
 
-mark.text_cologne {
+blu {
+  color: rgb(93, 182, 229);
+}
+
+C {
   font-family: "Cologne60";
   font-size: larger;
   color: inherit;
@@ -809,6 +815,7 @@ div#menu_brief_dialogue img {
 
 div#menu_brief_mission .menu_elements_scrollable {
   background-color: transparent;
+  /* overflow-y: scroll; */
 }
 
 div#menu_brief_mission .menu_elements_scrollable:first-child {
@@ -820,9 +827,9 @@ div.menu_brief .menu_brief_mission_entry {
   font-family: "London60";
   font-size: var(--menu-font-size);
   line-height: 140%;
-  width: 98%;
+  max-width: 100%;
   height: fit-content;
-  min-height: var(--item-height);
+  /* min-height: var(--item-height); */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -831,7 +838,8 @@ div.menu_brief .menu_brief_mission_entry {
   scroll-snap-stop: always;
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
-  margin-bottom: var(--item-margin);
+  /* margin-bottom: var(--item-margin); */
+  margin-bottom: 0.5vh;
 }
 
 /* MENU BRIEF: DIALOGUE */

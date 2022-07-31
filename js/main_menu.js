@@ -354,6 +354,7 @@ window.addEventListener(
       scrollTabRight();
     }
     if (["KeyF"].indexOf(e.code) > -1) {
+      sendMissionText("Go to <ylw>Trevor's house.</ylw>");
       // setMission("New mission");
       // $(".menu_entries_middle").children().on("categoryActive", setCategoryActive);
     }
@@ -977,6 +978,21 @@ function categoriesHandler(activeTab) {
 }
 
 //
+// BRIEF TAB FUNCTIONS
+//
+
+function sendMissionText(missionText) {
+  let missionTextElements = $("#menu_brief_mission").children(".menu_elements_scrollable");
+  let missionTextNewElement = $('<div class="menu_brief_mission_entry"></div>');
+  let missionTextNewString = $('<span class="element_label"></span>');
+
+  missionTextNewElement.append(missionTextNewString);
+  missionTextNewString.html(missionText);
+
+  missionTextElements.append(missionTextNewElement);
+}
+
+//
 // GAME TAB FUNCTIONS
 //
 
@@ -1030,7 +1046,7 @@ function updateFriendName() {
 // STATS TAB FUNCTIONS
 //
 
-function generateStatsBar(parent, percent, bg_color, bg_alpha) {
+function generateStatsBar(statsBarParent, statsBarPercent, bgColor, bgAlpha) {
   let elementStat = $('<div class="element_stat"></div>');
   let elementStatPerc = $('<div class="element_stat_perc"></div>');
   let elementStatPercSemi = $('<div class="element_stat_perc element_stat_perc_semi">');
@@ -1043,34 +1059,34 @@ function generateStatsBar(parent, percent, bg_color, bg_alpha) {
 
   // Set colors
   // elementStat.addClass(bg_alpha); // Verify if background should be colored
-  elementStatPerc.addClass(bg_color);
-  elementStatPercSemi.addClass(bg_alpha);
-  elementStatPercSemiFilled.addClass(bg_color);
-  elementStatPercEmpty.addClass(bg_alpha);
+  elementStatPerc.addClass(bgColor);
+  elementStatPercSemi.addClass(bgAlpha);
+  elementStatPercSemiFilled.addClass(bgColor);
+  elementStatPercEmpty.addClass(bgAlpha);
   // Insert elements
-  parent.append(elementStat);
+  statsBarParent.append(elementStat);
   elementStatPercSemi.append(elementStatPercSemiFilled);
 
-  if (percent == 0) {
+  if (statsBarPercent == 0) {
     // Determine how many bars are filled and which one is semi-filled
     barsFilled = 0;
     barSemiFilled = -1;
-  } else if (percent < 20) {
+  } else if (statsBarPercent < 20) {
     barsFilled = 0;
     barSemiFilled = 0;
-  } else if (percent >= 20 && percent < 40) {
+  } else if (statsBarPercent >= 20 && statsBarPercent < 40) {
     barsFilled = 1;
     barSemiFilled = 1;
-  } else if (percent >= 40 && percent < 60) {
+  } else if (statsBarPercent >= 40 && statsBarPercent < 60) {
     barsFilled = 2;
     barSemiFilled = 2;
-  } else if (percent >= 60 && percent < 80) {
+  } else if (statsBarPercent >= 60 && statsBarPercent < 80) {
     barsFilled = 3;
     barSemiFilled = 3;
-  } else if (percent >= 80 && percent < 100) {
+  } else if (statsBarPercent >= 80 && statsBarPercent < 100) {
     barsFilled = 4;
     barSemiFilled = 4;
-  } else if (percent >= 100) {
+  } else if (statsBarPercent >= 100) {
     barsFilled = 5;
     barSemiFilled = -1;
   }
@@ -1114,7 +1130,7 @@ function generateStatsBar(parent, percent, bg_color, bg_alpha) {
   }
 
   barPerc[barSemiFilled] = elementStatPercSemi; // Set elementStatPercSemi by index in barPerc
-  statPerc = 5 * (percent - 20 * barsFilled); // Width in % of elementStatPercSemiFilled
+  statPerc = 5 * (statsBarPercent - 20 * barsFilled); // Width in % of elementStatPercSemiFilled
   elementStatPercSemiFilled.css({ width: statPerc + "%" }); // Set CSS width of elementStatPercSemiFilled
   elementStat.append(barPerc);
 }
