@@ -481,6 +481,10 @@ button.menu_entry_empty_even:nth-child(even) {
   background-color: #00000040;
 }
 
+button.menu_entry_empty_odd:nth-child(odd) {
+  background-color: #00000040;
+}
+
 div.menu_elements_header button.menu_entry {
   margin: 0;
   background-color: transparent;
@@ -876,12 +880,21 @@ div.menu_brief .dialogue_entry_text {
 
 /* MENU BRIEF: NOTIFICATIONS */
 
+div.menu_brief #menu_brief_notifications .menu_elements_scrollable {
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+div.menu_brief #menu_brief_notifications .menu_elements_scrollable::-webkit-scrollbar {
+  display: none;
+}
+
 div.menu_brief .menu_brief_notifications_entry {
   color: var(--text-color);
   font-family: "London60";
   font-size: var(--menu-font-size);
-  width: 100%;
-  min-height: var(--item-height);
+  max-width: 100%;
+  /* min-height: var(--item-height); */
   height: fit-content;
   display: flex;
   flex-direction: row;
@@ -891,14 +904,14 @@ div.menu_brief .menu_brief_notifications_entry {
   scroll-snap-stop: always;
   padding-left: var(--item-padding-sides);
   /* margin-bottom: var(--item-margin); */
-  margin-bottom: 1vh;
+  margin-bottom: 0.5vh;
 }
 
 div.menu_brief .menu_brief_notifications_entry_double {
   color: var(--text-color);
   font-family: "London60";
   font-size: var(--menu-font-size);
-  width: 100%;
+  max-width: 100%;
   height: var(--item-double-height);
   display: flex;
   flex-direction: row;
