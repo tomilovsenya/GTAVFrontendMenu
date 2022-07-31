@@ -759,6 +759,8 @@ function scrollUp() {
 // SCROLL ELEMENTS
 //
 
+let currentOverflowTop, currentOverflowBottom;
+
 let currentOverflows = {
   // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
   overflowsDialogue: [-1, 8],
