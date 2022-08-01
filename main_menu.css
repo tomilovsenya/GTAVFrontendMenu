@@ -258,7 +258,7 @@ div.frontend_main_menu {
   align-items: center;
   justify-content: space-between;
   animation: fadeInAnimation ease 0.25s;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
 }
 
@@ -536,6 +536,13 @@ span.element_label {
   text-align: left;
 }
 
+button.menu_category_list .element_label {
+  width: 75%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
 span.element_simple_text {
   width: 100%;
   font-family: "London60";
@@ -545,7 +552,11 @@ span.element_simple_text {
 }
 
 div.element_list {
+  height: 100%;
   float: right;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.menu_entry_empty_double {
@@ -674,22 +685,28 @@ button.menu_arrows img {
 }
 
 img.menu_entry_arrow_left {
-  transform: scaleX(-1);
   width: 0.45vw;
+  height: 0.7vw;
+  max-height: 0.7vw;
+  transform: scaleX(-1);
   /* height: 50%; */
   filter: invert();
   align-self: center;
-  display: inline-block;
+  display: inline;
   pointer-events: none;
+  margin-right: 0.3vw;
 }
 
 img.menu_entry_arrow_right {
   width: 0.45vw;
+  height: 0.7vw;
+  max-height: 0.7vw;
   /* height: 50%; */
   filter: invert();
   align-self: center;
-  display: inline-block;
+  display: inline;
   pointer-events: none;
+  margin-left: 0.3vw;
 }
 
 div.menu_loading_spinner {
@@ -1386,7 +1403,7 @@ div#menu_settings_gamepad .menu_elements {
   width: 100%;
 }
 
-div#menu_settings_gamepad img {
+div#menu_settings_gamepad .menu_elements_header img {
   pointer-events: none;
   height: 100%;
 }

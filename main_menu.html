@@ -138,13 +138,13 @@
           <div id="menu_brief_help" class="menu_elements">
             <div class="menu_elements_scrollable">
               <div class="menu_brief_mission_entry">
-                <span class="element_label">Kill <red>Trevor.</red></span>
+                <span class="element_simple_text">Kill <red>Trevor.</red></span>
               </div>
               <div class="menu_brief_mission_entry">
-                <span class="element_label">Help <C>Lamar</C> open the <grn>crates.</grn></span>
+                <span class="element_simple_text">Help <C>Lamar</C> open the <grn>crates.</grn></span>
               </div>
               <div class="menu_brief_mission_entry">
-                <span class="element_label">Help <C>Franklin</C> protect <blu>Dr. Dre.</blu></span>
+                <span class="element_simple_text">Help <C>Franklin</C> protect <blu>Dr. Dre.</blu></span>
               </div>
             </div>
           </div>
@@ -728,7 +728,7 @@
             <button id="menu_settings_category_0" class="menu_entry menu_category menu_category_enter">
               <span class="element_label">Gamepad</span>
             </button>
-            <button id="menu_settings_category_1" class="menu_entry menu_category">
+            <button id="menu_settings_category_1" class="menu_entry menu_category menu_category_enter">
               <span class="element_label">Keyboard / Mouse</span>
             </button>
             <button id="menu_settings_category_2" class="menu_entry menu_category">
@@ -1010,7 +1010,7 @@
 
         <div class="menu_window menu_game">
           <div class="menu_categories">
-            <button id="menu_game_category_0" class="menu_entry menu_category">
+            <button id="menu_game_category_0" class="menu_entry menu_category menu_category_enter">
               <span class="element_label">Replay Mission</span>
             </button>
             <button id="menu_game_category_1" class="menu_entry menu_category">
@@ -1203,9 +1203,15 @@
             </button>
           </div>
           <!-- <div class="menu_elements_box"> -->
-          <div class="menu_elements menu_background_rockstar">
+          <div id="menu_online_go" class="menu_elements menu_background_rockstar">
             <div class="menu_window_text menu_window_text_full">
               <h1 class="menu_window_header">Go</h1>
+              <span class="menu_window_text">Head straight into GTA Online.</span>
+            </div>
+          </div>
+          <div id="menu_online_invite_only" class="menu_elements menu_background_rockstar">
+            <div class="menu_window_text menu_window_text_full">
+              <h1 class="menu_window_header">Invite Only Session</h1>
               <span class="menu_window_text">Head straight into GTA Online.</span>
             </div>
           </div>
@@ -1371,7 +1377,7 @@
       </div>
     </div>
     <div class="instructional_buttons">
-      <div class="instructional_button_container">
+      <div id="IB_HIDE_MENU" class="instructional_button_container">
         <span class="element_label element_simple_text instructional_button_prompt">Hide Menu</span>
         <button class="instructional_button instructional_button_small">Tab</button>
       </div>
@@ -1384,7 +1390,7 @@
         <span class="element_label element_simple_text instructional_button_prompt">Select</span>
         <img class="instructional_button" src="images/buttons/btn_enter.svg" alt="">
       </div>
-      <div class="instructional_button_container">
+      <div id="IB_BACK" class="instructional_button_container">
         <span class="element_label element_simple_text instructional_button_prompt">Back</span>
         <button class="instructional_button instructional_button_small">Esc</button>
       </div>
@@ -1400,6 +1406,7 @@
 <script src="js/menu_modules/menu_stats_100_completion.js" type="module"></script>
 <script src="js/menu_modules/menu_stats_skills.js" type="module"></script>
 <script src="js/menu_modules/menu_localization.js" type="module"></script>
+<script src="js/menu_modules/menu_instructional_buttons.js" type="module"></script>
 <script src="js/menu_modules/menu_map.js" type="module"></script>
 
 </html>

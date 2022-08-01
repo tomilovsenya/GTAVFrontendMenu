@@ -299,6 +299,77 @@
   },
 
   {
+    "gxt": "menu_settings_category_0",
+    "american": "Gamepad",
+    "russian": "Геймпад"
+  },
+  {
+    "gxt": "menu_settings_category_1",
+    "american": "Keyboard / Mouse",
+    "russian": "Мышь / клавиатура"
+  },
+  {
+    "gxt": "menu_settings_category_2",
+    "american": "Key Bindings",
+    "russian": "Назначение клавиш"
+  },
+  {
+    "gxt": "menu_settings_category_3",
+    "american": "Audio",
+    "russian": "Аудио"
+  },
+  {
+    "gxt": "menu_settings_category_4",
+    "american": "Camera",
+    "russian": "Камера"
+  },
+  {
+    "gxt": "menu_settings_category_5",
+    "american": "Display",
+    "russian": "Видео"
+  },
+  {
+    "gxt": "menu_settings_category_6",
+    "american": "Graphics",
+    "russian": "Графика"
+  },
+  {
+    "gxt": "menu_settings_category_7",
+    "american": "Advanced Graphics",
+    "russian": "Дополнительные настройки изображения"
+  },
+  {
+    "gxt": "menu_settings_category_8",
+    "american": "Voice Chat",
+    "russian": "Голосовой чат"
+  },
+  {
+    "gxt": "menu_settings_category_9",
+    "american": "Notifications",
+    "russian": "Уведомления"
+  },
+  {
+    "gxt": "menu_settings_category_10",
+    "american": "Rockstar Editor",
+    "russian": "Редактор Rockstar"
+  },
+  {
+    "gxt": "menu_settings_category_11",
+    "american": "Saving And Startup",
+    "russian": "Сохранение и запуск"
+  },
+  {
+    "gxt": "menu_settings_category_12",
+    "american": "Facebook",
+    "russian": "Facebook"
+  },
+  {
+    "gxt": "menu_settings_category_13",
+    "american": "Exclusive Content",
+    "russian": "Эксклюзивный контент"
+  },
+
+  {
     "gxt": "menu_game_elements_missions_0",
     "american": "Prologue",
     "russian": "Пролог"

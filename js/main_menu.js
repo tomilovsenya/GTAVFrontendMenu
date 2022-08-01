@@ -101,6 +101,7 @@ const TAB_FRIENDS_CATEGORIES = [
   $("#menu_friends_player_14"),
   $("#menu_friends_player_15"),
 ];
+const TAB_ONLINE_CATEGORIES = [$("#menu_online_go"), $("#menu_online_invite_only")];
 
 const MENU_TAB_MAP = {
   tab: TAB_MAP,
@@ -135,6 +136,7 @@ const MENU_TAB_ONLINE = {
   tab: TAB_ONLINE,
   id: $("#tab_5"),
   window: $(".menu_online"),
+  cats: TAB_ONLINE_CATEGORIES,
 };
 const MENU_TAB_FRIENDS = {
   tab: TAB_FRIENDS,
@@ -217,7 +219,6 @@ function loadMenu() {
   setSingleTab();
   setActiveWindow(MENU_TAB_MAP);
   localizeMenu();
-  // setMissions();
   // playSFX(SFX_MENU_MUSIC);
 }
 
@@ -312,11 +313,11 @@ window.addEventListener(
     }
     if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
       e.preventDefault();
-      scrollLeft();
+      scrollLeft(false);
     }
     if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
       e.preventDefault();
-      scrollRight();
+      scrollRight(false);
     }
     if (["KeyQ"].indexOf(e.code) > -1) {
       scrollTabLeft();
@@ -326,11 +327,13 @@ window.addEventListener(
     }
     if (["KeyF"].indexOf(e.code) > -1) {
       sendMissionText("Go to <ylw>Trevor's house.</ylw>");
-      // setMission("New mission");
-      // $(".menu_entries_middle").children().on("categoryActive", setCategoryActive);
     }
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       escapeMenuEntriesMiddle();
+    }
+    if (["Tab"].indexOf(e.code) > -1) {
+      e.preventDefault();
+      toggleMenuVisibility();
     }
   },
   false
@@ -372,21 +375,16 @@ function setTabActive() {
   playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
 
-  isCategorySelected = false;
-  escapeMenuEntriesMiddle();
   let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
-  if (activeCategory != null) {
-    // console.log("Not null: " + activeCategory);
-    activeCategory.trigger("categoryDisabled");
-  }
-  activeCategory = tabCategories.first();
-  activeCategory.trigger("categoryActive");
+  let firstCategory = tabCategories.first();
+  triggerCategory(firstCategory);
   categoriesHandler(activeTab);
-  // console.log('Active tab is this: ' + $(this))
 }
 
 function setTabDisabled() {
   $(this).removeClass("menu_button_active");
+  if (activeCategory) disableCategory(activeCategory);
+  escapeMenuEntriesMiddle();
 }
 
 //
@@ -395,6 +393,8 @@ function setTabDisabled() {
 
 // let menuCategories = $('.menu_categories').children()
 
+$(".menu_category_list").children(".element_label").click(true, scrollLeft);
+$(".menu_category_list").children(".element_list").click(true, scrollRight);
 $(".menu_categories").children().click(clickCategory);
 $(".menu_entries_middle").children().click(clickEntry);
 
@@ -417,11 +417,16 @@ function triggerCategory(triggeredCategory) {
     }
   } else if (activeCategory != triggeredCategory) {
     escapeMenuEntriesMiddle();
-    activeCategory.trigger("categoryDisabled");
+    disableCategory(activeCategory);
     activeCategory = triggeredCategory;
     triggeredCategory.trigger("categoryActive");
     console.log("Triggered category: " + triggeredCategory.attr("id"));
   }
+}
+
+function disableCategory(disabledCategory) {
+  disabledCategory.trigger("categoryDisabled");
+  console.log("Disabled category: " + disabledCategory.attr("id"));
 }
 
 function triggerEntry(triggeredEntry) {
@@ -434,13 +439,18 @@ function triggerEntry(triggeredEntry) {
   } else if (activeEntryMiddle.is(triggeredEntry)) {
     console.log("Triggered already active entry: " + triggeredEntry.attr("id"));
   } else if (activeEntryMiddle != triggeredEntry) {
-    activeEntryMiddle.trigger("categoryDisabled");
+    disableEntry(activeEntryMiddle);
     activeEntryMiddle = triggeredEntry;
     triggeredEntry.trigger("categoryActive");
     isCategorySelected = true;
     console.log("Triggered entry: " + triggeredEntry.attr("id"));
   }
   categoriesHandler(activeTab);
+}
+
+function disableEntry(disabledEntry) {
+  disabledEntry.trigger("categoryDisabled");
+  console.log("Disabled entry: " + disabledEntry.attr("id"));
 }
 
 function clickCategory() {
@@ -451,8 +461,6 @@ function clickCategory() {
       "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
     );
   categoriesHandler(activeTab);
-  // Scroll if contains items
-  if ($(this).is($(".menu_category_list")) && $(this).is(activeCategory)) scrollRight();
 }
 
 function clickEntry() {
@@ -464,9 +472,9 @@ function clickEntry() {
     );
 }
 
-function enterMenuEntriesMiddle(triggeredCategory, elementsIndex) {
-  let firstEntry = triggeredCategory.find(".menu_elements_scrollable").find(".menu_entry").eq(0);
-  console.log("Selected cat: " + triggeredCategory.attr("id"));
+function enterMenuEntriesMiddle(triggeredCategoryElements) {
+  let firstEntry = triggeredCategoryElements.find(".menu_elements_scrollable").find(".menu_entry").first();
+  console.log("Selected cat: " + triggeredCategoryElements.attr("id"));
   console.log(firstEntry.attr("id"));
 
   triggerEntry(firstEntry);
@@ -521,14 +529,14 @@ let activeCategoryObject = null;
 
 function setCategoryActive() {
   $(this).addClass("menu_entry_active");
+  activeCategory = $(this);
+  activeCategory.focus();
 
-  if (activeWindow.cats && activeWindow.cats[$(this).index()].id != undefined) {
+  if (activeWindow.cats && activeWindow.cats[$(this).index()].id) {
     // activeCategoryElements = activeWindow.cats[$(this).index()].id;
     activeCategoryObject = activeWindow.cats[$(this).index()];
     activeCategoryElements = activeCategoryObject.wnds[activeCategoryObject.activeItem];
   } else activeCategoryElements = activeWindow.cats[$(this).index()];
-  activeCategory = $(this);
-  activeCategory.focus();
   // console.log("Active category object: " + activeCategoryObject.activeItem);
 
   // Only show element_list for active category
@@ -623,7 +631,10 @@ function scrollUpElements() {
 let currentItemList;
 let activeItem;
 
-function scrollLeft() {
+function scrollLeft(isMouseClick) {
+  // Don't scroll if clicked with mouse and parent category is not active yet
+  if (isMouseClick && !$(this).parent().is(activeCategory)) return;
+
   if (activeCategoryObject) {
     currentItemList = activeCategoryObject.category.find(".element_label_right");
     activeItem = activeCategoryObject.activeItem;
@@ -639,7 +650,10 @@ function scrollLeft() {
   // console.log("Active category: " + activeCategoryObject.category.attr("id"));
 }
 
-function scrollRight() {
+function scrollRight(isMouseClick) {
+  // Don't scroll if clicked with mouse and parent category is not active yet
+  if (isMouseClick && !$(this).parent().is(activeCategory)) return;
+
   if (activeCategoryObject) {
     currentItemList = activeCategoryObject.category.find(".element_label_right");
     activeItem = activeCategoryObject.activeItem;
@@ -830,6 +844,18 @@ $(".menu_elements_scrollable").bind("wheel", function (e) {
 // OTHER FUNCTIONS
 //
 
+let menuVisibility = true;
+
+export function toggleMenuVisibility() {
+  if (menuVisibility) {
+    FRONTEND_MAIN_MENU.css({ visibility: "hidden" });
+    menuVisibility = false;
+  } else {
+    FRONTEND_MAIN_MENU.css({ visibility: "" });
+    menuVisibility = true;
+  }
+}
+
 function setheaderTitle(title) {
   $("#menu_header_text").html(title);
 }
@@ -844,12 +870,6 @@ function setTabName(index, name) {
 }
 function setTabNameStar(index) {
   setTabName(index, "&starf; " + $(".menu_button").html());
-}
-function showMenuContent() {
-  $(".menu_content").show();
-}
-function showMap() {
-  $(".menu_map").show();
 }
 function setArrows() {
   let tabsNumber = $(".menu_buttons").children().length;
@@ -869,20 +889,6 @@ function setFirstTab() {
   activeTab = $(".menu_button").first();
   activeTab.trigger("tabActive");
   console.log("First button is: " + activeTab.attr("id"));
-}
-
-function setMission(missionName) {
-  let mission = $(
-    '<button class="menu_entry menu_entry_middle"><span class="element_label">' + missionName + "</span></button>"
-  );
-  $(".menu_game > .menu_entries_middle").append(mission);
-  console.log("Mission added: " + missionName);
-  // console.log(menuCategories)
-}
-function setMissions(missionName) {
-  setMission("Repossession");
-  setMission("Complications");
-  setMission("Father/Son");
 }
 
 function categoriesHandler(activeTab) {
@@ -922,6 +928,11 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_FRIENDS.id) {
     updateFriendCounter();
     updateFriendName();
+  }
+
+  if (activeWindow.id == MENU_TAB_ONLINE.id) {
+    activeWindow.window.children(".menu_elements").hide();
+    if (activeCategoryElements) activeCategoryElements.show();
   }
 }
 
