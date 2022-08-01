@@ -398,23 +398,23 @@ function setTabDisabled() {
 $(".menu_categories").children().click(clickCategory);
 $(".menu_entries_middle").children().click(updateMenuEntriesMiddle);
 
-function triggerCategory(category) {
-  if (activeCategory == null || activeCategory == category) {
+function triggerCategory(triggeredCategory) {
+  if (activeCategory == null || activeCategory == triggeredCategory) {
     activeCategory.trigger("categoryActive");
-  } else if (activeCategory != category) {
+  } else if (activeCategory != triggeredCategory) {
     activeCategory.trigger("categoryDisabled");
-    activeCategory = category;
+    activeCategory = triggeredCategory;
     activeCategory.trigger("categoryActive");
   }
 }
 
-function triggerEntry(category) {
+function triggerEntry(triggeredEntry) {
   if ($(this).is($(".menu_entry_empty"))) return;
-  if (activeEntryMiddle == null || activeEntryMiddle == category) {
+  if (activeEntryMiddle == null || activeEntryMiddle == triggeredEntry) {
     activeEntryMiddle.trigger("categoryActive");
-  } else if (activeEntryMiddle != category) {
+  } else if (activeEntryMiddle != triggeredEntry) {
     activeEntryMiddle.trigger("categoryDisabled");
-    activeEntryMiddle = category;
+    activeEntryMiddle = triggeredEntry;
     activeEntryMiddle.trigger("categoryActive");
   }
 }
