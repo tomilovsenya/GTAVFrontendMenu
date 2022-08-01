@@ -396,65 +396,81 @@ function setTabDisabled() {
 // let menuCategories = $('.menu_categories').children()
 
 $(".menu_categories").children().click(clickCategory);
-$(".menu_entries_middle").children().click(updateMenuEntriesMiddle);
+$(".menu_entries_middle").children().click(clickEntry);
 
 function triggerCategory(triggeredCategory) {
-  if (activeCategory == null || activeCategory == triggeredCategory) {
-    activeCategory.trigger("categoryActive");
+  // Return if empty
+  if (triggeredCategory.is($(".menu_entry_empty_double"))) return;
+  if (triggeredCategory.is($(".menu_entry_empty"))) return;
+  if (activeCategory == null) {
+    triggeredCategory.trigger("categoryActive");
+    console.log("Triggered category: " + triggeredCategory.attr("id"));
+  } else if (activeCategory.is(triggeredCategory)) {
+    console.log("Triggered already active category, will only enterMenuEntriesMiddle: " + triggeredCategory.attr("id"));
+    // enterMenuEntriesMiddle();
   } else if (activeCategory != triggeredCategory) {
     activeCategory.trigger("categoryDisabled");
     activeCategory = triggeredCategory;
-    activeCategory.trigger("categoryActive");
+    triggeredCategory.trigger("categoryActive");
+    console.log("Triggered category: " + triggeredCategory.attr("id"));
   }
 }
 
 function triggerEntry(triggeredEntry) {
-  if ($(this).is($(".menu_entry_empty"))) return;
-  if (activeEntryMiddle == null || activeEntryMiddle == triggeredEntry) {
-    activeEntryMiddle.trigger("categoryActive");
+  if (triggeredEntry.is($(".menu_entry_empty_double"))) return;
+  if (triggeredEntry.is($(".menu_entry_empty"))) return;
+  if (activeEntryMiddle == null) {
+    triggeredEntry.trigger("categoryActive");
+    isCategorySelected = true;
+    console.log("Triggered entry: " + triggeredEntry.attr("id"));
+  } else if (activeEntryMiddle.is(triggeredEntry)) {
+    // activeEntryMiddle = triggeredEntry;
+    // triggeredEntry.trigger("categoryActive");
+    console.log("Triggered already active entry: " + triggeredEntry.attr("id"));
   } else if (activeEntryMiddle != triggeredEntry) {
     activeEntryMiddle.trigger("categoryDisabled");
     activeEntryMiddle = triggeredEntry;
-    activeEntryMiddle.trigger("categoryActive");
+    triggeredEntry.trigger("categoryActive");
+    isCategorySelected = true;
+    console.log("Triggered entry: " + triggeredEntry.attr("id"));
   }
+  categoriesHandler(activeTab);
 }
 
 function clickCategory() {
-  // Return if empty
-  if ($(this).is($(".menu_entry_empty_double"))) return;
-  if ($(this).is($(".menu_entry_empty"))) return;
+  triggerCategory($(this));
+  if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
+  else
+    console.log(
+      "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
+    );
+  categoriesHandler(activeTab);
   // Scroll if contains items
   if ($(this).is($(".menu_category_list")) && $(this).is(activeCategory)) scrollRight();
-  else if ($(this).is(activeCategory) && !isCategorySelected) {
-    let selectedCategory = activeWindow.cats[$(this).index()];
-    // let selectedCategory = activeWindow.cats[$(this).index()].id;
-    activeCategoryElements = selectedCategory;
-    activeEntryMiddle = selectedCategory.children(".menu_elements_scrollable").children(".menu_entry").eq(0);
-    activeEntryMiddle.trigger("categoryActive");
-    isCategorySelected = !$(this).is($(".menu_category_unselectable"));
+  if ($(this).is(activeCategory) && $(this).is(".menu_category_enter") && !isCategorySelected) {
+    console.log("Entering entries middle from clickCategory");
+    enterMenuEntriesMiddle(activeWindow.cats[$(this).index()]);
   } else if (isCategorySelected) {
     escapeMenuEntriesMiddle();
   }
-  triggerCategory($(this));
-  categoriesHandler(activeTab);
 }
 
-function updateMenuEntriesMiddle() {
-  if ($(this).is($(".menu_entry_empty_double"))) return;
-  if ($(this).is($(".menu_entry_empty"))) return;
-  if (activeEntryMiddle == null || activeEntryMiddle == $(this)) {
-    activeEntryMiddle = $(this);
-    activeEntryMiddle.trigger("categoryActive");
-    // console.log('Not active category clicked')
-  } else if (activeEntryMiddle != $(this)) {
-    activeEntryMiddle.trigger("categoryDisabled");
-    activeEntryMiddle = $(this);
-    activeEntryMiddle.trigger("categoryActive");
-    // console.log('Other category clicked')
-  }
+function clickEntry() {
+  triggerEntry($(this));
+  if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
+  else
+    console.log(
+      "Clicked menu_entry without ID, possibly menu_entry_empty, triggerEntry will return before doing anything"
+    );
+}
+
+function enterMenuEntriesMiddle(triggeredCategory, elementsIndex) {
+  let firstEntry = triggeredCategory.find(".menu_elements_scrollable").find(".menu_entry").eq(0);
+  console.log("Selected cat: " + triggeredCategory.attr("id"));
+  console.log(firstEntry.attr("id"));
+
+  triggerEntry(firstEntry);
   isCategorySelected = true;
-  categoriesHandler(activeTab);
-  console.log("Clicked: " + $(this).html());
 }
 
 function escapeMenuEntriesMiddle() {
@@ -464,8 +480,8 @@ function escapeMenuEntriesMiddle() {
 
 $(".menu_categories").children().on("categoryActive", setCategoryActive);
 $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
-$(".menu_entries_middle").children(".menu_entry").on("categoryActive", setEntryActive);
-$(".menu_entries_middle").children(".menu_entry").on("categoryDisabled", setEntryDisabled);
+$(".menu_elements").children(".menu_entry").on("categoryActive", setEntryActive);
+$(".menu_elements").children(".menu_entry").on("categoryDisabled", setEntryDisabled);
 
 let leftArrowSvg = '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
 let rightArrowSvg = ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
@@ -483,8 +499,6 @@ function removeRightTextArrows(text) {
 }
 
 function setEntryActive() {
-  if ($(this).is($(".menu_entry_empty_double"))) return;
-  if ($(this).is($(".menu_entry_empty"))) return;
   $(this).addClass("menu_entry_active");
   activeEntryMiddle = $(this);
   activeEntryMiddle.focus();
@@ -496,6 +510,9 @@ function setEntryActive() {
 
 function setEntryDisabled() {
   $(this).removeClass("menu_entry_active");
+  activeEntryMiddle = null;
+  activeCategory.focus();
+
   let rightText = $(this).find(".element_label_right").first();
   if (rightText.length != 0) removeRightTextArrows(rightText);
 }
@@ -503,10 +520,8 @@ function setEntryDisabled() {
 let activeCategoryObject = null;
 
 function setCategoryActive() {
-  // Return if empty
-  if ($(this).is($(".menu_entry_empty_double"))) return;
-  if ($(this).is($(".menu_entry_empty"))) return;
   $(this).addClass("menu_entry_active");
+
   if (activeWindow.cats && activeWindow.cats[$(this).index()].id != undefined) {
     // activeCategoryElements = activeWindow.cats[$(this).index()].id;
     activeCategoryObject = activeWindow.cats[$(this).index()];
