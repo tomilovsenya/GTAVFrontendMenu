@@ -180,6 +180,9 @@ import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_completion.js";
 import { localizeMenu } from "./menu_modules/menu_localization.js";
 import { drawMap } from "./menu_modules/menu_map.js";
+import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
+import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
+import { sendMissionText } from "./menu_modules/menu_brief.js";
 
 //
 // SOUNDS
@@ -938,71 +941,6 @@ function categoriesHandler(activeTab) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
   }
-}
-
-//
-// BRIEF TAB FUNCTIONS
-//
-
-function sendMissionText(missionText) {
-  let missionTextElements = $("#menu_brief_mission").children(".menu_elements_scrollable");
-  let missionTextNewElement = $('<div class="menu_brief_mission_entry"></div>');
-  let missionTextNewString = $('<span class="element_simple_text"></span>');
-
-  missionTextNewElement.append(missionTextNewString);
-  missionTextNewString.html(missionText);
-
-  missionTextElements.append(missionTextNewElement);
-}
-
-//
-// GAME TAB FUNCTIONS
-//
-
-function updateMissionCounter() {
-  let totalMissions = $("#menu_game_elements_missions").children().length;
-  let currentMission = 1;
-  let focusedElement = $("#menu_game_elements_missions").children(":focus");
-  if (focusedElement.length != 0) currentMission = focusedElement.index() + 1;
-  else currentMission = 1;
-  console.log("Counter updated");
-  let counterString = currentMission + "/" + totalMissions;
-  $("#menu_game_elements_missions_counter").text(counterString);
-}
-
-function updateMissionName() {
-  let missionName = $(".element_mission_name");
-  let focusedElement = $("#menu_game_elements_missions").children(":focus");
-  if (focusedElement.length == 0) {
-    focusedElement = $("#menu_game_elements_missions").children().eq(0);
-    console.log("Now null");
-  } else focusedElement = $("#menu_game_elements_missions").children(":focus");
-  missionName.text(focusedElement.text());
-}
-
-//
-// FRIENDS TAB FUNCTIONS
-//
-
-function updateFriendCounter() {
-  let totalFriends = $("#menu_friends_list").children().length;
-  let currentFriend = 1;
-  let focusedElement = $("#menu_friends_list").children(":focus");
-  if (focusedElement.length != 0) currentFriend = focusedElement.index() + 1;
-  else currentFriend = 1;
-  console.log("Counter updated");
-  let counterString = currentFriend + "/" + totalFriends;
-  $("#menu_friends_player_counter").text(counterString);
-}
-
-function updateFriendName() {
-  let friendName = $(".element_player_name");
-  let focusedElement = $("#menu_friends_list").children(":focus");
-  if (focusedElement.length == 0) {
-    focusedElement = $("#menu_friends_list").children().eq(0);
-    console.log("Now null");
-  } else focusedElement = $("#menu_friends_list").children(":focus");
-  friendName.text(focusedElement.text());
 }
 
 //
