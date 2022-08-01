@@ -331,6 +331,10 @@ window.addEventListener(
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       escapeMenuEntriesMiddle();
     }
+    if (["Enter"].indexOf(e.code) > -1) {
+      e.preventDefault();
+      scrollRight(false);
+    }
     if (["Tab"].indexOf(e.code) > -1) {
       e.preventDefault();
       toggleMenuVisibility();
