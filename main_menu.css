@@ -16,7 +16,7 @@
 }
 
 :root {
-  --menu-background: url("images/bg/background5.jpg");
+  --menu-background: url("images/bg/background2.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
@@ -515,6 +515,7 @@ button.menu_entry {
   height: var(--item-height);
   min-height: var(--item-height);
   margin-bottom: var(--item-margin);
+  padding: 0;
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
   white-space: nowrap;
@@ -1870,3 +1871,28 @@ div.menu_replay {
 }
 
 /*#endregion MenuTabReplay*/
+
+/*#region MenuTabSave*/
+div#menu_save {
+  background-color: transparent;
+  width: var(--menu-wnd-width);
+  height: fit-content;
+  border: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+div#menu_save .menu_elements {
+  background-color: transparent;
+}
+
+div#menu_save .menu_elements .menu_entry:last-of-type {
+  margin-bottom: 0;
+}
+
+/*#endregion MenuTabSave*/

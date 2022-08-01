@@ -5,6 +5,7 @@
 const HEADER_GTAV = "Grand Theft Auto V";
 // const HEADER_GTAV = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas excepturi atque aliquid necessitatibus nihil vero id assumenda numquam perferendis alias.';
 const HEADER_GTAO = "Grand Theft Auto Online";
+const HEADER_SAVE = "Save Game";
 const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
 const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
@@ -19,6 +20,7 @@ const TAB_FRIENDS = 6;
 const TAB_GALLERY = 7;
 const TAB_STORE = 8;
 const TAB_REPLAY = 9;
+const TAB_SAVE = 10;
 
 const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
@@ -102,6 +104,7 @@ const TAB_FRIENDS_CATEGORIES = [
   $("#menu_friends_player_15"),
 ];
 const TAB_ONLINE_CATEGORIES = [$("#menu_online_go"), $("#menu_online_invite_only")];
+const TAB_SAVE_CATEGORIES = [$("#menu_save_list")];
 
 const MENU_TAB_MAP = {
   tab: TAB_MAP,
@@ -158,6 +161,12 @@ const MENU_TAB_REPLAY = {
   tab: TAB_REPLAY,
   id: $("#tab_9"),
   window: $(".menu_replay"),
+};
+const MENU_TAB_SAVE = {
+  tab: TAB_SAVE,
+  id: $("#tab_10"),
+  window: $("#menu_save"),
+  cats: TAB_SAVE_CATEGORIES,
 };
 
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
@@ -217,10 +226,10 @@ function loadMenu() {
   MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
   setHeaderTitle(HEADER_GTAV);
   setHeaderStats();
-  setArrows();
   // setFirstTab();
   setSingleTab();
   setActiveWindow(MENU_TAB_MAP);
+  setArrows();
   hideInstrLoadingSpinner();
   localizeMenu();
   // playSFX(SFX_MENU_MUSIC);
@@ -241,14 +250,14 @@ window.onload = showMenu;
 // ACTIVE WINDOWS LOGIC
 //
 
-function setActiveWindow(tabName) {
-  if (tabName == activeWindow) return;
-  console.log("Active window first: " + activeWindow.name);
+function setActiveWindow(newActiveWindow) {
+  if (newActiveWindow == activeWindow) return;
+  console.log("Active window first: " + activeWindow.id.attr("id"));
   activeWindow.window.hide();
-  activeWindow = tabName;
+  activeWindow = newActiveWindow;
   activeWindow.window.show();
   // activeWindow.window.fadeIn(250);
-  console.log("Active window: " + activeWindow.name);
+  console.log("Active window now: " + activeWindow.id.attr("id"));
 }
 
 function switchActiveWindow(tabActive) {
@@ -282,6 +291,9 @@ function switchActiveWindow(tabActive) {
   if (tabActive.is(MENU_TAB_REPLAY.id)) {
     setActiveWindow(MENU_TAB_REPLAY);
   }
+  if (tabActive.is(MENU_TAB_SAVE.id)) {
+    setActiveWindow(MENU_TAB_SAVE);
+  }
 }
 
 //
@@ -312,10 +324,12 @@ window.addEventListener(
     if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollDown();
+      scrollDownSaves($("#menu_save_list"));
     }
     if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollUp();
+      scrollUpSaves($("#menu_save_list"));
     }
     if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -388,15 +402,24 @@ function setTabActive() {
   playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
 
-  let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
-  let firstCategory = tabCategories.first();
-  triggerCategory(firstCategory);
+  if (activeWindow.window.find(".menu_categories").length > 0) {
+    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
+    let firstCategory = tabCategories.first();
+    triggerCategory(firstCategory);
+  } else if (activeWindow.window.find(".menu_elements_scrollable").length > 0) {
+    let tabElements = activeWindow.window.children(".menu_elements").children(".menu_entry");
+    let firstElement = tabElements.first();
+    triggerEntry(firstElement);
+  }
   categoriesHandler(activeTab);
 }
 
 function setTabDisabled() {
   $(this).removeClass("menu_button_active");
-  if (activeCategory) disableCategory(activeCategory);
+  if (activeCategory != null) disableCategory(activeCategory);
+  else if (activeEntryMiddle != null) disableEntry(activeEntryMiddle);
+  activeCategory = null;
+  activeEntryMiddle = null;
   escapeMenuEntriesMiddle();
 }
 
@@ -524,18 +547,22 @@ function setEntryActive() {
   activeEntryMiddle = $(this);
   activeEntryMiddle.focus();
 
-  let rightText = $(this).find(".element_label_right").first();
-  rightText.nextAll().hide();
-  if (rightText.length != 0) setRightTextArrows(rightText);
+  console.log("Set entry active: " + $(this).attr("id"));
+
+  let rightLabel = $(this).find(".element_list").children(".element_label_right").first();
+  rightLabel.nextAll().hide();
+  if (rightLabel.length != 0) setRightTextArrows(rightLabel);
 }
 
 function setEntryDisabled() {
   $(this).removeClass("menu_entry_active");
   activeEntryMiddle = null;
-  activeCategory.focus();
+  if (activeCategory) activeCategory.focus();
 
-  let rightText = $(this).find(".element_label_right").first();
-  if (rightText.length != 0) removeRightTextArrows(rightText);
+  console.log("Set entry disabled: " + $(this).attr("id"));
+
+  let rightLabel = $(this).find(".element_list").children(".element_label_right").first();
+  if (rightLabel.length != 0) removeRightTextArrows(rightLabel);
 }
 
 let activeCategoryObject = null;
@@ -682,8 +709,33 @@ function scrollRight(isMouseClick) {
   // console.log("Active category: " + activeCategoryObject.category.attr("id"));
 }
 
+function scrollDownSaves(scrollableElements) {
+  if (activeEntryMiddle == null) return;
+  let tabElements = scrollableElements.find(".menu_entry[id]");
+  if (!activeEntryMiddle.is(tabElements.last())) {
+    let nextEntry = activeEntryMiddle.next();
+    if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
+    else triggerEntry(nextEntry);
+  } else triggerEntry(tabElements.first());
+  categoriesHandler(activeTab);
+  activeEntryMiddle[0].scrollIntoView(false);
+}
+
+function scrollUpSaves(scrollableElements) {
+  if (activeEntryMiddle == null) return;
+  let tabElements = scrollableElements.find(".menu_entry[id]");
+  if (!activeEntryMiddle.is(tabElements.first())) {
+    let nextEntry = activeEntryMiddle.prev();
+    if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
+    else triggerEntry(nextEntry);
+  } else triggerEntry(tabElements.last());
+  categoriesHandler(activeTab);
+  activeEntryMiddle[0].scrollIntoView(false);
+}
+
 function scrollDown() {
   if (activeCategory == null) return;
+
   if (!isCategorySelected) {
     let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
     if (activeCategory.attr("id") != tabCategories.last().attr("id")) {
@@ -699,7 +751,7 @@ function scrollDown() {
       .children(".menu_entry[id]");
     // triggerEntry(activeEntryMiddle.next());
     // activeEntryMiddle.scrollIntoView(false);
-    if (activeEntryMiddle.attr("id") != tabElements.last().attr("id")) {
+    if (!activeEntryMiddle.is(tabElements.last())) {
       let nextEntry = activeEntryMiddle.next();
       if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
       else triggerEntry(nextEntry);
@@ -725,7 +777,7 @@ function scrollUp() {
 
     // triggerEntry(activeEntryMiddle.next());
     // activeEntryMiddle.scrollIntoView(false);
-    if (activeEntryMiddle.attr("id") != tabElements.first().attr("id")) {
+    if (!activeEntryMiddle.is(tabElements.first())) {
       let nextEntry = activeEntryMiddle.prev();
       if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
       else triggerEntry(nextEntry);
@@ -863,6 +915,14 @@ $(".menu_elements_scrollable").bind("wheel", function (e) {
   }
 });
 
+$("#menu_save_list").bind("wheel", function (e) {
+  if (e.originalEvent.deltaY / 40 < 0) {
+    scrollUpSaves($("#menu_save_list"));
+  } else {
+    scrollDownSaves($("#menu_save_list"));
+  }
+});
+
 //
 // OTHER FUNCTIONS
 //
@@ -896,12 +956,11 @@ function setTabNameStar(index) {
 }
 function setArrows() {
   let tabsNumber = $(".menu_buttons").children().length;
-  if (tabsNumber <= 1) {
-    $(".menu_arrows").hide();
+  if (tabsNumber <= 6) {
+    $(".menu_navbar_arrows").hide();
   } else {
-    $(".menu_arrows").show();
+    $(".menu_navbar_arrows").show();
   }
-  // console.log('Tabs: ' + tabsNumber)
 }
 function setSingleTab() {
   $(".menu_window").hide();
@@ -956,6 +1015,14 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_ONLINE.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
+  }
+
+  if (activeWindow.id == MENU_TAB_SAVE.id) {
+    activeCategoryElements = $(".menu_save_list");
+    isCategorySelected = false;
+    setHeaderTitle(HEADER_SAVE);
+  } else {
+    setHeaderTitle(HEADER_GTAV);
   }
 }
 

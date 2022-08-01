@@ -49,6 +49,11 @@
     "american": "ROCKSTAR EDITOR",
     "russian": "РЕДАКТОР ROCKSTAR"
   },
+  {
+    "gxt": "tab_10",
+    "american": "SAVE",
+    "russian": "СОХРАНЕНИЕ"
+  },
 
   {
     "gxt": "menu_brief_category_0",
