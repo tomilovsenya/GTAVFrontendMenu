@@ -62,27 +62,6 @@
           <button id="menu_arrow_right" class="menu_navbar_arrows" tabindex="-1"></button>
         </div>
 
-        <map name="menu_arrows_brief_map">
-          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpDialogue()">
-          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownDialogue()">
-        </map>
-        <map name="menu_arrows_stats_map">
-          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpStats()">
-          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownStats()">
-        </map>
-        <map name="menu_arrows_settings_map">
-          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpElements()">
-          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownElements()">
-        </map>
-        <map name="menu_arrows_game_map">
-          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpElements()">
-          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownElements()">
-        </map>
-        <map name="menu_arrows_friends_map">
-          <area id="menu_arrow_up" shape="rect" coords="0,0,20,16" onclick="scrollUpCategory()">
-          <area id="menu_arrow_down" shape="rect" coords="0,16,20,30" onclick="scrollDownCategory()">
-        </map>
-
         <!-- <img id="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
         <img id="menu_map_image" src="images/maps/h4_fake_islandx.svg" alt="">
         <!-- <img id="menu_map_image" src="images/maps/V_Mainmap.svg" alt=""> -->
@@ -319,8 +298,9 @@
             </div>
           </div>
 
-          <button id="menu_arrows_brief" class="menu_arrows menu_arrows_brief" tabindex="-1">
-            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_brief_map">
+          <button id="menu_arrows_brief" class="menu_arrows menu_arrows_full" tabindex="-1">
+            <div id="menu_arrows_brief_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+            <div id="menu_arrows_brief_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
           </button>
         </div>
 
@@ -719,8 +699,10 @@
               </button>
             </div>
           </div>
-          <button id="menu_arrows_stats" class="menu_arrows" tabindex="-1">
-            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_stats_map">
+
+          <button id="menu_arrows_stats" class="menu_arrows menu_arrows_full" tabindex="-1">
+            <div id="menu_arrows_stats_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+            <div id="menu_arrows_stats_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
           </button>
         </div>
 
@@ -1004,8 +986,10 @@
               </button>
             </div>
           </div>
-          <button class="menu_arrows" tabindex="-1">
-            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_settings_map">
+
+          <button id="menu_arrows_settings" class="menu_arrows menu_arrows_full" tabindex="-1">
+            <div id="menu_arrows_settings_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+            <div id="menu_arrows_settings_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
           </button>
         </div>
 
@@ -1176,9 +1160,12 @@
               </div>
             </div>
           </div>
-          <button id="menu_arrows_game_replay_mission" class="menu_arrows menu_arrows_game" tabindex="-1">
+          <button id="menu_arrows_game" class="menu_arrows menu_arrows_game" tabindex="-1">
             <span id="menu_game_elements_missions_counter" class="element_label"></span>
-            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_game_map">
+            <div class="menu_arrows_zones">
+              <div id="menu_arrows_game_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+              <div id="menu_arrows_game_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+            </div>
           </button>
         </div>
 
@@ -1216,9 +1203,6 @@
               <span class="menu_window_text">Head straight into GTA Online.</span>
             </div>
           </div>
-          <button class="menu_arrows" tabindex="-1">
-            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
-          </button>
         </div>
 
         <div class="menu_window menu_friends">
@@ -1302,9 +1286,16 @@
               </div>
             </div>
           </div>
-          <button class="menu_arrows menu_arrows_friends" tabindex="-1">
+          <!-- <button class="menu_arrows menu_arrows_friends" tabindex="-1">
             <span id="menu_friends_player_counter" class="element_label">1/16</span>
             <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_friends_map">
+          </button> -->
+          <button id="menu_arrows_friends" class="menu_arrows menu_arrows_friends" tabindex="-1">
+            <span id="menu_friends_player_counter" class="element_label">1/16</span>
+            <div class="menu_arrows_zones">
+              <div id="menu_arrows_friends_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+              <div id="menu_arrows_friends_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+            </div>
           </button>
         </div>
 
@@ -1354,9 +1345,13 @@
           <div class="menu_gallery_map">
             <img src="images/maps/V_FakePrologueLand.svg" alt="">
           </div>
-          <button class="menu_arrows menu_arrows_gallery" tabindex="-1">
+          <button id="menu_arrows_gallery" class="menu_arrows menu_arrows_gallery" tabindex="-1">
             <span class="element_label">1/12</span>
-            <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map">
+            <!-- <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map"> -->
+            <div class="menu_arrows_zones">
+              <div id="menu_arrows_friends_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+              <div id="menu_arrows_friends_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+            </div>
           </button>
         </div>
 

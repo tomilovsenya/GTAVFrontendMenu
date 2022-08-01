@@ -670,26 +670,54 @@ div.element_arrows {
   display: flex;
   justify-content: center;
   align-content: center;
-  height: 90%;
+  height: 100%;
   /* pointer-events: none; */
 }
 
 button.menu_arrows {
   background-color: var(--black-bg-color);
+  background-image: url(images/arrows_vertical.svg);
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: right;
+  background-size: contain;
   width: var(--menu-elements-width);
   height: var(--item-height);
   border: 0px;
   margin-top: var(--item-margin);
   float: right;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   align-self: flex-end;
+  padding: 0;
   /* pointer-events: none; */
 }
 
-button.menu_arrows img {
-  height: 90%;
+button.menu_arrows_full {
+  flex-direction: column;
+  background-position: center;
+}
+
+button.menu_arrows_horizontal {
+  flex-direction: column;
+  background-position: center;
+}
+
+div.menu_arrows_zones {
+  width: 6%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.menu_arrows_zone_up, div.menu_arrows_zone_down {
+  width: 100%;
+  height: 50%;
+}
+
+div.menu_arrows_zone:hover {
+  /* background-color: var(--hover-color); */
 }
 
 img.menu_entry_arrow_left {
@@ -1599,13 +1627,14 @@ div.menu_game .menu_game_mission_info_objectives .menu_entry:last-of-type {
 }
 
 button.menu_arrows_game {
-  width: 33.15%;
+  width: var(--menu-categories-width);
   color: var(--text-color);
   float: left;
   justify-content: space-between;
   margin-left: calc(var(--menu-categories-width) + var(--tab-margin));
   padding-left: var(--item-padding-sides);
-  padding-right: var(--item-padding-sides);
+  /* padding-right: var(--item-padding-sides); */
+  padding-right: 0.5vw;
 }
 
 /*#endregion MenuTabGame*/
@@ -1821,18 +1850,24 @@ div.menu_gallery_map img {
 }
 
 button.menu_arrows_gallery {
+  background-image: none;
   width: var(--menu-elements-width);
-  ;
   float: left;
   justify-content: space-between;
   color: var(--text-color);
   padding-left: var(--item-padding-sides);
-  padding-right: var(--item-padding-sides);
+  /* padding-right: var(--item-padding-sides); */
+  padding-right: 0.5vw;
 }
 
-button.menu_arrows_gallery img {
+button.menu_arrows_gallery .menu_arrows_zones {
+  width: 4.5%;
+  background-image: url(images/arrows_vertical.svg);
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center;
+  background-size: contain;
   transform: rotate(90deg);
-  float: right;
 }
 
 /*#endregion MenuTabGallery*/

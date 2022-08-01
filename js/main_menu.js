@@ -324,12 +324,12 @@ window.addEventListener(
     if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollDown();
-      scrollDownSaves($("#menu_save_list"));
+      if (activeWindow == MENU_TAB_SAVE) scrollDownSaves($("#menu_save_list"));
     }
     if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollUp();
-      scrollUpSaves($("#menu_save_list"));
+      if (activeWindow == MENU_TAB_SAVE) scrollUpSaves($("#menu_save_list"));
     }
     if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -439,11 +439,11 @@ function setTabActive() {
 
 function setTabDisabled() {
   $(this).removeClass("menu_button_active");
+  escapeMenuEntriesMiddle();
   if (activeCategory != null) disableCategory(activeCategory);
   else if (activeEntryMiddle != null) disableEntry(activeEntryMiddle);
   activeCategory = null;
   activeEntryMiddle = null;
-  escapeMenuEntriesMiddle();
 }
 
 //
@@ -815,6 +815,56 @@ function scrollUp() {
 // SCROLL ELEMENTS
 //
 
+$("#menu_arrows_brief_up").click(scrollBriefUp);
+$("#menu_arrows_brief_down").click(scrollBriefDown);
+
+$("#menu_arrows_stats_up").click(scrollStatsUp);
+$("#menu_arrows_stats_down").click(scrollStatsDown);
+
+$("#menu_arrows_settings_up").click(scrollSettingsUp);
+$("#menu_arrows_settings_down").click(scrollSettingsDown);
+
+$("#menu_arrows_game_up").click(scrollGameUp);
+$("#menu_arrows_game_down").click(scrollGameDown);
+
+$("#menu_arrows_friends_up").click(scrollFriendsUp);
+$("#menu_arrows_friends_down").click(scrollFriendsDown);
+
+function scrollBriefUp() {
+  if (activeCategory.is($("#menu_brief_category_2"))) scrollUpDialogue();
+}
+function scrollBriefDown() {
+  if (activeCategory.is($("#menu_brief_category_2"))) scrollDownDialogue();
+}
+
+function scrollStatsUp() {
+  if (activeCategory.is($("#menu_stats_category_1"))) scrollUpStats();
+}
+function scrollStatsDown() {
+  if (activeCategory.is($("#menu_stats_category_1"))) scrollDownStats();
+}
+
+function scrollSettingsUp() {
+  if (activeEntryMiddle) scrollUpElements();
+}
+function scrollSettingsDown() {
+  if (activeEntryMiddle) scrollDownElements();
+}
+
+function scrollGameUp() {
+  if (activeCategory.is($("#menu_game_category_0"))) scrollUpElements();
+}
+function scrollGameDown() {
+  if (activeCategory.is($("#menu_game_category_0"))) scrollDownElements();
+}
+
+function scrollFriendsUp() {
+  if (activeCategory) scrollUpCategory();
+}
+function scrollFriendsDown() {
+  if (activeCategory) scrollDownCategory();
+}
+
 let currentOverflowTop, currentOverflowBottom;
 
 let currentOverflows = {
@@ -856,11 +906,11 @@ function scrollUpScrollableElements(scrollableElements, maxOnScreen, currentOver
 let dialogueElements = $("#menu_brief_dialogue").find(".menu_brief_dialogue_entry");
 let statsElements = $("#menu_stats_general").find(".menu_elements_scrollable").children(".menu_entry");
 
-function scrollDownDialogue() {
+export function scrollDownDialogue() {
   scrollDownScrollableElements(dialogueElements, 8, currentOverflows.overflowsDialogue);
 }
 
-function scrollUpDialogue() {
+export function scrollUpDialogue() {
   scrollUpScrollableElements(dialogueElements, 8, currentOverflows.overflowsDialogue);
 }
 
@@ -921,7 +971,7 @@ $(".menu_categories").bind("wheel", function (e) {
 });
 
 $(".menu_category_list").bind("wheel", function (e) {
-  // if (e.originalEvent.deltaY != 0) return;
+  if (e.originalEvent.deltaY != 0) return;
   if (e.originalEvent.deltaX / 120 < 0) {
     scrollRight();
   } else {
