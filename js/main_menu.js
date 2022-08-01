@@ -379,8 +379,31 @@ document.addEventListener(
 //
 
 $(".menu_button").click(clickTab);
+$(".menu_button").dblclick("dblclick", setTabOnly);
 $(".menu_button").on("tabActive", setTabActive);
 $(".menu_button").on("tabDisabled", setTabDisabled);
+
+let isOnlyTabSet = false;
+let prevTabs;
+let nextTabs;
+
+function setTabOnly() {
+  let onlyTab = $(this);
+  let navbarTabs = onlyTab.parent();
+  let otherTabs = onlyTab.siblings();
+  if (!isOnlyTabSet) {
+    prevTabs = otherTabs.prevAll();
+    nextTabs = otherTabs.nextAll();
+    otherTabs.detach();
+    setArrows();
+    isOnlyTabSet = true;
+  } else {
+    navbarTabs.prepend(prevTabs);
+    navbarTabs.append(nextTabs);
+    setArrows();
+    isOnlyTabSet = false;
+  }
+}
 
 function clickTab() {
   if ($(this).is(activeTab)) return;
