@@ -406,9 +406,17 @@ function triggerCategory(triggeredCategory) {
     triggeredCategory.trigger("categoryActive");
     console.log("Triggered category: " + triggeredCategory.attr("id"));
   } else if (activeCategory.is(triggeredCategory)) {
-    console.log("Triggered already active category, will only enterMenuEntriesMiddle: " + triggeredCategory.attr("id"));
-    // enterMenuEntriesMiddle();
+    console.log("Triggered already active category, will only enter entries middle: " + triggeredCategory.attr("id"));
+    // Enter entries middle
+    if (!triggeredCategory.is(".menu_category_enter")) return;
+    if (!isCategorySelected) {
+      console.log("Entering entries middle from triggerCategory");
+      enterMenuEntriesMiddle(activeWindow.cats[triggeredCategory.index()]);
+    } else if (isCategorySelected) {
+      escapeMenuEntriesMiddle();
+    }
   } else if (activeCategory != triggeredCategory) {
+    escapeMenuEntriesMiddle();
     activeCategory.trigger("categoryDisabled");
     activeCategory = triggeredCategory;
     triggeredCategory.trigger("categoryActive");
@@ -424,8 +432,6 @@ function triggerEntry(triggeredEntry) {
     isCategorySelected = true;
     console.log("Triggered entry: " + triggeredEntry.attr("id"));
   } else if (activeEntryMiddle.is(triggeredEntry)) {
-    // activeEntryMiddle = triggeredEntry;
-    // triggeredEntry.trigger("categoryActive");
     console.log("Triggered already active entry: " + triggeredEntry.attr("id"));
   } else if (activeEntryMiddle != triggeredEntry) {
     activeEntryMiddle.trigger("categoryDisabled");
@@ -447,12 +453,6 @@ function clickCategory() {
   categoriesHandler(activeTab);
   // Scroll if contains items
   if ($(this).is($(".menu_category_list")) && $(this).is(activeCategory)) scrollRight();
-  if ($(this).is(activeCategory) && $(this).is(".menu_category_enter") && !isCategorySelected) {
-    console.log("Entering entries middle from clickCategory");
-    enterMenuEntriesMiddle(activeWindow.cats[$(this).index()]);
-  } else if (isCategorySelected) {
-    escapeMenuEntriesMiddle();
-  }
 }
 
 function clickEntry() {
