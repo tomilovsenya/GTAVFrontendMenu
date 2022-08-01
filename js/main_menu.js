@@ -165,7 +165,6 @@ const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 const MENU_PAGE = document.documentElement;
 const MENU_COLOR = "lightskyblue";
 
-let isScrollDown = false;
 let isCategorySelected = false;
 let activeTab = null;
 let activeCategory = null;
@@ -295,11 +294,13 @@ function goFullScreen() {
 NAVBAR_RIGHT_ARROW.click("click", scrollTabRight);
 NAVBAR_LEFT_ARROW.click("click", scrollTabLeft);
 
+let isButtonPressedDown = false;
+
 window.addEventListener(
   "keydown",
   function (e) {
-    if (isScrollDown) return;
-    isScrollDown = true;
+    if (isButtonPressedDown) return;
+    isButtonPressedDown = true;
     if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
       e.preventDefault();
     }
@@ -346,7 +347,7 @@ window.addEventListener(
 document.addEventListener(
   "keyup",
   function (e) {
-    isScrollDown = false;
+    isButtonPressedDown = false;
   },
   false
 );
