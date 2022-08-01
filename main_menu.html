@@ -28,7 +28,7 @@
 <body>
   <div class="menu_bounding_box">
     <div class="menu_loading_spinner">
-      <img src="images/gtav_savingspinner_ib.png" alt="">
+      <img class="menu_loading_spinner" src="images/gtav_savingspinner_ib.png" alt="">
     </div>
     <div class="frontend_main_menu">
       <div class="menu_box">
@@ -1376,7 +1376,7 @@
         </div>
       </div>
     </div>
-    <div class="instructional_buttons">
+    <div id="menu_instructional_buttons" class="instructional_buttons">
       <div id="IB_HIDE_MENU" class="instructional_button_container">
         <span class="element_label element_simple_text instructional_button_prompt">Hide Menu</span>
         <button class="instructional_button instructional_button_small">Tab</button>
@@ -1393,6 +1393,10 @@
       <div id="IB_BACK" class="instructional_button_container">
         <span class="element_label element_simple_text instructional_button_prompt">Back</span>
         <button class="instructional_button instructional_button_small">Esc</button>
+      </div>
+      <div id="IB_SAVING_SPINNER" class="instructional_button_container ib_container_inactive">
+        <span class="element_label element_simple_text instructional_button_prompt">Saving</span>
+        <img class="instructional_button menu_loading_spinner_slow" src="images/gtav_savingspinner_ib.png" alt="">
       </div>
     </div>
 

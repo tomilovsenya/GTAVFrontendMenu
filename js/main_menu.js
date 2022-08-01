@@ -183,6 +183,7 @@ import { drawMap } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
+import { showInstrLoadingSpinner, hideInstrLoadingSpinner } from "./menu_modules/menu_instructional_buttons.js";
 
 //
 // SOUNDS
@@ -214,12 +215,13 @@ function showLoadingSpinner() {
 function loadMenu() {
   FRONTEND_MAIN_MENU.hide();
   MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
-  setheaderTitle(HEADER_GTAV);
+  setHeaderTitle(HEADER_GTAV);
   setHeaderStats();
   setArrows();
   // setFirstTab();
   setSingleTab();
   setActiveWindow(MENU_TAB_MAP);
+  hideInstrLoadingSpinner();
   localizeMenu();
   // playSFX(SFX_MENU_MUSIC);
 }
@@ -331,6 +333,10 @@ window.addEventListener(
     }
     if (["KeyF"].indexOf(e.code) > -1) {
       sendMissionText("Go to <ylw>Trevor's house.</ylw>");
+      showInstrLoadingSpinner();
+    }
+    if (["KeyG"].indexOf(e.code) > -1) {
+      hideInstrLoadingSpinner();
     }
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       escapeMenuEntriesMiddle();
@@ -831,10 +837,20 @@ $("#menu_stats_general").bind("wheel", function (e) {
 
 $(".menu_categories").bind("wheel", function (e) {
   if (isCategorySelected) return;
+  if (e.originalEvent.deltaX != 0) return;
   if (e.originalEvent.deltaY / 40 < 0) {
     scrollUp();
   } else {
     scrollDown();
+  }
+});
+
+$(".menu_category_list").bind("wheel", function (e) {
+  // if (e.originalEvent.deltaY != 0) return;
+  if (e.originalEvent.deltaX / 120 < 0) {
+    scrollRight();
+  } else {
+    scrollLeft();
   }
 });
 
@@ -863,7 +879,7 @@ export function toggleMenuVisibility() {
   }
 }
 
-function setheaderTitle(title) {
+function setHeaderTitle(title) {
   $("#menu_header_text").html(title);
 }
 function setHeaderStats() {

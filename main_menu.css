@@ -154,7 +154,7 @@ div.instructional_button_container {
   margin-right: 1vw;
 }
 
-div.instructional_button_container:hover {
+div.instructional_button_container:not(div.ib_container_inactive):hover {
   background-color: var(--hover-color);
 }
 
@@ -621,7 +621,7 @@ div.menu_divider {
 button.instructional_button {
   min-width: 1.25vw;
   height: 1.25vw;
-  max-width: fit-content;
+  /* max-width: fit-content; */
   max-height: 1.575vw;
   font-family: "London60";
   /* font-size: 0.8vw; */
@@ -641,10 +641,17 @@ button.instructional_button {
 
 img.instructional_button {
   pointer-events: none;
+  width: 1.25vw;
+  vertical-align: middle;
 }
 
 button.instructional_button_small {
   max-width: 1.25vw;
+  font-size: 0.75vw;
+}
+
+button.instructional_button_wide {
+  width: 1.875vw;
   font-size: 0.75vw;
 }
 
@@ -721,10 +728,14 @@ div.menu_loading_spinner {
   /* display: none; */
 }
 
-div.menu_loading_spinner img {
+img.menu_loading_spinner {
   width: 3vw;
   height: 3vw;
   animation: spin 750ms infinite linear;
+}
+
+img.menu_loading_spinner_slow {
+  animation: spin 2500ms infinite linear !important;
 }
 
 @keyframes spin {
