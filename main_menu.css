@@ -955,7 +955,12 @@ div.menu_brief .menu_elements_scrollable {
 
 div#menu_brief_mission .menu_elements_scrollable {
   /* background-color: transparent; */
-  /* overflow-y: scroll; */
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+div.menu_brief #menu_brief_mission .menu_elements_scrollable::-webkit-scrollbar {
+  display: none;
 }
 
 div.menu_brief .menu_brief_mission_entry {
