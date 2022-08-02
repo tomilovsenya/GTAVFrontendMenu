@@ -304,6 +304,12 @@
   },
 
   {
+    "gxt": "menu_settings_graphics_header_vidmem",
+    "american": "Video Memory",
+    "russian": "Видеопамять"
+  },
+
+  {
     "gxt": "menu_settings_category_0",
     "american": "Gamepad",
     "russian": "Геймпад"

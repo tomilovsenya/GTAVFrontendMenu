@@ -7,7 +7,7 @@ let menuLanguage;
 
 export function localizeMenu() {
   getPreferredLanguage();
-  parseLocalizationFile();
+  localizeMenuElements();
 }
 
 function getPreferredLanguage() {
@@ -17,30 +17,49 @@ function getPreferredLanguage() {
   else menuLanguage = menuLanguages[0];
 }
 
-function parseLocalizationFile() {
-  fetch("js/lang.json")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      for (var i = 0; i < data.length; i++) {
-        let gxtID;
-        let gxtElement;
+async function fetchLangFile() {
+  const langFile = await fetch("js/lang.json");
+  const langJSON = await langFile.json();
+  return langJSON;
+}
 
-        if (data[i].multiple_gxt) {
-          // console.log("Multiple GXT of length " + data[i].gxt.length + ": " + data[i].gxt);
-          for (var j = 0; j < data[i].gxt.length; j++) {
-            gxtID = "#" + data[i].gxt[j];
-            gxtElement = $(gxtID);
-            if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(data[i][menuLanguage]);
-            else gxtElement.html(data[i][menuLanguage]);
-          }
-        } else {
-          gxtID = "#" + data[i].gxt;
-          gxtElement = $(gxtID);
-          if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(data[i][menuLanguage]);
-          else gxtElement.html(data[i][menuLanguage]);
-        }
+async function localizeMenuElements() {
+  const langJSON = await fetchLangFile();
+
+  for (var i = 0; i < langJSON.length; i++) {
+    let gxtID;
+    let gxtElement;
+
+    if (langJSON[i].multiple_gxt) {
+      // console.log("Multiple GXT of length " + langJSON[i].gxt.length + ": " + langJSON[i].gxt);
+      for (var j = 0; j < langJSON[i].gxt.length; j++) {
+        gxtID = "#" + langJSON[i].gxt[j];
+        gxtElement = $(gxtID);
+        if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(langJSON[i][menuLanguage]);
+        else gxtElement.html(langJSON[i][menuLanguage]);
       }
-    });
+    } else {
+      gxtID = "#" + langJSON[i].gxt;
+      gxtElement = $(gxtID);
+      if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(langJSON[i][menuLanguage]);
+      else gxtElement.html(langJSON[i][menuLanguage]);
+    }
+  }
+}
+
+export async function getLocalizedString(requestedString) {
+  let localizedString;
+  let foundStrings = 0;
+  const langJSON = await fetchLangFile();
+
+  for (var i = 0; i < langJSON.length; i++) {
+    if (langJSON[i].gxt == requestedString) {
+      localizedString = langJSON[i][menuLanguage];
+      foundStrings++;
+    }
+    if (foundStrings > 0) break;
+  }
+
+  // console.log("Found localized GXT: " + localizedString);
+  return localizedString;
 }

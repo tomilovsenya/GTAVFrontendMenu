@@ -1901,13 +1901,14 @@ div.menu_replay {
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   /* justify-content: space-between; */
   /* display: none; */
   white-space: nowrap;
-  display: flex;
   overflow: hidden;
   justify-content: space-between;
   /* display: none; */
+  visibility: hidden;
 }
 
 /*#endregion MenuTabReplay*/
@@ -1925,6 +1926,7 @@ div#menu_save {
   display: flex;
   overflow: hidden;
   justify-content: space-between;
+  display: none;
 }
 
 div#menu_save .menu_elements {

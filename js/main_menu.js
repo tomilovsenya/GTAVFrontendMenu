@@ -172,7 +172,7 @@ const MENU_TAB_SAVE = {
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 const MENU_PAGE = document.documentElement;
-const MENU_COLOR = "lightskyblue";
+export const MENU_COLOR = "lightskyblue";
 
 let isCategorySelected = false;
 let activeTab = null;
@@ -191,6 +191,7 @@ import { localizeMenu } from "./menu_modules/menu_localization.js";
 import { drawMap } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
+import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
 import { showInstrLoadingSpinner, hideInstrLoadingSpinner } from "./menu_modules/menu_instructional_buttons.js";
 
@@ -223,6 +224,7 @@ function showLoadingSpinner() {
 
 function loadMenu() {
   FRONTEND_MAIN_MENU.hide();
+  // FRONTEND_MAIN_MENU.css({visibility: "hidden"});
   MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
   setHeaderTitle(HEADER_GTAV);
   setHeaderStats();
@@ -237,6 +239,7 @@ function loadMenu() {
 
 function showMenu() {
   MENU_LOADING_SPINNER.hide();
+  // FRONTEND_MAIN_MENU.css({visibility: "visible"});
   FRONTEND_MAIN_MENU.show();
   drawMap();
 }
@@ -256,6 +259,7 @@ function setActiveWindow(newActiveWindow) {
   activeWindow.window.hide();
   activeWindow = newActiveWindow;
   activeWindow.window.show();
+  activeWindow.window.css({ visibility: "visible" });
   // activeWindow.window.fadeIn(250);
   console.log("Active window now: " + activeWindow.id.attr("id"));
 }
@@ -346,7 +350,7 @@ window.addEventListener(
       scrollTabRight();
     }
     if (["KeyF"].indexOf(e.code) > -1) {
-      sendMissionText("Go to <ylw>Trevor's house.</ylw>");
+      // sendMissionText("Go to <ylw>Trevor's house.</ylw>");
       showInstrLoadingSpinner();
     }
     if (["KeyG"].indexOf(e.code) > -1) {
@@ -1071,6 +1075,8 @@ function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_SETTINGS.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
+
+    setVideoMemory(400, 4096);
   }
 
   if (activeWindow.id == MENU_TAB_GAME.id) {
