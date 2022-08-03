@@ -5,7 +5,8 @@
 const HEADER_GTAV = "Grand Theft Auto V";
 // const HEADER_GTAV = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas excepturi atque aliquid necessitatibus nihil vero id assumenda numquam perferendis alias.';
 const HEADER_GTAO = "Grand Theft Auto Online";
-const HEADER_SAVE = "Save Game";
+let HEADER_SAVE = "Save Game";
+// const HEADER_SAVE = getLocalizedString("menu_header_save");
 const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
 const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
@@ -187,7 +188,7 @@ let activeWindow = MENU_TAB_MAP;
 
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_completion.js";
-import { localizeMenu } from "./menu_modules/menu_localization.js";
+import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import { drawMap } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
@@ -1009,9 +1010,11 @@ let menuVisibility = true;
 export function toggleMenuVisibility() {
   if (menuVisibility) {
     FRONTEND_MAIN_MENU.css({ visibility: "hidden" });
+    activeWindow.window.css({ visibility: "hidden" });
     menuVisibility = false;
   } else {
     FRONTEND_MAIN_MENU.css({ visibility: "" });
+    activeWindow.window.css({ visibility: "" });
     menuVisibility = true;
   }
 }
@@ -1050,7 +1053,7 @@ function setFirstTab() {
   console.log("First button is: " + activeTab.attr("id"));
 }
 
-function categoriesHandler(activeTab) {
+async function categoriesHandler(activeTab) {
   if (activeWindow.id == MENU_TAB_BRIEF.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
@@ -1097,6 +1100,7 @@ function categoriesHandler(activeTab) {
   }
 
   if (activeWindow.id == MENU_TAB_SAVE.id) {
+    HEADER_SAVE = await getLocalizedString("menu_header_save")
     activeCategoryElements = $(".menu_save_list");
     isCategorySelected = false;
     setHeaderTitle(HEADER_SAVE);
