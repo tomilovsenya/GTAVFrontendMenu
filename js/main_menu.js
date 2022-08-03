@@ -213,6 +213,17 @@ function playSFX(sfx) {
 }
 
 //
+// jQuery custom extension for getting element width in %
+//
+
+(function ($) {
+  $.fn.getWidthInPercent = function () {
+    var width = parseFloat($(this).css("width")) / parseFloat($(this).parent().css("width"));
+    return Math.round(100 * width) + "%";
+  };
+})(jQuery);
+
+//
 // STARTUP FUNCTIONS
 //
 
@@ -339,10 +350,12 @@ window.addEventListener(
     if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollLeft(false);
+      scrollPerc(0);
     }
     if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollRight(false);
+      scrollPerc(1);
     }
     if (["KeyQ"].indexOf(e.code) > -1) {
       scrollTabLeft();
@@ -356,6 +369,10 @@ window.addEventListener(
     }
     if (["KeyG"].indexOf(e.code) > -1) {
       hideInstrLoadingSpinner();
+    }
+    if (["KeyZ"].indexOf(e.code) > -1) {
+    }
+    if (["KeyX"].indexOf(e.code) > -1) {
     }
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       escapeMenuEntriesMiddle();
@@ -699,28 +716,70 @@ function scrollUpElements() {
 let currentItemList;
 let activeItem;
 
+function scrollPerc(scrollDir) {
+  // 0 = left, 1 = right
+  let scrolledItemPerc = activeEntryMiddle.find(".element_progress_perc");
+  let percStep = scrolledItemPerc.parent(".element_progress").attr("data-step") || 10; // 10 = default step
+  let scrolledItemWidth = scrolledItemPerc.getWidthInPercent().slice(0, -1);
+  let scrolledItemNewWidth;
+
+  if (scrollDir == 0) {
+    scrolledItemNewWidth = parseFloat(scrolledItemWidth) - parseFloat(percStep);
+    if (percStep == null) percStep = percStepDefault;
+    if (scrolledItemWidth <= 0) return;
+    if (scrolledItemNewWidth < 0) scrolledItemNewWidth = 0;
+
+    scrolledItemPerc.css({ width: scrolledItemNewWidth + "%" });
+  } else if (scrollDir == 1) {
+    scrolledItemNewWidth = parseFloat(scrolledItemWidth) + parseFloat(percStep);
+    if (scrolledItemWidth >= 100) return;
+    if (scrolledItemNewWidth > 100) scrolledItemNewWidth = 100;
+
+    scrolledItemPerc.css({ width: scrolledItemNewWidth + "%" });
+  } else console.log("Function scrollPerc(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
+}
+
 function scrollLeft(isMouseClick) {
   // Don't scroll if clicked with mouse and parent category is not active yet
   if (isMouseClick && !$(this).parent().is(activeCategory)) return;
 
-  if (activeCategoryObject) {
-    currentItemList = activeCategoryObject.category.find(".element_label_right");
-    activeItem = activeCategoryObject.activeItem;
+  // Don't scroll if non-scrollable item
+  if (activeCategory.children(".element_list, .element_progress").length <= 0) return;
+  console.log("Scrolled left at scrollable item: " + activeCategory.attr("id"));
+
+  let scrolledItem = activeCategory;
+  let scrolledItemObj = activeCategoryObject;
+
+  // if (activeCategory && !activeEntryMiddle) {
+  //   scrolledItem = activeCategory;
+  //   scrolledItemObj = activeCategoryObject;
+  // }
+  // if (activeCategory && activeEntryMiddle) {
+  //   scrolledItem = activeEntryMiddle;
+  //   scrolledItemObj = activeCategoryObject;
+  // }
+
+  if (scrolledItemObj) {
+    currentItemList = scrolledItemObj.category.find(".element_label_right");
+    activeItem = scrolledItemObj.activeItem;
   }
-  let listItemsLength = activeCategory.find(".element_label_right").length;
+  let listItemsLength = scrolledItem.find(".element_label_right").length;
   if (listItemsLength <= 1) return;
-  if (activeCategoryObject.activeItem == 0) activeCategoryObject.activeItem = activeCategoryObject.items.length - 1;
-  else activeCategoryObject.activeItem--;
-  updateListItems(activeCategory.children(".element_list"));
-  activeCategoryElements = activeCategoryObject.wnds[activeCategoryObject.activeItem];
+  if (scrolledItemObj.activeItem == 0) scrolledItemObj.activeItem = scrolledItemObj.items.length - 1;
+  else scrolledItemObj.activeItem--;
+  updateListItems(scrolledItem.children(".element_list"));
+  activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
   categoriesHandler(activeTab);
-  // console.log("Active category activeItem: " + activeCategoryObject.activeItem);
-  // console.log("Active category: " + activeCategoryObject.category.attr("id"));
+  // console.log("Active category activeItem: " + scrolledItemObj.activeItem);
+  // console.log("Active category: " + scrolledItemObj.category.attr("id"));
 }
 
 function scrollRight(isMouseClick) {
   // Don't scroll if clicked with mouse and parent category is not active yet
   if (isMouseClick && !$(this).parent().is(activeCategory)) return;
+
+  // Don't scroll if non-scrollable object
+  if (activeCategory.children(".element_list, .element_progress").length <= 0) return;
 
   if (activeCategoryObject) {
     currentItemList = activeCategoryObject.category.find(".element_label_right");
@@ -1100,7 +1159,7 @@ async function categoriesHandler(activeTab) {
   }
 
   if (activeWindow.id == MENU_TAB_SAVE.id) {
-    HEADER_SAVE = await getLocalizedString("menu_header_save")
+    HEADER_SAVE = await getLocalizedString("menu_header_save");
     activeCategoryElements = $(".menu_save_list");
     isCategorySelected = false;
     setHeaderTitle(HEADER_SAVE);
