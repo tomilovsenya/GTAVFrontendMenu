@@ -11,165 +11,6 @@ const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
 const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
 
-const TAB_MAP = 0;
-const TAB_BRIEF = 1;
-const TAB_STATS = 2;
-const TAB_SETTINGS = 3;
-const TAB_GAME = 4;
-const TAB_ONLINE = 5;
-const TAB_FRIENDS = 6;
-const TAB_GALLERY = 7;
-const TAB_STORE = 8;
-const TAB_REPLAY = 9;
-const TAB_SAVE = 10;
-
-const TAB_STATS_CATEGORY_SKILLS = {
-  id: $("#menu_stats_skills"),
-  category: $("#menu_stats_category_0"),
-  items: [
-    $("#menu_stats_category_0_0"),
-    $("#menu_stats_category_0_1"),
-    $("#menu_stats_category_0_2"),
-    $("#menu_stats_category_0_3"),
-  ],
-  wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
-  activeItem: 0,
-};
-
-const TAB_STATS_CATEGORY_GENERAL = {
-  // id: $("#menu_stats_general"),
-  id: $("#menu_stats_skills"),
-  category: $("#menu_stats_category_1"),
-  items: [
-    $("#menu_stats_category_1_0"),
-    $("#menu_stats_category_1_1"),
-    $("#menu_stats_category_1_2"),
-    $("#menu_stats_category_1_3"),
-  ],
-  wnds: [$("#menu_stats_general"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
-  activeItem: 0,
-};
-
-const TAB_BRIEF_CATEGORIES = [
-  $("#menu_brief_mission"),
-  $("#menu_brief_help"),
-  $("#menu_brief_dialogue"),
-  $("#menu_brief_notifications"),
-  $("#menu_brief_newswire"),
-];
-const TAB_STATS_CATEGORIES = [
-  // $("#menu_stats_skills"),
-  TAB_STATS_CATEGORY_SKILLS,
-  // $("#menu_stats_general"),
-  TAB_STATS_CATEGORY_GENERAL,
-  $("#menu_stats_crimes"),
-  $("#menu_stats_vehicles"),
-  $("#menu_stats_cash"),
-  $("#menu_stats_combat"),
-  $("#menu_stats_weapons"),
-  $("#menu_stats_100_completion"),
-];
-const TAB_SETTINGS_CATEGORIES = [
-  $("#menu_settings_gamepad"),
-  $("#menu_settings_keyboard"),
-  $("#menu_settings_keybind"),
-  $("#menu_settings_audio"),
-  $("#menu_settings_camera"),
-  $("#menu_settings_display"),
-  $("#menu_settings_graphics"),
-  $("#menu_settings_adv_graphics"),
-  $("#menu_settings_voice_chat"),
-  $("#menu_settings_notifications"),
-  $("#menu_settings_replay"),
-  $("#menu_settings_saving"),
-  $("#menu_settings_facebook"),
-  $("#menu_settings_exclusive"),
-];
-const TAB_GAME_CATEGORIES = [$("#menu_game_replay_mission"), $("#menu_game_replay_strangers")];
-const TAB_FRIENDS_CATEGORIES = [
-  $("#menu_friends_player_0"),
-  $("#menu_friends_player_1"),
-  $("#menu_friends_player_2"),
-  $("#menu_friends_player_3"),
-  $("#menu_friends_player_4"),
-  $("#menu_friends_player_5"),
-  $("#menu_friends_player_6"),
-  $("#menu_friends_player_7"),
-  $("#menu_friends_player_8"),
-  $("#menu_friends_player_9"),
-  $("#menu_friends_player_10"),
-  $("#menu_friends_player_11"),
-  $("#menu_friends_player_12"),
-  $("#menu_friends_player_13"),
-  $("#menu_friends_player_14"),
-  $("#menu_friends_player_15"),
-];
-const TAB_ONLINE_CATEGORIES = [$("#menu_online_go"), $("#menu_online_invite_only")];
-const TAB_SAVE_CATEGORIES = [$("#menu_save_list")];
-
-const MENU_TAB_MAP = {
-  tab: TAB_MAP,
-  id: $("#tab_0"),
-  window: $(".menu_map"),
-};
-const MENU_TAB_BRIEF = {
-  tab: TAB_BRIEF,
-  id: $("#tab_1"),
-  window: $(".menu_brief"),
-  cats: TAB_BRIEF_CATEGORIES,
-};
-const MENU_TAB_STATS = {
-  tab: TAB_STATS,
-  id: $("#tab_2"),
-  window: $(".menu_stats"),
-  cats: TAB_STATS_CATEGORIES,
-};
-const MENU_TAB_SETTINGS = {
-  tab: TAB_SETTINGS,
-  id: $("#tab_3"),
-  window: $(".menu_settings"),
-  cats: TAB_SETTINGS_CATEGORIES,
-};
-const MENU_TAB_GAME = {
-  tab: TAB_GAME,
-  id: $("#tab_4"),
-  window: $(".menu_game"),
-  cats: TAB_GAME_CATEGORIES,
-};
-const MENU_TAB_ONLINE = {
-  tab: TAB_ONLINE,
-  id: $("#tab_5"),
-  window: $(".menu_online"),
-  cats: TAB_ONLINE_CATEGORIES,
-};
-const MENU_TAB_FRIENDS = {
-  tab: TAB_FRIENDS,
-  id: $("#tab_6"),
-  window: $(".menu_friends"),
-  cats: TAB_FRIENDS_CATEGORIES,
-};
-const MENU_TAB_GALLERY = {
-  tab: TAB_GALLERY,
-  id: $("#tab_7"),
-  window: $(".menu_gallery"),
-};
-const MENU_TAB_STORE = {
-  tab: TAB_STORE,
-  id: $("#tab_8"),
-  window: $(".menu_store"),
-};
-const MENU_TAB_REPLAY = {
-  tab: TAB_REPLAY,
-  id: $("#tab_9"),
-  window: $(".menu_replay"),
-};
-const MENU_TAB_SAVE = {
-  tab: TAB_SAVE,
-  id: $("#tab_10"),
-  window: $("#menu_save"),
-  cats: TAB_SAVE_CATEGORIES,
-};
-
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 const MENU_PAGE = document.documentElement;
@@ -180,12 +21,13 @@ let activeTab = null;
 let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
-let activeWindow = MENU_TAB_MAP;
+let activeWindow = menuContent.MENU_TAB_MAP;
 
 //
 // MODULES IMPORT
 //
 
+import * as menuContent from "./menu_modules/menu_content.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_completion.js";
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
@@ -195,6 +37,17 @@ import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_gam
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
 import { showInstrLoadingSpinner, hideInstrLoadingSpinner } from "./menu_modules/menu_instructional_buttons.js";
+
+//
+// jQuery custom extension for getting element width in %
+//
+
+(function ($) {
+  $.fn.getWidthInPercent = function () {
+    var width = parseFloat($(this).css("width")) / parseFloat($(this).parent().css("width"));
+    return Math.round(100 * width) + "%";
+  };
+})(jQuery);
 
 //
 // SOUNDS
@@ -211,17 +64,6 @@ function playSFX(sfx) {
   if (!canPlaySounds) return;
   sfx.play();
 }
-
-//
-// jQuery custom extension for getting element width in %
-//
-
-(function ($) {
-  $.fn.getWidthInPercent = function () {
-    var width = parseFloat($(this).css("width")) / parseFloat($(this).parent().css("width"));
-    return Math.round(100 * width) + "%";
-  };
-})(jQuery);
 
 //
 // STARTUP FUNCTIONS
@@ -242,7 +84,7 @@ function loadMenu() {
   setHeaderStats();
   // setFirstTab();
   setSingleTab();
-  setActiveWindow(MENU_TAB_MAP);
+  setActiveWindow(menuContent.MENU_TAB_MAP);
   setArrows();
   hideInstrLoadingSpinner();
   localizeMenu();
@@ -277,38 +119,38 @@ function setActiveWindow(newActiveWindow) {
 }
 
 function switchActiveWindow(tabActive) {
-  if (tabActive.is(MENU_TAB_MAP.id)) {
-    setActiveWindow(MENU_TAB_MAP);
+  if (tabActive.is(menuContent.MENU_TAB_MAP.id)) {
+    setActiveWindow(menuContent.MENU_TAB_MAP);
   }
-  if (tabActive.is(MENU_TAB_BRIEF.id)) {
-    setActiveWindow(MENU_TAB_BRIEF);
+  if (tabActive.is(menuContent.MENU_TAB_BRIEF.id)) {
+    setActiveWindow(menuContent.MENU_TAB_BRIEF);
   }
-  if (tabActive.is(MENU_TAB_STATS.id)) {
-    setActiveWindow(MENU_TAB_STATS);
+  if (tabActive.is(menuContent.MENU_TAB_STATS.id)) {
+    setActiveWindow(menuContent.MENU_TAB_STATS);
   }
-  if (tabActive.is(MENU_TAB_SETTINGS.id)) {
-    setActiveWindow(MENU_TAB_SETTINGS);
+  if (tabActive.is(menuContent.MENU_TAB_SETTINGS.id)) {
+    setActiveWindow(menuContent.MENU_TAB_SETTINGS);
   }
-  if (tabActive.is(MENU_TAB_GAME.id)) {
-    setActiveWindow(MENU_TAB_GAME);
+  if (tabActive.is(menuContent.MENU_TAB_GAME.id)) {
+    setActiveWindow(menuContent.MENU_TAB_GAME);
   }
-  if (tabActive.is(MENU_TAB_ONLINE.id)) {
-    setActiveWindow(MENU_TAB_ONLINE);
+  if (tabActive.is(menuContent.MENU_TAB_ONLINE.id)) {
+    setActiveWindow(menuContent.MENU_TAB_ONLINE);
   }
-  if (tabActive.is(MENU_TAB_FRIENDS.id)) {
-    setActiveWindow(MENU_TAB_FRIENDS);
+  if (tabActive.is(menuContent.MENU_TAB_FRIENDS.id)) {
+    setActiveWindow(menuContent.MENU_TAB_FRIENDS);
   }
-  if (tabActive.is(MENU_TAB_GALLERY.id)) {
-    setActiveWindow(MENU_TAB_GALLERY);
+  if (tabActive.is(menuContent.MENU_TAB_GALLERY.id)) {
+    setActiveWindow(menuContent.MENU_TAB_GALLERY);
   }
-  if (tabActive.is(MENU_TAB_STORE.id)) {
-    setActiveWindow(MENU_TAB_STORE);
+  if (tabActive.is(menuContent.MENU_TAB_STORE.id)) {
+    setActiveWindow(menuContent.MENU_TAB_STORE);
   }
-  if (tabActive.is(MENU_TAB_REPLAY.id)) {
-    setActiveWindow(MENU_TAB_REPLAY);
+  if (tabActive.is(menuContent.MENU_TAB_REPLAY.id)) {
+    setActiveWindow(menuContent.MENU_TAB_REPLAY);
   }
-  if (tabActive.is(MENU_TAB_SAVE.id)) {
-    setActiveWindow(MENU_TAB_SAVE);
+  if (tabActive.is(menuContent.MENU_TAB_SAVE.id)) {
+    setActiveWindow(menuContent.MENU_TAB_SAVE);
   }
 }
 
@@ -340,12 +182,12 @@ window.addEventListener(
     if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollDown();
-      if (activeWindow == MENU_TAB_SAVE) scrollDownSaves($("#menu_save_list"));
+      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollDownSaves($("#menu_save_list"));
     }
     if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
       e.preventDefault();
       scrollUp();
-      if (activeWindow == MENU_TAB_SAVE) scrollUpSaves($("#menu_save_list"));
+      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollUpSaves($("#menu_save_list"));
     }
     if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -718,7 +560,12 @@ let activeItem;
 
 function scrollPerc(scrollDir) {
   // 0 = left, 1 = right
+
+  if (!activeEntryMiddle) return;
+
   let scrolledItemPerc = activeEntryMiddle.find(".element_progress_perc");
+  if (!scrolledItemPerc) return;
+
   let percStep = scrolledItemPerc.parent(".element_progress").attr("data-step") || 10; // 10 = default step
   let scrolledItemWidth = scrolledItemPerc.getWidthInPercent().slice(0, -1);
   let scrolledItemNewWidth;
@@ -742,6 +589,9 @@ function scrollPerc(scrollDir) {
 function scrollLeft(isMouseClick) {
   // Don't scroll if clicked with mouse and parent category is not active yet
   if (isMouseClick && !$(this).parent().is(activeCategory)) return;
+
+  // Don't scroll if no active category
+  if (!activeCategory) return;
 
   // Don't scroll if non-scrollable item
   if (activeCategory.children(".element_list, .element_progress").length <= 0) return;
@@ -777,6 +627,9 @@ function scrollLeft(isMouseClick) {
 function scrollRight(isMouseClick) {
   // Don't scroll if clicked with mouse and parent category is not active yet
   if (isMouseClick && !$(this).parent().is(activeCategory)) return;
+
+  // Don't scroll if no active category
+  if (!activeCategory) return;
 
   // Don't scroll if non-scrollable object
   if (activeCategory.children(".element_list, .element_progress").length <= 0) return;
@@ -1113,14 +966,14 @@ function setFirstTab() {
 }
 
 async function categoriesHandler(activeTab) {
-  if (activeWindow.id == MENU_TAB_BRIEF.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_BRIEF.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
     if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
     else $("#menu_arrows_brief").show();
   }
 
-  if (activeWindow.id == MENU_TAB_STATS.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_STATS.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
     activeCategoryElements.find(".element_stat").remove();
@@ -1134,31 +987,31 @@ async function categoriesHandler(activeTab) {
     populateStatsBars();
   }
 
-  if (activeWindow.id == MENU_TAB_SETTINGS.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_SETTINGS.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
 
     setVideoMemory(400, 4096);
   }
 
-  if (activeWindow.id == MENU_TAB_GAME.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_GAME.id) {
     updateMissionCounter();
     updateMissionName();
 
     if ($("#menu_game_elements_missions").children().length <= 16) $("#menu_arrows_game_replay_mission").hide();
   }
 
-  if (activeWindow.id == MENU_TAB_FRIENDS.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_FRIENDS.id) {
     updateFriendCounter();
     updateFriendName();
   }
 
-  if (activeWindow.id == MENU_TAB_ONLINE.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_ONLINE.id) {
     activeWindow.window.children(".menu_elements").hide();
     if (activeCategoryElements) activeCategoryElements.show();
   }
 
-  if (activeWindow.id == MENU_TAB_SAVE.id) {
+  if (activeWindow.id == menuContent.MENU_TAB_SAVE.id) {
     HEADER_SAVE = await getLocalizedString("menu_header_save");
     activeCategoryElements = $(".menu_save_list");
     isCategorySelected = false;
