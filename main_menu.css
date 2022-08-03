@@ -1433,14 +1433,52 @@ div#menu_settings_gamepad {
   /* height: 100%; */
 }
 
-div#menu_settings_gamepad>.menu_elements_header {
+div#menu_settings_gamepad .menu_elements_header {
   background-color: var(--black-bg-color);
   display: flex;
   flex-direction: column;
   /* height: 50%; */
-  height: calc(var(--item-height) * 8 + var(--item-margin) * 7);
+  min-height: calc(var(--item-height) * 8 + var(--item-margin) * 7);
   justify-content: flex-start;
   align-items: center;
+}
+
+div.menu_settings_gamepad_header_buttons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.menu_settings_gamepad_header_element_1 {
+  background-image: url(images/gamepad_calibration_i6.png);
+  background-size: 105%;
+  background-origin: content-box;
+  background-position: top;
+  background-repeat: no-repeat;
+  padding-top: 1vw;
+  min-width: 40%;
+  /* height: 100%; */
+  overflow: hidden;
+}
+
+div.menu_settings_gamepad_header_prompts {
+  /* background-color: beige; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.menu_settings_gamepad_header_prompts:last-of-type .element_label {
+  text-align: left;
+}
+
+div.menu_settings_gamepad_header_prompts .element_label {
+  /* font-size: calc(var(--menu-font-size) * 1); */
+  text-align: right;
+  word-wrap: break-word;
+  color: white;
 }
 
 div#menu_settings_gamepad .menu_elements {
@@ -1448,13 +1486,8 @@ div#menu_settings_gamepad .menu_elements {
   width: 100%;
 }
 
-div#menu_settings_gamepad .menu_elements_header img {
-  pointer-events: none;
-  height: 100%;
-}
-
 div#menu_settings_graphics .menu_elements_scrollable {
-  max-height: 87.5%;
+  /* max-height: 50%; */
 }
 
 /*#endregion MenuTabSettings*/
