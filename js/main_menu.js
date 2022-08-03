@@ -181,13 +181,13 @@ window.addEventListener(
     }
     if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
       e.preventDefault();
-      scrollDown();
-      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollDownSaves($("#menu_save_list"));
+      scrollUpDown(1);
+      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(1, $("#menu_save_list"));
     }
     if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
       e.preventDefault();
-      scrollUp();
-      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollUpSaves($("#menu_save_list"));
+      scrollUpDown(0);
+      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(0, $("#menu_save_list"));
     }
     if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -551,26 +551,14 @@ function scrollTabRight() {
   activeTab[0].scrollIntoView(false);
 }
 
-function scrollDownCategory() {
+function scrollCategory(scrollDir) {
   if (isCategorySelected) return;
-  scrollDown();
+  scrollUpDown(scrollDir);
 }
-function scrollUpCategory() {
-  if (isCategorySelected) return;
-  scrollUp();
-}
-
-function scrollDownElements() {
+function scrollElements(scrollDir) {
   if (!isCategorySelected) return;
-  scrollDown();
+  scrollUpDown(scrollDir);
 }
-function scrollUpElements() {
-  if (!isCategorySelected) return;
-  scrollUp();
-}
-
-let currentItemList;
-let activeItem;
 
 function scrollPerc(scrollDir) {
   // 0 = left, 1 = right
@@ -634,172 +622,152 @@ function scrollLeftRight(scrollDir) {
   } else console.log("Function scrollLeftRight(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
 }
 
-function scrollDownSaves(scrollableElements) {
+function scrollSaves(scrollDir, scrollableElements) {
   if (activeEntryMiddle == null) return;
   let tabElements = scrollableElements.find(".menu_entry[id]");
-  if (!activeEntryMiddle.is(tabElements.last())) {
-    let nextEntry = activeEntryMiddle.next();
-    if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
-    else triggerEntry(nextEntry);
-  } else triggerEntry(tabElements.first());
-  categoriesHandler(activeTab);
-  activeEntryMiddle[0].scrollIntoView(false);
-}
 
-function scrollUpSaves(scrollableElements) {
-  if (activeEntryMiddle == null) return;
-  let tabElements = scrollableElements.find(".menu_entry[id]");
-  if (!activeEntryMiddle.is(tabElements.first())) {
-    let nextEntry = activeEntryMiddle.prev();
-    if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
-    else triggerEntry(nextEntry);
-  } else triggerEntry(tabElements.last());
-  categoriesHandler(activeTab);
-  activeEntryMiddle[0].scrollIntoView(false);
-}
-
-function scrollDown() {
-  if (activeCategory == null) return;
-
-  if (!isCategorySelected) {
-    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
-    if (activeCategory.attr("id") != tabCategories.last().attr("id")) {
-      triggerCategory(activeCategory.next());
-    } else triggerCategory(tabCategories.first());
-    categoriesHandler(activeTab);
-  } else {
-    if (activeEntryMiddle == null) return;
-    // let tabElements = activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
-    let tabElements = activeCategoryElements
-      .children(".menu_elements_scrollable")
-      // .children(".menu_entry[id]");
-      .children(".menu_entry[id]");
-    // triggerEntry(activeEntryMiddle.next());
-    // activeEntryMiddle.scrollIntoView(false);
-    if (!activeEntryMiddle.is(tabElements.last())) {
-      let nextEntry = activeEntryMiddle.next();
-      if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
-      else triggerEntry(nextEntry);
-    } else triggerEntry(tabElements.first());
-    // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
-    categoriesHandler(activeTab);
-    activeEntryMiddle[0].scrollIntoView(false);
-  }
-}
-
-function scrollUp() {
-  if (activeCategory == null) return;
-  if (!isCategorySelected) {
-    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
-    if (activeCategory.attr("id") != tabCategories.first().attr("id")) {
-      triggerCategory(activeCategory.prev());
-    } else triggerCategory(tabCategories.last());
-    categoriesHandler(activeTab);
-  } else {
-    if (activeEntryMiddle == null) return;
-    // let tabElements = activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
-    let tabElements = activeCategoryElements.children(".menu_elements_scrollable").children(".menu_entry[id]");
-
-    // triggerEntry(activeEntryMiddle.next());
-    // activeEntryMiddle.scrollIntoView(false);
+  if (scrollDir == 0) {
     if (!activeEntryMiddle.is(tabElements.first())) {
       let nextEntry = activeEntryMiddle.prev();
       if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
       else triggerEntry(nextEntry);
     } else triggerEntry(tabElements.last());
-    // activeEntryMiddle[0].scrollIntoView({block: "nearest"});
-    categoriesHandler(activeTab);
-    activeEntryMiddle[0].scrollIntoView(false);
-  }
+  } else if (scrollDir == 1) {
+    if (!activeEntryMiddle.is(tabElements.last())) {
+      let nextEntry = activeEntryMiddle.next();
+      if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
+      else triggerEntry(nextEntry);
+    } else triggerEntry(tabElements.first());
+  } else console.log("Function scrollSaves(scrollDir, scrollableElements) only accepts scrollDir = 0 (up) or 1 (down)");
+}
+
+function scrollUpDown(scrollDir) {
+  if (!activeCategory) return;
+
+  let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
+  let tabElements = activeCategoryElements.children(".menu_elements_scrollable").children(".menu_entry[id]");
+  // || activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
+
+  if (scrollDir == 0) {
+    if (!isCategorySelected) {
+      if (!activeCategory.is(tabCategories.first())) {
+        triggerCategory(activeCategory.prev());
+      } else triggerCategory(tabCategories.last());
+      categoriesHandler(activeTab);
+    } else {
+      if (activeEntryMiddle == null) return;
+      if (!activeEntryMiddle.is(tabElements.first())) {
+        let nextEntry = activeEntryMiddle.prev();
+        if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
+        else triggerEntry(nextEntry);
+      } else triggerEntry(tabElements.last());
+      categoriesHandler(activeTab);
+      activeEntryMiddle[0].scrollIntoView(false);
+    }
+  } else if (scrollDir == 1) {
+    if (!isCategorySelected) {
+      if (!activeCategory.is(tabCategories.last())) {
+        triggerCategory(activeCategory.next());
+      } else triggerCategory(tabCategories.first());
+      categoriesHandler(activeTab);
+    } else {
+      if (activeEntryMiddle == null) return;
+      if (!activeEntryMiddle.is(tabElements.last())) {
+        let nextEntry = activeEntryMiddle.next();
+        if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
+        else triggerEntry(nextEntry);
+      } else triggerEntry(tabElements.first());
+      categoriesHandler(activeTab);
+      activeEntryMiddle[0].scrollIntoView(false);
+    }
+  } else console.log("Function scrollUpDown(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
 }
 
 //
 // SCROLL ELEMENTS
 //
 
-$("#menu_arrows_brief_up").click(scrollBriefUp);
-$("#menu_arrows_brief_down").click(scrollBriefDown);
+$("#menu_arrows_brief_up").click(function () {
+  scrollBrief(0);
+});
+$("#menu_arrows_brief_down").click(function () {
+  scrollBrief(1);
+});
+$("#menu_arrows_stats_up").click(function () {
+  scrollStats(0);
+});
+$("#menu_arrows_stats_down").click(function () {
+  scrollStats(1);
+});
+$("#menu_arrows_settings_up").click(function () {
+  scrollSettings(0);
+});
+$("#menu_arrows_settings_down").click(function () {
+  scrollSettings(1);
+});
+$("#menu_arrows_game_up").click(function () {
+  scrollGame(0);
+});
+$("#menu_arrows_game_down").click(function () {
+  scrollGame(1);
+});
+$("#menu_arrows_friends_up").click(function () {
+  scrollFriends(0);
+});
+$("#menu_arrows_friends_down").click(function () {
+  scrollFriends(1);
+});
 
-$("#menu_arrows_stats_up").click(scrollStatsUp);
-$("#menu_arrows_stats_down").click(scrollStatsDown);
-
-$("#menu_arrows_settings_up").click(scrollSettingsUp);
-$("#menu_arrows_settings_down").click(scrollSettingsDown);
-
-$("#menu_arrows_game_up").click(scrollGameUp);
-$("#menu_arrows_game_down").click(scrollGameDown);
-
-$("#menu_arrows_friends_up").click(scrollFriendsUp);
-$("#menu_arrows_friends_down").click(scrollFriendsDown);
-
-function scrollBriefUp() {
-  if (activeCategory.is($("#menu_brief_category_2"))) scrollUpDialogue();
+function scrollBrief(scrollDir) {
+  if (activeCategory.is($("#menu_brief_category_2"))) scrollDialogue(scrollDir);
 }
-function scrollBriefDown() {
-  if (activeCategory.is($("#menu_brief_category_2"))) scrollDownDialogue();
+function scrollStats(scrollDir) {
+  if (activeCategory.is($("#menu_stats_category_1"))) scrollStatsList(scrollDir);
 }
-
-function scrollStatsUp() {
-  if (activeCategory.is($("#menu_stats_category_1"))) scrollUpStats();
+function scrollSettings(scrollDir) {
+  if (!activeEntryMiddle) return;
+  scrollElements(scrollDir);
 }
-function scrollStatsDown() {
-  if (activeCategory.is($("#menu_stats_category_1"))) scrollDownStats();
+function scrollGame(scrollDir) {
+  if (activeCategory.is($("#menu_game_category_0"))) scrollElements(scrollDir);
 }
-
-function scrollSettingsUp() {
-  if (activeEntryMiddle) scrollUpElements();
-}
-function scrollSettingsDown() {
-  if (activeEntryMiddle) scrollDownElements();
-}
-
-function scrollGameUp() {
-  if (activeCategory.is($("#menu_game_category_0"))) scrollUpElements();
-}
-function scrollGameDown() {
-  if (activeCategory.is($("#menu_game_category_0"))) scrollDownElements();
-}
-
-function scrollFriendsUp() {
-  if (activeCategory) scrollUpCategory();
-}
-function scrollFriendsDown() {
-  if (activeCategory) scrollDownCategory();
+function scrollFriends(scrollDir) {
+  if (activeCategory) scrollCategory(scrollDir);
 }
 
 let currentOverflowTop, currentOverflowBottom;
-
 let currentOverflows = {
   // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
   overflowsDialogue: [-1, 8],
   overflowsStats: [-1, 16],
 };
 
-function scrollDownScrollableElements(scrollableElements, maxOnScreen, currentOverflows) {
+function scrollScrollableElements(scrollDir, scrollableElements, maxOnScreen, currentOverflows) {
   currentOverflowTop = currentOverflows[0];
   currentOverflowBottom = currentOverflows[1];
 
   if (scrollableElements.length <= maxOnScreen) return;
-  if (scrollableElements.length <= currentOverflowBottom) return;
-  // console.log("Scrolling down to: " + currentOverflowBottom);
-  scrollableElements[currentOverflowBottom].scrollIntoView(false);
-  currentOverflowBottom++;
-  currentOverflowTop++;
 
-  currentOverflows[0] = currentOverflowTop;
-  currentOverflows[1] = currentOverflowBottom;
-}
-
-function scrollUpScrollableElements(scrollableElements, maxOnScreen, currentOverflows) {
-  currentOverflowTop = currentOverflows[0];
-  currentOverflowBottom = currentOverflows[1];
-
-  if (scrollableElements.length <= maxOnScreen) return;
-  if (currentOverflowTop < 0) return;
-  // console.log("Scrolling up to: " + currentOverflowTop)
-  scrollableElements[currentOverflowTop].scrollIntoView(true);
-  currentOverflowBottom--;
-  currentOverflowTop--;
+  switch (scrollDir) {
+    case 0:
+      if (scrollableElements.length <= maxOnScreen) return;
+      if (currentOverflowTop < 0) return;
+      // console.log("Scrolling up to: " + currentOverflowTop)
+      scrollableElements[currentOverflowTop].scrollIntoView(true);
+      currentOverflowBottom--;
+      currentOverflowTop--;
+      break;
+    case 1:
+      if (scrollableElements.length <= currentOverflowBottom) return;
+      // console.log("Scrolling down to: " + currentOverflowBottom);
+      scrollableElements[currentOverflowBottom].scrollIntoView(false);
+      currentOverflowBottom++;
+      currentOverflowTop++;
+      break;
+    default:
+      console.log("Function scrollScrollableElements(scrollDir, [...]) only accepts scrollDir = 0 (left) or 1 (right)");
+      break;
+  }
 
   currentOverflows[0] = currentOverflowTop;
   currentOverflows[1] = currentOverflowBottom;
@@ -808,38 +776,40 @@ function scrollUpScrollableElements(scrollableElements, maxOnScreen, currentOver
 let dialogueElements = $("#menu_brief_dialogue").find(".menu_brief_dialogue_entry");
 let statsElements = $("#menu_stats_general").find(".menu_elements_scrollable").children(".menu_entry");
 
-export function scrollDownDialogue() {
-  scrollDownScrollableElements(dialogueElements, 8, currentOverflows.overflowsDialogue);
+function scrollDialogue(scrollDir) {
+  scrollScrollableElements(scrollDir, dialogueElements, 8, currentOverflows.overflowsDialogue);
 }
 
-export function scrollUpDialogue() {
-  scrollUpScrollableElements(dialogueElements, 8, currentOverflows.overflowsDialogue);
-}
-
-function scrollDownStats() {
-  if (currentOverflows.overflowsStats[1] >= statsElements.length) return; // Return if the last element is already seen
-  // Little trick to preserve even elements darker background
-  if (currentOverflows.overflowsStats[1] % 2 == 0) {
-    statsElements.removeClass("menu_entry_empty_even");
-    statsElements.addClass("menu_entry_empty_odd");
-  } else {
-    statsElements.removeClass("menu_entry_empty_odd");
-    statsElements.addClass("menu_entry_empty_even");
+function scrollStatsList(scrollDir) {
+  switch (scrollDir) {
+    case 0:
+      if (currentOverflows.overflowsStats[0] < 0) return; // Return if the first element is already seen
+      // Little trick to preserve even elements darker background
+      if (currentOverflows.overflowsStats[1] % 2 != 0) {
+        statsElements.removeClass("menu_entry_empty_odd");
+        statsElements.addClass("menu_entry_empty_even");
+      } else {
+        statsElements.removeClass("menu_entry_empty_even");
+        statsElements.addClass("menu_entry_empty_odd");
+      }
+      scrollScrollableElements(scrollDir, statsElements, 16, currentOverflows.overflowsStats);
+      break;
+    case 1:
+      if (currentOverflows.overflowsStats[1] >= statsElements.length) return; // Return if the last element is already seen
+      // Little trick to preserve even elements darker background
+      if (currentOverflows.overflowsStats[1] % 2 == 0) {
+        statsElements.removeClass("menu_entry_empty_even");
+        statsElements.addClass("menu_entry_empty_odd");
+      } else {
+        statsElements.removeClass("menu_entry_empty_odd");
+        statsElements.addClass("menu_entry_empty_even");
+      }
+      scrollScrollableElements(scrollDir, statsElements, 16, currentOverflows.overflowsStats);
+      break;
+    default:
+      console.log("Function scrollStats(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
+      break;
   }
-  scrollDownScrollableElements(statsElements, 16, currentOverflows.overflowsStats);
-}
-
-function scrollUpStats() {
-  if (currentOverflows.overflowsStats[0] < 0) return; // Return if the first element is already seen
-  // Little trick to preserve even elements darker background
-  if (currentOverflows.overflowsStats[1] % 2 != 0) {
-    statsElements.removeClass("menu_entry_empty_odd");
-    statsElements.addClass("menu_entry_empty_even");
-  } else {
-    statsElements.removeClass("menu_entry_empty_even");
-    statsElements.addClass("menu_entry_empty_odd");
-  }
-  scrollUpScrollableElements(statsElements, 16, currentOverflows.overflowsStats);
 }
 
 //
@@ -848,17 +818,17 @@ function scrollUpStats() {
 
 $("#menu_brief_dialogue").bind("wheel", function (e) {
   if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUpDialogue();
+    scrollDialogue(0);
   } else {
-    scrollDownDialogue();
+    scrollDialogue(1);
   }
 });
 
 $("#menu_stats_general").bind("wheel", function (e) {
   if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUpStats();
+    scrollStatsList(0);
   } else {
-    scrollDownStats();
+    scrollStatsList(1);
   }
 });
 
@@ -866,9 +836,9 @@ $(".menu_categories").bind("wheel", function (e) {
   if (isCategorySelected) return;
   if (e.originalEvent.deltaX != 0) return;
   if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUp();
+    scrollUpDown(0);
   } else {
-    scrollDown();
+    scrollUpDown(1);
   }
 });
 
@@ -884,17 +854,17 @@ $(".menu_category_list").bind("wheel", function (e) {
 $(".menu_elements_scrollable").bind("wheel", function (e) {
   if (!isCategorySelected) return;
   if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUp();
+    scrollUpDown(0);
   } else {
-    scrollDown();
+    scrollUpDown(1);
   }
 });
 
 $("#menu_save_list").bind("wheel", function (e) {
   if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUpSaves($("#menu_save_list"));
+    scrollSaves(0, $("#menu_save_list"));
   } else {
-    scrollDownSaves($("#menu_save_list"));
+    scrollSaves(1, $("#menu_save_list"));
   }
 });
 
