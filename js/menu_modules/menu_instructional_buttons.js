@@ -3,12 +3,17 @@ import { toggleMenuVisibility } from "../main_menu.js";
 let isInstrLoadingSpinnerShown = true;
 let instrLoadingSpinner = $("#IB_SAVING_SPINNER");
 
-$("#IB_HIDE_MENU").click("click", toggleMenuVisibility);
+$("#IB_HIDE_MENU").click(toggleMenuVisibility);
 // $("#IB_HIDE_MENU").trigger("changeText", ["Show Menu"]);
 
-$(".instructional_button_container").on("changeText", function (newText) {
-  $(this).children(".instructional_button_prompt").text(newText);
-});
+export function changeInstrText(instButton, newText) {
+  instButton.children(".instructional_button_prompt").text(newText);
+}
+
+export function setStartupInstr() {
+  hideInstrLoadingSpinner();
+  $("#IB_SCROLL").hide();
+}
 
 function changeIBText(newText) {
   $(this).text(newText);
@@ -18,13 +23,13 @@ export function showInstrLoadingSpinner() {
   if (!isInstrLoadingSpinnerShown) {
     instrLoadingSpinner.show();
     isInstrLoadingSpinnerShown = true;
-    instrLoadingSpinner.prev(".instructional_button_container").css({ "margin-right": "" });
+    instrLoadingSpinner.prev(".ib_container").css({ "margin-right": "" });
   }
 }
 export function hideInstrLoadingSpinner() {
   if (isInstrLoadingSpinnerShown) {
     instrLoadingSpinner.hide();
     isInstrLoadingSpinnerShown = false;
-    instrLoadingSpinner.prev(".instructional_button_container").css({ "margin-right": "0" });
+    instrLoadingSpinner.prev(".ib_container").css({ "margin-right": "0" });
   }
 }

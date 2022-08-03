@@ -93,25 +93,25 @@
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_category_0_0", "menu_stats_category_1_0"],
+    "gxt": ["menu_stats_category_0_0", "menu_stats_category_1_0", "menu_stats_category_2_0"],
     "american": "Michael",
     "russian": "Майкл"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_category_0_1", "menu_stats_category_1_1"],
+    "gxt": ["menu_stats_category_0_1", "menu_stats_category_1_1", "menu_stats_category_2_1"],
     "american": "Franklin",
     "russian": "Франклин"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_category_0_2", "menu_stats_category_1_2"],
+    "gxt": ["menu_stats_category_0_2", "menu_stats_category_1_2", "menu_stats_category_2_2"],
     "american": "Trevor",
     "russian": "Тревор"
   },
   {
     "multiple_gxt": true,
-    "gxt": ["menu_stats_category_0_3", "menu_stats_category_1_3"],
+    "gxt": ["menu_stats_category_0_3", "menu_stats_category_1_3", "menu_stats_category_2_3"],
     "american": "Online Character",
     "russian": "Сетевой персонаж"
   },

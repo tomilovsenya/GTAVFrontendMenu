@@ -145,7 +145,7 @@ span.instructional_button_prompt {
   word-wrap: nowrap;
 }
 
-div.instructional_button_container {
+div.ib_container {
   height: 80%;
   display: flex;
   align-items: center;
@@ -154,11 +154,11 @@ div.instructional_button_container {
   margin-right: 1vw;
 }
 
-div.instructional_button_container:not(div.ib_container_inactive):hover {
+div.ib_container:not(div.ib_container_inactive):hover {
   background-color: var(--hover-color);
 }
 
-div.instructional_button_container .instructional_button {
+div.ib_container .instructional_button {
   min-width: 1.575vw;
   max-width: fit-content;
   height: 1.575vw;
@@ -166,11 +166,11 @@ div.instructional_button_container .instructional_button {
   margin-right: 0.25vw;
 }
 
-div.instructional_button_container .instructional_button:last-of-type {
+div.ib_container .instructional_button:last-of-type {
   margin-right: 0;
 }
 
-div.instructional_button_container:last-of-type {
+div.ib_container:last-of-type {
   margin-right: 0;
 }
 

@@ -25,7 +25,8 @@ let activeWindow = menuContent.MENU_TAB_MAP;
 let currentOverflows = {
   // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
   overflowsDialogue: [-1, 8],
-  overflowsStats: [-1, 16],
+  overflowsStatsGeneral: [-1, 16],
+  overflowsStatsCrimes: [-1, 16],
 };
 
 //
@@ -41,7 +42,11 @@ import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_frien
 import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
-import { showInstrLoadingSpinner, hideInstrLoadingSpinner } from "./menu_modules/menu_instructional_buttons.js";
+import {
+  showInstrLoadingSpinner,
+  hideInstrLoadingSpinner,
+  setStartupInstr,
+} from "./menu_modules/menu_instructional_buttons.js";
 
 //
 // jQuery custom extension for getting element width in %
@@ -90,8 +95,8 @@ function loadMenu() {
   // setFirstTab();
   setSingleTab();
   setActiveWindow(menuContent.MENU_TAB_MAP);
-  setArrows();
-  hideInstrLoadingSpinner();
+  drawArrows();
+  setStartupInstr();
   localizeMenu();
   // playSFX(SFX_MENU_MUSIC);
 }
@@ -257,23 +262,22 @@ $(".menu_button").on("tabActive", setTabActive);
 $(".menu_button").on("tabDisabled", setTabDisabled);
 
 let isOnlyTabSet = false;
-let prevTabs;
-let nextTabs;
+let prevTabs, nextTabs;
 
 function setTabOnly() {
   let onlyTab = $(this);
   let navbarTabs = onlyTab.parent();
   let otherTabs = onlyTab.siblings();
   if (!isOnlyTabSet) {
-    prevTabs = otherTabs.prevAll();
-    nextTabs = otherTabs.nextAll();
+    prevTabs = onlyTab.prevAll().addBack();
+    nextTabs = onlyTab.nextAll();
     otherTabs.detach();
-    setArrows();
+    drawArrows();
     isOnlyTabSet = true;
   } else {
     navbarTabs.prepend(prevTabs);
     navbarTabs.append(nextTabs);
-    setArrows();
+    drawArrows();
     isOnlyTabSet = false;
   }
 }
@@ -729,7 +733,11 @@ function scrollBrief(scrollDir) {
   if (activeCategory.is($("#menu_brief_category_2"))) scrollDialogue(scrollDir);
 }
 function scrollStats(scrollDir) {
-  if (activeCategory.is($("#menu_stats_category_1"))) scrollStatsList(scrollDir);
+  let statsElements = activeCategoryElements.find(".menu_elements_scrollable").children(".menu_entry");
+  if (activeCategory.is($("#menu_stats_category_1")))
+    scrollStatsList(scrollDir, statsElements, currentOverflows.overflowsStatsGeneral);
+  else if (activeCategory.is($("#menu_stats_category_2")))
+    scrollStatsList(scrollDir, statsElements, currentOverflows.overflowsStatsCrimes);
 }
 function scrollSettings(scrollDir) {
   if (!activeEntryMiddle) return;
@@ -781,40 +789,40 @@ function scrollScrollableElements(scrollDir, scrollableElements, maxOnScreen, cu
 }
 
 let dialogueElements = $("#menu_brief_dialogue").find(".menu_brief_dialogue_entry");
-let statsElements = $("#menu_stats_general").find(".menu_elements_scrollable").children(".menu_entry");
+// let statsElements = $("#menu_stats_general").find(".menu_elements_scrollable").children(".menu_entry");
 
 function scrollDialogue(scrollDir) {
   scrollScrollableElements(scrollDir, dialogueElements, 8, currentOverflows.overflowsDialogue);
 }
 
-function scrollStatsList(scrollDir) {
+function scrollStatsList(scrollDir, statsElements, statsOverflows) {
   switch (scrollDir) {
     case 0:
-      if (currentOverflows.overflowsStats[0] < 0) return; // Return if the first element is already seen
+      if (statsOverflows[0] < 0) return; // Return if the first element is already seen
       // Little trick to preserve even elements darker background
-      if (currentOverflows.overflowsStats[1] % 2 != 0) {
+      if (statsOverflows[1] % 2 != 0) {
         statsElements.removeClass("menu_entry_empty_odd");
         statsElements.addClass("menu_entry_empty_even");
       } else {
         statsElements.removeClass("menu_entry_empty_even");
         statsElements.addClass("menu_entry_empty_odd");
       }
-      scrollScrollableElements(scrollDir, statsElements, 16, currentOverflows.overflowsStats);
+      scrollScrollableElements(scrollDir, statsElements, 16, statsOverflows);
       break;
     case 1:
-      if (currentOverflows.overflowsStats[1] >= statsElements.length) return; // Return if the last element is already seen
+      if (statsOverflows[1] >= statsElements.length) return; // Return if the last element is already seen
       // Little trick to preserve even elements darker background
-      if (currentOverflows.overflowsStats[1] % 2 == 0) {
+      if (statsOverflows[1] % 2 == 0) {
         statsElements.removeClass("menu_entry_empty_even");
         statsElements.addClass("menu_entry_empty_odd");
       } else {
         statsElements.removeClass("menu_entry_empty_odd");
         statsElements.addClass("menu_entry_empty_even");
       }
-      scrollScrollableElements(scrollDir, statsElements, 16, currentOverflows.overflowsStats);
+      scrollScrollableElements(scrollDir, statsElements, 16, statsOverflows);
       break;
     default:
-      console.log("Function scrollStats(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
+      console.log("Function scrollStatsList(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
       break;
   }
 }
@@ -827,10 +835,12 @@ $("#menu_brief_dialogue").bind("wheel", function (e) {
   if (e.originalEvent.deltaY / 40 < 0) scrollDialogue(0);
   else scrollDialogue(1);
 });
-$("#menu_stats_general").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) scrollStatsList(0);
-  else scrollStatsList(1);
-});
+$(".menu_stats")
+  .find(".menu_elements_scrollable")
+  .bind("wheel", function (e) {
+    if (e.originalEvent.deltaY / 40 < 0) scrollStats(0);
+    else scrollStats(1);
+  });
 $(".menu_categories").bind("wheel", function (e) {
   if (isCategorySelected) return;
   if (e.originalEvent.deltaX != 0) return;
@@ -885,7 +895,7 @@ function setTabName(index, name) {
 function setTabNameStar(index) {
   setTabName(index, "&starf; " + $(".menu_button").html());
 }
-function setArrows() {
+function drawArrows() {
   let tabsNumber = $(".menu_buttons").children().length;
   if (tabsNumber <= 6) {
     $(".menu_navbar_arrows").hide();
@@ -913,6 +923,7 @@ async function activeWindowHandler(activeTab) {
       if (activeCategoryElements) activeCategoryElements.show();
       if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
       else $("#menu_arrows_brief").show();
+      $("#IB_SCROLL").show();
       break;
     case menuContent.MENU_TAB_STATS.id:
       activeWindow.window.children(".menu_elements").hide();
@@ -923,6 +934,7 @@ async function activeWindowHandler(activeTab) {
       else $("#menu_arrows_stats").show();
       if (activeCategoryElements.is($("#menu_stats_100_completion"))) fillHundredCompletionWindow();
       populateStatsBars();
+      $("#IB_SCROLL").show();
       break;
     case menuContent.MENU_TAB_SETTINGS.id:
       activeWindow.window.children(".menu_elements").hide();
@@ -955,6 +967,8 @@ Check if the active window with ID ${activeWindow.window.attr("id")} contains an
   }
 
   if (currentWindow != menuContent.MENU_TAB_SAVE.id) setHeaderTitle(HEADER_GTAV);
+  if (currentWindow != menuContent.MENU_TAB_BRIEF.id && currentWindow != menuContent.MENU_TAB_STATS.id)
+    $("#IB_SCROLL").hide();
 }
 
 //

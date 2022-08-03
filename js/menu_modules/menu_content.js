@@ -2,7 +2,7 @@
 // SCROLLABLE CATEGORIES
 //
 
-export const TAB_STATS_CATEGORY_SKILLS = {
+const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_0"),
   items: [
@@ -15,7 +15,7 @@ export const TAB_STATS_CATEGORY_SKILLS = {
   activeItem: 0,
 };
 
-export const TAB_STATS_CATEGORY_GENERAL = {
+const TAB_STATS_CATEGORY_GENERAL = {
   id: $("#menu_stats_general"),
   // id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_1"),
@@ -25,7 +25,20 @@ export const TAB_STATS_CATEGORY_GENERAL = {
     $("#menu_stats_category_1_2"),
     $("#menu_stats_category_1_3"),
   ],
-  wnds: [$("#menu_stats_general"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
+  wnds: [$("#menu_stats_general"), $("#menu_stats_general_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
+  activeItem: 0,
+};
+
+const TAB_STATS_CATEGORY_CRIMES = {
+  id: $("#menu_stats_crimes"),
+  category: $("#menu_stats_category_2"),
+  items: [
+    $("#menu_stats_category_2_0"),
+    $("#menu_stats_category_2_1"),
+    $("#menu_stats_category_2_2"),
+    $("#menu_stats_category_2_3"),
+  ],
+  wnds: [$("#menu_stats_crimes"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
 
@@ -33,26 +46,24 @@ export const TAB_STATS_CATEGORY_GENERAL = {
 // MENU TABS' CATEGORIES
 //
 
-export const TAB_BRIEF_CATEGORIES = [
+const TAB_BRIEF_CATEGORIES = [
   $("#menu_brief_mission"),
   $("#menu_brief_help"),
   $("#menu_brief_dialogue"),
   $("#menu_brief_notifications"),
   $("#menu_brief_newswire"),
 ];
-export const TAB_STATS_CATEGORIES = [
-  // $("#menu_stats_skills"),
+const TAB_STATS_CATEGORIES = [
   TAB_STATS_CATEGORY_SKILLS,
-  // $("#menu_stats_general"),
   TAB_STATS_CATEGORY_GENERAL,
-  $("#menu_stats_crimes"),
+  TAB_STATS_CATEGORY_CRIMES,
   $("#menu_stats_vehicles"),
   $("#menu_stats_cash"),
   $("#menu_stats_combat"),
   $("#menu_stats_weapons"),
   $("#menu_stats_100_completion"),
 ];
-export const TAB_SETTINGS_CATEGORIES = [
+const TAB_SETTINGS_CATEGORIES = [
   $("#menu_settings_gamepad"),
   $("#menu_settings_keyboard"),
   $("#menu_settings_keybind"),
@@ -68,8 +79,8 @@ export const TAB_SETTINGS_CATEGORIES = [
   $("#menu_settings_facebook"),
   $("#menu_settings_exclusive"),
 ];
-export const TAB_GAME_CATEGORIES = [$("#menu_game_replay_mission"), $("#menu_game_replay_strangers")];
-export const TAB_FRIENDS_CATEGORIES = [
+const TAB_GAME_CATEGORIES = [$("#menu_game_replay_mission"), $("#menu_game_replay_strangers")];
+const TAB_FRIENDS_CATEGORIES = [
   $("#menu_friends_player_0"),
   $("#menu_friends_player_1"),
   $("#menu_friends_player_2"),
@@ -87,8 +98,8 @@ export const TAB_FRIENDS_CATEGORIES = [
   $("#menu_friends_player_14"),
   $("#menu_friends_player_15"),
 ];
-export const TAB_ONLINE_CATEGORIES = [$("#menu_online_go"), $("#menu_online_invite_only")];
-export const TAB_SAVE_CATEGORIES = [$("#menu_save_list")];
+const TAB_ONLINE_CATEGORIES = [$("#menu_online_go"), $("#menu_online_invite_only")];
+const TAB_SAVE_CATEGORIES = [$("#menu_save_list")];
 
 //
 // MENU TABS
