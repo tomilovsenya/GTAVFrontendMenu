@@ -513,6 +513,7 @@ button.menu_entry {
   /* height: 5.675%; */
   /* margin-bottom: 3.125px; */
   height: var(--item-height);
+  position: relative;
   min-height: var(--item-height);
   margin-bottom: var(--item-margin);
   padding: 0;
@@ -529,6 +530,31 @@ button.menu_entry:hover {
 button.menu_entry_active {
   background-color: white !important;
   color: black !important;
+}
+
+button.menu_entry:not(button.menu_entry_active) .menu_entry_zone_left,
+button.menu_entry:not(button.menu_entry_active) .menu_entry_zone_right {
+  display: none;
+}
+
+button.menu_entry .menu_entry_zone_left {
+  /* background-color: rgba(13, 90, 90, 0.3); */
+  position: absolute;
+  float: left;
+  width: 75%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+button.menu_entry .menu_entry_zone_right {
+  /* background-color: rgba(87, 90, 13, 0.3); */
+  position: absolute;
+  float: right;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  right: 0;
 }
 
 span.element_label {
@@ -595,13 +621,35 @@ div.element_progress {
   height: 0.5vw;
   float: right;
   background-color: #6db9d74b;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+div.element_progress_clickable .element_progress_zone_left {
+  /* background-color: rgba(128, 255, 0, 0.262); */
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  float: left;
+}
+
+div.element_progress_clickable .element_progress_zone_right {
+  /* background-color: rgba(51, 0, 255, 0.23); */
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  float: right;
 }
 
 div.element_progress_perc {
-  background-color: lightskyblue;
+  background-color: var(--menu-color);
   float: left;
   width: 70%;
   height: 100%;
+  /* z-index: 0; */
+  position: absolute;
+  /* left: 0; */
 }
 
 button.menu_entry_empty_double div.element_progress {
@@ -711,7 +759,8 @@ div.menu_arrows_zones {
   flex-direction: column;
 }
 
-div.menu_arrows_zone_up, div.menu_arrows_zone_down {
+div.menu_arrows_zone_up,
+div.menu_arrows_zone_down {
   width: 100%;
   height: 50%;
 }
