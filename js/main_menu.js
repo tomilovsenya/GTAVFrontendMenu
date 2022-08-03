@@ -22,6 +22,11 @@ let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeWindow = menuContent.MENU_TAB_MAP;
+let currentOverflows = {
+  // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
+  overflowsDialogue: [-1, 8],
+  overflowsStats: [-1, 16],
+};
 
 //
 // MODULES IMPORT
@@ -166,8 +171,12 @@ function goFullScreen() {
   }
 }
 
-NAVBAR_RIGHT_ARROW.click("click", scrollTabRight);
-NAVBAR_LEFT_ARROW.click("click", scrollTabLeft);
+NAVBAR_RIGHT_ARROW.click("click", function () {
+  scrollTab(1);
+});
+NAVBAR_LEFT_ARROW.click("click", function () {
+  scrollTab(0);
+});
 
 let isButtonPressedDown = false;
 
@@ -200,10 +209,10 @@ window.addEventListener(
       scrollPerc(1);
     }
     if (["KeyQ"].indexOf(e.code) > -1) {
-      scrollTabLeft();
+      scrollTab(0);
     }
     if (["KeyE"].indexOf(e.code) > -1) {
-      scrollTabRight();
+      scrollTab(1);
     }
     if (["KeyF"].indexOf(e.code) > -1) {
       // sendMissionText("Go to <ylw>Trevor's house.</ylw>");
@@ -518,46 +527,43 @@ function updateListItems(listItems) {
 //   activeTab.trigger
 // }
 
-function scrollTabLeft() {
+function scrollTab(scrollDir) {
   if ($(".menu_buttons").children().length <= 1) return;
-  if (activeTab == null) {
-    activeTab = $(".menu_buttons").children().last();
-    activeTab.trigger("tabActive");
-    // console.log('Was NULL, now: ' + activeTab.html())
-  } else {
-    let $next = activeTab.prev(".menu_button");
-    activeTab.trigger("tabDisabled");
-    if ($next.length != 0) {
-      activeTab = activeTab.prev(".menu_button");
-    } else activeTab = activeTab.siblings(".menu_button").last();
-    activeTab.trigger("tabActive");
+  switch (scrollDir) {
+    case 0:
+      if (activeTab == null) {
+        activeTab = $(".menu_buttons").children().last();
+        activeTab.trigger("tabActive");
+        // console.log('Was NULL, now: ' + activeTab.html())
+      } else {
+        let $next = activeTab.prev(".menu_button");
+        activeTab.trigger("tabDisabled");
+        if ($next.length != 0) {
+          activeTab = activeTab.prev(".menu_button");
+        } else activeTab = activeTab.siblings(".menu_button").last();
+        activeTab.trigger("tabActive");
+      }
+      activeTab[0].scrollIntoView(false);
+      break;
+    case 1:
+      if (activeTab == null) {
+        activeTab = $(".menu_buttons").children().first();
+        activeTab.trigger("tabActive");
+        // console.log('Was NULL, now: ' + activeTab.html())
+      } else {
+        let $next = activeTab.next(".menu_button");
+        activeTab.trigger("tabDisabled");
+        if ($next.length != 0) {
+          activeTab = activeTab.next(".menu_button");
+        } else activeTab = activeTab.siblings(".menu_button").first();
+        activeTab.trigger("tabActive");
+      }
+      activeTab[0].scrollIntoView(false);
+      break;
+    default:
+      console.log("Function scrollTab(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
+      break;
   }
-  activeTab[0].scrollIntoView(false);
-}
-function scrollTabRight() {
-  if ($(".menu_buttons").children().length <= 1) return;
-  if (activeTab == null) {
-    activeTab = $(".menu_buttons").children().first();
-    activeTab.trigger("tabActive");
-    // console.log('Was NULL, now: ' + activeTab.html())
-  } else {
-    let $next = activeTab.next(".menu_button");
-    activeTab.trigger("tabDisabled");
-    if ($next.length != 0) {
-      activeTab = activeTab.next(".menu_button");
-    } else activeTab = activeTab.siblings(".menu_button").first();
-    activeTab.trigger("tabActive");
-  }
-  activeTab[0].scrollIntoView(false);
-}
-
-function scrollCategory(scrollDir) {
-  if (isCategorySelected) return;
-  scrollUpDown(scrollDir);
-}
-function scrollElements(scrollDir) {
-  if (!isCategorySelected) return;
-  scrollUpDown(scrollDir);
 }
 
 function scrollPerc(scrollDir) {
@@ -599,6 +605,7 @@ function scrollLeftRight(scrollDir) {
 
   let scrolledItem = activeCategory;
   let scrolledItemObj = activeCategoryObject;
+  let currentItemList, activeItem;
 
   if (scrolledItemObj) {
     currentItemList = scrolledItemObj.category.find(".element_label_right");
@@ -735,16 +742,17 @@ function scrollFriends(scrollDir) {
   if (activeCategory) scrollCategory(scrollDir);
 }
 
-let currentOverflowTop, currentOverflowBottom;
-let currentOverflows = {
-  // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
-  overflowsDialogue: [-1, 8],
-  overflowsStats: [-1, 16],
-};
-
+function scrollCategory(scrollDir) {
+  if (isCategorySelected) return;
+  scrollUpDown(scrollDir);
+}
+function scrollElements(scrollDir) {
+  if (!isCategorySelected) return;
+  scrollUpDown(scrollDir);
+}
 function scrollScrollableElements(scrollDir, scrollableElements, maxOnScreen, currentOverflows) {
-  currentOverflowTop = currentOverflows[0];
-  currentOverflowBottom = currentOverflows[1];
+  let currentOverflowTop = currentOverflows[0];
+  let currentOverflowBottom = currentOverflows[1];
 
   if (scrollableElements.length <= maxOnScreen) return;
 
@@ -768,7 +776,6 @@ function scrollScrollableElements(scrollDir, scrollableElements, maxOnScreen, cu
       console.log("Function scrollScrollableElements(scrollDir, [...]) only accepts scrollDir = 0 (left) or 1 (right)");
       break;
   }
-
   currentOverflows[0] = currentOverflowTop;
   currentOverflows[1] = currentOverflowBottom;
 }
@@ -813,59 +820,36 @@ function scrollStatsList(scrollDir) {
 }
 
 //
-// Bind to mouse wheel
+// BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
 //
 
 $("#menu_brief_dialogue").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) {
-    scrollDialogue(0);
-  } else {
-    scrollDialogue(1);
-  }
+  if (e.originalEvent.deltaY / 40 < 0) scrollDialogue(0);
+  else scrollDialogue(1);
 });
-
 $("#menu_stats_general").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) {
-    scrollStatsList(0);
-  } else {
-    scrollStatsList(1);
-  }
+  if (e.originalEvent.deltaY / 40 < 0) scrollStatsList(0);
+  else scrollStatsList(1);
 });
-
 $(".menu_categories").bind("wheel", function (e) {
   if (isCategorySelected) return;
   if (e.originalEvent.deltaX != 0) return;
-  if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUpDown(0);
-  } else {
-    scrollUpDown(1);
-  }
+  if (e.originalEvent.deltaY / 40 < 0) scrollUpDown(0);
+  else scrollUpDown(1);
 });
-
 $(".menu_category_list").bind("wheel", function (e) {
   if (e.originalEvent.deltaY != 0) return;
-  if (e.originalEvent.deltaX / 120 < 0) {
-    scrollLeftRight(1);
-  } else {
-    scrollLeftRight(0);
-  }
+  if (e.originalEvent.deltaX / 120 < 0) scrollLeftRight(1);
+  else scrollLeftRight(0);
 });
-
 $(".menu_elements_scrollable").bind("wheel", function (e) {
   if (!isCategorySelected) return;
-  if (e.originalEvent.deltaY / 40 < 0) {
-    scrollUpDown(0);
-  } else {
-    scrollUpDown(1);
-  }
+  if (e.originalEvent.deltaY / 40 < 0) scrollUpDown(0);
+  else scrollUpDown(1);
 });
-
 $("#menu_save_list").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) {
-    scrollSaves(0, $("#menu_save_list"));
-  } else {
-    scrollSaves(1, $("#menu_save_list"));
-  }
+  if (e.originalEvent.deltaY / 40 < 0) scrollSaves(0, $("#menu_save_list"));
+  else scrollSaves(1, $("#menu_save_list"));
 });
 
 //
