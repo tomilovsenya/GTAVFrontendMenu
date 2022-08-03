@@ -307,7 +307,7 @@ function setTabActive() {
     let firstElement = tabElements.first();
     triggerEntry(firstElement);
   }
-  categoriesHandler(activeTab);
+  activeWindowHandler(activeTab);
 }
 
 function setTabDisabled() {
@@ -391,7 +391,7 @@ function triggerEntry(triggeredEntry) {
     isCategorySelected = true;
     console.log("Triggered entry: " + triggeredEntry.attr("id"));
   }
-  categoriesHandler(activeTab);
+  activeWindowHandler(activeTab);
 }
 
 function disableEntry(disabledEntry) {
@@ -406,7 +406,7 @@ function clickCategory() {
     console.log(
       "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
     );
-  categoriesHandler(activeTab);
+  activeWindowHandler(activeTab);
 }
 
 function clickEntry() {
@@ -619,13 +619,13 @@ function scrollLeftRight(scrollDir) {
     else scrolledItemObj.activeItem--;
     updateListItems(scrolledItem.children(".element_list"));
     activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
-    categoriesHandler(activeTab);
+    activeWindowHandler(activeTab);
   } else if (scrollDir == 1) {
     if (scrolledItemObj.activeItem == scrolledItemObj.items.length - 1) scrolledItemObj.activeItem = 0;
     else scrolledItemObj.activeItem++;
     updateListItems(scrolledItem.children(".element_list"));
     activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
-    categoriesHandler(activeTab);
+    activeWindowHandler(activeTab);
   } else console.log("Function scrollLeftRight(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
 }
 
@@ -660,7 +660,7 @@ function scrollUpDown(scrollDir) {
       if (!activeCategory.is(tabCategories.first())) {
         triggerCategory(activeCategory.prev());
       } else triggerCategory(tabCategories.last());
-      categoriesHandler(activeTab);
+      activeWindowHandler(activeTab);
     } else {
       if (activeEntryMiddle == null) return;
       if (!activeEntryMiddle.is(tabElements.first())) {
@@ -668,7 +668,7 @@ function scrollUpDown(scrollDir) {
         if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
         else triggerEntry(nextEntry);
       } else triggerEntry(tabElements.last());
-      categoriesHandler(activeTab);
+      activeWindowHandler(activeTab);
       activeEntryMiddle[0].scrollIntoView(false);
     }
   } else if (scrollDir == 1) {
@@ -676,7 +676,7 @@ function scrollUpDown(scrollDir) {
       if (!activeCategory.is(tabCategories.last())) {
         triggerCategory(activeCategory.next());
       } else triggerCategory(tabCategories.first());
-      categoriesHandler(activeTab);
+      activeWindowHandler(activeTab);
     } else {
       if (activeEntryMiddle == null) return;
       if (!activeEntryMiddle.is(tabElements.last())) {
@@ -684,7 +684,7 @@ function scrollUpDown(scrollDir) {
         if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
         else triggerEntry(nextEntry);
       } else triggerEntry(tabElements.first());
-      categoriesHandler(activeTab);
+      activeWindowHandler(activeTab);
       activeEntryMiddle[0].scrollIntoView(false);
     }
   } else console.log("Function scrollUpDown(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
@@ -904,60 +904,57 @@ function setFirstTab() {
   console.log("First button is: " + activeTab.attr("id"));
 }
 
-async function categoriesHandler(activeTab) {
-  if (activeWindow.id == menuContent.MENU_TAB_BRIEF.id) {
-    activeWindow.window.children(".menu_elements").hide();
-    if (activeCategoryElements) activeCategoryElements.show();
-    if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
-    else $("#menu_arrows_brief").show();
+async function activeWindowHandler(activeTab) {
+  let currentWindow = activeWindow.id;
+
+  switch (currentWindow) {
+    case menuContent.MENU_TAB_BRIEF.id:
+      activeWindow.window.children(".menu_elements").hide();
+      if (activeCategoryElements) activeCategoryElements.show();
+      if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
+      else $("#menu_arrows_brief").show();
+      break;
+    case menuContent.MENU_TAB_STATS.id:
+      activeWindow.window.children(".menu_elements").hide();
+      if (activeCategoryElements) activeCategoryElements.show();
+      activeCategoryElements.find(".element_stat").remove();
+      if (activeCategoryElements.children(".menu_elements_scrollable").children().length <= 16)
+        $("#menu_arrows_stats").hide();
+      else $("#menu_arrows_stats").show();
+      if (activeCategoryElements.is($("#menu_stats_100_completion"))) fillHundredCompletionWindow();
+      populateStatsBars();
+      break;
+    case menuContent.MENU_TAB_SETTINGS.id:
+      activeWindow.window.children(".menu_elements").hide();
+      if (activeCategoryElements) activeCategoryElements.show();
+      setVideoMemory(400, 4096);
+      break;
+    case menuContent.MENU_TAB_GAME.id:
+      updateMissionCounter();
+      updateMissionName();
+      if ($("#menu_game_elements_missions").children().length <= 16) $("#menu_arrows_game_replay_mission").hide();
+      break;
+    case menuContent.MENU_TAB_FRIENDS.id:
+      updateFriendCounter();
+      updateFriendName();
+      break;
+    case menuContent.MENU_TAB_ONLINE.id:
+      activeWindow.window.children(".menu_elements").hide();
+      if (activeCategoryElements) activeCategoryElements.show();
+      break;
+    case menuContent.MENU_TAB_SAVE.id:
+      HEADER_SAVE = await getLocalizedString("menu_header_save");
+      activeCategoryElements = $(".menu_save_list");
+      isCategorySelected = false;
+      setHeaderTitle(HEADER_SAVE);
+      break;
+    default:
+      console.log(`Nothing was handled this time.
+Check if the active window with ID ${activeWindow.window.attr("id")} contains any categories or elements`);
+      break;
   }
 
-  if (activeWindow.id == menuContent.MENU_TAB_STATS.id) {
-    activeWindow.window.children(".menu_elements").hide();
-    if (activeCategoryElements) activeCategoryElements.show();
-    activeCategoryElements.find(".element_stat").remove();
-
-    if (activeCategoryElements.children(".menu_elements_scrollable").children().length <= 16)
-      $("#menu_arrows_stats").hide();
-    else $("#menu_arrows_stats").show();
-
-    if (activeCategoryElements.is($("#menu_stats_100_completion"))) fillHundredCompletionWindow();
-
-    populateStatsBars();
-  }
-
-  if (activeWindow.id == menuContent.MENU_TAB_SETTINGS.id) {
-    activeWindow.window.children(".menu_elements").hide();
-    if (activeCategoryElements) activeCategoryElements.show();
-
-    setVideoMemory(400, 4096);
-  }
-
-  if (activeWindow.id == menuContent.MENU_TAB_GAME.id) {
-    updateMissionCounter();
-    updateMissionName();
-
-    if ($("#menu_game_elements_missions").children().length <= 16) $("#menu_arrows_game_replay_mission").hide();
-  }
-
-  if (activeWindow.id == menuContent.MENU_TAB_FRIENDS.id) {
-    updateFriendCounter();
-    updateFriendName();
-  }
-
-  if (activeWindow.id == menuContent.MENU_TAB_ONLINE.id) {
-    activeWindow.window.children(".menu_elements").hide();
-    if (activeCategoryElements) activeCategoryElements.show();
-  }
-
-  if (activeWindow.id == menuContent.MENU_TAB_SAVE.id) {
-    HEADER_SAVE = await getLocalizedString("menu_header_save");
-    activeCategoryElements = $(".menu_save_list");
-    isCategorySelected = false;
-    setHeaderTitle(HEADER_SAVE);
-  } else {
-    setHeaderTitle(HEADER_GTAV);
-  }
+  if (currentWindow != menuContent.MENU_TAB_SAVE.id) setHeaderTitle(HEADER_GTAV);
 }
 
 //
