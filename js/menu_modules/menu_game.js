@@ -60,5 +60,4 @@ export function fillReplayMissionList() {
   addReplayMissionEntry(1, "Franklin and Lamar", 1);
   updateMissionCounter();
   updateMissionName();
-  // updateEventHandlers();
 }

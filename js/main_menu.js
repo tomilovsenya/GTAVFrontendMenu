@@ -431,41 +431,41 @@ function removeRightTextArrows(text) {
   text.next(".menu_entry_arrow_right").remove();
 }
 
-function setEntryActive() {
-  activeEntryMiddle = $(this);
-  $(this).addClass("menu_entry_active");
-  $(this).focus();
+function setEntryActive(activatedEntry) {
+  activeEntryMiddle = activatedEntry;
+  activatedEntry.addClass("menu_entry_active");
+  activatedEntry.focus();
 
-  console.log("Set entry active: " + $(this).attr("id"));
+  console.log("Set entry active: " + activatedEntry.attr("id"));
 
-  let rightLabel = $(this).find(".element_list").children(".element_label_right").first();
+  let rightLabel = activatedEntry.find(".element_list").children(".element_label_right").first();
   rightLabel.nextAll().hide();
   if (rightLabel.length != 0) setRightTextArrows(rightLabel);
 }
 
-function setEntryDisabled() {
-  $(this).removeClass("menu_entry_active");
+function setEntryDisabled(disabledEntry) {
+  disabledEntry.removeClass("menu_entry_active");
   activeEntryMiddle = null;
   if (activeCategory) activeCategory.focus();
 
-  console.log("Set entry disabled: " + $(this).attr("id"));
+  console.log("Set entry disabled: " + disabledEntry.attr("id"));
 
-  let rightLabel = $(this).find(".element_list").children(".element_label_right").first();
+  let rightLabel = disabledEntry.find(".element_list").children(".element_label_right").first();
   if (rightLabel.length != 0) removeRightTextArrows(rightLabel);
 }
 
 let activeCategoryObject = null;
 
-function setCategoryActive() {
-  $(this).addClass("menu_entry_active");
-  activeCategory = $(this);
+function setCategoryActive(activatedCategory) {
+  activatedCategory.addClass("menu_entry_active");
+  activeCategory = activatedCategory;
   activeCategory.focus();
 
-  if (activeWindow.cats && activeWindow.cats[$(this).index()].id) {
-    // activeCategoryElements = activeWindow.cats[$(this).index()].id;
-    activeCategoryObject = activeWindow.cats[$(this).index()];
+  if (activeWindow.cats && activeWindow.cats[activatedCategory.index()].id) {
+    // activeCategoryElements = activeWindow.cats[activatedCategory.index()].id;
+    activeCategoryObject = activeWindow.cats[activatedCategory.index()];
     activeCategoryElements = activeCategoryObject.wnds[activeCategoryObject.activeItem];
-  } else activeCategoryElements = activeWindow.cats[$(this).index()];
+  } else activeCategoryElements = activeWindow.cats[activatedCategory.index()];
   // console.log("Active category object: " + activeCategoryObject.activeItem);
 
   // Only show element_list for active category
@@ -473,16 +473,16 @@ function setCategoryActive() {
   activeCategory.children(".element_list").show();
 
   // Right text (list) handling
-  let listItems = $(this).children(".element_list");
+  let listItems = activatedCategory.children(".element_list");
   if (listItems.length > 0) {
     updateListItems(listItems);
   }
 }
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
 
-function setCategoryDisabled() {
-  $(this).removeClass("menu_entry_active");
-  let rightText = $(this).find(".element_label_right");
+function setCategoryDisabled(disabledCategory) {
+  disabledCategory.removeClass("menu_entry_active");
+  let rightText = disabledCategory.find(".element_label_right");
   if (rightText.length != 0) removeRightTextArrows(rightText);
 }
 
@@ -853,8 +853,8 @@ export function updateEventHandlers() {
     .click(function () {
       scrollLeftRight(1);
     });
-  $(".menu_categories").children().click(clickCategory);
-  $(".menu_entries_middle").children().click(clickEntry);
+  $(".menu_categories").on("click", ".menu_category", clickCategory);
+  $(".menu_entries_middle").on("click", ".menu_entry", clickEntry);
   $("div.element_progress_zone_left").click(function () {
     scrollPerc(0);
   });
@@ -862,13 +862,18 @@ export function updateEventHandlers() {
     scrollPerc(1);
   });
 
-  $(".menu_categories").children().on("categoryActive", setCategoryActive);
-  $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
-  $(".menu_elements_scrollable").children(".menu_entry").on("categoryActive", setEntryActive);
-  $(".menu_elements_scrollable").children(".menu_entry").on("categoryDisabled", setEntryDisabled);
-
-  // $(".menu_elements_scrollable").on("categoryActive", $(".menu_entry"), setEntryActive);
-  // $(".menu_elements_scrollable").on("categoryDisabled", $(".menu_entry"), setEntryDisabled);
+  $(".menu_categories").on("categoryActive", ".menu_category", function (e) {
+    setCategoryActive($(this));
+  });
+  $(".menu_categories").on("categoryDisabled", ".menu_category", function (e) {
+    setCategoryDisabled($(this));
+  });
+  $(".menu_elements_scrollable").on("categoryActive", ".menu_entry", function (e) {
+    setEntryActive($(this));
+  });
+  $(".menu_elements_scrollable").on("categoryDisabled", ".menu_entry", function (e) {
+    setEntryDisabled($(this));
+  });
 }
 
 //
