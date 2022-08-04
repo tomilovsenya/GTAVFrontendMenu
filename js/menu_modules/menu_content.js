@@ -42,6 +42,19 @@ const TAB_STATS_CATEGORY_CRIMES = {
   activeItem: 0,
 };
 
+const TAB_STATS_CATEGORY_COMBAT = {
+  id: $("#menu_stats_combat"),
+  category: $("#menu_stats_category_5"),
+  items: [
+    $("#menu_stats_category_5_0"),
+    $("#menu_stats_category_5_1"),
+    $("#menu_stats_category_5_2"),
+    $("#menu_stats_category_5_3"),
+  ],
+  wnds: [$("#menu_stats_combat"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
+  activeItem: 0,
+};
+
 //
 // MENU TABS' CATEGORIES
 //
@@ -59,7 +72,7 @@ const TAB_STATS_CATEGORIES = [
   TAB_STATS_CATEGORY_CRIMES,
   $("#menu_stats_vehicles"),
   $("#menu_stats_cash"),
-  $("#menu_stats_combat"),
+  TAB_STATS_CATEGORY_COMBAT,
   $("#menu_stats_weapons"),
   $("#menu_stats_100_completion"),
 ];

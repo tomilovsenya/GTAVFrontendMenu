@@ -963,6 +963,10 @@ div.menu_elements_scrollable {
   /* overflow: scroll; */
 }
 
+div.menu_elements_scrollable .menu_entry:last-of-type {
+  margin-bottom: 0;
+}
+
 div.menu_elements_scrollable .menu_entry {
   /* background-color: transparent; */
 }
@@ -1314,10 +1318,6 @@ div#menu_stats_general {
   scroll-snap-type: y mandatory;
 }
 
-div#menu_stats_general .menu_entry:last-of-type {
-  margin-bottom: 0;
-}
-
 /* MENU STATS: 100% COMPLETION */
 
 div#menu_stats_100_completion {
@@ -1481,10 +1481,6 @@ div.menu_settings>div.menu_elements .menu_entry_empty:hover {
   background-color: transparent;
 }
 
-div.menu_settings>div.menu_elements button:last-of-type {
-  margin-bottom: 0;
-}
-
 div#menu_settings_gamepad {
   background-color: transparent;
   /* height: 100%; */
@@ -1564,24 +1560,12 @@ div.menu_game {
   flex-wrap: nowrap;
 }
 
-div.menu_game .menu_categories_right .menu_entry {
-  background: transparent;
-}
-
-div.menu_game .menu_categories_right .menu_entry:last-of-type {
-  margin-bottom: 0;
-}
-
-div.menu_game .menu_entry_empty_double {
-  margin-bottom: 0;
-}
-
 div.menu_game .menu_elements {
   width: var(--menu-elements-width);
   /* height: 100%; */
   /* height: 170%; */
   /* height: fit-content; */
-  min-height: 100%;
+  /* min-height: 100%; */
   flex-direction: row;
   background-color: transparent;
   justify-content: space-between;
@@ -1629,9 +1613,11 @@ div.menu_game .menu_entries_middle .menu_entry:last-of-type {
 .element_medal_gold {
   background-color: gold;
 }
+
 .element_medal_silver {
   background-color: silver;
 }
+
 .element_medal_bronze {
   background-color: #CD7F32;
 }
