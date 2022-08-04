@@ -12,7 +12,7 @@ export function localizeMenu() {
 
 function getPreferredLanguage() {
   let preferredLanguage = navigator.language || navigator.userLanguage;
-  console.log(preferredLanguage);
+  console.log("Preferred browser language detected: " + preferredLanguage);
   if (preferredLanguage == "ru") menuLanguage = menuLanguages[1];
   else menuLanguage = menuLanguages[0];
 }

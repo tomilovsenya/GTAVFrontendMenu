@@ -39,7 +39,7 @@ import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_compl
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import { drawMap } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
-import { updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
+import { fillReplayMissionList, updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
 import {
@@ -98,6 +98,8 @@ function loadMenu() {
   drawArrows();
   setStartupInstr();
   localizeMenu();
+  updateEventHandlers();
+  fillReplayMissionList();
   // playSFX(SFX_MENU_MUSIC);
 }
 
@@ -256,11 +258,6 @@ document.addEventListener(
 // TABS LOGIC
 //
 
-$(".menu_button").click(clickTab);
-$(".menu_button").dblclick("dblclick", setTabOnly);
-$(".menu_button").on("tabActive", setTabActive);
-$(".menu_button").on("tabDisabled", setTabDisabled);
-
 let isOnlyTabSet = false;
 let prevTabs, nextTabs;
 
@@ -303,7 +300,7 @@ function setTabActive() {
   switchActiveWindow($(this));
 
   if (activeWindow.window.find(".menu_categories").length > 0) {
-    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
+    let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_category");
     let firstCategory = tabCategories.first();
     triggerCategory(firstCategory);
   } else if (activeWindow.window.find(".menu_elements_scrollable").length > 0) {
@@ -329,29 +326,11 @@ function setTabDisabled() {
 
 // let menuCategories = $('.menu_categories').children()
 
-$(".menu_category_list")
-  .children(".menu_entry_zone_left")
-  .click(function () {
-    scrollLeftRight(0);
-  });
-$(".menu_category_list")
-  .children(".menu_entry_zone_right")
-  .click(function () {
-    scrollLeftRight(1);
-  });
-$(".menu_categories").children().click(clickCategory);
-$(".menu_entries_middle").children().click(clickEntry);
-$("div.element_progress_zone_left").click(function () {
-  scrollPerc(0);
-});
-$("div.element_progress_zone_right").click(function () {
-  scrollPerc(1);
-});
-
 function triggerCategory(triggeredCategory) {
   // Return if empty
   if (triggeredCategory.is($(".menu_entry_empty_double"))) return;
   if (triggeredCategory.is($(".menu_entry_empty"))) return;
+  if (activeEntryMiddle) console.log("Triggering category, activeEntryMiddle is: " + activeEntryMiddle.attr("id"));
   if (activeCategory == null) {
     triggeredCategory.trigger("categoryActive");
     console.log("Triggered category: " + triggeredCategory.attr("id"));
@@ -383,11 +362,12 @@ function triggerEntry(triggeredEntry) {
   if (triggeredEntry.is($(".menu_entry_empty_double"))) return;
   if (triggeredEntry.is($(".menu_entry_empty"))) return;
   if (activeEntryMiddle == null) {
+    console.log("activeEntryMiddle was null");
     triggeredEntry.trigger("categoryActive");
     isCategorySelected = true;
     console.log("Triggered entry: " + triggeredEntry.attr("id"));
   } else if (activeEntryMiddle.is(triggeredEntry)) {
-    console.log("Triggered already active entry: " + triggeredEntry.attr("id"));
+    console.log("Triggered already active entry, will do nothing: " + triggeredEntry.attr("id"));
   } else if (activeEntryMiddle != triggeredEntry) {
     disableEntry(activeEntryMiddle);
     activeEntryMiddle = triggeredEntry;
@@ -425,7 +405,7 @@ function clickEntry() {
 function enterMenuEntriesMiddle(triggeredCategoryElements) {
   let firstEntry = triggeredCategoryElements.find(".menu_elements_scrollable").find(".menu_entry").first();
   console.log("Selected cat: " + triggeredCategoryElements.attr("id"));
-  console.log(firstEntry.attr("id"));
+  console.log("First entry in the cat: " + firstEntry.attr("id"));
 
   triggerEntry(firstEntry);
   isCategorySelected = true;
@@ -435,11 +415,6 @@ function escapeMenuEntriesMiddle() {
   if (activeEntryMiddle) activeEntryMiddle.trigger("categoryDisabled");
   isCategorySelected = false;
 }
-
-$(".menu_categories").children().on("categoryActive", setCategoryActive);
-$(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
-$(".menu_elements").children(".menu_entry").on("categoryActive", setEntryActive);
-$(".menu_elements").children(".menu_entry").on("categoryDisabled", setEntryDisabled);
 
 let leftArrowSvg = '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
 let rightArrowSvg = ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
@@ -457,9 +432,9 @@ function removeRightTextArrows(text) {
 }
 
 function setEntryActive() {
-  $(this).addClass("menu_entry_active");
   activeEntryMiddle = $(this);
-  activeEntryMiddle.focus();
+  $(this).addClass("menu_entry_active");
+  $(this).focus();
 
   console.log("Set entry active: " + $(this).attr("id"));
 
@@ -861,6 +836,40 @@ $("#menu_save_list").bind("wheel", function (e) {
   if (e.originalEvent.deltaY / 40 < 0) scrollSaves(0, $("#menu_save_list"));
   else scrollSaves(1, $("#menu_save_list"));
 });
+
+export function updateEventHandlers() {
+  $(".menu_button").click(clickTab);
+  $(".menu_button").dblclick("dblclick", setTabOnly);
+  $(".menu_button").on("tabActive", setTabActive);
+  $(".menu_button").on("tabDisabled", setTabDisabled);
+
+  $(".menu_category_list")
+    .children(".menu_entry_zone_left")
+    .click(function () {
+      scrollLeftRight(0);
+    });
+  $(".menu_category_list")
+    .children(".menu_entry_zone_right")
+    .click(function () {
+      scrollLeftRight(1);
+    });
+  $(".menu_categories").children().click(clickCategory);
+  $(".menu_entries_middle").children().click(clickEntry);
+  $("div.element_progress_zone_left").click(function () {
+    scrollPerc(0);
+  });
+  $("div.element_progress_zone_right").click(function () {
+    scrollPerc(1);
+  });
+
+  $(".menu_categories").children().on("categoryActive", setCategoryActive);
+  $(".menu_categories").children().on("categoryDisabled", setCategoryDisabled);
+  $(".menu_elements_scrollable").children(".menu_entry").on("categoryActive", setEntryActive);
+  $(".menu_elements_scrollable").children(".menu_entry").on("categoryDisabled", setEntryDisabled);
+
+  // $(".menu_elements_scrollable").on("categoryActive", $(".menu_entry"), setEntryActive);
+  // $(".menu_elements_scrollable").on("categoryDisabled", $(".menu_entry"), setEntryDisabled);
+}
 
 //
 // OTHER FUNCTIONS

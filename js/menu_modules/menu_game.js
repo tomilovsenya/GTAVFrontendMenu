@@ -2,6 +2,8 @@
 // GAME TAB FUNCTIONS
 //
 
+import { updateEventHandlers } from "../main_menu.js";
+
 export function updateMissionCounter() {
   let totalMissions = $("#menu_game_elements_missions").children().length;
   let currentMission = 1;
@@ -21,4 +23,42 @@ export function updateMissionName() {
     console.log("Now null");
   } else focusedElement = $("#menu_game_elements_missions").children(":focus");
   missionName.text(focusedElement.text());
+}
+
+function addReplayMissionEntry(entryID, missionName, missionMedal) {
+  // missionMedal: 0 - Gold, 1 - Silver, 2 - Bronze
+  let missionList = $("#menu_game_elements_missions");
+  let missionID = "menu_game_elements_missions_" + entryID;
+  let missionEntry = $('<button class="menu_entry"></button>');
+  let missionLabel = $('<span class="element_label"></span');
+  let missionMedalElement = $('<div class="element_list"><div class="element_medal_right"></div></div>');
+  let missionMedalType = missionMedalElement.children(".element_medal_right");
+
+  missionEntry.attr({ id: missionID });
+  missionLabel.text(missionName);
+  switch (missionMedal) {
+    case 0:
+      missionMedalType.addClass("element_medal_gold");
+      break;
+    case 1:
+      missionMedalType.addClass("element_medal_silver");
+      break;
+    case 2:
+      missionMedalType.addClass("element_medal_bronze");
+      break;
+    default:
+      break;
+  }
+
+  missionEntry.append(missionLabel);
+  missionEntry.append(missionMedalElement);
+  missionList.append(missionEntry);
+}
+
+export function fillReplayMissionList() {
+  addReplayMissionEntry(0, "Prologue", 0);
+  addReplayMissionEntry(1, "Franklin and Lamar", 1);
+  updateMissionCounter();
+  updateMissionName();
+  // updateEventHandlers();
 }

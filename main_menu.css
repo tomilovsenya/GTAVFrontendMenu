@@ -16,7 +16,7 @@
 }
 
 :root {
-  --menu-background: url("images/bg/background2.jpg");
+  --menu-background: url("images/bg/background3.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
@@ -274,6 +274,7 @@ div.menu_box {
 
 div.menu_window {
   animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
+  position: relative;
 }
 
 /*#endregion MainMenu*/
@@ -395,16 +396,22 @@ nav.menu_buttons {
   flex-grow: 0;
   /* flex-grow: 1; */
   justify-content: space-between;
-  overflow: hidden;
+  overflow-x: scroll;
   overflow-y: visible;
   flex-wrap: nowrap;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: manipulation;
   /* /* scroll-snap-stop: always; */
   padding-top: var(--navbar-boxshadow-offset);
   margin-top: calc(var(--navbar-boxshadow-offset) * -1);
   /* scroll-padding-block-start: 2vw; */
   /* scroll-padding-block-start: 15%; */
+}
+
+nav.menu_buttons::-webkit-scrollbar {
+  display: none;
 }
 
 button.menu_button {
@@ -803,6 +810,7 @@ div.menu_loading_spinner {
   align-items: center;
   pointer-events: none;
   z-index: -1;
+  position: relative;
   /* display: none; */
 }
 
@@ -1620,6 +1628,12 @@ div.menu_game .menu_entries_middle .menu_entry:last-of-type {
 
 .element_medal_gold {
   background-color: gold;
+}
+.element_medal_silver {
+  background-color: silver;
+}
+.element_medal_bronze {
+  background-color: #CD7F32;
 }
 
 .element_checkbox_empty {
