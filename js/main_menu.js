@@ -843,18 +843,13 @@ export function updateEventHandlers() {
   $(".menu_button").on("tabActive", setTabActive);
   $(".menu_button").on("tabDisabled", setTabDisabled);
 
-  $(".menu_category_list")
-    .children(".menu_entry_zone_left")
-    .click(function () {
-      scrollLeftRight(0);
-    });
-  $(".menu_category_list")
-    .children(".menu_entry_zone_right")
-    .click(function () {
-      scrollLeftRight(1);
-    });
-  $(".menu_categories").on("click", ".menu_category", clickCategory);
-  $(".menu_entries_middle").on("click", ".menu_entry", clickEntry);
+  $(".menu_category_list").on("click", ".menu_entry_zone_left", function () {
+    scrollLeftRight(0);
+  });
+  $(".menu_category_list").on("click", ".menu_entry_zone_right", function () {
+    scrollLeftRight(1);
+  });
+  
   $("div.element_progress_zone_left").click(function () {
     scrollPerc(0);
   });
@@ -862,6 +857,8 @@ export function updateEventHandlers() {
     scrollPerc(1);
   });
 
+  $(".menu_categories").on("click", ".menu_category", clickCategory);
+  $(".menu_entries_middle").on("click", ".menu_entry", clickEntry);
   $(".menu_categories").on("categoryActive", ".menu_category", function (e) {
     setCategoryActive($(this));
   });
@@ -958,7 +955,7 @@ async function activeWindowHandler(activeTab) {
     case menuContent.MENU_TAB_GAME.id:
       updateMissionCounter();
       updateMissionName();
-      if ($("#menu_game_elements_missions").children().length <= 16) $("#menu_arrows_game_replay_mission").hide();
+      if ($("#menu_game_elements_missions").children(".menu_entry").length <= 16) $("#menu_arrows_game").hide();
       break;
     case menuContent.MENU_TAB_FRIENDS.id:
       updateFriendCounter();

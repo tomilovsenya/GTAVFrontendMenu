@@ -58,6 +58,8 @@ function addReplayMissionEntry(entryID, missionName, missionMedal) {
 export function fillReplayMissionList() {
   addReplayMissionEntry(0, "Prologue", 0);
   addReplayMissionEntry(1, "Franklin and Lamar", 1);
+  addReplayMissionEntry(2, "Repossession", 2);
+  addReplayMissionEntry(3, "Complications", 0);
   updateMissionCounter();
   updateMissionName();
 }
