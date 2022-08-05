@@ -3,7 +3,7 @@
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage;
+let menuLanguage, menuLangFile;
 
 export function localizeMenu() {
   getPreferredLanguage();
@@ -20,6 +20,7 @@ function getPreferredLanguage() {
 async function fetchLangFile() {
   const langFile = await fetch("js/lang.json");
   const langJSON = await langFile.json();
+  menuLangFile = await langJSON;
   return langJSON;
 }
 
@@ -47,10 +48,10 @@ async function localizeMenuElements() {
   }
 }
 
-export async function getLocalizedString(requestedString) {
+export function getLocalizedString(requestedString) {
   let localizedString;
   let foundStrings = 0;
-  const langJSON = await fetchLangFile();
+  const langJSON = menuLangFile;
 
   for (var i = 0; i < langJSON.length; i++) {
     if (langJSON[i].gxt == requestedString) {

@@ -86,7 +86,7 @@ function showLoadingSpinner() {
   MENU_LOADING_SPINNER.show();
 }
 
-function loadMenu() {
+async function loadMenu() {
   FRONTEND_MAIN_MENU.hide();
   // FRONTEND_MAIN_MENU.css({visibility: "hidden"});
   MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
@@ -99,8 +99,11 @@ function loadMenu() {
   setStartupInstr();
   localizeMenu();
   updateEventHandlers();
-  fillReplayMissionList();
   // playSFX(SFX_MENU_MUSIC);
+}
+
+function initMenuContent() {
+  fillReplayMissionList();
 }
 
 function showMenu() {
@@ -110,10 +113,15 @@ function showMenu() {
   drawMap();
 }
 
+function onMenuLoad() {
+  initMenuContent();
+  showMenu();
+}
+
 loadMenu();
 showLoadingSpinner();
 // window.onload = setTimeout(showMenu, 2000);
-window.onload = showMenu;
+window.onload = onMenuLoad;
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -925,7 +933,7 @@ function setFirstTab() {
   console.log("First button is: " + activeTab.attr("id"));
 }
 
-async function activeWindowHandler(activeTab) {
+function activeWindowHandler(activeTab) {
   let currentWindow = activeWindow.id;
 
   switch (currentWindow) {
@@ -966,7 +974,7 @@ async function activeWindowHandler(activeTab) {
       if (activeCategoryElements) activeCategoryElements.show();
       break;
     case menuContent.MENU_TAB_SAVE.id:
-      HEADER_SAVE = await getLocalizedString("menu_header_save");
+      HEADER_SAVE = getLocalizedString("menu_header_save");
       activeCategoryElements = $(".menu_save_list");
       isCategorySelected = false;
       setHeaderTitle(HEADER_SAVE);

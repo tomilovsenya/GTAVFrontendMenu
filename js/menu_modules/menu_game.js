@@ -64,7 +64,7 @@ function cleanAllMissionInfo() {
   missionInfoResult.children().remove();
 }
 
-async function fillMissionResult(missionObject) {
+function fillMissionResult(missionObject) {
   let missionInfoElement = $("#menu_game_replay_mission").children(".menu_game_mission_info");
   let missionInfoResult = missionInfoElement.children(".menu_game_mission_info_result");
 
@@ -73,13 +73,13 @@ async function fillMissionResult(missionObject) {
 
   switch (missionResultMedal) {
     case 0:
-      missionResultText = await getLocalizedString("menu_game_mission_info_result_0");
+      missionResultText = getLocalizedString("menu_game_mission_info_result_0");
       break;
     case 1:
-      missionResultText = await getLocalizedString("menu_game_mission_info_result_1");
+      missionResultText = getLocalizedString("menu_game_mission_info_result_1");
       break;
     case 2:
-      missionResultText = await getLocalizedString("menu_game_mission_info_result_2");
+      missionResultText = getLocalizedString("menu_game_mission_info_result_2");
       break;
     default:
       break;
