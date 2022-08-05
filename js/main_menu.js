@@ -108,7 +108,7 @@ function initMenuContent() {
 
 function showMenu() {
   MENU_LOADING_SPINNER.hide();
-  // FRONTEND_MAIN_MENU.css({visibility: "visible"});
+  FRONTEND_MAIN_MENU.css({visibility: "visible"});
   FRONTEND_MAIN_MENU.show();
   drawMap();
 }

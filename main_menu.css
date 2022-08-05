@@ -260,6 +260,7 @@ div.frontend_main_menu {
   animation: fadeInAnimation ease 0.25s;
   overflow: visible;
   z-index: 1;
+  visibility: hidden;
 }
 
 div.menu_box {
@@ -1622,7 +1623,7 @@ div.element_medal_right[data-medal-type="2"] {
   height: 1vw;
   background-image: url(images/icons/checkbox_empty.svg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .element_checkbox[data-check="0"] {
