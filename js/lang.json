@@ -417,6 +417,22 @@
   },
 
   {
+    "gxt": "menu_game_mission_info_result_0",
+    "american": "Completion - Gold",
+    "russian": "Выполнено - Золото"
+  },
+  {
+    "gxt": "menu_game_mission_info_result_1",
+    "american": "Completion - Silver",
+    "russian": "Выполнено - Серебро"
+  },
+  {
+    "gxt": "menu_game_mission_info_result_2",
+    "american": "Completion - Bronze",
+    "russian": "Выполнено - Бронза"
+  },
+
+  {
     "gxt": "menu_store_header",
     "american": "Now Open!",
     "russian": "Открыт!"

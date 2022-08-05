@@ -39,7 +39,7 @@ import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_compl
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import { drawMap } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
-import { fillReplayMissionList, updateMissionCounter, updateMissionName } from "./menu_modules/menu_game.js";
+import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
 import {
@@ -647,7 +647,7 @@ function scrollUpDown(scrollDir) {
         if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
         else triggerEntry(nextEntry);
       } else triggerEntry(tabElements.last());
-      activeWindowHandler(activeTab);
+      // activeWindowHandler(activeTab);
       activeEntryMiddle[0].scrollIntoView(false);
     }
   } else if (scrollDir == 1) {
@@ -663,7 +663,7 @@ function scrollUpDown(scrollDir) {
         if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
         else triggerEntry(nextEntry);
       } else triggerEntry(tabElements.first());
-      activeWindowHandler(activeTab);
+      // activeWindowHandler(activeTab);
       activeEntryMiddle[0].scrollIntoView(false);
     }
   } else console.log("Function scrollUpDown(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
@@ -849,7 +849,7 @@ export function updateEventHandlers() {
   $(".menu_category_list").on("click", ".menu_entry_zone_right", function () {
     scrollLeftRight(1);
   });
-  
+
   $("div.element_progress_zone_left").click(function () {
     scrollPerc(0);
   });
@@ -954,8 +954,8 @@ async function activeWindowHandler(activeTab) {
       break;
     case menuContent.MENU_TAB_GAME.id:
       updateMissionCounter();
-      updateMissionName();
       if ($("#menu_game_elements_missions").children(".menu_entry").length <= 16) $("#menu_arrows_game").hide();
+      if (activeEntryMiddle) updateMissionInfo(activeEntryMiddle.index());
       break;
     case menuContent.MENU_TAB_FRIENDS.id:
       updateFriendCounter();

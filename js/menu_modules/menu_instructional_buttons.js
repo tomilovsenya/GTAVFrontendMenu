@@ -15,10 +15,6 @@ export function setStartupInstr() {
   $("#IB_SCROLL").hide();
 }
 
-function changeIBText(newText) {
-  $(this).text(newText);
-}
-
 export function showInstrLoadingSpinner() {
   if (!isInstrLoadingSpinnerShown) {
     instrLoadingSpinner.show();
