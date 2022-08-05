@@ -15,6 +15,30 @@
   src: url("fonts/ChaletComprime-CologneSixty.otf") format("opentype");
 }
 
+/* --menu-wnd-width: 1300px; */
+/* --menu-wnd-height: 645px; */
+/* --item-double-height: 78px; */
+/* --item-height: 37.5px; */
+/* --item-height: 1.85vw; */
+/* --menu-font-size: 19.5px; */
+/* --header-font-size: 54px; */
+/* --stats-font-size: 27.5px; */
+/* --menu-box-padding-top: 95px; */
+/* --item-margin: 3px; */
+
+/* --menu-box-height: 41.5625vw; */
+
+/* --menu-categories-width: 33.25%; */
+/* --menu-elements-width: 66.55%; */
+
+/* --item-height: 5.8%; */
+/* --item-double-height: 12.125%; */
+
+/* --tab-margin: 0.2%; */
+/* --navbar-arrow-width: 0.75vw; */
+/* --navbar-margin-arrow: 10vw; */
+/* --navbar-margin-arrow: calc(var(--menu-wnd-width) / -60); */
+
 :root {
   --menu-background: url("images/bg/background3.jpg");
   --menu-color: lightskyblue;
@@ -24,20 +48,9 @@
   --text-color-selected: black;
   --focus-color: white;
   --hover-color: #68686877;
-  /* --menu-wnd-width: 1300px; */
-  /* --menu-wnd-height: 645px; */
-  /* --item-double-height: 78px; */
-  /* --item-height: 37.5px; */
-  /* --item-height: 1.85vw; */
-  /* --menu-font-size: 19.5px; */
-  /* --header-font-size: 54px; */
-  /* --stats-font-size: 27.5px; */
-  /* --menu-box-padding-top: 95px; */
-  /* --item-margin: 3px; */
 
   --menu-wnd-width: 67.8125vw;
   --menu-wnd-height: 33.55vw;
-  /* --menu-box-height: 41.5625vw; */
   --menu-box-height: 43.125vw;
   --menu-box-padding-top: 5vw;
   --menu-box-padding-bottom: calc(100vh - var(--menu-box-height) - var(--menu-box-padding-top));
@@ -45,14 +58,10 @@
   --menu-header-font-size: calc(var(--menu-font-size) * 4.18);
   --menu-letter-spacing: -0.007em;
 
-  /* --menu-categories-width: 33.25%; */
-  /* --menu-elements-width: 66.55%; */
   --menu-categories-width: calc(var(--tab-width) * 2 + var(--tab-margin));
   --menu-elements-width: calc(var(--tab-width) * 4 + var(--tab-margin) * 3);
   --menu-elements-half-width: 49.825%;
 
-  /* --item-height: 5.8%; */
-  /* --item-double-height: 12.125%; */
   --item-margin: 0.1625vw;
   --item-height: 1.945vw;
   --item-double-height: calc(var(--item-height) * 2 + var(--item-margin));
@@ -60,7 +69,6 @@
   --item-padding-top: 0.45vw;
 
   --tab-width: 16.5%;
-  /* --tab-margin: 0.2%; */
   --tab-margin: 0.14vw;
 
   --header-font-size: 2.85vw;
@@ -70,10 +78,26 @@
   --navbar-height: 2vw;
   --navbar-margin-bottom: 1vw;
   --navbar-boxshadow-offset: 0.4vw;
-  /* --navbar-arrow-width: 0.75vw; */
   --navbar-arrow-width: 1%;
-  /* --navbar-margin-arrow: 10vw; */
-  /* --navbar-margin-arrow: calc(var(--menu-wnd-width) / -60); */
+
+  /* HUD COLORS */
+
+  --hud-color-gold: rgb(214 181 99);
+  --hud-color-silver: rgb(150 153 161);
+  --hud-color-bronze: rgb(180 130 97);
+
+  --hud-color-michael: rgb(101 180 212);
+  --hud-color-michael-dark: rgb(72 103 116);
+
+  --hud-color-franklin: rgb(171 237 171);
+  --hud-color-franklin-dark: rgb(85 118 85);
+
+  --hud-color-trevor: rgb(255 163 87);
+  --hud-color-trevor-dark: rgb(127 81 43);
+
+  --hud-color-freemode: rgb(45 110 185);
+  --hud-color-heist: rgb(37 102 40);
+  --hud-color-tech: rgb(0 151 151);
 }
 
 body {
@@ -214,7 +238,7 @@ C {
 }
 
 .bg_color_michael {
-  background-color: rgb(101, 180, 212);
+  background-color: var(--hud-color-michael);
 }
 
 .bg_color_michael_alpha {
@@ -222,7 +246,7 @@ C {
 }
 
 .bg_color_franklin {
-  background-color: rgb(171, 237, 171);
+  background-color: var(--hud-color-franklin);
 }
 
 .bg_color_franklin_alpha {
@@ -230,7 +254,7 @@ C {
 }
 
 .bg_color_trevor {
-  background-color: rgb(255, 163, 87);
+  background-color: var(--hud-color-trevor);
 }
 
 .bg_color_trevor_alpha {
@@ -238,7 +262,7 @@ C {
 }
 
 .bg_color_freemode {
-  background-color: rgb(45, 110, 185);
+  background-color: var(--hud-color-freemode);
 }
 
 .bg_color_freemode_alpha {
@@ -1609,13 +1633,15 @@ div.element_medal_right {
 }
 
 div.element_medal_right[data-medal-type="0"] {
-  background-color: gold;
+  background-color: var(--hud-color-gold);
 }
+
 div.element_medal_right[data-medal-type="1"] {
-  background-color: silver;
+  background-color: var(--hud-color-silver);
 }
+
 div.element_medal_right[data-medal-type="2"] {
-  background-color: #CD7F32;
+  background-color: var(--hud-color-bronze);
 }
 
 .element_checkbox {
@@ -1629,6 +1655,7 @@ div.element_medal_right[data-medal-type="2"] {
 .element_checkbox[data-check="0"] {
   background-image: url(images/icons/checkbox_empty.svg);
 }
+
 .element_checkbox[data-check="1"] {
   background-image: url(images/icons/checkbox_ticked.svg);
 }

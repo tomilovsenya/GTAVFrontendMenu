@@ -14,7 +14,8 @@ const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 const MENU_PAGE = document.documentElement;
-export const MENU_COLOR = "lightskyblue";
+const MENU_COLOR_NAME = "--hud-color-michael";
+export const MENU_COLOR = getComputedStyle(MENU_PAGE).getPropertyValue(MENU_COLOR_NAME);
 
 let isCategorySelected = false;
 let activeTab = null;
@@ -108,7 +109,7 @@ function initMenuContent() {
 
 function showMenu() {
   MENU_LOADING_SPINNER.hide();
-  FRONTEND_MAIN_MENU.css({visibility: "visible"});
+  FRONTEND_MAIN_MENU.css({ visibility: "visible" });
   FRONTEND_MAIN_MENU.show();
   drawMap();
 }
