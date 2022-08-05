@@ -845,7 +845,7 @@ $("#menu_save_list").bind("wheel", function (e) {
   else scrollSaves(1, $("#menu_save_list"));
 });
 
-export function updateEventHandlers() {
+function updateEventHandlers() {
   $(".menu_button").click(clickTab);
   $(".menu_button").dblclick("dblclick", setTabOnly);
   $(".menu_button").on("tabActive", setTabActive);

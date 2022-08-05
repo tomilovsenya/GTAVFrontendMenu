@@ -62,5 +62,6 @@ export function getLocalizedString(requestedString) {
   }
 
   // console.log("Found localized GXT: " + localizedString);
-  return localizedString;
+  if (localizedString != undefined) return localizedString;
+  else return requestedString;
 }

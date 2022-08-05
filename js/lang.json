@@ -391,10 +391,52 @@
     "russian": "Пролог"
   },
   {
+    "gxt": "menu_game_mission_0_obj_0",
+    "american": "Local Yokel's Bought It",
+    "russian": "Ублюдок склеил ласты"
+  },
+  {
+    "gxt": "menu_game_mission_0_obj_0_descr",
+    "american": "Local Yokel buys it before the team manages to escape",
+    "russian": "Ублюдок склеил ласты до того, как команда успевает свалить"
+  },
+  {
+    "gxt": "menu_game_mission_0_obj_1",
+    "american": "Time",
+    "russian": "Время"
+  },
+  {
+    "gxt": "menu_game_mission_0_obj_1_descr",
+    "american": "Complete within 7:00",
+    "russian": "Выполнить задание за 7:00"
+  },
+
+  {
     "gxt": "menu_game_elements_missions_1",
     "american": "Franklin & Lamar",
     "russian": "Франклин и Ламар"
   },
+  {
+    "gxt": "menu_game_mission_1_obj_0",
+    "american": "No Aliens Were Killed",
+    "russian": "Пришельцы не пострадали"
+  },
+  {
+    "gxt": "menu_game_mission_1_obj_0_descr",
+    "american": "Aliens manage to survive the race",
+    "russian": "Пришельцам удалось пережить гонку"
+  },
+  {
+    "gxt": "menu_game_mission_1_obj_1",
+    "american": "Time",
+    "russian": "Время"
+  },
+  {
+    "gxt": "menu_game_mission_1_obj_1_descr",
+    "american": "Complete within 6:00",
+    "russian": "Выполнить задание за 6:00"
+  },
+
   {
     "gxt": "menu_game_elements_missions_2",
     "american": "Repossession",

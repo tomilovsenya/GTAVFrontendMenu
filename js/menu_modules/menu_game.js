@@ -2,7 +2,6 @@
 // GAME TAB FUNCTIONS
 //
 
-import { updateEventHandlers } from "../main_menu.js";
 import { getLocalizedString } from "./menu_localization.js";
 
 export function updateMissionCounter() {
@@ -20,22 +19,25 @@ export function updateMissionCounter() {
 
 const MISSION_0 = {
   index: 0,
-  name: "Prologue",
-  medal: 0,
+  name: "menu_game_elements_missions_0",
+  medal: 1,
   objectives: [
-    { label: "Local Yokel's Bought It", check: 1, descr: "Local Yokel buys it before the team manages to escape" },
-    { label: "Time", label_r: "7:50", check: 0, descr: "Complete within 7:00" },
+    { label: "menu_game_mission_0_obj_0", check: 1, descr: "menu_game_mission_0_obj_0_descr" },
+    { label: "menu_game_mission_0_obj_1", label_r: "7:50", check: 0, descr: "menu_game_mission_0_obj_1_descr" },
   ],
 };
 const MISSION_1 = {
   index: 1,
-  name: "Franklin and Lamar",
-  medal: 1,
-  objectives: [],
+  name: "menu_game_elements_missions_1",
+  medal: 2,
+  objectives: [
+    { label: "menu_game_mission_1_obj_0", check: 0, descr: "menu_game_mission_1_obj_0_descr" },
+    { label: "menu_game_mission_1_obj_1", label_r: "6:53", check: 0, descr: "menu_game_mission_1_obj_1_descr" },
+  ],
 };
 const MISSION_2 = {
   index: 2,
-  name: "Repossession",
+  name: "menu_game_elements_missions_2",
   medal: 2,
   objectives: [],
 };
@@ -54,7 +56,8 @@ export function updateMissionInfo(missionIndex) {
 
 function fillMissionName(missionObject) {
   let missionName = $(".element_mission_name");
-  missionName.text(missionObject.name);
+  let missionNameLocalized = getLocalizedString(missionObject.name);
+  missionName.text(missionNameLocalized);
 }
 
 function cleanAllMissionInfo() {
@@ -107,12 +110,12 @@ function fillMissionInfo(missionObject) {
   let missionObjEmpty, missionResultEmpty;
 
   missionInfo.forEach((currObj) => {
-    missionObjLabel = currObj.label;
+    missionObjLabel = getLocalizedString(currObj.label);
     missionObjLabelR = currObj.label_r || "";
     missionObjCheck = currObj.check;
     if (missionObjCheck < 0) missionObjCheck = 0;
     if (missionObjCheck > 1) missionObjCheck = 1;
-    missionObjDescr = currObj.descr;
+    missionObjDescr = getLocalizedString(currObj.descr);
 
     missionObjEmpty = $(
       `<div class="menu_entry_objective">
@@ -134,9 +137,10 @@ function addReplayMissionEntry(missionObject) {
   let missionLabel = $('<span class="element_label"></span');
   let missionMedalElement = $('<div class="element_list"><div class="element_medal_right"></div></div>');
   let missionMedalType = missionMedalElement.children(".element_medal_right");
+  let missionNameLocalized = getLocalizedString(missionObject.name);
 
   missionEntry.attr({ id: missionIndex });
-  missionLabel.text(missionObject.name);
+  missionLabel.text(missionNameLocalized);
   missionMedalType.attr({ "data-medal-type": missionObject.medal });
 
   missionEntry.append(missionLabel);
