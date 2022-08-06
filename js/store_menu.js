@@ -7,6 +7,17 @@ const MENU_LOADING_SPINNER = $("div.menu_loading_spinner");
 const FRONTEND_MAIN_MENU = $("div.frontend_main_menu");
 let menuVisibility = false;
 
+window.addEventListener(
+  "keydown",
+  function (e) {
+    if (["Backspace"].indexOf(e.code) > -1) {
+      window.history.go(-1);
+      console.log("Should go back now");
+    }
+  },
+  false
+);
+
 function onShopLoad() {
   MENU_LOADING_SPINNER.hide();
   drawArrows();
@@ -25,11 +36,11 @@ function goFullScreen() {
 function toggleMenuVisibility() {
   if (menuVisibility) {
     FRONTEND_MAIN_MENU.css({ visibility: "hidden" });
-    activeWindow.window.css({ visibility: "hidden" });
+    // activeWindow.window.css({ visibility: "hidden" });
     menuVisibility = false;
   } else {
     FRONTEND_MAIN_MENU.css({ visibility: "" });
-    activeWindow.window.css({ visibility: "" });
+    // activeWindow.window.css({ visibility: "" });
     menuVisibility = true;
   }
 }

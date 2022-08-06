@@ -308,6 +308,10 @@ div.menu_window {
   position: relative;
 }
 
+a.menu_window_clickable {
+  text-decoration: none;
+}
+
 /*#endregion MainMenu*/
 
 /*#region MenuHeader*/
@@ -329,7 +333,7 @@ div.menu_header {
   margin-bottom: var(--header-margin-bottom);
 }
 
-p.menu_header {
+p#menu_header_text {
   font-family: "Cologne60", "London60";
   font-size: var(--header-font-size);
   color: var(--text-color);
@@ -356,17 +360,11 @@ div.menu_header_character {
 
 div.menu_header_stats {
   background-color: transparent;
-  /* width: 341px; */
-  /* height: 69px; */
-  /* float: right; */
-  /* margin-right: 10px; */
-  margin-right: 0.5vw;
   align-self: center;
 }
 
-p.menu_header_stats {
+span#menu_header_stats_text {
   font-family: "Cologne60", "London60";
-  /* font-size: 27.5px; */
   font-size: var(--stats-font-size);
   color: var(--text-color);
   text-align: right;
@@ -383,14 +381,11 @@ p.menu_header_stats {
 
 div.menu_header_avatar {
   background-color: var(--black-bg-color);
-  /* width: 69px; */
-  /* height: 69px; */
   width: 3.6vw;
   height: 3.6vw;
-  /* height: 100%; */
   float: right;
   overflow: hidden;
-  /* justify-content: flex-end; */
+  margin-left: 0.5vw;
 }
 
 img.menu_header_avatar_picture {
