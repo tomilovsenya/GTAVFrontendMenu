@@ -28,1260 +28,1261 @@
 </head>
 
 <body>
-  <div class="menu_bounding_box">
-    <div class="menu_loading_spinner">
-      <img class="menu_loading_spinner" src="images/gtav_savingspinner_ib.png" alt="">
-    </div>
-    <div class="frontend_main_menu">
-      <div class="menu_box">
-        <div class="menu_header" tabindex="-1">
-          <p class="menu_header" id="menu_header_text">Grand Theft Auto V</p>
-          <div class="menu_header_character">
-            <div class="menu_header_stats">
-              <p class="menu_header_stats" id="menu_header_stats_text"></p>
-            </div>
-            <div class="menu_header_avatar">
-              <img class="menu_header_avatar_picture" src="images/avatar_michael.png"></img>
-            </div>
-          </div>
-        </div>
-        <!-- <br /> -->
-        <div class="menu_navbar">
-          <button id="menu_arrow_left" class="menu_navbar_arrows" tabindex="-1"></button>
-          <nav id="menu_navbar_tabs" class="menu_buttons" tabindex="-1">
-            <button id="tab_0" class="menu_button">MAP</button>
-            <button id="tab_1" class="menu_button">BRIEF</button>
-            <button id="tab_2" class="menu_button">STATS</button>
-            <button id="tab_3" class="menu_button">SETTINGS</button>
-            <button id="tab_4" class="menu_button">GAME</button>
-            <button id="tab_5" class="menu_button">ONLINE</button>
-            <button id="tab_6" class="menu_button">FRIENDS</button>
-            <button id="tab_7" class="menu_button">GALLERY</button>
-            <button id="tab_8" class="menu_button">STORE</button>
-            <button id="tab_9" class="menu_button">ROCKSTAR EDITOR</button>
-            <button id="tab_10" class="menu_button">SAVE</button>
-          </nav>
-          <button id="menu_arrow_right" class="menu_navbar_arrows" tabindex="-1"></button>
-        </div>
-
-        <!-- <img id="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
-        <img id="menu_map_image" src="images/maps/h4_fake_islandx.svg" alt="">
-        <!-- <img id="menu_map_image" src="images/maps/V_Mainmap.svg" alt=""> -->
-        <div id="menu_map_window" class="menu_window menu_map">
-          <!-- <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt=""> -->
-          <!-- <img class="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
-        </div>
-
-        <div class="menu_window menu_brief">
-          <div class="menu_categories">
-            <button id="menu_brief_category_0" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_simple_text"></span>
-            </button>
-            <button id="menu_brief_category_1" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_simple_text"></span>
-            </button>
-            <button id="menu_brief_category_2" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_simple_text"></span>
-            </button>
-            <button id="menu_brief_category_3" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_simple_text"></span>
-            </button>
-            <button id="menu_brief_category_4" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_simple_text"></span>
-            </button>
-          </div>
-
-          <div id="menu_brief_mission_inactive" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 id="menu_brief_mission_header" class="menu_window_header"></h1>
-              <span id="menu_brief_mission_text" class="menu_window_text"></span>
-            </div>
-          </div>
-
-          <div id="menu_brief_mission" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <div class="menu_brief_mission_entry">
-                <span class="element_simple_text">
-                  Press <button class="instructional_button instructional_button_small">E</button> to grab the loot.
-                  <br>
-                  Press <button class="instructional_button instructional_button_small">Esc</button> to exit.</span>
-                <!-- <button class="instructional_button">Caps</button> -->
+  <div class="menu_backdrop">
+    <div class="menu_bounding_box">
+      <div class="menu_loading_spinner">
+        <img class="menu_loading_spinner" src="images/gtav_savingspinner_ib.png" alt="">
+      </div>
+      <div class="frontend_main_menu">
+        <div class="menu_box">
+          <div class="menu_header" tabindex="-1">
+            <p class="menu_header" id="menu_header_text">Grand Theft Auto V</p>
+            <div class="menu_header_character">
+              <div class="menu_header_stats">
+                <p class="menu_header_stats" id="menu_header_stats_text"></p>
+              </div>
+              <div class="menu_header_avatar">
+                <img class="menu_header_avatar_picture" src="images/avatar_michael.png"></img>
               </div>
             </div>
           </div>
-
-          <div id="menu_brief_help_inactive" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 id="menu_brief_help_header" class="menu_window_header"></h1>
-              <span id="menu_brief_help_text" class="menu_window_text"></span>
-            </div>
+          <!-- <br /> -->
+          <div class="menu_navbar">
+            <button id="menu_arrow_left" class="menu_navbar_arrows" tabindex="-1"></button>
+            <nav id="menu_navbar_tabs" class="menu_buttons" tabindex="-1">
+              <button id="tab_0" class="menu_button">MAP</button>
+              <button id="tab_1" class="menu_button">BRIEF</button>
+              <button id="tab_2" class="menu_button">STATS</button>
+              <button id="tab_3" class="menu_button">SETTINGS</button>
+              <button id="tab_4" class="menu_button">GAME</button>
+              <button id="tab_5" class="menu_button">ONLINE</button>
+              <button id="tab_6" class="menu_button">FRIENDS</button>
+              <button id="tab_7" class="menu_button">GALLERY</button>
+              <button id="tab_8" class="menu_button">STORE</button>
+              <button id="tab_9" class="menu_button">ROCKSTAR EDITOR</button>
+              <button id="tab_10" class="menu_button">SAVE</button>
+            </nav>
+            <button id="menu_arrow_right" class="menu_navbar_arrows" tabindex="-1"></button>
           </div>
 
-          <div id="menu_brief_help" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <div class="menu_brief_mission_entry">
-                <span class="element_simple_text">Kill <red>Trevor.</red></span>
-              </div>
-              <div class="menu_brief_mission_entry">
-                <span class="element_simple_text">Help <C>Lamar</C> open the <grn>crates.</grn></span>
-              </div>
-              <div class="menu_brief_mission_entry">
-                <span class="element_simple_text">Help <C>Franklin</C> protect <blu>Dr. Dre.</blu></span>
-              </div>
-            </div>
+          <!-- <img id="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
+          <img id="menu_map_image" src="images/maps/h4_fake_islandx.svg" alt="">
+          <!-- <img id="menu_map_image" src="images/maps/V_Mainmap.svg" alt=""> -->
+          <div id="menu_map_window" class="menu_window menu_map">
+            <!-- <img class="menu_map_image" src="images/h4_fake_islandx.svg" alt=""> -->
+            <!-- <img class="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
           </div>
 
-          <div id="menu_brief_dialogue_inactive" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 id="menu_brief_dialogue_header" class="menu_window_header"></h1>
-              <span id="menu_brief_dialogue_text" class="menu_window_text"></span>
+          <div class="menu_window menu_brief">
+            <div class="menu_categories">
+              <button id="menu_brief_category_0" class="menu_entry menu_category menu_category_unselectable">
+                <span class="element_simple_text"></span>
+              </button>
+              <button id="menu_brief_category_1" class="menu_entry menu_category menu_category_unselectable">
+                <span class="element_simple_text"></span>
+              </button>
+              <button id="menu_brief_category_2" class="menu_entry menu_category menu_category_unselectable">
+                <span class="element_simple_text"></span>
+              </button>
+              <button id="menu_brief_category_3" class="menu_entry menu_category menu_category_unselectable">
+                <span class="element_simple_text"></span>
+              </button>
+              <button id="menu_brief_category_4" class="menu_entry menu_category menu_category_unselectable">
+                <span class="element_simple_text"></span>
+              </button>
             </div>
-          </div>
 
-          <div id="menu_brief_dialogue" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
+            <div id="menu_brief_mission_inactive" class="menu_elements menu_background_rockstar">
+              <div class="menu_window_text menu_window_text_full">
+                <h1 id="menu_brief_mission_header" class="menu_window_header"></h1>
+                <span id="menu_brief_mission_text" class="menu_window_text"></span>
               </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">So, all that prep work for nothing?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Okay, I'll get rid of the stuff. Call me if you want to set up the
-                    thing again.</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
-                </div>
-              </div>
-              <div class="menu_brief_dialogue_entry">
-                <div class="dialogue_entry_string">
-                  <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
-                  <span class="dialogue_entry_text">Hey there. What can I help you with? This would be the last.</span>
+            </div>
+
+            <div id="menu_brief_mission" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <div class="menu_brief_mission_entry">
+                  <span class="element_simple_text">
+                    Press <button class="instructional_button instructional_button_small">E</button> to grab the loot.
+                    <br>
+                    Press <button class="instructional_button instructional_button_small">Esc</button> to exit.</span>
+                  <!-- <button class="instructional_button">Caps</button> -->
                 </div>
               </div>
             </div>
-          </div>
 
-          <div id="menu_brief_notifications" class="menu_elements">
-            <!-- <div class="menu_brief_notifications_entry">
+            <div id="menu_brief_help_inactive" class="menu_elements menu_background_rockstar">
+              <div class="menu_window_text menu_window_text_full">
+                <h1 id="menu_brief_help_header" class="menu_window_header"></h1>
+                <span id="menu_brief_help_text" class="menu_window_text"></span>
+              </div>
+            </div>
+
+            <div id="menu_brief_help" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <div class="menu_brief_mission_entry">
+                  <span class="element_simple_text">Kill <red>Trevor.</red></span>
+                </div>
+                <div class="menu_brief_mission_entry">
+                  <span class="element_simple_text">Help <C>Lamar</C> open the <grn>crates.</grn></span>
+                </div>
+                <div class="menu_brief_mission_entry">
+                  <span class="element_simple_text">Help <C>Franklin</C> protect <blu>Dr. Dre.</blu></span>
+                </div>
+              </div>
+            </div>
+
+            <div id="menu_brief_dialogue_inactive" class="menu_elements menu_background_rockstar">
+              <div class="menu_window_text menu_window_text_full">
+                <h1 id="menu_brief_dialogue_header" class="menu_window_header"></h1>
+                <span id="menu_brief_dialogue_text" class="menu_window_text"></span>
+              </div>
+            </div>
+
+            <div id="menu_brief_dialogue" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">So, all that prep work for nothing?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Okay, I'll get rid of the stuff. Call me if you want to set up the
+                      thing again.</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with?</span>
+                  </div>
+                </div>
+                <div class="menu_brief_dialogue_entry">
+                  <div class="dialogue_entry_string">
+                    <img class="dialogue_entry_img" src="images/hc_n_lester.png" alt="">
+                    <span class="dialogue_entry_text">Hey there. What can I help you with? This would be the last.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="menu_brief_notifications" class="menu_elements">
+              <!-- <div class="menu_brief_notifications_entry">
               <span>You have 2 friends playing in other GTA Online sessions.</span>
             </div> -->
-            <div class="menu_elements_scrollable">
-              <div class="menu_brief_notifications_entry_double">
-                <div class="notification_header">
-                  <img class="notification_header_img" src="images/dia_police.png" alt="">
-                  <span class="notification_header_text">Police Alert</span>
+              <div class="menu_elements_scrollable">
+                <div class="menu_brief_notifications_entry_double">
+                  <div class="notification_header">
+                    <img class="notification_header_img" src="images/dia_police.png" alt="">
+                    <span class="notification_header_text">Police Alert</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry_double">
-                <div class="notification_header">
-                  <img class="notification_header_img" src="images/hc_n_lester.png" alt="">
-                  <span class="notification_header_text">Lester</span>
+                <div class="menu_brief_notifications_entry_double">
+                  <div class="notification_header">
+                    <img class="notification_header_img" src="images/hc_n_lester.png" alt="">
+                    <span class="notification_header_text">Lester</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Hey, let's do the heist! Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Vel dolores, modi nobis dolorum incidunt dolore id ad assumenda minus quisquam
-                    molestias et explicabo excepturi asperiores saepe blanditiis nemo non. Eaque!</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Hey, let's do the heist! Lorem ipsum dolor sit amet consectetur
+                      adipisicing elit. Vel dolores, modi nobis dolorum incidunt dolore id ad assumenda minus quisquam
+                      molestias et explicabo excepturi asperiores saepe blanditiis nemo non. Eaque!</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 1 left.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 1 left.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 2 left.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 2 left.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 3 left.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 3 left.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 4 left.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 4 left.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 4 killed Player 3.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 4 killed Player 3.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry_double">
-                <div class="notification_header">
-                  <img class="notification_header_img" src="images/dia_police.png" alt="">
-                  <span class="notification_header_text">Police Alert</span>
+                <div class="menu_brief_notifications_entry_double">
+                  <div class="notification_header">
+                    <img class="notification_header_img" src="images/dia_police.png" alt="">
+                    <span class="notification_header_text">Police Alert</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Police Alert: you are under arrest, surrender now!</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 4 killed Player 3.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 4 killed Player 3.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 4 killed Player 3.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 4 killed Player 3.</span>
+                  </div>
                 </div>
-              </div>
-              <div class="menu_brief_notifications_entry">
-                <div class="notification_string">
-                  <span class="notification_string_text">Player 4 killed Player 3.</span>
+                <div class="menu_brief_notifications_entry">
+                  <div class="notification_string">
+                    <span class="notification_string_text">Player 4 killed Player 3.</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div id="menu_brief_newswire" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 id="menu_brief_newswire_header" class="menu_window_header"></h1>
-              <span id="menu_brief_newswire_text" class="menu_window_text"></span>
-            </div>
-          </div>
-
-          <button id="menu_arrows_brief" class="menu_arrows menu_arrows_full" tabindex="-1">
-            <div id="menu_arrows_brief_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-            <div id="menu_arrows_brief_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
-          </button>
-        </div>
-
-        <div class="menu_window menu_stats">
-          <div class="menu_categories">
-            <button id="menu_stats_category_0" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <span class="element_label"></span>
-              <div class="element_list">
-                <span id="menu_stats_category_0_0" class="element_label_right"></span>
-                <span id="menu_stats_category_0_1" class="element_label_right"></span>
-                <span id="menu_stats_category_0_2" class="element_label_right"></span>
-                <span id="menu_stats_category_0_3" class="element_label_right"></span>
+            <div id="menu_brief_newswire" class="menu_elements menu_background_rockstar">
+              <div class="menu_window_text menu_window_text_full">
+                <h1 id="menu_brief_newswire_header" class="menu_window_header"></h1>
+                <span id="menu_brief_newswire_text" class="menu_window_text"></span>
               </div>
-              <div class="menu_entry_zone_left"></div>
-              <div class="menu_entry_zone_right"></div>
+            </div>
+
+            <button id="menu_arrows_brief" class="menu_arrows menu_arrows_full" tabindex="-1">
+              <div id="menu_arrows_brief_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+              <div id="menu_arrows_brief_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
             </button>
-            <button id="menu_stats_category_1" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <!-- <div class="menu_category_list_right"></div> -->
-              <span class="element_label"></span>
-              <div class="element_list">
-                <span id="menu_stats_category_1_0" class="element_label_right"></span>
-                <span id="menu_stats_category_1_1" class="element_label_right"></span>
-                <span id="menu_stats_category_1_2" class="element_label_right"></span>
-                <span id="menu_stats_category_1_3" class="element_label_right"></span>
+          </div>
+
+          <div class="menu_window menu_stats">
+            <div class="menu_categories">
+              <button id="menu_stats_category_0" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <span class="element_label"></span>
+                <div class="element_list">
+                  <span id="menu_stats_category_0_0" class="element_label_right"></span>
+                  <span id="menu_stats_category_0_1" class="element_label_right"></span>
+                  <span id="menu_stats_category_0_2" class="element_label_right"></span>
+                  <span id="menu_stats_category_0_3" class="element_label_right"></span>
+                </div>
+                <div class="menu_entry_zone_left"></div>
+                <div class="menu_entry_zone_right"></div>
+              </button>
+              <button id="menu_stats_category_1" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <!-- <div class="menu_category_list_right"></div> -->
+                <span class="element_label"></span>
+                <div class="element_list">
+                  <span id="menu_stats_category_1_0" class="element_label_right"></span>
+                  <span id="menu_stats_category_1_1" class="element_label_right"></span>
+                  <span id="menu_stats_category_1_2" class="element_label_right"></span>
+                  <span id="menu_stats_category_1_3" class="element_label_right"></span>
+                </div>
+                <div class="menu_entry_zone_left"></div>
+                <div class="menu_entry_zone_right"></div>
+              </button>
+              <button id="menu_stats_category_2" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <span class="element_label"></span>
+                <div class="element_list">
+                  <span id="menu_stats_category_2_0" class="element_label_right"></span>
+                  <span id="menu_stats_category_2_1" class="element_label_right"></span>
+                  <span id="menu_stats_category_2_2" class="element_label_right"></span>
+                  <span id="menu_stats_category_2_3" class="element_label_right"></span>
+                </div>
+                <div class="menu_entry_zone_left"></div>
+                <div class="menu_entry_zone_right"></div>
+              </button>
+              <button id="menu_stats_category_3" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <span class="element_label"></span>
+                <div class="element_list"></div>
+              </button>
+              <button id="menu_stats_category_4" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <span class="element_label"></span>
+                <div class="element_list"></div>
+              </button>
+              <button id="menu_stats_category_5" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <span class="element_label"></span>
+                <div class="element_list"></div>
+              </button>
+              <button id="menu_stats_category_6" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
+                <span class="element_label"></span>
+                <div class="element_list"></div>
+              </button>
+              <button id="menu_stats_category_7" class="menu_entry menu_category menu_category_unselectable">
+                <span class="element_label"></span>
+              </button>
+            </div>
+
+            <div id="menu_stats_skills" class="menu_elements">
+              <button id="menu_stats_skills_element_0" class="menu_entry menu_entry_empty menu_element_stat">
+                <span class="element_label">Special</span>
+              </button>
+              <button id="menu_stats_skills_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stamina</span>
+              </button>
+              <button id="menu_stats_skills_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Shooting</span>
+              </button>
+              <button id="menu_stats_skills_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Strength</span>
+              </button>
+              <button id="menu_stats_skills_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stealth</span>
+              </button>
+              <button id="menu_stats_skills_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Flying</span>
+              </button>
+              <button id="menu_stats_skills_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Driving</span>
+              </button>
+              <button id="menu_stats_skills_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Lung Capacity</span>
+              </button>
+              <div class="menu_divider"></div>
+              <div id="menu_stats_skills_element_info_1" class="element_info" tabindex="-1">
+                <span class="element_info_text"></span>
+                <img class="element_info_icon" src="images/info.svg" alt="">
               </div>
-              <div class="menu_entry_zone_left"></div>
-              <div class="menu_entry_zone_right"></div>
-            </button>
-            <button id="menu_stats_category_2" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <span class="element_label"></span>
-              <div class="element_list">
-                <span id="menu_stats_category_2_0" class="element_label_right"></span>
-                <span id="menu_stats_category_2_1" class="element_label_right"></span>
-                <span id="menu_stats_category_2_2" class="element_label_right"></span>
-                <span id="menu_stats_category_2_3" class="element_label_right"></span>
+            </div>
+
+            <div id="menu_stats_skills_1" class="menu_elements">
+              <button id="menu_stats_skills_1_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Special</span>
+              </button>
+              <button id="menu_stats_skills_1_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stamina</span>
+              </button>
+              <button id="menu_stats_skills_1_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Shooting</span>
+              </button>
+              <button id="menu_stats_skills_1_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Strength</span>
+              </button>
+              <button id="menu_stats_skills_1_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stealth</span>
+              </button>
+              <button id="menu_stats_skills_1_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Flying</span>
+              </button>
+              <button id="menu_stats_skills_1_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Driving</span>
+              </button>
+              <button id="menu_stats_skills_1_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Lung Capacity</span>
+              </button>
+              <div class="menu_divider"></div>
+              <div id="menu_stats_skills_1_element_info_1" class="element_info" tabindex="-1">
+                <span class="element_info_text"></span>
+                <img class="element_info_icon" src="images/info.svg" alt="">
               </div>
-              <div class="menu_entry_zone_left"></div>
-              <div class="menu_entry_zone_right"></div>
-            </button>
-            <button id="menu_stats_category_3" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <span class="element_label"></span>
-              <div class="element_list"></div>
-            </button>
-            <button id="menu_stats_category_4" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <span class="element_label"></span>
-              <div class="element_list"></div>
-            </button>
-            <button id="menu_stats_category_5" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <span class="element_label"></span>
-              <div class="element_list"></div>
-            </button>
-            <button id="menu_stats_category_6" class="menu_entry menu_category menu_category_list menu_category_list_active_only menu_category_unselectable">
-              <span class="element_label"></span>
-              <div class="element_list"></div>
-            </button>
-            <button id="menu_stats_category_7" class="menu_entry menu_category menu_category_unselectable">
-              <span class="element_label"></span>
-            </button>
-          </div>
-
-          <div id="menu_stats_skills" class="menu_elements">
-            <button id="menu_stats_skills_element_0" class="menu_entry menu_entry_empty menu_element_stat">
-              <span class="element_label">Special</span>
-            </button>
-            <button id="menu_stats_skills_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stamina</span>
-            </button>
-            <button id="menu_stats_skills_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Shooting</span>
-            </button>
-            <button id="menu_stats_skills_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Strength</span>
-            </button>
-            <button id="menu_stats_skills_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stealth</span>
-            </button>
-            <button id="menu_stats_skills_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Flying</span>
-            </button>
-            <button id="menu_stats_skills_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Driving</span>
-            </button>
-            <button id="menu_stats_skills_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Lung Capacity</span>
-            </button>
-            <div class="menu_divider"></div>
-            <div id="menu_stats_skills_element_info_1" class="element_info" tabindex="-1">
-              <span class="element_info_text"></span>
-              <img class="element_info_icon" src="images/info.svg" alt="">
             </div>
-          </div>
 
-          <div id="menu_stats_skills_1" class="menu_elements">
-            <button id="menu_stats_skills_1_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Special</span>
-            </button>
-            <button id="menu_stats_skills_1_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stamina</span>
-            </button>
-            <button id="menu_stats_skills_1_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Shooting</span>
-            </button>
-            <button id="menu_stats_skills_1_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Strength</span>
-            </button>
-            <button id="menu_stats_skills_1_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stealth</span>
-            </button>
-            <button id="menu_stats_skills_1_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Flying</span>
-            </button>
-            <button id="menu_stats_skills_1_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Driving</span>
-            </button>
-            <button id="menu_stats_skills_1_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Lung Capacity</span>
-            </button>
-            <div class="menu_divider"></div>
-            <div id="menu_stats_skills_1_element_info_1" class="element_info" tabindex="-1">
-              <span class="element_info_text"></span>
-              <img class="element_info_icon" src="images/info.svg" alt="">
+            <div id="menu_stats_skills_2" class="menu_elements">
+              <button id="menu_stats_skills_2_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Special</span>
+              </button>
+              <button id="menu_stats_skills_2_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stamina</span>
+              </button>
+              <button id="menu_stats_skills_2_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Shooting</span>
+              </button>
+              <button id="menu_stats_skills_2_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Strength</span>
+              </button>
+              <button id="menu_stats_skills_2_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stealth</span>
+              </button>
+              <button id="menu_stats_skills_2_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Flying</span>
+              </button>
+              <button id="menu_stats_skills_2_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Driving</span>
+              </button>
+              <button id="menu_stats_skills_2_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Lung Capacity</span>
+              </button>
+              <div class="menu_divider"></div>
+              <div id="menu_stats_skills_2_element_info_1" class="element_info" tabindex="-1">
+                <span class="element_info_text"></span>
+                <img class="element_info_icon" src="images/info.svg" alt="">
+              </div>
             </div>
-          </div>
 
-          <div id="menu_stats_skills_2" class="menu_elements">
-            <button id="menu_stats_skills_2_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Special</span>
-            </button>
-            <button id="menu_stats_skills_2_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stamina</span>
-            </button>
-            <button id="menu_stats_skills_2_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Shooting</span>
-            </button>
-            <button id="menu_stats_skills_2_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Strength</span>
-            </button>
-            <button id="menu_stats_skills_2_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stealth</span>
-            </button>
-            <button id="menu_stats_skills_2_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Flying</span>
-            </button>
-            <button id="menu_stats_skills_2_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Driving</span>
-            </button>
-            <button id="menu_stats_skills_2_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Lung Capacity</span>
-            </button>
-            <div class="menu_divider"></div>
-            <div id="menu_stats_skills_2_element_info_1" class="element_info" tabindex="-1">
-              <span class="element_info_text"></span>
-              <img class="element_info_icon" src="images/info.svg" alt="">
-            </div>
-          </div>
-
-          <div id="menu_stats_skills_3" class="menu_elements">
-            <!-- <button id="menu_stats_skills_3_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+            <div id="menu_stats_skills_3" class="menu_elements">
+              <!-- <button id="menu_stats_skills_3_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
               <span class="element_label">Special</span>
             </button> -->
-            <button id="menu_stats_skills_3_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stamina</span>
-            </button>
-            <button id="menu_stats_skills_3_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Shooting</span>
-            </button>
-            <button id="menu_stats_skills_3_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Strength</span>
-            </button>
-            <button id="menu_stats_skills_3_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Stealth</span>
-            </button>
-            <button id="menu_stats_skills_3_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Flying</span>
-            </button>
-            <button id="menu_stats_skills_3_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Driving</span>
-            </button>
-            <button id="menu_stats_skills_3_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Lung Capacity</span>
-            </button>
-            <button id="menu_stats_skills_3_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
-              <span class="element_label">Mental State</span>
-            </button>
-            <div class="menu_divider"></div>
-            <div id="menu_stats_skills_3_element_info_1" class="element_info" tabindex="-1">
-              <span class="element_info_text"></span>
-              <img class="element_info_icon" src="images/info.svg" alt="">
-            </div>
-          </div>
-
-          <div id="menu_stats_general" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time played as character</span>
-                <span class="element_label_right">0d 5h 55m 55s</span>
+              <button id="menu_stats_skills_3_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stamina</span>
               </button>
-              <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time played in first person</span>
-                <span class="element_label_right">0d 2h 5m 24s</span>
+              <button id="menu_stats_skills_3_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Shooting</span>
               </button>
-              <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Missions passed</span>
-                <span class="element_label_right">33</span>
+              <button id="menu_stats_skills_3_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Strength</span>
               </button>
-              <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Last Mission completed</span>
-                <span class="element_label_right">Derailed</span>
+              <button id="menu_stats_skills_3_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Stealth</span>
               </button>
-              <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Letter scraps</span>
-                <span class="element_label_right">4 / 50</span>
+              <button id="menu_stats_skills_3_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Flying</span>
               </button>
-              <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Peyote plants</span>
-                <span class="element_label_right">1 / 27</span>
+              <button id="menu_stats_skills_3_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Driving</span>
               </button>
-              <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Wildlife photographs</span>
-                <span class="element_label_right">2 / 20</span>
+              <button id="menu_stats_skills_3_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Lung Capacity</span>
               </button>
-              <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Times saved</span>
-                <span class="element_label_right">95</span>
+              <button id="menu_stats_skills_3_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even menu_element_stat">
+                <span class="element_label">Mental State</span>
               </button>
-              <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Cheat codes activated</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Total deaths</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by explosion</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by falling</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by fire</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by traffic</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by drowning</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time swimming</span>
-                <span class="element_label_right">0d 0h 1m 0s</span>
-              </button>
-              <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Distance traveled swimming</span>
-                <span class="element_label_right">0.13 miles</span>
-              </button>
-              <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time underwater</span>
-                <span class="element_label_right">0d 0h 0m 20s</span>
-              </button>
-              <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time walking</span>
-                <span class="element_label_right">0d 0h 24m 39s</span>
-              </button>
-              <button id="menu_stats_general_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Distance traveled walking</span>
-                <span class="element_label_right">1.52 miles</span>
-              </button>
-              <button id="menu_stats_general_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Distance traveled running</span>
-                <span class="element_label_right">4.28 miles</span>
-              </button>
-              <button id="menu_stats_general_element_21" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Farthest free-fall survived</span>
-                <span class="element_label_right">302.90 ft</span>
-              </button>
-              <button id="menu_stats_general_element_22" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time in cover</span>
-                <span class="element_label_right">0d 0h 1m 3s</span>
-              </button>
-              <button id="menu_stats_general_element_23" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Photos taken</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_24" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Private dances</span>
-                <span class="element_label_right">0</span>
-              </button>
-            </div>
-          </div>
-
-          <div id="menu_stats_general_1" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time played as character</span>
-                <span class="element_label_right">0d 4h 55m 55s</span>
-              </button>
-              <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time played in first person</span>
-                <span class="element_label_right">0d 2h 4m 24s</span>
-              </button>
-              <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Missions passed</span>
-                <span class="element_label_right">33</span>
-              </button>
-              <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Last Mission completed</span>
-                <span class="element_label_right">Derailed</span>
-              </button>
-              <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Letter scraps</span>
-                <span class="element_label_right">4 / 50</span>
-              </button>
-              <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Peyote plants</span>
-                <span class="element_label_right">1 / 27</span>
-              </button>
-              <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Wildlife photographs</span>
-                <span class="element_label_right">2 / 20</span>
-              </button>
-              <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Times saved</span>
-                <span class="element_label_right">95</span>
-              </button>
-              <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Cheat codes activated</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Total deaths</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by explosion</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by falling</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by fire</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by traffic</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Deaths by drowning</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time swimming</span>
-                <span class="element_label_right">0d 0h 1m 0s</span>
-              </button>
-              <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Distance traveled swimming</span>
-                <span class="element_label_right">0.13 miles</span>
-              </button>
-              <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time underwater</span>
-                <span class="element_label_right">0d 0h 0m 20s</span>
-              </button>
-              <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time walking</span>
-                <span class="element_label_right">0d 0h 24m 39s</span>
-              </button>
-              <button id="menu_stats_general_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Distance traveled walking</span>
-                <span class="element_label_right">1.52 miles</span>
-              </button>
-              <button id="menu_stats_general_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Distance traveled running</span>
-                <span class="element_label_right">4.28 miles</span>
-              </button>
-              <button id="menu_stats_general_element_21" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Farthest free-fall survived</span>
-                <span class="element_label_right">302.90 ft</span>
-              </button>
-              <button id="menu_stats_general_element_22" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time in cover</span>
-                <span class="element_label_right">0d 0h 1m 3s</span>
-              </button>
-              <button id="menu_stats_general_element_23" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Photos taken</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_general_element_24" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Private dances</span>
-                <span class="element_label_right">0</span>
-              </button>
-            </div>
-          </div>
-
-          <div id="menu_stats_crimes" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <button id="menu_stats_crimes_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Cops killed</span>
-                <span class="element_label_right">29</span>
-              </button>
-              <button id="menu_stats_crimes_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">NOOSE killed</span>
-                <span class="element_label_right">19</span>
-              </button>
-              <button id="menu_stats_crimes_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Times Wanted</span>
-                <span class="element_label_right">12</span>
-              </button>
-              <button id="menu_stats_crimes_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Times Busted</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Wanted stars attained</span>
-                <span class="element_label_right">24</span>
-              </button>
-              <button id="menu_stats_crimes_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Wanted stars evaded</span>
-                <span class="element_label_right">24</span>
-              </button>
-              <button id="menu_stats_crimes_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Last Wanted Level duration</span>
-                <span class="element_label_right">0d 0h 2m 24s</span>
-              </button>
-              <button id="menu_stats_crimes_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Longest Wanted Level duration</span>
-                <span class="element_label_right">0d 0h 3m 56s</span>
-              </button>
-              <button id="menu_stats_crimes_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Time spent with a 5 star Wanted Level</span>
-                <span class="element_label_right">0d 0h 0m 0s</span>
-              </button>
-              <button id="menu_stats_crimes_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Drive-by kills as driver</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_crimes_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Drive-by kills as passenger</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Tires shot out</span>
-                <span class="element_label_right">5</span>
-              </button>
-              <button id="menu_stats_crimes_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Vehicular kills</span>
-                <span class="element_label_right">3</span>
-              </button>
-              <button id="menu_stats_crimes_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Cars stolen</span>
-                <span class="element_label_right">11</span>
-              </button>
-              <button id="menu_stats_crimes_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Motorcycles stolen</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_crimes_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Helicopters stolen</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Planes stolen</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Boats stolen</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">ATVs stolen</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Bicycles stolen</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Cop vehicles stolen</span>
-                <span class="element_label_right">1</span>
-              </button>
-              <button id="menu_stats_crimes_element_21" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Kills since last checkpoint</span>
-                <span class="element_label_right">0</span>
-              </button>
-              <button id="menu_stats_crimes_element_22" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Kills since last Safehouse visit</span>
-                <span class="element_label_right">0</span>
-              </button>
-            </div>
-          </div>
-
-          <div id="menu_stats_combat" class="menu_elements">
-            <div class="menu_elements_scrollable">
-              <button id="menu_stats_combat_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Shots</span>
-                <span class="element_label_right">1,573</span>
-              </button>
-              <button id="menu_stats_combat_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Hits</span>
-                <span class="element_label_right">369</span>
-              </button>
-              <button id="menu_stats_combat_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Kills</span>
-                <span class="element_label_right">169</span>
-              </button>
-              <button id="menu_stats_combat_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Headshot kills</span>
-                <span class="element_label_right">127</span>
-              </button>
-              <button id="menu_stats_combat_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Armed kills</span>
-                <span class="element_label_right">157</span>
-              </button>
-              <button id="menu_stats_combat_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Free Aim kills</span>
-                <span class="element_label_right">156</span>
-              </button>
-              <button id="menu_stats_combat_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Stealth kills</span>
-                <span class="element_label_right">2</span>
-              </button>
-              <button id="menu_stats_combat_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
-                <span class="element_label">Counter attacks</span>
-                <span class="element_label_right">6</span>
-              </button>
-            </div>
-          </div>
-
-          <div id="menu_stats_100_completion" class="menu_elements">
-            <div class="menu_elements_zone_left">
-              <button class="menu_entry menu_entry_empty"></button>
-              <button id="menu_stats_100_completion_element_0" class="menu_entry menu_entry_empty">
-                <span class="element_label">Michael</span>
-                <span class="element_label_right">0d 11h 3m 48</span>
-              </button>
-              <button id="menu_stats_100_completion_element_1" class="menu_entry menu_entry_empty">
-                <span class="element_label">Franklin</span>
-                <span class="element_label_right">0d 11h 3m 48</span>
-              </button>
-              <button id="menu_stats_100_completion_element_2" class="menu_entry menu_entry_empty">
-                <span class="element_label">Trevor</span>
-                <span class="element_label_right">0d 11h 3m 48</span>
-              </button>
-              <button class="menu_entry menu_entry_empty"></button>
-              <button id="menu_stats_100_completion_element_3" class="menu_entry menu_entry_empty">
-                <span class="element_label">Missions</span>
-                <span class="element_label_right">69 / 69</span>
-              </button>
-              <button id="menu_stats_100_completion_element_4" class="menu_entry menu_entry_empty">
-                <span class="element_label">Hobbies and Pastimes</span>
-                <span class="element_label_right">42 / 42</span>
-              </button>
-              <button id="menu_stats_100_completion_element_5" class="menu_entry menu_entry_empty">
-                <span class="element_label">Strangers and Freaks</span>
-                <span class="element_label_right">20 / 20</span>
-              </button>
-              <button id="menu_stats_100_completion_element_6" class="menu_entry menu_entry_empty">
-                <span class="element_label">Random Events</span>
-                <span class="element_label_right">14 / 14</span>
-              </button>
-              </button>
-              <button id="menu_stats_100_completion_element_7" class="menu_entry menu_entry_empty">
-                <span class="element_label">Miscellaneous</span>
-                <span class="element_label_right">16 / 16</span>
-              </button>
-              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-            </div>
-            <div class="menu_elements_zone_right">
-              <div class="menu_stats_100_completion_chart">
-                <canvas id="menu_stats_100_completion_chart"></canvas>
-                <span id="menu_stats_100_completion_chart_percentage">100%</span>
-              </div>
-              <button class="menu_entry menu_entry_empty">
-                <div id="menu_stats_100_completion_progress_0" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty">
-                <div id="menu_stats_100_completion_progress_1" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty">
-                <div id="menu_stats_100_completion_progress_2" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty">
-                <div id="menu_stats_100_completion_progress_3" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty">
-                <div id="menu_stats_100_completion_progress_4" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <button id="menu_arrows_stats" class="menu_arrows menu_arrows_full" tabindex="-1">
-            <div id="menu_arrows_stats_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-            <div id="menu_arrows_stats_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
-          </button>
-        </div>
-
-        <div class="menu_window menu_settings">
-          <div class="menu_categories">
-            <button id="menu_settings_category_0" class="menu_entry menu_category menu_category_enter">
-              <span class="element_label">Gamepad</span>
-            </button>
-            <button id="menu_settings_category_1" class="menu_entry menu_category menu_category_enter">
-              <span class="element_label">Keyboard / Mouse</span>
-            </button>
-            <button id="menu_settings_category_2" class="menu_entry menu_category">
-              <span class="element_label">Key Bindings</span>
-            </button>
-            <button id="menu_settings_category_3" class="menu_entry menu_category">
-              <span class="element_label">Audio</span>
-            </button>
-            <button id="menu_settings_category_4" class="menu_entry menu_category">
-              <span class="element_label">Camera</span>
-            </button>
-            <button id="menu_settings_category_5" class="menu_entry menu_category">
-              <span class="element_label">Display</span>
-            </button>
-            <button id="menu_settings_category_6" class="menu_entry menu_category menu_category_enter">
-              <span class="element_label">Graphics</span>
-            </button>
-            <button id="menu_settings_category_7" class="menu_entry menu_category">
-              <span class="element_label">Advanced Graphics</span>
-            </button>
-            <button id="menu_settings_category_8" class="menu_entry menu_category">
-              <span class="element_label">Voice Chat</span>
-            </button>
-            <button id="menu_settings_category_9" class="menu_entry menu_category">
-              <span class="element_label">Notifications</span>
-            </button>
-            <button id="menu_settings_category_10" class="menu_entry menu_category">
-              <span class="element_label">Rockstar Editor</span>
-            </button>
-            <button id="menu_settings_category_11" class="menu_entry menu_category">
-              <span class="element_label">Saving And Startup</span>
-            </button>
-            <button id="menu_settings_category_12" class="menu_entry menu_category">
-              <span class="element_label">Facebook</span>
-            </button>
-            <button id="menu_settings_category_13" class="menu_entry menu_category">
-              <span class="element_label">Exclusive Content</span>
-            </button>
-          </div>
-
-          <div id="menu_settings_gamepad" class="menu_elements">
-            <div class="menu_elements_header">
-              <button id="menu_settings_gamepad_header_element_0" class="menu_entry menu_entry_empty menu_entry_centered">
-                <span class="element_label">ON FOOT</span>
-              </button>
-              <div class="menu_settings_gamepad_header_buttons">
-                <div class="menu_settings_gamepad_header_prompts">
-                  <span class="element_label element_simple_text">TARGET LOCK-ON</span>
-                  <span class="element_label element_simple_text">WEAPON WHEEL</span>
-                  <span class="element_label element_simple_text">SWITCH CAMERA</span>
-                  <span class="element_label element_simple_text">MOVE</span>
-                  <span class="element_label element_simple_text">STEALTH MODE</span>
-                  <span class="element_label element_simple_text">SNIPER / CAMERA ZOOM</span>
-                  <span class="element_label element_simple_text">PHONE LEFT</span>
-                  <span class="element_label element_simple_text">PHONE DOWN</span>
-                  <span class="element_label element_simple_text">PHONE RIGHT</span>
-                </div>
-                <div class="menu_settings_gamepad_header_element_1">
-                  <!-- <img id="menu_settings_gamepad_header_img" src="images/controller.png" alt=""> -->
-                </div>
-                <div class="menu_settings_gamepad_header_prompts">
-                  <span class="element_label element_simple_text">FIRE</span>
-                  <span class="element_label element_simple_text">TAKE COVER</span>
-                  <span class="element_label element_simple_text">PAUSE MENU</span>
-                  <span class="element_label element_simple_text">ENTER VEHICLE</span>
-                  <span class="element_label element_simple_text">LIGHT MELEE ATTACK</span>
-                  <span class="element_label element_simple_text">HEAVY MELEE ATTACK</span>
-                  <span class="element_label element_simple_text">MELEE DODGE</span>
-                  <span class="element_label element_simple_text">LOOK BEHIND</span>
-                  <span class="element_label element_simple_text">LOOK</span>
-                </div>
+              <div class="menu_divider"></div>
+              <div id="menu_stats_skills_3_element_info_1" class="element_info" tabindex="-1">
+                <span class="element_info_text"></span>
+                <img class="element_info_icon" src="images/info.svg" alt="">
               </div>
             </div>
-            <div class="menu_elements menu_elements_scrollable menu_entries_middle">
-              <button id="menu_settings_gamepad_element_0" class="menu_entry">
-                <span class="element_label">Show Controls For</span>
-                <div class="element_list">
-                  <span class="element_label_right">On Foot (Third Person)</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_1" class="menu_entry">
-                <span class="element_label">Targeting Mode</span>
-                <div class="element_list">
-                  <span class="element_label_right">Free Aim</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_2" class="menu_entry">
-                <span class="element_label">Vibration</span>
-                <div class="element_list">
-                  <span class="element_label_right">On</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_3" class="menu_entry">
-                <span class="element_label">Invert Look</span>
-                <div class="element_list">
-                  <span class="element_label_right">Off</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_4" class="menu_entry">
-                <span class="element_label">Third Person Control Type</span>
-                <div class="element_list">
-                  <span class="element_label_right">Standard</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_5" class="menu_entry">
-                <span class="element_label">First Person Control Type</span>
-                <div class="element_list">
-                  <span class="element_label_right">Standard</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_6" class="menu_entry">
-                <span class="element_label">Third Person Aiming Sensitivity</span>
-                <div class="element_progress element_progress_clickable">
-                  <div class="element_progress_perc"></div>
-                  <div class="element_progress_zone_left"></div>
-                  <div class="element_progress_zone_right"></div>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_7" class="menu_entry">
-                <span class="element_label">Third Person Look-Around Sensitivity</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_8" class="menu_entry">
-                <span class="element_label">Third Person Aiming Sensitivity</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_9" class="menu_entry">
-                <span class="element_label">Third Person Aim/Look Deadzone</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_10" class="menu_entry">
-                <span class="element_label">Third Person Aim/Look Acceleration</span>
-                <div class="element_progress" data-step="20">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_11" class="menu_entry">
-                <span class="element_label">First Person Control Type</span>
-                <div class="element_list">
-                  <span class="element_label_right">Standard</span>
-                </div>
-              </button>
-              <button id="menu_settings_gamepad_element_12" class="menu_entry">
-                <span class="element_label">First Person Look-Around Sensitivity</span>
-                <div class="element_progress" data-step="10">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-            </div>
-          </div>
 
-          <div id="menu_settings_keyboard" class="menu_elements">
-            <div class="menu_elements menu_elements_scrollable menu_entries_middle">
-              <button id="menu_settings_keyboard_element_0" class="menu_entry">
-                <span class="element_label">Mouse Input Method</span>
-                <div class="element_list">
-                  <span class="element_label_right">Raw Input</span>
-                </div>
-              </button>
-              <button id="menu_settings_keyboard_element_1" class="menu_entry">
-                <span class="element_label">Mouse Look Sensitivity</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-              </button>
-              <button id="menu_settings_keyboard_element_2" class="menu_entry">
-                <span class="element_label">Mouse Smoothing Scale</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <div id="menu_settings_graphics" class="menu_elements">
-            <div class="menu_elements_header">
-              <button id="menu_settings_graphics_header_element_0" class="menu_entry menu_entry_empty menu_entry_empty_double" tabindex="-1">
-                <span class="element_label">Video Memory: 2676 MB / 6143 MB</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
-              </button>
-            </div>
-            <div class="menu_elements menu_elements_scrollable menu_entries_middle">
-              <button id="menu_settings_graphics_element_0" class="menu_entry">
-                <span class="element_label">Ignore Suggested Limits</span>
-                <div class="element_list">
-                  <span class="element_label_right">Off</span>
-                </div>
-              </button>
-              <button id="menu_settings_graphics_element_1" class="menu_entry">
-                <span class="element_label">DirectX Version</span>
-                <div class="element_list">
-                  <span class="element_label_right">DirectX 12</span>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-              <button id="menu_settings_graphics_element_2" class="menu_entry">
-                <span class="element_label">Screen Type</span>
-                <div class="element_list">
-                  <span class="element_label_right">Windowed Borderless</span>
-                </div>
-              </button>
-              <button id="menu_settings_graphics_element_3" class="menu_entry">
-                <span class="element_label">Resolution</span>
-                <div class="element_list">
-                  <span class="element_label_right">3840 x 2160</span>
-                </div>
-              </button>
-              <button id="menu_settings_graphics_element_4" class="menu_entry">
-                <span class="element_label">Aspect Ratio</span>
-                <div class="element_list">
-                  <span class="element_label_right">Auto</span>
-                </div>
-              </button>
-              <button id="menu_settings_graphics_element_5" class="menu_entry">
-                <span class="element_label">Refresh Rate</span>
-                <div class="element_list">
-                  <span class="element_label_right">Auto</span>
-                </div>
-              </button>
-              <button id="menu_settings_graphics_element_6" class="menu_entry">
-                <span class="element_label">Output Monitor</span>
-                <div class="element_list">
+            <div id="menu_stats_general" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time played as character</span>
+                  <span class="element_label_right">0d 5h 55m 55s</span>
+                </button>
+                <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time played in first person</span>
+                  <span class="element_label_right">0d 2h 5m 24s</span>
+                </button>
+                <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Missions passed</span>
+                  <span class="element_label_right">33</span>
+                </button>
+                <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Last Mission completed</span>
+                  <span class="element_label_right">Derailed</span>
+                </button>
+                <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Letter scraps</span>
+                  <span class="element_label_right">4 / 50</span>
+                </button>
+                <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Peyote plants</span>
+                  <span class="element_label_right">1 / 27</span>
+                </button>
+                <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Wildlife photographs</span>
+                  <span class="element_label_right">2 / 20</span>
+                </button>
+                <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Times saved</span>
+                  <span class="element_label_right">95</span>
+                </button>
+                <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Cheat codes activated</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Total deaths</span>
                   <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by explosion</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by falling</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by fire</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by traffic</span>
+                  <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by drowning</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time swimming</span>
+                  <span class="element_label_right">0d 0h 1m 0s</span>
+                </button>
+                <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Distance traveled swimming</span>
+                  <span class="element_label_right">0.13 miles</span>
+                </button>
+                <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time underwater</span>
+                  <span class="element_label_right">0d 0h 0m 20s</span>
+                </button>
+                <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time walking</span>
+                  <span class="element_label_right">0d 0h 24m 39s</span>
+                </button>
+                <button id="menu_stats_general_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Distance traveled walking</span>
+                  <span class="element_label_right">1.52 miles</span>
+                </button>
+                <button id="menu_stats_general_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Distance traveled running</span>
+                  <span class="element_label_right">4.28 miles</span>
+                </button>
+                <button id="menu_stats_general_element_21" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Farthest free-fall survived</span>
+                  <span class="element_label_right">302.90 ft</span>
+                </button>
+                <button id="menu_stats_general_element_22" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time in cover</span>
+                  <span class="element_label_right">0d 0h 1m 3s</span>
+                </button>
+                <button id="menu_stats_general_element_23" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Photos taken</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_24" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Private dances</span>
+                  <span class="element_label_right">0</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu_stats_general_1" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <button id="menu_stats_general_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time played as character</span>
+                  <span class="element_label_right">0d 4h 55m 55s</span>
+                </button>
+                <button id="menu_stats_general_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time played in first person</span>
+                  <span class="element_label_right">0d 2h 4m 24s</span>
+                </button>
+                <button id="menu_stats_general_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Missions passed</span>
+                  <span class="element_label_right">33</span>
+                </button>
+                <button id="menu_stats_general_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Last Mission completed</span>
+                  <span class="element_label_right">Derailed</span>
+                </button>
+                <button id="menu_stats_general_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Letter scraps</span>
+                  <span class="element_label_right">4 / 50</span>
+                </button>
+                <button id="menu_stats_general_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Peyote plants</span>
+                  <span class="element_label_right">1 / 27</span>
+                </button>
+                <button id="menu_stats_general_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Wildlife photographs</span>
+                  <span class="element_label_right">2 / 20</span>
+                </button>
+                <button id="menu_stats_general_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Times saved</span>
+                  <span class="element_label_right">95</span>
+                </button>
+                <button id="menu_stats_general_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Cheat codes activated</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Total deaths</span>
+                  <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_general_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by explosion</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by falling</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by fire</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by traffic</span>
+                  <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_general_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Deaths by drowning</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time swimming</span>
+                  <span class="element_label_right">0d 0h 1m 0s</span>
+                </button>
+                <button id="menu_stats_general_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Distance traveled swimming</span>
+                  <span class="element_label_right">0.13 miles</span>
+                </button>
+                <button id="menu_stats_general_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time underwater</span>
+                  <span class="element_label_right">0d 0h 0m 20s</span>
+                </button>
+                <button id="menu_stats_general_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time walking</span>
+                  <span class="element_label_right">0d 0h 24m 39s</span>
+                </button>
+                <button id="menu_stats_general_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Distance traveled walking</span>
+                  <span class="element_label_right">1.52 miles</span>
+                </button>
+                <button id="menu_stats_general_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Distance traveled running</span>
+                  <span class="element_label_right">4.28 miles</span>
+                </button>
+                <button id="menu_stats_general_element_21" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Farthest free-fall survived</span>
+                  <span class="element_label_right">302.90 ft</span>
+                </button>
+                <button id="menu_stats_general_element_22" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time in cover</span>
+                  <span class="element_label_right">0d 0h 1m 3s</span>
+                </button>
+                <button id="menu_stats_general_element_23" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Photos taken</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_general_element_24" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Private dances</span>
+                  <span class="element_label_right">0</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu_stats_crimes" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <button id="menu_stats_crimes_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Cops killed</span>
+                  <span class="element_label_right">29</span>
+                </button>
+                <button id="menu_stats_crimes_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">NOOSE killed</span>
+                  <span class="element_label_right">19</span>
+                </button>
+                <button id="menu_stats_crimes_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Times Wanted</span>
+                  <span class="element_label_right">12</span>
+                </button>
+                <button id="menu_stats_crimes_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Times Busted</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Wanted stars attained</span>
+                  <span class="element_label_right">24</span>
+                </button>
+                <button id="menu_stats_crimes_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Wanted stars evaded</span>
+                  <span class="element_label_right">24</span>
+                </button>
+                <button id="menu_stats_crimes_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Last Wanted Level duration</span>
+                  <span class="element_label_right">0d 0h 2m 24s</span>
+                </button>
+                <button id="menu_stats_crimes_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Longest Wanted Level duration</span>
+                  <span class="element_label_right">0d 0h 3m 56s</span>
+                </button>
+                <button id="menu_stats_crimes_element_8" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Time spent with a 5 star Wanted Level</span>
+                  <span class="element_label_right">0d 0h 0m 0s</span>
+                </button>
+                <button id="menu_stats_crimes_element_9" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Drive-by kills as driver</span>
+                  <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_crimes_element_10" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Drive-by kills as passenger</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_11" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Tires shot out</span>
+                  <span class="element_label_right">5</span>
+                </button>
+                <button id="menu_stats_crimes_element_12" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Vehicular kills</span>
+                  <span class="element_label_right">3</span>
+                </button>
+                <button id="menu_stats_crimes_element_13" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Cars stolen</span>
+                  <span class="element_label_right">11</span>
+                </button>
+                <button id="menu_stats_crimes_element_14" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Motorcycles stolen</span>
+                  <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_crimes_element_15" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Helicopters stolen</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_16" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Planes stolen</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_17" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Boats stolen</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_18" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">ATVs stolen</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_19" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Bicycles stolen</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_20" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Cop vehicles stolen</span>
+                  <span class="element_label_right">1</span>
+                </button>
+                <button id="menu_stats_crimes_element_21" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Kills since last checkpoint</span>
+                  <span class="element_label_right">0</span>
+                </button>
+                <button id="menu_stats_crimes_element_22" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Kills since last Safehouse visit</span>
+                  <span class="element_label_right">0</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu_stats_combat" class="menu_elements">
+              <div class="menu_elements_scrollable">
+                <button id="menu_stats_combat_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Shots</span>
+                  <span class="element_label_right">1,573</span>
+                </button>
+                <button id="menu_stats_combat_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Hits</span>
+                  <span class="element_label_right">369</span>
+                </button>
+                <button id="menu_stats_combat_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Kills</span>
+                  <span class="element_label_right">169</span>
+                </button>
+                <button id="menu_stats_combat_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Headshot kills</span>
+                  <span class="element_label_right">127</span>
+                </button>
+                <button id="menu_stats_combat_element_4" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Armed kills</span>
+                  <span class="element_label_right">157</span>
+                </button>
+                <button id="menu_stats_combat_element_5" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Free Aim kills</span>
+                  <span class="element_label_right">156</span>
+                </button>
+                <button id="menu_stats_combat_element_6" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Stealth kills</span>
+                  <span class="element_label_right">2</span>
+                </button>
+                <button id="menu_stats_combat_element_7" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                  <span class="element_label">Counter attacks</span>
+                  <span class="element_label_right">6</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu_stats_100_completion" class="menu_elements">
+              <div class="menu_elements_zone_left">
+                <button class="menu_entry menu_entry_empty"></button>
+                <button id="menu_stats_100_completion_element_0" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Michael</span>
+                  <span class="element_label_right">0d 11h 3m 48</span>
+                </button>
+                <button id="menu_stats_100_completion_element_1" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Franklin</span>
+                  <span class="element_label_right">0d 11h 3m 48</span>
+                </button>
+                <button id="menu_stats_100_completion_element_2" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Trevor</span>
+                  <span class="element_label_right">0d 11h 3m 48</span>
+                </button>
+                <button class="menu_entry menu_entry_empty"></button>
+                <button id="menu_stats_100_completion_element_3" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Missions</span>
+                  <span class="element_label_right">69 / 69</span>
+                </button>
+                <button id="menu_stats_100_completion_element_4" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Hobbies and Pastimes</span>
+                  <span class="element_label_right">42 / 42</span>
+                </button>
+                <button id="menu_stats_100_completion_element_5" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Strangers and Freaks</span>
+                  <span class="element_label_right">20 / 20</span>
+                </button>
+                <button id="menu_stats_100_completion_element_6" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Random Events</span>
+                  <span class="element_label_right">14 / 14</span>
+                </button>
+                </button>
+                <button id="menu_stats_100_completion_element_7" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Miscellaneous</span>
+                  <span class="element_label_right">16 / 16</span>
+                </button>
+                <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+              </div>
+              <div class="menu_elements_zone_right">
+                <div class="menu_stats_100_completion_chart">
+                  <canvas id="menu_stats_100_completion_chart"></canvas>
+                  <span id="menu_stats_100_completion_chart_percentage">100%</span>
                 </div>
+                <button class="menu_entry menu_entry_empty">
+                  <div id="menu_stats_100_completion_progress_0" class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty">
+                  <div id="menu_stats_100_completion_progress_1" class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty">
+                  <div id="menu_stats_100_completion_progress_2" class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty">
+                  <div id="menu_stats_100_completion_progress_3" class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty">
+                  <div id="menu_stats_100_completion_progress_4" class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <button id="menu_arrows_stats" class="menu_arrows menu_arrows_full" tabindex="-1">
+              <div id="menu_arrows_stats_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+              <div id="menu_arrows_stats_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+            </button>
+          </div>
+
+          <div class="menu_window menu_settings">
+            <div class="menu_categories">
+              <button id="menu_settings_category_0" class="menu_entry menu_category menu_category_enter">
+                <span class="element_label">Gamepad</span>
               </button>
-              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-              <button id="menu_settings_graphics_element_7" class="menu_entry">
-                <span class="element_label">FXAA</span>
-                <div class="element_list">
-                  <span class="element_label_right">Off</span>
-                </div>
+              <button id="menu_settings_category_1" class="menu_entry menu_category menu_category_enter">
+                <span class="element_label">Keyboard / Mouse</span>
               </button>
-              <button id="menu_settings_graphics_element_8" class="menu_entry">
-                <span class="element_label">MSAA</span>
-                <div class="element_list">
-                  <span class="element_label_right">X4</span>
-                </div>
+              <button id="menu_settings_category_2" class="menu_entry menu_category">
+                <span class="element_label">Key Bindings</span>
               </button>
-              <button id="menu_settings_graphics_element_9" class="menu_entry">
-                <span class="element_label">NVIDIA TXAA</span>
-                <div class="element_list">
-                  <span class="element_label_right">Off</span>
-                </div>
+              <button id="menu_settings_category_3" class="menu_entry menu_category">
+                <span class="element_label">Audio</span>
               </button>
-              <button id="menu_settings_graphics_element_10" class="menu_entry">
-                <span class="element_label">VSync</span>
-                <div class="element_list">
-                  <span class="element_label_right">On</span>
-                </div>
+              <button id="menu_settings_category_4" class="menu_entry menu_category">
+                <span class="element_label">Camera</span>
               </button>
-              <button id="menu_settings_graphics_element_11" class="menu_entry">
-                <span class="element_label">Pause Game On Focus Loss</span>
-                <div class="element_list">
-                  <span class="element_label_right">On</span>
-                </div>
+              <button id="menu_settings_category_5" class="menu_entry menu_category">
+                <span class="element_label">Display</span>
               </button>
-              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-              <button id="menu_settings_graphics_element_12" class="menu_entry">
-                <span class="element_label">Population Density</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
+              <button id="menu_settings_category_6" class="menu_entry menu_category menu_category_enter">
+                <span class="element_label">Graphics</span>
               </button>
-              <button id="menu_settings_graphics_element_13" class="menu_entry">
-                <span class="element_label">Population Variety</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
+              <button id="menu_settings_category_7" class="menu_entry menu_category">
+                <span class="element_label">Advanced Graphics</span>
               </button>
-              <button id="menu_settings_graphics_element_14" class="menu_entry">
-                <span class="element_label">Distance Scaling</span>
-                <div class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
+              <button id="menu_settings_category_8" class="menu_entry menu_category">
+                <span class="element_label">Voice Chat</span>
               </button>
-              <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
-              <button id="menu_settings_graphics_element_15" class="menu_entry">
-                <span class="element_label">Texture Quality</span>
-                <div class="element_list">
-                  <span class="element_label_right">Very High</span>
-                </div>
+              <button id="menu_settings_category_9" class="menu_entry menu_category">
+                <span class="element_label">Notifications</span>
               </button>
-              <button id="menu_settings_graphics_element_16" class="menu_entry">
-                <span class="element_label">Shader Quality</span>
+              <button id="menu_settings_category_10" class="menu_entry menu_category">
+                <span class="element_label">Rockstar Editor</span>
               </button>
-              <button id="menu_settings_graphics_element_17" class="menu_entry">
-                <span class="element_label">Shadow Quality</span>
+              <button id="menu_settings_category_11" class="menu_entry menu_category">
+                <span class="element_label">Saving And Startup</span>
               </button>
-              <button id="menu_settings_graphics_element_18" class="menu_entry">
-                <span class="element_label">Reflection Quality</span>
+              <button id="menu_settings_category_12" class="menu_entry menu_category">
+                <span class="element_label">Facebook</span>
               </button>
-              <button id="menu_settings_graphics_element_19" class="menu_entry">
-                <span class="element_label">Reflection MSAA</span>
-              </button>
-              <button id="menu_settings_graphics_element_20" class="menu_entry">
-                <span class="element_label">Water Quality</span>
-              </button>
-              <button id="menu_settings_graphics_element_21" class="menu_entry">
-                <span class="element_label">Particles Quality</span>
-              </button>
-              <button id="menu_settings_graphics_element_22" class="menu_entry">
-                <span class="element_label">Grass Quality</span>
-              </button>
-              <button id="menu_settings_graphics_element_23" class="menu_entry">
-                <span class="element_label">Soft Shadows</span>
-              </button>
-              <button id="menu_settings_graphics_element_24" class="menu_entry">
-                <span class="element_label">Post FX</span>
-              </button>
-              <button id="menu_settings_graphics_element_25" class="menu_entry">
-                <span class="element_label">Motion Blur</span>
-              </button>
-              <button id="menu_settings_graphics_element_26" class="menu_entry">
-                <span class="element_label">Motion Blur Strength</span>
-              </button>
-              <button id="menu_settings_graphics_element_27" class="menu_entry">
-                <span class="element_label">MSAA</span>
-              </button>
-              <button id="menu_settings_graphics_element_28" class="menu_entry">
-                <span class="element_label">TXAA</span>
+              <button id="menu_settings_category_13" class="menu_entry menu_category">
+                <span class="element_label">Exclusive Content</span>
               </button>
             </div>
+
+            <div id="menu_settings_gamepad" class="menu_elements">
+              <div class="menu_elements_header">
+                <button id="menu_settings_gamepad_header_element_0" class="menu_entry menu_entry_empty menu_entry_centered">
+                  <span class="element_label">ON FOOT</span>
+                </button>
+                <div class="menu_settings_gamepad_header_buttons">
+                  <div class="menu_settings_gamepad_header_prompts">
+                    <span class="element_label element_simple_text">TARGET LOCK-ON</span>
+                    <span class="element_label element_simple_text">WEAPON WHEEL</span>
+                    <span class="element_label element_simple_text">SWITCH CAMERA</span>
+                    <span class="element_label element_simple_text">MOVE</span>
+                    <span class="element_label element_simple_text">STEALTH MODE</span>
+                    <span class="element_label element_simple_text">SNIPER / CAMERA ZOOM</span>
+                    <span class="element_label element_simple_text">PHONE LEFT</span>
+                    <span class="element_label element_simple_text">PHONE DOWN</span>
+                    <span class="element_label element_simple_text">PHONE RIGHT</span>
+                  </div>
+                  <div class="menu_settings_gamepad_header_element_1">
+                    <!-- <img id="menu_settings_gamepad_header_img" src="images/controller.png" alt=""> -->
+                  </div>
+                  <div class="menu_settings_gamepad_header_prompts">
+                    <span class="element_label element_simple_text">FIRE</span>
+                    <span class="element_label element_simple_text">TAKE COVER</span>
+                    <span class="element_label element_simple_text">PAUSE MENU</span>
+                    <span class="element_label element_simple_text">ENTER VEHICLE</span>
+                    <span class="element_label element_simple_text">LIGHT MELEE ATTACK</span>
+                    <span class="element_label element_simple_text">HEAVY MELEE ATTACK</span>
+                    <span class="element_label element_simple_text">MELEE DODGE</span>
+                    <span class="element_label element_simple_text">LOOK BEHIND</span>
+                    <span class="element_label element_simple_text">LOOK</span>
+                  </div>
+                </div>
+              </div>
+              <div class="menu_elements menu_elements_scrollable menu_entries_middle">
+                <button id="menu_settings_gamepad_element_0" class="menu_entry">
+                  <span class="element_label">Show Controls For</span>
+                  <div class="element_list">
+                    <span class="element_label_right">On Foot (Third Person)</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_1" class="menu_entry">
+                  <span class="element_label">Targeting Mode</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Free Aim</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_2" class="menu_entry">
+                  <span class="element_label">Vibration</span>
+                  <div class="element_list">
+                    <span class="element_label_right">On</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_3" class="menu_entry">
+                  <span class="element_label">Invert Look</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Off</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_4" class="menu_entry">
+                  <span class="element_label">Third Person Control Type</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Standard</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_5" class="menu_entry">
+                  <span class="element_label">First Person Control Type</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Standard</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_6" class="menu_entry">
+                  <span class="element_label">Third Person Aiming Sensitivity</span>
+                  <div class="element_progress element_progress_clickable">
+                    <div class="element_progress_perc"></div>
+                    <div class="element_progress_zone_left"></div>
+                    <div class="element_progress_zone_right"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_7" class="menu_entry">
+                  <span class="element_label">Third Person Look-Around Sensitivity</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_8" class="menu_entry">
+                  <span class="element_label">Third Person Aiming Sensitivity</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_9" class="menu_entry">
+                  <span class="element_label">Third Person Aim/Look Deadzone</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_10" class="menu_entry">
+                  <span class="element_label">Third Person Aim/Look Acceleration</span>
+                  <div class="element_progress" data-step="20">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_11" class="menu_entry">
+                  <span class="element_label">First Person Control Type</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Standard</span>
+                  </div>
+                </button>
+                <button id="menu_settings_gamepad_element_12" class="menu_entry">
+                  <span class="element_label">First Person Look-Around Sensitivity</span>
+                  <div class="element_progress" data-step="10">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu_settings_keyboard" class="menu_elements">
+              <div class="menu_elements menu_elements_scrollable menu_entries_middle">
+                <button id="menu_settings_keyboard_element_0" class="menu_entry">
+                  <span class="element_label">Mouse Input Method</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Raw Input</span>
+                  </div>
+                </button>
+                <button id="menu_settings_keyboard_element_1" class="menu_entry">
+                  <span class="element_label">Mouse Look Sensitivity</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                </button>
+                <button id="menu_settings_keyboard_element_2" class="menu_entry">
+                  <span class="element_label">Mouse Smoothing Scale</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu_settings_graphics" class="menu_elements">
+              <div class="menu_elements_header">
+                <button id="menu_settings_graphics_header_element_0" class="menu_entry menu_entry_empty menu_entry_empty_double" tabindex="-1">
+                  <span class="element_label">Video Memory: 2676 MB / 6143 MB</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+              </div>
+              <div class="menu_elements menu_elements_scrollable menu_entries_middle">
+                <button id="menu_settings_graphics_element_0" class="menu_entry">
+                  <span class="element_label">Ignore Suggested Limits</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Off</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_1" class="menu_entry">
+                  <span class="element_label">DirectX Version</span>
+                  <div class="element_list">
+                    <span class="element_label_right">DirectX 12</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+                <button id="menu_settings_graphics_element_2" class="menu_entry">
+                  <span class="element_label">Screen Type</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Windowed Borderless</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_3" class="menu_entry">
+                  <span class="element_label">Resolution</span>
+                  <div class="element_list">
+                    <span class="element_label_right">3840 x 2160</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_4" class="menu_entry">
+                  <span class="element_label">Aspect Ratio</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Auto</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_5" class="menu_entry">
+                  <span class="element_label">Refresh Rate</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Auto</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_6" class="menu_entry">
+                  <span class="element_label">Output Monitor</span>
+                  <div class="element_list">
+                    <span class="element_label_right">1</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+                <button id="menu_settings_graphics_element_7" class="menu_entry">
+                  <span class="element_label">FXAA</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Off</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_8" class="menu_entry">
+                  <span class="element_label">MSAA</span>
+                  <div class="element_list">
+                    <span class="element_label_right">X4</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_9" class="menu_entry">
+                  <span class="element_label">NVIDIA TXAA</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Off</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_10" class="menu_entry">
+                  <span class="element_label">VSync</span>
+                  <div class="element_list">
+                    <span class="element_label_right">On</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_11" class="menu_entry">
+                  <span class="element_label">Pause Game On Focus Loss</span>
+                  <div class="element_list">
+                    <span class="element_label_right">On</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+                <button id="menu_settings_graphics_element_12" class="menu_entry">
+                  <span class="element_label">Population Density</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_13" class="menu_entry">
+                  <span class="element_label">Population Variety</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_14" class="menu_entry">
+                  <span class="element_label">Distance Scaling</span>
+                  <div class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty" tabindex="-1"></button>
+                <button id="menu_settings_graphics_element_15" class="menu_entry">
+                  <span class="element_label">Texture Quality</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Very High</span>
+                  </div>
+                </button>
+                <button id="menu_settings_graphics_element_16" class="menu_entry">
+                  <span class="element_label">Shader Quality</span>
+                </button>
+                <button id="menu_settings_graphics_element_17" class="menu_entry">
+                  <span class="element_label">Shadow Quality</span>
+                </button>
+                <button id="menu_settings_graphics_element_18" class="menu_entry">
+                  <span class="element_label">Reflection Quality</span>
+                </button>
+                <button id="menu_settings_graphics_element_19" class="menu_entry">
+                  <span class="element_label">Reflection MSAA</span>
+                </button>
+                <button id="menu_settings_graphics_element_20" class="menu_entry">
+                  <span class="element_label">Water Quality</span>
+                </button>
+                <button id="menu_settings_graphics_element_21" class="menu_entry">
+                  <span class="element_label">Particles Quality</span>
+                </button>
+                <button id="menu_settings_graphics_element_22" class="menu_entry">
+                  <span class="element_label">Grass Quality</span>
+                </button>
+                <button id="menu_settings_graphics_element_23" class="menu_entry">
+                  <span class="element_label">Soft Shadows</span>
+                </button>
+                <button id="menu_settings_graphics_element_24" class="menu_entry">
+                  <span class="element_label">Post FX</span>
+                </button>
+                <button id="menu_settings_graphics_element_25" class="menu_entry">
+                  <span class="element_label">Motion Blur</span>
+                </button>
+                <button id="menu_settings_graphics_element_26" class="menu_entry">
+                  <span class="element_label">Motion Blur Strength</span>
+                </button>
+                <button id="menu_settings_graphics_element_27" class="menu_entry">
+                  <span class="element_label">MSAA</span>
+                </button>
+                <button id="menu_settings_graphics_element_28" class="menu_entry">
+                  <span class="element_label">TXAA</span>
+                </button>
+              </div>
+            </div>
+
+            <button id="menu_arrows_settings" class="menu_arrows menu_arrows_full" tabindex="-1">
+              <div id="menu_arrows_settings_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+              <div id="menu_arrows_settings_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+            </button>
           </div>
 
-          <button id="menu_arrows_settings" class="menu_arrows menu_arrows_full" tabindex="-1">
-            <div id="menu_arrows_settings_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-            <div id="menu_arrows_settings_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
-          </button>
-        </div>
-
-        <div class="menu_window menu_game">
-          <div class="menu_categories">
-            <button id="menu_game_category_0" class="menu_entry menu_category menu_category_enter">
-              <span class="element_label">Replay Mission</span>
-            </button>
-            <button id="menu_game_category_1" class="menu_entry menu_category">
-              <span class="element_label">Replay Strangers and Freaks</span>
-            </button>
-            <button id="menu_game_category_2" class="menu_entry menu_category">
-              <span class="element_label">Load Game</span>
-            </button>
-            <button id="menu_game_category_3" class="menu_entry menu_category">
-              <span class="element_label">New Game</span>
-            </button>
-            <button id="menu_game_category_4" class="menu_entry menu_category">
-              <span class="element_label">Exit Game</span>
-            </button>
-          </div>
-          <div id="menu_game_replay_mission" class="menu_elements">
-            <div id="menu_game_elements_missions" class="menu_elements menu_elements_scrollable menu_entries_middle">
-              <!-- <button id="menu_game_elements_missions_0" class="menu_entry">
+          <div class="menu_window menu_game">
+            <div class="menu_categories">
+              <button id="menu_game_category_0" class="menu_entry menu_category menu_category_enter">
+                <span class="element_label">Replay Mission</span>
+              </button>
+              <button id="menu_game_category_1" class="menu_entry menu_category">
+                <span class="element_label">Replay Strangers and Freaks</span>
+              </button>
+              <button id="menu_game_category_2" class="menu_entry menu_category">
+                <span class="element_label">Load Game</span>
+              </button>
+              <button id="menu_game_category_3" class="menu_entry menu_category">
+                <span class="element_label">New Game</span>
+              </button>
+              <button id="menu_game_category_4" class="menu_entry menu_category">
+                <span class="element_label">Exit Game</span>
+              </button>
+            </div>
+            <div id="menu_game_replay_mission" class="menu_elements">
+              <div id="menu_game_elements_missions" class="menu_elements menu_elements_scrollable menu_entries_middle">
+                <!-- <button id="menu_game_elements_missions_0" class="menu_entry">
                 <span class="element_label"></span>
                 <div class="element_list">
                   <div class="element_medal_right element_medal_gold"></div>
@@ -1383,326 +1384,327 @@
                   <div class="element_medal_right"></div>
                 </div>
               </button> -->
-            </div>
-            <div class="menu_game_mission_info">
-              <div class="menu_game_mission_info_header">
-                <button class="menu_entry menu_entry_empty_double menu_elements_header">
-                  <span class="element_mission_name">Prologue</span>
-                </button>
               </div>
-              <div class="menu_game_mission_info_objectives"></div>
-              <div class="menu_divider"></div>
-              <div class="menu_game_mission_info_result"></div>
+              <div class="menu_game_mission_info">
+                <div class="menu_game_mission_info_header">
+                  <button class="menu_entry menu_entry_empty_double menu_elements_header">
+                    <span class="element_mission_name">Prologue</span>
+                  </button>
+                </div>
+                <div class="menu_game_mission_info_objectives"></div>
+                <div class="menu_divider"></div>
+                <div class="menu_game_mission_info_result"></div>
+              </div>
             </div>
-          </div>
-          <button id="menu_arrows_game" class="menu_arrows menu_arrows_game" tabindex="-1">
-            <span id="menu_game_elements_missions_counter" class="element_label"></span>
-            <div class="menu_arrows_zones">
-              <div id="menu_arrows_game_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-              <div id="menu_arrows_game_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
-            </div>
-          </button>
-        </div>
-
-        <div class="menu_window menu_online">
-          <div class="menu_categories">
-            <button id="menu_online_category_0" class="menu_entry menu_category">
-              <span class="element_label">Go</span>
-            </button>
-            <button id="menu_online_category_1" class="menu_entry menu_category">
-              <span class="element_label">Invite Only Session</span>
-            </button>
-            <button id="menu_online_category_2" class="menu_entry menu_category menu_category_list">
-              <span class="element_label">Crew Session</span>
-              <div class="element_list">
-                <span class="element_label_right">2</span>
+            <button id="menu_arrows_game" class="menu_arrows menu_arrows_game" tabindex="-1">
+              <span id="menu_game_elements_missions_counter" class="element_label"></span>
+              <div class="menu_arrows_zones">
+                <div id="menu_arrows_game_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+                <div id="menu_arrows_game_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
               </div>
             </button>
-            <button id="menu_online_category_3" class="menu_entry menu_category">
-              <span class="element_label">Closed Crew Session</span>
-            </button>
-            <button id="menu_online_category_4" class="menu_entry menu_category">
-              <span class="element_label">Solo Session</span>
-            </button>
           </div>
-          <!-- <div class="menu_elements_box"> -->
-          <div id="menu_online_go" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 class="menu_window_header">Go</h1>
-              <span class="menu_window_text">Head straight into GTA Online.</span>
-            </div>
-          </div>
-          <div id="menu_online_invite_only" class="menu_elements menu_background_rockstar">
-            <div class="menu_window_text menu_window_text_full">
-              <h1 class="menu_window_header">Invite Only Session</h1>
-              <span class="menu_window_text">Head straight into GTA Online.</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="menu_window menu_friends">
-          <div id="menu_friends_list" class="menu_categories">
-            <button id="menu_friends_player_0" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">tomilovsenya</span>
-            </button>
-            <button id="menu_friends_player_1" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Lester</span>
-            </button>
-            <button id="menu_friends_player_2" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Lamar</span>
-            </button>
-            <button id="menu_friends_player_3" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Franklin</span>
-            </button>
-            <button id="menu_friends_player_4" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Michael</span>
-            </button>
-            <button id="menu_friends_player_5" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Trevor</span>
-            </button>
-            <button id="menu_friends_player_6" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Imani</span>
-            </button>
-            <button id="menu_friends_player_7" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Hao</span>
-            </button>
-            <button id="menu_friends_player_8" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Tao</span>
-            </button>
-            <button id="menu_friends_player_9" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Pavel</span>
-            </button>
-            <button id="menu_friends_player_10" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Sessanta</span>
-            </button>
-            <button id="menu_friends_player_11" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">LJT</span>
-            </button>
-            <button id="menu_friends_player_12" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Ms. Baker</span>
-            </button>
-            <button id="menu_friends_player_13" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Cliffford</span>
-            </button>
-            <button id="menu_friends_player_14" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Avon</span>
-            </button>
-            <button id="menu_friends_player_15" class="menu_entry menu_category menu_category_unselectable">
-              <span class="player_label">Chris Formage</span>
-            </button>
-          </div>
-          <div class="menu_elements">
-            <div class="menu_friends_character">
-              <button id="menu_friends_character_status" class="menu_entry menu_entry_empty">
-                <span class="element_label">Playing GTA Online</span>
+          <div class="menu_window menu_online">
+            <div class="menu_categories">
+              <button id="menu_online_category_0" class="menu_entry menu_category">
+                <span class="element_label">Go</span>
+              </button>
+              <button id="menu_online_category_1" class="menu_entry menu_category">
+                <span class="element_label">Invite Only Session</span>
+              </button>
+              <button id="menu_online_category_2" class="menu_entry menu_category menu_category_list">
+                <span class="element_label">Crew Session</span>
+                <div class="element_list">
+                  <span class="element_label_right">2</span>
+                </div>
+              </button>
+              <button id="menu_online_category_3" class="menu_entry menu_category">
+                <span class="element_label">Closed Crew Session</span>
+              </button>
+              <button id="menu_online_category_4" class="menu_entry menu_category">
+                <span class="element_label">Solo Session</span>
               </button>
             </div>
-            <div class="menu_friends_info">
-              <div class="menu_friends_info_100_completion_chart">
-                <button id="menu_friends_info_100_completion_header" class="menu_entry menu_entry_empty">
-                  <span class="player_label element_player_name">tomilovsenya</span>
-                </button>
-                <div class="menu_divider"></div>
-                <div class="menu_stats_100_completion_chart">
-                  <canvas id="menu_stats_100_completion_chart"></canvas>
-                  <!-- <span class="menu_stats_100_completion_chart_percentage">100%</span> -->
-                </div>
+            <!-- <div class="menu_elements_box"> -->
+            <div id="menu_online_go" class="menu_elements menu_background_rockstar">
+              <div class="menu_window_text menu_window_text_full">
+                <h1 class="menu_window_header">Go</h1>
+                <span class="menu_window_text">Head straight into GTA Online.</span>
               </div>
-              <div class="menu_friends_info_100_completion_perc">
-                <button class="menu_entry menu_entry_empty">
-                  <span class="element_label">Missions</span>
-                  <div class="element_list">
-                    <span class="element_label_right">69/69</span>
-                  </div>
-                </button>
-                <div id="menu_friends_info_100_completion_perc_progress_0" class="element_progress">
-                  <div class="element_progress_perc"></div>
-                </div>
+            </div>
+            <div id="menu_online_invite_only" class="menu_elements menu_background_rockstar">
+              <div class="menu_window_text menu_window_text_full">
+                <h1 class="menu_window_header">Invite Only Session</h1>
+                <span class="menu_window_text">Head straight into GTA Online.</span>
               </div>
             </div>
           </div>
-          <!-- <button class="menu_arrows menu_arrows_friends" tabindex="-1">
+
+          <div class="menu_window menu_friends">
+            <div id="menu_friends_list" class="menu_categories">
+              <button id="menu_friends_player_0" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">tomilovsenya</span>
+              </button>
+              <button id="menu_friends_player_1" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Lester</span>
+              </button>
+              <button id="menu_friends_player_2" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Lamar</span>
+              </button>
+              <button id="menu_friends_player_3" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Franklin</span>
+              </button>
+              <button id="menu_friends_player_4" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Michael</span>
+              </button>
+              <button id="menu_friends_player_5" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Trevor</span>
+              </button>
+              <button id="menu_friends_player_6" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Imani</span>
+              </button>
+              <button id="menu_friends_player_7" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Hao</span>
+              </button>
+              <button id="menu_friends_player_8" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Tao</span>
+              </button>
+              <button id="menu_friends_player_9" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Pavel</span>
+              </button>
+              <button id="menu_friends_player_10" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Sessanta</span>
+              </button>
+              <button id="menu_friends_player_11" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">LJT</span>
+              </button>
+              <button id="menu_friends_player_12" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Ms. Baker</span>
+              </button>
+              <button id="menu_friends_player_13" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Cliffford</span>
+              </button>
+              <button id="menu_friends_player_14" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Avon</span>
+              </button>
+              <button id="menu_friends_player_15" class="menu_entry menu_category menu_category_unselectable">
+                <span class="player_label">Chris Formage</span>
+              </button>
+            </div>
+            <div class="menu_elements">
+              <div class="menu_friends_character">
+                <button id="menu_friends_character_status" class="menu_entry menu_entry_empty">
+                  <span class="element_label">Playing GTA Online</span>
+                </button>
+              </div>
+              <div class="menu_friends_info">
+                <div class="menu_friends_info_100_completion_chart">
+                  <button id="menu_friends_info_100_completion_header" class="menu_entry menu_entry_empty">
+                    <span class="player_label element_player_name">tomilovsenya</span>
+                  </button>
+                  <div class="menu_divider"></div>
+                  <div class="menu_stats_100_completion_chart">
+                    <canvas id="menu_stats_100_completion_chart"></canvas>
+                    <!-- <span class="menu_stats_100_completion_chart_percentage">100%</span> -->
+                  </div>
+                </div>
+                <div class="menu_friends_info_100_completion_perc">
+                  <button class="menu_entry menu_entry_empty">
+                    <span class="element_label">Missions</span>
+                    <div class="element_list">
+                      <span class="element_label_right">69/69</span>
+                    </div>
+                  </button>
+                  <div id="menu_friends_info_100_completion_perc_progress_0" class="element_progress">
+                    <div class="element_progress_perc"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <button class="menu_arrows menu_arrows_friends" tabindex="-1">
             <span id="menu_friends_player_counter" class="element_label">1/16</span>
             <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_friends_map">
           </button> -->
-          <button id="menu_arrows_friends" class="menu_arrows menu_arrows_friends" tabindex="-1">
-            <span id="menu_friends_player_counter" class="element_label">1/16</span>
-            <div class="menu_arrows_zones">
-              <div id="menu_arrows_friends_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-              <div id="menu_arrows_friends_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
-            </div>
-          </button>
-        </div>
+            <button id="menu_arrows_friends" class="menu_arrows menu_arrows_friends" tabindex="-1">
+              <span id="menu_friends_player_counter" class="element_label">1/16</span>
+              <div class="menu_arrows_zones">
+                <div id="menu_arrows_friends_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+                <div id="menu_arrows_friends_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+              </div>
+            </button>
+          </div>
 
-        <div class="menu_window menu_gallery">
-          <div class="menu_gallery_entries">
-            <div class="menu_gallery_photos">
-              <div id="menu_gallery_photo_0" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_1" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_2" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_3" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_4" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_5" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_6" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_7" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_8" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_9" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_10" class="menu_gallery_photo"></div>
-              <div id="menu_gallery_photo_11" class="menu_gallery_photo"></div>
+          <div class="menu_window menu_gallery">
+            <div class="menu_gallery_entries">
+              <div class="menu_gallery_photos">
+                <div id="menu_gallery_photo_0" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_1" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_2" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_3" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_4" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_5" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_6" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_7" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_8" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_9" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_10" class="menu_gallery_photo"></div>
+                <div id="menu_gallery_photo_11" class="menu_gallery_photo"></div>
+              </div>
+              <div class="menu_gallery_info">
+                <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                  <span class="element_label">Title</span>
+                  <div class="element_list">
+                    <span class="element_label_right">North Yankton</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                  <span class="element_label">Created</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Today</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                  <span class="element_label">Location</span>
+                  <div class="element_list">
+                    <span class="element_label_right">North Yankton</span>
+                  </div>
+                </button>
+                <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
+                  <span class="element_label">Track</span>
+                  <div class="element_list">
+                    <span class="element_label_right">TANGERINE DREAM - North Yankton Memories</span>
+                  </div>
+                </button>
+              </div>
             </div>
-            <div class="menu_gallery_info">
-              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
-                <span class="element_label">Title</span>
-                <div class="element_list">
-                  <span class="element_label_right">North Yankton</span>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
-                <span class="element_label">Created</span>
-                <div class="element_list">
-                  <span class="element_label_right">Today</span>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
-                <span class="element_label">Location</span>
-                <div class="element_list">
-                  <span class="element_label_right">North Yankton</span>
-                </div>
-              </button>
-              <button class="menu_entry menu_entry_empty menu_entry_empty_even" tabindex="-1">
-                <span class="element_label">Track</span>
-                <div class="element_list">
-                  <span class="element_label_right">TANGERINE DREAM - North Yankton Memories</span>
-                </div>
-              </button>
+            <div class="menu_gallery_map">
+              <img src="images/maps/V_FakePrologueLand.svg" alt="">
+            </div>
+            <button id="menu_arrows_gallery" class="menu_arrows menu_arrows_gallery" tabindex="-1">
+              <span class="element_label">1/12</span>
+              <!-- <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map"> -->
+              <div class="menu_arrows_zones">
+                <div id="menu_arrows_friends_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+                <div id="menu_arrows_friends_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+              </div>
+            </button>
+          </div>
+
+          <div class="menu_window menu_store menu_background_rockstar">
+            <div class="menu_window_text">
+              <h1 id="menu_store_header" class="menu_window_header"></h1>
             </div>
           </div>
-          <div class="menu_gallery_map">
-            <img src="images/maps/V_FakePrologueLand.svg" alt="">
-          </div>
-          <button id="menu_arrows_gallery" class="menu_arrows menu_arrows_gallery" tabindex="-1">
-            <span class="element_label">1/12</span>
-            <!-- <img src="images/arrows_vertical.svg" alt="" usemap="#menu_arrows_map"> -->
-            <div class="menu_arrows_zones">
-              <div id="menu_arrows_friends_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-              <div id="menu_arrows_friends_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+
+          <div class="menu_window menu_replay menu_background_rockstar">
+            <div class="menu_window_text">
+              <h1 id="menu_replay_header" class="menu_window_header"></h1>
+              <span id="menu_replay_text" class="menu_window_text"></span>
             </div>
-          </button>
-        </div>
-
-        <div class="menu_window menu_store menu_background_rockstar">
-          <div class="menu_window_text">
-            <h1 id="menu_store_header" class="menu_window_header"></h1>
+            <div class="menu_window_picture">
+              <img class="menu_window_picture" src="images/replay_logoscreen.png" alt="">
+            </div>
           </div>
-        </div>
 
-        <div class="menu_window menu_replay menu_background_rockstar">
-          <div class="menu_window_text">
-            <h1 id="menu_replay_header" class="menu_window_header"></h1>
-            <span id="menu_replay_text" class="menu_window_text"></span>
-          </div>
-          <div class="menu_window_picture">
-            <img class="menu_window_picture" src="images/replay_logoscreen.png" alt="">
-          </div>
-        </div>
-
-        <div id="menu_save" class="menu_window">
-          <div id="menu_save_list" class="menu_elements menu_elements_scrollable menu_entries_middle">
-            <button id="menu_save_element_0" class="menu_entry">
-              <span class="element_label">Create New Save 1/15</span>
-            </button>
-            <button id="menu_save_element_1" class="menu_entry">
-              <span class="element_label">01 - Prologue (1.0%)</span>
-              <span class="element_label_right">08/01/22 22:00</span>
-            </button>
-            <button id="menu_save_element_2" class="menu_entry">
-              <span class="element_label">02 - Franklin And Lamar (2.0%)</span>
-              <span class="element_label_right">08/01/22 23:00</span>
-            </button>
-            <button id="menu_save_element_3" class="menu_entry">
-              <span class="element_label">03 - Repossession (3.0%)</span>
-              <span class="element_label_right">08/02/22 00:00</span>
-            </button>
-            <button id="menu_save_element_4" class="menu_entry">
-              <span class="element_label">04 - Complications (4.0%)</span>
-              <span class="element_label_right">08/02/22 01:00</span>
-            </button>
-            <button id="menu_save_element_5" class="menu_entry">
-              <span class="element_label">05 - Father/Son (5.0%)</span>
-              <span class="element_label_right">08/02/22 02:00</span>
-            </button>
-            <button id="menu_save_element_6" class="menu_entry">
-              <span class="element_label">06 - Chop (6.0%)</span>
-              <span class="element_label_right">08/02/22 03:00</span>
-            </button>
-            <button id="menu_save_element_7" class="menu_entry">
-              <span class="element_label">07 - Marriage Counseling (7.0%)</span>
-              <span class="element_label_right">08/02/22 04:00</span>
-            </button>
-            <button id="menu_save_element_8" class="menu_entry">
-              <span class="element_label">08 - Daddy's Little Girl (8.0%)</span>
-              <span class="element_label_right">08/02/22 05:00</span>
-            </button>
-            <button id="menu_save_element_9" class="menu_entry">
-              <span class="element_label">09 - Friend Request (9.0%)</span>
-              <span class="element_label_right">08/02/22 06:00</span>
-            </button>
-            <button id="menu_save_element_10" class="menu_entry">
-              <span class="element_label">10 - The Good Husband (10.0%)</span>
-              <span class="element_label_right">08/02/22 07:00</span>
-            </button>
-            <button id="menu_save_element_11" class="menu_entry">
-              <span class="element_label">11 - The Long Stretch (11.0%)</span>
-              <span class="element_label_right">08/02/22 08:00</span>
-            </button>
-            <button id="menu_save_element_12" class="menu_entry">
-              <span class="element_label">12 - Casing the Jewel Store (12.0%)</span>
-              <span class="element_label_right">08/02/22 09:00</span>
-            </button>
-            <button id="menu_save_element_13" class="menu_entry">
-              <span class="element_label">13 - Carbine Rifles (13.0%)</span>
-              <span class="element_label_right">08/02/22 10:00</span>
-            </button>
-            <button id="menu_save_element_14" class="menu_entry">
-              <span class="element_label">14 - The Jewel Store Job (14.0%)</span>
-              <span class="element_label_right">08/02/22 11:00</span>
-            </button>
-            <button id="menu_save_element_15" class="menu_entry">
-              <span class="element_label">15 - Mr. Philips (15.0%)</span>
-              <span class="element_label_right">08/02/22 12:00</span>
-            </button>
+          <div id="menu_save" class="menu_window">
+            <div id="menu_save_list" class="menu_elements menu_elements_scrollable menu_entries_middle">
+              <button id="menu_save_element_0" class="menu_entry">
+                <span class="element_label">Create New Save 1/15</span>
+              </button>
+              <button id="menu_save_element_1" class="menu_entry">
+                <span class="element_label">01 - Prologue (1.0%)</span>
+                <span class="element_label_right">08/01/22 22:00</span>
+              </button>
+              <button id="menu_save_element_2" class="menu_entry">
+                <span class="element_label">02 - Franklin And Lamar (2.0%)</span>
+                <span class="element_label_right">08/01/22 23:00</span>
+              </button>
+              <button id="menu_save_element_3" class="menu_entry">
+                <span class="element_label">03 - Repossession (3.0%)</span>
+                <span class="element_label_right">08/02/22 00:00</span>
+              </button>
+              <button id="menu_save_element_4" class="menu_entry">
+                <span class="element_label">04 - Complications (4.0%)</span>
+                <span class="element_label_right">08/02/22 01:00</span>
+              </button>
+              <button id="menu_save_element_5" class="menu_entry">
+                <span class="element_label">05 - Father/Son (5.0%)</span>
+                <span class="element_label_right">08/02/22 02:00</span>
+              </button>
+              <button id="menu_save_element_6" class="menu_entry">
+                <span class="element_label">06 - Chop (6.0%)</span>
+                <span class="element_label_right">08/02/22 03:00</span>
+              </button>
+              <button id="menu_save_element_7" class="menu_entry">
+                <span class="element_label">07 - Marriage Counseling (7.0%)</span>
+                <span class="element_label_right">08/02/22 04:00</span>
+              </button>
+              <button id="menu_save_element_8" class="menu_entry">
+                <span class="element_label">08 - Daddy's Little Girl (8.0%)</span>
+                <span class="element_label_right">08/02/22 05:00</span>
+              </button>
+              <button id="menu_save_element_9" class="menu_entry">
+                <span class="element_label">09 - Friend Request (9.0%)</span>
+                <span class="element_label_right">08/02/22 06:00</span>
+              </button>
+              <button id="menu_save_element_10" class="menu_entry">
+                <span class="element_label">10 - The Good Husband (10.0%)</span>
+                <span class="element_label_right">08/02/22 07:00</span>
+              </button>
+              <button id="menu_save_element_11" class="menu_entry">
+                <span class="element_label">11 - The Long Stretch (11.0%)</span>
+                <span class="element_label_right">08/02/22 08:00</span>
+              </button>
+              <button id="menu_save_element_12" class="menu_entry">
+                <span class="element_label">12 - Casing the Jewel Store (12.0%)</span>
+                <span class="element_label_right">08/02/22 09:00</span>
+              </button>
+              <button id="menu_save_element_13" class="menu_entry">
+                <span class="element_label">13 - Carbine Rifles (13.0%)</span>
+                <span class="element_label_right">08/02/22 10:00</span>
+              </button>
+              <button id="menu_save_element_14" class="menu_entry">
+                <span class="element_label">14 - The Jewel Store Job (14.0%)</span>
+                <span class="element_label_right">08/02/22 11:00</span>
+              </button>
+              <button id="menu_save_element_15" class="menu_entry">
+                <span class="element_label">15 - Mr. Philips (15.0%)</span>
+                <span class="element_label_right">08/02/22 12:00</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <div id="menu_instructional_buttons" class="instructional_buttons">
+        <div id="IB_HIDE_MENU" class="ib_container">
+          <span class="element_label element_simple_text instructional_button_prompt">Hide Menu</span>
+          <button class="instructional_button instructional_button_small">Tab</button>
+        </div>
+        <div id="IB_NAVIGATE" class="ib_container ib_container_inactive">
+          <span class="element_label element_simple_text instructional_button_prompt">Navigate Tabs</span>
+          <button class="instructional_button">Q</button>
+          <button class="instructional_button">E</button>
+        </div>
+        <div id="IB_SCROLL" class="ib_container ib_container_inactive">
+          <span class="element_label element_simple_text instructional_button_prompt">Scroll</span>
+          <img class="instructional_button" src="images/buttons/mouse_wheel.svg" alt="">
+        </div>
+        <div id="IB_SELECT" class="ib_container">
+          <span class="element_label element_simple_text instructional_button_prompt">Select</span>
+          <img class="instructional_button" src="images/buttons/btn_enter.svg" alt="">
+        </div>
+        <div id="IB_BACK" class="ib_container">
+          <span class="element_label element_simple_text instructional_button_prompt">Back</span>
+          <button class="instructional_button instructional_button_small">Esc</button>
+        </div>
+        <div id="IB_SAVING_SPINNER" class="ib_container ib_container_inactive">
+          <!-- <span class="element_label element_simple_text instructional_button_prompt">Saving</span> -->
+          <img class="instructional_button menu_loading_spinner_slow" src="images/gtav_savingspinner_ib.png" alt="">
+        </div>
+      </div>
+
     </div>
-    <div id="menu_instructional_buttons" class="instructional_buttons">
-      <div id="IB_HIDE_MENU" class="ib_container">
-        <span class="element_label element_simple_text instructional_button_prompt">Hide Menu</span>
-        <button class="instructional_button instructional_button_small">Tab</button>
-      </div>
-      <div id="IB_NAVIGATE" class="ib_container ib_container_inactive">
-        <span class="element_label element_simple_text instructional_button_prompt">Navigate Tabs</span>
-        <button class="instructional_button">Q</button>
-        <button class="instructional_button">E</button>
-      </div>
-      <div id="IB_SCROLL" class="ib_container ib_container_inactive">
-        <span class="element_label element_simple_text instructional_button_prompt">Scroll</span>
-        <img class="instructional_button" src="images/buttons/mouse_wheel.svg" alt="">
-      </div>
-      <div id="IB_SELECT" class="ib_container">
-        <span class="element_label element_simple_text instructional_button_prompt">Select</span>
-        <img class="instructional_button" src="images/buttons/btn_enter.svg" alt="">
-      </div>
-      <div id="IB_BACK" class="ib_container">
-        <span class="element_label element_simple_text instructional_button_prompt">Back</span>
-        <button class="instructional_button instructional_button_small">Esc</button>
-      </div>
-      <div id="IB_SAVING_SPINNER" class="ib_container ib_container_inactive">
-        <!-- <span class="element_label element_simple_text instructional_button_prompt">Saving</span> -->
-        <img class="instructional_button menu_loading_spinner_slow" src="images/gtav_savingspinner_ib.png" alt="">
-      </div>
-    </div>
-
   </div>
 </body>
 <script src="js/jquery-3.6.0.js" type="text/javascript"></script>

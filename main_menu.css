@@ -134,6 +134,13 @@ body {
   }
 }
 
+div.menu_backdrop {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0.25vw);
+
+}
+
 div.menu_bounding_box {
   width: 100vw;
   /* min-width: 70%; */
@@ -143,7 +150,6 @@ div.menu_bounding_box {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  backdrop-filter: blur(0.25vw);
 }
 
 div.instructional_buttons {
