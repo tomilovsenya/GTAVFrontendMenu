@@ -1,0 +1,167 @@
+:root {
+  --item-quad-height: calc(var(--item-height) * 4 + var(--item-margin) * 3);
+}
+
+/*#region MainMenu*/
+div.frontend_main_menu {
+  visibility: visible;
+}
+
+button.menu_button:hover {
+  /* background-color: var(--black-bg-color); */
+}
+
+div.menu_window {
+  width: var(--menu-wnd-width);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button.menu_entry_quad {
+  height: var(--item-quad-height);
+}
+
+/*#endregion MainMenu*/
+
+div#store_packs {
+  width: var(--menu-wnd-width);
+  height: var(--menu-wnd-height);
+}
+
+div#store_elements {
+  background-color: transparent;
+  height: fit-content;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+div.store_content {
+  width: var(--menu-elements-half-width);
+  height: fit-content;
+  border: 0px;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-self: flex-end;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+div.store_content button:hover {
+  background-color: var(--hover-color);
+  box-shadow: inset 0 0 10vw 0 rgba(255, 255, 255, 0.25);
+}
+
+#store_content_element_0 {
+  background-image: url(images/store/GTAV_STORE_Starter_Pack_EN.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+div.store_details {
+  background-color: transparent;
+  width: var(--menu-elements-half-width);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--item-margin);
+}
+
+div#store_details_description {
+  color: white;
+  margin-top: 0;
+  padding-left: var(--item-padding-sides);
+  padding-right: var(--item-padding-sides);
+  padding-top: var(--item-padding-top);
+  padding-bottom: var(--item-padding-top);
+  height: 85%;
+  background-color: var(--black-bg-color);
+  overflow: hidden;
+}
+
+div.store_details_description_text {
+  height: 85%;
+  overflow: hidden;
+  overflow-y: scroll;
+  justify-self: flex-end;
+}
+
+div.store_details_description_text::-webkit-scrollbar {
+  display: none;
+}
+
+div#store_details_description>span {
+  font-size: 1vw;
+}
+
+div#store_details_description>h2 {
+  margin-top: 0;
+  margin-bottom: 2vw;
+  font-family: "London60";
+  font-weight: 100;
+  font-size: 1.25vw;
+}
+
+button#store_details_price {
+  background-color: var(--black-bg-color);
+  align-self: flex-end;
+  margin-bottom: 0;
+  justify-content: space-between;
+}
+
+div.store_details_price_zone {
+  width: 30%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+span#store_details_price_left_1 {
+  font-size: 1.4vw;
+}
+
+div#store_details_price_zone_right {
+  align-items: flex-end;
+}
+
+span#store_details_price_available {
+  text-align: center;
+  color: black;
+  width: fit-content;
+  background-color: greenyellow;
+  border-radius: 0.25vw;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+div.menu_window_arrows {
+  width: var(--menu-elements-width);
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  gap: var(--tab-margin);
+}
+
+button#store_arrows_content {
+  min-width: var(--menu-elements-half-width);
+  color: var(--text-color);
+  justify-self: center;
+  justify-content: space-between;
+  padding-left: var(--item-padding-sides);
+  padding-right: 0.5vw;
+}
+
+button#store_arrows_details {
+  min-width: var(--menu-elements-half-width);
+  color: var(--text-color);
+  float: right;
+  justify-content: space-between;
+  padding-left: var(--item-padding-sides);
+  padding-right: 0.5vw;
+}

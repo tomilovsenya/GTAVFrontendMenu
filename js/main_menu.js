@@ -83,7 +83,7 @@ function playSFX(sfx) {
 const FRONTEND_MAIN_MENU = $("div.frontend_main_menu");
 const MENU_LOADING_SPINNER = $("div.menu_loading_spinner");
 
-function showLoadingSpinner() {
+export function showLoadingSpinner() {
   MENU_LOADING_SPINNER.show();
 }
 
