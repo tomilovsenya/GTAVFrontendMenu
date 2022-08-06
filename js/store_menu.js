@@ -1,4 +1,5 @@
 import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
+import { localizeMenu } from "./menu_modules/menu_localization.js";
 
 const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
@@ -21,12 +22,20 @@ window.addEventListener(
   false
 );
 
-function onShopLoad() {
-  MENU_LOADING_SPINNER.hide();
+function loadStore() {
+  localizeMenu();
   drawArrows();
   setHeaderStats();
+}
+
+function showStore() {
+  MENU_LOADING_SPINNER.hide();
   toggleMenuVisibility();
   setInstrContainerVisibility(true);
+}
+
+function onStoreLoad() {
+  showStore();
 }
 
 $("#menu_header_text").dblclick("dblclick", goFullScreen);
@@ -63,4 +72,5 @@ function setHeaderStats() {
   $("#menu_header_stats_text").html(headerStats);
 }
 
-window.onload = onShopLoad;
+loadStore();
+window.onload = onStoreLoad;

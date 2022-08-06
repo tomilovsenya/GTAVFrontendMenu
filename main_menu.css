@@ -1922,7 +1922,7 @@ div.menu_gallery_photo {
 
 div.menu_gallery_photo:hover {
   background-color: var(--hover-color);
-  box-shadow: inset 0 0 10vw 0 var(--hover-color);
+  box-shadow: inset 100vw 0 rgba(255, 255, 255, 0.15);
 }
 
 div.menu_gallery_photo:active {

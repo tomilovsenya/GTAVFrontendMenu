@@ -489,5 +489,46 @@
     "gxt": "menu_replay_text",
     "american": "Press <img class='instructional_button' src='images/buttons/btn_enter.svg'> to enter the Rockstar Editor and start creating videos using clips of your GTAV and GTA Online experiences. Capture GTAV Story Mode or GTA Online gameplay moments, or launch Director Mode to create custom scenarios and capture unique clips. To begin capturing clips in game, hold <button class='instructional_button instructional_button_wide'>Alt</button> to select your capture mode and start recording.<br><br>Once you've captured some clips, add them to a New Project and edit as you wish. You can crop clips, add color filters and change camera angles and effects. Rearrange your clips to get the ideal sequence, then add custom text to appear whenever you want. Add GTAV score or radio tracks to create a soundtrack that will bring your project to life. When you're satisfied, export your creations as videos to share via the Rockstar Games Social Club and YouTube.",
     "russian": "Нажмите <img class='instructional_button' src='images/buttons/btn_enter.svg'>, чтобы войти в редактор Rockstar и создать видео из клипов, записанных вами в GTA V и GTA Online. Запишите игру в сюжетном режиме GTA V или режиме режиссера, чтобы создать собственные сценарии и уникальные клипы. Для начала удерживайте <button class='instructional_button instructional_button_wide'>Alt</button>, чтобы выбрать режим \"Захвата\" и начать запись.<br><br>После записи клипов, добавьте их в \"Новый проект\" и редактируйте на усмотрение. Вы можете урезать клипы, добавлять цветовые фильтры, изменять ракурсы камеры и эффекты. Кроме того, вы можете изменять компоновку клипов, чтобы получить идеальный ряд, и добавлять собственный текст, который сможет появляться в любом месте. К своему проекту вы можете добавить оригинальную и лицензионную музыку из игры. Если вы довольны, то можете экспортировать ваше творение как видео и для других игроков на Rockstar Games Social Club и YouTube."
+  },
+
+  {
+    "gxt": "store_tab_0",
+    "american": "CATEGORIES",
+    "russian": "КАТЕГОРИИ"
+  },
+  {
+    "gxt": "store_tab_1",
+    "american": "CONTENT",
+    "russian": "ПРЕДМЕТЫ"
+  },
+  {
+    "gxt": "store_tab_2",
+    "american": "DETAILS",
+    "russian": "ПОДРОБНОСТИ"
+  },
+  {
+    "gxt": "store_packs_category_0",
+    "american": "PACKS",
+    "russian": "НАБОРЫ"
+  },
+  {
+    "gxt": "store_packs_category_1",
+    "american": "CASH",
+    "russian": "ДЕНЬГИ"
+  },
+  {
+    "gxt": "store_details_price_label",
+    "american": "PRICE",
+    "russian": "ЦЕНА"
+  },
+  {
+    "gxt": "store_details_price_value",
+    "american": "FREE",
+    "russian": "БЕСПЛАТНО"
+  },
+  {
+    "gxt": "store_details_price_available",
+    "american": "AVAILABLE",
+    "russian": "ДОСТУПНО"
   }
 ]

@@ -4,6 +4,10 @@
 
 /*#region MainMenu*/
 
+div.menu_header {
+  padding-right: 10vw !important;
+}
+
 div.menu_window {
   width: var(--menu-wnd-width);
   display: flex;
@@ -43,16 +47,33 @@ div.store_content {
   top: 0;
 }
 
+div.store_content .menu_entry_quad {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+
+}
+
 div.store_content button:hover {
   background-color: var(--hover-color);
-  box-shadow: inset 0 0 10vw 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 100vw 0 rgba(255, 255, 255, 0.15);
+}
+
+div.store_content button:active {
+  outline: 0.4vw solid white;
+  outline-offset: -0.4vw;
 }
 
 #store_content_element_0 {
   background-image: url(images/store/GTAV_STORE_Starter_Pack_EN.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+}
+
+#store_content_element_1 {
+  background-image: url(images/store/GTAV_STORE_Upgrade.png);
+}
+
+#store_content_element_2 {
+  background-image: url(images/store/GTAV_STORE_GTAPlus_1.png);
 }
 
 div.store_details {
@@ -115,7 +136,7 @@ div.store_details_price_zone {
   justify-content: space-between;
 }
 
-span#store_details_price_left_1 {
+span#store_details_price_value {
   font-size: 1.4vw;
 }
 

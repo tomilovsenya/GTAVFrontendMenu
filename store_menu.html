@@ -34,31 +34,29 @@
           <div class="menu_header" tabindex="-1">
             <p id="menu_header_text">Grand Theft Auto V</p>
             <div class="menu_header_character">
-              <div class="menu_header_stats">
-                <span id="menu_header_stats_text"></span>
-              </div>
+              <span id="menu_header_stats_text"></span>
             </div>
           </div>
           <div class="menu_navbar">
             <button id="menu_arrow_left" class="menu_navbar_arrows" tabindex="-1"></button>
             <nav id="menu_navbar_tabs" class="menu_buttons" tabindex="-1">
-              <button id="tab_0" class="menu_button">CATEGORIES</button>
-              <button id="tab_1" class="menu_button menu_button_active">CONTENT</button>
-              <button id="tab_2" class="menu_button menu_button_active">DETAILS</button>
+              <button id="store_tab_0" class="menu_button">CATEGORIES</button>
+              <button id="store_tab_1" class="menu_button menu_button_active">CONTENT</button>
+              <button id="store_tab_2" class="menu_button menu_button_active">DETAILS</button>
             </nav>
             <button id="menu_arrow_right" class="menu_navbar_arrows" tabindex="-1"></button>
           </div>
 
           <div id="store_packs" class="menu_window">
             <div class="menu_categories">
-              <button id="menu_brief_category_0" class="menu_entry menu_category menu_entry_active">PACKS</button>
-              <button id="menu_brief_category_0" class="menu_entry menu_category">CASH</button>
+              <button id="store_packs_category_0" class="menu_entry menu_category menu_entry_active">PACKS</button>
+              <button id="store_packs_category_1" class="menu_entry menu_category">CASH</button>
             </div>
             <div id="store_elements" class="menu_elements">
               <div class="store_content">
                 <button id="store_content_element_0" class="menu_entry menu_entry_quad"></button>
-                <button class="menu_entry menu_entry_quad"></button>
-                <button class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_1" class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_2" class="menu_entry menu_entry_quad"></button>
                 <button class="menu_entry menu_entry_quad"></button>
               </div>
               <div class="store_details">
@@ -70,8 +68,8 @@
                 </div>
                 <button id="store_details_price" class="menu_entry menu_entry_empty menu_entry_empty_double">
                   <div id="store_details_price_zone_left" class="store_details_price_zone">
-                    <span id="store_details_price_left_0">PRICE</span>
-                    <span id="store_details_price_left_1">FREE</span>
+                    <span id="store_details_price_label">PRICE</span>
+                    <span id="store_details_price_value">FREE</span>
                   </div>
                   <div id="store_details_price_zone_right" class="store_details_price_zone">
                     <span id="store_details_price_available">AVAILABLE</span>

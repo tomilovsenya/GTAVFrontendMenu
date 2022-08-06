@@ -896,8 +896,8 @@ export function toggleMenuVisibility() {
     activeWindow.window.css({ visibility: "hidden" });
     menuVisibility = false;
   } else {
-    FRONTEND_MAIN_MENU.css({ visibility: "" });
-    activeWindow.window.css({ visibility: "" });
+    FRONTEND_MAIN_MENU.css({ visibility: "visible" });
+    activeWindow.window.css({ visibility: "visible" });
     menuVisibility = true;
   }
 }
