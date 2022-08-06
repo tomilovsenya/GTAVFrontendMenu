@@ -138,10 +138,10 @@ div.menu_backdrop {
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(0.25vw);
-
 }
 
 div.menu_bounding_box {
+  aspect-ratio: 16 / 9;
   width: 100vw;
   /* min-width: 70%; */
   height: 100vh;
