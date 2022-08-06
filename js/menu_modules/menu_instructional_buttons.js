@@ -1,9 +1,12 @@
-import { toggleMenuVisibility } from "../main_menu.js";
+// import { toggleMenuVisibility } from "../main_menu.js";
 
+let instrContainerVisibility = false;
 let isInstrLoadingSpinnerShown = true;
 let instrLoadingSpinner = $("#IB_SAVING_SPINNER");
 
-$("#IB_HIDE_MENU").click(toggleMenuVisibility);
+const INSTRUCTIONAL_BUTTONS = $("#menu_instructional_buttons");
+
+// $("#IB_HIDE_MENU").click(toggleMenuVisibility);
 // $("#IB_HIDE_MENU").trigger("changeText", ["Show Menu"]);
 
 export function changeInstrText(instButton, newText) {
@@ -27,5 +30,15 @@ export function hideInstrLoadingSpinner() {
     instrLoadingSpinner.hide();
     isInstrLoadingSpinnerShown = false;
     instrLoadingSpinner.prev(".ib_container").css({ "margin-right": "0" });
+  }
+}
+
+export function setInstrContainerVisibility(isVisible) {
+  if (isVisible) {
+    INSTRUCTIONAL_BUTTONS.css({ visibility: "visible" });
+    instrContainerVisibility = true;
+  } else {
+    INSTRUCTIONAL_BUTTONS.css({ visibility: "hidden" });
+    instrContainerVisibility = false;
   }
 }

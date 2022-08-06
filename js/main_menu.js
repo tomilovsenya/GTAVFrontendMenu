@@ -47,6 +47,7 @@ import {
   showInstrLoadingSpinner,
   hideInstrLoadingSpinner,
   setStartupInstr,
+  setInstrContainerVisibility,
 } from "./menu_modules/menu_instructional_buttons.js";
 
 //
@@ -109,6 +110,7 @@ function initMenuContent() {
 
 function showMenu() {
   MENU_LOADING_SPINNER.hide();
+  setInstrContainerVisibility(true);
   FRONTEND_MAIN_MENU.css({ visibility: "visible" });
   FRONTEND_MAIN_MENU.show();
   drawMap();

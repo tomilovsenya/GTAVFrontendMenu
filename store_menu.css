@@ -3,13 +3,6 @@
 }
 
 /*#region MainMenu*/
-div.frontend_main_menu {
-  visibility: visible;
-}
-
-button.menu_button:hover {
-  /* background-color: var(--black-bg-color); */
-}
 
 div.menu_window {
   width: var(--menu-wnd-width);

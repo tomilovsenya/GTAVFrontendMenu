@@ -1,3 +1,5 @@
+import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
+
 const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
 const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
@@ -10,7 +12,8 @@ let menuVisibility = false;
 window.addEventListener(
   "keydown",
   function (e) {
-    if (["Backspace"].indexOf(e.code) > -1) {
+    if (["Backspace", "Escape"].indexOf(e.code) > -1) {
+      e.preventDefault();
       window.history.go(-1);
       console.log("Should go back now");
     }
@@ -23,6 +26,7 @@ function onShopLoad() {
   drawArrows();
   setHeaderStats();
   toggleMenuVisibility();
+  setInstrContainerVisibility(true);
 }
 
 $("#menu_header_text").dblclick("dblclick", goFullScreen);
@@ -39,7 +43,7 @@ function toggleMenuVisibility() {
     // activeWindow.window.css({ visibility: "hidden" });
     menuVisibility = false;
   } else {
-    FRONTEND_MAIN_MENU.css({ visibility: "" });
+    FRONTEND_MAIN_MENU.css({ visibility: "visible" });
     // activeWindow.window.css({ visibility: "" });
     menuVisibility = true;
   }
