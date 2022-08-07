@@ -5,15 +5,15 @@
 let menuLanguages = ["american", "russian"];
 let menuLanguage, menuLangFile;
 
-export function localizeMenu() {
+export async function localizeMenu() {
   getPreferredLanguage();
-  localizeMenuElements();
+  await localizeMenuElements();
 }
 
 function getPreferredLanguage() {
   let preferredLanguage = navigator.language || navigator.userLanguage;
   console.log("Preferred browser language detected: " + preferredLanguage);
-  if (preferredLanguage == "ru") menuLanguage = menuLanguages[1];
+  if (preferredLanguage == "ru" || preferredLanguage == "ru-ru") menuLanguage = menuLanguages[1];
   else menuLanguage = menuLanguages[0];
 }
 

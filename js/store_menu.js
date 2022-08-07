@@ -105,8 +105,8 @@ function updateEventHandlers() {
 // STORE LOADING
 //
 
-function loadStore() {
-  localizeMenu();
+async function loadStore() {
+  await localizeMenu();
   drawArrows();
   updateEventHandlers();
 }
@@ -123,8 +123,9 @@ function onStoreLoad() {
   showStore();
 }
 
-loadStore();
-window.onload = onStoreLoad;
+loadStore().then(() => {
+  onStoreLoad();
+});
 
 //
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
