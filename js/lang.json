@@ -5,6 +5,21 @@
     "russian": "Сохранение игры"
   },
   {
+    "gxt": "menu_header_char_name",
+    "american": "MICHAEL TOWNLEY",
+    "russian": "МАЙКЛ ТАУНЛИ"
+  },
+  {
+    "gxt": "menu_header_char_time",
+    "american": "SUNDAY 11:50",
+    "russian": "ВСК 11:50"
+  },
+  {
+    "gxt": "menu_header_char_cash",
+    "american": "BANK $550,590  CASH $530",
+    "russian": "БАНК $550,590  НАЛИЧНЫЕ $530"
+  },
+  {
     "gxt": "tab_0",
     "american": "MAP",
     "russian": "КАРТА"

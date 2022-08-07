@@ -107,7 +107,6 @@ function updateEventHandlers() {
 function loadStore() {
   localizeMenu();
   drawArrows();
-  setHeaderStats();
   updateEventHandlers();
 }
 
@@ -119,6 +118,7 @@ function showStore() {
 
 function onStoreLoad() {
   storeHandler();
+  setHeaderStats();
   showStore();
 }
 
@@ -169,7 +169,12 @@ function drawArrows() {
 }
 
 function setHeaderStats() {
-  let headerStats = HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
+  let headerStats =
+    getLocalizedString("menu_header_char_name") +
+    "<br>" +
+    getLocalizedString("menu_header_char_time") +
+    "<br>" +
+    getLocalizedString("menu_header_char_cash");
   $("#menu_header_stats_text").html(headerStats);
 }
 

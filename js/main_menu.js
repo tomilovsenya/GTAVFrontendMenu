@@ -7,9 +7,6 @@ const HEADER_GTAV = "Grand Theft Auto V";
 const HEADER_GTAO = "Grand Theft Auto Online";
 let HEADER_SAVE = "Save Game";
 // const HEADER_SAVE = getLocalizedString("menu_header_save");
-const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
-const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
-const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
 
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
@@ -93,7 +90,6 @@ async function loadMenu() {
   // FRONTEND_MAIN_MENU.css({visibility: "hidden"});
   MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
   setHeaderTitle(HEADER_GTAV);
-  setHeaderStats();
   // setFirstTab();
   setSingleTab();
   setActiveWindow(menuContent.MENU_TAB_MAP);
@@ -118,6 +114,7 @@ function showMenu() {
 
 function onMenuLoad() {
   initMenuContent();
+  setHeaderStats();
   showMenu();
 }
 
@@ -906,7 +903,12 @@ function setHeaderTitle(title) {
   $("#menu_header_text").html(title);
 }
 function setHeaderStats() {
-  let headerStats = HEADER_CHAR_NAME + "<br>" + HEADER_CHAR_TIME + "<br>" + HEADER_CHAR_CASH;
+  let headerStats =
+    getLocalizedString("menu_header_char_name") +
+    "<br>" +
+    getLocalizedString("menu_header_char_time") +
+    "<br>" +
+    getLocalizedString("menu_header_char_cash");
   $("#menu_header_stats_text").html(headerStats);
 }
 function setTabName(index, name) {
