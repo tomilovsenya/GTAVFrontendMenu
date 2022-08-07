@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Pricedown";
-  src: url("fonts/Pricedown-GTAVInt.TTF") format("truetype");
+  src: url("fonts/Pricedown-GTAVInt.ttf") format("truetype");
 }
 
 /* --menu-wnd-width: 1300px; */
