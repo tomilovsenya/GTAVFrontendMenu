@@ -40,9 +40,9 @@
           <div class="menu_navbar">
             <button id="menu_arrow_left" class="menu_navbar_arrows" tabindex="-1"></button>
             <nav id="menu_navbar_tabs" class="menu_buttons" tabindex="-1">
-              <button id="store_tab_0" class="menu_button">CATEGORIES</button>
-              <button id="store_tab_1" class="menu_button menu_button_active">CONTENT</button>
-              <button id="store_tab_2" class="menu_button menu_button_active">DETAILS</button>
+              <button id="store_tab_0" class="menu_button menu_button_active">CATEGORIES</button>
+              <button id="store_tab_1" class="menu_button">CONTENT</button>
+              <button id="store_tab_2" class="menu_button">DETAILS</button>
             </nav>
             <button id="menu_arrow_right" class="menu_navbar_arrows" tabindex="-1"></button>
           </div>
@@ -52,12 +52,15 @@
               <button id="store_packs_category_0" class="menu_entry menu_category menu_entry_active">PACKS</button>
               <button id="store_packs_category_1" class="menu_entry menu_category">CASH</button>
             </div>
-            <div id="store_elements" class="menu_elements">
-              <div class="store_content">
+            <div id="store_elements" class="menu_elements menu_elements_inactive">
+              <div class="store_content menu_elements_scrollable">
                 <button id="store_content_element_0" class="menu_entry menu_entry_quad"></button>
                 <button id="store_content_element_1" class="menu_entry menu_entry_quad"></button>
                 <button id="store_content_element_2" class="menu_entry menu_entry_quad"></button>
-                <button class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_3" class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_4" class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_5" class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_6" class="menu_entry menu_entry_quad"></button>
               </div>
               <div class="store_details">
                 <div id="store_details_description">
@@ -88,7 +91,6 @@
               </div>
             </button>
             <button id="store_arrows_details" class="menu_arrows" tabindex="-1">
-              <span id="store_packs_elements_packs_counter" class="element_label"></span>
               <div class="menu_arrows_zones">
                 <div id="store_arrows_details_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
                 <div id="store_arrows_details_down" class="menu_arrows_zone menu_arrows_zone_down"></div>

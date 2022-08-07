@@ -33,6 +33,11 @@ div#store_elements {
   justify-content: space-between;
 }
 
+div.menu_elements_inactive {
+  opacity: 50%;
+  pointer-events:fill;
+}
+
 div.store_content {
   width: var(--menu-elements-half-width);
   height: fit-content;
@@ -51,15 +56,18 @@ div.store_content .menu_entry_quad {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
-
 }
 
-div.store_content button:hover {
+div.store_content .menu_entry:last-of-type {
+  margin-bottom: 0;
+}
+
+div.store_content button:not(.menu_entry_active):hover {
   background-color: var(--hover-color);
   box-shadow: inset 100vw 0 rgba(255, 255, 255, 0.15);
 }
 
-div.store_content button:active {
+div.store_content .menu_entry_active {
   outline: 0.4vw solid white;
   outline-offset: -0.4vw;
 }
@@ -67,13 +75,14 @@ div.store_content button:active {
 #store_content_element_0 {
   background-image: url(images/store/GTAV_STORE_Starter_Pack_EN.png);
 }
-
 #store_content_element_1 {
   background-image: url(images/store/GTAV_STORE_Upgrade.png);
 }
-
 #store_content_element_2 {
   background-image: url(images/store/GTAV_STORE_GTAPlus_1.png);
+}
+#store_content_element_3 {
+  background-image: url(images/store/GTA_RedShark_InGameStore_512x256.png);
 }
 
 div.store_details {
@@ -84,6 +93,8 @@ div.store_details {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--item-margin);
+  position: sticky;
+  top: 0;
 }
 
 div#store_details_description {
@@ -160,6 +171,7 @@ div.menu_window_arrows {
   justify-content: center;
   align-self: flex-end;
   gap: var(--tab-margin);
+  visibility: hidden;
 }
 
 button#store_arrows_content {
