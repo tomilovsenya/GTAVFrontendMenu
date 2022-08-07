@@ -2,17 +2,9 @@
 // CONSTANTS
 //
 
-const HEADER_GTAV = "Grand Theft Auto V";
-// const HEADER_GTAV = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas excepturi atque aliquid necessitatibus nihil vero id assumenda numquam perferendis alias.';
-const HEADER_GTAO = "Grand Theft Auto Online";
-let HEADER_SAVE = "Save Game";
-// const HEADER_SAVE = getLocalizedString("menu_header_save");
-
+const MENU_PAGE = document.documentElement;
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
-const MENU_PAGE = document.documentElement;
-const MENU_COLOR_NAME = "--hud-color-michael";
-export const MENU_COLOR = getComputedStyle(MENU_PAGE).getPropertyValue(MENU_COLOR_NAME);
 
 let isCategorySelected = false;
 let activeTab = null;
@@ -94,9 +86,9 @@ async function loadMenu() {
   // setFirstTab();
   // playSFX(SFX_MENU_MUSIC);
   await localizeMenu();
-  MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
-  setHeaderTitle(HEADER_GTAV);
-  drawArrows();
+  commonMenu.setMenuColor();
+  commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
+  commonMenu.drawArrows();
   updateEventHandlers();
 }
 
@@ -284,14 +276,13 @@ function setTabOnly() {
     prevTabs = onlyTab.prevAll().addBack();
     nextTabs = onlyTab.nextAll();
     otherTabs.detach();
-    drawArrows();
     isOnlyTabSet = true;
   } else {
     navbarTabs.prepend(prevTabs);
     navbarTabs.append(nextTabs);
-    drawArrows();
     isOnlyTabSet = false;
   }
+  commonMenu.drawArrows();
 }
 
 function clickTab() {
@@ -906,9 +897,6 @@ export function toggleMenuVisibility() {
   }
 }
 
-function setHeaderTitle(title) {
-  $("#menu_header_text").html(title);
-}
 function setTabName(index, name) {
   let tab = $(".menu_button").eq(index);
   tab.html(name);
@@ -916,14 +904,6 @@ function setTabName(index, name) {
 }
 function setTabNameStar(index) {
   setTabName(index, "&starf; " + $(".menu_button").html());
-}
-function drawArrows() {
-  let tabsNumber = $(".menu_buttons").children().length;
-  if (tabsNumber <= 6) {
-    $(".menu_navbar_arrows").hide();
-  } else {
-    $(".menu_navbar_arrows").show();
-  }
 }
 function setInitialTab() {
   $(".menu_window").hide();
@@ -978,10 +958,9 @@ function activeWindowHandler(activeTab) {
       if (activeCategoryElements) activeCategoryElements.show();
       break;
     case menuContent.MENU_TAB_SAVE.id:
-      HEADER_SAVE = getLocalizedString("menu_header_save");
       activeCategoryElements = $(".menu_save_list");
       isCategorySelected = false;
-      setHeaderTitle(HEADER_SAVE);
+      commonMenu.setHeaderTitle(getLocalizedString("menu_header_save"));
       break;
     default:
       console.log(`Nothing was handled this time.
@@ -989,7 +968,7 @@ Check if the active window with ID ${activeWindow.window.attr("id")} contains an
       break;
   }
 
-  if (currentWindow != menuContent.MENU_TAB_SAVE.id) setHeaderTitle(HEADER_GTAV);
+  if (currentWindow != menuContent.MENU_TAB_SAVE.id) commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
   if (currentWindow != menuContent.MENU_TAB_BRIEF.id && currentWindow != menuContent.MENU_TAB_STATS.id)
     $("#IB_SCROLL").hide();
 }

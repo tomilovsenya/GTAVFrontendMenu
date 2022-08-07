@@ -1,4 +1,4 @@
-import { MENU_COLOR } from "../main_menu.js";
+import { MENU_COLOR } from "../common_menu.js";
 import { getLocalizedString } from "./menu_localization.js";
 
 export async function setVideoMemory(memUsed, memMax) {

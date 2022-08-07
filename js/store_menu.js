@@ -6,10 +6,6 @@ import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_b
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import * as commonMenu from "./common_menu.js";
 
-const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
-const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
-const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
-
 const STORE_PAGE = document.documentElement;
 const MENU_LOADING_SPINNER = $("div.menu_loading_spinner");
 const FRONTEND_MAIN_MENU = $("div.frontend_main_menu");
@@ -107,8 +103,10 @@ function updateEventHandlers() {
 
 async function loadStore() {
   await localizeMenu();
+  commonMenu.setMenuColor();
+  commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
   commonMenu.setHeaderStats();
-  drawArrows();
+  commonMenu.drawArrows();
   updateEventHandlers();
 }
 
@@ -195,10 +193,6 @@ function disableEntry(disabledEntry) {
   console.log("Disabled entry: " + disabledEntry.attr("id"));
 }
 
-function getHudColor(hudColor) {
-  return getComputedStyle(STORE_PAGE).getPropertyValue("--" + hudColor);
-}
-
 //
 // STORE LOGIC
 //
@@ -222,15 +216,15 @@ function storeHandler(packIndex) {
   switch (currentPack.status) {
     case 0:
       statusText = getLocalizedString("store_details_price_status_0");
-      statusColor = getHudColor("hud-color-red");
+      statusColor = commonMenu.getHudColor("hud-color-red");
       break;
     case 1:
       statusText = getLocalizedString("store_details_price_status_1");
-      statusColor = getHudColor("hud-color-freemode");
+      statusColor = commonMenu.getHudColor("hud-color-freemode");
       break;
     case 2:
       statusText = getLocalizedString("store_details_price_status_2");
-      statusColor = getHudColor("hud-color-green");
+      statusColor = commonMenu.getHudColor("hud-color-green");
       break;
     default:
       break;
