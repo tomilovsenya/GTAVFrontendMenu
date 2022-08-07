@@ -4,10 +4,6 @@
 
 /*#region MainMenu*/
 
-div.menu_header {
-  padding-right: 10vw !important;
-}
-
 div.menu_window {
   width: var(--menu-wnd-width);
   display: flex;
