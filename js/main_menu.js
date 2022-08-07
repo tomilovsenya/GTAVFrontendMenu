@@ -88,6 +88,8 @@ async function loadMenu() {
   await localizeMenu();
   commonMenu.setMenuColor();
   commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
+  commonMenu.updateHeaderStats;
+  setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
   updateEventHandlers();
 }
@@ -110,7 +112,6 @@ function showMenu() {
 
 function onMenuLoad() {
   initMenuContent();
-  commonMenu.updateHeaderStats();
   showMenu();
 }
 

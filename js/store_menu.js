@@ -106,6 +106,7 @@ async function loadStore() {
   commonMenu.setMenuColor();
   commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
   commonMenu.updateHeaderStats();
+  setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
   updateEventHandlers();
 }
@@ -125,7 +126,6 @@ loadStore().then(() => {
   onStoreLoad();
 });
 
-// setInterval(commonMenu.updateHeaderStats, 1000);
 
 //
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
