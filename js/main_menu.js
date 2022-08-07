@@ -110,7 +110,7 @@ function showMenu() {
 
 function onMenuLoad() {
   initMenuContent();
-  commonMenu.setHeaderStats();
+  commonMenu.updateHeaderStats();
   showMenu();
 }
 

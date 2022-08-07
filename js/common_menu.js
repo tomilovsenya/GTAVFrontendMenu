@@ -14,7 +14,7 @@ export const MENU_COLOR = getHudColor("hud-color-michael");
 // COMMON FUNCTIONS
 //
 
-export function setHeaderStats() {
+export function updateHeaderStats() {
   let headerStats =
     getLocalizedString("menu_header_char_name") +
     "<br>" +
