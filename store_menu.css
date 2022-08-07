@@ -155,7 +155,7 @@ div#store_details_price_zone_right {
   align-items: flex-end;
 }
 
-span#store_details_price_available {
+span#store_details_price_status {
   text-align: center;
   color: black;
   width: fit-content;

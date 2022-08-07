@@ -1,17 +1,63 @@
+//
+// IMPORTS AND CONSTANTS
+//
+
 import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
-import { localizeMenu } from "./menu_modules/menu_localization.js";
+import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 
 const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
 const HEADER_CHAR_CASH = "BANK $550,590  CASH $530";
 
-const MENU_PAGE = document.documentElement;
+const STORE_PAGE = document.documentElement;
 const MENU_LOADING_SPINNER = $("div.menu_loading_spinner");
 const FRONTEND_MAIN_MENU = $("div.frontend_main_menu");
+
+const STORE_PACK_0 = {
+  id: $("#store_content_element_0"),
+  name: "store_pack_0_name",
+  descr: "store_pack_0_descr",
+  price: "$10",
+  status: 1,
+  players: "1",
+};
+
+const STORE_PACK_1 = {
+  id: $("#store_content_element_1"),
+  name: "store_pack_1_name",
+  descr: "store_pack_1_descr",
+  price: "$25",
+  status: 1,
+  players: "1",
+};
+
+const STORE_PACK_2 = {
+  id: $("#store_content_element_2"),
+  name: "store_pack_2_name",
+  descr: "store_pack_2_descr",
+  price: "$6.99",
+  status: 2,
+  players: "1",
+};
+
+const STORE_PACK_3 = {
+  id: $("#store_content_element_3"),
+  name: "Red Shark Card",
+  descr: "Red Shark Card placeholder.",
+  price: "$4.99",
+  status: 0,
+  players: "1",
+};
+
+const ALL_STORE_PACKS = [STORE_PACK_0, STORE_PACK_1, STORE_PACK_2, STORE_PACK_3];
 
 let menuVisibility = false;
 let activeEntryMiddle = null;
 let isCategorySelected = false;
+
+//
+// EVENT HANDLERS
+//
 
 window.addEventListener(
   "keydown",
@@ -37,10 +83,32 @@ window.addEventListener(
   false
 );
 
+function updateEventHandlers() {
+  $("#store_elements").click(enterStoreElementsMiddle);
+  $(".menu_entry_quad").click(function () {
+    setEntryActive($(this));
+  });
+  $("#store_tab_0").click(escapeStoreEntriesMiddle);
+  $("#store_tab_1").click(enterStoreElementsMiddle);
+  $("#store_tab_2").click(enterStoreElementsMiddle);
+
+  $("#store_arrows_content_up").click(function () {
+    scrollElements(0);
+  });
+  $("#store_arrows_content_down").click(function () {
+    scrollElements(1);
+  });
+}
+
+//
+// STORE LOADING
+//
+
 function loadStore() {
   localizeMenu();
   drawArrows();
   setHeaderStats();
+  updateEventHandlers();
 }
 
 function showStore() {
@@ -50,17 +118,31 @@ function showStore() {
 }
 
 function onStoreLoad() {
+  storeHandler();
   showStore();
 }
 
 loadStore();
 window.onload = onStoreLoad;
 
+//
+// BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
+//
+
+$(".menu_elements_scrollable").bind("wheel", function (e) {
+  if (e.originalEvent.deltaY / 40 < 0) scrollElements(0);
+  else scrollElements(1);
+});
+
+//
+// COMMON FUNCTIONS
+//
+
 $("#menu_header_text").dblclick("dblclick", goFullScreen);
 
 function goFullScreen() {
-  if (MENU_PAGE.requestFullscreen) {
-    MENU_PAGE.requestFullscreen();
+  if (STORE_PAGE.requestFullscreen) {
+    STORE_PAGE.requestFullscreen();
   }
 }
 
@@ -90,6 +172,78 @@ function setHeaderStats() {
   $("#menu_header_stats_text").html(headerStats);
 }
 
+function setEntryActive(activatedEntry) {
+  if (activatedEntry.is(activeEntryMiddle)) {
+    console.log("Entry already active, do nothing");
+    return;
+  }
+  if (activeEntryMiddle) disableEntry(activeEntryMiddle);
+  activeEntryMiddle = activatedEntry;
+  triggerEntry(activatedEntry);
+
+  storeHandler(activatedEntry.index());
+}
+
+function triggerEntry(triggeredEntry) {
+  triggeredEntry.addClass("menu_entry_active");
+  triggeredEntry.focus();
+  console.log("Triggered entry: " + triggeredEntry.attr("id"));
+}
+
+function disableEntry(disabledEntry) {
+  // disabledEntry.trigger("entryDisabled");
+  activeEntryMiddle = null;
+  disabledEntry.removeClass("menu_entry_active");
+  console.log("Disabled entry: " + disabledEntry.attr("id"));
+}
+
+function getHudColor(hudColor) {
+  return getComputedStyle(STORE_PAGE).getPropertyValue("--" + hudColor);
+}
+
+//
+// STORE LOGIC
+//
+
+function storeHandler(packIndex) {
+  if (!activeEntryMiddle) packIndex = 0;
+  let currentPack = ALL_STORE_PACKS[packIndex];
+
+  let titleLabel = $("#store_details_description_title");
+  let descrLabel = $("#store_details_description_long");
+  let priceLabel = $("#store_details_price_value");
+  let statusLabel = $("#store_details_price_status");
+  let playersLabel = $("#store_details_price_players");
+
+  let statusText, statusColor;
+
+  switch (currentPack.status) {
+    case 0:
+      statusText = getLocalizedString("store_details_price_status_0");
+      statusColor = getHudColor("hud-color-red");
+      break;
+    case 1:
+      statusText = getLocalizedString("store_details_price_status_1");
+      statusColor = getHudColor("hud-color-freemode");
+      break;
+    case 2:
+      statusText = getLocalizedString("store_details_price_status_2");
+      statusColor = getHudColor("hud-color-green");
+      break;
+    default:
+      break;
+  }
+
+  titleLabel.text(getLocalizedString(currentPack.name));
+  descrLabel.text(getLocalizedString(currentPack.descr));
+  priceLabel.text(currentPack.price);
+  statusLabel.text(statusText);
+  statusLabel.css({ "background-color": statusColor });
+  playersLabel.text(currentPack.players);
+
+  updatePacksCounter();
+}
+
 function updatePacksCounter() {
   let totalPacks = $(".store_content").children().length;
   let currentPack = 1;
@@ -100,21 +254,6 @@ function updatePacksCounter() {
   let counterString = currentPack + " / " + totalPacks;
   $("#store_packs_elements_packs_counter").text(counterString);
 }
-
-$("#store_elements").click(enterStoreElementsMiddle);
-$(".menu_entry_quad").click(function () {
-  setEntryActive($(this));
-});
-$("#store_tab_0").click(escapeStoreEntriesMiddle);
-$("#store_tab_1").click(enterStoreElementsMiddle);
-$("#store_tab_2").click(enterStoreElementsMiddle);
-
-$("#store_arrows_content_up").click(function () {
-  scrollElements(0);
-});
-$("#store_arrows_content_down").click(function () {
-  scrollElements(1);
-});
 
 function enterStoreElementsMiddle() {
   if (isCategorySelected) return;
@@ -162,35 +301,3 @@ function scrollElements(scrollDir) {
       break;
   }
 }
-
-function setEntryActive(activatedEntry) {
-  if (activeEntryMiddle) disableEntry(activeEntryMiddle);
-  activeEntryMiddle = activatedEntry;
-  triggerEntry(activatedEntry);
-  updatePacksCounter();
-}
-
-function triggerEntry(triggeredEntry) {
-  triggeredEntry.addClass("menu_entry_active");
-  triggeredEntry.focus();
-}
-
-function disableEntry(disabledEntry) {
-  // disabledEntry.trigger("categoryDisabled");
-  activeEntryMiddle = null;
-  console.log("Disabled entry: " + disabledEntry.attr("id"));
-  disabledEntry.removeClass("menu_entry_active");
-}
-
-// $(".menu_elements_scrollable").on("entryDisabled", ".menu_entry", function (e) {
-//   setEntryDisabled($(this));
-// });
-
-//
-// BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
-//
-
-$(".menu_elements_scrollable").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) scrollElements(0);
-  else scrollElements(1);
-});
