@@ -107,6 +107,7 @@ function updateEventHandlers() {
 
 async function loadStore() {
   await localizeMenu();
+  commonMenu.setHeaderStats();
   drawArrows();
   updateEventHandlers();
 }
@@ -119,7 +120,6 @@ function showStore() {
 
 function onStoreLoad() {
   storeHandler();
-  commonMenu.setHeaderStats();
   showStore();
 }
 

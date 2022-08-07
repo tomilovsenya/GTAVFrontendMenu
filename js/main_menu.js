@@ -19,7 +19,8 @@ let activeTab = null;
 let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
-let activeWindow = menuContent.MENU_TAB_MAP;
+let initWindow = menuContent.MENU_TAB_MAP;
+let activeWindow = initWindow;
 let currentOverflows = {
   // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
   overflowsDialogue: [-1, 8],
@@ -87,21 +88,23 @@ export function showLoadingSpinner() {
 }
 
 async function loadMenu() {
-  FRONTEND_MAIN_MENU.hide();
+  showLoadingSpinner();
+  // FRONTEND_MAIN_MENU.hide();
   // FRONTEND_MAIN_MENU.css({visibility: "hidden"});
+  // setFirstTab();
+  // playSFX(SFX_MENU_MUSIC);
+  await localizeMenu();
   MENU_PAGE.style.setProperty("--menu-color", MENU_COLOR);
   setHeaderTitle(HEADER_GTAV);
-  // setFirstTab();
-  setSingleTab();
-  setActiveWindow(menuContent.MENU_TAB_MAP);
   drawArrows();
-  setStartupInstr();
-  localizeMenu();
   updateEventHandlers();
-  // playSFX(SFX_MENU_MUSIC);
 }
 
 function initMenuContent() {
+  setStartupInstr();
+  setInitialTab();
+  activeWindow.id.trigger("tabActive");
+  setActiveWindow(activeWindow);
   fillReplayMissionList();
 }
 
@@ -119,10 +122,13 @@ function onMenuLoad() {
   showMenu();
 }
 
-loadMenu();
-showLoadingSpinner();
+window.onload = () => {
+  loadMenu().then(() => {
+    onMenuLoad();
+  });
+};
 // window.onload = setTimeout(showMenu, 2000);
-window.onload = onMenuLoad;
+// window.onload = onMenuLoad;
 
 //
 // ACTIVE WINDOWS LOGIC
@@ -919,9 +925,10 @@ function drawArrows() {
     $(".menu_navbar_arrows").show();
   }
 }
-function setSingleTab() {
+function setInitialTab() {
   $(".menu_window").hide();
-  $(".menu_window").first().show();
+  initWindow.window.show();
+  initWindow.id[0].scrollIntoView(false);
 }
 
 function setFirstTab() {
