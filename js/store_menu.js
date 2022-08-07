@@ -65,8 +65,7 @@ window.addEventListener(
     if (["Backspace", "Escape"].indexOf(e.code) > -1) {
       e.preventDefault();
       if (isCategorySelected) escapeStoreEntriesMiddle();
-      else window.history.go(-1);
-      console.log("Should go back now");
+      else escapeStore();
     }
     if (["Enter"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -206,6 +205,10 @@ function getHudColor(hudColor) {
 //
 // STORE LOGIC
 //
+
+function escapeStore() {
+  window.history.go(-1);
+}
 
 function storeHandler(packIndex) {
   if (!activeEntryMiddle) packIndex = 0;
