@@ -233,7 +233,7 @@ function storeHandler(packIndex) {
   }
 
   titleLabel.text(getLocalizedString(currentPack.name));
-  descrLabel.text(getLocalizedString(currentPack.descr));
+  descrLabel.html(getLocalizedString(currentPack.descr));
   priceLabel.text(currentPack.price);
   statusLabel.text(statusText);
   statusLabel.css({ "background-color": statusColor });

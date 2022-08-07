@@ -1,5 +1,15 @@
 [
   {
+    "gxt": "warning_message_header",
+    "american": "ALERT",
+    "russian": "ВНИМАНИЕ"
+  },
+  {
+    "gxt": "warning_message_text",
+    "american": "Message text.",
+    "russian": "Соединение с сессией потеряно из-за неизвестной сетевой ошибки.<br>Вернитесь в Grand Theft Auto V."
+  },
+  {
     "gxt": "menu_header_save",
     "american": "Save Game",
     "russian": "Сохранение игры"

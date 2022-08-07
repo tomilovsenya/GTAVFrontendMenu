@@ -40,6 +40,7 @@ import {
   setInstrContainerVisibility,
 } from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
+import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 
 //
 // jQuery custom extension for getting element width in %
@@ -237,14 +238,17 @@ window.addEventListener(
       hideInstrLoadingSpinner();
     }
     if (["KeyZ"].indexOf(e.code) > -1) {
+      showWarningMessage("warning_message_header", "warning_message_text");
     }
     if (["KeyX"].indexOf(e.code) > -1) {
     }
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
-      escapeMenuEntriesMiddle();
+      if (isWarningMessageActive) hideWarningMessage();
+      else escapeMenuEntriesMiddle();
     }
     if (["Enter"].indexOf(e.code) > -1) {
-      scrollLeftRight(1);
+      if (isWarningMessageActive) hideWarningMessage();
+      else scrollLeftRight(1);
     }
     // if (["Tab"].indexOf(e.code) > -1) {
     //   e.preventDefault();

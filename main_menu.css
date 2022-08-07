@@ -184,7 +184,7 @@ div.menu_warning_message_box {
   align-items: center;
 }
 
-h1.menu_warning_message_header {
+h1#menu_warning_message_header {
   font-family: "Pricedown";
   font-weight: 100;
   font-size: 6.25vw;
@@ -192,8 +192,9 @@ h1.menu_warning_message_header {
   margin-bottom: 0.5vw;
 }
 
-span.menu_warning_message_text {
-  max-width: 70%;
+span#menu_warning_message_text {
+  min-width: 25vw;
+  max-width: 70vw;
   font-family: "London60";
   font-weight: 100;
   font-size: 1.4vw;
