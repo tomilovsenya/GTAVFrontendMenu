@@ -46,6 +46,7 @@ import {
   setStartupInstr,
   setInstrContainerVisibility,
 } from "./menu_modules/menu_instructional_buttons.js";
+import * as commonMenu from "./common_menu.js";
 
 //
 // jQuery custom extension for getting element width in %
@@ -114,7 +115,7 @@ function showMenu() {
 
 function onMenuLoad() {
   initMenuContent();
-  setHeaderStats();
+  commonMenu.setHeaderStats();
   showMenu();
 }
 
@@ -901,15 +902,6 @@ export function toggleMenuVisibility() {
 
 function setHeaderTitle(title) {
   $("#menu_header_text").html(title);
-}
-function setHeaderStats() {
-  let headerStats =
-    getLocalizedString("menu_header_char_name") +
-    "<br>" +
-    getLocalizedString("menu_header_char_time") +
-    "<br>" +
-    getLocalizedString("menu_header_char_cash");
-  $("#menu_header_stats_text").html(headerStats);
 }
 function setTabName(index, name) {
   let tab = $(".menu_button").eq(index);

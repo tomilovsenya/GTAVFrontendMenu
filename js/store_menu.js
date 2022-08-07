@@ -4,6 +4,7 @@
 
 import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
+import * as commonMenu from "./common_menu.js";
 
 const HEADER_CHAR_NAME = "MICHAEL TOWNLEY";
 const HEADER_CHAR_TIME = "WEDNESDAY 18:35";
@@ -118,7 +119,7 @@ function showStore() {
 
 function onStoreLoad() {
   storeHandler();
-  setHeaderStats();
+  commonMenu.setHeaderStats();
   showStore();
 }
 
@@ -166,16 +167,6 @@ function drawArrows() {
   } else {
     $(".menu_navbar_arrows").show();
   }
-}
-
-function setHeaderStats() {
-  let headerStats =
-    getLocalizedString("menu_header_char_name") +
-    "<br>" +
-    getLocalizedString("menu_header_char_time") +
-    "<br>" +
-    getLocalizedString("menu_header_char_cash");
-  $("#menu_header_stats_text").html(headerStats);
 }
 
 function setEntryActive(activatedEntry) {

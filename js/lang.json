@@ -15,6 +15,41 @@
     "russian": "ВСК 11:50"
   },
   {
+    "gxt": "menu_header_char_day_0",
+    "american": "SUNDAY",
+    "russian": "ВСК"
+  },
+  {
+    "gxt": "menu_header_char_day_1",
+    "american": "MONDAY",
+    "russian": "ПНД"
+  },
+  {
+    "gxt": "menu_header_char_day_2",
+    "american": "TUESDAY",
+    "russian": "ВТР"
+  },
+  {
+    "gxt": "menu_header_char_day_3",
+    "american": "WEDNESDAY",
+    "russian": "СРД"
+  },
+  {
+    "gxt": "menu_header_char_day_4",
+    "american": "THURSDAY",
+    "russian": "ЧТВ"
+  },
+  {
+    "gxt": "menu_header_char_day_5",
+    "american": "FRIDAY",
+    "russian": "ПТН"
+  },
+  {
+    "gxt": "menu_header_char_day_6",
+    "american": "SATURDAY",
+    "russian": "СБТ"
+  },
+  {
     "gxt": "menu_header_char_cash",
     "american": "BANK $550,590  CASH $530",
     "russian": "БАНК $550,590  НАЛИЧНЫЕ $530"
