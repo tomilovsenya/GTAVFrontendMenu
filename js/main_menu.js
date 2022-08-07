@@ -246,10 +246,10 @@ window.addEventListener(
     if (["Enter"].indexOf(e.code) > -1) {
       scrollLeftRight(1);
     }
-    if (["Tab"].indexOf(e.code) > -1) {
-      e.preventDefault();
-      toggleMenuVisibility();
-    }
+    // if (["Tab"].indexOf(e.code) > -1) {
+    //   e.preventDefault();
+    //   toggleMenuVisibility();
+    // }
   },
   false
 );

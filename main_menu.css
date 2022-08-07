@@ -15,6 +15,11 @@
   src: url("fonts/ChaletComprime-CologneSixty.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Pricedown";
+  src: url("fonts/Pricedown-GTAVInt.TTF") format("truetype");
+}
+
 /* --menu-wnd-width: 1300px; */
 /* --menu-wnd-height: 645px; */
 /* --item-double-height: 78px; */
@@ -103,6 +108,7 @@
   --hud-color-green: rgb(114 204 114);
   --hud-color-green-dark: rgb(57 102 57);
   --hud-color-blue: rgb(93 182 229);
+  --hud-color-yellow: rgb(240 200 80);
 }
 
 body {
@@ -155,6 +161,48 @@ div.menu_bounding_box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+div.menu_warning_message {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  /* display: none; */
+  visibility: hidden;
+}
+
+div.menu_warning_message_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: -5%;
+  align-items: center;
+}
+
+h1.menu_warning_message_header {
+  font-family: "Pricedown";
+  font-weight: 100;
+  font-size: 6.25vw;
+  color: var(--hud-color-yellow);
+  margin-bottom: 0.5vw;
+}
+
+span.menu_warning_message_text {
+  max-width: 70%;
+  font-family: "London60";
+  font-weight: 100;
+  font-size: 1.4vw;
+  color: white;
+  text-align: center;
+  display: block;
+  border-top: 0.2vw solid white;
+  border-bottom: 0.2vw solid white;
+  padding: 0.55vw 2.5vw 0.75vw 2.5vw;
 }
 
 div#menu_instructional_buttons {
