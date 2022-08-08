@@ -48,14 +48,21 @@
 
           <div id="lobby_window" class="menu_window">
             <div class="menu_categories">
-              <button id="lobby_category_0" class="menu_entry menu_category menu_entry_active">Difficulty</button>
-              <button id="lobby_category_1" class="menu_entry menu_category">Heist Clothing</button>
-              <button id="lobby_category_2" class="menu_entry menu_category">Camera Lock</button>
-              <button id="lobby_category_3" class="menu_entry menu_category">Weapons</button>
-              <button id="lobby_category_4" class="menu_entry menu_category">Purchase Rounds x 60</button>
-              <button id="lobby_category_5" class="menu_entry menu_category">Purchase All Ammo</button>
-              <button id="lobby_category_6" class="menu_entry menu_category">Purchase Super Heavy Armor</button>
-              <button id="lobby_category_7" class="menu_entry menu_category">Confirm Settings</button>
+              <div class="menu_categories_scrollable">
+                <button id="lobby_category_0" class="menu_entry menu_category menu_entry_active">
+                  <div class="element_label">Difficulty</div>
+                  <div class="element_list">
+                    <span id="lobby_category_0_0" class="element_label_right">Normal</span>
+                  </div>
+                </button>
+                <button id="lobby_category_1" class="menu_entry menu_category">Heist Clothing</button>
+                <button id="lobby_category_2" class="menu_entry menu_category">Camera Lock</button>
+                <button id="lobby_category_3" class="menu_entry menu_category">Weapons</button>
+                <button id="lobby_category_4" class="menu_entry menu_category">Purchase Rounds x 60</button>
+                <button id="lobby_category_5" class="menu_entry menu_category">Purchase All Ammo</button>
+                <button id="lobby_category_6" class="menu_entry menu_category">Purchase Super Heavy Armor</button>
+                <button id="lobby_category_7" class="menu_entry menu_category">Confirm Settings</button>
+              </div>
               <div class="menu_divider"></div>
               <button id="lobby_category_8" class="menu_entry menu_category menu_entry_empty">Cash</button>
               <button id="lobby_category_9" class="menu_entry menu_category menu_entry_empty">Special Carbine Ammo</button>
@@ -152,7 +159,7 @@
 <script src="js/jquery-3.6.0.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.13.1/jquery-ui.js" type="text/javascript"></script>
 <script src="js/menu_modules/menu_instructional_buttons.js" type="module"></script>
-<!-- <script src="js/store_menu.js" type="module"></script> -->
+<script src="js/lobby_menu.js" type="module"></script>
 <script src="js/common_menu.js" type="module"></script>
 <!-- <script src="js/menu_modules/menu_localization.js" type="module"></script> -->
 

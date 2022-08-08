@@ -61,7 +61,7 @@ div.menu_elements_scrollable .element_list {
 }
 
 span.player_status {
-  background-color: green;
+  background-color: var(--hud-color-heist);
   font-family: "Cologne60";
   font-size: 1.25vw;
   padding: 0 0.25vw;
@@ -202,19 +202,6 @@ div.lobby_details_info {
   width: 100%;
   height: calc(var(--item-height) * 4 + var(--item-margin) * 3);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 div.menu_window_arrows {
   width: var(--menu-elements-width);

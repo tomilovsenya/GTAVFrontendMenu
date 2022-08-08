@@ -427,21 +427,6 @@ function escapeMenuEntriesMiddle() {
   isCategorySelected = false;
 }
 
-let leftArrowSvg = '<img class="menu_entry_arrow_left" src="images/arrow_right.svg"> ';
-let rightArrowSvg = ' <img class="menu_entry_arrow_right" src="images/arrow_right.svg">';
-
-function setRightTextArrows(text) {
-  if (!text.is($(".element_label_arrowed"))) text.addClass("element_label_arrowed");
-  $(".element_label_arrowed").before(leftArrowSvg);
-  $(".element_label_arrowed").after(rightArrowSvg);
-}
-
-function removeRightTextArrows(text) {
-  text.removeClass("element_label_arrowed");
-  text.prev(".menu_entry_arrow_left").remove();
-  text.next(".menu_entry_arrow_right").remove();
-}
-
 function setEntryActive(activatedEntry) {
   activeEntryMiddle = activatedEntry;
   activatedEntry.addClass("menu_entry_active");
@@ -451,7 +436,7 @@ function setEntryActive(activatedEntry) {
 
   let rightLabel = activatedEntry.find(".element_list").children(".element_label_right").first();
   rightLabel.nextAll().hide();
-  if (rightLabel.length != 0) setRightTextArrows(rightLabel);
+  if (rightLabel.length != 0) commonMenu.setRightTextArrows(rightLabel);
 }
 
 function setEntryDisabled(disabledEntry) {
@@ -462,7 +447,7 @@ function setEntryDisabled(disabledEntry) {
   console.log("Set entry disabled: " + disabledEntry.attr("id"));
 
   let rightLabel = disabledEntry.find(".element_list").children(".element_label_right").first();
-  if (rightLabel.length != 0) removeRightTextArrows(rightLabel);
+  if (rightLabel.length != 0) commonMenu.removeRightTextArrows(rightLabel);
 }
 
 let activeCategoryObject = null;
@@ -494,7 +479,7 @@ function setCategoryActive(activatedCategory) {
 function setCategoryDisabled(disabledCategory) {
   disabledCategory.removeClass("menu_entry_active");
   let rightText = disabledCategory.find(".element_label_right");
-  if (rightText.length != 0) removeRightTextArrows(rightText);
+  if (rightText.length != 0) commonMenu.removeRightTextArrows(rightText);
 }
 
 function updateListItems(listItems) {
@@ -504,9 +489,9 @@ function updateListItems(listItems) {
   else currentItem = listItems.children(".element_label_right").eq(0);
   let arrowedItem = listItems.children(".element_label_arrowed");
   listItems.children().hide();
-  removeRightTextArrows(arrowedItem);
+  commonMenu.removeRightTextArrows(arrowedItem);
   currentItem.show();
-  setRightTextArrows(currentItem);
+  commonMenu.setRightTextArrows(currentItem);
 }
 
 //
