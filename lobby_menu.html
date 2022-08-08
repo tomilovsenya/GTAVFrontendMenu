@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+  <title>GTA Online Lobby Menu</title>
+  <link rel="preload" href="/fonts/ChaletComprime-CologneSixty.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/fonts/Chalet-LondonSixty2.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SignPainter-HouseScript2.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Pricedown-GTAVInt.ttf" as="font" type="font/truetype" crossorigin>
+  <link rel="preload" href="/images/bg/background.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background2.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background3.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background4.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background5.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/images/bg/background5.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/js/lang.json" as="fetch" crossorigin>
+  <link rel="stylesheet" href="main_menu.css" />
+  <link rel="stylesheet" href="lobby_menu.css" />
+  <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.css" />
+  <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.structure.css" />
+  <link rel="stylesheet" href="js/jquery-ui-1.13.1/jquery-ui.theme.css" />
+  <meta name="description" content="GTA Online Frontend Menu." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="menu_backdrop">
+    <div class="menu_bounding_box">
+      <!-- <div class="menu_loading_spinner">
+        <img class="menu_loading_spinner" src="images/gtav_savingspinner_ib.png" alt="">
+      </div> -->
+      <div class="frontend_main_menu">
+        <div class="menu_box">
+          <div class="menu_header" tabindex="-1">
+            <p id="menu_header_text">The Humane Labs Raid</p>
+            <span id="menu_header_descr">Get into Humane Labs, and get out with their files. After the EMP is triggered, half the team goes in with night vision, the other half holds off reinforcements in the attack chopper. Then the chopper team collects the ground team.</span>
+          </div>
+          <div class="menu_navbar">
+            <!-- <button id="menu_arrow_left" class="menu_navbar_arrows" tabindex="-1"></button> -->
+            <nav id="menu_navbar_tabs" class="menu_buttons" tabindex="-1">
+              <button id="lobby_tab_0" class="menu_button">SETTINGS</button>
+              <button id="lobby_tab_1" class="menu_button">PLAYERS 1 OF 4</button>
+              <button id="lobby_tab_2" class="menu_button">DETAILS</button>
+            </nav>
+            <!-- <button id="menu_arrow_right" class="menu_navbar_arrows" tabindex="-1"></button> -->
+          </div>
+
+          <div id="lobby_window" class="menu_window">
+            <div class="menu_categories">
+              <button id="lobby_category_0" class="menu_entry menu_category menu_entry_active">Difficulty</button>
+              <button id="lobby_category_1" class="menu_entry menu_category">Heist Clothing</button>
+              <button id="lobby_category_2" class="menu_entry menu_category">Camera Lock</button>
+              <button id="lobby_category_3" class="menu_entry menu_category">Weapons</button>
+              <button id="lobby_category_4" class="menu_entry menu_category">Purchase Rounds x 60</button>
+              <button id="lobby_category_5" class="menu_entry menu_category">Purchase All Ammo</button>
+              <button id="lobby_category_6" class="menu_entry menu_category">Purchase Super Heavy Armor</button>
+              <button id="lobby_category_7" class="menu_entry menu_category">Confirm Settings</button>
+              <div class="menu_divider"></div>
+              <button id="lobby_category_8" class="menu_entry menu_category menu_entry_empty">Cash</button>
+              <button id="lobby_category_9" class="menu_entry menu_category menu_entry_empty">Special Carbine Ammo</button>
+            </div>
+
+            <div id="lobby_elements" class="menu_elements">
+              <div class="lobby_players menu_elements_scrollable">
+                <button id="lobby_players_element_0" class="menu_entry">
+                  <span class="player_joined"></span>
+                  <span class="entry_label element_label_cond">tomilovsenya</span>
+                  <div class="element_list">
+                    <span class="player_status">HOST</span>
+                    <img class="player_control" src="images/icons/control_mouse.svg" alt="">
+                    <div class="player_rank">
+                      <img class="player_rank" src="images/icons/player_rank.svg" alt="">
+                      <span class="player_rank">228</span>
+                    </div>
+                  </div>
+                </button>
+                <button id="lobby_players_element_1" class="menu_entry">
+                  <span class="player_joined"></span>
+                  <span class="entry_label element_label_cond">DarkViperAU</span>
+                  <div class="element_list">
+                    <span class="player_status">JOINED</span>
+                    <img class="player_control" src="images/icons/control_mouse.svg" alt="">
+                    <div class="player_rank">
+                      <img class="player_rank" src="images/icons/player_rank.svg" alt="">
+                      <span class="player_rank player_rank_smaller">8000</span>
+                    </div>
+                  </div>
+                </button>
+                <button id="lobby_players_element_2" class="menu_entry menu_entry_empty"></button>
+                <button id="lobby_players_element_3" class="menu_entry menu_entry_empty"></button>
+              </div>
+
+              <div class="lobby_details">
+                <div class="lobby_details_picture">
+                  <button id="lobby_details_picture_title" class="menu_entry menu_entry_empty">
+                    <span id="lobby_details_picture_title_text" class="element_label">The Humane Labs Raid</span>
+                  </button>
+                </div>
+                <div class="lobby_details_info">
+                  <button id="lobby_details_info_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                    <span class="element_label">Created By</span>
+                    <span class="element_label_right element_label_cond">Rockstar</span>
+                  </button>
+                  <button id="lobby_details_info_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                    <span class="element_label">Opens at Rank</span>
+                    <span class="element_label_right">12</span>
+                  </button>
+                  <button id="lobby_details_info_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                    <span class="element_label">Players</span>
+                    <span class="element_label_right">4</span>
+                  </button>
+                  <button id="lobby_details_info_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
+                    <span class="element_label">Type</span>
+                    <span class="element_label_right">Heist</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu_window_arrows">
+            <button id="store_arrows_content" class="menu_arrows" tabindex="-1">
+              <span id="store_packs_elements_packs_counter" class="element_label"></span>
+              <div class="menu_arrows_zones">
+                <div id="store_arrows_content_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+                <div id="store_arrows_content_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+              </div>
+            </button>
+            <button id="store_arrows_details" class="menu_arrows" tabindex="-1">
+              <div class="menu_arrows_zones">
+                <div id="store_arrows_details_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+                <div id="store_arrows_details_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="menu_instructional_buttons" class="instructional_buttons">
+        <div id="IB_SELECT" class="ib_container">
+          <span class="element_label element_simple_text instructional_button_prompt">Select</span>
+          <img class="instructional_button" src="images/buttons/btn_enter.svg" alt="">
+        </div>
+        <div id="IB_BACK" class="ib_container">
+          <span class="element_label element_simple_text instructional_button_prompt">Back</span>
+          <button class="instructional_button instructional_button_small">Esc</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.13.1/jquery-ui.js" type="text/javascript"></script>
+<script src="js/menu_modules/menu_instructional_buttons.js" type="module"></script>
+<!-- <script src="js/store_menu.js" type="module"></script> -->
+<script src="js/common_menu.js" type="module"></script>
+<!-- <script src="js/menu_modules/menu_localization.js" type="module"></script> -->
+
+</html>
+
+</html>

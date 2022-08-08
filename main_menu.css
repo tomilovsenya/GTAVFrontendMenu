@@ -102,6 +102,7 @@
 
   --hud-color-freemode: rgb(45 110 185);
   --hud-color-heist: rgb(37 102 40);
+  --hud-color-heist-bg: rgba(37, 102, 40, 0.222);
   --hud-color-tech: rgb(0 151 151);
 
   --hud-color-red: rgb(224 50 50);
@@ -452,7 +453,7 @@ div.menu_navbar {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  height: var(--navbar-height);
+  /* height: var(--navbar-height); */
   width: calc(var(--menu-wnd-width) * 1.04);
   margin-bottom: var(--navbar-margin-bottom);
   align-self: center;
@@ -641,6 +642,11 @@ span.element_label {
   font-family: "London60";
   font-size: var(--menu-font-size);
   text-align: left;
+}
+
+span.element_label_cond {
+  font-family: "Cologne60";
+  font-size: 1.4vw;
 }
 
 button.menu_category_list .element_label {
