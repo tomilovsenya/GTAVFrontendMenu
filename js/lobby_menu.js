@@ -49,6 +49,10 @@ function clickEntry() {
 }
 
 function setEntryActive(activatedEntry) {
+  if (activatedEntry.is($(".menu_entry_empty"))) return;
+
+  if (activeEntryMiddle) setEntryDisabled(activeEntryMiddle);
+
   activeEntryMiddle = activatedEntry;
   activatedEntry.addClass("menu_entry_active");
   activatedEntry.focus();

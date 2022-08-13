@@ -102,7 +102,7 @@
 
   --hud-color-freemode: rgb(45 110 185);
   --hud-color-heist: rgb(37 102 40);
-  --hud-color-heist-bg: rgba(37, 102, 40, 0.222);
+  --hud-color-heist-bg: rgba(57, 102, 57, 0.66);
   --hud-color-tech: rgb(0 151 151);
 
   --hud-color-red: rgb(224 50 50);
@@ -332,6 +332,34 @@ C {
 
 .bg_color_freemode_alpha {
   background-color: rgba(45, 110, 185, 0.25);
+}
+
+blip[data-blip-type="dot"] {
+  width: 0.8vw;
+  height: 0.8vw;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.1vw;
+  /* outline: 0.15vw solid white; */
+}
+
+blip[data-blip-type="icon"] {
+  background-origin: content-box;
+  -webkit-mask-image: url(images/icons/blip_heist.svg);
+  -webkit-mask-size: cover;
+  width: 1.25vw;
+  height: 1.25vw;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+blip[data-blip-color="yellow"] {
+  background-color: var(--hud-color-yellow);
+}
+
+blip[data-blip-color="green-heist"] {
+  background-color: var(--hud-color-heist);
 }
 
 /*#endregion Markup*/
