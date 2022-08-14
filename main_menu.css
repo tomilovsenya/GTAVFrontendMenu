@@ -1080,11 +1080,7 @@ div.menu_elements_scrollable .menu_entry {
 
 div.menu_background_rockstar {
   background-image: url(images/rockstar_bg.svg);
-  /* background-blend-mode: multiply; */
   background-size: cover;
-  background-repeat: repeat-x;
-  /* background-repeat: repeat round; */
-  /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.52), rgba(255, 255, 255, 0)) */
 }
 
 /*#endregion MenuContent*/

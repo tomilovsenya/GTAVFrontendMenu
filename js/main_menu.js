@@ -3,6 +3,7 @@
 //
 
 const MENU_PAGE = document.documentElement;
+const STORE_MENU = "/store_menu.html";
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 
@@ -248,6 +249,7 @@ window.addEventListener(
     }
     if (["Enter"].indexOf(e.code) > -1) {
       if (isWarningMessageActive) hideWarningMessage();
+      else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
       else scrollLeftRight(1);
     }
     // if (["Tab"].indexOf(e.code) > -1) {
@@ -907,6 +909,10 @@ function setFirstTab() {
   console.log("First button is: " + activeTab.attr("id"));
 }
 
+function enterStoreMenu() {
+  window.location.href = STORE_MENU;
+}
+
 function activeWindowHandler(activeTab) {
   let currentWindow = activeWindow.id;
 
@@ -939,13 +945,13 @@ function activeWindowHandler(activeTab) {
       if ($("#menu_game_elements_missions").children(".menu_entry").length <= 16) $("#menu_arrows_game").hide();
       if (activeEntryMiddle) updateMissionInfo(activeEntryMiddle.index());
       break;
-    case menuContent.MENU_TAB_FRIENDS.id:
-      updateFriendCounter();
-      updateFriendName();
-      break;
     case menuContent.MENU_TAB_ONLINE.id:
       activeWindow.window.children(".menu_elements").hide();
       if (activeCategoryElements) activeCategoryElements.show();
+      break;
+    case menuContent.MENU_TAB_FRIENDS.id:
+      updateFriendCounter();
+      updateFriendName();
       break;
     case menuContent.MENU_TAB_SAVE.id:
       activeCategoryElements = $(".menu_save_list");
