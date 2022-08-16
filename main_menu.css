@@ -215,17 +215,26 @@ div.instructional_buttons {
   background-color: var(--black-bg-color);
   color: white;
   /* width: 500px; */
+  width: fit-content;
   height: 2.25vw;
   border-radius: 0.2vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: flex-end;
+  align-items: center;
   align-self: flex-end;
   justify-self: flex-end;
   z-index: 10;
   /* margin-top: -35px; */
   margin-bottom: 0.8vw;
   margin-right: 1.5vw;
-  display: flex;
-  align-items: center;
   padding: 0 0.5vw;
+}
+
+div.instructional_buttons_group {
+  display: flex;
+  justify-items: flex-end;
+  flex-wrap: wrap-reverse;
 }
 
 span.instructional_button_prompt {
@@ -492,6 +501,7 @@ nav.menu_buttons {
   align-self: center;
   background-color: transparent;
   width: var(--menu-wnd-width);
+  max-width: var(--menu-wnd-width);
   height: var(--navbar-height);
   /* height: 39px; */
   border: 0px;
@@ -670,11 +680,15 @@ span.element_label {
   font-family: "London60";
   font-size: var(--menu-font-size);
   text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 span.element_label_cond {
   font-family: "Cologne60";
   font-size: 1.4vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 button.menu_category_list .element_label {

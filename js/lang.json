@@ -486,6 +486,32 @@
   },
 
   {
+    "gxt": "menu_game_category_0",
+    "american": "Replay Mission",
+    "russian": "Начать задание заново"
+  },
+  {
+    "gxt": "menu_game_category_1",
+    "american": "Replay Stranger and Freaks",
+    "russian": "Чудаки и прочие незнакомцы - заново"
+  },
+  {
+    "gxt": "menu_game_category_2",
+    "american": "Load Game",
+    "russian": "Загрузить игру"
+  },
+  {
+    "gxt": "menu_game_category_3",
+    "american": "New Game",
+    "russian": "Новая игра"
+  },
+  {
+    "gxt": "menu_game_category_4",
+    "american": "Exit Game",
+    "russian": "Выйти из игры"
+  },
+
+  {
     "gxt": "menu_game_elements_missions_0",
     "american": "Prologue",
     "russian": "Пролог"
