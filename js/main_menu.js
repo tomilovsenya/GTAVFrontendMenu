@@ -13,8 +13,9 @@ let activeTab = null;
 let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
-let initWindow = menuContent.MENU_TAB_MAP;
+let initWindow = menuContent.MENU_TABS[0];
 let activeWindow = initWindow;
+
 let currentOverflows = {
   // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
   overflowsDialogue: [-1, 8],
@@ -905,6 +906,7 @@ function setTabNameStar(index) {
   setTabName(index, "&starf; " + $(".menu_button").html());
 }
 function setInitialTab() {
+  activeTab = initWindow.id;
   $(".menu_window").hide();
   initWindow.window.show();
   initWindow.id[0].scrollIntoView(false);
