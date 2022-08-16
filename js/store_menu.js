@@ -2,7 +2,7 @@
 // IMPORTS AND CONSTANTS
 //
 
-import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
+// import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import * as commonMenu from "./common_menu.js";
 

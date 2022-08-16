@@ -3,6 +3,7 @@
 //
 
 const MENU_PAGE = document.documentElement;
+const THIS_PAGE = "MAIN_MENU";
 const STORE_MENU = "/store_menu.html";
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
@@ -27,7 +28,7 @@ let currentOverflows = {
 
 import * as menuContent from "./menu_modules/menu_content.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
-import { fillHundredCompletionWindow } from "./menu_modules/menu_stats_100_completion.js";
+import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import { drawMap } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
@@ -39,6 +40,7 @@ import {
   hideInstrLoadingSpinner,
   setStartupInstr,
   setInstrContainerVisibility,
+  handleInstructionalButtons,
 } from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
@@ -102,6 +104,7 @@ function initMenuContent() {
   activeWindow.id.trigger("tabActive");
   setActiveWindow(activeWindow);
   fillReplayMissionList();
+  initHundredCompletionChart();
 }
 
 function showMenu() {
@@ -202,56 +205,60 @@ window.addEventListener(
   function (e) {
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
-    if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
-      e.preventDefault();
-    }
-    if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
-      e.preventDefault();
-      scrollUpDown(1);
-      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(1, $("#menu_save_list"));
-    }
-    if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
-      e.preventDefault();
-      scrollUpDown(0);
-      if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(0, $("#menu_save_list"));
-    }
-    if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
-      e.preventDefault();
-      scrollLeftRight(0);
-      scrollPerc(0);
-    }
-    if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
-      e.preventDefault();
-      scrollLeftRight(1);
-      scrollPerc(1);
-    }
-    if (["KeyQ"].indexOf(e.code) > -1) {
-      scrollTab(0);
-    }
-    if (["KeyE"].indexOf(e.code) > -1) {
-      scrollTab(1);
-    }
-    if (["KeyF"].indexOf(e.code) > -1) {
-      // sendMissionText("Go to <ylw>Trevor's house.</ylw>");
-      showInstrLoadingSpinner();
-    }
-    if (["KeyG"].indexOf(e.code) > -1) {
-      hideInstrLoadingSpinner();
-    }
-    if (["KeyZ"].indexOf(e.code) > -1) {
-      showWarningMessage("warning_message_header", "warning_message_text");
-    }
-    if (["KeyX"].indexOf(e.code) > -1) {
-    }
-    if (["Escape", "Backspace"].indexOf(e.code) > -1) {
-      if (isWarningMessageActive) hideWarningMessage();
-      else escapeMenuEntriesMiddle();
-    }
-    if (["Enter"].indexOf(e.code) > -1) {
-      if (isWarningMessageActive) hideWarningMessage();
-      else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
-      else scrollLeftRight(1);
-    }
+
+    // e.preventDefault();
+    handleInstructionalButtons(THIS_PAGE, activeWindow, e.code);
+
+    // if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+    //   e.preventDefault();
+    // }
+    // if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
+    //   e.preventDefault();
+    //   scrollUpDown(1);
+    //   if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(1, $("#menu_save_list"));
+    // }
+    // if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
+    //   e.preventDefault();
+    //   scrollUpDown(0);
+    //   if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(0, $("#menu_save_list"));
+    // }
+    // if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
+    //   e.preventDefault();
+    //   scrollLeftRight(0);
+    //   scrollPerc(0);
+    // }
+    // if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
+    //   e.preventDefault();
+    //   scrollLeftRight(1);
+    //   scrollPerc(1);
+    // }
+    // if (["KeyQ"].indexOf(e.code) > -1) {
+    //   scrollTab(0);
+    // }
+    // if (["KeyE"].indexOf(e.code) > -1) {
+    //   scrollTab(1);
+    // }
+    // if (["KeyF"].indexOf(e.code) > -1) {
+    //   // sendMissionText("Go to <ylw>Trevor's house.</ylw>");
+    //   showInstrLoadingSpinner();
+    // }
+    // if (["KeyG"].indexOf(e.code) > -1) {
+    //   hideInstrLoadingSpinner();
+    // }
+    // if (["KeyZ"].indexOf(e.code) > -1) {
+    //   showWarningMessage("warning_message_header", "warning_message_text");
+    // }
+    // if (["KeyX"].indexOf(e.code) > -1) {
+    // }
+    // if (["Escape", "Backspace"].indexOf(e.code) > -1) {
+    //   if (isWarningMessageActive) hideWarningMessage();
+    //   else escapeMenuEntriesMiddle();
+    // }
+    // if (["Enter"].indexOf(e.code) > -1) {
+    //   if (isWarningMessageActive) hideWarningMessage();
+    //   else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
+    //   else scrollLeftRight(1);
+    // }
     // if (["Tab"].indexOf(e.code) > -1) {
     //   e.preventDefault();
     //   toggleMenuVisibility();
@@ -415,7 +422,7 @@ function clickEntry() {
     );
 }
 
-function enterMenuEntriesMiddle(triggeredCategoryElements) {
+export function enterMenuEntriesMiddle(triggeredCategoryElements) {
   let firstEntry = triggeredCategoryElements.find(".menu_elements_scrollable").find(".menu_entry").first();
   console.log("Selected cat: " + triggeredCategoryElements.attr("id"));
   console.log("First entry in the cat: " + firstEntry.attr("id"));
@@ -424,7 +431,7 @@ function enterMenuEntriesMiddle(triggeredCategoryElements) {
   isCategorySelected = true;
 }
 
-function escapeMenuEntriesMiddle() {
+export function escapeMenuEntriesMiddle() {
   if (activeEntryMiddle) activeEntryMiddle.trigger("categoryDisabled");
   isCategorySelected = false;
 }
@@ -504,7 +511,7 @@ function updateListItems(listItems) {
 //   activeTab.trigger
 // }
 
-function scrollTab(scrollDir) {
+export function scrollTab(scrollDir) {
   if ($(".menu_buttons").children().length <= 1) return;
   switch (scrollDir) {
     case 0:
@@ -572,7 +579,7 @@ function scrollPerc(scrollDir) {
   } else console.log("Function scrollPerc(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
 }
 
-function scrollLeftRight(scrollDir) {
+export function scrollLeftRight(scrollDir) {
   // Don't scroll if no active category
   if (!activeCategory) return;
 
@@ -606,7 +613,7 @@ function scrollLeftRight(scrollDir) {
   } else console.log("Function scrollLeftRight(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
 }
 
-function scrollSaves(scrollDir, scrollableElements) {
+export function scrollSaves(scrollDir, scrollableElements) {
   if (activeEntryMiddle == null) return;
   let tabElements = scrollableElements.find(".menu_entry[id]");
 
@@ -625,7 +632,7 @@ function scrollSaves(scrollDir, scrollableElements) {
   } else console.log("Function scrollSaves(scrollDir, scrollableElements) only accepts scrollDir = 0 (up) or 1 (down)");
 }
 
-function scrollUpDown(scrollDir) {
+export function scrollUpDown(scrollDir) {
   if (!activeCategory) return;
 
   let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
@@ -909,7 +916,7 @@ function setFirstTab() {
   console.log("First button is: " + activeTab.attr("id"));
 }
 
-function enterStoreMenu() {
+export function enterStoreMenu() {
   window.location.href = STORE_MENU;
 }
 
@@ -960,7 +967,7 @@ function activeWindowHandler(activeTab) {
       break;
     default:
       console.log(`Nothing was handled this time.
-Check if the active window with ID ${activeWindow.window.attr("id")} contains any categories or elements`);
+Check if the active window with ID ${activeWindow.id.attr("id")} contains any categories or elements`);
       break;
   }
 

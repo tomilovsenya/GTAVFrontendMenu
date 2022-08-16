@@ -112,45 +112,47 @@ function fillCompletionBar(tasksCompleted, tasksTotal, progressBar) {
 // 100% COMPLETION CHART
 //
 
-var ctx = document.getElementById("menu_stats_100_completion_chart").getContext("2d");
+export function initHundredCompletionChart() {
+  const CHART_100_COMPLETION = document.getElementById("menu_stats_100_completion_chart").getContext("2d");
 
-const data = {
-  labels: ["Missions", "Hobbies", "Strangers", "Events", "Misc", "Remaining"],
-  datasets: [
-    {
-      label: "100% Completion",
-      data: [
-        missionsPercentage,
-        hobbiesPercentage,
-        strangersPercentage,
-        randomPercentage,
-        miscPercentage,
-        remainingPercentage,
-      ],
-      backgroundColor: ["gold", "lightgreen", "lightblue", "orange", "red", "black"],
-    },
-  ],
-};
+  const data = {
+    labels: ["Missions", "Hobbies", "Strangers", "Events", "Misc", "Remaining"],
+    datasets: [
+      {
+        label: "100% Completion",
+        data: [
+          missionsPercentage,
+          hobbiesPercentage,
+          strangersPercentage,
+          randomPercentage,
+          miscPercentage,
+          remainingPercentage,
+        ],
+        backgroundColor: ["gold", "lightgreen", "lightblue", "orange", "red", "black"],
+      },
+    ],
+  };
 
-var menu_stats_100_completion_chart = new Chart(ctx, {
-  type: "doughnut",
-  data: data,
-  options: {
-    cutout: "62.5%",
-    animation: false,
-    events: [],
-    plugins: {
-      legend: {
-        display: false,
+  var menu_stats_100_completion_chart = new Chart(CHART_100_COMPLETION, {
+    type: "doughnut",
+    data: data,
+    options: {
+      cutout: "62.5%",
+      animation: false,
+      events: [],
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      tooltips: {
+        enabled: false,
+      },
+      elements: {
+        arc: {
+          borderWidth: 0,
+        },
       },
     },
-    tooltips: {
-      enabled: false,
-    },
-    elements: {
-      arc: {
-        borderWidth: 0,
-      },
-    },
-  },
-});
+  });
+}

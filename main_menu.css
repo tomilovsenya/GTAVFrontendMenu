@@ -45,7 +45,7 @@
 /* --navbar-margin-arrow: calc(var(--menu-wnd-width) / -60); */
 
 :root {
-  --menu-background: url("images/bg/background3.jpg");
+  --menu-background: url("images/bg/background2.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
@@ -1117,6 +1117,10 @@ div.menu_map {
 
 #menu_map_image {
   display: none;
+}
+
+#menu_map_window {
+  outline: 0;
 }
 
 /*#endregion MenuTabMap*/
