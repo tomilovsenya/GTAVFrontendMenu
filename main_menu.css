@@ -274,14 +274,8 @@ div.ib_container:last-of-type {
 
 /* @media only screen and (max-width: 1280px) {
   :root {
-    --menu-wnd-width: 100%;
-    --menu-wnd-height: 100%;
-  }
-  .menu_bounding_box {
-    min-width: 100%;
-  }
-  .frontend_main_menu {
-    min-width: 70%;
+    --menu-wnd-width: 92.5vw;
+    --menu-box-height: 58.84225vw;
   }
 } */
 
@@ -390,16 +384,23 @@ div.frontend_main_menu {
 }
 
 div.menu_box {
+  /* background-color: rgba(137, 43, 226, 0.454); */
+  width: var(--menu-wnd-width);
+  height: var(--menu-box-height);
+  aspect-ratio: 67.8125 / 43.125;
   display: flex;
   flex-direction: column;
-  width: var(--menu-wnd-width);
-  max-width: calc(var(--menu-wnd-width) * 2);
-  height: var(--menu-box-height);
   justify-content: flex-start;
   /* animation: fadeInAnimation ease 0.25s; */
 }
 
 div.menu_window {
+  background-color: transparent;
+  min-width: var(--menu-wnd-width);
+  max-height: var(--menu-wnd-height);
+  aspect-ratio: 67.8125 / 33.55;
+  border: 0px;
+  margin-bottom: 0px;
   animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
   position: relative;
 }
@@ -1102,8 +1103,6 @@ div.menu_background_rockstar {
 /*#region MenuTabMap*/
 div.menu_map {
   background-color: var(--black-bg-color);
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
   border: 0px;
   margin-bottom: 0px;
   display: flex;
@@ -1128,8 +1127,6 @@ div.menu_map {
 /*#region MenuTabBrief*/
 div.menu_brief {
   background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
   border: 0px;
   margin-bottom: 0px;
   display: flex;
@@ -1332,10 +1329,6 @@ div.menu_brief .notification_string_text {
 
 /*#region MenuTabStats*/
 div.menu_stats {
-  background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -1548,11 +1541,6 @@ div#menu_stats_100_completion #menu_stats_100_completion_progress_4>.element_pro
 
 /*#region MenuTabSettings*/
 div.menu_settings {
-  background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1668,11 +1656,6 @@ div#menu_settings_graphics .menu_elements_scrollable {
 
 /*#region MenuTabGame*/
 div.menu_game {
-  background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1867,11 +1850,6 @@ button.menu_arrows_game {
 
 /*#region MenuTabOnline*/
 div.menu_online {
-  background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1888,11 +1866,6 @@ div.menu_online .menu_elements {
 
 /*#region MenuTabFriends*/
 div.menu_friends {
-  background-color: transpbarent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1922,7 +1895,18 @@ div.menu_friends_character {
   justify-content: flex-end;
 }
 
-div.menu_friends_character .menu_entry {
+div#menu_friends_character_model {
+  /* background-color: rgba(0, 255, 255, 0.103); */
+  width: 100%;
+  height: 100%;
+}
+
+#menu_friends_character_model_viewer {
+  width: 100%;
+  height: 100%;
+}
+
+button#menu_friends_character_status {
   margin-bottom: 0;
 }
 
@@ -1977,11 +1961,6 @@ button.menu_arrows_friends {
 
 /*#region MenuTabGallery*/
 div.menu_gallery {
-  background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -2101,10 +2080,6 @@ button.menu_arrows_gallery .menu_arrows_zones {
 /*#region MenuTabStore*/
 div.menu_store {
   background-color: var(--black-bg-color);
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   /* justify-content: space-between; */
@@ -2121,10 +2096,6 @@ div.menu_store {
 /*#region MenuTabReplay*/
 div.menu_replay {
   background-color: var(--black-bg-color);
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -2141,11 +2112,6 @@ div.menu_replay {
 
 /*#region MenuTabSave*/
 div#menu_save {
-  background-color: transparent;
-  width: var(--menu-wnd-width);
-  height: fit-content;
-  border: 0px;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: column;
   white-space: nowrap;
