@@ -8,8 +8,8 @@ export function drawMap() {
   var mapWidth = mapImage.width();
   var mapHeight = mapImage.height();
 
-  var map = L.map("menu_map_window", {
-    center: [mapWidth / 2, mapHeight / 2],
+  var map = L.map("menu_map", {
+    center: [mapWidth, mapHeight],
     zoom: 2,
     zoomControl: false,
     minZoom: 0,

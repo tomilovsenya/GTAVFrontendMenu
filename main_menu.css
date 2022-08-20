@@ -1101,14 +1101,14 @@ div.menu_background_rockstar {
 /*#endregion MenuContent*/
 
 /*#region MenuTabMap*/
-div.menu_map {
+div#menu_map {
   background-color: var(--black-bg-color);
   border: 0px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: column;
   white-space: nowrap;
-  display: flex;
+  outline: 0;
   overflow: hidden;
   /* display: none; */
   /* animation: 250ms ease 0ms 1 normal none running fadeInMapAnimation; */
@@ -1116,10 +1116,6 @@ div.menu_map {
 
 #menu_map_image {
   display: none;
-}
-
-#menu_map_window {
-  outline: 0;
 }
 
 /*#endregion MenuTabMap*/
