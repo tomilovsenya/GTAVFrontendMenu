@@ -54,6 +54,9 @@
   --focus-color: white;
   --hover-color: #68686877;
 
+  --menu-safezone-top: 1vw;
+  --menu-safezone-sides: 1.25vw;
+
   --menu-wnd-width: 67.8125vw;
   --menu-wnd-height: 33.55vw;
   --menu-box-height: 43.125vw;
@@ -226,8 +229,8 @@ div.instructional_buttons {
   justify-self: flex-end;
   z-index: 10;
   /* margin-top: -35px; */
-  margin-bottom: 0.8vw;
-  margin-right: 1.5vw;
+  margin-bottom: var(--menu-safezone-top);
+  margin-right: var(--menu-safezone-sides);
   padding: 0 0.5vw;
 }
 
@@ -1123,6 +1126,43 @@ div.menu_map_fullscreen {
   left: 0;
   /* visibility: hidden; */
   z-index: 10;
+}
+
+div.menu_map:not(.menu_map_fullscreen) #menu_map_fullscreen_elements {
+  display: none;
+}
+
+div#menu_map_fullscreen_elements {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: var(--menu-safezone-top);
+  padding-bottom: var(--menu-safezone-top);
+  z-index: 1000;
+}
+
+button#menu_map_fullscreen_area_name {
+  background-color: var(--black-bg-color);
+  width: fit-content;
+  align-self: flex-end;
+  margin-left: var(--menu-safezone-sides);
+  pointer-events: none;
+}
+
+div.menu_map_fullscreen_legend {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: var(--menu-safezone-sides);
+}
+
+div.menu_map_fullscreen_legend .menu_entry_legend {
+  width: min-content;
 }
 
 img#menu_map_image {
