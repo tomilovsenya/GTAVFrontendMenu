@@ -340,6 +340,21 @@ C {
   background-color: rgba(45, 110, 185, 0.25);
 }
 
+svg.blip_icon {
+  width: 1.25vw;
+  height: 1.25vw;
+  vertical-align: middle;
+  paint-order: markers stroke fill;
+  stroke-width: 100;
+  stroke: black;
+  stroke-linejoin: round;
+}
+
+#BLIP_HEIST {
+  fill: var(--hud-color-heist);
+
+}
+
 blip[data-blip-type="dot"] {
   width: 0.8vw;
   height: 0.8vw;
@@ -350,22 +365,8 @@ blip[data-blip-type="dot"] {
   /* outline: 0.15vw solid white; */
 }
 
-blip[data-blip-type="icon"] {
-  background-origin: content-box;
-  -webkit-mask-image: url(images/icons/blip_heist.svg);
-  -webkit-mask-size: cover;
-  width: 1.25vw;
-  height: 1.25vw;
-  display: inline-block;
-  vertical-align: middle;
-}
-
 blip[data-blip-color="yellow"] {
   background-color: var(--hud-color-yellow);
-}
-
-blip[data-blip-color="green-heist"] {
-  background-color: var(--hud-color-heist);
 }
 
 /*#endregion Markup*/
@@ -678,6 +679,10 @@ button.menu_entry .menu_entry_zone_right {
   height: 100%;
   top: 0;
   right: 0;
+}
+
+button.menu_entry_legend {
+  gap: 0.5vw;
 }
 
 span.element_label {
@@ -1149,6 +1154,7 @@ button#menu_map_fullscreen_area_name {
   width: fit-content;
   align-self: flex-end;
   margin-left: var(--menu-safezone-sides);
+  margin-bottom: 0;
   pointer-events: none;
 }
 
