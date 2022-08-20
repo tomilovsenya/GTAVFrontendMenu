@@ -31,7 +31,7 @@ import * as menuContent from "./menu_modules/menu_content.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
-import { drawMap } from "./menu_modules/menu_map.js";
+import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
@@ -113,12 +113,12 @@ function showMenu() {
   setInstrContainerVisibility(true);
   FRONTEND_MAIN_MENU.css({ visibility: "visible" });
   FRONTEND_MAIN_MENU.show();
-  drawMap();
 }
 
 function onMenuLoad() {
   initMenuContent();
   showMenu();
+  drawMap();
 }
 
 window.onload = () => {
@@ -247,9 +247,11 @@ window.addEventListener(
     //   hideInstrLoadingSpinner();
     // }
     // if (["KeyZ"].indexOf(e.code) > -1) {
-    //   showWarningMessage("warning_message_header", "warning_message_text");
+    //   // showWarningMessage("warning_message_header", "warning_message_text");
+    //   // $("#menu_map").removeClass("menu_map_fullscreen");
     // }
     // if (["KeyX"].indexOf(e.code) > -1) {
+    //   // $("#menu_map").addClass("menu_map_fullscreen");
     // }
     // if (["Escape", "Backspace"].indexOf(e.code) > -1) {
     //   if (isWarningMessageActive) hideWarningMessage();
@@ -894,6 +896,16 @@ export function toggleMenuVisibility() {
     FRONTEND_MAIN_MENU.css({ visibility: "visible" });
     activeWindow.window.css({ visibility: "visible" });
     menuVisibility = true;
+  }
+}
+
+export function hideMapBackground(isToHide) {
+  if (isToHide) {
+    $(".menu_header").css({ visibility: "hidden" });
+    $(".menu_navbar").css({ visibility: "hidden" });
+  } else {
+    $(".menu_header").css({ visibility: "visible" });
+    $(".menu_navbar").css({ visibility: "visible" });
   }
 }
 

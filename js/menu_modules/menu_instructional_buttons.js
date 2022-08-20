@@ -10,6 +10,7 @@ import {
   scrollSaves,
 } from "../main_menu.js";
 import * as menuContent from "./menu_content.js";
+import { enterMapFullscreen, escapeMapFullscreen } from "./menu_map.js";
 
 //
 // CONSTANTS
@@ -29,6 +30,8 @@ const INPUT_FRONTEND_LEFT = ["KeyA", "ArrowLeft"];
 const INPUT_FRONTEND_RIGHT = ["KeyD", "ArrowRight"];
 const INPUT_FRONTEND_ACCEPT = ["Enter"];
 const INPUT_FRONTEND_CANCEL = ["Escape", "Backspace"];
+
+let TAB_SCROLLING_ALLOWED = true;
 
 // $("#IB_HIDE_MENU").click(toggleMenuVisibility);
 // $("#IB_HIDE_MENU").trigger("changeText", ["Show Menu"]);
@@ -70,8 +73,10 @@ export function setInstrContainerVisibility(isVisible) {
 export function handleInstructionalButtons(currentPage, currentContext, buttonPressed) {
   switch (currentPage) {
     case "MAIN_MENU":
-      if (INPUT_FRONTEND_TAB_LEFT.indexOf(buttonPressed) > -1) scrollTab(0);
-      if (INPUT_FRONTEND_TAB_RIGHT.indexOf(buttonPressed) > -1) scrollTab(1);
+      if (TAB_SCROLLING_ALLOWED) {
+        if (INPUT_FRONTEND_TAB_LEFT.indexOf(buttonPressed) > -1) scrollTab(0);
+        if (INPUT_FRONTEND_TAB_RIGHT.indexOf(buttonPressed) > -1) scrollTab(1);
+      }
       if (INPUT_FRONTEND_CANCEL.indexOf(buttonPressed) > -1) escapeMenuEntriesMiddle();
       break;
     case "STORE_MENU":
@@ -82,6 +87,14 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
 
   switch (currentContext) {
     case menuContent.MENU_TAB_MAP:
+      if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) {
+        TAB_SCROLLING_ALLOWED = false;
+        enterMapFullscreen();
+      }
+      if (INPUT_FRONTEND_CANCEL.indexOf(buttonPressed) > -1) {
+        TAB_SCROLLING_ALLOWED = true;
+        escapeMapFullscreen();
+      }
       break;
     case menuContent.MENU_TAB_BRIEF:
       if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);

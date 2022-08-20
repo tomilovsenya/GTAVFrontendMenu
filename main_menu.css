@@ -1101,7 +1101,7 @@ div.menu_background_rockstar {
 /*#endregion MenuContent*/
 
 /*#region MenuTabMap*/
-div#menu_map {
+div.menu_map {
   background-color: var(--black-bg-color);
   border: 0px;
   margin-bottom: 0px;
@@ -1114,7 +1114,18 @@ div#menu_map {
   /* animation: 250ms ease 0ms 1 normal none running fadeInMapAnimation; */
 }
 
-#menu_map_image {
+div.menu_map_fullscreen {
+  /* background-color: rgba(0, 255, 255, 0.149); */
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* visibility: hidden; */
+  z-index: 10;
+}
+
+img#menu_map_image {
   display: none;
 }
 
