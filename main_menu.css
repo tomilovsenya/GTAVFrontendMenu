@@ -352,21 +352,18 @@ svg.blip_icon {
 
 #BLIP_HEIST {
   fill: var(--hud-color-heist);
-
 }
 
-blip[data-blip-type="dot"] {
+span.blip_dot {
+  background-color: var(--hud-color-yellow);
   width: 0.8vw;
   height: 0.8vw;
   border-radius: 50%;
+  border: 0.15vw solid black;
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.1vw;
   /* outline: 0.15vw solid white; */
-}
-
-blip[data-blip-color="yellow"] {
-  background-color: var(--hud-color-yellow);
 }
 
 /*#endregion Markup*/
@@ -639,7 +636,7 @@ button.menu_entry {
   height: var(--item-height);
   position: relative;
   min-height: var(--item-height);
-  margin-bottom: var(--item-margin);
+  /* margin-bottom: var(--item-margin); */
   padding: 0;
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
@@ -1043,6 +1040,7 @@ div.menu_categories {
   flex-direction: column;
   justify-content: flex-start;
   align-self: flex-start;
+  gap: var(--item-margin);
 }
 
 div.menu_categories .menu_category:last-of-type {
@@ -1076,6 +1074,7 @@ div.menu_elements {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: var(--item-margin);
   /* margin-bottom: 0.95%; */
   /* z-index: 1; */
   /* align-self: right; */
@@ -1605,7 +1604,7 @@ div.menu_settings {
 }
 
 div.menu_settings .menu_elements_header {
-  margin-bottom: var(--item-margin);
+  /* margin-bottom: var(--item-margin); */
   background-color: var(--black-bg-color);
 }
 
