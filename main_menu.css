@@ -1171,12 +1171,29 @@ div.menu_map_fullscreen_legend {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  padding-right: var(--menu-safezone-sides);
+}
+
+div.menu_map_fullscreen_legend .menu_elements_scrollable {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   gap: var(--item-margin);
-  margin-right: var(--menu-safezone-sides);
 }
 
 div.menu_map_fullscreen_legend .menu_entry_legend {
   width: min-content;
+}
+
+
+button#menu_map_legend_counter:hover {
+  background-color: var(--black-bg-color);
+  /* justify-content: flex-end; */
+}
+
+span#menu_map_legend_counter_string {
+  
+  /* text-align: right; */
 }
 
 button.menu_arrows_map_legend {

@@ -416,7 +416,7 @@ function clickCategory() {
   activeWindowHandler(activeTab);
 }
 
-function clickEntry() {
+export function clickEntry() {
   triggerEntry($(this));
   if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
   else

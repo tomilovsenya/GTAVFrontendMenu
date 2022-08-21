@@ -2,12 +2,15 @@
 // NEW MAP
 //
 
-import { hideMapBackground } from "../main_menu.js";
+import { clickEntry, hideMapBackground } from "../main_menu.js";
 
 var mapImage = $("#menu_map_image");
 var mapImageUrl = mapImage.attr("src");
 var mapWidth = mapImage.width();
 var mapHeight = mapImage.height();
+
+let activeLegendElement = null;
+let firstLegendElement = $(".menu_map_fullscreen_legend").find(".menu_entry_legend").first();
 
 var heistIcon = L.icon({
   iconUrl: "images/icons/blip_heist.svg",
@@ -68,18 +71,6 @@ export function drawMap() {
 
 export function invalidateMap() {
   menuMainMap.invalidateSize();
-}
-
-export function enterMapFullscreen() {
-  hideMapBackground(true);
-  $("#menu_map").addClass("menu_map_fullscreen");
-  menuMainMap.options.minZoom = -2;
-  menuMainMap. pm.addControls({
-    position: "topleft",
-    drawCircle: false,
-  });
-  addMapAreas();
-  invalidateMap();
 }
 
 var mainMapAreas = [
@@ -158,10 +149,90 @@ function addMapAreas() {
   }).addTo(menuMainMap);
 }
 
+export function enterMapFullscreen() {
+  hideMapBackground(true);
+  $("#menu_map").addClass("menu_map_fullscreen");
+  menuMainMap.options.minZoom = -2;
+  // menuMainMap.pm.addControls({
+  //   position: "topleft",
+  //   drawCircle: false,
+  // });
+  addMapAreas();
+  invalidateMap();
+  clickLegendEntry(firstLegendElement);
+}
+
 export function escapeMapFullscreen() {
   hideMapBackground(false);
   $("#menu_map").removeClass("menu_map_fullscreen");
   menuMainMap.options.minZoom = -1;
   menuMainMap.fitBounds(mapImageBounds);
   invalidateMap();
+}
+
+$(".menu_entry_legend").click("click", function () {
+  clickLegendEntry($(this));
+});
+
+function clickLegendEntry(clickedEntry) {
+  triggerLegendEntry(clickedEntry);
+  updateLegendCounter();
+}
+
+function triggerLegendEntry(triggeredEntry) {
+  if (triggeredEntry.is(".menu_arrows")) return;
+
+  if (activeLegendElement) activeLegendElement.trigger("entryDisabled");
+  triggeredEntry.trigger("entryActive");
+  activeLegendElement = triggeredEntry;
+}
+
+$(".menu_entry_legend").on("entryActive", function () {
+  $(this).addClass("menu_entry_active");
+});
+
+$(".menu_entry_legend").on("entryDisabled", function () {
+  $(this).removeClass("menu_entry_active");
+});
+
+$("#menu_arrows_map_legend_up").click("click", function () {
+  scrollLegendElements(0);
+});
+$("#menu_arrows_map_legend_down").click("click", function () {
+  scrollLegendElements(1);
+});
+
+function updateLegendCounter() {
+  let currentLegendElement =
+    $(".menu_map_fullscreen_legend").children(".menu_elements_scrollable").children(".menu_entry_active").index() + 1;
+  let totalLegendElements = $(".menu_map_fullscreen_legend")
+    .children(".menu_elements_scrollable")
+    .children(".menu_entry_legend").length;
+
+  let counterString = currentLegendElement + "/" + totalLegendElements;
+  $("#menu_map_legend_counter_string").text(counterString);
+}
+
+export function scrollLegendElements(scrollDir) {
+  if (!activeLegendElement) return;
+
+  let legendElements = $(".menu_map_fullscreen_legend")
+    .children(".menu_elements_scrollable")
+    .children(".menu_entry_legend");
+
+  if (scrollDir == 0) {
+    if (!activeLegendElement.is(legendElements.first())) {
+      let nextEntry = activeLegendElement.prev();
+      if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.prev());
+      else triggerLegendEntry(nextEntry);
+    } else triggerLegendEntry(legendElements.last());
+  } else if (scrollDir == 1) {
+    if (!activeLegendElement.is(legendElements.last())) {
+      let nextEntry = activeLegendElement.next();
+      if (nextEntry.is(".menu_entry_empty")) triggerEntry(nextEntry.next());
+      else triggerLegendEntry(nextEntry);
+    } else triggerLegendEntry(legendElements.first());
+  } else console.log("Function scrollLegendElements(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
+
+  updateLegendCounter();
 }
