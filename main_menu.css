@@ -1172,6 +1172,7 @@ div.menu_map_fullscreen_legend {
   flex-direction: column;
   align-items: flex-end;
   padding-right: var(--menu-safezone-sides);
+  gap: var(--item-margin);
 }
 
 div.menu_map_fullscreen_legend .menu_elements_scrollable {
@@ -1185,19 +1186,17 @@ div.menu_map_fullscreen_legend .menu_entry_legend {
   width: min-content;
 }
 
+button#menu_map_legend_counter {
+  text-align: center;
+}
 
 button#menu_map_legend_counter:hover {
   background-color: var(--black-bg-color);
   /* justify-content: flex-end; */
 }
 
-span#menu_map_legend_counter_string {
-  
-  /* text-align: right; */
-}
-
 button.menu_arrows_map_legend {
-  min-width: 5vw;
+  /* min-width: 5vw; */
   color: var(--text-color);
   position: relative;
   justify-content: space-between;
@@ -1206,10 +1205,11 @@ button.menu_arrows_map_legend {
 }
 
 button.menu_arrows_map_legend .menu_arrows_zones {
-  position: absolute;
+  background-image: url(images/arrows_vertical.svg);
+  background-size: cover;
+  position: relative;
   right: 0;
-  width: 1.33vw;
-  margin-right: var(--item-padding-sides);
+  width: 1.25vw;
 }
 
 img#menu_map_image {

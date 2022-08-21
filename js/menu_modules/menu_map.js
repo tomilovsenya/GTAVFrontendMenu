@@ -180,7 +180,7 @@ function clickLegendEntry(clickedEntry) {
 }
 
 function triggerLegendEntry(triggeredEntry) {
-  if (triggeredEntry.is(".menu_arrows")) return;
+  if (triggeredEntry.is(".menu_arrows_map_legend")) return;
 
   if (activeLegendElement) activeLegendElement.trigger("entryDisabled");
   triggeredEntry.trigger("entryActive");
