@@ -10,8 +10,8 @@ var mapWidth = mapImage.width();
 var mapHeight = mapImage.height();
 
 var heistIcon = L.icon({
-  iconUrl: "/images/icons/blip_heist.svg",
-  shadowUrl: "/images/icons/blip_heist.svg",
+  iconUrl: "images/icons/blip_heist.svg",
+  shadowUrl: "images/icons/blip_heist.svg",
 
   iconSize: [64, 64], // size of the icon
   shadowSize: [50, 64], // size of the shadow
@@ -20,18 +20,17 @@ var heistIcon = L.icon({
   popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
 });
 
-var mainMapAreas = {
-  type: "Feature",
-  properties: {
-    name: "Heist",
-    amenity: "Bobcat Security",
-    popupContent: "Bobcat Security Heist",
+var mainMapAreas = [
+  {
+    type: "Polygon",
+    coordinates: [
+      [0, 0],
+      [2000, 2000],
+      [0, 2000],
+      [2000, 0],
+    ],
   },
-  geometry: {
-    type: "Point",
-    coordinates: [1330, mapHeight - 801],
-  },
-};
+];
 
 var menuMainMap = L.map("menu_map", {
   center: [mapWidth, mapHeight],
@@ -75,24 +74,87 @@ export function enterMapFullscreen() {
   hideMapBackground(true);
   $("#menu_map").addClass("menu_map_fullscreen");
   menuMainMap.options.minZoom = -2;
-  // L.marker([51.5, -0.09], { icon: heistIcon }).addTo(menuMainMap);
-  drawMapBlips();
+  menuMainMap. pm.addControls({
+    position: "topleft",
+    drawCircle: false,
+  });
+  addMapAreas();
   invalidateMap();
 }
 
-var geojsonMarkerOptions = {
-  "background-image": 'url("/images/icons/blip_heist_b.svg")',
-  width: "64px",
-  height: "64px",
-};
-
-function drawMapBlips() {
-  // L.geoJSON(mainMapAreas).addTo(menuMainMap);
-
-  L.geoJson(mainMapAreas, {
-    pointToLayer: function (feature, latlng) {
-      return L.circleMarker(latlng, geojsonMarkerOptions);
+var mainMapAreas = [
+  {
+    type: "Feature",
+    properties: {
+      name: "LOS SANTOS 123",
     },
+    // geometry: {
+    //   type: "Polygon",
+    //   coordinates: [
+    //     [
+    //       [395, mapHeight - 2593],
+    //       [2246, mapHeight - 2586],
+    //       [2236, mapHeight - 4406],
+    //       [395, mapHeight - 4406],
+    //     ],
+    //   ],
+    // },
+  },
+  {
+    type: "Feature",
+    properties: {
+      name: "BLAINE COUNTY",
+    },
+    // geometry: {
+    //   type: "Polygon",
+    //   coordinates: [
+    //     [
+    //       [395, 2593],
+    //       [2246, 2586],
+    //       [2236, 4406],
+    //       [395, 4406],
+    //     ],
+    //   ],
+    // },
+  },
+];
+
+function highlightFeature(e) {
+  var layer = e.target;
+
+  $("#menu_map_fullscreen_area_name").text(feature.properties.name);
+
+  layer.setStyle({
+    weight: 5,
+    color: "#666",
+    dashArray: "",
+    fillOpacity: 0.7,
+  });
+
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
+}
+
+function onEachFeature(feature, layer) {
+  layer.on({
+    mouseclick: highlightFeature,
+  });
+}
+
+function addMapAreas() {
+  L.geoJson(mainMapAreas, {
+    style: (feature) => {
+      return {
+        fillColor: "#FFF000",
+        weight: 2,
+        opacity: 1,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.7,
+      };
+    },
+    onEachFeature: onEachFeature,
   }).addTo(menuMainMap);
 }
 
