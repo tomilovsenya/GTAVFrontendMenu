@@ -60,9 +60,14 @@
     "russian": "СБТ"
   },
   {
+    "gxt": "menu_header_char_bank",
+    "american": "BANK",
+    "russian": "БАНК"
+  },
+  {
     "gxt": "menu_header_char_cash",
-    "american": "BANK $550,590  CASH $530",
-    "russian": "БАНК $550,590  НАЛИЧНЫЕ $530"
+    "american": "CASH",
+    "russian": "НАЛИЧНЫЕ"
   },
   {
     "gxt": "tab_0",
@@ -481,8 +486,8 @@
   },
   {
     "gxt": "menu_settings_category_13",
-    "american": "Exclusive Content",
-    "russian": "Эксклюзивный контент"
+    "american": "Pause Menu",
+    "russian": "Меню паузы"
   },
 
   {

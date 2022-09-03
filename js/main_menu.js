@@ -93,6 +93,7 @@ async function loadMenu() {
   await localizeMenu();
   commonMenu.setMenuColor();
   commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
+  commonMenu.setCharMoney(204948500, 756025758202);
   commonMenu.updateHeaderStats();
   setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
@@ -988,6 +989,21 @@ Check if the active window with ID ${activeWindow.id.attr("id")} contains any ca
   if (currentWindow != menuContent.MENU_TAB_SAVE.id) commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
   if (currentWindow != menuContent.MENU_TAB_BRIEF.id && currentWindow != menuContent.MENU_TAB_STATS.id)
     $("#IB_SCROLL").hide();
+
+  if (activeCategoryElements) {
+    let flagArrows = activeCategoryElements.attr("data-arrows") || "0";
+
+    switch (flagArrows) {
+      case "0":
+        $(".menu_arrows").css({ visibility: "hidden" });
+        break;
+      case "1":
+        $(".menu_arrows").css({ visibility: "visible" });
+        break;
+      default:
+        break;
+    }
+  }
 }
 
 //

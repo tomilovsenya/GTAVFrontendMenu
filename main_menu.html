@@ -44,7 +44,7 @@
       <div class="frontend_main_menu">
         <div class="menu_box">
           <div class="menu_header" tabindex="-1">
-            <p class="menu_header" id="menu_header_text">Grand Theft Auto V</p>
+            <h1 id="menu_header_text">Grand Theft Auto V</h1>
             <div class="menu_header_character">
               <span id="menu_header_stats_text"></span>
               <div class="menu_header_avatar">
@@ -73,7 +73,7 @@
 
           <!-- <img id="menu_map_image" src="images/maps/V_FakePrologueLand.svg" alt=""> -->
           <!-- <img id="menu_map_image" src="images/maps/h4_fake_islandx.svg" alt=""> -->
-          <img id="menu_map_image" src="images/maps/V_Mainmap.svg" alt="">
+          <img id="menu_map_image" src="images/maps/V_Mainmap_NG_Alpha.png" alt="">
           <div id="menu_map" class="menu_window menu_map">
             <div id="menu_map_fullscreen_elements">
               <!-- <button id="menu_map_fullscreen_area_name" class="menu_entry menu_entry_empty">NORTH YANKTON</button> -->
@@ -156,6 +156,14 @@
                   </button>
                   <button class="menu_entry menu_entry_legend">
                     <span class="element_label">Destination 19</span>
+                    <span class="blip_dot"></span>
+                  </button>
+                  <button class="menu_entry menu_entry_legend">
+                    <span class="element_label">Destination 20 (Overflow)</span>
+                    <span class="blip_dot"></span>
+                  </button>
+                  <button class="menu_entry menu_entry_legend">
+                    <span class="element_label">Destination 21 (Overflow)</span>
                     <span class="blip_dot"></span>
                   </button>
                 </div>
@@ -1066,11 +1074,11 @@
                 <span class="element_label">Facebook</span>
               </button>
               <button id="menu_settings_category_13" class="menu_entry menu_category">
-                <span class="element_label">Exclusive Content</span>
+                <span class="element_label">Pause Menu</span>
               </button>
             </div>
 
-            <div id="menu_settings_gamepad" class="menu_elements">
+            <div id="menu_settings_gamepad" class="menu_elements" data-arrows="1">
               <div class="menu_elements_header">
                 <button id="menu_settings_gamepad_header_element_0" class="menu_entry menu_entry_empty menu_entry_centered">
                   <span class="element_label">ON FOOT</span>
@@ -1211,7 +1219,7 @@
               </div>
             </div>
 
-            <div id="menu_settings_graphics" class="menu_elements">
+            <div id="menu_settings_graphics" class="menu_elements" data-arrows="1">
               <div class="menu_elements_header">
                 <button id="menu_settings_graphics_header_element_0" class="menu_entry menu_entry_empty menu_entry_empty_double" tabindex="-1">
                   <span class="element_label">Video Memory: 2676 MB / 6143 MB</span>
@@ -1363,6 +1371,24 @@
               </div>
             </div>
 
+            <div id="menu_settings_facebook" class="menu_elements menu_background_rockstar" data-arrows="0">
+              <div class="menu_elements menu_elements_scrollable menu_entries_middle">
+              </div>
+            </div>
+
+            <div id="menu_settings_pause" class="menu_elements" data-arrows="0">
+              <div class="menu_elements menu_elements_scrollable menu_entries_middle">
+                <button id="menu_settings_pause_element_0" class="menu_entry">
+                  <span class="element_label">Language</span>
+                  <div class="element_list">
+                    <span class="element_label_right">Browser Default</span>
+                    <span class="element_label_right">Russian</span>
+                    <span class="element_label_right">English</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
             <button id="menu_arrows_settings" class="menu_arrows menu_arrows_full" tabindex="-1">
               <div id="menu_arrows_settings_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
               <div id="menu_arrows_settings_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
@@ -1388,110 +1414,7 @@
               </button>
             </div>
             <div id="menu_game_replay_mission" class="menu_elements">
-              <div id="menu_game_elements_missions" class="menu_elements menu_elements_scrollable menu_entries_middle">
-                <!-- <button id="menu_game_elements_missions_0" class="menu_entry">
-                <span class="element_label"></span>
-                <div class="element_list">
-                  <div class="element_medal_right element_medal_gold"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_1" class="menu_entry">
-                <span class="element_label"></span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_2" class="menu_entry">
-                <span class="element_label"></span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_3" class="menu_entry">
-                <span class="element_label"></span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_4" class="menu_entry">
-                <span class="element_label"></span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_5" class="menu_entry">
-                <span class="element_label"></span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_6" class="menu_entry">
-                <span class="element_label">Marriage Counseling</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_7" class="menu_entry">
-                <span class="element_label">Daddy's Little Girl</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_8" class="menu_entry">
-                <span class="element_label">Friend Request</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_9" class="menu_entry">
-                <span class="element_label">The Good Husband</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_10" class="menu_entry">
-                <span class="element_label">The Long Stretch</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_11" class="menu_entry">
-                <span class="element_label">Casing the Jewel Store</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_12" class="menu_entry">
-                <span class="element_label">Carbine Rifles</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_13" class="menu_entry">
-                <span class="element_label">The Jewel Store Job</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_14" class="menu_entry">
-                <span class="element_label">Mr. Philips</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_15" class="menu_entry">
-                <span class="element_label">Nervous Ron</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button>
-              <button id="menu_game_elements_missions_16" class="menu_entry">
-                <span class="element_label">Crystal Maze</span>
-                <div class="element_list">
-                  <div class="element_medal_right"></div>
-                </div>
-              </button> -->
-              </div>
+              <div id="menu_game_elements_missions" class="menu_elements menu_elements_scrollable menu_entries_middle"></div>
               <div class="menu_game_mission_info">
                 <div class="menu_game_mission_info_header">
                   <button class="menu_entry menu_entry_empty_double menu_elements_header">

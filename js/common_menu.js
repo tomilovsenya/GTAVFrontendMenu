@@ -10,18 +10,30 @@ export const HEADER_GTAV = "Grand Theft Auto V";
 export const HEADER_GTAO = "Grand Theft Auto Online";
 export const MENU_COLOR = getHudColor("hud-color-michael");
 
+let charBank = 0;
+let charCash = 0;
+
 //
 // COMMON FUNCTIONS
 //
 
+export function setCharMoney(newBank, newCash) {
+  charBank = newBank.toLocaleString("en-US");
+  charCash = newCash.toLocaleString("en-US");
+}
+
 export function updateHeaderStats() {
+  let headerMoney = `${getLocalizedString("menu_header_char_bank")} $${charBank}&nbsp;
+  ${getLocalizedString("menu_header_char_cash")} $${charCash}`;
+
   let headerStats =
     getLocalizedString("menu_header_char_name") +
     "<br>" +
     // getLocalizedString("menu_header_char_time") +
     updateHeaderClock() +
     "<br>" +
-    getLocalizedString("menu_header_char_cash");
+    headerMoney;
+
   $("#menu_header_stats_text").html(headerStats);
 }
 

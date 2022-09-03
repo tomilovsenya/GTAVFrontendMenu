@@ -37,10 +37,10 @@ var mainMapAreas = [
 
 var menuMainMap = L.map("menu_map", {
   center: [mapWidth, mapHeight],
-  zoom: 2,
+  zoom: 0,
   zoomControl: false,
   minZoom: 0,
-  maxZoom: 5,
+  maxZoom: 0.5,
   boxZoom: false,
   zoomSnap: 0,
   zoomAnimation: false,
@@ -166,7 +166,7 @@ export function escapeMapFullscreen() {
   hideMapBackground(false);
   $("#menu_map").removeClass("menu_map_fullscreen");
   menuMainMap.options.minZoom = -1;
-  menuMainMap.fitBounds(mapImageBounds);
+  // menuMainMap.fitBounds(mapImageBounds);
   invalidateMap();
 }
 
@@ -186,6 +186,11 @@ function triggerLegendEntry(triggeredEntry) {
   triggeredEntry.trigger("entryActive");
   activeLegendElement = triggeredEntry;
 }
+
+$("#menu_map").click("click", function () {
+  if ($(this).is(".menu_map_fullscreen")) return;
+  enterMapFullscreen();
+});
 
 $(".menu_entry_legend").on("entryActive", function () {
   $(this).addClass("menu_entry_active");
@@ -235,4 +240,5 @@ export function scrollLegendElements(scrollDir) {
   } else console.log("Function scrollLegendElements(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
 
   updateLegendCounter();
+  activeLegendElement[0].scrollIntoViewIfNeeded();
 }

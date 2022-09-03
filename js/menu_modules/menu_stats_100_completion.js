@@ -2,39 +2,38 @@
 // MENU STATS: 100% COMPLETION
 //
 
-const completionCategories = {
+const compCats = {
   // [tasksCompleted, tasksTotal]
   missionsTasks: [69, 69],
   hobbiesTasks: [21, 42],
   strangersTasks: [10, 20],
   randomTasks: [7, 14],
-  miscTasks: [8, 16],
+  miscTasks: [14, 16],
 };
 
 let completedTasks =
-  completionCategories.missionsTasks[0] +
-  completionCategories.hobbiesTasks[0] +
-  completionCategories.strangersTasks[0] +
-  completionCategories.randomTasks[0] +
-  completionCategories.miscTasks[0];
+  compCats.missionsTasks[0] +
+  compCats.hobbiesTasks[0] +
+  compCats.strangersTasks[0] +
+  compCats.randomTasks[0] +
+  compCats.miscTasks[0];
 
 let totalTasks =
-  completionCategories.missionsTasks[1] +
-  completionCategories.hobbiesTasks[1] +
-  completionCategories.strangersTasks[1] +
-  completionCategories.randomTasks[1] +
-  completionCategories.miscTasks[1];
+  compCats.missionsTasks[1] +
+  compCats.hobbiesTasks[1] +
+  compCats.strangersTasks[1] +
+  compCats.randomTasks[1] +
+  compCats.miscTasks[1];
 
 let completionPercentage = Math.round((completedTasks / totalTasks) * 100);
 
-let missionsPercentage = (completionCategories.missionsTasks[0] / completionCategories.missionsTasks[1]) * 50;
-let hobbiesPercentage = (completionCategories.hobbiesTasks[0] / completionCategories.hobbiesTasks[1]) * 12.5;
-let strangersPercentage = (completionCategories.strangersTasks[0] / completionCategories.strangersTasks[1]) * 12.5;
-let randomPercentage = (completionCategories.randomTasks[0] / completionCategories.randomTasks[1]) * 12.5;
-let miscPercentage = (completionCategories.miscTasks[0] / completionCategories.miscTasks[1]) * 12.5;
-let completedPercentage =
-  missionsPercentage + hobbiesPercentage + strangersPercentage + randomPercentage + miscPercentage;
-let remainingPercentage = 100 - completedPercentage;
+let missionsPerc = (compCats.missionsTasks[0] / compCats.missionsTasks[1]) * 50;
+let hobbiesPerc = (compCats.hobbiesTasks[0] / compCats.hobbiesTasks[1]) * 12.5;
+let strangersPerc = (compCats.strangersTasks[0] / compCats.strangersTasks[1]) * 12.5;
+let randomPerc = (compCats.randomTasks[0] / compCats.randomTasks[1]) * 12.5;
+let miscPerc = (compCats.miscTasks[0] / compCats.miscTasks[1]) * 12.5;
+let completedPerc = missionsPerc + hobbiesPerc + strangersPerc + randomPerc + miscPerc;
+let remainingPercentage = 100 - completedPerc;
 
 export function fillHundredCompletionWindow() {
   setCompletionPercentage();
@@ -48,32 +47,32 @@ function setCompletionPercentage() {
 
 function fillCategoriesCompletion() {
   setCategoryCompletion(
-    completionCategories.missionsTasks[0],
-    completionCategories.missionsTasks[1],
+    compCats.missionsTasks[0],
+    compCats.missionsTasks[1],
     $("#menu_stats_100_completion_element_3"),
     $("#menu_stats_100_completion_progress_0")
   );
   setCategoryCompletion(
-    completionCategories.hobbiesTasks[0],
-    completionCategories.hobbiesTasks[1],
+    compCats.hobbiesTasks[0],
+    compCats.hobbiesTasks[1],
     $("#menu_stats_100_completion_element_4"),
     $("#menu_stats_100_completion_progress_1")
   );
   setCategoryCompletion(
-    completionCategories.strangersTasks[0],
-    completionCategories.strangersTasks[1],
+    compCats.strangersTasks[0],
+    compCats.strangersTasks[1],
     $("#menu_stats_100_completion_element_5"),
     $("#menu_stats_100_completion_progress_2")
   );
   setCategoryCompletion(
-    completionCategories.randomTasks[0],
-    completionCategories.randomTasks[1],
+    compCats.randomTasks[0],
+    compCats.randomTasks[1],
     $("#menu_stats_100_completion_element_6"),
     $("#menu_stats_100_completion_progress_3")
   );
   setCategoryCompletion(
-    completionCategories.miscTasks[0],
-    completionCategories.miscTasks[1],
+    compCats.miscTasks[0],
+    compCats.miscTasks[1],
     $("#menu_stats_100_completion_element_7"),
     $("#menu_stats_100_completion_progress_4")
   );
@@ -120,14 +119,7 @@ export function initHundredCompletionChart() {
     datasets: [
       {
         label: "100% Completion",
-        data: [
-          missionsPercentage,
-          hobbiesPercentage,
-          strangersPercentage,
-          randomPercentage,
-          miscPercentage,
-          remainingPercentage,
-        ],
+        data: [missionsPerc, hobbiesPerc, strangersPerc, randomPerc, miscPerc, remainingPercentage],
         backgroundColor: ["gold", "lightgreen", "lightblue", "orange", "red", "black"],
       },
     ],

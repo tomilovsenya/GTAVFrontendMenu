@@ -90,7 +90,7 @@ const TAB_SETTINGS_CATEGORIES = [
   $("#menu_settings_replay"),
   $("#menu_settings_saving"),
   $("#menu_settings_facebook"),
-  $("#menu_settings_exclusive"),
+  $("#menu_settings_pause"),
 ];
 const TAB_GAME_CATEGORIES = [$("#menu_game_replay_mission"), $("#menu_game_replay_strangers")];
 const TAB_FRIENDS_CATEGORIES = [
