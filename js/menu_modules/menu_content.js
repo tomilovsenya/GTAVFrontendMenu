@@ -1,4 +1,18 @@
 //
+// SCROLLABLE MENU ENTRIES MIDDLE
+//
+
+export const TAB_SETTINGS_PAUSE_0 = {
+  id: $("#menu_settings_pause_element_0"),
+  items: [
+    $("#menu_settings_pause_element_0_0"),
+    $("#menu_settings_pause_element_0_1"),
+    $("#menu_settings_pause_element_0_2"),
+  ],
+  activeItem: 0,
+};
+
+//
 // SCROLLABLE CATEGORIES
 //
 

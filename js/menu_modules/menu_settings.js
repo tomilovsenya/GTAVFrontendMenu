@@ -1,5 +1,5 @@
 import { MENU_COLOR } from "../common_menu.js";
-import { getLocalizedString } from "./menu_localization.js";
+import { getLocalizedString, menuLanguage } from "./menu_localization.js";
 
 export async function setVideoMemory(memUsed, memMax) {
   let memText = await getLocalizedString("menu_settings_graphics_header_vidmem");
@@ -17,4 +17,8 @@ export async function setVideoMemory(memUsed, memMax) {
   memLabel.text(memString);
   memProg.css({ width: memPerc + "%" });
   memProg.css({ "background-color": memColor });
+}
+
+export function setMenuLanguage() {
+  document.cookie = "language=" + menuLanguage;
 }

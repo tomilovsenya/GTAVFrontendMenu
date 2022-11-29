@@ -12,6 +12,7 @@ div.menu_window {
 }
 
 button.menu_entry_quad {
+  min-height: var(--item-quad-height);
   height: var(--item-quad-height);
 }
 

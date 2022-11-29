@@ -13,6 +13,7 @@ let activeTab = null;
 let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
+let activeScrollableElements = null;
 let initWindow = menuContent.MENU_TABS[0];
 let activeWindow = initWindow;
 
@@ -30,7 +31,7 @@ let currentOverflows = {
 import * as menuContent from "./menu_modules/menu_content.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
-import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
+import { getLocalizedString, localizeMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
@@ -240,13 +241,12 @@ window.addEventListener(
     // if (["KeyE"].indexOf(e.code) > -1) {
     //   scrollTab(1);
     // }
-    // if (["KeyF"].indexOf(e.code) > -1) {
-    //   // sendMissionText("Go to <ylw>Trevor's house.</ylw>");
-    //   showInstrLoadingSpinner();
-    // }
-    // if (["KeyG"].indexOf(e.code) > -1) {
-    //   hideInstrLoadingSpinner();
-    // }
+    if (["KeyF"].indexOf(e.code) > -1) {
+      updateMenuLocalization("american");
+    }
+    if (["KeyG"].indexOf(e.code) > -1) {
+      updateMenuLocalization("russian");
+    }
     // if (["KeyZ"].indexOf(e.code) > -1) {
     //   // showWarningMessage("warning_message_header", "warning_message_text");
     //   // $("#menu_map").removeClass("menu_map_fullscreen");
@@ -486,6 +486,13 @@ function setCategoryActive(activatedCategory) {
   if (listItems.length > 0) {
     updateListItems(listItems);
   }
+
+  // Right text (list) handling for category elements
+  let entrieslistItems = activeCategoryElements.find(".menu_entry");
+  if (entrieslistItems.length > 0) {
+    // console.log("Number of entrieslistItems: " + entrieslistItems.length);
+    updateCategoryElements(entrieslistItems);
+  }
 }
 // $('.menu_categories').on('categoriesListActive', updateCategoriesList)
 
@@ -495,11 +502,20 @@ function setCategoryDisabled(disabledCategory) {
   if (rightText.length != 0) commonMenu.removeRightTextArrows(rightText);
 }
 
+function updateCategoryElements(listItems) {
+  listItems.each(function () {
+    let rightLabel = $(this).find(".element_list").children(".element_label_right").first();
+    rightLabel.nextAll().hide();
+  });
+}
+
 function updateListItems(listItems) {
   let currentItem;
+
   if (listItems.children(".element_label_right").length > 1)
     currentItem = listItems.children(".element_label_right").eq(activeCategoryObject.activeItem);
   else currentItem = listItems.children(".element_label_right").eq(0);
+
   let arrowedItem = listItems.children(".element_label_arrowed");
   listItems.children().hide();
   commonMenu.removeRightTextArrows(arrowedItem);
@@ -588,33 +604,47 @@ export function scrollLeftRight(scrollDir) {
   if (!activeCategory) return;
 
   // Don't scroll if non-scrollable item
-  if (activeCategory.children(".element_list, .element_progress").length <= 0) return;
-  console.log("Scrolled left at scrollable item: " + activeCategory.attr("id"));
 
-  let scrolledItem = activeCategory;
-  let scrolledItemObj = activeCategoryObject;
-  let currentItemList, activeItem;
+  let scrolledItem, scrolledItemObj, currentItemList, activeItem;
 
-  if (scrolledItemObj) {
-    currentItemList = scrolledItemObj.category.find(".element_label_right");
-    activeItem = scrolledItemObj.activeItem;
+  console.log("Left/Right pressed");
+
+  if (!isCategorySelected) {
+    if (activeCategory.children(".element_list, .element_progress").length <= 0) return;
+
+    scrolledItem = activeCategory;
+    scrolledItemObj = activeCategoryObject;
+
+    if (scrolledItemObj) {
+      currentItemList = scrolledItemObj.category.find(".element_label_right");
+      activeItem = scrolledItemObj.activeItem;
+    }
+    let listItemsLength = scrolledItem.find(".element_label_right").length;
+    if (listItemsLength <= 1) return;
+
+    if (scrollDir == 0) {
+      if (scrolledItemObj.activeItem == 0) scrolledItemObj.activeItem = scrolledItemObj.items.length - 1;
+      else scrolledItemObj.activeItem--;
+      updateListItems(scrolledItem.children(".element_list"));
+      activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
+      activeWindowHandler(activeTab);
+    } else if (scrollDir == 1) {
+      if (scrolledItemObj.activeItem == scrolledItemObj.items.length - 1) scrolledItemObj.activeItem = 0;
+      else scrolledItemObj.activeItem++;
+      updateListItems(scrolledItem.children(".element_list"));
+      activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
+      activeWindowHandler(activeTab);
+    } else console.log("Function scrollLeftRight(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
+  } else {
+    scrolledItem = activeEntryMiddle;
+    scrolledItemObj = menuContent.TAB_SETTINGS_PAUSE_0;
+
+    if (scrollDir == 0) {
+      if (scrolledItemObj.activeItem == 0) scrolledItemObj.activeItem = scrolledItemObj.items.length - 1;
+      else scrolledItemObj.activeItem--;
+      updateListItems(scrolledItem.children(".element_list"));
+    }
   }
-  let listItemsLength = scrolledItem.find(".element_label_right").length;
-  if (listItemsLength <= 1) return;
-
-  if (scrollDir == 0) {
-    if (scrolledItemObj.activeItem == 0) scrolledItemObj.activeItem = scrolledItemObj.items.length - 1;
-    else scrolledItemObj.activeItem--;
-    updateListItems(scrolledItem.children(".element_list"));
-    activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
-    activeWindowHandler(activeTab);
-  } else if (scrollDir == 1) {
-    if (scrolledItemObj.activeItem == scrolledItemObj.items.length - 1) scrolledItemObj.activeItem = 0;
-    else scrolledItemObj.activeItem++;
-    updateListItems(scrolledItem.children(".element_list"));
-    activeCategoryElements = scrolledItemObj.wnds[scrolledItemObj.activeItem];
-    activeWindowHandler(activeTab);
-  } else console.log("Function scrollLeftRight(scrollDir) only accepts scrollDir = 0 (left) or 1 (right)");
 }
 
 export function scrollSaves(scrollDir, scrollableElements) {

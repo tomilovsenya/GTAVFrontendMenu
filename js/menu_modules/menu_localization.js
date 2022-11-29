@@ -3,7 +3,8 @@
 //
 
 let menuLanguages = ["american", "russian"];
-let menuLanguage, menuLangFile;
+export let menuLanguage;
+let menuLangFile;
 
 export async function localizeMenu() {
   getPreferredLanguage();
@@ -44,6 +45,30 @@ async function localizeMenuElements() {
       gxtElement = $(gxtID);
       if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(langJSON[i][menuLanguage]);
       else gxtElement.html(langJSON[i][menuLanguage]);
+    }
+  }
+}
+
+export function updateMenuLocalization(newLang) {
+  const langJSON = menuLangFile;
+
+  for (var i = 0; i < langJSON.length; i++) {
+    let gxtID;
+    let gxtElement;
+
+    if (langJSON[i].multiple_gxt) {
+      // console.log("Multiple GXT of length " + langJSON[i].gxt.length + ": " + langJSON[i].gxt);
+      for (var j = 0; j < langJSON[i].gxt.length; j++) {
+        gxtID = "#" + langJSON[i].gxt[j];
+        gxtElement = $(gxtID);
+        if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(langJSON[i][newLang]);
+        else gxtElement.html(langJSON[i][newLang]);
+      }
+    } else {
+      gxtID = "#" + langJSON[i].gxt;
+      gxtElement = $(gxtID);
+      if (gxtElement.children().length > 0) gxtElement.children().eq(0).text(langJSON[i][newLang]);
+      else gxtElement.html(langJSON[i][newLang]);
     }
   }
 }
