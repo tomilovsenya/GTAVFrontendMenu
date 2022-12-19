@@ -126,7 +126,6 @@ loadStore().then(() => {
   onStoreLoad();
 });
 
-
 //
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
 //
@@ -206,6 +205,8 @@ function escapeStore() {
 function storeHandler(packIndex) {
   if (!activeEntryMiddle) packIndex = 0;
   let currentPack = ALL_STORE_PACKS[packIndex];
+
+  if (!currentPack) return; // Return if the current pack isn't in ALL_STORE_PACKS
 
   let titleLabel = $("#store_details_description_title");
   let descrLabel = $("#store_details_description_long");

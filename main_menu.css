@@ -875,7 +875,7 @@ button.menu_arrows {
   align-items: center;
   align-self: flex-end;
   padding: 0;
-  visibility: hidden;
+  /* visibility: hidden; */
   /* pointer-events: none; */
 }
 
