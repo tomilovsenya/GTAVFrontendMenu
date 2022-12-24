@@ -120,7 +120,7 @@ div#store_details_description {
   overflow: hidden;
 }
 
-h2#store_details_description_title {
+h2.store_details_description_title {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -182,7 +182,7 @@ div.store_details_price_zone {
   justify-content: space-between;
 }
 
-span#store_details_price_value {
+span.store_details_price_value {
   font-size: 1.4vw;
 }
 
@@ -190,7 +190,7 @@ div#store_details_price_zone_right {
   align-items: flex-end;
 }
 
-span#store_details_price_status {
+span.store_details_price_status {
   text-align: center;
   color: black;
   width: fit-content;

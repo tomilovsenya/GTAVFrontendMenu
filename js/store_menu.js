@@ -25,7 +25,7 @@ const STORE_PACK_1 = {
   descr: "store_pack_1_descr",
   price: "$25",
   status: 1,
-  players: "1",
+  players: "3",
 };
 
 const STORE_PACK_2 = {
@@ -49,7 +49,7 @@ const STORE_PACK_3 = {
 const STORE_CASH_0 = {
   id: $("#store_content_element_cash_0"),
   name: "Red Shark Card",
-  descr: "Red Shark Card placeholder.",
+  descr: "Red Shark Card placeholder 12345.",
   price: "$4.99",
   status: 2,
   players: "1",
@@ -58,11 +58,14 @@ const STORE_CASH_0 = {
 const ALL_STORE_PACKS = [STORE_PACK_0, STORE_PACK_1, STORE_PACK_2, STORE_PACK_3];
 const ALL_STORE_CASH = [STORE_CASH_0];
 
+const STORE_CATS = [ALL_STORE_PACKS, ALL_STORE_CASH];
+
 let menuVisibility = false;
 let activeEntryMiddle = null;
 let isCategorySelected = false;
 let activeCategory = $("#store_packs_category_0");
 let activeCategoryElements = null;
+let currentCatPacks = STORE_CATS[0];
 
 //
 // EVENT HANDLERS
@@ -241,12 +244,15 @@ function disableEntry(disabledEntry) {
 const STORE_CATEGORIES = [$("#store_elements_packs"), $("#store_elements_cash")];
 
 function activeCategoryHandler() {
-  switch (activeCategory) {
-    case $("#store_packs_category_0"):
-      break;
-    case $("#store_packs_category_1"):
-      break;
-  }
+  currentCatPacks = STORE_CATS[activeCategory.index()];
+  // switch (activeCategory) {
+  //   case "#store_packs_category_0":
+  //     currentCatPacks = STORE_CATS[0];
+  //     break;
+  //   case "#store_packs_category_1":
+  //     currentCatPacks = STORE_CATS[1];
+  //     break;
+  // }
 }
 
 function clickCategory() {
@@ -256,7 +262,6 @@ function clickCategory() {
     console.log(
       "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
     );
-  activeCategoryHandler();
 }
 
 function setCategoryActive(activatedCategory) {
@@ -304,6 +309,9 @@ function triggerCategory(triggeredCategory) {
     triggeredCategory.trigger("categoryActive");
     console.log("Triggered category: " + triggeredCategory.attr("id"));
   }
+
+  activeCategoryHandler();
+  storeHandler(0);
 }
 
 //
@@ -316,15 +324,18 @@ function escapeStore() {
 
 function storeHandler(packIndex) {
   if (!activeEntryMiddle) packIndex = 0;
-  let currentPack = ALL_STORE_PACKS[packIndex];
+  let currentPack = currentCatPacks[packIndex];
+  // let currentPack = ALL_STORE_PACKS[packIndex];
+  // console.log("Current pack: " + currentPack.id.attr("id"));
+  // console.log("Current pack: " + currentPack.name);
 
   if (!currentPack) return; // Return if the current pack isn't in ALL_STORE_PACKS
 
-  let titleLabel = $("#store_details_description_title");
-  let descrLabel = $("#store_details_description_long");
-  let priceLabel = $("#store_details_price_value");
-  let statusLabel = $("#store_details_price_status");
-  let playersLabel = $("#store_details_price_players");
+  let titleLabel = activeCategoryElements.find(".store_details_description_title");
+  let descrLabel = activeCategoryElements.find(".store_details_description_long");
+  let priceLabel = activeCategoryElements.find(".store_details_price_value");
+  let statusLabel = activeCategoryElements.find(".store_details_price_status");
+  let playersLabel = activeCategoryElements.find(".store_details_price_players");
 
   let statusText, statusColor;
 
