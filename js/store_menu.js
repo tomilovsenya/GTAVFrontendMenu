@@ -83,10 +83,12 @@ window.addEventListener(
     if (["KeyW", "ArrowUp"].indexOf(e.code) > -1) {
       e.preventDefault();
       if (isCategorySelected) scrollElements(0);
+      else scrollCategories(0);
     }
     if (["KeyS", "ArrowDown"].indexOf(e.code) > -1) {
       e.preventDefault();
       if (isCategorySelected) scrollElements(1);
+      else scrollCategories(1);
     }
   },
   false
@@ -161,6 +163,12 @@ $(".menu_elements_scrollable").bind("wheel", function (e) {
   if (!isCategorySelected) return;
   if (e.originalEvent.deltaY / 40 < 0) scrollElements(0);
   else scrollElements(1);
+});
+
+$(".menu_categories").bind("wheel", function (e) {
+  if (isCategorySelected) return;
+  if (e.originalEvent.deltaY / 40 < 0) scrollCategories(0);
+  else scrollCategories(1);
 });
 
 //
@@ -403,6 +411,25 @@ function scrollDescr(scrollDir) {
       activeDesc.animate({ scrollTop: currentTop + 50 }, 100);
       break;
   }
+}
+
+function scrollCategories(scrollDir) {
+  if (isCategorySelected) return;
+
+  let tabCategories = $(".menu_categories").children(".menu_entry");
+
+  if (scrollDir == 0) {
+    if (!activeCategory.is(tabCategories.first())) {
+      triggerCategory(activeCategory.prev());
+    } else triggerCategory(tabCategories.last());
+    activeWindowHandler(activeTab);
+  } else if (scrollDir == 1) {
+    if (!isCategorySelected)
+      if (!activeCategory.is(tabCategories.last())) {
+        triggerCategory(activeCategory.next());
+      } else triggerCategory(tabCategories.first());
+    activeWindowHandler(activeTab);
+  } else console.log("Function scrollUpDown(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
 }
 
 function scrollElements(scrollDir) {
