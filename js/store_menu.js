@@ -46,11 +46,23 @@ const STORE_PACK_3 = {
   players: "1",
 };
 
+const STORE_CASH_0 = {
+  id: $("#store_content_element_cash_0"),
+  name: "Red Shark Card",
+  descr: "Red Shark Card placeholder.",
+  price: "$4.99",
+  status: 2,
+  players: "1",
+};
+
 const ALL_STORE_PACKS = [STORE_PACK_0, STORE_PACK_1, STORE_PACK_2, STORE_PACK_3];
+const ALL_STORE_CASH = [STORE_CASH_0];
 
 let menuVisibility = false;
 let activeEntryMiddle = null;
 let isCategorySelected = false;
+let activeCategory = $("#store_packs_category_0");
+let activeCategoryElements = null;
 
 //
 // EVENT HANDLERS
@@ -81,7 +93,14 @@ window.addEventListener(
 );
 
 function updateEventHandlers() {
-  $("#store_elements").click(enterStoreElementsMiddle);
+  $(".menu_elements").click(enterStoreElementsMiddle);
+  $(".menu_categories").on("click", ".menu_category", clickCategory);
+  $(".menu_categories").on("categoryActive", ".menu_category", function (e) {
+    setCategoryActive($(this));
+  });
+  $(".menu_categories").on("categoryDisabled", ".menu_category", function (e) {
+    setCategoryDisabled($(this));
+  });
   $(".menu_entry_quad").click(function () {
     setEntryActive($(this));
   });
@@ -94,6 +113,12 @@ function updateEventHandlers() {
   });
   $("#store_arrows_content_down").click(function () {
     scrollElements(1);
+  });
+  $("#store_arrows_details_up").click(function () {
+    scrollDescr(0);
+  });
+  $("#store_arrows_details_down").click(function () {
+    scrollDescr(1);
   });
 }
 
@@ -109,6 +134,8 @@ async function loadStore() {
   setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
   updateEventHandlers();
+  activeCategoryElements = STORE_CATEGORIES[0];
+  activeCategoryElements.next().hide();
 }
 
 function showStore() {
@@ -170,6 +197,8 @@ function drawArrows() {
 }
 
 function setEntryActive(activatedEntry) {
+  if (activatedEntry.is($(".menu_entry_empty"))) return;
+
   if (activatedEntry.is(activeEntryMiddle)) {
     console.log("Entry already active, do nothing");
     return;
@@ -182,8 +211,11 @@ function setEntryActive(activatedEntry) {
 }
 
 function triggerEntry(triggeredEntry) {
+  let activeDesc = $(".store_details_description_text");
+
   triggeredEntry.addClass("menu_entry_active");
   triggeredEntry.focus();
+  activeDesc.scrollTop(0);
   console.log("Triggered entry: " + triggeredEntry.attr("id"));
 }
 
@@ -192,6 +224,78 @@ function disableEntry(disabledEntry) {
   activeEntryMiddle = null;
   disabledEntry.removeClass("menu_entry_active");
   console.log("Disabled entry: " + disabledEntry.attr("id"));
+}
+
+//
+// CATEGORIES LOGIC
+//
+
+const STORE_CATEGORIES = [$("#store_elements_packs"), $("#store_elements_cash")];
+
+function activeCategoryHandler() {
+  switch (activeCategory) {
+    case $("#store_packs_category_0"):
+      break;
+    case $("#store_packs_category_1"):
+      break;
+  }
+}
+
+function clickCategory() {
+  triggerCategory($(this));
+  if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
+  else
+    console.log(
+      "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
+    );
+  activeCategoryHandler();
+}
+
+function setCategoryActive(activatedCategory) {
+  activatedCategory.addClass("menu_entry_active");
+  activeCategory = activatedCategory;
+  activeCategory.focus();
+
+  if (activeCategoryElements) activeCategoryElements.hide();
+  activeCategoryElements = STORE_CATEGORIES[activatedCategory.index()];
+  // console.log("Activated: " + activeCategoryElements.attr("id"))
+  activeCategoryElements.show();
+}
+
+function setCategoryDisabled(disabledCategory) {
+  disabledCategory.removeClass("menu_entry_active");
+}
+
+function disableCategory(disabledCategory) {
+  disabledCategory.trigger("categoryDisabled");
+  console.log("Disabled category: " + disabledCategory.attr("id"));
+}
+
+function triggerCategory(triggeredCategory) {
+  // Return if empty
+  if (triggeredCategory.is($(".menu_entry_empty_double"))) return;
+  if (triggeredCategory.is($(".menu_entry_empty"))) return;
+  if (activeCategory == null) {
+    triggeredCategory.trigger("categoryActive");
+    console.log("Triggered category: " + triggeredCategory.attr("id"));
+  } else if (activeCategory.is(triggeredCategory)) {
+    console.log("Triggered already active category, will only enter entries middle: " + triggeredCategory.attr("id"));
+    // Enter entries middle
+    enterStoreElementsMiddle();
+    // if (!triggeredCategory.is(".menu_category_enter")) return;
+    // if (!isCategorySelected) {
+    //   console.log("Entering entries middle from triggerCategory");
+    //   enterMenuEntriesMiddle(activeWindow.cats[triggeredCategory.index()]);
+    // } else if (isCategorySelected) {
+    //   escapeMenuEntriesMiddle();
+    // }
+  } else if (activeCategory != triggeredCategory) {
+    escapeStoreEntriesMiddle();
+    disableCategory(activeCategory);
+    activeCategory = triggeredCategory;
+    triggeredCategory.trigger("categoryActive");
+    console.log("Triggered category: " + triggeredCategory.attr("id"));
+  }
 }
 
 //
@@ -244,9 +348,10 @@ function storeHandler(packIndex) {
 }
 
 function updatePacksCounter() {
-  let totalPacks = $(".store_content").children().length;
+  let activeContent = activeCategoryElements.children(".store_content");
+  let totalPacks = activeContent.children().not(".menu_entry_empty").length;
   let currentPack = 1;
-  let focusedElement = $(".store_content").children(".menu_entry_active");
+  let focusedElement = activeContent.children(".menu_entry_active");
   if (focusedElement.length != 0) currentPack = focusedElement.index() + 1;
   else currentPack = 1;
   console.log("Counter updated");
@@ -260,8 +365,11 @@ function enterStoreElementsMiddle() {
   $("#store_tab_0").removeClass("menu_button_active");
   $("#store_tab_1").addClass("menu_button_active");
   $("#store_tab_2").addClass("menu_button_active");
-  $("#store_elements").removeClass("menu_elements_inactive");
-  setEntryActive($(".menu_entry_quad").eq(0));
+  // $("#store_elements_packs").removeClass("menu_elements_inactive");
+  activeCategoryElements.removeClass("menu_elements_inactive");
+  let firstEntry = activeCategoryElements.find(".menu_entry_quad").first();
+  setEntryActive(firstEntry);
+  // setEntryActive($(".menu_entry_quad").eq(0));
   $(".menu_window_arrows").addClass("menu_window_arrows_active");
 
   isCategorySelected = true;
@@ -273,27 +381,49 @@ function escapeStoreEntriesMiddle() {
   $("#store_tab_0").addClass("menu_button_active");
   $("#store_tab_1").removeClass("menu_button_active");
   $("#store_tab_2").removeClass("menu_button_active");
-  $("#store_elements").addClass("menu_elements_inactive");
+  // $("#store_elements_packs").addClass("menu_elements_inactive");
+  activeCategoryElements.addClass("menu_elements_inactive");
   $(".menu_window_arrows").removeClass("menu_window_arrows_active");
   if (activeEntryMiddle) disableEntry(activeEntryMiddle);
 
   isCategorySelected = false;
 }
 
-function scrollElements(scrollDir) {
-  let activeElement = $(".store_content").children(".menu_entry_active");
-  let nextElement;
+function scrollDescr(scrollDir) {
+  let activeDesc = activeCategoryElements.find(".store_details_description_text");
+  let currentTop = activeDesc.scrollTop();
 
   switch (scrollDir) {
     case 0:
-      if (!activeElement.is($(".store_content").children().first())) nextElement = activeElement.prev();
-      else nextElement = activeElement.siblings().last();
+      // activeDesc.scrollTop(currentTop - 50);
+      activeDesc.animate({ scrollTop: currentTop - 50 }, 100);
+      break;
+    case 1:
+      // activeDesc.scrollTop(currentTop + 50);
+      activeDesc.animate({ scrollTop: currentTop + 50 }, 100);
+      break;
+  }
+}
+
+function scrollElements(scrollDir) {
+  let activeContent = activeCategoryElements.children(".store_content");
+  let activeElement = activeContent.children(".menu_entry_active");
+  let nextElement;
+
+  if (activeContent.children(".menu_entry_quad").length <= 1) return; // Don't scroll if 1 or less items
+
+  switch (scrollDir) {
+    case 0:
+      if (!activeElement.is(activeContent.children().not(".menu_entry_empty").first()))
+        nextElement = activeElement.not(".menu_entry_empty").prev();
+      else nextElement = activeElement.siblings().not(".menu_entry_empty").last();
       setEntryActive(nextElement);
       nextElement[0].scrollIntoView(true);
       break;
     case 1:
-      if (!activeElement.is($(".store_content").children().last())) nextElement = activeElement.next();
-      else nextElement = activeElement.siblings().first();
+      if (!activeElement.is(activeContent.children().not(".menu_entry_empty").last()))
+        nextElement = activeElement.not(".menu_entry_empty").next();
+      else nextElement = activeElement.siblings().not(".menu_entry_empty").first();
       setEntryActive(nextElement);
       nextElement[0].scrollIntoView(false);
       break;
