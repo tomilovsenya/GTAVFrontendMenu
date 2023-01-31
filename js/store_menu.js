@@ -55,8 +55,17 @@ const STORE_CASH_0 = {
   players: "1",
 };
 
+const STORE_CASH_1 = {
+  id: $("#store_content_element_cash_1"),
+  name: "Empty",
+  descr: "Empty.",
+  price: "FREE",
+  status: 0,
+  players: "0",
+};
+
 const ALL_STORE_PACKS = [STORE_PACK_0, STORE_PACK_1, STORE_PACK_2, STORE_PACK_3];
-const ALL_STORE_CASH = [STORE_CASH_0];
+const ALL_STORE_CASH = [STORE_CASH_0, STORE_CASH_1];
 
 const STORE_CATS = [ALL_STORE_PACKS, ALL_STORE_CASH];
 

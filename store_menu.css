@@ -18,6 +18,16 @@ button.menu_entry_quad {
 
 /*#endregion MainMenu*/
 
+@keyframes fadeInInactiveAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
 div#store_packs {
   width: var(--menu-wnd-width);
   height: var(--menu-wnd-height);
@@ -28,6 +38,7 @@ div.menu_elements {
   height: fit-content;
   flex-direction: row;
   justify-content: space-between;
+  animation: fadeInInactiveAnimation ease 0.25s;
 }
 
 div.menu_elements_inactive {
@@ -73,7 +84,7 @@ div.store_content .menu_entry_empty {
   background-color: var(--black-bg-color);
   background-image: url(images/rockstar.svg);
   background-size: 4vw;
-  opacity: 0.75;
+  opacity: 0.5;
 }
 
 #store_content_element_0 {
