@@ -2,7 +2,7 @@
 // IMPORTS AND CONSTANTS
 //
 
-// import { setInstrContainerVisibility } from "./menu_modules/menu_instructional_buttons.js";
+import { setInstrContainerVisibility, updateInstructionalButtons } from "./menu_modules/store_instructional_buttons.js";
 import { getLocalizedString, localizeMenu } from "./menu_modules/menu_localization.js";
 import * as commonMenu from "./common_menu.js";
 
@@ -72,9 +72,11 @@ const STORE_CATS = [ALL_STORE_PACKS, ALL_STORE_CASH];
 let menuVisibility = false;
 let activeEntryMiddle = null;
 let isCategorySelected = false;
-let activeCategory = $("#store_packs_category_0");
+// let activeCategory = $("#store_packs_category_0");
+let activeCategory = $(".menu_categories").children(".menu_category").first();
 let activeCategoryElements = null;
 let currentCatPacks = STORE_CATS[0];
+let currentContext = 0; // 0 = Category not selected, 1 = Category selected
 
 //
 // EVENT HANDLERS
@@ -85,22 +87,57 @@ window.addEventListener(
   function (e) {
     if (["Backspace", "Escape"].indexOf(e.code) > -1) {
       e.preventDefault();
-      if (isCategorySelected) escapeStoreEntriesMiddle();
-      else escapeStore();
+      // if (isCategorySelected) escapeStoreEntriesMiddle();
+      // else escapeStore();
+
+      switch (currentContext) {
+        case 0:
+          escapeStore();
+          break;
+        case 1:
+          escapeStoreEntriesMiddle();
+          break;
+      }
     }
     if (["Enter"].indexOf(e.code) > -1) {
       e.preventDefault();
-      if (!isCategorySelected) enterStoreElementsMiddle();
+      // if (!isCategorySelected) enterStoreElementsMiddle();
+
+      switch (currentContext) {
+        case 0:
+          enterStoreElementsMiddle();
+          break;
+        case 1:
+          break;
+      }
     }
     if (["KeyW", "ArrowUp"].indexOf(e.code) > -1) {
       e.preventDefault();
-      if (isCategorySelected) scrollElements(0);
-      else scrollCategories(0);
+      // if (isCategorySelected) scrollElements(0);
+      // else scrollCategories(0);
+
+      switch (currentContext) {
+        case 0:
+          scrollCategories(0);
+          break;
+        case 1:
+          scrollElements(0);
+          break;
+      }
     }
     if (["KeyS", "ArrowDown"].indexOf(e.code) > -1) {
       e.preventDefault();
-      if (isCategorySelected) scrollElements(1);
-      else scrollCategories(1);
+      // if (isCategorySelected) scrollElements(1);
+      // else scrollCategories(1);
+
+      switch (currentContext) {
+        case 0:
+          scrollCategories(1);
+          break;
+        case 1:
+          scrollElements(1);
+          break;
+      }
     }
   },
   false
@@ -150,6 +187,7 @@ async function loadStore() {
   updateEventHandlers();
   activeCategoryElements = STORE_CATEGORIES[0];
   activeCategoryElements.next().hide();
+  updateInstructionalButtons("STORE_MENU", currentContext, 0);
 }
 
 function showStore() {
@@ -172,13 +210,15 @@ loadStore().then(() => {
 //
 
 $(".menu_elements_scrollable").bind("wheel", function (e) {
-  if (!isCategorySelected) return;
+  // if (!isCategorySelected) return;
+  if (currentContext == 0) return;
   if (e.originalEvent.deltaY / 40 < 0) scrollElements(0);
   else scrollElements(1);
 });
 
 $(".menu_categories").bind("wheel", function (e) {
-  if (isCategorySelected) return;
+  // if (isCategorySelected) return;
+  if (currentContext == 1) return;
   if (e.originalEvent.deltaY / 40 < 0) scrollCategories(0);
   else scrollCategories(1);
 });
@@ -388,7 +428,8 @@ function updatePacksCounter() {
 }
 
 function enterStoreElementsMiddle() {
-  if (isCategorySelected) return;
+  // if (isCategorySelected) return;
+  if (currentContext == 1) return;
 
   $("#store_tab_0").removeClass("menu_button_active");
   $("#store_tab_1").addClass("menu_button_active");
@@ -401,10 +442,14 @@ function enterStoreElementsMiddle() {
   $(".menu_window_arrows").addClass("menu_window_arrows_active");
 
   isCategorySelected = true;
+  currentContext = 1;
+
+  updateInstructionalButtons("STORE_MENU", currentContext, 0);
 }
 
 function escapeStoreEntriesMiddle() {
-  if (!isCategorySelected) return;
+  // if (!isCategorySelected) return;
+  if (currentContext == 0) return;
 
   $("#store_tab_0").addClass("menu_button_active");
   $("#store_tab_1").removeClass("menu_button_active");
@@ -415,6 +460,9 @@ function escapeStoreEntriesMiddle() {
   if (activeEntryMiddle) disableEntry(activeEntryMiddle);
 
   isCategorySelected = false;
+  currentContext = 0;
+
+  updateInstructionalButtons("STORE_MENU", currentContext, 0);
 }
 
 function scrollDescr(scrollDir) {
@@ -434,7 +482,8 @@ function scrollDescr(scrollDir) {
 }
 
 function scrollCategories(scrollDir) {
-  if (isCategorySelected) return;
+  // if (isCategorySelected) return;
+  if (currentContext == 1) return;
 
   let tabCategories = $(".menu_categories").children(".menu_entry");
 
@@ -444,7 +493,8 @@ function scrollCategories(scrollDir) {
     } else triggerCategory(tabCategories.last());
     activeWindowHandler(activeTab);
   } else if (scrollDir == 1) {
-    if (!isCategorySelected)
+    // if (!isCategorySelected)
+    if (currentContext == 0)
       if (!activeCategory.is(tabCategories.last())) {
         triggerCategory(activeCategory.next());
       } else triggerCategory(tabCategories.first());

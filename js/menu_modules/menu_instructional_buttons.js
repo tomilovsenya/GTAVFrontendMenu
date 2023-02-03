@@ -10,7 +10,7 @@ import {
   scrollSaves,
 } from "../main_menu.js";
 import * as menuContent from "./menu_content.js";
-import { enterMapFullscreen, escapeMapFullscreen, scrollLegendElements } from "./menu_map.js";
+// import { enterMapFullscreen, escapeMapFullscreen, scrollLegendElements } from "./menu_map.js";
 
 //
 // CONSTANTS

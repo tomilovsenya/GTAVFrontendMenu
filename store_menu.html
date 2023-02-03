@@ -52,7 +52,7 @@
             <div class="menu_categories">
               <button id="store_packs_category_0" class="menu_entry menu_category menu_entry_active">PACKS</button>
               <button id="store_packs_category_1" class="menu_entry menu_category">CASH</button>
-              <button id="store_packs_category_2" class="menu_entry menu_category">OTHER</button>
+              <button id="store_packs_category_2" class="menu_entry menu_category">GTA+</button>
             </div>
             <div id="store_elements_packs" class="menu_elements menu_elements_inactive">
               <div class="store_content menu_elements_scrollable">
@@ -60,9 +60,9 @@
                 <button id="store_content_element_1" class="menu_entry menu_entry_quad"></button>
                 <button id="store_content_element_2" class="menu_entry menu_entry_quad"></button>
                 <button id="store_content_element_3" class="menu_entry menu_entry_quad"></button>
-                <!-- <button id="store_content_element_4" class="menu_entry menu_entry_quad"></button>
+                <button id="store_content_element_4" class="menu_entry menu_entry_quad"></button>
                 <button id="store_content_element_5" class="menu_entry menu_entry_quad"></button>
-                <button id="store_content_element_6" class="menu_entry menu_entry_quad"></button> -->
+                <button id="store_content_element_6" class="menu_entry menu_entry_quad"></button>
               </div>
               <div class="store_details">
                 <div id="store_details_description">
@@ -134,13 +134,25 @@
         </div>
       </div>
       <div id="menu_instructional_buttons" class="instructional_buttons">
-        <div id="IB_SELECT" class="ib_container">
+        <div id="IB_SELECT" class="ib_container" style="order: 0">
           <span class="element_label element_simple_text instructional_button_prompt">Select</span>
           <img class="instructional_button" src="images/buttons/btn_enter.svg" alt="">
         </div>
-        <div id="IB_BACK" class="ib_container">
+        <div id="IB_BACK" class="ib_container" style="order: 100">
           <span class="element_label element_simple_text instructional_button_prompt">Back</span>
           <button class="instructional_button instructional_button_small">Esc</button>
+        </div>
+        <div id="IB_QUIT" class="ib_container" style="order: 100">
+          <span class="element_label element_simple_text instructional_button_prompt">Quit</span>
+          <button class="instructional_button instructional_button_small">Esc</button>
+        </div>
+        <!-- <div id="IB_SCROLL" class="ib_container ib_container_inactive" style="order: 1">
+          <span class="element_label element_simple_text instructional_button_prompt">Scroll</span>
+          <img class="instructional_button" src="images/buttons/btn_arrows_vertical.svg" alt="">
+        </div> -->
+        <div id="IB_SCROLL_DESCR" class="ib_container ib_container_inactive" style="order: 1">
+          <span class="element_label element_simple_text instructional_button_prompt">Scroll Description</span>
+          <img class="instructional_button" src="images/buttons/mouse_wheel.svg" alt="">
         </div>
       </div>
     </div>
