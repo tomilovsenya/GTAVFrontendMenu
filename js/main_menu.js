@@ -247,6 +247,9 @@ window.addEventListener(
     if (["KeyG"].indexOf(e.code) > -1) {
       updateMenuLocalization("russian");
     }
+    if (["KeyH"].indexOf(e.code) > -1) {
+      commonMenu.createMenuEntry($("#menu_settings_pause").children(".menu_elements_scrollable"), menuContent.TAB_SETTINGS_PAUSE_0);
+    }
     // if (["KeyZ"].indexOf(e.code) > -1) {
     //   // showWarningMessage("warning_message_header", "warning_message_text");
     //   // $("#menu_map").removeClass("menu_map_fullscreen");

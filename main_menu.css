@@ -45,7 +45,7 @@
 /* --navbar-margin-arrow: calc(var(--menu-wnd-width) / -60); */
 
 :root {
-  --menu-background: url("images/bg/background2.jpg");
+  --menu-background: url("images/bg/background5.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
@@ -227,7 +227,7 @@ div.instructional_buttons {
   align-items: center;
   align-self: flex-end;
   justify-self: flex-end;
-  gap: 1vw; 
+  gap: 1vw;
   z-index: 10;
   /* margin-top: -35px; */
   margin-bottom: var(--menu-safezone-top);
@@ -239,6 +239,7 @@ div.instructional_buttons_group {
   display: flex;
   justify-items: flex-end;
   flex-wrap: wrap-reverse;
+  gap: 1vw;
 }
 
 span.instructional_button_prompt {

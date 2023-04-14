@@ -1,4 +1,4 @@
-import { getLocalizedString } from "./menu_modules/menu_localization.js";
+import { getLocalizedString, menuLanguage, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 
 //
 // COMMON VARIABLES
@@ -78,4 +78,27 @@ export function removeRightTextArrows(text) {
   text.removeClass("element_label_arrowed");
   text.prev(".menu_entry_arrow_left").remove();
   text.next(".menu_entry_arrow_right").remove();
+}
+
+export function createMenuEntry(parentElements, entryObject) {
+  let entryIndex = (parentElements.children(".menu_entry").last().index() + 1) | 0;
+  let entryID = parentElements.parent().attr("id") + "_element_" + entryIndex;
+
+  let menuEntryList = $(`<div class="element_list">
+  <span class="element_label_right">On</span>
+  <span class="element_label_right">Off</span>
+</div>`);
+  let menuEntryLabel = `<span class="element_label"></span>`;
+  let menuEntryButton = $(`<button id="${entryID}" class="menu_entry">${menuEntryLabel}</button>`);
+
+  parentElements.append(menuEntryButton);
+  menuEntryButton.append(menuEntryList);
+
+  // // Right text (list) handling
+  // let listItems = activatedCategory.children(".element_list");
+  // if (listItems.length > 0) {
+  //   updateListItems(listItems);
+  // }
+
+  updateMenuLocalization(menuLanguage);
 }

@@ -491,6 +491,12 @@
   },
 
   {
+    "gxt": "menu_settings_pause_element_2",
+    "american": "New Item",
+    "russian": "Новый элемент"
+  },
+
+  {
     "gxt": "menu_game_category_0",
     "american": "Replay Mission",
     "russian": "Начать задание заново"
@@ -636,6 +642,11 @@
     "gxt": "store_tab_2",
     "american": "DETAILS",
     "russian": "ПОДРОБНОСТИ"
+  },
+  {
+    "gxt": "store_tab_3",
+    "american": "PACK DETAILS",
+    "russian": "ПОДРОБНОСТИ О ПРЕДМЕТЕ"
   },
   {
     "gxt": "store_packs_category_0",

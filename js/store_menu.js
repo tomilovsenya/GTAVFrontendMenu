@@ -97,6 +97,9 @@ window.addEventListener(
         case 1:
           escapeStoreEntriesMiddle();
           break;
+        case 2:
+          escapeDetails();
+          break;
       }
     }
     if (["Enter"].indexOf(e.code) > -1) {
@@ -108,6 +111,16 @@ window.addEventListener(
           enterStoreElementsMiddle();
           break;
         case 1:
+          break;
+      }
+    }
+    if (["Space"].indexOf(e.code) > -1) {
+      e.preventDefault();
+      switch (currentContext) {
+        case 0:
+          break;
+        case 1:
+          enterDetails();
           break;
       }
     }
@@ -188,12 +201,35 @@ async function loadStore() {
   activeCategoryElements = STORE_CATEGORIES[0];
   activeCategoryElements.next().hide();
   updateInstructionalButtons("STORE_MENU", currentContext, 0);
+  $("#store_tab_3").hide();
 }
 
 function showStore() {
   MENU_LOADING_SPINNER.hide();
   toggleMenuVisibility();
   setInstrContainerVisibility(true);
+}
+
+function enterDetails() {
+  // $("#store_packs").css({ visibility: "hidden" });
+  $("#store_packs").hide();
+  $("#store_element_details").show();
+  $("#store_tab_3").siblings().hide();
+  $("#store_tab_3").show();
+  $("#store_tab_3").addClass("menu_button_active");
+  $(".menu_window_arrows").removeClass("menu_window_arrows_active");
+  currentContext = 2;
+}
+
+function escapeDetails() {
+  // $("#store_packs").css({ visibility: "hidden" });
+  $("#store_element_details").hide();
+  $("#store_packs").show();
+  $("#store_tab_3").siblings().show();
+  $("#store_tab_3").hide();
+  $("#store_tab_3").removeClass("menu_button_active");
+  $(".menu_window_arrows").addClass("menu_window_arrows_active");
+  currentContext = 1;
 }
 
 function onStoreLoad() {

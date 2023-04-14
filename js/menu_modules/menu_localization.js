@@ -73,6 +73,18 @@ export function updateMenuLocalization(newLang) {
   }
 }
 
+// export function localizeSingleString(requestedString) {
+//   const langJSON = menuLangFile;
+
+//   let gxtID;
+//   let gxtElement;
+
+//   gxtID = "#" + requestedString;
+//   gxtElement = $(gxtID);
+
+//   gxtElement.html(langJSON..[menuLanguage]);
+// }
+
 export function getLocalizedString(requestedString) {
   let localizedString;
   let foundStrings = 0;
