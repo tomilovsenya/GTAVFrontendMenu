@@ -14,7 +14,7 @@ let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeScrollableElements = null;
-let initWindow = menuContent.MENU_TABS[0];
+let initWindow = menuContent.MENU_TABS[3];
 let activeWindow = initWindow;
 
 let currentOverflows = {
@@ -29,6 +29,7 @@ let currentOverflows = {
 //
 
 import * as menuContent from "./menu_modules/menu_content.js";
+import { MenuCategory, MenuElements, MenuEntry, MenuEntryList, MenuWindow } from "./menu_modules/menu_entries.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
 import { getLocalizedString, localizeMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
@@ -203,6 +204,57 @@ NAVBAR_LEFT_ARROW.click("click", function () {
 
 let isButtonPressedDown = false;
 
+//
+// TESTING OF CLASS-BASED MENU SYSTEM
+//
+
+let menuSettingsCategoryGraphics = new MenuEntry("menu_settings_category_graphics", "Graphics");
+let menuSettingsCategoryPause = new MenuEntry("menu_settings_category_pause", "Pause Menu");
+
+let menuSettingsCategories = {
+  ID: "menu_settings_categories",
+  list: [menuSettingsCategoryGraphics, menuSettingsCategoryPause],
+};
+
+let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
+  "1920x1080",
+  "800x600",
+]);
+let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "Show Clock", ["On", "Off"]);
+let menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
+  "English",
+  "Russian",
+  "Italian",
+  "Spanish",
+]);
+let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
+  "Always",
+  "Sometimes",
+  "Off",
+]);
+
+let currentEntry;
+
+let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
+let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
+
+let menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
+let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
+
+let menuElements = [menuSettingsGraphics, menuSettingsPause];
+let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuElements);
+
+function populateMenu() {
+  let menu = $("#menu_settings_pause").children(".menu_elements_scrollable");
+  menuSettingsPauseEntries.forEach((entry) => {
+    entry.createEntry(menu);
+  });
+
+  currentEntry = menuSettingsPauseEntries[0];
+}
+
+let currentWindow = menuSettings;
+
 window.addEventListener(
   "keydown",
   function (e) {
@@ -215,26 +267,30 @@ window.addEventListener(
     // if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
     //   e.preventDefault();
     // }
-    // if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
-    //   e.preventDefault();
-    //   scrollUpDown(1);
-    //   if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(1, $("#menu_save_list"));
-    // }
-    // if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
-    //   e.preventDefault();
-    //   scrollUpDown(0);
-    //   if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(0, $("#menu_save_list"));
-    // }
-    // if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
-    //   e.preventDefault();
-    //   scrollLeftRight(0);
-    //   scrollPerc(0);
-    // }
-    // if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
-    //   e.preventDefault();
-    //   scrollLeftRight(1);
-    //   scrollPerc(1);
-    // }
+    if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
+      e.preventDefault();
+      currentWindow.scrollCategories(1);
+      // scrollUpDown(1);
+      // if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(1, $("#menu_save_list"));
+    }
+    if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
+      e.preventDefault();
+      currentWindow.scrollCategories(0);
+      // scrollUpDown(0);
+      // if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(0, $("#menu_save_list"));
+    }
+    if (["ArrowLeft", "KeyA"].indexOf(e.code) > -1) {
+      // e.preventDefault();
+      // scrollLeftRight(0);
+      // scrollPerc(0);
+      currentWindow.currentElements.scrollSelection(0);
+    }
+    if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
+      // e.preventDefault();
+      // scrollLeftRight(1);
+      // scrollPerc(1);
+      currentWindow.currentElements.scrollSelection(1);
+    }
     // if (["KeyQ"].indexOf(e.code) > -1) {
     //   scrollTab(0);
     // }
@@ -242,13 +298,37 @@ window.addEventListener(
     //   scrollTab(1);
     // }
     if (["KeyF"].indexOf(e.code) > -1) {
-      updateMenuLocalization("american");
+      // updateMenuLocalization("american");
+      menuSettings.fillCategories();
     }
     if (["KeyG"].indexOf(e.code) > -1) {
       updateMenuLocalization("russian");
     }
     if (["KeyH"].indexOf(e.code) > -1) {
-      commonMenu.createMenuEntry($("#menu_settings_pause").children(".menu_elements_scrollable"), menuContent.TAB_SETTINGS_PAUSE_0);
+      commonMenu.createMenuEntry(
+        $("#menu_settings_pause").children(".menu_elements_scrollable"),
+        menuContent.TAB_SETTINGS_PAUSE_0
+      );
+    }
+    if (["KeyJ"].indexOf(e.code) > -1) {
+      // populateMenu();
+      // menuSettingsPause.populateElements();
+    }
+    if (["KeyL"].indexOf(e.code) > -1) {
+      // currentEntry.scrollList(1);
+      menuSettingsPause.updateSelection(0);
+    }
+    if (["KeyK"].indexOf(e.code) > -1) {
+      // currentEntry.scrollList(0);
+      menuSettingsPause.updateSelection(1);
+    }
+    if (["KeyN"].indexOf(e.code) > -1) {
+      // menuSettingsPause.scrollElements(0);
+      menuSettings.scrollCategories(0);
+    }
+    if (["KeyM"].indexOf(e.code) > -1) {
+      // menuSettingsPause.scrollElements(1);
+      menuSettings.scrollCategories(1);
     }
     // if (["KeyZ"].indexOf(e.code) > -1) {
     //   // showWarningMessage("warning_message_header", "warning_message_text");
@@ -257,15 +337,17 @@ window.addEventListener(
     // if (["KeyX"].indexOf(e.code) > -1) {
     //   // $("#menu_map").addClass("menu_map_fullscreen");
     // }
-    // if (["Escape", "Backspace"].indexOf(e.code) > -1) {
-    //   if (isWarningMessageActive) hideWarningMessage();
-    //   else escapeMenuEntriesMiddle();
-    // }
-    // if (["Enter"].indexOf(e.code) > -1) {
-    //   if (isWarningMessageActive) hideWarningMessage();
-    //   else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
-    //   else scrollLeftRight(1);
-    // }
+    if (["Escape", "Backspace"].indexOf(e.code) > -1) {
+      // if (isWarningMessageActive) hideWarningMessage();
+      // else escapeMenuEntriesMiddle();
+      currentWindow.escapeCategory();
+    }
+    if (["Enter"].indexOf(e.code) > -1) {
+      // if (isWarningMessageActive) hideWarningMessage();
+      // else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
+      // else scrollLeftRight(1);
+      menuSettings.enterCategory(menuSettings.currentCategory);
+    }
     // if (["Tab"].indexOf(e.code) > -1) {
     //   e.preventDefault();
     //   toggleMenuVisibility();
@@ -445,14 +527,15 @@ export function escapeMenuEntriesMiddle() {
 
 function setEntryActive(activatedEntry) {
   activeEntryMiddle = activatedEntry;
-  activatedEntry.addClass("menu_entry_active");
-  activatedEntry.focus();
+  // activatedEntry.addClass("menu_entry_active");
+  // activatedEntry.focus();
+  currentEntry.activate();
 
   console.log("Set entry active: " + activatedEntry.attr("id"));
 
   let rightLabel = activatedEntry.find(".element_list").children(".element_label_right").first();
-  rightLabel.nextAll().hide();
-  if (rightLabel.length != 0) commonMenu.setRightTextArrows(rightLabel);
+  // rightLabel.nextAll().hide();
+  // if (rightLabel.length != 0) commonMenu.setRightTextArrows(rightLabel);
 }
 
 function setEntryDisabled(disabledEntry) {
