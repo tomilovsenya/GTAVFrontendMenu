@@ -3,19 +3,44 @@ export class MenuWindow {
   #idSel;
   menuCategories = {};
   menuElements = [];
-  currentCategory = 0;
+  currentCategoryIndex = 0;
   currentElementsIndex = 0;
   currentContext = 0;
   currentElements;
+  currentCategory;
+  active = false;
 
   constructor(id, menuCategories, menuElements) {
     this.ID = id;
     this.#idSel = "#" + this.ID;
     this.menuCategories = menuCategories;
     this.menuElements = menuElements;
-    this.#populateAllElements();
     this.currentElements = menuElements[this.currentElementsIndex];
-    console.log(this.currentElements);
+    this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
+    // this.#populateAllElements();
+    // console.log(this.currentElements);
+  }
+
+  create() {
+    this.#populateAllElements();
+    this.#fillCategories();
+    this.updateSelection(0);
+    this.deactivate();
+    $(this.#idSel).show();
+  }
+
+  activate() {
+    this.active = true;
+    this.updateSelection(0);
+    this.currentContext = 0;
+    $(this.#idSel).removeClass("menu_window_inactive");
+  }
+
+  deactivate() {
+    this.active = false;
+    this.updateSelection(-1);
+    this.currentContext = -1;
+    $(this.#idSel).addClass("menu_window_inactive");
   }
 
   #populateAllElements() {
@@ -24,20 +49,33 @@ export class MenuWindow {
     });
   }
 
-  fillCategories() {
+  #fillCategories() {
     this.menuCategories.list.forEach((category) => {
       category.createEntry($("#" + this.menuCategories.ID));
     });
+  }
+
+  goDeeper() {
+    if (this.currentContext == -1) this.updateSelection(0);
+    else if (this.currentContext == 0) this.enterCategory(this.currentCategoryIndex);
+    else console.log("Can't go deeper in " + this.ID);
+  }
+
+  goBack() {
+    if (this.currentContext == 1) this.escapeCategory();
+    else if (this.currentContext == 0) this.deactivate();
+    else console.log("Can't go back in " + this.ID);
   }
 
   scrollCategories(scrollDir) {
     if (this.currentContext == 0) {
       let newSelection;
       if (scrollDir == 0) {
-        if (this.currentCategory == 0) newSelection = this.menuCategories.list.length - 1;
-        else newSelection = this.currentCategory - 1;
+        if (this.currentCategoryIndex == 0) newSelection = this.menuCategories.list.length - 1;
+        else newSelection = this.currentCategoryIndex - 1;
       } else if (scrollDir == 1) {
-        if (this.currentCategory < this.menuCategories.list.length - 1) newSelection = this.currentCategory + 1;
+        if (this.currentCategoryIndex < this.menuCategories.list.length - 1)
+          newSelection = this.currentCategoryIndex + 1;
         else newSelection = 0;
       }
 
@@ -48,17 +86,23 @@ export class MenuWindow {
   }
 
   updateSelection(newSelection) {
-    this.menuCategories.list[this.currentCategory].deactivate();
-    this.currentCategory = newSelection;
-    this.menuCategories.list[this.currentCategory].activate();
+    if (newSelection == -1) {
+      this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
+      this.currentCategory.deactivate();
+      this.currentElements.currentEntry.deactivate();
+    } else {
+      this.menuCategories.list[this.currentCategoryIndex].deactivate();
+      this.currentCategoryIndex = newSelection;
+      this.menuCategories.list[this.currentCategoryIndex].activate();
 
-    let oldElements = $("#" + this.currentElements.ID);
-    let newElements = $("#" + this.menuElements[newSelection].ID);
-    this.currentElementsIndex = newSelection;
-    oldElements.hide();
-    newElements.show();
+      let oldElements = $("#" + this.currentElements.ID);
+      let newElements = $("#" + this.menuElements[newSelection].ID);
+      this.currentElementsIndex = newSelection;
+      oldElements.hide();
+      newElements.show();
 
-    this.currentElements = this.menuElements[newSelection];
+      this.currentElements = this.menuElements[newSelection];
+    }
   }
 
   enterCategory(activatedCategory) {
@@ -68,7 +112,7 @@ export class MenuWindow {
   }
 
   escapeCategory() {
-    let activeEntry = this.currentElements.menuEntries[this.currentElements.currentSelection];
+    let activeEntry = this.currentElements.currentEntry;
     this.currentContext = 0;
     activeEntry.deactivate();
     // this.updateElements(activatedCategory);
@@ -87,12 +131,14 @@ export class MenuElements {
   #idSel;
   menuEntries = [];
   currentSelection = 0;
+  currentEntry = this.menuEntries[this.currentSelection];
   active = true;
 
   constructor(id, menuEntries) {
     this.ID = id;
     this.#idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
+    this.currentEntry = this.menuEntries[this.currentSelection];
   }
 
   populateElements() {
@@ -106,6 +152,8 @@ export class MenuElements {
     this.menuEntries[this.currentSelection].deactivate();
     this.currentSelection = newSelection;
     this.menuEntries[this.currentSelection].activate();
+
+    this.currentEntry = this.menuEntries[this.currentSelection];
   }
 
   scrollSelection(scrollDir) {

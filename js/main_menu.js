@@ -302,7 +302,8 @@ window.addEventListener(
       menuSettings.fillCategories();
     }
     if (["KeyG"].indexOf(e.code) > -1) {
-      updateMenuLocalization("russian");
+      // updateMenuLocalization("russian");
+      menuSettings.create();
     }
     if (["KeyH"].indexOf(e.code) > -1) {
       commonMenu.createMenuEntry(
@@ -313,6 +314,7 @@ window.addEventListener(
     if (["KeyJ"].indexOf(e.code) > -1) {
       // populateMenu();
       // menuSettingsPause.populateElements();
+      menuSettings.deactivate();
     }
     if (["KeyL"].indexOf(e.code) > -1) {
       // currentEntry.scrollList(1);
@@ -340,13 +342,15 @@ window.addEventListener(
     if (["Escape", "Backspace"].indexOf(e.code) > -1) {
       // if (isWarningMessageActive) hideWarningMessage();
       // else escapeMenuEntriesMiddle();
-      currentWindow.escapeCategory();
+      currentWindow.goBack();
     }
     if (["Enter"].indexOf(e.code) > -1) {
       // if (isWarningMessageActive) hideWarningMessage();
       // else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
       // else scrollLeftRight(1);
-      menuSettings.enterCategory(menuSettings.currentCategory);
+      // menuSettings.enterCategory(menuSettings.currentCategoryIndex);
+      if (!menuSettings.active) menuSettings.activate();
+      else menuSettings.goDeeper();
     }
     // if (["Tab"].indexOf(e.code) > -1) {
     //   e.preventDefault();
