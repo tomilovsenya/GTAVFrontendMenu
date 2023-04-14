@@ -407,6 +407,11 @@ div.menu_window {
   position: relative;
 }
 
+div.menu_window_inactive {
+  opacity: 0.5;
+  
+}
+
 a.menu_window_clickable {
   text-decoration: none;
 }
