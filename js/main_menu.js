@@ -29,7 +29,14 @@ let currentOverflows = {
 //
 
 import * as menuContent from "./menu_modules/menu_content.js";
-import { MenuCategory, MenuElements, MenuEntry, MenuEntryList, MenuWindow } from "./menu_modules/menu_entries.js";
+import {
+  MenuCategory,
+  MenuElements,
+  MenuEntry,
+  MenuEntryList,
+  MenuWindow,
+  findMenuEntryByID,
+} from "./menu_modules/menu_entries.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
 import { getLocalizedString, localizeMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
@@ -233,7 +240,15 @@ let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember"
   "Off",
 ]);
 
-let currentEntry;
+export let allMenuEntries = [
+  menuSettingsCategoryGraphics,
+  menuSettingsCategoryPause,
+  menuSettingsGraphicsResolution,
+  menuSettingsPauseClock,
+  menuSettingsPauseLanguage,
+  menuSettingsPauseRemember,
+];
+
 
 let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
 let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
@@ -244,16 +259,10 @@ let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPaus
 let menuElements = [menuSettingsGraphics, menuSettingsPause];
 let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuElements);
 
-function populateMenu() {
-  let menu = $("#menu_settings_pause").children(".menu_elements_scrollable");
-  menuSettingsPauseEntries.forEach((entry) => {
-    entry.createEntry(menu);
-  });
-
-  currentEntry = menuSettingsPauseEntries[0];
-}
+export let allMenuElements = [menuSettingsGraphics, menuSettingsPause];
 
 let currentWindow = menuSettings;
+let currentEntry;
 
 window.addEventListener(
   "keydown",
@@ -269,13 +278,13 @@ window.addEventListener(
     // }
     if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
       e.preventDefault();
-      currentWindow.scrollCategories(1);
+      currentWindow.scrollVertical(1);
       // scrollUpDown(1);
       // if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(1, $("#menu_save_list"));
     }
     if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
       e.preventDefault();
-      currentWindow.scrollCategories(0);
+      currentWindow.scrollVertical(0);
       // scrollUpDown(0);
       // if (activeWindow == menuContent.MENU_TAB_SAVE) scrollSaves(0, $("#menu_save_list"));
     }
@@ -283,13 +292,13 @@ window.addEventListener(
       // e.preventDefault();
       // scrollLeftRight(0);
       // scrollPerc(0);
-      currentWindow.currentElements.scrollSelection(0);
+      currentWindow.scrollHorizontal(0);
     }
     if (["ArrowRight", "KeyD"].indexOf(e.code) > -1) {
       // e.preventDefault();
       // scrollLeftRight(1);
       // scrollPerc(1);
-      currentWindow.currentElements.scrollSelection(1);
+      currentWindow.scrollHorizontal(1);
     }
     // if (["KeyQ"].indexOf(e.code) > -1) {
     //   scrollTab(0);
@@ -299,38 +308,27 @@ window.addEventListener(
     // }
     if (["KeyF"].indexOf(e.code) > -1) {
       // updateMenuLocalization("american");
-      menuSettings.fillCategories();
     }
     if (["KeyG"].indexOf(e.code) > -1) {
       // updateMenuLocalization("russian");
       menuSettings.create();
     }
     if (["KeyH"].indexOf(e.code) > -1) {
-      commonMenu.createMenuEntry(
-        $("#menu_settings_pause").children(".menu_elements_scrollable"),
-        menuContent.TAB_SETTINGS_PAUSE_0
-      );
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
-      // populateMenu();
-      // menuSettingsPause.populateElements();
       menuSettings.deactivate();
     }
     if (["KeyL"].indexOf(e.code) > -1) {
-      // currentEntry.scrollList(1);
       menuSettingsPause.updateSelection(0);
     }
     if (["KeyK"].indexOf(e.code) > -1) {
-      // currentEntry.scrollList(0);
       menuSettingsPause.updateSelection(1);
     }
     if (["KeyN"].indexOf(e.code) > -1) {
-      // menuSettingsPause.scrollElements(0);
-      menuSettings.scrollCategories(0);
+      menuSettings.scrollVertical(0);
     }
     if (["KeyM"].indexOf(e.code) > -1) {
-      // menuSettingsPause.scrollElements(1);
-      menuSettings.scrollCategories(1);
+      menuSettings.scrollVertical(1);
     }
     // if (["KeyZ"].indexOf(e.code) > -1) {
     //   // showWarningMessage("warning_message_header", "warning_message_text");
@@ -507,12 +505,14 @@ function clickCategory() {
 }
 
 export function clickEntry() {
-  triggerEntry($(this));
-  if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
-  else
-    console.log(
-      "Clicked menu_entry without ID, possibly menu_entry_empty, triggerEntry will return before doing anything"
-    );
+  let clickedEntry = findMenuEntryByID($(this).attr("id"));
+  clickedEntry.parentElements.clickEntry(clickedEntry);
+  // triggerEntry($(this));
+  // if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
+  // else
+  //   console.log(
+  //     "Clicked menu_entry without ID, possibly menu_entry_empty, triggerEntry will return before doing anything"
+  //   );
 }
 
 export function enterMenuEntriesMiddle(triggeredCategoryElements) {

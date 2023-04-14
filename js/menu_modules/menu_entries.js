@@ -1,3 +1,5 @@
+import { allMenuElements, allMenuEntries } from "../main_menu.js";
+
 export class MenuWindow {
   ID = "menu_window_default";
   #idSel;
@@ -34,6 +36,7 @@ export class MenuWindow {
     this.updateSelection(0);
     this.currentContext = 0;
     $(this.#idSel).removeClass("menu_window_inactive");
+    $(this.#idSel).find(".menu_arrows").show();
   }
 
   deactivate() {
@@ -41,6 +44,7 @@ export class MenuWindow {
     this.updateSelection(-1);
     this.currentContext = -1;
     $(this.#idSel).addClass("menu_window_inactive");
+    $(this.#idSel).find(".menu_arrows").hide();
   }
 
   #populateAllElements() {
@@ -67,7 +71,8 @@ export class MenuWindow {
     else console.log("Can't go back in " + this.ID);
   }
 
-  scrollCategories(scrollDir) {
+  scrollVertical(scrollDir) {
+    if (this.currentContext == -1) return;
     if (this.currentContext == 0) {
       let newSelection;
       if (scrollDir == 0) {
@@ -83,6 +88,11 @@ export class MenuWindow {
     } else if (this.currentContext == 1) {
       this.currentElements.scrollElements(scrollDir);
     }
+  }
+
+  scrollHorizontal(scrollDir) {
+    if (this.currentContext != 1) return;
+    this.currentElements.currentEntry.scrollList(scrollDir);
   }
 
   updateSelection(newSelection) {
@@ -143,9 +153,13 @@ export class MenuElements {
 
   populateElements() {
     let scrollableElements = $(this.#idSel).find(".menu_elements_scrollable");
-    this.menuEntries.forEach((entry) => {
-      entry.createEntry(scrollableElements);
+    this.menuEntries.forEach((entry, index) => {
+      entry.createEntry(scrollableElements, this, index);
     });
+  }
+
+  clickEntry(clickedEntry) {
+    this.updateSelection(clickedEntry.index);
   }
 
   updateSelection(newSelection) {
@@ -180,6 +194,8 @@ export class MenuEntry {
   ID = "default_id";
   idSel;
   title = "Menu Entry";
+  parentElements;
+  index = 0;
 
   constructor(id, title) {
     this.ID = id;
@@ -187,13 +203,15 @@ export class MenuEntry {
     this.title = title;
   }
 
-  createEntry(parentId) {
+  createEntry(parentId, parentElements, index) {
     let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
     let blankEntryLabel = `<span class="element_label"></span>`;
 
     blankEntry.append(blankEntryLabel);
     blankEntry.find(".element_label").text(this.title);
     $(parentId).append(blankEntry);
+    this.parentElements = parentElements;
+    this.index = index;
   }
 
   activate() {
@@ -223,7 +241,7 @@ export class MenuEntryList extends MenuEntry {
     this.listSel = "#" + this.listID;
   }
 
-  createEntry(parentId) {
+  createEntry(parentId, parentElements, index) {
     let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
     let blankEntryLabel = `<span class="element_label"></span>`;
     let blankEntryList = `<div id="${this.listID}" class="element_list"></div>`;
@@ -238,6 +256,9 @@ export class MenuEntryList extends MenuEntry {
 
     $(parentId).append(blankEntry);
     this.prepareList(blankEntry);
+
+    this.parentElements = parentElements;
+    this.index = index;
   }
 
   activate() {
@@ -320,5 +341,24 @@ export class MenuCategory extends MenuEntry {
   constructor(id, title) {
     this.ID = id;
     this.title = title;
+  }
+}
+
+export function findMenuEntryByID(id) {
+  let foundObject = allMenuEntries.find((entry) => entry.ID === id);
+  console.log("Found MenuEntry by ID: " + id);
+  console.log(foundObject);
+  return foundObject;
+}
+
+export function findMenuElementsByID(id) {
+  let foundObject = allMenuElements.find((entry) => entry.ID === id);
+  if (foundObject != undefined) {
+    console.log("Found MenuElements by ID: " + id);
+    console.log(foundObject);
+    return foundObject;
+  } else {
+    console.log("MenuElements with such ID not found: " + id);
+    return 0;
   }
 }
