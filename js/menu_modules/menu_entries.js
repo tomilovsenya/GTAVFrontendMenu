@@ -51,6 +51,7 @@ export class MenuWindow {
   #populateAllElements() {
     this.menuElements.forEach((elements) => {
       elements.populateElements(this);
+      console.log(elements);
     });
   }
 
@@ -58,7 +59,7 @@ export class MenuWindow {
     this.menuCategories.list.forEach((category, index) => {
       let categoryTitle = getLocalizedString(category.title);
       console.log(categoryTitle);
-      category.createEntry(categoryTitle, $("#" + this.menuCategories.ID), this, index);
+      category.createEntry(categoryTitle, this.menuCategories.ID, this, index);
       // category.title = getLocalizedString(category.title);
       $("#" + category.ID).addClass("menu_category");
     });
@@ -179,11 +180,25 @@ export class MenuElements {
   }
 
   populateElements(parentWindow) {
+    let headerElements = $(this.#idSel).find(".menu_elements_header");
     let scrollableElements = $(this.#idSel).find(".menu_elements_scrollable");
+    headerElements.attr("id", this.ID + "_header");
+    scrollableElements.attr("id", this.ID + "_scrollable");
+    let headerID = headerElements.attr("id");
+    let scrollableID = scrollableElements.attr("id");
+    // console.log(headerElements);
+    // console.log(scrollableElements);
+
     this.menuEntries.forEach((entry, index) => {
       let entryTitle = getLocalizedString(entry.title);
-      console.log(entryTitle);
-      entry.createEntry(entryTitle, scrollableElements, this, index);
+      let parentID;
+      if (entry instanceof MenuEntryHeader) parentID = headerID;
+      else parentID = scrollableID;
+      // console.log(entryTitle);
+      // console.log(headerID);
+      // console.log(scrollableID);
+      console.log("ParentID: " + parentID);
+      entry.createEntry(entryTitle, parentID, this, index);
     });
     this.parentWindow = parentWindow;
   }
@@ -249,7 +264,8 @@ export class MenuEntry {
 
     blankEntry.append(blankEntryLabel);
     blankEntry.find(".element_label").text(this.title);
-    $(parentId).append(blankEntry);
+    // console.log(parentId);
+    $("#" + parentId).append(blankEntry);
     blankEntryLabel.text(title);
     this.parentElements = parentElements;
     this.index = index;
@@ -379,6 +395,12 @@ export class MenuEntryList extends MenuEntry {
     }
 
     this.updateList();
+  }
+}
+
+export class MenuEntryHeader extends MenuEntry {
+  constructor(id, title, image) {
+    super(id, title);
   }
 }
 

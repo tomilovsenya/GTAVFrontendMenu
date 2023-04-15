@@ -1,4 +1,4 @@
-import { MenuWindow } from "./menu_entries.js";
+import { MenuEntryHeader, MenuWindow } from "./menu_entries.js";
 import { MenuElements } from "./menu_entries.js";
 import { MenuEntry } from "./menu_entries.js";
 import { MenuEntryList } from "./menu_entries.js";
@@ -23,6 +23,8 @@ export let menuSettingsCategories = {
   list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
 };
 
+export let menuSettingsGamepadImage = new MenuEntryHeader("menu_settings_gamepad_header", "Gamepad Pic");
+
 export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
   "1920x1080",
   "800x600",
@@ -46,22 +48,29 @@ export let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_re
 export let allMenuEntries = [
   menuSettingsCategoryGraphics,
   menuSettingsCategoryPause,
+  menuSettingsCategoryGamepad,
+
+  menuSettingsGamepadImage,
+
   menuSettingsGraphicsResolution,
+  
   menuSettingsPauseClock,
   menuSettingsPauseLanguage,
   menuSettingsPauseRemember,
 ];
 
+export let menuSettingsGamepadEntries = [menuSettingsGamepadImage];
 export let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
 export let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
+export let menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);
 export let menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
 export let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
 
-export let menuElements = [menuSettingsGraphics, menuSettingsPause];
+export let menuElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
 export let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuElements);
 
-export let allMenuElements = [menuSettingsGraphics, menuSettingsPause];
+export let allMenuElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
 
 //
 // SCROLLABLE MENU ENTRIES MIDDLE
