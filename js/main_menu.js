@@ -249,7 +249,6 @@ export let allMenuEntries = [
   menuSettingsPauseRemember,
 ];
 
-
 let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
 let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
@@ -495,13 +494,16 @@ function disableEntry(disabledEntry) {
 }
 
 function clickCategory() {
-  triggerCategory($(this));
-  if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
-  else
-    console.log(
-      "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
-    );
-  activeWindowHandler(activeTab);
+  let clickedCategory = findMenuEntryByID($(this).attr("id"));
+  clickedCategory.parentElements.clickCategory(clickedCategory);
+  // console.log(clickedCategory.parentElements);
+  // triggerCategory($(this));
+  // if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
+  // else
+  //   console.log(
+  //     "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
+  //   );
+  // activeWindowHandler(activeTab);
 }
 
 export function clickEntry() {
@@ -545,7 +547,7 @@ function setEntryActive(activatedEntry) {
 function setEntryDisabled(disabledEntry) {
   disabledEntry.removeClass("menu_entry_active");
   activeEntryMiddle = null;
-  if (activeCategory) activeCategory.focus();
+  // if (activeCategory) activeCategory.focus();
 
   console.log("Set entry disabled: " + disabledEntry.attr("id"));
 
@@ -558,7 +560,7 @@ let activeCategoryObject = null;
 function setCategoryActive(activatedCategory) {
   activatedCategory.addClass("menu_entry_active");
   activeCategory = activatedCategory;
-  activeCategory.focus();
+  // activeCategory.focus();
 
   if (activeWindow.cats && activeWindow.cats[activatedCategory.index()].id) {
     // activeCategoryElements = activeWindow.cats[activatedCategory.index()].id;

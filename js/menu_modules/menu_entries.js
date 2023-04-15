@@ -5,7 +5,7 @@ export class MenuWindow {
   #idSel;
   menuCategories = {};
   menuElements = [];
-  currentCategoryIndex = 0;
+  currentCategoryIndex = -1;
   currentElementsIndex = 0;
   currentContext = 0;
   currentElements;
@@ -49,13 +49,14 @@ export class MenuWindow {
 
   #populateAllElements() {
     this.menuElements.forEach((elements) => {
-      elements.populateElements();
+      elements.populateElements(this);
     });
   }
 
   #fillCategories() {
-    this.menuCategories.list.forEach((category) => {
-      category.createEntry($("#" + this.menuCategories.ID));
+    this.menuCategories.list.forEach((category, index) => {
+      category.createEntry($("#" + this.menuCategories.ID), this, index);
+      $("#" + category.ID).addClass("menu_category");
     });
   }
 
@@ -69,6 +70,24 @@ export class MenuWindow {
     if (this.currentContext == 1) this.escapeCategory();
     else if (this.currentContext == 0) this.deactivate();
     else console.log("Can't go back in " + this.ID);
+  }
+
+  clickCategory(clickedCategory) {
+    if (this.currentContext == -1) {
+      this.activate();
+      this.updateSelection(clickedCategory.index);
+    } else if (this.currentContext == 0) {
+      if (clickedCategory.index == this.currentCategoryIndex) this.enterCategory(this.currentCategoryIndex);
+      else this.updateSelection(clickedCategory.index);
+    } else if (this.currentContext == 1) {
+      this.escapeCategory();
+      this.updateSelection(clickedCategory.index);
+    }
+
+    // $("#" + clickedCategory.ID).focusout();
+    document.activeElement.blur();
+
+    console.log("Clicked MenuCategory with context: " + this.currentContext);
   }
 
   scrollVertical(scrollDir) {
@@ -96,10 +115,11 @@ export class MenuWindow {
   }
 
   updateSelection(newSelection) {
+    if (this.currentCategoryIndex == -1 && newSelection != -1) this.currentCategoryIndex = newSelection;
     if (newSelection == -1) {
       this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
       this.currentCategory.deactivate();
-      this.currentElements.currentEntry.deactivate();
+      if (this.currentElements.currentEntry != undefined) this.currentElements.currentEntry.deactivate();
     } else {
       this.menuCategories.list[this.currentCategoryIndex].deactivate();
       this.currentCategoryIndex = newSelection;
@@ -117,7 +137,9 @@ export class MenuWindow {
 
   enterCategory(activatedCategory) {
     this.currentContext = 1;
+    this.currentCategoryIndex = activatedCategory;
     this.updateElements(activatedCategory);
+    this.currentElements.currentSelection = 0;
     this.currentElements.updateSelection(0);
   }
 
@@ -140,9 +162,10 @@ export class MenuElements {
   ID = "menu_default";
   #idSel;
   menuEntries = [];
-  currentSelection = 0;
-  currentEntry = this.menuEntries[this.currentSelection];
+  currentSelection = -1;
+  currentEntry;
   active = true;
+  parentWindow;
 
   constructor(id, menuEntries) {
     this.ID = id;
@@ -151,19 +174,30 @@ export class MenuElements {
     this.currentEntry = this.menuEntries[this.currentSelection];
   }
 
-  populateElements() {
+  populateElements(parentWindow) {
     let scrollableElements = $(this.#idSel).find(".menu_elements_scrollable");
     this.menuEntries.forEach((entry, index) => {
       entry.createEntry(scrollableElements, this, index);
     });
+    this.parentWindow = parentWindow;
   }
 
   clickEntry(clickedEntry) {
+    // if (this.currentSelection == -1) return;
+    // if (this.currentSelection == clickedEntry.index) return;
+    if (this.parentWindow.currentContext == -1) {
+      this.parentWindow.activate();
+      this.parentWindow.enterCategory(this.parentWindow.currentCategoryIndex);
+    } else if (this.parentWindow.currentContext == 0) {
+      this.parentWindow.enterCategory(this.parentWindow.currentCategoryIndex);
+    }
+    console.log(this.parentWindow);
     this.updateSelection(clickedEntry.index);
+    console.log("Clicked MenuEntry: " + clickedEntry.ID);
   }
 
   updateSelection(newSelection) {
-    this.menuEntries[this.currentSelection].deactivate();
+    if (this.currentSelection != -1) this.menuEntries[this.currentSelection].deactivate();
     this.currentSelection = newSelection;
     this.menuEntries[this.currentSelection].activate();
 
