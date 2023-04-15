@@ -211,56 +211,7 @@ NAVBAR_LEFT_ARROW.click("click", function () {
 
 let isButtonPressedDown = false;
 
-//
-// TESTING OF CLASS-BASED MENU SYSTEM
-//
-
-let menuSettingsCategoryGraphics = new MenuEntry("menu_settings_category_graphics", "Graphics");
-let menuSettingsCategoryPause = new MenuEntry("menu_settings_category_pause", "Pause Menu");
-
-let menuSettingsCategories = {
-  ID: "menu_settings_categories",
-  list: [menuSettingsCategoryGraphics, menuSettingsCategoryPause],
-};
-
-let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
-  "1920x1080",
-  "800x600",
-]);
-let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "Show Clock", ["On", "Off"]);
-let menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
-  "English",
-  "Russian",
-  "Italian",
-  "Spanish",
-]);
-let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
-  "Always",
-  "Sometimes",
-  "Off",
-]);
-
-export let allMenuEntries = [
-  menuSettingsCategoryGraphics,
-  menuSettingsCategoryPause,
-  menuSettingsGraphicsResolution,
-  menuSettingsPauseClock,
-  menuSettingsPauseLanguage,
-  menuSettingsPauseRemember,
-];
-
-let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
-let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
-
-let menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
-let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
-
-let menuElements = [menuSettingsGraphics, menuSettingsPause];
-let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuElements);
-
-export let allMenuElements = [menuSettingsGraphics, menuSettingsPause];
-
-let currentWindow = menuSettings;
+let currentWindow = menuContent.menuSettings;
 let currentEntry;
 
 window.addEventListener(
@@ -310,24 +261,20 @@ window.addEventListener(
     }
     if (["KeyG"].indexOf(e.code) > -1) {
       // updateMenuLocalization("russian");
-      menuSettings.create();
+      currentWindow.create();
     }
     if (["KeyH"].indexOf(e.code) > -1) {
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
-      menuSettings.deactivate();
+      currentWindow.deactivate();
     }
     if (["KeyL"].indexOf(e.code) > -1) {
-      menuSettingsPause.updateSelection(0);
     }
     if (["KeyK"].indexOf(e.code) > -1) {
-      menuSettingsPause.updateSelection(1);
     }
     if (["KeyN"].indexOf(e.code) > -1) {
-      menuSettings.scrollVertical(0);
     }
     if (["KeyM"].indexOf(e.code) > -1) {
-      menuSettings.scrollVertical(1);
     }
     // if (["KeyZ"].indexOf(e.code) > -1) {
     //   // showWarningMessage("warning_message_header", "warning_message_text");
@@ -346,8 +293,8 @@ window.addEventListener(
       // else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
       // else scrollLeftRight(1);
       // menuSettings.enterCategory(menuSettings.currentCategoryIndex);
-      if (!menuSettings.active) menuSettings.activate();
-      else menuSettings.goDeeper();
+      if (!currentWindow.active) currentWindow.activate();
+      else currentWindow.goDeeper();
     }
     // if (["Tab"].indexOf(e.code) > -1) {
     //   e.preventDefault();

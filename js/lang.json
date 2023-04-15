@@ -126,6 +126,17 @@
   },
 
   {
+    "gxt": "menu_common_off",
+    "american": "Off",
+    "russian": "Выкл."
+  },
+  {
+    "gxt": "menu_common_on",
+    "american": "On",
+    "russian": "Вкл."
+  },
+
+  {
     "gxt": "menu_brief_category_0",
     "american": "Mission",
     "russian": "Задание"
@@ -420,7 +431,7 @@
   },
 
   {
-    "gxt": "menu_settings_category_0",
+    "gxt": "menu_settings_category_gamepad",
     "american": "Gamepad",
     "russian": "Геймпад"
   },
@@ -450,7 +461,7 @@
     "russian": "Видео"
   },
   {
-    "gxt": "menu_settings_category_6",
+    "gxt": "menu_settings_category_graphics",
     "american": "Graphics",
     "russian": "Графика"
   },
@@ -485,9 +496,14 @@
     "russian": "Facebook"
   },
   {
-    "gxt": "menu_settings_category_13",
+    "gxt": "menu_settings_category_pause",
     "american": "Pause Menu",
     "russian": "Меню паузы"
+  },
+  {
+    "gxt": "menu_settings_pause_clock",
+    "american": "Show Clock",
+    "russian": "Показывать часы"
   },
 
   {

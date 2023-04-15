@@ -1,4 +1,5 @@
-import { allMenuElements, allMenuEntries } from "../main_menu.js";
+import { allMenuElements, allMenuEntries } from "./menu_content.js";
+import { getLocalizedString } from "./menu_localization.js";
 
 export class MenuWindow {
   ID = "menu_window_default";
@@ -55,7 +56,10 @@ export class MenuWindow {
 
   #fillCategories() {
     this.menuCategories.list.forEach((category, index) => {
-      category.createEntry($("#" + this.menuCategories.ID), this, index);
+      let categoryTitle = getLocalizedString(category.title);
+      console.log(categoryTitle);
+      category.createEntry(categoryTitle, $("#" + this.menuCategories.ID), this, index);
+      // category.title = getLocalizedString(category.title);
       $("#" + category.ID).addClass("menu_category");
     });
   }
@@ -177,7 +181,9 @@ export class MenuElements {
   populateElements(parentWindow) {
     let scrollableElements = $(this.#idSel).find(".menu_elements_scrollable");
     this.menuEntries.forEach((entry, index) => {
-      entry.createEntry(scrollableElements, this, index);
+      let entryTitle = getLocalizedString(entry.title);
+      console.log(entryTitle);
+      entry.createEntry(entryTitle, scrollableElements, this, index);
     });
     this.parentWindow = parentWindow;
   }
@@ -237,15 +243,18 @@ export class MenuEntry {
     this.title = title;
   }
 
-  createEntry(parentId, parentElements, index) {
+  createEntry(title, parentId, parentElements, index) {
     let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
-    let blankEntryLabel = `<span class="element_label"></span>`;
+    let blankEntryLabel = $(`<span class="element_label"></span>`);
 
     blankEntry.append(blankEntryLabel);
     blankEntry.find(".element_label").text(this.title);
     $(parentId).append(blankEntry);
+    blankEntryLabel.text(title);
     this.parentElements = parentElements;
     this.index = index;
+    this.title = title;
+    // console.log(this);
   }
 
   activate() {
@@ -275,24 +284,28 @@ export class MenuEntryList extends MenuEntry {
     this.listSel = "#" + this.listID;
   }
 
-  createEntry(parentId, parentElements, index) {
-    let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
-    let blankEntryLabel = `<span class="element_label"></span>`;
+  createEntry(title, parentId, parentElements, index) {
+    super.createEntry(title, parentId, parentElements, index);
+    // let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
+    // let blankEntryLabel = `<span class="element_label">${this.title}</span>`;
     let blankEntryList = `<div id="${this.listID}" class="element_list"></div>`;
 
-    blankEntry.append(blankEntryLabel);
-    blankEntry.append(blankEntryList);
-    blankEntry.find(".element_label").text(this.title);
+    // blankEntry.append(blankEntryLabel);
+    $(this.idSel).append(blankEntryList);
+    // blankEntry.find(".element_label").text(this.title);
 
     this.listItems.forEach((labelRight, index) => {
       this.listCollection.items[index] = labelRight;
     });
 
-    $(parentId).append(blankEntry);
-    this.prepareList(blankEntry);
+    console.log(this.idSel);
 
-    this.parentElements = parentElements;
-    this.index = index;
+    // $(parentId).append(blankEntry);
+    this.prepareList(this.idSel);
+
+    // this.parentElements = parentElements;
+    // this.index = index;
+    // this.title = title;
   }
 
   activate() {
@@ -306,17 +319,18 @@ export class MenuEntryList extends MenuEntry {
   }
 
   prepareList(menuEntryList) {
-    let rightList = menuEntryList.find(".element_list").first();
+    let rightList = $(menuEntryList).find(".element_list").first();
     let rightLabel = rightList.find(".element_label_right");
     let blankEntryLabelRight = `<span class="element_label_right"></span>`;
 
     this.listCollection.items.forEach((item, index) => {
+      let listItemTitle = getLocalizedString(item);
       rightList.append(blankEntryLabelRight);
       rightList
         .find(".element_label_right")
         .eq(index)
         .attr("id", this.listID + "_" + index);
-      rightList.find(".element_label_right").eq(index).text(item);
+      rightList.find(".element_label_right").eq(index).text(listItemTitle);
     });
 
     rightList.find(".element_label_right").eq(0).nextAll().hide();

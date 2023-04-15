@@ -1,3 +1,68 @@
+import { MenuWindow } from "./menu_entries.js";
+import { MenuElements } from "./menu_entries.js";
+import { MenuEntry } from "./menu_entries.js";
+import { MenuEntryList } from "./menu_entries.js";
+import { MenuCategory } from "./menu_entries.js";
+
+//
+// TESTING OF CLASS-BASED MENU SYSTEM
+//
+
+export let menuSettingsCategoryGamepad = new MenuEntry(
+  "menu_settings_category_gamepad",
+  "menu_settings_category_gamepad"
+);
+export let menuSettingsCategoryGraphics = new MenuEntry(
+  "menu_settings_category_graphics",
+  "menu_settings_category_graphics"
+);
+export let menuSettingsCategoryPause = new MenuEntry("menu_settings_category_pause", "menu_settings_category_pause");
+
+export let menuSettingsCategories = {
+  ID: "menu_settings_categories",
+  list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
+};
+
+export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
+  "1920x1080",
+  "800x600",
+]);
+export let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock", [
+  "menu_common_on",
+  "menu_common_off",
+]);
+export let menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
+  "English",
+  "Russian",
+  "Italian",
+  "Spanish",
+]);
+export let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
+  "Always",
+  "Sometimes",
+  "Off",
+]);
+
+export let allMenuEntries = [
+  menuSettingsCategoryGraphics,
+  menuSettingsCategoryPause,
+  menuSettingsGraphicsResolution,
+  menuSettingsPauseClock,
+  menuSettingsPauseLanguage,
+  menuSettingsPauseRemember,
+];
+
+export let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
+export let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
+
+export let menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
+export let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
+
+export let menuElements = [menuSettingsGraphics, menuSettingsPause];
+export let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuElements);
+
+export let allMenuElements = [menuSettingsGraphics, menuSettingsPause];
+
 //
 // SCROLLABLE MENU ENTRIES MIDDLE
 //
