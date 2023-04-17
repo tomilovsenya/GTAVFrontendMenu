@@ -43,10 +43,13 @@ export class MenuWindow {
   }
 
   activate() {
+    if (this.active) return;
+
     this.active = true;
     this.updateSelection(0);
     this.currentContext = 0;
     $(this.#idSel).removeClass("menu_window_inactive");
+    $(this.#idSel).addClass("menu_window_active");
     //this.#toggleArrows(true);
   }
 
@@ -54,6 +57,7 @@ export class MenuWindow {
     this.active = false;
     this.updateSelection(-1);
     this.currentContext = -1;
+    $(this.#idSel).removeClass("menu_window_active");
     $(this.#idSel).addClass("menu_window_inactive");
     this.#toggleArrows(false);
   }

@@ -39,7 +39,12 @@ import {
 } from "./menu_modules/menu_entries.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
-import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
+import {
+  getLocalizedString,
+  localizeMenu,
+  localizeSingleMenu,
+  updateMenuLocalization,
+} from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
@@ -444,6 +449,7 @@ function disableEntry(disabledEntry) {
 }
 
 function clickCategory() {
+  if (!currentWindow.active) return;
   let clickedCategory = findMenuEntryByID($(this).attr("id"));
   clickedCategory.parentElements.clickCategory(clickedCategory);
   console.log("Clicked category: ");
@@ -457,6 +463,7 @@ function clickCategory() {
 }
 
 export function clickEntry() {
+  if (!currentWindow.active) return;
   let clickedEntry = findMenuEntryByID($(this).attr("id"));
   clickedEntry.parentElements.clickEntry(clickedEntry);
   // triggerEntry($(this));
@@ -712,7 +719,6 @@ export function scrollUpDown(scrollDir) {
   return;
   if (!activeCategory) return;
 
-
   let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
   let tabElements = activeCategoryElements.children(".menu_elements_scrollable").children(".menu_entry[id]");
   // || activeWindow.window.children(".menu_elements_scrollable").children(".menu_entry[id]");
@@ -947,8 +953,12 @@ function updateEventHandlers() {
   //   scrollPerc(1);
   // });
 
-  $(".menu_categories").on("click", ".menu_category", clickCategory);
-  $(".menu_entries_middle").on("click", ".menu_entry", clickEntry);
+  $(".menu_window").on("click", ".menu_category", clickCategory);
+  $(".menu_window").on("click", ".menu_entry", clickEntry);
+  $(".menu_window_inactive").click(function (e) {
+    currentWindow.activate();
+  });
+  return;
   $(".menu_categories").on("categoryActive", ".menu_category", function (e) {
     setCategoryActive($(this));
   });

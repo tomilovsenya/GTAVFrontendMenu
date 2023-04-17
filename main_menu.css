@@ -419,7 +419,6 @@ div.menu_window {
 
 div.menu_window_inactive {
   opacity: 0.5;
-
 }
 
 a.menu_window_clickable {
@@ -662,7 +661,7 @@ button.menu_entry {
   scroll-snap-align: start end;
 }
 
-button.menu_entry:hover {
+div.menu_window_active .menu_entry:not(.menu_entry_active):hover {
   background-color: var(--hover-color);
 }
 
@@ -1692,7 +1691,7 @@ div.menu_settings>div.menu_elements .menu_entry {
 }
 
 div.menu_settings>div.menu_elements .menu_entry:hover {
-  background-color: var(--hover-color);
+  /* background-color: var(--hover-color); */
 }
 
 div.menu_settings>div.menu_elements .menu_entry:focus {
