@@ -680,17 +680,17 @@ button.menu_entry .menu_entry_zone_left {
   /* background-color: rgba(13, 90, 90, 0.3); */
   position: absolute;
   float: left;
-  width: 75%;
+  width: 37.5%;
   height: 100%;
   top: 0;
-  left: 0;
+  left: 50%;
 }
 
 button.menu_entry .menu_entry_zone_right {
   /* background-color: rgba(87, 90, 13, 0.3); */
   position: absolute;
   float: right;
-  width: 25%;
+  width: 12.5%;
   height: 100%;
   top: 0;
   right: 0;
