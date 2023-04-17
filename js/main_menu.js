@@ -106,6 +106,9 @@ async function loadMenu() {
   commonMenu.updateHeaderStats();
   setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
+
+  menuContent.menuSettings.create();
+
   updateEventHandlers();
 }
 
@@ -354,6 +357,7 @@ function setTabActive() {
   activeTab.focus();
   playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
+  return;
 
   if (activeWindow.window.find(".menu_categories").length > 0) {
     let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_category");
@@ -705,7 +709,9 @@ export function scrollSaves(scrollDir, scrollableElements) {
 }
 
 export function scrollUpDown(scrollDir) {
+  return;
   if (!activeCategory) return;
+
 
   let tabCategories = activeWindow.window.children(".menu_categories").children(".menu_entry");
   let tabElements = activeCategoryElements.children(".menu_elements_scrollable").children(".menu_entry[id]");
@@ -1036,11 +1042,11 @@ function activeWindowHandler(activeTab) {
       // activeWindow.window.children(".menu_elements").hide();
       // if (activeCategoryElements) activeCategoryElements.show();
       // setVideoMemory(400, 4096);
-      menuContent.menuSettings.menuElements.forEach((element) => {
-        $("#" + element.ID).hide();
-      });
+      //menuContent.menuSettings.menuElements.forEach((element) => {
+      //  $("#" + element.ID).hide();
+      //});
       currentWindow = menuContent.menuSettings;
-      currentWindow.create();
+      currentWindow.show();
       break;
     case menuContent.MENU_TAB_GAME.id:
       updateMissionCounter();

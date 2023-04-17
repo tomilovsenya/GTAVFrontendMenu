@@ -10,7 +10,7 @@ export class MenuWindow {
   menuArrows;
   currentCategoryIndex = -1;
   currentElementsIndex = 0;
-  currentContext = 0;
+  currentContext = -1;
   currentElements;
   currentCategory;
   active = false;
@@ -26,13 +26,10 @@ export class MenuWindow {
         this.menuEntriesAll.push(entry);
       });
     });
-    // console.log(this.menuEntriesAll);
 
     this.menuArrows = menuArrows;
     this.currentElements = menuElements[this.currentElementsIndex];
     this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
-    // this.#populateAllElements();
-    // console.log(this.currentElements);
   }
 
   create() {
@@ -40,9 +37,9 @@ export class MenuWindow {
     this.#fillCategories();
     this.#createArrows();
     this.#toggleArrows(false);
-    this.updateSelection(0);
+    this.updateSelection(-1);
     this.deactivate();
-    $(this.#idSel).show();
+    console.log(this.currentContext);
   }
 
   activate() {
@@ -61,10 +58,19 @@ export class MenuWindow {
     this.#toggleArrows(false);
   }
 
+  show() {
+    $(this.#idSel).show();
+  }
+
+  hide() {
+    $(this.#idSel).hide();
+  }
+
   #populateAllElements() {
-    this.menuElements.forEach((elements) => {
+    this.menuElements.forEach((elements, index) => {
+      if (index > 0) $(elements.idSel).hide();
       elements.populateElements(this);
-      console.log(elements);
+      // console.log(elements);
     });
   }
 
@@ -124,7 +130,7 @@ export class MenuWindow {
 
   scrollVertical(scrollDir) {
     if (this.currentContext == -1) return;
-    if (this.currentContext == 0) {
+    else if (this.currentContext == 0) {
       let newSelection;
       if (scrollDir == 0) {
         if (this.currentCategoryIndex == 0) newSelection = this.menuCategories.list.length - 1;
@@ -151,7 +157,7 @@ export class MenuWindow {
     if (this.currentCategoryIndex == -1 && newSelection != -1) this.currentCategoryIndex = newSelection;
     if (newSelection == -1) {
       this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
-      this.currentCategory.deactivate();
+      if (this.currentCategory != undefined) this.currentCategory.deactivate();
       if (this.currentElements.currentEntry != undefined) this.currentElements.currentEntry.deactivate();
     } else {
       this.menuCategories.list[this.currentCategoryIndex].deactivate();
@@ -203,7 +209,7 @@ export class MenuWindow {
 
 export class MenuElements {
   ID = "menu_default";
-  #idSel;
+  idSel;
   menuEntries = [];
   currentSelection = -1;
   currentEntry;
@@ -212,14 +218,14 @@ export class MenuElements {
 
   constructor(id, menuEntries) {
     this.ID = id;
-    this.#idSel = "#" + this.ID;
+    this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
     this.currentEntry = this.menuEntries[this.currentSelection];
   }
 
   populateElements(parentWindow) {
-    let headerElements = $(this.#idSel).find(".menu_elements_header");
-    let scrollableElements = $(this.#idSel).find(".menu_elements_scrollable");
+    let headerElements = $(this.idSel).find(".menu_elements_header");
+    let scrollableElements = $(this.idSel).find(".menu_elements_scrollable");
     headerElements.attr("id", this.ID + "_header");
     scrollableElements.attr("id", this.ID + "_scrollable");
     let headerID = headerElements.attr("id");

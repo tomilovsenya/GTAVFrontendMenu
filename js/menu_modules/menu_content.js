@@ -93,7 +93,7 @@ export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_gra
   "3840x2160",
 ]);
 
-export let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock", [
+export let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", [
   "menu_common_on",
   "menu_common_off",
 ]);
