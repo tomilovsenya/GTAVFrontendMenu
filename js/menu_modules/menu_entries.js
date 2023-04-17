@@ -6,6 +6,7 @@ export class MenuWindow {
   #idSel;
   menuCategories = {};
   menuElements = [];
+  menuEntriesAll = [];
   menuArrows;
   currentCategoryIndex = -1;
   currentElementsIndex = 0;
@@ -19,6 +20,14 @@ export class MenuWindow {
     this.#idSel = "#" + this.ID;
     this.menuCategories = menuCategories;
     this.menuElements = menuElements;
+
+    this.menuElements.forEach((element) => {
+      element.menuEntries.forEach((entry) => {
+        this.menuEntriesAll.push(entry);
+      });
+    });
+    // console.log(this.menuEntriesAll);
+
     this.menuArrows = menuArrows;
     this.currentElements = menuElements[this.currentElementsIndex];
     this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
@@ -296,7 +305,7 @@ export class MenuEntry {
 
   createEntry(title, parentId, parentElements, index) {
     let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
-    let blankEntryLabel = $(`<span class="element_label"></span>`);
+    let blankEntryLabel = $(`<span id="${this.ID + "_name"}" class="element_label label_translatable"></span>`);
 
     blankEntry.append(blankEntryLabel);
     blankEntry.find(".element_label").text(this.title);
@@ -382,14 +391,14 @@ export class MenuEntryList extends MenuEntry {
 
   prepareList(menuEntryList) {
     let rightList = $(menuEntryList).find(".element_list").first();
-    let rightLabel = rightList.find(".element_label_right");
-    let blankEntryLabelRight = `<span class="element_label_right"></span>`;
+    let blankEntryLabelRight = `<span class="element_label_right label_translatable"></span>`;
 
     this.listCollection.items.forEach((item, index) => {
       let listItemTitle = getLocalizedString(item);
       rightList.append(blankEntryLabelRight);
-      rightLabel.eq(index).attr("id", this.listID + "_" + index);
-      rightList.find(".element_label_right").eq(index).text(listItemTitle);
+      let thisItem = rightList.find(".element_label_right").eq(index);
+      thisItem.text(listItemTitle);
+      thisItem.attr("id", this.ID + "_" + index);
     });
 
     rightList.find(".element_label_right").eq(0).nextAll().hide();

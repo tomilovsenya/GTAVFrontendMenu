@@ -10,13 +10,16 @@ import { MenuCategory } from "./menu_entries.js";
 
 export let menuSettingsCategoryGamepad = new MenuEntry(
   "menu_settings_category_gamepad",
-  "menu_settings_category_gamepad"
+  "menu_settings_category_gamepad_name"
 );
 export let menuSettingsCategoryGraphics = new MenuEntry(
   "menu_settings_category_graphics",
-  "menu_settings_category_graphics"
+  "menu_settings_category_graphics_name"
 );
-export let menuSettingsCategoryPause = new MenuEntry("menu_settings_category_pause", "menu_settings_category_pause");
+export let menuSettingsCategoryPause = new MenuEntry(
+  "menu_settings_category_pause",
+  "menu_settings_category_pause_name"
+);
 
 export let menuSettingsCategories = {
   ID: "menu_settings_categories",
@@ -25,22 +28,24 @@ export let menuSettingsCategories = {
 
 export let menuSettingsGamepadControlsFor = new MenuEntryList(
   "menu_settings_gamepad_controls_for",
-  "Show Controls For",
-  ["On Foot (Third Person)", "On Foot (First Person)"]
+  "menu_settings_gamepad_controls_for_name",
+  ["menu_settings_gamepad_controls_for_0", "menu_settings_gamepad_controls_for_1"]
 );
-export let menuSettingsGamepadTargeting = new MenuEntryList("menu_settings_gamepad_targeting", "Targeting Mode", [
-  "Free Aim",
-  "Assisted Aim - Partial",
-  "Assisted Aim - Full",
-]);
-export let menuSettingsGamepadVibration = new MenuEntryList("menu_settings_gamepad_vibration", "Vibration", [
-  "On",
-  "Off",
-]);
-export let menuSettingsGamepadInvertLook = new MenuEntryList("menu_settings_gamepad_invert_look", "Invert Look", [
-  "On",
-  "Off",
-]);
+export let menuSettingsGamepadTargeting = new MenuEntryList(
+  "menu_settings_gamepad_targeting",
+  "menu_settings_gamepad_targeting_name",
+  ["Free Aim", "Assisted Aim - Partial", "Assisted Aim - Full"]
+);
+export let menuSettingsGamepadVibration = new MenuEntryList(
+  "menu_settings_gamepad_vibration",
+  "menu_settings_gamepad_vibration_name",
+  ["menu_common_on", "menu_common_off"]
+);
+export let menuSettingsGamepadInvertLook = new MenuEntryList(
+  "menu_settings_gamepad_invert_look",
+  "menu_settings_gamepad_invert_look_name",
+  ["menu_common_on", "menu_common_off"]
+);
 export let menuSettingsGamepadThirdControlType = new MenuEntryList(
   "menu_settings_gamepad_third_control_type",
   "Third Person Control Type",
@@ -152,7 +157,12 @@ export let menuSettingsPause = new MenuElements("menu_settings_pause", menuSetti
 
 export let menuSettingsArrows = new MenuArrows("menu_settings_arrows");
 export let menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
-export let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuSettingsElements, menuSettingsArrows);
+export let menuSettings = new MenuWindow(
+  "menu_settings",
+  menuSettingsCategories,
+  menuSettingsElements,
+  menuSettingsArrows
+);
 
 export let allMenuElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
 

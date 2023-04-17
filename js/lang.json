@@ -431,10 +431,43 @@
   },
 
   {
-    "gxt": "menu_settings_category_gamepad",
+    "gxt": "menu_settings_category_gamepad_name",
     "american": "Gamepad",
     "russian": "Геймпад"
   },
+
+  {
+    "gxt": "menu_settings_gamepad_controls_for_name",
+    "american": "Show Controls For",
+    "russian": "Показать управление для"
+  },
+  {
+    "gxt": "menu_settings_gamepad_controls_for_0",
+    "american": "On Foot (Third Person)",
+    "russian": "Пешком (от третьего лица)"
+  },
+  {
+    "gxt": "menu_settings_gamepad_controls_for_1",
+    "american": "On Foot (First Person)",
+    "russian": "Пешком (от первого лица)"
+  },
+  
+  {
+    "gxt": "menu_settings_gamepad_targeting_name",
+    "american": "Targeting Mode",
+    "russian": "Режим прицеливания"
+  },
+  {
+    "gxt": "menu_settings_gamepad_vibration_name",
+    "american": "Vibration",
+    "russian": "Вибрация"
+  },
+  {
+    "gxt": "menu_settings_gamepad_invert_look_name",
+    "american": "Invert Look",
+    "russian": "Инвертировать обзор"
+  },
+
   {
     "gxt": "menu_settings_category_1",
     "american": "Keyboard / Mouse",
@@ -461,7 +494,7 @@
     "russian": "Видео"
   },
   {
-    "gxt": "menu_settings_category_graphics",
+    "gxt": "menu_settings_category_graphics_name",
     "american": "Graphics",
     "russian": "Графика"
   },
@@ -496,12 +529,12 @@
     "russian": "Facebook"
   },
   {
-    "gxt": "menu_settings_category_pause",
+    "gxt": "menu_settings_category_pause_name",
     "american": "Pause Menu",
     "russian": "Меню паузы"
   },
   {
-    "gxt": "menu_settings_pause_clock",
+    "gxt": "menu_settings_pause_clock_name",
     "american": "Show Clock",
     "russian": "Показывать часы"
   },

@@ -39,7 +39,7 @@ import {
 } from "./menu_modules/menu_entries.js";
 import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
-import { getLocalizedString, localizeMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
+import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
 import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
@@ -257,10 +257,10 @@ window.addEventListener(
     //   scrollTab(1);
     // }
     if (["KeyF"].indexOf(e.code) > -1) {
-      // updateMenuLocalization("american");
+      localizeSingleMenu(menuContent.menuSettings, "american");
     }
     if (["KeyG"].indexOf(e.code) > -1) {
-      // updateMenuLocalization("russian");
+      localizeSingleMenu(menuContent.menuSettings, "russian");
     }
     if (["KeyH"].indexOf(e.code) > -1) {
     }

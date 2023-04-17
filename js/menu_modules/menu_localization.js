@@ -73,6 +73,26 @@ export function updateMenuLocalization(newLang) {
   }
 }
 
+export function localizeSingleMenu(menuWindow, newLang) {
+  menuWindow.menuEntriesAll.forEach((entry) => {
+    let entryID = $("#" + entry.ID);
+    let translatableLabels = entryID.find(".label_translatable");
+    translatableLabels.each(function () {
+      let localizedText = getLanguageString($(this).attr("id"), newLang);
+      $(this).text(localizedText);
+    });
+  });
+
+  menuWindow.menuCategories.list.forEach((category) => {
+    let categoryID = $("#" + category.ID);
+    let translatableLabels = categoryID.find(".label_translatable");
+    translatableLabels.each(function () {
+      let localizedText = getLanguageString($(this).attr("id"), newLang);
+      $(this).text(localizedText);
+    });
+  });
+}
+
 // export function localizeSingleString(requestedString) {
 //   const langJSON = menuLangFile;
 
@@ -86,6 +106,24 @@ export function updateMenuLocalization(newLang) {
 // }
 
 export function getLocalizedString(requestedString) {
+  let localizedString;
+  let foundStrings = 0;
+  const langJSON = menuLangFile;
+
+  for (var i = 0; i < langJSON.length; i++) {
+    if (langJSON[i].gxt == requestedString) {
+      localizedString = langJSON[i][menuLanguage];
+      foundStrings++;
+    }
+    if (foundStrings > 0) break;
+  }
+
+  // console.log("Found localized GXT: " + localizedString);
+  if (localizedString != undefined) return localizedString;
+  else return requestedString;
+}
+
+export function getLanguageString(requestedString, menuLanguage) {
   let localizedString;
   let foundStrings = 0;
   const langJSON = menuLangFile;
