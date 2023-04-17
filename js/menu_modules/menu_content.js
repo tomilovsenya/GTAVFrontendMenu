@@ -57,17 +57,37 @@ export let menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress(
   25,
   5
 );
-export let menuSettingsGamepadFirstAimSensitivity = new MenuEntryProgress(
+export let menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress(
+  "menu_settings_gamepad_third_look_sensitivity",
+  "Third Person Look-Around Sensitivity",
+  25,
+  5
+);
+export let menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress(
   "menu_settings_gamepad_first_aim_sensitivity",
   "First Person Aiming Sensitivity",
   25,
   5
 );
 
-export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
-  "1920x1080",
-  "800x600",
+export let menuSettingsGraphicsIgnoreLimits = new MenuEntryList(
+  "menu_settings_graphics_ignore_limits",
+  "Ignore Suggested Limits",
+  ["Off", "On"]
+);
+export let menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", [
+  "DirectX 10",
+  "DirectX 10.1",
+  "DirectX 11",
 ]);
+export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
+  "800x600",
+  "1280x720",
+  "1920x1080",
+  "2560x1440",
+  "3840x2160",
+]);
+
 export let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock", [
   "menu_common_on",
   "menu_common_off",
@@ -96,8 +116,11 @@ export let allMenuEntries = [
   menuSettingsGamepadThirdControlType,
   menuSettingsGamepadFirstControlType,
   menuSettingsGamepadThirdAimSensitivity,
-  menuSettingsGamepadFirstAimSensitivity,
+  menuSettingsGamepadThirdLookSensitivity,
+  menuSettingsGamepadFirstLookSensitivity,
 
+  menuSettingsGraphicsIgnoreLimits,
+  menuSettingsGraphicsDirectX,
   menuSettingsGraphicsResolution,
 
   menuSettingsPauseClock,
@@ -113,9 +136,14 @@ export let menuSettingsGamepadEntries = [
   menuSettingsGamepadThirdControlType,
   menuSettingsGamepadFirstControlType,
   menuSettingsGamepadThirdAimSensitivity,
-  menuSettingsGamepadFirstAimSensitivity,
+  menuSettingsGamepadThirdLookSensitivity,
+  menuSettingsGamepadFirstLookSensitivity,
 ];
-export let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
+export let menuSettingsGraphicsEntries = [
+  menuSettingsGraphicsIgnoreLimits,
+  menuSettingsGraphicsDirectX,
+  menuSettingsGraphicsResolution,
+];
 export let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
 export let menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);

@@ -139,6 +139,16 @@ body {
   }
 }
 
+@keyframes fadeInInactiveAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
 @keyframes fadeInMapAnimation {
   0% {
     opacity: 0;
@@ -403,13 +413,13 @@ div.menu_window {
   aspect-ratio: 67.8125 / 33.55;
   border: 0px;
   margin-bottom: 0px;
-  animation: 250ms ease-out 0ms 1 normal none running fadeInAnimation;
+  animation: 250ms ease-out 0ms 1 normal none running fadeInInactiveAnimation;
   position: relative;
 }
 
 div.menu_window_inactive {
-  opacity: 0.75;
-  
+  opacity: 0.5;
+
 }
 
 a.menu_window_clickable {
@@ -1714,9 +1724,7 @@ div#menu_settings_gamepad .menu_elements_header {
   align-items: center;
 }
 
-div#menu_settings_gamepad_header {
-  
-}
+div#menu_settings_gamepad_header {}
 
 div.menu_settings_gamepad_header_buttons {
   width: 100%;

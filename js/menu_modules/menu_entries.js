@@ -109,9 +109,7 @@ export class MenuWindow {
       }
 
       this.updateSelection(newSelection);
-    } else if (this.currentContext == 1) {
-      this.currentElements.scrollElements(scrollDir);
-    }
+    } else if (this.currentContext == 1) this.currentElements.scrollElements(scrollDir);
   }
 
   scrollHorizontal(scrollDir) {
@@ -217,13 +215,18 @@ export class MenuElements {
   clickEntry(clickedEntry) {
     // if (this.currentSelection == -1) return;
     // if (this.currentSelection == clickedEntry.index) return;
+    if (clickedEntry == this.currentEntry && this.parentWindow.currentContext == 1) {
+      console.log("Clicked already active entry: " + clickedEntry.ID);
+      return;
+    }
+
     if (this.parentWindow.currentContext == -1) {
       this.parentWindow.activate();
       this.parentWindow.enterCategory(this.parentWindow.currentCategoryIndex);
     } else if (this.parentWindow.currentContext == 0) {
       this.parentWindow.enterCategory(this.parentWindow.currentCategoryIndex);
     }
-    console.log(this.parentWindow);
+    // console.log(this.parentWindow);
     this.updateSelection(clickedEntry.index);
     console.log("Clicked MenuEntry: " + clickedEntry.ID);
   }
@@ -234,12 +237,14 @@ export class MenuElements {
     this.menuEntries[this.currentSelection].activate();
 
     this.currentEntry = this.menuEntries[this.currentSelection];
+    $(this.currentEntry.idSel)[0].scrollIntoViewIfNeeded(false);
   }
 
   scrollSelection(scrollDir) {
     let currentSelection = this.menuEntries[this.currentSelection];
-    if (!currentSelection instanceof MenuEntryList) return;
-    currentSelection.scrollList(scrollDir);
+    if (currentSelection instanceof MenuEntryList) currentSelection.scrollList(scrollDir);
+    else if (currentSelection instanceof MenuEntryProgress) currentSelection.scrollProgress(scrollDir);
+    else console.log("scrollSelection isn't supported for " + currentSelection.ID);
   }
 
   scrollElements(scrollDir) {
@@ -285,13 +290,34 @@ export class MenuEntry {
   }
 
   activate() {
+    // if (this.parentElements.currentEntry == this) {
+    //   console.log("Can't activate already active entry: " + this.ID);
+    //   return;
+    // }
+
+    let clickLeft = `<div class="menu_entry_click_zone menu_entry_zone_left"></div>`;
+    let clickRight = `<div class="menu_entry_click_zone menu_entry_zone_right"></div>`;
+
     $(this.idSel).addClass("menu_entry_active");
-    console.log("Activated MenuEntry: " + this.idSel);
+
+    if ($(this.idSel).find(".menu_entry_click_zone").length == 0) {
+      $(this.idSel).append(clickLeft);
+      $(this.idSel).append(clickRight);
+    }
+
+    // console.log("Activated MenuEntry: " + this.idSel);
   }
 
   deactivate() {
     $(this.idSel).removeClass("menu_entry_active");
-    console.log("Deactivated MenuEntry: " + this.idSel);
+    $(this.idSel).find(".menu_entry_click_zone").remove();
+
+    // console.log("Deactivated MenuEntry: " + this.idSel);
+  }
+
+  clickZone(clickDir) {
+    this.parentElements.scrollSelection(clickDir);
+    // console.log("Clicked zone");
   }
 }
 
@@ -470,8 +496,8 @@ export class MenuCategory extends MenuEntry {
 
 export function findMenuEntryByID(id) {
   let foundObject = allMenuEntries.find((entry) => entry.ID === id);
-  console.log("Found MenuEntry by ID: " + id);
-  console.log(foundObject);
+  // console.log("Found MenuEntry by ID: " + id);
+  // console.log(foundObject);
   return foundObject;
 }
 

@@ -442,7 +442,7 @@ function disableEntry(disabledEntry) {
 function clickCategory() {
   let clickedCategory = findMenuEntryByID($(this).attr("id"));
   clickedCategory.parentElements.clickCategory(clickedCategory);
-  // console.log(clickedCategory.parentElements);
+  console.log("Clicked category: ");
   // triggerCategory($(this));
   // if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
   // else
@@ -920,19 +920,19 @@ function updateEventHandlers() {
   $(".menu_button").on("tabActive", setTabActive);
   $(".menu_button").on("tabDisabled", setTabDisabled);
 
-  $(".menu_category_list").on("click", ".menu_entry_zone_left", function () {
-    scrollLeftRight(0);
+  $(".menu_elements_scrollable").on("click", ".menu_entry_zone_left", function () {
+    currentWindow.currentElements.currentEntry.clickZone(0);
   });
-  $(".menu_category_list").on("click", ".menu_entry_zone_right", function () {
-    scrollLeftRight(1);
+  $(".menu_elements_scrollable").on("click", ".menu_entry_zone_right", function () {
+    currentWindow.currentElements.currentEntry.clickZone(1);
   });
 
-  $("div.element_progress_zone_left").click(function () {
-    scrollPerc(0);
-  });
-  $("div.element_progress_zone_right").click(function () {
-    scrollPerc(1);
-  });
+  // $("div.element_progress_zone_left").click(function () {
+  //   scrollPerc(0);
+  // });
+  // $("div.element_progress_zone_right").click(function () {
+  //   scrollPerc(1);
+  // });
 
   $(".menu_categories").on("click", ".menu_category", clickCategory);
   $(".menu_entries_middle").on("click", ".menu_entry", clickEntry);
@@ -1029,7 +1029,9 @@ function activeWindowHandler(activeTab) {
       // activeWindow.window.children(".menu_elements").hide();
       // if (activeCategoryElements) activeCategoryElements.show();
       // setVideoMemory(400, 4096);
-      menuContent.menuSettings.menuElements.forEach(element => {$("#" + element.ID).hide()});
+      menuContent.menuSettings.menuElements.forEach((element) => {
+        $("#" + element.ID).hide();
+      });
       currentWindow = menuContent.menuSettings;
       currentWindow.create();
       break;
