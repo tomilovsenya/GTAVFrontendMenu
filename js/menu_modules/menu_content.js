@@ -1,4 +1,4 @@
-import { MenuEntryHeader, MenuWindow } from "./menu_entries.js";
+import { MenuEntryHeader, MenuEntryProgress, MenuWindow } from "./menu_entries.js";
 import { MenuElements } from "./menu_entries.js";
 import { MenuEntry } from "./menu_entries.js";
 import { MenuEntryList } from "./menu_entries.js";
@@ -23,7 +23,46 @@ export let menuSettingsCategories = {
   list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
 };
 
-export let menuSettingsGamepadImage = new MenuEntryHeader("menu_settings_gamepad_header", "Gamepad Pic");
+export let menuSettingsGamepadControlsFor = new MenuEntryList(
+  "menu_settings_gamepad_controls_for",
+  "Show Controls For",
+  ["On Foot (Third Person)", "On Foot (First Person)"]
+);
+export let menuSettingsGamepadTargeting = new MenuEntryList("menu_settings_gamepad_targeting", "Targeting Mode", [
+  "Free Aim",
+  "Assisted Aim - Partial",
+  "Assisted Aim - Full",
+]);
+export let menuSettingsGamepadVibration = new MenuEntryList("menu_settings_gamepad_vibration", "Vibration", [
+  "On",
+  "Off",
+]);
+export let menuSettingsGamepadInvertLook = new MenuEntryList("menu_settings_gamepad_invert_look", "Invert Look", [
+  "On",
+  "Off",
+]);
+export let menuSettingsGamepadThirdControlType = new MenuEntryList(
+  "menu_settings_gamepad_third_control_type",
+  "Third Person Control Type",
+  ["Standard", "Alternate", "Southpaw"]
+);
+export let menuSettingsGamepadFirstControlType = new MenuEntryList(
+  "menu_settings_gamepad_first_control_type",
+  "First Person Control Type",
+  ["Standard", "Alternate", "Southpaw"]
+);
+export let menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress(
+  "menu_settings_gamepad_third_aim_sensitivity",
+  "Third Person Aiming Sensitivity",
+  25,
+  5
+);
+export let menuSettingsGamepadFirstAimSensitivity = new MenuEntryProgress(
+  "menu_settings_gamepad_first_aim_sensitivity",
+  "First Person Aiming Sensitivity",
+  25,
+  5
+);
 
 export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
   "1920x1080",
@@ -50,16 +89,32 @@ export let allMenuEntries = [
   menuSettingsCategoryPause,
   menuSettingsCategoryGamepad,
 
-  menuSettingsGamepadImage,
+  menuSettingsGamepadControlsFor,
+  menuSettingsGamepadTargeting,
+  menuSettingsGamepadVibration,
+  menuSettingsGamepadInvertLook,
+  menuSettingsGamepadThirdControlType,
+  menuSettingsGamepadFirstControlType,
+  menuSettingsGamepadThirdAimSensitivity,
+  menuSettingsGamepadFirstAimSensitivity,
 
   menuSettingsGraphicsResolution,
-  
+
   menuSettingsPauseClock,
   menuSettingsPauseLanguage,
   menuSettingsPauseRemember,
 ];
 
-export let menuSettingsGamepadEntries = [menuSettingsGamepadImage];
+export let menuSettingsGamepadEntries = [
+  menuSettingsGamepadControlsFor,
+  menuSettingsGamepadTargeting,
+  menuSettingsGamepadVibration,
+  menuSettingsGamepadInvertLook,
+  menuSettingsGamepadThirdControlType,
+  menuSettingsGamepadFirstControlType,
+  menuSettingsGamepadThirdAimSensitivity,
+  menuSettingsGamepadFirstAimSensitivity,
+];
 export let menuSettingsGraphicsEntries = [menuSettingsGraphicsResolution];
 export let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 

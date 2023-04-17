@@ -116,7 +116,10 @@ export class MenuWindow {
 
   scrollHorizontal(scrollDir) {
     if (this.currentContext != 1) return;
-    this.currentElements.currentEntry.scrollList(scrollDir);
+    if (this.currentElements.currentEntry instanceof MenuEntryList)
+      this.currentElements.currentEntry.scrollList(scrollDir);
+    if (this.currentElements.currentEntry instanceof MenuEntryProgress)
+      this.currentElements.currentEntry.scrollProgress(scrollDir);
   }
 
   updateSelection(newSelection) {
@@ -141,6 +144,14 @@ export class MenuWindow {
   }
 
   enterCategory(activatedCategory) {
+    let scrollableLength = $("#" + this.currentElements.ID)
+      .find(".menu_elements_scrollable")
+      .children(".menu_entry").length;
+    if (scrollableLength == 0) {
+      console.log("Category not entered as there are no scrollable items in " + this.currentElements.ID);
+      return;
+    }
+
     this.currentContext = 1;
     this.currentCategoryIndex = activatedCategory;
     this.updateElements(activatedCategory);
@@ -302,26 +313,15 @@ export class MenuEntryList extends MenuEntry {
 
   createEntry(title, parentId, parentElements, index) {
     super.createEntry(title, parentId, parentElements, index);
-    // let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
-    // let blankEntryLabel = `<span class="element_label">${this.title}</span>`;
     let blankEntryList = `<div id="${this.listID}" class="element_list"></div>`;
 
-    // blankEntry.append(blankEntryLabel);
     $(this.idSel).append(blankEntryList);
-    // blankEntry.find(".element_label").text(this.title);
 
     this.listItems.forEach((labelRight, index) => {
       this.listCollection.items[index] = labelRight;
     });
 
-    console.log(this.idSel);
-
-    // $(parentId).append(blankEntry);
     this.prepareList(this.idSel);
-
-    // this.parentElements = parentElements;
-    // this.index = index;
-    // this.title = title;
   }
 
   activate() {
@@ -342,10 +342,7 @@ export class MenuEntryList extends MenuEntry {
     this.listCollection.items.forEach((item, index) => {
       let listItemTitle = getLocalizedString(item);
       rightList.append(blankEntryLabelRight);
-      rightList
-        .find(".element_label_right")
-        .eq(index)
-        .attr("id", this.listID + "_" + index);
+      rightLabel.eq(index).attr("id", this.listID + "_" + index);
       rightList.find(".element_label_right").eq(index).text(listItemTitle);
     });
 
@@ -398,9 +395,66 @@ export class MenuEntryList extends MenuEntry {
   }
 }
 
-export class MenuEntryHeader extends MenuEntry {
-  constructor(id, title, image) {
+export class MenuEntryProgress extends MenuEntry {
+  progressPerc = 0;
+  progressSteps = 10;
+  progressID;
+
+  constructor(id, title, progressPerc, progressSteps) {
     super(id, title);
+    this.progressID = id + "_progress";
+    this.progressSteps = progressSteps;
+
+    if (progressPerc >= 0 && progressPerc <= 100) {
+      let stepValue = 100 / this.progressSteps;
+      let percLeft = 100 - progressPerc;
+
+      // If progressPerc isn't a step value, adjust it to the closest larger step value
+      if (percLeft % stepValue == 0) this.progressPerc = progressPerc;
+      else this.progressPerc = progressPerc + (percLeft % stepValue);
+    } else if (progressPerc < 0) this.progressPerc = 0;
+    else if (progressPerc > 100) this.progressPerc = 10;
+  }
+
+  createEntry(title, parentId, parentElements, index) {
+    super.createEntry(title, parentId, parentElements, index);
+    let blankProgress = $(`<div id="${this.progressID}" class="element_progress"></div>`);
+    let blankProgressPerc = `<div id="${this.progressID + "_perc"}" class="element_progress_perc"></div>`;
+
+    $(this.idSel).append(blankProgress);
+    $(blankProgress).append(blankProgressPerc);
+
+    this.prepareProgress(this.progressPerc);
+  }
+
+  prepareProgress(progressValue) {
+    let rightPerc = $(this.idSel).find(".element_progress_perc").first();
+    rightPerc.css({ width: `${progressValue}%` });
+  }
+
+  updateProgress(newValue) {
+    let rightPerc = $(this.idSel).find(".element_progress_perc").first();
+
+    this.progressPerc = newValue;
+    rightPerc.css({ width: `${this.progressPerc}%` });
+  }
+
+  scrollProgress(scrollDir) {
+    let newValue;
+
+    if (scrollDir == 0) newValue = this.progressPerc - 100 / this.progressSteps;
+    else if (scrollDir == 1) newValue = this.progressPerc + 100 / this.progressSteps;
+
+    newValue = newValue > 100 ? 100 : newValue < 0 ? 0 : newValue;
+    this.updateProgress(newValue);
+  }
+}
+
+export class MenuEntryHeader extends MenuEntry {
+  constructor(id, title, headerClass) {
+    super(id, title);
+    console.log(this.idSel);
+    $(this.idSel).addClass(headerClass);
   }
 }
 

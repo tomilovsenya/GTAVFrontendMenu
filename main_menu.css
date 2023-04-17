@@ -762,7 +762,7 @@ div.element_progress {
   width: 22.5%;
   height: 0.5vw;
   float: right;
-  background-color: #6db9d74b;
+  background-color: #6db9d773;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -1712,6 +1712,10 @@ div#menu_settings_gamepad .menu_elements_header {
   min-height: calc(var(--item-height) * 8 + var(--item-margin) * 7);
   justify-content: flex-start;
   align-items: center;
+}
+
+div#menu_settings_gamepad_header {
+  
 }
 
 div.menu_settings_gamepad_header_buttons {

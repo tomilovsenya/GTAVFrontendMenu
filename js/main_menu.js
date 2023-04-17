@@ -261,7 +261,6 @@ window.addEventListener(
     }
     if (["KeyG"].indexOf(e.code) > -1) {
       // updateMenuLocalization("russian");
-      currentWindow.create();
     }
     if (["KeyH"].indexOf(e.code) > -1) {
     }
@@ -1027,9 +1026,12 @@ function activeWindowHandler(activeTab) {
       $("#IB_SCROLL").show();
       break;
     case menuContent.MENU_TAB_SETTINGS.id:
-      activeWindow.window.children(".menu_elements").hide();
-      if (activeCategoryElements) activeCategoryElements.show();
-      setVideoMemory(400, 4096);
+      // activeWindow.window.children(".menu_elements").hide();
+      // if (activeCategoryElements) activeCategoryElements.show();
+      // setVideoMemory(400, 4096);
+      menuContent.menuSettings.menuElements.forEach(element => {$("#" + element.ID).hide()});
+      currentWindow = menuContent.menuSettings;
+      currentWindow.create();
       break;
     case menuContent.MENU_TAB_GAME.id:
       updateMissionCounter();
