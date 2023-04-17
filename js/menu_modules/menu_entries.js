@@ -6,6 +6,7 @@ export class MenuWindow {
   #idSel;
   menuCategories = {};
   menuElements = [];
+  menuArrows;
   currentCategoryIndex = -1;
   currentElementsIndex = 0;
   currentContext = 0;
@@ -13,11 +14,12 @@ export class MenuWindow {
   currentCategory;
   active = false;
 
-  constructor(id, menuCategories, menuElements) {
+  constructor(id, menuCategories, menuElements, menuArrows) {
     this.ID = id;
     this.#idSel = "#" + this.ID;
     this.menuCategories = menuCategories;
     this.menuElements = menuElements;
+    this.menuArrows = menuArrows;
     this.currentElements = menuElements[this.currentElementsIndex];
     this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
     // this.#populateAllElements();
@@ -27,6 +29,8 @@ export class MenuWindow {
   create() {
     this.#populateAllElements();
     this.#fillCategories();
+    this.#createArrows();
+    this.#toggleArrows(false);
     this.updateSelection(0);
     this.deactivate();
     $(this.#idSel).show();
@@ -37,7 +41,7 @@ export class MenuWindow {
     this.updateSelection(0);
     this.currentContext = 0;
     $(this.#idSel).removeClass("menu_window_inactive");
-    $(this.#idSel).find(".menu_arrows").show();
+    //this.#toggleArrows(true);
   }
 
   deactivate() {
@@ -45,7 +49,7 @@ export class MenuWindow {
     this.updateSelection(-1);
     this.currentContext = -1;
     $(this.#idSel).addClass("menu_window_inactive");
-    $(this.#idSel).find(".menu_arrows").hide();
+    this.#toggleArrows(false);
   }
 
   #populateAllElements() {
@@ -63,6 +67,15 @@ export class MenuWindow {
       // category.title = getLocalizedString(category.title);
       $("#" + category.ID).addClass("menu_category");
     });
+  }
+
+  #createArrows() {
+    this.menuArrows.createArrows(this.ID);
+  }
+
+  #toggleArrows(showArrows) {
+    if (showArrows) $(this.menuArrows.idSel).show();
+    else $(this.menuArrows.idSel).hide();
   }
 
   goDeeper() {
@@ -93,6 +106,11 @@ export class MenuWindow {
     document.activeElement.blur();
 
     console.log("Clicked MenuCategory with context: " + this.currentContext);
+  }
+
+  clickArrow(clickedArrowScrollDir) {
+    if (clickedArrowScrollDir == 0) this.scrollVertical(0);
+    else if (clickedArrowScrollDir == 1) this.scrollVertical(1);
   }
 
   scrollVertical(scrollDir) {
@@ -155,12 +173,14 @@ export class MenuWindow {
     this.updateElements(activatedCategory);
     this.currentElements.currentSelection = 0;
     this.currentElements.updateSelection(0);
+    this.#toggleArrows(true);
   }
 
   escapeCategory() {
     let activeEntry = this.currentElements.currentEntry;
     this.currentContext = 0;
     activeEntry.deactivate();
+    this.#toggleArrows(false);
     // this.updateElements(activatedCategory);
   }
 
@@ -491,6 +511,39 @@ export class MenuCategory extends MenuEntry {
   constructor(id, title) {
     this.ID = id;
     this.title = title;
+  }
+}
+
+export class MenuArrows {
+  ID = "menu_arrows_default";
+  idSel;
+
+  constructor(id) {
+    this.ID = id;
+    this.idSel = "#" + id;
+  }
+
+  createArrows(parentId) {
+    let blankArrows = `<button id="${this.ID}" class="menu_arrows menu_arrows_full" tabindex="-1">
+    <div id="${this.ID}_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
+    <div id="${this.ID}_down" class="menu_arrows_zone menu_arrows_zone_down"></div></button>`;
+
+    $("#" + parentId).append(blankArrows);
+  }
+
+  createEntry(title, parentId, parentElements, index) {
+    let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
+    let blankEntryLabel = $(`<span class="element_label"></span>`);
+
+    blankEntry.append(blankEntryLabel);
+    blankEntry.find(".element_label").text(this.title);
+    // console.log(parentId);
+    $("#" + parentId).append(blankEntry);
+    blankEntryLabel.text(title);
+    this.parentElements = parentElements;
+    this.index = index;
+    this.title = title;
+    // console.log(this);
   }
 }
 

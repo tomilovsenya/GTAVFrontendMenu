@@ -762,12 +762,12 @@ $("#menu_arrows_stats_up").click(function () {
 $("#menu_arrows_stats_down").click(function () {
   scrollStats(1);
 });
-$("#menu_arrows_settings_up").click(function () {
-  scrollSettings(0);
-});
-$("#menu_arrows_settings_down").click(function () {
-  scrollSettings(1);
-});
+// $("#menu_arrows_settings_up").click(function () {
+//   scrollSettings(0);
+// });
+// $("#menu_arrows_settings_down").click(function () {
+//   scrollSettings(1);
+// });
 $("#menu_arrows_game_up").click(function () {
   scrollGame(0);
 });
@@ -925,6 +925,13 @@ function updateEventHandlers() {
   });
   $(".menu_elements_scrollable").on("click", ".menu_entry_zone_right", function () {
     currentWindow.currentElements.currentEntry.clickZone(1);
+  });
+
+  $(".menu_window").on("click", ".menu_arrows_zone_up", function () {
+    currentWindow.clickArrow(0);
+  });
+  $(".menu_window").on("click", ".menu_arrows_zone_down", function () {
+    currentWindow.clickArrow(1);
   });
 
   // $("div.element_progress_zone_left").click(function () {

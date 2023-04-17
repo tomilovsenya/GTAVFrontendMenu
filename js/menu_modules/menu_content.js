@@ -1,4 +1,4 @@
-import { MenuEntryHeader, MenuEntryProgress, MenuWindow } from "./menu_entries.js";
+import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuWindow } from "./menu_entries.js";
 import { MenuElements } from "./menu_entries.js";
 import { MenuEntry } from "./menu_entries.js";
 import { MenuEntryList } from "./menu_entries.js";
@@ -150,8 +150,9 @@ export let menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuS
 export let menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
 export let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
 
-export let menuElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
-export let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuElements);
+export let menuSettingsArrows = new MenuArrows("menu_settings_arrows");
+export let menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
+export let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuSettingsElements, menuSettingsArrows);
 
 export let allMenuElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
 
