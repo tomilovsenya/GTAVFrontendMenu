@@ -1,3 +1,4 @@
+import { MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
 import { allMenuElements, allMenuEntries } from "./menu_content.js";
 import { getLocalizedString } from "./menu_localization.js";
 
@@ -64,10 +65,13 @@ export class MenuWindow {
 
   show() {
     $(this.#idSel).show();
+    $(this.#idSel).css({ visibility: "visible" });
+    // $(this.#idSel).css({ display: "flex" });
   }
 
   hide() {
     $(this.#idSel).hide();
+    $(this.#idSel).css({ visibility: "hidden" });
   }
 
   #populateAllElements() {
@@ -229,11 +233,11 @@ export class MenuElements {
 
   populateElements(parentWindow) {
     let headerElements = $(this.idSel).find(".menu_elements_header");
-    let scrollableElements = $(this.idSel).find(".menu_elements_scrollable");
+    let populatedElements = $(this.idSel).find(".menu_elements_populated");
     headerElements.attr("id", this.ID + "_header");
-    scrollableElements.attr("id", this.ID + "_scrollable");
+    populatedElements.attr("id", this.ID + "_scrollable");
     let headerID = headerElements.attr("id");
-    let scrollableID = scrollableElements.attr("id");
+    let scrollableID = populatedElements.attr("id");
     // console.log(headerElements);
     // console.log(scrollableElements);
 
@@ -306,6 +310,7 @@ export class MenuEntry {
   title = "Menu Entry";
   parentElements;
   index = 0;
+  isEmpty = false;
 
   constructor(id, title) {
     this.ID = id;
@@ -512,6 +517,73 @@ export class MenuEntryProgress extends MenuEntry {
 
     newValue = newValue > 100 ? 100 : newValue < 0 ? 0 : newValue;
     this.updateProgress(newValue);
+  }
+}
+
+export class MenuEntryStat extends MenuEntry {
+  statPerc = 0;
+  statBars = 5;
+  statID;
+  statMeterBars = [];
+
+  constructor(id, title, statPerc, statBars) {
+    super(id, title);
+    this.statID = id + "_stat";
+    this.statPerc = statPerc;
+    this.statBars = statBars;
+
+    // if (progressPerc >= 0 && progressPerc <= 100) {
+    //   let stepValue = 100 / this.progressSteps;
+    //   let percLeft = 100 - progressPerc;
+
+    //   // If progressPerc isn't a step value, adjust it to the closest larger step value
+    //   if (percLeft % stepValue == 0) this.progressPerc = progressPerc;
+    //   else this.progressPerc = progressPerc + (percLeft % stepValue);
+    // } else if (progressPerc < 0) this.progressPerc = 0;
+    // else if (progressPerc > 100) this.progressPerc = 10;
+  }
+
+  createEntry(title, parentId, parentElements, index) {
+    super.createEntry(title, parentId, parentElements, index);
+    let blankEntryStat = $(`<div id="${this.statID}" class="element_stat"></div>`);
+
+    // blankEntryStat.append(elementStatPerc);
+    $(this.idSel).addClass("menu_entry_stat");
+    $(this.idSel).addClass("menu_entry_empty");
+    $(this.idSel).append(blankEntryStat);
+
+    this.isEmpty = true;
+    this.prepareStat(this.statPerc, blankEntryStat);
+  }
+
+  prepareStat(statValue, parentStatMeter) {
+    for (let i = 0; i < this.statBars; i++) {
+      let filledBar = $(`<div class="element_stat_perc_filled"></div>`);
+      let elementStatPerc = $(`<div id="${this.statID + "_bar_" + i}" class="element_stat_perc"></div>`);
+      elementStatPerc.append(filledBar);
+      this.statMeterBars.push(elementStatPerc);
+    }
+
+    parentStatMeter.append(this.statMeterBars);
+    this.updateStat(statValue);
+  }
+
+  updateStat(statValue) {
+    if (statValue <= 0) return;
+    if (statValue > 100) statValue = 100;
+
+    let barStep = 100 / this.statBars;
+    let fullBars = Math.floor(statValue / barStep);
+    let semiPerc = (statValue % barStep) * this.statBars;
+    let semiBarIndex = fullBars;
+
+    for (let i = 0; i < fullBars; i++) {
+      this.statMeterBars[i].children(".element_stat_perc_filled").css({ width: "100%" });
+    }
+
+    if (statValue >= 100) return;
+
+    this.statMeterBars[semiBarIndex].children(".element_stat_perc_filled").css({ width: `${semiPerc}%` });
   }
 }
 

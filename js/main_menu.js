@@ -504,6 +504,7 @@ function clickCategory() {
 export function clickEntry() {
   if (!currentWindow.active) return;
   let clickedEntry = findMenuEntryByID($(this).attr("id"));
+  if (clickedEntry.isEmpty) return;
   if (clickedEntry instanceof MenuCategory) return;
 
   clickedEntry.parentElements.clickEntry(clickedEntry);

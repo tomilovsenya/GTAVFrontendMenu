@@ -9,6 +9,7 @@ const CURRENT_PAGE = document.documentElement;
 export const HEADER_GTAV = "Grand Theft Auto V";
 export const HEADER_GTAO = "Grand Theft Auto Online";
 export const MENU_COLOR = getHudColor("hud-color-michael");
+export const MENU_COLOR_ALPHA = getHudColor("menu-color-alpha");
 
 let charBank = 0;
 let charCash = 0;

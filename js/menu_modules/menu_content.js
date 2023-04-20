@@ -1,4 +1,4 @@
-import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuWindow } from "./menu_entries.js";
+import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuWindow } from "./menu_entries.js";
 import { MenuElements } from "./menu_entries.js";
 import { MenuEntry } from "./menu_entries.js";
 import { MenuEntryList } from "./menu_entries.js";
@@ -146,8 +146,24 @@ export let menuSettings = new MenuWindow(
 
 //#region menuStats
 
-export let menuStatsSkillsSpecial = new MenuEntry("menu_stats_skills_special", "menu_stats_skills_special_name");
-export let menuStatsSkillsStamina = new MenuEntry("menu_stats_skills_stamina", "menu_stats_skills_stamina_name");
+export let menuStatsSkillsSpecial = new MenuEntryStat(
+  "menu_stats_skills_special",
+  "menu_stats_skills_special_name",
+  50,
+  5
+);
+export let menuStatsSkillsStamina = new MenuEntryStat(
+  "menu_stats_skills_stamina",
+  "menu_stats_skills_stamina_name",
+  25,
+  5
+);
+export let menuStatsSkillsShooting = new MenuEntryStat(
+  "menu_stats_skills_shooting",
+  "menu_stats_skills_shooting_name",
+  65,
+  5
+);
 // export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
 // export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsEntries);
 
@@ -166,7 +182,7 @@ export let menuStatsCategoryGeneral = new MenuCategory(
   ]
 );
 
-export let menuStatsSkillsEntries = [menuStatsSkillsSpecial, menuStatsSkillsStamina];
+export let menuStatsSkillsEntries = [menuStatsSkillsSpecial, menuStatsSkillsStamina, menuStatsSkillsShooting];
 export let menuStatsGeneralEntries = [menuStatsGeneralTime];
 
 export let menuStatsSkills = new MenuElements("menu_stats_skills", menuStatsSkillsEntries);
@@ -188,6 +204,7 @@ export let allMenuEntries = [
 
   menuStatsSkillsSpecial,
   menuStatsSkillsStamina,
+  menuStatsSkillsShooting,
 
   menuStatsGeneralTime,
 
