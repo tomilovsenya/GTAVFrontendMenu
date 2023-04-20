@@ -112,14 +112,14 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollUpDown(1);
       if (INPUT_FRONTEND_LEFT.indexOf(buttonPressed) > -1) scrollLeftRight(0);
       if (INPUT_FRONTEND_RIGHT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
-      if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
+      // if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
       break;
     case menuContent.MENU_TAB_SETTINGS:
       if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);
       if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollUpDown(1);
       if (INPUT_FRONTEND_LEFT.indexOf(buttonPressed) > -1) scrollLeftRight(0);
       if (INPUT_FRONTEND_RIGHT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
-      if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
+      // if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
       break;
     case menuContent.MENU_TAB_GAME:
       if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);

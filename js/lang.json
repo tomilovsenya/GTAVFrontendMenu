@@ -163,7 +163,7 @@
   },
 
   {
-    "gxt": "menu_stats_category_0",
+    "gxt": "menu_stats_skills_name",
     "american": "Skills",
     "russian": "Навыки"
   },
@@ -192,7 +192,7 @@
     "russian": "Сетевой персонаж"
   },
   {
-    "gxt": "menu_stats_category_1",
+    "gxt": "menu_stats_general_name",
     "american": "General",
     "russian": "Общие"
   },

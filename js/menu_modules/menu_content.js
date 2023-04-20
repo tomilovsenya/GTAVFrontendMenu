@@ -8,15 +8,17 @@ import { MenuCategory } from "./menu_entries.js";
 // TESTING OF CLASS-BASED MENU SYSTEM
 //
 
-export let menuSettingsCategoryGamepad = new MenuEntry(
+//#region menuSettings
+
+export let menuSettingsCategoryGamepad = new MenuCategory(
   "menu_settings_category_gamepad",
   "menu_settings_category_gamepad_name"
 );
-export let menuSettingsCategoryGraphics = new MenuEntry(
+export let menuSettingsCategoryGraphics = new MenuCategory(
   "menu_settings_category_graphics",
   "menu_settings_category_graphics_name"
 );
-export let menuSettingsCategoryPause = new MenuEntry(
+export let menuSettingsCategoryPause = new MenuCategory(
   "menu_settings_category_pause",
   "menu_settings_category_pause_name"
 );
@@ -109,30 +111,6 @@ export let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_re
   "Off",
 ]);
 
-export let allMenuEntries = [
-  menuSettingsCategoryGraphics,
-  menuSettingsCategoryPause,
-  menuSettingsCategoryGamepad,
-
-  menuSettingsGamepadControlsFor,
-  menuSettingsGamepadTargeting,
-  menuSettingsGamepadVibration,
-  menuSettingsGamepadInvertLook,
-  menuSettingsGamepadThirdControlType,
-  menuSettingsGamepadFirstControlType,
-  menuSettingsGamepadThirdAimSensitivity,
-  menuSettingsGamepadThirdLookSensitivity,
-  menuSettingsGamepadFirstLookSensitivity,
-
-  menuSettingsGraphicsIgnoreLimits,
-  menuSettingsGraphicsDirectX,
-  menuSettingsGraphicsResolution,
-
-  menuSettingsPauseClock,
-  menuSettingsPauseLanguage,
-  menuSettingsPauseRemember,
-];
-
 export let menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
   menuSettingsGamepadTargeting,
@@ -164,7 +142,100 @@ export let menuSettings = new MenuWindow(
   menuSettingsArrows
 );
 
-export let allMenuElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
+//#endregion
+
+//#region menuStats
+
+export let menuStatsSkillsSpecial = new MenuEntry("menu_stats_skills_special", "menu_stats_skills_special_name");
+export let menuStatsSkillsStamina = new MenuEntry("menu_stats_skills_stamina", "menu_stats_skills_stamina_name");
+// export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
+// export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsEntries);
+
+export let menuStatsGeneralTime = new MenuEntry("menu_stats_general_time", "menu_stats_general_time_name");
+// export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
+
+export let menuStatsCategorySkills = new MenuCategory("menu_stats_category_skills", "menu_stats_category_skills_name", [
+  // menuStatsSkillsMichael,
+  // menuStatsSkillsFranklin,
+]);
+export let menuStatsCategoryGeneral = new MenuCategory(
+  "menu_stats_category_general",
+  "menu_stats_category_general_name",
+  [
+    // menuStatsGeneralMichael,
+  ]
+);
+
+export let menuStatsSkillsEntries = [menuStatsSkillsSpecial, menuStatsSkillsStamina];
+export let menuStatsGeneralEntries = [menuStatsGeneralTime];
+
+export let menuStatsSkills = new MenuElements("menu_stats_skills", menuStatsSkillsEntries);
+export let menuStatsGeneral = new MenuElements("menu_stats_general", menuStatsGeneralEntries);
+
+export let menuStatsCategories = {
+  ID: "menu_stats_categories",
+  list: [menuStatsCategorySkills, menuStatsCategoryGeneral],
+};
+export let menuStatsArrows = new MenuArrows("menu_stats_arrows");
+export let menuStatsElements = [menuStatsSkills, menuStatsGeneral];
+export let menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
+
+//#endregion
+
+export let allMenuEntries = [
+  menuStatsCategorySkills,
+  menuStatsCategoryGeneral,
+
+  menuStatsSkillsSpecial,
+  menuStatsSkillsStamina,
+
+  menuStatsGeneralTime,
+
+  menuSettingsCategoryGraphics,
+  menuSettingsCategoryPause,
+  menuSettingsCategoryGamepad,
+
+  menuSettingsGamepadControlsFor,
+  menuSettingsGamepadTargeting,
+  menuSettingsGamepadVibration,
+  menuSettingsGamepadInvertLook,
+  menuSettingsGamepadThirdControlType,
+  menuSettingsGamepadFirstControlType,
+  menuSettingsGamepadThirdAimSensitivity,
+  menuSettingsGamepadThirdLookSensitivity,
+  menuSettingsGamepadFirstLookSensitivity,
+
+  menuSettingsGraphicsIgnoreLimits,
+  menuSettingsGraphicsDirectX,
+  menuSettingsGraphicsResolution,
+
+  menuSettingsPauseClock,
+  menuSettingsPauseLanguage,
+  menuSettingsPauseRemember,
+];
+
+export let allMenuElements = [
+  menuStatsSkills,
+  menuStatsGeneral,
+
+  menuSettingsGamepad,
+  menuSettingsGraphics,
+  menuSettingsPause,
+];
+
+export let allMenuWindows = [
+  undefined,
+  undefined,
+  menuStats,
+  menuSettings,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+];
 
 //
 // SCROLLABLE MENU ENTRIES MIDDLE

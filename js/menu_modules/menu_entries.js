@@ -526,10 +526,13 @@ export class MenuEntryHeader extends MenuEntry {
 export class MenuCategory extends MenuEntry {
   ID = "menu_category_default";
   title = "Menu Category";
+  elementsList = [];
 
-  constructor(id, title) {
+  constructor(id, title, elementsList) {
+    super(id, title);
     this.ID = id;
     this.title = title;
+    this.elementsList = elementsList;
   }
 }
 

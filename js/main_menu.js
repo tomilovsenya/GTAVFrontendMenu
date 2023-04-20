@@ -14,8 +14,11 @@ let activeCategory = null;
 let activeCategoryElements = null;
 let activeEntryMiddle = null;
 let activeScrollableElements = null;
-let initWindow = menuContent.MENU_TABS[3];
+let initWindow = menuContent.MENU_TABS[2];
 let activeWindow = initWindow;
+
+let currentWindow = menuContent.menuStats;
+let currentEntry;
 
 let currentOverflows = {
   // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
@@ -106,12 +109,13 @@ async function loadMenu() {
   // playSFX(SFX_MENU_MUSIC);
   await localizeMenu();
   commonMenu.setMenuColor();
-  commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
-  commonMenu.setCharMoney(204948500, 756025758202);
+  commonMenu.setHeaderTitle("Would You Fucking Work?");
+  commonMenu.setCharMoney(500, 10000);
   commonMenu.updateHeaderStats();
   setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
 
+  menuContent.menuStats.create();
   menuContent.menuSettings.create();
 
   updateEventHandlers();
@@ -121,7 +125,7 @@ function initMenuContent() {
   setStartupInstr();
   setInitialTab();
   activeWindow.id.trigger("tabActive");
-  setActiveWindow(activeWindow);
+  setActiveWindow(menuContent.menuStats);
   fillReplayMissionList();
   initHundredCompletionChart();
 }
@@ -151,7 +155,15 @@ window.onload = () => {
 // ACTIVE WINDOWS LOGIC
 //
 
-function setActiveWindow(newActiveWindow) {
+function setActiveWindow(activatedWindow) {
+  if (!activatedWindow instanceof MenuWindow) return;
+  // if (activatedWindow == currentWindow) return;
+
+  currentWindow = activatedWindow;
+  activatedWindow.show();
+  console.log("Activated window: " + activatedWindow.ID);
+
+  return;
   if (newActiveWindow == activeWindow) return;
   console.log("Active window first: " + activeWindow.id.attr("id"));
   activeWindow.window.hide();
@@ -162,7 +174,35 @@ function setActiveWindow(newActiveWindow) {
   console.log("Active window now: " + activeWindow.id.attr("id"));
 }
 
-function switchActiveWindow(tabActive) {
+function switchActiveWindow(activeTab) {
+  let selectedTab = $("#menu_navbar_tabs").find(".menu_button_active").eq(0).index();
+  let selectedWindow = menuContent.allMenuWindows[selectedTab];
+  console.log(selectedTab);
+
+  if (currentWindow != undefined) {
+    currentWindow.deactivate();
+    currentWindow.hide();
+    console.log("Deactivated window: " + currentWindow.ID);
+  }
+
+  if (selectedWindow != undefined) setActiveWindow(selectedWindow);
+
+  return;
+
+  switch (selectedTab) {
+    case 2:
+      setActiveWindow(menuContent.menuStats);
+      break;
+    case 3:
+      setActiveWindow(menuContent.menuSettings);
+      break;
+    default:
+      // setActiveWindow(menuContent.menuStats);
+      break;
+  }
+
+  return;
+
   if (tabActive.is(menuContent.MENU_TAB_MAP.id)) {
     setActiveWindow(menuContent.MENU_TAB_MAP);
   }
@@ -219,9 +259,6 @@ NAVBAR_LEFT_ARROW.click("click", function () {
 
 let isButtonPressedDown = false;
 
-let currentWindow = menuContent.menuSettings;
-let currentEntry;
-
 window.addEventListener(
   "keydown",
   function (e) {
@@ -271,6 +308,7 @@ window.addEventListener(
       localizeSingleMenu(menuContent.menuSettings, "russian");
     }
     if (["KeyH"].indexOf(e.code) > -1) {
+      console.log(currentWindow);
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
       currentWindow.deactivate();
@@ -300,6 +338,7 @@ window.addEventListener(
       // else if (activeWindow == menuContent.MENU_TAB_STORE) enterStoreMenu();
       // else scrollLeftRight(1);
       // menuSettings.enterCategory(menuSettings.currentCategoryIndex);
+      e.preventDefault();
       if (!currentWindow.active) currentWindow.activate();
       else currentWindow.goDeeper();
     }
@@ -362,6 +401,7 @@ function setTabActive() {
   activeTab.focus();
   playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
+  activeWindowHandler(activeTab);
   return;
 
   if (activeWindow.window.find(".menu_categories").length > 0) {
@@ -373,7 +413,6 @@ function setTabActive() {
     let firstElement = tabElements.first();
     triggerEntry(firstElement);
   }
-  activeWindowHandler(activeTab);
 }
 
 function setTabDisabled() {
@@ -465,6 +504,8 @@ function clickCategory() {
 export function clickEntry() {
   if (!currentWindow.active) return;
   let clickedEntry = findMenuEntryByID($(this).attr("id"));
+  if (clickedEntry instanceof MenuCategory) return;
+
   clickedEntry.parentElements.clickEntry(clickedEntry);
   // triggerEntry($(this));
   // if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
@@ -1027,37 +1068,43 @@ export function enterStoreMenu() {
 }
 
 function activeWindowHandler(activeTab) {
-  let currentWindow = activeWindow.id;
+  // let currentWindowID = activeTabWindow.id;
+
+  // if (currentWindow != undefined) currentWindow.deactivate();
+
+  return;
 
   switch (currentWindow) {
     case menuContent.MENU_TAB_BRIEF.id:
-      activeWindow.window.children(".menu_elements").hide();
-      if (activeCategoryElements) activeCategoryElements.show();
-      if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
-      else $("#menu_arrows_brief").show();
-      $("#IB_SCROLL").show();
-      break;
-    case menuContent.MENU_TAB_STATS.id:
-      activeWindow.window.children(".menu_elements").hide();
-      if (activeCategoryElements) activeCategoryElements.show();
-      activeCategoryElements.find(".element_stat").remove();
-      if (activeCategoryElements.children(".menu_elements_scrollable").children().length <= 16)
-        $("#menu_arrows_stats").hide();
-      else $("#menu_arrows_stats").show();
-      if (activeCategoryElements.is($("#menu_stats_100_completion"))) fillHundredCompletionWindow();
-      populateStatsBars();
-      $("#IB_SCROLL").show();
-      break;
-    case menuContent.MENU_TAB_SETTINGS.id:
       // activeWindow.window.children(".menu_elements").hide();
       // if (activeCategoryElements) activeCategoryElements.show();
-      // setVideoMemory(400, 4096);
-      //menuContent.menuSettings.menuElements.forEach((element) => {
-      //  $("#" + element.ID).hide();
-      //});
+      // if (activeCategoryElements.children(".menu_elements_scrollable").length == 0) $("#menu_arrows_brief").hide();
+      // else $("#menu_arrows_brief").show();
+      // $("#IB_SCROLL").show();
+      break;
+    case menuContent.MENU_TAB_STATS.id:
+      currentWindow = menuContent.menuStats;
+      currentWindow.show();
+      break;
+    // activeWindow.window.children(".menu_elements").hide();
+    // if (activeCategoryElements) activeCategoryElements.show();
+    // activeCategoryElements.find(".element_stat").remove();
+    // if (activeCategoryElements.children(".menu_elements_scrollable").children().length <= 16)
+    //   $("#menu_arrows_stats").hide();
+    // else $("#menu_arrows_stats").show();
+    // if (activeCategoryElements.is($("#menu_stats_100_completion"))) fillHundredCompletionWindow();
+    // populateStatsBars();
+    // $("#IB_SCROLL").show();
+    case menuContent.MENU_TAB_SETTINGS.id:
       currentWindow = menuContent.menuSettings;
       currentWindow.show();
       break;
+    // activeWindow.window.children(".menu_elements").hide();
+    // if (activeCategoryElements) activeCategoryElements.show();
+    // setVideoMemory(400, 4096);
+    //menuContent.menuSettings.menuElements.forEach((element) => {
+    //  $("#" + element.ID).hide();
+    //});
     case menuContent.MENU_TAB_GAME.id:
       updateMissionCounter();
       if ($("#menu_game_elements_missions").children(".menu_entry").length <= 16) $("#menu_arrows_game").hide();
@@ -1082,24 +1129,24 @@ Check if the active window with ID ${activeWindow.id.attr("id")} contains any ca
       break;
   }
 
-  if (currentWindow != menuContent.MENU_TAB_SAVE.id) commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
-  if (currentWindow != menuContent.MENU_TAB_BRIEF.id && currentWindow != menuContent.MENU_TAB_STATS.id)
-    $("#IB_SCROLL").hide();
+  // if (currentWindow != menuContent.MENU_TAB_SAVE.id) commonMenu.setHeaderTitle(commonMenu.HEADER_GTAV);
+  // if (currentWindow != menuContent.MENU_TAB_BRIEF.id && currentWindow != menuContent.MENU_TAB_STATS.id)
+  //   $("#IB_SCROLL").hide();
 
-  if (activeCategoryElements) {
-    let flagArrows = activeCategoryElements.attr("data-arrows") || "0";
+  // if (activeCategoryElements) {
+  //   let flagArrows = activeCategoryElements.attr("data-arrows") || "0";
 
-    switch (flagArrows) {
-      case "0":
-        $(".menu_arrows").css({ visibility: "hidden" });
-        break;
-      case "1":
-        $(".menu_arrows").css({ visibility: "visible" });
-        break;
-      default:
-        break;
-    }
-  }
+  //   switch (flagArrows) {
+  //     case "0":
+  //       $(".menu_arrows").css({ visibility: "hidden" });
+  //       break;
+  //     case "1":
+  //       $(".menu_arrows").css({ visibility: "visible" });
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 }
 
 //
