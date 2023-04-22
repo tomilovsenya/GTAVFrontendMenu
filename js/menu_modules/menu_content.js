@@ -10,84 +10,84 @@ import { MenuCategory } from "./menu_entries.js";
 
 //#region menuSettings
 
-export let menuSettingsCategoryGamepad = new MenuCategory(
+export const menuSettingsCategoryGamepad = new MenuCategory(
   "menu_settings_category_gamepad",
   "menu_settings_category_gamepad_name"
 );
-export let menuSettingsCategoryGraphics = new MenuCategory(
+export const menuSettingsCategoryGraphics = new MenuCategory(
   "menu_settings_category_graphics",
   "menu_settings_category_graphics_name"
 );
-export let menuSettingsCategoryPause = new MenuCategory(
+export const menuSettingsCategoryPause = new MenuCategory(
   "menu_settings_category_pause",
   "menu_settings_category_pause_name"
 );
 
-export let menuSettingsCategories = {
+export const menuSettingsCategories = {
   ID: "menu_settings_categories",
   list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
 };
 
-export let menuSettingsGamepadControlsFor = new MenuEntryList(
+export const menuSettingsGamepadControlsFor = new MenuEntryList(
   "menu_settings_gamepad_controls_for",
   "menu_settings_gamepad_controls_for_name",
   ["menu_settings_gamepad_controls_for_0", "menu_settings_gamepad_controls_for_1"]
 );
-export let menuSettingsGamepadTargeting = new MenuEntryList(
+export const menuSettingsGamepadTargeting = new MenuEntryList(
   "menu_settings_gamepad_targeting",
   "menu_settings_gamepad_targeting_name",
   ["Free Aim", "Assisted Aim - Partial", "Assisted Aim - Full"]
 );
-export let menuSettingsGamepadVibration = new MenuEntryList(
+export const menuSettingsGamepadVibration = new MenuEntryList(
   "menu_settings_gamepad_vibration",
   "menu_settings_gamepad_vibration_name",
   ["menu_common_on", "menu_common_off"]
 );
-export let menuSettingsGamepadInvertLook = new MenuEntryList(
+export const menuSettingsGamepadInvertLook = new MenuEntryList(
   "menu_settings_gamepad_invert_look",
   "menu_settings_gamepad_invert_look_name",
   ["menu_common_on", "menu_common_off"]
 );
-export let menuSettingsGamepadThirdControlType = new MenuEntryList(
+export const menuSettingsGamepadThirdControlType = new MenuEntryList(
   "menu_settings_gamepad_third_control_type",
   "Third Person Control Type",
   ["Standard", "Alternate", "Southpaw"]
 );
-export let menuSettingsGamepadFirstControlType = new MenuEntryList(
+export const menuSettingsGamepadFirstControlType = new MenuEntryList(
   "menu_settings_gamepad_first_control_type",
   "First Person Control Type",
   ["Standard", "Alternate", "Southpaw"]
 );
-export let menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress(
+export const menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress(
   "menu_settings_gamepad_third_aim_sensitivity",
   "Third Person Aiming Sensitivity",
   25,
   5
 );
-export let menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress(
+export const menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress(
   "menu_settings_gamepad_third_look_sensitivity",
   "Third Person Look-Around Sensitivity",
   25,
   5
 );
-export let menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress(
+export const menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress(
   "menu_settings_gamepad_first_aim_sensitivity",
   "First Person Aiming Sensitivity",
   25,
   5
 );
 
-export let menuSettingsGraphicsIgnoreLimits = new MenuEntryList(
+export const menuSettingsGraphicsIgnoreLimits = new MenuEntryList(
   "menu_settings_graphics_ignore_limits",
   "Ignore Suggested Limits",
   ["Off", "On"]
 );
-export let menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", [
+export const menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", [
   "DirectX 10",
   "DirectX 10.1",
   "DirectX 11",
 ]);
-export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
+export const menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
   "800x600",
   "1280x720",
   "1920x1080",
@@ -95,23 +95,23 @@ export let menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_gra
   "3840x2160",
 ]);
 
-export let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", [
+export const menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", [
   "menu_common_on",
   "menu_common_off",
 ]);
-export let menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
+export const menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
   "English",
   "Russian",
   "Italian",
   "Spanish",
 ]);
-export let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
+export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
   "Always",
   "Sometimes",
   "Off",
 ]);
 
-export let menuSettingsGamepadEntries = [
+export const menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
   menuSettingsGamepadTargeting,
   menuSettingsGamepadVibration,
@@ -122,20 +122,20 @@ export let menuSettingsGamepadEntries = [
   menuSettingsGamepadThirdLookSensitivity,
   menuSettingsGamepadFirstLookSensitivity,
 ];
-export let menuSettingsGraphicsEntries = [
+export const menuSettingsGraphicsEntries = [
   menuSettingsGraphicsIgnoreLimits,
   menuSettingsGraphicsDirectX,
   menuSettingsGraphicsResolution,
 ];
-export let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
+export const menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
-export let menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);
-export let menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
-export let menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
+export const menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);
+export const menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
+export const menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
 
-export let menuSettingsArrows = new MenuArrows("menu_settings_arrows");
-export let menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
-export let menuSettings = new MenuWindow(
+export const menuSettingsArrows = new MenuArrows("menu_settings_arrows");
+export const menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
+export const menuSettings = new MenuWindow(
   "menu_settings",
   menuSettingsCategories,
   menuSettingsElements,
@@ -146,56 +146,56 @@ export let menuSettings = new MenuWindow(
 
 //#region menuStats
 
-export let menuStatsSkillsMichaelSpecial = new MenuEntryStat(
+export const menuStatsSkillsMichaelSpecial = new MenuEntryStat(
   "menu_stats_skills_michael_special",
   "menu_stats_skills_special_name",
   50,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelStamina = new MenuEntryStat(
+export const menuStatsSkillsMichaelStamina = new MenuEntryStat(
   "menu_stats_skills_michael_stamina",
   "menu_stats_skills_stamina_name",
   25,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelShooting = new MenuEntryStat(
+export const menuStatsSkillsMichaelShooting = new MenuEntryStat(
   "menu_stats_skills_michael_shooting",
   "menu_stats_skills_shooting_name",
   65,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelStrength = new MenuEntryStat(
+export const menuStatsSkillsMichaelStrength = new MenuEntryStat(
   "menu_stats_skills_michael_strength",
   "menu_stats_skills_strength_name",
   55,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelStealth = new MenuEntryStat(
+export const menuStatsSkillsMichaelStealth = new MenuEntryStat(
   "menu_stats_skills_michael_stealth",
   "menu_stats_skills_stealth_name",
   30,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelFlying = new MenuEntryStat(
+export const menuStatsSkillsMichaelFlying = new MenuEntryStat(
   "menu_stats_skills_michael_flying",
   "menu_stats_skills_flying_name",
   15,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelDriving = new MenuEntryStat(
+export const menuStatsSkillsMichaelDriving = new MenuEntryStat(
   "menu_stats_skills_michael_driving",
   "menu_stats_skills_driving_name",
   40,
   5,
   "bg_color_michael"
 );
-export let menuStatsSkillsMichaelLungCapacity = new MenuEntryStat(
+export const menuStatsSkillsMichaelLungCapacity = new MenuEntryStat(
   "menu_stats_skills_michael_lung_capacity",
   "menu_stats_skills_lung_capacity_name",
   10,
@@ -203,56 +203,56 @@ export let menuStatsSkillsMichaelLungCapacity = new MenuEntryStat(
   "bg_color_michael"
 );
 
-export let menuStatsSkillsFranklinSpecial = new MenuEntryStat(
+export const menuStatsSkillsFranklinSpecial = new MenuEntryStat(
   "menu_stats_skills_franklin_special",
   "menu_stats_skills_special_name",
   80,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinStamina = new MenuEntryStat(
+export const menuStatsSkillsFranklinStamina = new MenuEntryStat(
   "menu_stats_skills_franklin_stamina",
   "menu_stats_skills_stamina_name",
   60,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinShooting = new MenuEntryStat(
+export const menuStatsSkillsFranklinShooting = new MenuEntryStat(
   "menu_stats_skills_franklin_shooting",
   "menu_stats_skills_shooting_name",
   20,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinStrength = new MenuEntryStat(
+export const menuStatsSkillsFranklinStrength = new MenuEntryStat(
   "menu_stats_skills_franklin_strength",
   "menu_stats_skills_strength_name",
   55,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinStealth = new MenuEntryStat(
+export const menuStatsSkillsFranklinStealth = new MenuEntryStat(
   "menu_stats_skills_franklin_stealth",
   "menu_stats_skills_stealth_name",
   30,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinFlying = new MenuEntryStat(
+export const menuStatsSkillsFranklinFlying = new MenuEntryStat(
   "menu_stats_skills_franklin_flying",
   "menu_stats_skills_flying_name",
   15,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinDriving = new MenuEntryStat(
+export const menuStatsSkillsFranklinDriving = new MenuEntryStat(
   "menu_stats_skills_franklin_driving",
   "menu_stats_skills_driving_name",
   40,
   5,
   "bg_color_franklin"
 );
-export let menuStatsSkillsFranklinLungCapacity = new MenuEntryStat(
+export const menuStatsSkillsFranklinLungCapacity = new MenuEntryStat(
   "menu_stats_skills_franklin_lung_capacity",
   "menu_stats_skills_lung_capacity_name",
   10,
@@ -260,56 +260,56 @@ export let menuStatsSkillsFranklinLungCapacity = new MenuEntryStat(
   "bg_color_franklin"
 );
 
-export let menuStatsSkillsTrevorSpecial = new MenuEntryStat(
+export const menuStatsSkillsTrevorSpecial = new MenuEntryStat(
   "menu_stats_skills_trevor_special",
   "menu_stats_skills_special_name",
   70,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorStamina = new MenuEntryStat(
+export const menuStatsSkillsTrevorStamina = new MenuEntryStat(
   "menu_stats_skills_trevor_stamina",
   "menu_stats_skills_stamina_name",
   43,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorShooting = new MenuEntryStat(
+export const menuStatsSkillsTrevorShooting = new MenuEntryStat(
   "menu_stats_skills_trevor_shooting",
   "menu_stats_skills_shooting_name",
   56,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorStrength = new MenuEntryStat(
+export const menuStatsSkillsTrevorStrength = new MenuEntryStat(
   "menu_stats_skills_trevor_strength",
   "menu_stats_skills_strength_name",
   55,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorStealth = new MenuEntryStat(
+export const menuStatsSkillsTrevorStealth = new MenuEntryStat(
   "menu_stats_skills_trevor_stealth",
   "menu_stats_skills_stealth_name",
   30,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorFlying = new MenuEntryStat(
+export const menuStatsSkillsTrevorFlying = new MenuEntryStat(
   "menu_stats_skills_trevor_flying",
   "menu_stats_skills_flying_name",
   15,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorDriving = new MenuEntryStat(
+export const menuStatsSkillsTrevorDriving = new MenuEntryStat(
   "menu_stats_skills_trevor_driving",
   "menu_stats_skills_driving_name",
   40,
   5,
   "bg_color_trevor"
 );
-export let menuStatsSkillsTrevorLungCapacity = new MenuEntryStat(
+export const menuStatsSkillsTrevorLungCapacity = new MenuEntryStat(
   "menu_stats_skills_trevor_lung_capacity",
   "menu_stats_skills_lung_capacity_name",
   10,
@@ -317,56 +317,56 @@ export let menuStatsSkillsTrevorLungCapacity = new MenuEntryStat(
   "bg_color_trevor"
 );
 
-export let menuStatsSkillsFreemodeStamina = new MenuEntryStat(
+export const menuStatsSkillsFreemodeStamina = new MenuEntryStat(
   "menu_stats_skills_freemode_stamina",
   "menu_stats_skills_stamina_name",
   43,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeShooting = new MenuEntryStat(
+export const menuStatsSkillsFreemodeShooting = new MenuEntryStat(
   "menu_stats_skills_freemode_shooting",
   "menu_stats_skills_shooting_name",
   56,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeStrength = new MenuEntryStat(
+export const menuStatsSkillsFreemodeStrength = new MenuEntryStat(
   "menu_stats_skills_freemode_strength",
   "menu_stats_skills_strength_name",
   55,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeStealth = new MenuEntryStat(
+export const menuStatsSkillsFreemodeStealth = new MenuEntryStat(
   "menu_stats_skills_freemode_stealth",
   "menu_stats_skills_stealth_name",
   30,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeFlying = new MenuEntryStat(
+export const menuStatsSkillsFreemodeFlying = new MenuEntryStat(
   "menu_stats_skills_freemode_flying",
   "menu_stats_skills_flying_name",
   15,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeDriving = new MenuEntryStat(
+export const menuStatsSkillsFreemodeDriving = new MenuEntryStat(
   "menu_stats_skills_freemode_driving",
   "menu_stats_skills_driving_name",
   40,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeLungCapacity = new MenuEntryStat(
+export const menuStatsSkillsFreemodeLungCapacity = new MenuEntryStat(
   "menu_stats_skills_freemode_lung_capacity",
   "menu_stats_skills_lung_capacity_name",
   10,
   5,
   "bg_color_freemode"
 );
-export let menuStatsSkillsFreemodeMentalState = new MenuEntryStat(
+export const menuStatsSkillsFreemodeMentalState = new MenuEntryStat(
   "menu_stats_skills_freemode_mental_state",
   "menu_stats_skills_mental_state_name",
   10,
@@ -374,187 +374,187 @@ export let menuStatsSkillsFreemodeMentalState = new MenuEntryStat(
   "bg_color_freemode"
 );
 
-export let menuStatsGeneralMichaelTimePlayed = new MenuEntryList(
+export const menuStatsGeneralMichaelTimePlayed = new MenuEntryList(
   "menu_stats_general_michael_time_played",
   "menu_stats_general_time_played_name",
   ["0d 5h 5m 25s"],
   true
 );
-export let menuStatsGeneralMichaelTimeFPS = new MenuEntryList(
+export const menuStatsGeneralMichaelTimeFPS = new MenuEntryList(
   "menu_stats_general_michael_time_fps",
   "menu_stats_general_time_fps_name",
   ["0d 1h 2m 0s"],
   true
 );
-export let menuStatsGeneralMichaelMissions = new MenuEntryList(
+export const menuStatsGeneralMichaelMissions = new MenuEntryList(
   "menu_stats_general_michael_missions",
   "menu_stats_general_missions_name",
   ["15"],
   true
 );
-export let menuStatsGeneralMichaelLastMission = new MenuEntryList(
+export const menuStatsGeneralMichaelLastMission = new MenuEntryList(
   "menu_stats_general_michael_last_mission",
   "menu_stats_general_last_mission_name",
   ["Before the Prologue"],
   true
 );
-export let menuStatsGeneralMichaelLetters = new MenuEntryList(
-  "menu_stats_general_michael_letters",
-  "menu_stats_general_letters_name",
+export const menuStatsGeneralMichaelconstters = new MenuEntryList(
+  "menu_stats_general_michael_constters",
+  "menu_stats_general_constters_name",
   ["50 / 50"],
   true
 );
-export let menuStatsGeneralMichaelPeyotes = new MenuEntryList(
+export const menuStatsGeneralMichaelPeyotes = new MenuEntryList(
   "menu_stats_general_michael_peyotes",
   "menu_stats_general_peyotes_name",
   ["20 / 27"],
   true
 );
-export let menuStatsGeneralMichaelWildlife = new MenuEntryList(
+export const menuStatsGeneralMichaelWildlife = new MenuEntryList(
   "menu_stats_general_michael_wildlife",
   "menu_stats_general_wildlife_name",
   ["10 / 20"],
   true
 );
-export let menuStatsGeneralMichaelSaved = new MenuEntryList(
+export const menuStatsGeneralMichaelSaved = new MenuEntryList(
   "menu_stats_general_michael_saved",
   "menu_stats_general_saved_name",
   ["1420"],
   true
 );
-export let menuStatsGeneralMichaelCheats = new MenuEntryList(
+export const menuStatsGeneralMichaelCheats = new MenuEntryList(
   "menu_stats_general_michael_cheats",
   "menu_stats_general_cheats_name",
   ["0"],
   true
 );
-export let menuStatsGeneralMichaelDeathsTotal = new MenuEntryList(
+export const menuStatsGeneralMichaelDeathsTotal = new MenuEntryList(
   "menu_stats_general_michael_deaths_total",
   "menu_stats_general_deaths_total_name",
   ["5"],
   true
 );
-export let menuStatsGeneralMichaelDeathsExplosion = new MenuEntryList(
+export const menuStatsGeneralMichaelDeathsExplosion = new MenuEntryList(
   "menu_stats_general_michael_deaths_explosion",
   "menu_stats_general_deaths_explosion_name",
   ["1"],
   true
 );
-export let menuStatsGeneralMichaelDeathsFalling = new MenuEntryList(
+export const menuStatsGeneralMichaelDeathsFalling = new MenuEntryList(
   "menu_stats_general_michael_deaths_falling",
   "menu_stats_general_deaths_falling_name",
   ["1"],
   true
 );
-export let menuStatsGeneralMichaelDeathsFire = new MenuEntryList(
+export const menuStatsGeneralMichaelDeathsFire = new MenuEntryList(
   "menu_stats_general_michael_deaths_fire",
   "menu_stats_general_deaths_fire_name",
   ["1"],
   true
 );
-export let menuStatsGeneralMichaelDeathsTraffic = new MenuEntryList(
+export const menuStatsGeneralMichaelDeathsTraffic = new MenuEntryList(
   "menu_stats_general_michael_deaths_traffic",
   "menu_stats_general_deaths_traffic_name",
   ["1"],
   true
 );
-export let menuStatsGeneralMichaelDeathsDrowning = new MenuEntryList(
+export const menuStatsGeneralMichaelDeathsDrowning = new MenuEntryList(
   "menu_stats_general_michael_deaths_drowning",
   "menu_stats_general_deaths_drowning_name",
   ["1"],
   true
 );
-export let menuStatsGeneralMichaelTimeSwimming = new MenuEntryList(
+export const menuStatsGeneralMichaelTimeSwimming = new MenuEntryList(
   "menu_stats_general_michael_time_swimming",
   "menu_stats_general_time_swimming_name",
   ["0d 1h 5m 2s"],
   true
 );
-export let menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList(
+export const menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList(
   "menu_stats_general_michael_distance_swimming",
   "menu_stats_general_distance_swimming_name",
   ["0.13 miles"],
   true
 );
-export let menuStatsGeneralMichaelTimeUnderwater = new MenuEntryList(
+export const menuStatsGeneralMichaelTimeUnderwater = new MenuEntryList(
   "menu_stats_general_michael_time_underwater",
   "menu_stats_general_time_underwater_name",
   ["0d 0h 5m 22s"],
   true
 );
 
-export let menuStatsGeneralFranklinTime = new MenuEntryList(
+export const menuStatsGeneralFranklinTime = new MenuEntryList(
   "menu_stats_general_franklin_time",
   "menu_stats_general_time_name",
   ["0:00"],
   true
 );
-export let menuStatsGeneralTrevorTime = new MenuEntryList(
+export const menuStatsGeneralTrevorTime = new MenuEntryList(
   "menu_stats_general_trevor_time",
   "menu_stats_general_time_name",
   ["0:00"],
   true
 );
-export let menuStatsGeneralFreemodeTime = new MenuEntryList(
+export const menuStatsGeneralFreemodeTime = new MenuEntryList(
   "menu_stats_general_freemode_time",
   "menu_stats_general_time_name",
   ["0:00"],
   true
 );
 
-export let menuStatsChecklistEmpty0 = new MenuEntryList("menu_stats_checklist_empty_0", "", [""], true);
-export let menuStatsChecklistMichael = new MenuEntryList(
+export const menuStatsChecklistEmpty0 = new MenuEntryList("menu_stats_checklist_empty_0", "", [""], true);
+export const menuStatsChecklistMichael = new MenuEntryList(
   "menu_stats_checklist_michael",
   "menu_stats_checklist_michael_name",
   ["25d 2h 5m 40s"],
   true
 );
-export let menuStatsChecklistFranklin = new MenuEntryList(
+export const menuStatsChecklistFranklin = new MenuEntryList(
   "menu_stats_checklist_franklin",
   "menu_stats_checklist_franklin_name",
   ["2d 2h 5m 40s"],
   true
 );
-export let menuStatsChecklistTrevor = new MenuEntryList(
+export const menuStatsChecklistTrevor = new MenuEntryList(
   "menu_stats_checklist_trevor",
   "menu_stats_checklist_trevor_name",
   ["2d 2h 5m 40s"],
   true
 );
-export let menuStatsChecklistEmpty1 = new MenuEntryList("menu_stats_checklist_empty_1", "", [""], true);
-export let menuStatsChecklistMissions = new MenuEntryList(
+export const menuStatsChecklistEmpty1 = new MenuEntryList("menu_stats_checklist_empty_1", "", [""], true);
+export const menuStatsChecklistMissions = new MenuEntryList(
   "menu_stats_checklist_missions",
   "menu_stats_checklist_missions_name",
   ["0 / 69"],
   true
 );
-export let menuStatsChecklistHobbies = new MenuEntryList(
+export const menuStatsChecklistHobbies = new MenuEntryList(
   "menu_stats_checklist_hobbies",
   "menu_stats_checklist_hobbies_name",
   ["0 / 42"],
   true
 );
-export let menuStatsChecklistStrangers = new MenuEntryList(
+export const menuStatsChecklistStrangers = new MenuEntryList(
   "menu_stats_checklist_strangers",
   "menu_stats_checklist_strangers_name",
   ["0 / 20"],
   true
 );
-export let menuStatsChecklistRandom = new MenuEntryList(
+export const menuStatsChecklistRandom = new MenuEntryList(
   "menu_stats_checklist_random",
   "menu_stats_checklist_random_name",
   ["0 / 14"],
   true
 );
-export let menuStatsChecklistMisc = new MenuEntryList(
+export const menuStatsChecklistMisc = new MenuEntryList(
   "menu_stats_checklist_misc",
   "menu_stats_checklist_misc_name",
   ["0 / 16"],
   true
 );
-export let menuStatsChecklistEmpty2 = new MenuEntryList("menu_stats_checklist_empty_2", "", [""], true);
+export const menuStatsChecklistEmpty2 = new MenuEntryList("menu_stats_checklist_empty_2", "", [""], true);
 
-export let menuStatsSkillsMichaelEntries = [
+export const menuStatsSkillsMichaelEntries = [
   menuStatsSkillsMichaelSpecial,
   menuStatsSkillsMichaelStamina,
   menuStatsSkillsMichaelShooting,
@@ -564,7 +564,7 @@ export let menuStatsSkillsMichaelEntries = [
   menuStatsSkillsMichaelDriving,
   menuStatsSkillsMichaelLungCapacity,
 ];
-export let menuStatsSkillsFranklinEntries = [
+export const menuStatsSkillsFranklinEntries = [
   menuStatsSkillsFranklinSpecial,
   menuStatsSkillsFranklinStamina,
   menuStatsSkillsFranklinShooting,
@@ -574,7 +574,7 @@ export let menuStatsSkillsFranklinEntries = [
   menuStatsSkillsFranklinDriving,
   menuStatsSkillsFranklinLungCapacity,
 ];
-export let menuStatsSkillsTrevorEntries = [
+export const menuStatsSkillsTrevorEntries = [
   menuStatsSkillsTrevorSpecial,
   menuStatsSkillsTrevorStamina,
   menuStatsSkillsTrevorShooting,
@@ -584,7 +584,7 @@ export let menuStatsSkillsTrevorEntries = [
   menuStatsSkillsTrevorDriving,
   menuStatsSkillsTrevorLungCapacity,
 ];
-export let menuStatsSkillsFreemodeEntries = [
+export const menuStatsSkillsFreemodeEntries = [
   menuStatsSkillsFreemodeStamina,
   menuStatsSkillsFreemodeShooting,
   menuStatsSkillsFreemodeStrength,
@@ -595,12 +595,12 @@ export let menuStatsSkillsFreemodeEntries = [
   menuStatsSkillsFreemodeMentalState,
 ];
 
-export let menuStatsGeneralMichaelEntries = [
+export const menuStatsGeneralMichaelEntries = [
   menuStatsGeneralMichaelTimePlayed,
   menuStatsGeneralMichaelTimeFPS,
   menuStatsGeneralMichaelMissions,
   menuStatsGeneralMichaelLastMission,
-  menuStatsGeneralMichaelLetters,
+  menuStatsGeneralMichaelconstters,
   menuStatsGeneralMichaelPeyotes,
   menuStatsGeneralMichaelWildlife,
   menuStatsGeneralMichaelSaved,
@@ -615,11 +615,11 @@ export let menuStatsGeneralMichaelEntries = [
   menuStatsGeneralMichaelDistanceSwimming,
   menuStatsGeneralMichaelTimeUnderwater,
 ];
-export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
-export let menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
-export let menuStatsGeneralFreemodeEntries = [menuStatsGeneralFreemodeTime];
+export const menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
+export const menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
+export const menuStatsGeneralFreemodeEntries = [menuStatsGeneralFreemodeTime];
 
-export let menuStatsChecklistEntries = [
+export const menuStatsChecklistEntries = [
   menuStatsChecklistEmpty0,
   menuStatsChecklistMichael,
   menuStatsChecklistFranklin,
@@ -633,86 +633,86 @@ export let menuStatsChecklistEntries = [
   menuStatsChecklistEmpty2,
 ];
 
-export let menuStatsSkillsMichael = new MenuElements(
+export const menuStatsSkillsMichael = new MenuElements(
   "menu_stats_skills_michael",
   menuStatsSkillsMichaelEntries,
   false,
   true
 );
-export let menuStatsSkillsFranklin = new MenuElements(
+export const menuStatsSkillsFranklin = new MenuElements(
   "menu_stats_skills_franklin",
   menuStatsSkillsFranklinEntries,
   false,
   true
 );
-export let menuStatsSkillsTrevor = new MenuElements(
+export const menuStatsSkillsTrevor = new MenuElements(
   "menu_stats_skills_trevor",
   menuStatsSkillsTrevorEntries,
   false,
   true
 );
-export let menuStatsSkillsFreemode = new MenuElements(
+export const menuStatsSkillsFreemode = new MenuElements(
   "menu_stats_skills_freemode",
   menuStatsSkillsFreemodeEntries,
   false,
   true
 );
-export let menuStatsGeneralMichael = new MenuElements(
+export const menuStatsGeneralMichael = new MenuElements(
   "menu_stats_general_michael",
   menuStatsGeneralMichaelEntries,
   false,
   true
 );
-export let menuStatsGeneralFranklin = new MenuElements(
+export const menuStatsGeneralFranklin = new MenuElements(
   "menu_stats_general_franklin",
   menuStatsGeneralFranklinEntries,
   false,
   true
 );
-export let menuStatsGeneralTrevor = new MenuElements(
+export const menuStatsGeneralTrevor = new MenuElements(
   "menu_stats_general_trevor",
   menuStatsGeneralTrevorEntries,
   false,
   true
 );
-export let menuStatsGeneralFreemode = new MenuElements(
+export const menuStatsGeneralFreemode = new MenuElements(
   "menu_stats_general_freemode",
   menuStatsGeneralFreemodeEntries,
   false,
   true
 );
-export let menuStatsChecklist = new MenuElements("menu_stats_checklist", menuStatsChecklistEntries, false, false);
+export const menuStatsChecklist = new MenuElements("menu_stats_checklist", menuStatsChecklistEntries, false, false);
 
-export let menuStatsCategorySkills = new MenuCategory(
+export const menuStatsCategorySkills = new MenuCategory(
   "menu_stats_category_skills",
   "menu_stats_category_skills_name",
   ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
   [menuStatsSkillsMichael, menuStatsSkillsFranklin, menuStatsSkillsTrevor, menuStatsSkillsFreemode]
 );
-export let menuStatsCategoryGeneral = new MenuCategory(
+export const menuStatsCategoryGeneral = new MenuCategory(
   "menu_stats_category_general",
   "menu_stats_category_general_name",
   ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
   [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode]
 );
-export let menuStatsCategoryChecklist = new MenuCategory(
+export const menuStatsCategoryChecklist = new MenuCategory(
   "menu_stats_category_checklist",
   "menu_stats_category_checklist_name",
   undefined,
   [menuStatsChecklist]
 );
 
-export let menuStatsCategories = {
+export const menuStatsCategories = {
   ID: "menu_stats_categories",
   list: [menuStatsCategorySkills, menuStatsCategoryGeneral, menuStatsCategoryChecklist],
 };
-export let menuStatsArrows = new MenuArrows("menu_stats_arrows");
-export let menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsChecklist];
-export let menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
+export const menuStatsArrows = new MenuArrows("menu_stats_arrows");
+export const menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsChecklist];
+export const menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
 
 //#endregion
 
-export let allMenuEntries = [
+export const allMenuEntries = [
   menuStatsCategorySkills,
   menuStatsCategoryGeneral,
   menuStatsCategoryChecklist,
@@ -746,7 +746,7 @@ export let allMenuEntries = [
   menuSettingsPauseRemember,
 ];
 
-export let allMenuElements = [
+export const allMenuElements = [
   menuStatsSkillsMichael,
   menuStatsGeneralMichael,
   menuStatsCategoryChecklist,
@@ -756,7 +756,7 @@ export let allMenuElements = [
   menuSettingsPause,
 ];
 
-export let allMenuWindows = [
+export const allMenuWindows = [
   undefined,
   undefined,
   menuStats,

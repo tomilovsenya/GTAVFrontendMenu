@@ -41,7 +41,6 @@ export class MenuWindow {
     this.#toggleArrows(false);
     this.updateSelection(-1);
     this.deactivate();
-    console.log(this.currentContext);
   }
 
   activate() {
@@ -85,7 +84,6 @@ export class MenuWindow {
   #populateCategoriesElements() {
     this.menuCategories.list.forEach((category, index) => {
       if (category.elementsCollection == undefined) return;
-      console.log(category.elementsCollection);
 
       category.elementsCollection.forEach((elements, index) => {
         if (index > 0) {
@@ -100,7 +98,6 @@ export class MenuWindow {
   #fillCategories() {
     this.menuCategories.list.forEach((category, index) => {
       let categoryTitle = getLocalizedString(category.title);
-      console.log(categoryTitle);
       category.createEntry(categoryTitle, this.menuCategories.ID, this, index);
       // category.title = getLocalizedString(category.title);
       $("#" + category.ID).addClass("menu_category");
@@ -289,18 +286,12 @@ export class MenuElements {
     populatedElements.attr("id", this.ID + "_populated");
     let headerID = headerElements.attr("id");
     let scrollableID = populatedElements.attr("id");
-    // console.log(headerElements);
-    // console.log(scrollableElements);
 
     this.menuEntries.forEach((entry, index) => {
       let entryTitle = getLocalizedString(entry.title);
       let parentID;
       if (entry instanceof MenuEntryHeader) parentID = headerID;
       else parentID = scrollableID;
-      // console.log(entryTitle);
-      // console.log(headerID);
-      // console.log(scrollableID);
-      console.log("ParentID: " + parentID);
       entry.createEntry(entryTitle, parentID, this, index);
     });
     this.parentWindow = parentWindow;
@@ -324,7 +315,7 @@ export class MenuElements {
     } else if (this.parentWindow.currentContext == 0) {
       this.parentWindow.enterCategory(this.parentWindow.currentCategoryIndex);
     }
-    // console.log(this.parentWindow);
+
     this.updateSelection(clickedEntry.index);
     console.log("Clicked MenuEntry: " + clickedEntry.ID);
   }
@@ -745,7 +736,6 @@ export class MenuCategory extends MenuEntryList {
       this.currentElements = this.elementsCollection[this.currentElementsIndex];
       this.isClickable = !this.hasMultipleElements;
     }
-    console.log(this.isClickable);
   }
 
   updateElements() {
@@ -753,7 +743,6 @@ export class MenuCategory extends MenuEntryList {
 
     this.currentElementsIndex = this.listCollection.index;
     this.currentElements = this.elementsCollection[this.currentElementsIndex];
-    console.log(this.currentElementsIndex);
     this.parentElements.switchElements(this.currentElements);
     // this.parentElements.updateElements(this.parentElements.currentElementsIndex);
   }
@@ -808,8 +797,8 @@ export class MenuArrows {
 
 export function findMenuEntryByID(id) {
   let foundObject = allMenuEntries.find((entry) => entry.ID === id);
-  // console.log("Found MenuEntry by ID: " + id);
-  // console.log(foundObject);
+  console.log("Found MenuEntry by ID: " + id);
+  console.log(foundObject);
   return foundObject;
 }
 

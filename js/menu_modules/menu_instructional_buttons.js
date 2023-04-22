@@ -1,14 +1,6 @@
 // import { toggleMenuVisibility } from "../main_menu.js";
 
-import {
-  enterMenuEntriesMiddle,
-  enterStoreMenu,
-  escapeMenuEntriesMiddle,
-  scrollLeftRight,
-  scrollTab,
-  scrollUpDown,
-  scrollSaves,
-} from "../main_menu.js";
+import { enterStoreMenu, scrollTab, currentWindow } from "../main_menu.js";
 import * as menuContent from "./menu_content.js";
 // import { enterMapFullscreen, escapeMapFullscreen, scrollLegendElements } from "./menu_map.js";
 
@@ -78,7 +70,7 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
         if (INPUT_FRONTEND_TAB_LEFT.indexOf(buttonPressed) > -1) scrollTab(0);
         if (INPUT_FRONTEND_TAB_RIGHT.indexOf(buttonPressed) > -1) scrollTab(1);
       }
-      if (INPUT_FRONTEND_CANCEL.indexOf(buttonPressed) > -1) escapeMenuEntriesMiddle();
+      if (INPUT_FRONTEND_CANCEL.indexOf(buttonPressed) > -1) currentWindow.goBack();
       break;
     case "STORE_MENU":
       break;
@@ -108,18 +100,18 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollUpDown(1);
       break;
     case menuContent.MENU_TAB_STATS:
-      if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);
-      if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollUpDown(1);
-      if (INPUT_FRONTEND_LEFT.indexOf(buttonPressed) > -1) scrollLeftRight(0);
-      if (INPUT_FRONTEND_RIGHT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
-      // if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
+      if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(0);
+      if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(1);
+      if (INPUT_FRONTEND_LEFT.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(0);
+      if (INPUT_FRONTEND_RIGHT.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
+      if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
       break;
     case menuContent.MENU_TAB_SETTINGS:
-      if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);
-      if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollUpDown(1);
-      if (INPUT_FRONTEND_LEFT.indexOf(buttonPressed) > -1) scrollLeftRight(0);
-      if (INPUT_FRONTEND_RIGHT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
-      // if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) scrollLeftRight(1);
+      if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(0);
+      if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(1);
+      if (INPUT_FRONTEND_LEFT.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(0);
+      if (INPUT_FRONTEND_RIGHT.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
+      if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
       break;
     case menuContent.MENU_TAB_GAME:
       if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);

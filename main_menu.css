@@ -45,7 +45,7 @@
 /* --navbar-margin-arrow: calc(var(--menu-wnd-width) / -60); */
 
 :root {
-  --menu-background: url("images/bg/background5.jpg");
+  --menu-background: url("images/bg/background.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
