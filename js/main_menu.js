@@ -322,6 +322,7 @@ window.addEventListener(
       currentWindow.currentElements.scrollEmptyElements(0);
     }
     if (["KeyN"].indexOf(e.code) > -1) {
+      currentWindow.currentElements.resetEmptyElements();
     }
     if (["KeyM"].indexOf(e.code) > -1) {
     }

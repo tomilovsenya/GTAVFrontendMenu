@@ -77,7 +77,7 @@ export class MenuWindow {
 
   #populateAllElements() {
     this.menuElements.forEach((elements, index) => {
-      if (index > 0) $(elements.idSel).hide();
+      if (index > 0) elements.deactivate();
       elements.populateElements(this);
       // console.log(elements);
     });
@@ -91,7 +91,8 @@ export class MenuWindow {
       category.elementsCollection.forEach((elements, index) => {
         if (index > 0) {
           elements.populateElements(this);
-          $(elements.idSel).hide();
+          // $(elements.idSel).hide();
+          elements.deactivate();
         }
       });
     });
@@ -197,20 +198,15 @@ export class MenuWindow {
       this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
       this.menuCategories.list[this.currentCategoryIndex].activate();
 
-      let oldElements = $("#" + this.currentElements.ID);
+      let oldElements = this.currentElements;
       let newElements;
 
-      if (this.currentCategory.hasMultipleElements) {
-        newElements = $("#" + this.currentCategory.currentElements.ID);
-        console.log(newElements);
-      } else {
-        newElements = $("#" + this.menuElements[newSelection].ID);
-        console.log(newElements);
-      }
+      if (this.currentCategory.hasMultipleElements) newElements = this.currentCategory.currentElements;
+      else newElements = this.menuElements[newSelection];
 
       this.currentElementsIndex = newSelection;
-      oldElements.hide();
-      newElements.show();
+      oldElements.deactivate();
+      newElements.activate();
 
       if (this.currentCategory.hasMultipleElements) this.currentElements = this.currentCategory.currentElements;
       else this.currentElements = this.menuElements[newSelection];
@@ -250,9 +246,9 @@ export class MenuWindow {
   }
 
   switchElements(newElements) {
-    $(this.currentElements.idSel).hide();
+    this.currentElements.deactivate();
     this.currentElements = newElements;
-    $(this.currentElements.idSel).show();
+    this.currentElements.activate();
     // this.updateSelection(this.currentCategoryIndex);
   }
 }
@@ -354,9 +350,9 @@ export class MenuElements {
 
   scrollEmptyElements(scrollDir) {
     if (scrollDir == 0) {
-      if (this.currentEntryIndexTop == 0) return;      
+      if (this.currentEntryIndexTop == 0) return;
       let prevIndex = this.currentEntryIndexTop - 1;
-      
+
       $(this.menuEntries[prevIndex].idSel)[0].scrollIntoViewIfNeeded(false);
       this.currentEntryIndexTop -= 1;
       this.currentEntryIndexBottom -= 1;
@@ -368,6 +364,23 @@ export class MenuElements {
       this.currentEntryIndexTop += 1;
       this.currentEntryIndexBottom += 1;
     }
+  }
+
+  resetEmptyElementsScroll() {
+    this.currentEntryIndexTop = 0;
+    this.currentEntryIndexBottom = 15;
+
+    let topEntry = $(this.menuEntries[this.currentEntryIndexTop].idSel)[0];
+    if (topEntry != undefined) topEntry.scrollIntoViewIfNeeded(false);
+  }
+
+  activate() {
+    $(this.idSel).show();
+  }
+
+  deactivate() {
+    this.resetEmptyElementsScroll();
+    $(this.idSel).hide();
   }
 }
 
