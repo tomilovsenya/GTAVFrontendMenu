@@ -374,18 +374,126 @@ export let menuStatsSkillsFreemodeMentalState = new MenuEntryStat(
   "bg_color_freemode"
 );
 
-export let menuStatsGeneralMichaelTime = new MenuEntry(
-  "menu_stats_general_michael_time",
-  "menu_stats_general_time_name"
+export let menuStatsGeneralMichaelTimePlayed = new MenuEntryList(
+  "menu_stats_general_michael_time_played",
+  "menu_stats_general_time_played_name",
+  ["0d 5h 5m 25s"],
+  true
 );
-export let menuStatsGeneralFranklinTime = new MenuEntry(
+export let menuStatsGeneralMichaelTimeFPS = new MenuEntryList(
+  "menu_stats_general_michael_time_fps",
+  "menu_stats_general_time_fps_name",
+  ["0d 1h 2m 0s"],
+  true
+);
+export let menuStatsGeneralMichaelMissions = new MenuEntryList(
+  "menu_stats_general_michael_missions",
+  "menu_stats_general_missions_name",
+  ["15"],
+  true
+);
+export let menuStatsGeneralMichaelLastMission = new MenuEntryList(
+  "menu_stats_general_michael_last_mission",
+  "menu_stats_general_last_mission_name",
+  ["Before the Prologue"],
+  true
+);
+export let menuStatsGeneralMichaelLetters = new MenuEntryList(
+  "menu_stats_general_michael_letters",
+  "menu_stats_general_letters_name",
+  ["50 / 50"],
+  true
+);
+export let menuStatsGeneralMichaelPeyotes = new MenuEntryList(
+  "menu_stats_general_michael_peyotes",
+  "menu_stats_general_peyotes_name",
+  ["20 / 27"],
+  true
+);
+export let menuStatsGeneralMichaelWildlife = new MenuEntryList(
+  "menu_stats_general_michael_wildlife",
+  "menu_stats_general_wildlife_name",
+  ["10 / 20"],
+  true
+);
+export let menuStatsGeneralMichaelSaved = new MenuEntryList(
+  "menu_stats_general_michael_saved",
+  "menu_stats_general_saved_name",
+  ["1420"],
+  true
+);
+export let menuStatsGeneralMichaelCheats = new MenuEntryList(
+  "menu_stats_general_michael_cheats",
+  "menu_stats_general_cheats_name",
+  ["0"],
+  true
+);
+export let menuStatsGeneralMichaelDeathsTotal = new MenuEntryList(
+  "menu_stats_general_michael_deaths_total",
+  "menu_stats_general_deaths_total_name",
+  ["5"],
+  true
+);
+export let menuStatsGeneralMichaelDeathsExplosion = new MenuEntryList(
+  "menu_stats_general_michael_deaths_explosion",
+  "menu_stats_general_deaths_explosion_name",
+  ["1"],
+  true
+);
+export let menuStatsGeneralMichaelDeathsFalling = new MenuEntryList(
+  "menu_stats_general_michael_deaths_falling",
+  "menu_stats_general_deaths_falling_name",
+  ["1"],
+  true
+);
+export let menuStatsGeneralMichaelDeathsFire = new MenuEntryList(
+  "menu_stats_general_michael_deaths_fire",
+  "menu_stats_general_deaths_fire_name",
+  ["1"],
+  true
+);
+export let menuStatsGeneralMichaelDeathsTraffic = new MenuEntryList(
+  "menu_stats_general_michael_deaths_traffic",
+  "menu_stats_general_deaths_traffic_name",
+  ["1"],
+  true
+);
+export let menuStatsGeneralMichaelDeathsDrowning = new MenuEntryList(
+  "menu_stats_general_michael_deaths_drowning",
+  "menu_stats_general_deaths_drowning_name",
+  ["1"],
+  true
+);
+export let menuStatsGeneralMichaelTimeSwimming = new MenuEntryList(
+  "menu_stats_general_michael_time_swimming",
+  "menu_stats_general_time_swimming_name",
+  ["0d 1h 5m 2s"],
+  true
+);
+export let menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList(
+  "menu_stats_general_michael_distance_swimming",
+  "menu_stats_general_distance_swimming_name",
+  ["0.13 miles"],
+  true
+);
+
+export let menuStatsGeneralFranklinTime = new MenuEntryList(
   "menu_stats_general_franklin_time",
-  "menu_stats_general_time_name"
+  "menu_stats_general_time_name",
+  ["0:00"],
+  true
 );
-export let menuStatsGeneralTrevorTime = new MenuEntry("menu_stats_general_trevor_time", "menu_stats_general_time_name");
-export let menuStatsGeneralFreemodeTime = new MenuEntry(
+export let menuStatsGeneralTrevorTime = new MenuEntryList(
+  "menu_stats_general_trevor_time",
+  "menu_stats_general_time_name",
+  ["0:00"],
+  true
+);
+export let menuStatsGeneralFreemodeTime = new MenuEntryList(
   "menu_stats_general_freemode_time",
-  "menu_stats_general_time_name"
+  "menu_stats_general_time_name",
+  ["0:00"],
+  true
 );
 // export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
 
@@ -430,7 +538,25 @@ export let menuStatsSkillsFreemodeEntries = [
   menuStatsSkillsFreemodeMentalState,
 ];
 
-export let menuStatsGeneralMichaelEntries = [menuStatsGeneralMichaelTime];
+export let menuStatsGeneralMichaelEntries = [
+  menuStatsGeneralMichaelTimePlayed,
+  menuStatsGeneralMichaelTimeFPS,
+  menuStatsGeneralMichaelMissions,
+  menuStatsGeneralMichaelLastMission,
+  menuStatsGeneralMichaelLetters,
+  menuStatsGeneralMichaelPeyotes,
+  menuStatsGeneralMichaelWildlife,
+  menuStatsGeneralMichaelSaved,
+  menuStatsGeneralMichaelCheats,
+  menuStatsGeneralMichaelDeathsTotal,
+  menuStatsGeneralMichaelDeathsExplosion,
+  menuStatsGeneralMichaelDeathsFalling,
+  menuStatsGeneralMichaelDeathsFire,
+  menuStatsGeneralMichaelDeathsTraffic,
+  menuStatsGeneralMichaelDeathsDrowning,
+  menuStatsGeneralMichaelTimeSwimming,
+  menuStatsGeneralMichaelDistanceSwimming,
+];
 export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
 export let menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
 export let menuStatsGeneralFreemodeEntries = [menuStatsGeneralFreemodeTime];
@@ -475,7 +601,7 @@ export let allMenuEntries = [
   menuStatsSkillsMichaelStamina,
   menuStatsSkillsMichaelShooting,
 
-  menuStatsGeneralMichaelTime,
+  menuStatsGeneralMichaelTimePlayed,
 
   menuSettingsCategoryGraphics,
   menuSettingsCategoryPause,

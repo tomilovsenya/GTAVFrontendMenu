@@ -443,6 +443,7 @@ div.menu_window_elements {
   display: flex;
   flex-direction: column;
   gap: var(--item-margin);
+  overflow: hidden;
 }
 
 div.menu_window_inactive {

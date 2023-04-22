@@ -366,7 +366,8 @@ export class MenuEntry {
   }
 
   createEntry(title, parentId, parentElements, index) {
-    let blankEntry = $(`<button id="${this.ID}" class="menu_entry"></button>`);
+    let classesString = this.isEmpty ? "menu_entry menu_entry_empty" : "menu_entry";
+    let blankEntry = $(`<button id="${this.ID}" class="${classesString}"></button>`);
     let blankEntryLabel = $(`<span id="${this.ID + "_name"}" class="element_label label_translatable"></span>`);
 
     blankEntry.append(blankEntryLabel);
@@ -421,11 +422,12 @@ export class MenuEntryList extends MenuEntry {
     index: 0,
   };
 
-  constructor(id, title, listItems) {
+  constructor(id, title, listItems, isEmpty) {
     super(id, title);
     this.listItems = listItems;
     this.listID = id + "_list";
     this.listSel = "#" + this.listID;
+    this.isEmpty = isEmpty != undefined ? isEmpty : false;
   }
 
   createEntry(title, parentId, parentElements, index) {
