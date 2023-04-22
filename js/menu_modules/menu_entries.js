@@ -263,6 +263,8 @@ export class MenuElements {
   menuEntries = [];
   currentSelection = -1;
   currentEntry;
+  currentEntryIndexTop = 0;
+  currentEntryIndexBottom = 15;
   active = true;
   clickable = true;
   parentWindow;
@@ -348,6 +350,24 @@ export class MenuElements {
     }
 
     this.updateSelection(newSelection);
+  }
+
+  scrollEmptyElements(scrollDir) {
+    if (scrollDir == 0) {
+      if (this.currentEntryIndexTop == 0) return;      
+      let prevIndex = this.currentEntryIndexTop - 1;
+      
+      $(this.menuEntries[prevIndex].idSel)[0].scrollIntoViewIfNeeded(false);
+      this.currentEntryIndexTop -= 1;
+      this.currentEntryIndexBottom -= 1;
+    } else if (scrollDir == 1) {
+      if (this.currentEntryIndexBottom == this.menuEntries.length - 1) return;
+      let nextIndex = this.currentEntryIndexBottom + 1;
+
+      $(this.menuEntries[nextIndex].idSel)[0].scrollIntoViewIfNeeded(false);
+      this.currentEntryIndexTop += 1;
+      this.currentEntryIndexBottom += 1;
+    }
   }
 }
 

@@ -316,8 +316,10 @@ window.addEventListener(
       currentWindow.deactivate();
     }
     if (["KeyL"].indexOf(e.code) > -1) {
+      currentWindow.currentElements.scrollEmptyElements(1);
     }
     if (["KeyK"].indexOf(e.code) > -1) {
+      currentWindow.currentElements.scrollEmptyElements(0);
     }
     if (["KeyN"].indexOf(e.code) > -1) {
     }

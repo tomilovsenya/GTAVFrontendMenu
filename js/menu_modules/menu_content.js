@@ -476,6 +476,12 @@ export let menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList(
   ["0.13 miles"],
   true
 );
+export let menuStatsGeneralMichaelTimeUnderwater = new MenuEntryList(
+  "menu_stats_general_michael_time_underwater",
+  "menu_stats_general_time_underwater_name",
+  ["0d 0h 5m 22s"],
+  true
+);
 
 export let menuStatsGeneralFranklinTime = new MenuEntryList(
   "menu_stats_general_franklin_time",
@@ -556,6 +562,7 @@ export let menuStatsGeneralMichaelEntries = [
   menuStatsGeneralMichaelDeathsDrowning,
   menuStatsGeneralMichaelTimeSwimming,
   menuStatsGeneralMichaelDistanceSwimming,
+  menuStatsGeneralMichaelTimeUnderwater,
 ];
 export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
 export let menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
