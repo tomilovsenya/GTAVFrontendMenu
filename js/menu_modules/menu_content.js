@@ -10,42 +10,54 @@ import { MenuCategory } from "./menu_entries.js";
 
 //#region menuSettings
 
-export let menuSettingsCategoryGamepad = new MenuCategory("menu_settings_category_gamepad", "menu_settings_category_gamepad_name");
-export let menuSettingsCategoryGraphics = new MenuCategory("menu_settings_category_graphics", "menu_settings_category_graphics_name");
-export let menuSettingsCategoryPause = new MenuCategory("menu_settings_category_pause", "menu_settings_category_pause_name");
+export let menuSettingsCategoryGamepad = new MenuCategory(
+  "menu_settings_category_gamepad",
+  "menu_settings_category_gamepad_name"
+);
+export let menuSettingsCategoryGraphics = new MenuCategory(
+  "menu_settings_category_graphics",
+  "menu_settings_category_graphics_name"
+);
+export let menuSettingsCategoryPause = new MenuCategory(
+  "menu_settings_category_pause",
+  "menu_settings_category_pause_name"
+);
 
 export let menuSettingsCategories = {
   ID: "menu_settings_categories",
   list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
 };
 
-export let menuSettingsGamepadControlsFor = new MenuEntryList("menu_settings_gamepad_controls_for", "menu_settings_gamepad_controls_for_name", [
-  "menu_settings_gamepad_controls_for_0",
-  "menu_settings_gamepad_controls_for_1",
-]);
-export let menuSettingsGamepadTargeting = new MenuEntryList("menu_settings_gamepad_targeting", "menu_settings_gamepad_targeting_name", [
-  "Free Aim",
-  "Assisted Aim - Partial",
-  "Assisted Aim - Full",
-]);
-export let menuSettingsGamepadVibration = new MenuEntryList("menu_settings_gamepad_vibration", "menu_settings_gamepad_vibration_name", [
-  "menu_common_on",
-  "menu_common_off",
-]);
-export let menuSettingsGamepadInvertLook = new MenuEntryList("menu_settings_gamepad_invert_look", "menu_settings_gamepad_invert_look_name", [
-  "menu_common_on",
-  "menu_common_off",
-]);
-export let menuSettingsGamepadThirdControlType = new MenuEntryList("menu_settings_gamepad_third_control_type", "Third Person Control Type", [
-  "Standard",
-  "Alternate",
-  "Southpaw",
-]);
-export let menuSettingsGamepadFirstControlType = new MenuEntryList("menu_settings_gamepad_first_control_type", "First Person Control Type", [
-  "Standard",
-  "Alternate",
-  "Southpaw",
-]);
+export let menuSettingsGamepadControlsFor = new MenuEntryList(
+  "menu_settings_gamepad_controls_for",
+  "menu_settings_gamepad_controls_for_name",
+  ["menu_settings_gamepad_controls_for_0", "menu_settings_gamepad_controls_for_1"]
+);
+export let menuSettingsGamepadTargeting = new MenuEntryList(
+  "menu_settings_gamepad_targeting",
+  "menu_settings_gamepad_targeting_name",
+  ["Free Aim", "Assisted Aim - Partial", "Assisted Aim - Full"]
+);
+export let menuSettingsGamepadVibration = new MenuEntryList(
+  "menu_settings_gamepad_vibration",
+  "menu_settings_gamepad_vibration_name",
+  ["menu_common_on", "menu_common_off"]
+);
+export let menuSettingsGamepadInvertLook = new MenuEntryList(
+  "menu_settings_gamepad_invert_look",
+  "menu_settings_gamepad_invert_look_name",
+  ["menu_common_on", "menu_common_off"]
+);
+export let menuSettingsGamepadThirdControlType = new MenuEntryList(
+  "menu_settings_gamepad_third_control_type",
+  "Third Person Control Type",
+  ["Standard", "Alternate", "Southpaw"]
+);
+export let menuSettingsGamepadFirstControlType = new MenuEntryList(
+  "menu_settings_gamepad_first_control_type",
+  "First Person Control Type",
+  ["Standard", "Alternate", "Southpaw"]
+);
 export let menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress(
   "menu_settings_gamepad_third_aim_sensitivity",
   "Third Person Aiming Sensitivity",
@@ -65,7 +77,11 @@ export let menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress(
   5
 );
 
-export let menuSettingsGraphicsIgnoreLimits = new MenuEntryList("menu_settings_graphics_ignore_limits", "Ignore Suggested Limits", ["Off", "On"]);
+export let menuSettingsGraphicsIgnoreLimits = new MenuEntryList(
+  "menu_settings_graphics_ignore_limits",
+  "Ignore Suggested Limits",
+  ["Off", "On"]
+);
 export let menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", [
   "DirectX 10",
   "DirectX 10.1",
@@ -83,8 +99,17 @@ export let menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock
   "menu_common_on",
   "menu_common_off",
 ]);
-export let menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", ["English", "Russian", "Italian", "Spanish"]);
-export let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", ["Always", "Sometimes", "Off"]);
+export let menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
+  "English",
+  "Russian",
+  "Italian",
+  "Spanish",
+]);
+export let menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
+  "Always",
+  "Sometimes",
+  "Off",
+]);
 
 export let menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
@@ -97,7 +122,11 @@ export let menuSettingsGamepadEntries = [
   menuSettingsGamepadThirdLookSensitivity,
   menuSettingsGamepadFirstLookSensitivity,
 ];
-export let menuSettingsGraphicsEntries = [menuSettingsGraphicsIgnoreLimits, menuSettingsGraphicsDirectX, menuSettingsGraphicsResolution];
+export let menuSettingsGraphicsEntries = [
+  menuSettingsGraphicsIgnoreLimits,
+  menuSettingsGraphicsDirectX,
+  menuSettingsGraphicsResolution,
+];
 export let menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
 export let menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);
@@ -106,7 +135,12 @@ export let menuSettingsPause = new MenuElements("menu_settings_pause", menuSetti
 
 export let menuSettingsArrows = new MenuArrows("menu_settings_arrows");
 export let menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
-export let menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuSettingsElements, menuSettingsArrows);
+export let menuSettings = new MenuWindow(
+  "menu_settings",
+  menuSettingsCategories,
+  menuSettingsElements,
+  menuSettingsArrows
+);
 
 //#endregion
 
@@ -133,6 +167,42 @@ export let menuStatsSkillsMichaelShooting = new MenuEntryStat(
   5,
   "bg_color_michael"
 );
+export let menuStatsSkillsMichaelStrength = new MenuEntryStat(
+  "menu_stats_skills_michael_strength",
+  "menu_stats_skills_strength_name",
+  55,
+  5,
+  "bg_color_michael"
+);
+export let menuStatsSkillsMichaelStealth = new MenuEntryStat(
+  "menu_stats_skills_michael_stealth",
+  "menu_stats_skills_stealth_name",
+  30,
+  5,
+  "bg_color_michael"
+);
+export let menuStatsSkillsMichaelFlying = new MenuEntryStat(
+  "menu_stats_skills_michael_flying",
+  "menu_stats_skills_flying_name",
+  15,
+  5,
+  "bg_color_michael"
+);
+export let menuStatsSkillsMichaelDriving = new MenuEntryStat(
+  "menu_stats_skills_michael_driving",
+  "menu_stats_skills_driving_name",
+  40,
+  5,
+  "bg_color_michael"
+);
+export let menuStatsSkillsMichaelLungCapacity = new MenuEntryStat(
+  "menu_stats_skills_michael_lung_capacity",
+  "menu_stats_skills_lung_capacity_name",
+  10,
+  5,
+  "bg_color_michael"
+);
+
 export let menuStatsSkillsFranklinSpecial = new MenuEntryStat(
   "menu_stats_skills_franklin_special",
   "menu_stats_skills_special_name",
@@ -154,6 +224,42 @@ export let menuStatsSkillsFranklinShooting = new MenuEntryStat(
   5,
   "bg_color_franklin"
 );
+export let menuStatsSkillsFranklinStrength = new MenuEntryStat(
+  "menu_stats_skills_franklin_strength",
+  "menu_stats_skills_strength_name",
+  55,
+  5,
+  "bg_color_franklin"
+);
+export let menuStatsSkillsFranklinStealth = new MenuEntryStat(
+  "menu_stats_skills_franklin_stealth",
+  "menu_stats_skills_stealth_name",
+  30,
+  5,
+  "bg_color_franklin"
+);
+export let menuStatsSkillsFranklinFlying = new MenuEntryStat(
+  "menu_stats_skills_franklin_flying",
+  "menu_stats_skills_flying_name",
+  15,
+  5,
+  "bg_color_franklin"
+);
+export let menuStatsSkillsFranklinDriving = new MenuEntryStat(
+  "menu_stats_skills_franklin_driving",
+  "menu_stats_skills_driving_name",
+  40,
+  5,
+  "bg_color_franklin"
+);
+export let menuStatsSkillsFranklinLungCapacity = new MenuEntryStat(
+  "menu_stats_skills_franklin_lung_capacity",
+  "menu_stats_skills_lung_capacity_name",
+  10,
+  5,
+  "bg_color_franklin"
+);
+
 export let menuStatsSkillsTrevorSpecial = new MenuEntryStat(
   "menu_stats_skills_trevor_special",
   "menu_stats_skills_special_name",
@@ -175,6 +281,42 @@ export let menuStatsSkillsTrevorShooting = new MenuEntryStat(
   5,
   "bg_color_trevor"
 );
+export let menuStatsSkillsTrevorStrength = new MenuEntryStat(
+  "menu_stats_skills_trevor_strength",
+  "menu_stats_skills_strength_name",
+  55,
+  5,
+  "bg_color_trevor"
+);
+export let menuStatsSkillsTrevorStealth = new MenuEntryStat(
+  "menu_stats_skills_trevor_stealth",
+  "menu_stats_skills_stealth_name",
+  30,
+  5,
+  "bg_color_trevor"
+);
+export let menuStatsSkillsTrevorFlying = new MenuEntryStat(
+  "menu_stats_skills_trevor_flying",
+  "menu_stats_skills_flying_name",
+  15,
+  5,
+  "bg_color_trevor"
+);
+export let menuStatsSkillsTrevorDriving = new MenuEntryStat(
+  "menu_stats_skills_trevor_driving",
+  "menu_stats_skills_driving_name",
+  40,
+  5,
+  "bg_color_trevor"
+);
+export let menuStatsSkillsTrevorLungCapacity = new MenuEntryStat(
+  "menu_stats_skills_trevor_lung_capacity",
+  "menu_stats_skills_lung_capacity_name",
+  10,
+  5,
+  "bg_color_trevor"
+);
+
 export let menuStatsSkillsFreemodeStamina = new MenuEntryStat(
   "menu_stats_skills_freemode_stamina",
   "menu_stats_skills_stamina_name",
@@ -189,19 +331,104 @@ export let menuStatsSkillsFreemodeShooting = new MenuEntryStat(
   5,
   "bg_color_freemode"
 );
-// export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
-// export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsEntries);
+export let menuStatsSkillsFreemodeStrength = new MenuEntryStat(
+  "menu_stats_skills_freemode_strength",
+  "menu_stats_skills_strength_name",
+  55,
+  5,
+  "bg_color_freemode"
+);
+export let menuStatsSkillsFreemodeStealth = new MenuEntryStat(
+  "menu_stats_skills_freemode_stealth",
+  "menu_stats_skills_stealth_name",
+  30,
+  5,
+  "bg_color_freemode"
+);
+export let menuStatsSkillsFreemodeFlying = new MenuEntryStat(
+  "menu_stats_skills_freemode_flying",
+  "menu_stats_skills_flying_name",
+  15,
+  5,
+  "bg_color_freemode"
+);
+export let menuStatsSkillsFreemodeDriving = new MenuEntryStat(
+  "menu_stats_skills_freemode_driving",
+  "menu_stats_skills_driving_name",
+  40,
+  5,
+  "bg_color_freemode"
+);
+export let menuStatsSkillsFreemodeLungCapacity = new MenuEntryStat(
+  "menu_stats_skills_freemode_lung_capacity",
+  "menu_stats_skills_lung_capacity_name",
+  10,
+  5,
+  "bg_color_freemode"
+);
+export let menuStatsSkillsFreemodeMentalState = new MenuEntryStat(
+  "menu_stats_skills_freemode_mental_state",
+  "menu_stats_skills_mental_state_name",
+  10,
+  5,
+  "bg_color_freemode"
+);
 
-export let menuStatsGeneralMichaelTime = new MenuEntry("menu_stats_general_michael_time", "menu_stats_general_time_name");
-export let menuStatsGeneralFranklinTime = new MenuEntry("menu_stats_general_franklin_time", "menu_stats_general_time_name");
+export let menuStatsGeneralMichaelTime = new MenuEntry(
+  "menu_stats_general_michael_time",
+  "menu_stats_general_time_name"
+);
+export let menuStatsGeneralFranklinTime = new MenuEntry(
+  "menu_stats_general_franklin_time",
+  "menu_stats_general_time_name"
+);
 export let menuStatsGeneralTrevorTime = new MenuEntry("menu_stats_general_trevor_time", "menu_stats_general_time_name");
-export let menuStatsGeneralFreemodeTime = new MenuEntry("menu_stats_general_freemode_time", "menu_stats_general_time_name");
+export let menuStatsGeneralFreemodeTime = new MenuEntry(
+  "menu_stats_general_freemode_time",
+  "menu_stats_general_time_name"
+);
 // export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
 
-export let menuStatsSkillsMichaelEntries = [menuStatsSkillsMichaelSpecial, menuStatsSkillsMichaelStamina, menuStatsSkillsMichaelShooting];
-export let menuStatsSkillsFranklinEntries = [menuStatsSkillsFranklinSpecial, menuStatsSkillsFranklinStamina, menuStatsSkillsFranklinShooting];
-export let menuStatsSkillsTrevorEntries = [menuStatsSkillsTrevorSpecial, menuStatsSkillsTrevorStamina, menuStatsSkillsTrevorShooting];
-export let menuStatsSkillsFreemodeEntries = [menuStatsSkillsFreemodeStamina, menuStatsSkillsFreemodeShooting];
+export let menuStatsSkillsMichaelEntries = [
+  menuStatsSkillsMichaelSpecial,
+  menuStatsSkillsMichaelStamina,
+  menuStatsSkillsMichaelShooting,
+  menuStatsSkillsMichaelStrength,
+  menuStatsSkillsMichaelStealth,
+  menuStatsSkillsMichaelFlying,
+  menuStatsSkillsMichaelDriving,
+  menuStatsSkillsMichaelLungCapacity,
+];
+export let menuStatsSkillsFranklinEntries = [
+  menuStatsSkillsFranklinSpecial,
+  menuStatsSkillsFranklinStamina,
+  menuStatsSkillsFranklinShooting,
+  menuStatsSkillsFranklinStrength,
+  menuStatsSkillsFranklinStealth,
+  menuStatsSkillsFranklinFlying,
+  menuStatsSkillsFranklinDriving,
+  menuStatsSkillsFranklinLungCapacity,
+];
+export let menuStatsSkillsTrevorEntries = [
+  menuStatsSkillsTrevorSpecial,
+  menuStatsSkillsTrevorStamina,
+  menuStatsSkillsTrevorShooting,
+  menuStatsSkillsTrevorStrength,
+  menuStatsSkillsTrevorStealth,
+  menuStatsSkillsTrevorFlying,
+  menuStatsSkillsTrevorDriving,
+  menuStatsSkillsTrevorLungCapacity,
+];
+export let menuStatsSkillsFreemodeEntries = [
+  menuStatsSkillsFreemodeStamina,
+  menuStatsSkillsFreemodeShooting,
+  menuStatsSkillsFreemodeStrength,
+  menuStatsSkillsFreemodeStealth,
+  menuStatsSkillsFreemodeFlying,
+  menuStatsSkillsFreemodeDriving,
+  menuStatsSkillsFreemodeLungCapacity,
+  menuStatsSkillsFreemodeMentalState,
+];
 
 export let menuStatsGeneralMichaelEntries = [menuStatsGeneralMichaelTime];
 export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
@@ -273,7 +500,13 @@ export let allMenuEntries = [
   menuSettingsPauseRemember,
 ];
 
-export let allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
+export let allMenuElements = [
+  menuStatsSkillsMichael,
+  menuStatsGeneralMichael,
+  menuSettingsGamepad,
+  menuSettingsGraphics,
+  menuSettingsPause,
+];
 
 export let allMenuWindows = [
   undefined,
@@ -295,7 +528,11 @@ export let allMenuWindows = [
 
 export const TAB_SETTINGS_PAUSE_0 = {
   id: $("#menu_settings_pause_element_0"),
-  items: [$("#menu_settings_pause_element_0_0"), $("#menu_settings_pause_element_0_1"), $("#menu_settings_pause_element_0_2")],
+  items: [
+    $("#menu_settings_pause_element_0_0"),
+    $("#menu_settings_pause_element_0_1"),
+    $("#menu_settings_pause_element_0_2"),
+  ],
   activeItem: 0,
 };
 
@@ -306,7 +543,12 @@ export const TAB_SETTINGS_PAUSE_0 = {
 const TAB_STATS_CATEGORY_SKILLS = {
   id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_0"),
-  items: [$("#menu_stats_category_0_0"), $("#menu_stats_category_0_1"), $("#menu_stats_category_0_2"), $("#menu_stats_category_0_3")],
+  items: [
+    $("#menu_stats_category_0_0"),
+    $("#menu_stats_category_0_1"),
+    $("#menu_stats_category_0_2"),
+    $("#menu_stats_category_0_3"),
+  ],
   wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -315,7 +557,12 @@ const TAB_STATS_CATEGORY_GENERAL = {
   id: $("#menu_stats_general"),
   // id: $("#menu_stats_skills"),
   category: $("#menu_stats_category_1"),
-  items: [$("#menu_stats_category_1_0"), $("#menu_stats_category_1_1"), $("#menu_stats_category_1_2"), $("#menu_stats_category_1_3")],
+  items: [
+    $("#menu_stats_category_1_0"),
+    $("#menu_stats_category_1_1"),
+    $("#menu_stats_category_1_2"),
+    $("#menu_stats_category_1_3"),
+  ],
   wnds: [$("#menu_stats_general"), $("#menu_stats_general_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -323,7 +570,12 @@ const TAB_STATS_CATEGORY_GENERAL = {
 const TAB_STATS_CATEGORY_CRIMES = {
   id: $("#menu_stats_crimes"),
   category: $("#menu_stats_category_2"),
-  items: [$("#menu_stats_category_2_0"), $("#menu_stats_category_2_1"), $("#menu_stats_category_2_2"), $("#menu_stats_category_2_3")],
+  items: [
+    $("#menu_stats_category_2_0"),
+    $("#menu_stats_category_2_1"),
+    $("#menu_stats_category_2_2"),
+    $("#menu_stats_category_2_3"),
+  ],
   wnds: [$("#menu_stats_crimes"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
@@ -331,7 +583,12 @@ const TAB_STATS_CATEGORY_CRIMES = {
 const TAB_STATS_CATEGORY_COMBAT = {
   id: $("#menu_stats_combat"),
   category: $("#menu_stats_category_5"),
-  items: [$("#menu_stats_category_5_0"), $("#menu_stats_category_5_1"), $("#menu_stats_category_5_2"), $("#menu_stats_category_5_3")],
+  items: [
+    $("#menu_stats_category_5_0"),
+    $("#menu_stats_category_5_1"),
+    $("#menu_stats_category_5_2"),
+    $("#menu_stats_category_5_3"),
+  ],
   wnds: [$("#menu_stats_combat"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
   activeItem: 0,
 };
