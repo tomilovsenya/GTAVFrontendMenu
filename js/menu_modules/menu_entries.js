@@ -148,11 +148,8 @@ export class MenuWindow {
   }
 
   clickArrow(clickedArrowScrollDir) {
-    if (!this.currentElements.enterable) this.currentElements.scrollEmptyElements(clickedArrowScrollDir);
-    else {
-      if (clickedArrowScrollDir == 0) this.scrollVertical(0);
-      else if (clickedArrowScrollDir == 1) this.scrollVertical(1);
-    }
+    if (!this.currentElements.enterable) this.currentElements.scrollElements(clickedArrowScrollDir);
+    else this.scrollVertical(clickedArrowScrollDir);
   }
 
   scrollVertical(scrollDir) {
@@ -349,7 +346,21 @@ export class MenuElements {
   }
 
   scrollElements(scrollDir) {
+    switch (this.parentWindow.currentContext) {
+      case -1:
+        return;
+      case 0:
+        if (!this.enterable) this.scrollEmptyElements(scrollDir);
+        break;
+      case 1:
+        if (this.enterable) this.scrollEnterableElements(scrollDir);
+        break;
+    }
+  }
+
+  scrollEnterableElements(scrollDir) {
     let newSelection;
+
     if (scrollDir == 0) {
       if (this.currentSelection == 0) newSelection = this.menuEntries.length - 1;
       else newSelection = this.currentSelection - 1;
@@ -359,20 +370,6 @@ export class MenuElements {
     }
 
     this.updateSelection(newSelection);
-  }
-
-  drawEvenEntriesDarker() {
-    if (!this.evenEntriesDarker) return;
-
-    let evenEntries = [];
-
-    this.menuEntries.forEach((entry, index) => {
-      if (index % 2 == 0) evenEntries.push(entry);
-    });
-
-    evenEntries.forEach((entry) => {
-      $(entry.idSel).addClass("");
-    });
   }
 
   scrollEmptyElements(scrollDir) {
@@ -422,7 +419,7 @@ export class MenuElements {
   }
 
   deactivate() {
-    this.resetEmptyElementsScroll();
+    if (!this.enterable) this.resetEmptyElementsScroll();
     $(this.idSel).hide();
   }
 }

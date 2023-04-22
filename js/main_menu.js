@@ -315,11 +315,11 @@ window.addEventListener(
     if (["KeyJ"].indexOf(e.code) > -1) {
       currentWindow.deactivate();
     }
-    if (["KeyL"].indexOf(e.code) > -1) {
-      currentWindow.currentElements.scrollEmptyElements(1);
+    if (["PageUp"].indexOf(e.code) > -1) {
+      currentWindow.currentElements.scrollElements(0);
     }
-    if (["KeyK"].indexOf(e.code) > -1) {
-      currentWindow.currentElements.scrollEmptyElements(0);
+    if (["PageDown"].indexOf(e.code) > -1) {
+      currentWindow.currentElements.scrollElements(1);
     }
     if (["KeyN"].indexOf(e.code) > -1) {
       currentWindow.currentElements.resetEmptyElements();
