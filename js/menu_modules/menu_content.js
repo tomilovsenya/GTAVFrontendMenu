@@ -1,8 +1,8 @@
-import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuWindow } from "./menu_entries.js";
-import { MenuElements } from "./menu_entries.js";
-import { MenuEntry } from "./menu_entries.js";
-import { MenuEntryList } from "./menu_entries.js";
-import { MenuCategory } from "./menu_entries.js";
+import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
+import { MenuElements } from "../menu_classes/menu_entries.js";
+import { MenuEntry } from "../menu_classes/menu_entries.js";
+import { MenuEntryList } from "../menu_classes/menu_entries.js";
+import { MenuCategory } from "../menu_classes/menu_entries.js";
 
 //
 // TESTING OF CLASS-BASED MENU SYSTEM
@@ -10,106 +10,35 @@ import { MenuCategory } from "./menu_entries.js";
 
 //#region menuSettings
 
-export const menuSettingsCategoryGamepad = new MenuCategory(
-  "menu_settings_category_gamepad",
-  "menu_settings_category_gamepad_name"
-);
-export const menuSettingsCategoryGraphics = new MenuCategory(
-  "menu_settings_category_graphics",
-  "menu_settings_category_graphics_name"
-);
-export const menuSettingsCategoryPause = new MenuCategory(
-  "menu_settings_category_pause",
-  "menu_settings_category_pause_name"
-);
+export const menuSettingsCategoryGamepad = new MenuCategory("menu_settings_category_gamepad", "menu_settings_category_gamepad_name");
+export const menuSettingsCategoryGraphics = new MenuCategory("menu_settings_category_graphics", "menu_settings_category_graphics_name");
+export const menuSettingsCategoryPause = new MenuCategory("menu_settings_category_pause", "menu_settings_category_pause_name");
 
 export const menuSettingsCategories = {
   ID: "menu_settings_categories",
   list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
 };
 
-export const menuSettingsGamepadControlsFor = new MenuEntryList(
-  "menu_settings_gamepad_controls_for",
-  "menu_settings_gamepad_controls_for_name",
-  ["menu_settings_gamepad_controls_for_0", "menu_settings_gamepad_controls_for_1"]
-);
-export const menuSettingsGamepadTargeting = new MenuEntryList(
-  "menu_settings_gamepad_targeting",
-  "menu_settings_gamepad_targeting_name",
-  ["Free Aim", "Assisted Aim - Partial", "Assisted Aim - Full"]
-);
-export const menuSettingsGamepadVibration = new MenuEntryList(
-  "menu_settings_gamepad_vibration",
-  "menu_settings_gamepad_vibration_name",
-  ["menu_common_on", "menu_common_off"]
-);
-export const menuSettingsGamepadInvertLook = new MenuEntryList(
-  "menu_settings_gamepad_invert_look",
-  "menu_settings_gamepad_invert_look_name",
-  ["menu_common_on", "menu_common_off"]
-);
-export const menuSettingsGamepadThirdControlType = new MenuEntryList(
-  "menu_settings_gamepad_third_control_type",
-  "Third Person Control Type",
-  ["Standard", "Alternate", "Southpaw"]
-);
-export const menuSettingsGamepadFirstControlType = new MenuEntryList(
-  "menu_settings_gamepad_first_control_type",
-  "First Person Control Type",
-  ["Standard", "Alternate", "Southpaw"]
-);
-export const menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress(
-  "menu_settings_gamepad_third_aim_sensitivity",
-  "Third Person Aiming Sensitivity",
-  25,
-  5
-);
-export const menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress(
-  "menu_settings_gamepad_third_look_sensitivity",
-  "Third Person Look-Around Sensitivity",
-  25,
-  5
-);
-export const menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress(
-  "menu_settings_gamepad_first_aim_sensitivity",
-  "First Person Aiming Sensitivity",
-  25,
-  5
-);
+export const menuSettingsGamepadControlsFor = new MenuEntryList("menu_settings_gamepad_controls_for", "menu_settings_gamepad_controls_for_name", [
+  "menu_settings_gamepad_controls_for_0",
+  "menu_settings_gamepad_controls_for_1",
+]);
+export const menuSettingsGamepadTargeting = new MenuEntryList("menu_settings_gamepad_targeting", "menu_settings_gamepad_targeting_name", ["Free Aim", "Assisted Aim - Partial", "Assisted Aim - Full"]);
+export const menuSettingsGamepadVibration = new MenuEntryList("menu_settings_gamepad_vibration", "menu_settings_gamepad_vibration_name", ["menu_common_on", "menu_common_off"]);
+export const menuSettingsGamepadInvertLook = new MenuEntryList("menu_settings_gamepad_invert_look", "menu_settings_gamepad_invert_look_name", ["menu_common_on", "menu_common_off"]);
+export const menuSettingsGamepadThirdControlType = new MenuEntryList("menu_settings_gamepad_third_control_type", "Third Person Control Type", ["Standard", "Alternate", "Southpaw"]);
+export const menuSettingsGamepadFirstControlType = new MenuEntryList("menu_settings_gamepad_first_control_type", "First Person Control Type", ["Standard", "Alternate", "Southpaw"]);
+export const menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress("menu_settings_gamepad_third_aim_sensitivity", "Third Person Aiming Sensitivity", 25, 5);
+export const menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress("menu_settings_gamepad_third_look_sensitivity", "Third Person Look-Around Sensitivity", 25, 5);
+export const menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress("menu_settings_gamepad_first_aim_sensitivity", "First Person Aiming Sensitivity", 25, 5);
 
-export const menuSettingsGraphicsIgnoreLimits = new MenuEntryList(
-  "menu_settings_graphics_ignore_limits",
-  "Ignore Suggested Limits",
-  ["Off", "On"]
-);
-export const menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", [
-  "DirectX 10",
-  "DirectX 10.1",
-  "DirectX 11",
-]);
-export const menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", [
-  "800x600",
-  "1280x720",
-  "1920x1080",
-  "2560x1440",
-  "3840x2160",
-]);
+export const menuSettingsGraphicsIgnoreLimits = new MenuEntryList("menu_settings_graphics_ignore_limits", "Ignore Suggested Limits", ["Off", "On"]);
+export const menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", ["DirectX 10", "DirectX 10.1", "DirectX 11"]);
+export const menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", ["800x600", "1280x720", "1920x1080", "2560x1440", "3840x2160"]);
 
-export const menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", [
-  "menu_common_on",
-  "menu_common_off",
-]);
-export const menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", [
-  "English",
-  "Russian",
-  "Italian",
-  "Spanish",
-]);
-export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", [
-  "Always",
-  "Sometimes",
-  "Off",
-]);
+export const menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", ["menu_common_on", "menu_common_off"]);
+export const menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", ["English", "Russian", "Italian", "Spanish"]);
+export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", ["Always", "Sometimes", "Off"]);
 
 export const menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
@@ -122,11 +51,7 @@ export const menuSettingsGamepadEntries = [
   menuSettingsGamepadThirdLookSensitivity,
   menuSettingsGamepadFirstLookSensitivity,
 ];
-export const menuSettingsGraphicsEntries = [
-  menuSettingsGraphicsIgnoreLimits,
-  menuSettingsGraphicsDirectX,
-  menuSettingsGraphicsResolution,
-];
+export const menuSettingsGraphicsEntries = [menuSettingsGraphicsIgnoreLimits, menuSettingsGraphicsDirectX, menuSettingsGraphicsResolution];
 export const menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
 export const menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);
@@ -135,423 +60,81 @@ export const menuSettingsPause = new MenuElements("menu_settings_pause", menuSet
 
 export const menuSettingsArrows = new MenuArrows("menu_settings_arrows");
 export const menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
-export const menuSettings = new MenuWindow(
-  "menu_settings",
-  menuSettingsCategories,
-  menuSettingsElements,
-  menuSettingsArrows
-);
+export const menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuSettingsElements, menuSettingsArrows);
 
 //#endregion
 
 //#region menuStats
 
-export const menuStatsSkillsMichaelSpecial = new MenuEntryStat(
-  "menu_stats_skills_michael_special",
-  "menu_stats_skills_special_name",
-  50,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelStamina = new MenuEntryStat(
-  "menu_stats_skills_michael_stamina",
-  "menu_stats_skills_stamina_name",
-  25,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelShooting = new MenuEntryStat(
-  "menu_stats_skills_michael_shooting",
-  "menu_stats_skills_shooting_name",
-  65,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelStrength = new MenuEntryStat(
-  "menu_stats_skills_michael_strength",
-  "menu_stats_skills_strength_name",
-  55,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelStealth = new MenuEntryStat(
-  "menu_stats_skills_michael_stealth",
-  "menu_stats_skills_stealth_name",
-  30,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelFlying = new MenuEntryStat(
-  "menu_stats_skills_michael_flying",
-  "menu_stats_skills_flying_name",
-  15,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelDriving = new MenuEntryStat(
-  "menu_stats_skills_michael_driving",
-  "menu_stats_skills_driving_name",
-  40,
-  5,
-  "bg_color_michael"
-);
-export const menuStatsSkillsMichaelLungCapacity = new MenuEntryStat(
-  "menu_stats_skills_michael_lung_capacity",
-  "menu_stats_skills_lung_capacity_name",
-  10,
-  5,
-  "bg_color_michael"
-);
+export const menuStatsSkillsMichaelSpecial = new MenuEntryStat("menu_stats_skills_michael_special", "menu_stats_skills_special_name", 50, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelStamina = new MenuEntryStat("menu_stats_skills_michael_stamina", "menu_stats_skills_stamina_name", 25, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelShooting = new MenuEntryStat("menu_stats_skills_michael_shooting", "menu_stats_skills_shooting_name", 65, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelStrength = new MenuEntryStat("menu_stats_skills_michael_strength", "menu_stats_skills_strength_name", 55, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelStealth = new MenuEntryStat("menu_stats_skills_michael_stealth", "menu_stats_skills_stealth_name", 30, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelFlying = new MenuEntryStat("menu_stats_skills_michael_flying", "menu_stats_skills_flying_name", 15, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelDriving = new MenuEntryStat("menu_stats_skills_michael_driving", "menu_stats_skills_driving_name", 40, 5, "bg_color_michael");
+export const menuStatsSkillsMichaelLungCapacity = new MenuEntryStat("menu_stats_skills_michael_lung_capacity", "menu_stats_skills_lung_capacity_name", 10, 5, "bg_color_michael");
 
-export const menuStatsSkillsFranklinSpecial = new MenuEntryStat(
-  "menu_stats_skills_franklin_special",
-  "menu_stats_skills_special_name",
-  80,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinStamina = new MenuEntryStat(
-  "menu_stats_skills_franklin_stamina",
-  "menu_stats_skills_stamina_name",
-  60,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinShooting = new MenuEntryStat(
-  "menu_stats_skills_franklin_shooting",
-  "menu_stats_skills_shooting_name",
-  20,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinStrength = new MenuEntryStat(
-  "menu_stats_skills_franklin_strength",
-  "menu_stats_skills_strength_name",
-  55,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinStealth = new MenuEntryStat(
-  "menu_stats_skills_franklin_stealth",
-  "menu_stats_skills_stealth_name",
-  30,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinFlying = new MenuEntryStat(
-  "menu_stats_skills_franklin_flying",
-  "menu_stats_skills_flying_name",
-  15,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinDriving = new MenuEntryStat(
-  "menu_stats_skills_franklin_driving",
-  "menu_stats_skills_driving_name",
-  40,
-  5,
-  "bg_color_franklin"
-);
-export const menuStatsSkillsFranklinLungCapacity = new MenuEntryStat(
-  "menu_stats_skills_franklin_lung_capacity",
-  "menu_stats_skills_lung_capacity_name",
-  10,
-  5,
-  "bg_color_franklin"
-);
+export const menuStatsSkillsFranklinSpecial = new MenuEntryStat("menu_stats_skills_franklin_special", "menu_stats_skills_special_name", 80, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinStamina = new MenuEntryStat("menu_stats_skills_franklin_stamina", "menu_stats_skills_stamina_name", 60, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinShooting = new MenuEntryStat("menu_stats_skills_franklin_shooting", "menu_stats_skills_shooting_name", 20, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinStrength = new MenuEntryStat("menu_stats_skills_franklin_strength", "menu_stats_skills_strength_name", 55, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinStealth = new MenuEntryStat("menu_stats_skills_franklin_stealth", "menu_stats_skills_stealth_name", 30, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinFlying = new MenuEntryStat("menu_stats_skills_franklin_flying", "menu_stats_skills_flying_name", 15, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinDriving = new MenuEntryStat("menu_stats_skills_franklin_driving", "menu_stats_skills_driving_name", 40, 5, "bg_color_franklin");
+export const menuStatsSkillsFranklinLungCapacity = new MenuEntryStat("menu_stats_skills_franklin_lung_capacity", "menu_stats_skills_lung_capacity_name", 10, 5, "bg_color_franklin");
 
-export const menuStatsSkillsTrevorSpecial = new MenuEntryStat(
-  "menu_stats_skills_trevor_special",
-  "menu_stats_skills_special_name",
-  70,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorStamina = new MenuEntryStat(
-  "menu_stats_skills_trevor_stamina",
-  "menu_stats_skills_stamina_name",
-  43,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorShooting = new MenuEntryStat(
-  "menu_stats_skills_trevor_shooting",
-  "menu_stats_skills_shooting_name",
-  56,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorStrength = new MenuEntryStat(
-  "menu_stats_skills_trevor_strength",
-  "menu_stats_skills_strength_name",
-  55,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorStealth = new MenuEntryStat(
-  "menu_stats_skills_trevor_stealth",
-  "menu_stats_skills_stealth_name",
-  30,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorFlying = new MenuEntryStat(
-  "menu_stats_skills_trevor_flying",
-  "menu_stats_skills_flying_name",
-  15,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorDriving = new MenuEntryStat(
-  "menu_stats_skills_trevor_driving",
-  "menu_stats_skills_driving_name",
-  40,
-  5,
-  "bg_color_trevor"
-);
-export const menuStatsSkillsTrevorLungCapacity = new MenuEntryStat(
-  "menu_stats_skills_trevor_lung_capacity",
-  "menu_stats_skills_lung_capacity_name",
-  10,
-  5,
-  "bg_color_trevor"
-);
+export const menuStatsSkillsTrevorSpecial = new MenuEntryStat("menu_stats_skills_trevor_special", "menu_stats_skills_special_name", 70, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorStamina = new MenuEntryStat("menu_stats_skills_trevor_stamina", "menu_stats_skills_stamina_name", 43, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorShooting = new MenuEntryStat("menu_stats_skills_trevor_shooting", "menu_stats_skills_shooting_name", 56, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorStrength = new MenuEntryStat("menu_stats_skills_trevor_strength", "menu_stats_skills_strength_name", 55, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorStealth = new MenuEntryStat("menu_stats_skills_trevor_stealth", "menu_stats_skills_stealth_name", 30, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorFlying = new MenuEntryStat("menu_stats_skills_trevor_flying", "menu_stats_skills_flying_name", 15, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorDriving = new MenuEntryStat("menu_stats_skills_trevor_driving", "menu_stats_skills_driving_name", 40, 5, "bg_color_trevor");
+export const menuStatsSkillsTrevorLungCapacity = new MenuEntryStat("menu_stats_skills_trevor_lung_capacity", "menu_stats_skills_lung_capacity_name", 10, 5, "bg_color_trevor");
 
-export const menuStatsSkillsFreemodeStamina = new MenuEntryStat(
-  "menu_stats_skills_freemode_stamina",
-  "menu_stats_skills_stamina_name",
-  43,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeShooting = new MenuEntryStat(
-  "menu_stats_skills_freemode_shooting",
-  "menu_stats_skills_shooting_name",
-  56,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeStrength = new MenuEntryStat(
-  "menu_stats_skills_freemode_strength",
-  "menu_stats_skills_strength_name",
-  55,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeStealth = new MenuEntryStat(
-  "menu_stats_skills_freemode_stealth",
-  "menu_stats_skills_stealth_name",
-  30,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeFlying = new MenuEntryStat(
-  "menu_stats_skills_freemode_flying",
-  "menu_stats_skills_flying_name",
-  15,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeDriving = new MenuEntryStat(
-  "menu_stats_skills_freemode_driving",
-  "menu_stats_skills_driving_name",
-  40,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeLungCapacity = new MenuEntryStat(
-  "menu_stats_skills_freemode_lung_capacity",
-  "menu_stats_skills_lung_capacity_name",
-  10,
-  5,
-  "bg_color_freemode"
-);
-export const menuStatsSkillsFreemodeMentalState = new MenuEntryStat(
-  "menu_stats_skills_freemode_mental_state",
-  "menu_stats_skills_mental_state_name",
-  10,
-  5,
-  "bg_color_freemode"
-);
+export const menuStatsSkillsFreemodeStamina = new MenuEntryStat("menu_stats_skills_freemode_stamina", "menu_stats_skills_stamina_name", 43, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeShooting = new MenuEntryStat("menu_stats_skills_freemode_shooting", "menu_stats_skills_shooting_name", 56, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeStrength = new MenuEntryStat("menu_stats_skills_freemode_strength", "menu_stats_skills_strength_name", 55, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeStealth = new MenuEntryStat("menu_stats_skills_freemode_stealth", "menu_stats_skills_stealth_name", 30, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeFlying = new MenuEntryStat("menu_stats_skills_freemode_flying", "menu_stats_skills_flying_name", 15, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeDriving = new MenuEntryStat("menu_stats_skills_freemode_driving", "menu_stats_skills_driving_name", 40, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeLungCapacity = new MenuEntryStat("menu_stats_skills_freemode_lung_capacity", "menu_stats_skills_lung_capacity_name", 10, 5, "bg_color_freemode");
+export const menuStatsSkillsFreemodeMentalState = new MenuEntryStat("menu_stats_skills_freemode_mental_state", "menu_stats_skills_mental_state_name", 10, 5, "bg_color_freemode");
 
-export const menuStatsGeneralMichaelTimePlayed = new MenuEntryList(
-  "menu_stats_general_michael_time_played",
-  "menu_stats_general_time_played_name",
-  ["0d 5h 5m 25s"],
-  true
-);
-export const menuStatsGeneralMichaelTimeFPS = new MenuEntryList(
-  "menu_stats_general_michael_time_fps",
-  "menu_stats_general_time_fps_name",
-  ["0d 1h 2m 0s"],
-  true
-);
-export const menuStatsGeneralMichaelMissions = new MenuEntryList(
-  "menu_stats_general_michael_missions",
-  "menu_stats_general_missions_name",
-  ["15"],
-  true
-);
-export const menuStatsGeneralMichaelLastMission = new MenuEntryList(
-  "menu_stats_general_michael_last_mission",
-  "menu_stats_general_last_mission_name",
-  ["Before the Prologue"],
-  true
-);
-export const menuStatsGeneralMichaelconstters = new MenuEntryList(
-  "menu_stats_general_michael_constters",
-  "menu_stats_general_constters_name",
-  ["50 / 50"],
-  true
-);
-export const menuStatsGeneralMichaelPeyotes = new MenuEntryList(
-  "menu_stats_general_michael_peyotes",
-  "menu_stats_general_peyotes_name",
-  ["20 / 27"],
-  true
-);
-export const menuStatsGeneralMichaelWildlife = new MenuEntryList(
-  "menu_stats_general_michael_wildlife",
-  "menu_stats_general_wildlife_name",
-  ["10 / 20"],
-  true
-);
-export const menuStatsGeneralMichaelSaved = new MenuEntryList(
-  "menu_stats_general_michael_saved",
-  "menu_stats_general_saved_name",
-  ["1420"],
-  true
-);
-export const menuStatsGeneralMichaelCheats = new MenuEntryList(
-  "menu_stats_general_michael_cheats",
-  "menu_stats_general_cheats_name",
-  ["0"],
-  true
-);
-export const menuStatsGeneralMichaelDeathsTotal = new MenuEntryList(
-  "menu_stats_general_michael_deaths_total",
-  "menu_stats_general_deaths_total_name",
-  ["5"],
-  true
-);
-export const menuStatsGeneralMichaelDeathsExplosion = new MenuEntryList(
-  "menu_stats_general_michael_deaths_explosion",
-  "menu_stats_general_deaths_explosion_name",
-  ["1"],
-  true
-);
-export const menuStatsGeneralMichaelDeathsFalling = new MenuEntryList(
-  "menu_stats_general_michael_deaths_falling",
-  "menu_stats_general_deaths_falling_name",
-  ["1"],
-  true
-);
-export const menuStatsGeneralMichaelDeathsFire = new MenuEntryList(
-  "menu_stats_general_michael_deaths_fire",
-  "menu_stats_general_deaths_fire_name",
-  ["1"],
-  true
-);
-export const menuStatsGeneralMichaelDeathsTraffic = new MenuEntryList(
-  "menu_stats_general_michael_deaths_traffic",
-  "menu_stats_general_deaths_traffic_name",
-  ["1"],
-  true
-);
-export const menuStatsGeneralMichaelDeathsDrowning = new MenuEntryList(
-  "menu_stats_general_michael_deaths_drowning",
-  "menu_stats_general_deaths_drowning_name",
-  ["1"],
-  true
-);
-export const menuStatsGeneralMichaelTimeSwimming = new MenuEntryList(
-  "menu_stats_general_michael_time_swimming",
-  "menu_stats_general_time_swimming_name",
-  ["0d 1h 5m 2s"],
-  true
-);
-export const menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList(
-  "menu_stats_general_michael_distance_swimming",
-  "menu_stats_general_distance_swimming_name",
-  ["0.13 miles"],
-  true
-);
-export const menuStatsGeneralMichaelTimeUnderwater = new MenuEntryList(
-  "menu_stats_general_michael_time_underwater",
-  "menu_stats_general_time_underwater_name",
-  ["0d 0h 5m 22s"],
-  true
-);
+export const menuStatsGeneralMichaelTimePlayed = new MenuEntryList("menu_stats_general_michael_time_played", "menu_stats_general_time_played_name", ["0d 5h 5m 25s"], true);
+export const menuStatsGeneralMichaelTimeFPS = new MenuEntryList("menu_stats_general_michael_time_fps", "menu_stats_general_time_fps_name", ["0d 1h 2m 0s"], true);
+export const menuStatsGeneralMichaelMissions = new MenuEntryList("menu_stats_general_michael_missions", "menu_stats_general_missions_name", ["15"], true);
+export const menuStatsGeneralMichaelLastMission = new MenuEntryList("menu_stats_general_michael_last_mission", "menu_stats_general_last_mission_name", ["Before the Prologue"], true);
+export const menuStatsGeneralMichaelLetters = new MenuEntryList("menu_stats_general_michael_letters", "menu_stats_general_letters_name", ["50 / 50"], true);
+export const menuStatsGeneralMichaelPeyotes = new MenuEntryList("menu_stats_general_michael_peyotes", "menu_stats_general_peyotes_name", ["20 / 27"], true);
+export const menuStatsGeneralMichaelWildlife = new MenuEntryList("menu_stats_general_michael_wildlife", "menu_stats_general_wildlife_name", ["10 / 20"], true);
+export const menuStatsGeneralMichaelSaved = new MenuEntryList("menu_stats_general_michael_saved", "menu_stats_general_saved_name", ["1420"], true);
+export const menuStatsGeneralMichaelCheats = new MenuEntryList("menu_stats_general_michael_cheats", "menu_stats_general_cheats_name", ["0"], true);
+export const menuStatsGeneralMichaelDeathsTotal = new MenuEntryList("menu_stats_general_michael_deaths_total", "menu_stats_general_deaths_total_name", ["5"], true);
+export const menuStatsGeneralMichaelDeathsExplosion = new MenuEntryList("menu_stats_general_michael_deaths_explosion", "menu_stats_general_deaths_explosion_name", ["1"], true);
+export const menuStatsGeneralMichaelDeathsFalling = new MenuEntryList("menu_stats_general_michael_deaths_falling", "menu_stats_general_deaths_falling_name", ["1"], true);
+export const menuStatsGeneralMichaelDeathsFire = new MenuEntryList("menu_stats_general_michael_deaths_fire", "menu_stats_general_deaths_fire_name", ["1"], true);
+export const menuStatsGeneralMichaelDeathsTraffic = new MenuEntryList("menu_stats_general_michael_deaths_traffic", "menu_stats_general_deaths_traffic_name", ["1"], true);
+export const menuStatsGeneralMichaelDeathsDrowning = new MenuEntryList("menu_stats_general_michael_deaths_drowning", "menu_stats_general_deaths_drowning_name", ["1"], true);
+export const menuStatsGeneralMichaelTimeSwimming = new MenuEntryList("menu_stats_general_michael_time_swimming", "menu_stats_general_time_swimming_name", ["0d 1h 5m 2s"], true);
+export const menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList("menu_stats_general_michael_distance_swimming", "menu_stats_general_distance_swimming_name", ["0.13 miles"], true);
+export const menuStatsGeneralMichaelTimeUnderwater = new MenuEntryList("menu_stats_general_michael_time_underwater", "menu_stats_general_time_underwater_name", ["0d 0h 5m 22s"], true);
 
-export const menuStatsGeneralFranklinTime = new MenuEntryList(
-  "menu_stats_general_franklin_time",
-  "menu_stats_general_time_name",
-  ["0:00"],
-  true
-);
-export const menuStatsGeneralTrevorTime = new MenuEntryList(
-  "menu_stats_general_trevor_time",
-  "menu_stats_general_time_name",
-  ["0:00"],
-  true
-);
-export const menuStatsGeneralFreemodeTime = new MenuEntryList(
-  "menu_stats_general_freemode_time",
-  "menu_stats_general_time_name",
-  ["0:00"],
-  true
-);
+export const menuStatsGeneralFranklinTime = new MenuEntryList("menu_stats_general_franklin_time", "menu_stats_general_time_name", ["0:00"], true);
+export const menuStatsGeneralTrevorTime = new MenuEntryList("menu_stats_general_trevor_time", "menu_stats_general_time_name", ["0:00"], true);
+export const menuStatsGeneralFreemodeTime = new MenuEntryList("menu_stats_general_freemode_time", "menu_stats_general_time_name", ["0:00"], true);
 
 export const menuStatsChecklistEmpty0 = new MenuEntryList("menu_stats_checklist_empty_0", "", [""], true);
-export const menuStatsChecklistMichael = new MenuEntryList(
-  "menu_stats_checklist_michael",
-  "menu_stats_checklist_michael_name",
-  ["25d 2h 5m 40s"],
-  true
-);
-export const menuStatsChecklistFranklin = new MenuEntryList(
-  "menu_stats_checklist_franklin",
-  "menu_stats_checklist_franklin_name",
-  ["2d 2h 5m 40s"],
-  true
-);
-export const menuStatsChecklistTrevor = new MenuEntryList(
-  "menu_stats_checklist_trevor",
-  "menu_stats_checklist_trevor_name",
-  ["2d 2h 5m 40s"],
-  true
-);
+export const menuStatsChecklistMichael = new MenuEntryList("menu_stats_checklist_michael", "menu_stats_checklist_michael_name", ["25d 2h 5m 40s"], true);
+export const menuStatsChecklistFranklin = new MenuEntryList("menu_stats_checklist_franklin", "menu_stats_checklist_franklin_name", ["2d 2h 5m 40s"], true);
+export const menuStatsChecklistTrevor = new MenuEntryList("menu_stats_checklist_trevor", "menu_stats_checklist_trevor_name", ["2d 2h 5m 40s"], true);
 export const menuStatsChecklistEmpty1 = new MenuEntryList("menu_stats_checklist_empty_1", "", [""], true);
-export const menuStatsChecklistMissions = new MenuEntryList(
-  "menu_stats_checklist_missions",
-  "menu_stats_checklist_missions_name",
-  ["0 / 69"],
-  true
-);
-export const menuStatsChecklistHobbies = new MenuEntryList(
-  "menu_stats_checklist_hobbies",
-  "menu_stats_checklist_hobbies_name",
-  ["0 / 42"],
-  true
-);
-export const menuStatsChecklistStrangers = new MenuEntryList(
-  "menu_stats_checklist_strangers",
-  "menu_stats_checklist_strangers_name",
-  ["0 / 20"],
-  true
-);
-export const menuStatsChecklistRandom = new MenuEntryList(
-  "menu_stats_checklist_random",
-  "menu_stats_checklist_random_name",
-  ["0 / 14"],
-  true
-);
-export const menuStatsChecklistMisc = new MenuEntryList(
-  "menu_stats_checklist_misc",
-  "menu_stats_checklist_misc_name",
-  ["0 / 16"],
-  true
-);
+export const menuStatsChecklistMissions = new MenuEntryList("menu_stats_checklist_missions", "menu_stats_checklist_missions_name", ["0 / 69"], true);
+export const menuStatsChecklistHobbies = new MenuEntryList("menu_stats_checklist_hobbies", "menu_stats_checklist_hobbies_name", ["0 / 42"], true);
+export const menuStatsChecklistStrangers = new MenuEntryList("menu_stats_checklist_strangers", "menu_stats_checklist_strangers_name", ["0 / 20"], true);
+export const menuStatsChecklistRandom = new MenuEntryList("menu_stats_checklist_random", "menu_stats_checklist_random_name", ["0 / 14"], true);
+export const menuStatsChecklistMisc = new MenuEntryList("menu_stats_checklist_misc", "menu_stats_checklist_misc_name", ["0 / 16"], true);
 export const menuStatsChecklistEmpty2 = new MenuEntryList("menu_stats_checklist_empty_2", "", [""], true);
 
 export const menuStatsSkillsMichaelEntries = [
@@ -600,7 +183,7 @@ export const menuStatsGeneralMichaelEntries = [
   menuStatsGeneralMichaelTimeFPS,
   menuStatsGeneralMichaelMissions,
   menuStatsGeneralMichaelLastMission,
-  menuStatsGeneralMichaelconstters,
+  menuStatsGeneralMichaelLetters,
   menuStatsGeneralMichaelPeyotes,
   menuStatsGeneralMichaelWildlife,
   menuStatsGeneralMichaelSaved,
@@ -633,54 +216,14 @@ export const menuStatsChecklistEntries = [
   menuStatsChecklistEmpty2,
 ];
 
-export const menuStatsSkillsMichael = new MenuElements(
-  "menu_stats_skills_michael",
-  menuStatsSkillsMichaelEntries,
-  false,
-  true
-);
-export const menuStatsSkillsFranklin = new MenuElements(
-  "menu_stats_skills_franklin",
-  menuStatsSkillsFranklinEntries,
-  false,
-  true
-);
-export const menuStatsSkillsTrevor = new MenuElements(
-  "menu_stats_skills_trevor",
-  menuStatsSkillsTrevorEntries,
-  false,
-  true
-);
-export const menuStatsSkillsFreemode = new MenuElements(
-  "menu_stats_skills_freemode",
-  menuStatsSkillsFreemodeEntries,
-  false,
-  true
-);
-export const menuStatsGeneralMichael = new MenuElements(
-  "menu_stats_general_michael",
-  menuStatsGeneralMichaelEntries,
-  false,
-  true
-);
-export const menuStatsGeneralFranklin = new MenuElements(
-  "menu_stats_general_franklin",
-  menuStatsGeneralFranklinEntries,
-  false,
-  true
-);
-export const menuStatsGeneralTrevor = new MenuElements(
-  "menu_stats_general_trevor",
-  menuStatsGeneralTrevorEntries,
-  false,
-  true
-);
-export const menuStatsGeneralFreemode = new MenuElements(
-  "menu_stats_general_freemode",
-  menuStatsGeneralFreemodeEntries,
-  false,
-  true
-);
+export const menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsMichaelEntries, false, true);
+export const menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsFranklinEntries, false, true);
+export const menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsTrevorEntries, false, true);
+export const menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsFreemodeEntries, false, true);
+export const menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralMichaelEntries, false, true);
+export const menuStatsGeneralFranklin = new MenuElements("menu_stats_general_franklin", menuStatsGeneralFranklinEntries, false, true);
+export const menuStatsGeneralTrevor = new MenuElements("menu_stats_general_trevor", menuStatsGeneralTrevorEntries, false, true);
+export const menuStatsGeneralFreemode = new MenuElements("menu_stats_general_freemode", menuStatsGeneralFreemodeEntries, false, true);
 export const menuStatsChecklist = new MenuElements("menu_stats_checklist", menuStatsChecklistEntries, false, false);
 
 export const menuStatsCategorySkills = new MenuCategory(
@@ -695,12 +238,7 @@ export const menuStatsCategoryGeneral = new MenuCategory(
   ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
   [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode]
 );
-export const menuStatsCategoryChecklist = new MenuCategory(
-  "menu_stats_category_checklist",
-  "menu_stats_category_checklist_name",
-  undefined,
-  [menuStatsChecklist]
-);
+export const menuStatsCategoryChecklist = new MenuCategory("menu_stats_category_checklist", "menu_stats_category_checklist_name", undefined, [menuStatsChecklist]);
 
 export const menuStatsCategories = {
   ID: "menu_stats_categories",
@@ -709,6 +247,13 @@ export const menuStatsCategories = {
 export const menuStatsArrows = new MenuArrows("menu_stats_arrows");
 export const menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsChecklist];
 export const menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
+
+//#endregion
+
+//#region menuBrief
+
+export const menuBriefArrows = new MenuArrows("menu_brief_arrows");
+export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuStatsElements, menuBriefArrows);
 
 //#endregion
 
@@ -746,160 +291,9 @@ export const allMenuEntries = [
   menuSettingsPauseRemember,
 ];
 
-export const allMenuElements = [
-  menuStatsSkillsMichael,
-  menuStatsGeneralMichael,
-  menuStatsCategoryChecklist,
+export const allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsCategoryChecklist, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
 
-  menuSettingsGamepad,
-  menuSettingsGraphics,
-  menuSettingsPause,
-];
-
-export const allMenuWindows = [
-  undefined,
-  undefined,
-  menuStats,
-  menuSettings,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-];
-
-//
-// SCROLLABLE MENU ENTRIES MIDDLE
-//
-
-export const TAB_SETTINGS_PAUSE_0 = {
-  id: $("#menu_settings_pause_element_0"),
-  items: [
-    $("#menu_settings_pause_element_0_0"),
-    $("#menu_settings_pause_element_0_1"),
-    $("#menu_settings_pause_element_0_2"),
-  ],
-  activeItem: 0,
-};
-
-//
-// SCROLLABLE CATEGORIES
-//
-
-const TAB_STATS_CATEGORY_SKILLS = {
-  id: $("#menu_stats_skills"),
-  category: $("#menu_stats_category_0"),
-  items: [
-    $("#menu_stats_category_0_0"),
-    $("#menu_stats_category_0_1"),
-    $("#menu_stats_category_0_2"),
-    $("#menu_stats_category_0_3"),
-  ],
-  wnds: [$("#menu_stats_skills"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
-  activeItem: 0,
-};
-
-const TAB_STATS_CATEGORY_GENERAL = {
-  id: $("#menu_stats_general"),
-  // id: $("#menu_stats_skills"),
-  category: $("#menu_stats_category_1"),
-  items: [
-    $("#menu_stats_category_1_0"),
-    $("#menu_stats_category_1_1"),
-    $("#menu_stats_category_1_2"),
-    $("#menu_stats_category_1_3"),
-  ],
-  wnds: [$("#menu_stats_general"), $("#menu_stats_general_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
-  activeItem: 0,
-};
-
-const TAB_STATS_CATEGORY_CRIMES = {
-  id: $("#menu_stats_crimes"),
-  category: $("#menu_stats_category_2"),
-  items: [
-    $("#menu_stats_category_2_0"),
-    $("#menu_stats_category_2_1"),
-    $("#menu_stats_category_2_2"),
-    $("#menu_stats_category_2_3"),
-  ],
-  wnds: [$("#menu_stats_crimes"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
-  activeItem: 0,
-};
-
-const TAB_STATS_CATEGORY_COMBAT = {
-  id: $("#menu_stats_combat"),
-  category: $("#menu_stats_category_5"),
-  items: [
-    $("#menu_stats_category_5_0"),
-    $("#menu_stats_category_5_1"),
-    $("#menu_stats_category_5_2"),
-    $("#menu_stats_category_5_3"),
-  ],
-  wnds: [$("#menu_stats_combat"), $("#menu_stats_skills_1"), $("#menu_stats_skills_2"), $("#menu_stats_skills_3")],
-  activeItem: 0,
-};
-
-//
-// MENU TABS' CATEGORIES
-//
-
-const TAB_BRIEF_CATEGORIES = [
-  $("#menu_brief_mission"),
-  $("#menu_brief_help"),
-  $("#menu_brief_dialogue"),
-  $("#menu_brief_notifications"),
-  $("#menu_brief_newswire"),
-];
-const TAB_STATS_CATEGORIES = [
-  TAB_STATS_CATEGORY_SKILLS,
-  TAB_STATS_CATEGORY_GENERAL,
-  TAB_STATS_CATEGORY_CRIMES,
-  $("#menu_stats_vehicles"),
-  $("#menu_stats_cash"),
-  TAB_STATS_CATEGORY_COMBAT,
-  $("#menu_stats_weapons"),
-  $("#menu_stats_100_completion"),
-];
-const TAB_SETTINGS_CATEGORIES = [
-  $("#menu_settings_gamepad"),
-  $("#menu_settings_keyboard"),
-  $("#menu_settings_keybind"),
-  $("#menu_settings_audio"),
-  $("#menu_settings_camera"),
-  $("#menu_settings_display"),
-  $("#menu_settings_graphics"),
-  $("#menu_settings_adv_graphics"),
-  $("#menu_settings_voice_chat"),
-  $("#menu_settings_notifications"),
-  $("#menu_settings_replay"),
-  $("#menu_settings_saving"),
-  $("#menu_settings_facebook"),
-  $("#menu_settings_pause"),
-];
-const TAB_GAME_CATEGORIES = [$("#menu_game_replay_mission"), $("#menu_game_replay_strangers")];
-const TAB_FRIENDS_CATEGORIES = [
-  $("#menu_friends_player_0"),
-  $("#menu_friends_player_1"),
-  $("#menu_friends_player_2"),
-  $("#menu_friends_player_3"),
-  $("#menu_friends_player_4"),
-  $("#menu_friends_player_5"),
-  $("#menu_friends_player_6"),
-  $("#menu_friends_player_7"),
-  $("#menu_friends_player_8"),
-  $("#menu_friends_player_9"),
-  $("#menu_friends_player_10"),
-  $("#menu_friends_player_11"),
-  $("#menu_friends_player_12"),
-  $("#menu_friends_player_13"),
-  $("#menu_friends_player_14"),
-  $("#menu_friends_player_15"),
-];
-const TAB_ONLINE_CATEGORIES = [$("#menu_online_go"), $("#menu_online_invite_only")];
-const TAB_SAVE_CATEGORIES = [$("#menu_save_list")];
-
+export const allMenuWindows = [undefined, menuBrief, menuStats, menuSettings, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 //
 // MENU TABS
 //
@@ -911,32 +305,26 @@ export const MENU_TAB_MAP = {
 export const MENU_TAB_BRIEF = {
   id: $("#tab_1"),
   window: $(".menu_brief"),
-  cats: TAB_BRIEF_CATEGORIES,
 };
 export const MENU_TAB_STATS = {
   id: $("#tab_2"),
   window: $(".menu_stats"),
-  cats: TAB_STATS_CATEGORIES,
 };
 export const MENU_TAB_SETTINGS = {
   id: $("#tab_3"),
   window: $(".menu_settings"),
-  cats: TAB_SETTINGS_CATEGORIES,
 };
 export const MENU_TAB_GAME = {
   id: $("#tab_4"),
   window: $(".menu_game"),
-  cats: TAB_GAME_CATEGORIES,
 };
 export const MENU_TAB_ONLINE = {
   id: $("#tab_5"),
   window: $(".menu_online"),
-  cats: TAB_ONLINE_CATEGORIES,
 };
 export const MENU_TAB_FRIENDS = {
   id: $("#tab_6"),
   window: $(".menu_friends"),
-  cats: TAB_FRIENDS_CATEGORIES,
 };
 export const MENU_TAB_GALLERY = {
   id: $("#tab_7"),
@@ -953,7 +341,6 @@ export const MENU_TAB_REPLAY = {
 export const MENU_TAB_SAVE = {
   id: $("#tab_10"),
   window: $("#menu_save"),
-  cats: TAB_SAVE_CATEGORIES,
 };
 
 export const MENU_TABS = [

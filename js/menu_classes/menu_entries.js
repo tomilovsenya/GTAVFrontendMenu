@@ -1,6 +1,6 @@
 import { MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
-import { allMenuElements, allMenuEntries, menuStatsSkillsMichael, menuStatsSkillsFranklin } from "./menu_content.js";
-import { getLocalizedString } from "./menu_localization.js";
+import { allMenuElements, allMenuEntries } from "../menu_modules/menu_content.js";
+import { getLocalizedString } from "../menu_modules/menu_localization.js";
 
 export class MenuWindow {
   ID = "menu_window_default";
@@ -130,8 +130,7 @@ export class MenuWindow {
       this.activate();
       this.updateSelection(clickedCategory.index);
     } else if (this.currentContext == 0) {
-      if (clickedCategory.index == this.currentCategoryIndex && !clickedCategory.hasMultipleElements)
-        this.enterCategory(this.currentCategoryIndex);
+      if (clickedCategory.index == this.currentCategoryIndex && !clickedCategory.hasMultipleElements) this.enterCategory(this.currentCategoryIndex);
       else this.updateSelection(clickedCategory.index);
     } else if (this.currentContext == 1) {
       this.escapeCategory();
@@ -157,8 +156,7 @@ export class MenuWindow {
         if (this.currentCategoryIndex == 0) newSelection = this.menuCategories.list.length - 1;
         else newSelection = this.currentCategoryIndex - 1;
       } else if (scrollDir == 1) {
-        if (this.currentCategoryIndex < this.menuCategories.list.length - 1)
-          newSelection = this.currentCategoryIndex + 1;
+        if (this.currentCategoryIndex < this.menuCategories.list.length - 1) newSelection = this.currentCategoryIndex + 1;
         else newSelection = 0;
       }
 
@@ -174,10 +172,8 @@ export class MenuWindow {
       this.currentCategory.scrollList(scrollDir);
       this.currentCategory.updateElements();
     } else if (this.currentContext == 1) {
-      if (this.currentElements.currentEntry instanceof MenuEntryList)
-        this.currentElements.currentEntry.scrollList(scrollDir);
-      if (this.currentElements.currentEntry instanceof MenuEntryProgress)
-        this.currentElements.currentEntry.scrollProgress(scrollDir);
+      if (this.currentElements.currentEntry instanceof MenuEntryList) this.currentElements.currentEntry.scrollList(scrollDir);
+      if (this.currentElements.currentEntry instanceof MenuEntryProgress) this.currentElements.currentEntry.scrollProgress(scrollDir);
     }
   }
 

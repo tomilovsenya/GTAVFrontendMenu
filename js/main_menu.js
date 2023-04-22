@@ -20,25 +20,14 @@ export let currentWindow = menuContent.menuStats;
 //
 
 import * as menuContent from "./menu_modules/menu_content.js";
-import { MenuCategory, MenuWindow, findMenuEntryByID } from "./menu_modules/menu_entries.js";
+import { MenuCategory, MenuWindow, findMenuEntryByID } from "./menu_classes/menu_entries.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
-import {
-  getLocalizedString,
-  localizeMenu,
-  localizeSingleMenu,
-  updateMenuLocalization,
-} from "./menu_modules/menu_localization.js";
+import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
-import {
-  showInstrLoadingSpinner,
-  hideInstrLoadingSpinner,
-  setStartupInstr,
-  setInstrContainerVisibility,
-  handleInstructionalButtons,
-} from "./menu_modules/menu_instructional_buttons.js";
+import { showInstrLoadingSpinner, hideInstrLoadingSpinner, setStartupInstr, setInstrContainerVisibility, handleInstructionalButtons } from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 
