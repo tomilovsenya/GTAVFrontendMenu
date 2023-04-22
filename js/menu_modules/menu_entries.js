@@ -1,5 +1,5 @@
 import { MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
-import { allMenuElements, allMenuEntries } from "./menu_content.js";
+import { allMenuElements, allMenuEntries, menuStatsSkillsMichael, menuStatsSkillsFranklin } from "./menu_content.js";
 import { getLocalizedString } from "./menu_localization.js";
 
 export class MenuWindow {
@@ -35,6 +35,7 @@ export class MenuWindow {
 
   create() {
     this.#populateAllElements();
+    this.#populateCategoriesElements();
     this.#fillCategories();
     this.#createArrows();
     this.#toggleArrows(false);
@@ -79,6 +80,20 @@ export class MenuWindow {
       if (index > 0) $(elements.idSel).hide();
       elements.populateElements(this);
       // console.log(elements);
+    });
+  }
+
+  #populateCategoriesElements() {
+    this.menuCategories.list.forEach((category, index) => {
+      if (category.elementsCollection == undefined) return;
+      console.log(category.elementsCollection);
+
+      category.elementsCollection.forEach((elements, index) => {
+        if (index > 0) {
+          elements.populateElements(this, index);
+          $(elements.idSel).hide();
+        }
+      });
     });
   }
 
@@ -154,21 +169,29 @@ export class MenuWindow {
   }
 
   scrollHorizontal(scrollDir) {
-    if (this.currentContext != 1) return;
-    if (this.currentElements.currentEntry instanceof MenuEntryList)
-      this.currentElements.currentEntry.scrollList(scrollDir);
-    if (this.currentElements.currentEntry instanceof MenuEntryProgress)
-      this.currentElements.currentEntry.scrollProgress(scrollDir);
+    if (this.currentContext == -1) return;
+    this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
+
+    if (this.currentContext == 0) {
+      this.currentCategory.scrollList(scrollDir);
+      this.currentCategory.updateElements();
+    } else if (this.currentContext == 1) {
+      if (this.currentElements.currentEntry instanceof MenuEntryList)
+        this.currentElements.currentEntry.scrollList(scrollDir);
+      if (this.currentElements.currentEntry instanceof MenuEntryProgress)
+        this.currentElements.currentEntry.scrollProgress(scrollDir);
+    }
   }
 
   updateSelection(newSelection) {
     if (this.currentCategoryIndex == -1 && newSelection != -1) this.currentCategoryIndex = newSelection;
+    this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
+
     if (newSelection == -1) {
-      this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
       if (this.currentCategory != undefined) this.currentCategory.deactivate();
       if (this.currentElements.currentEntry != undefined) this.currentElements.currentEntry.deactivate();
     } else {
-      this.menuCategories.list[this.currentCategoryIndex].deactivate();
+      if (this.currentCategory != undefined) this.menuCategories.list[this.currentCategoryIndex].deactivate();
       this.currentCategoryIndex = newSelection;
       this.menuCategories.list[this.currentCategoryIndex].activate();
 
@@ -213,6 +236,13 @@ export class MenuWindow {
     // console.log(this.menuElements[0].ID);
     $("#" + updatedElements.ID).show();
   }
+
+  switchElements(newElements) {
+    $(this.currentElements.idSel).hide();
+    this.currentElements = newElements;
+    $(this.currentElements.idSel).show();
+    // this.updateSelection(this.currentCategoryIndex);
+  }
 }
 
 export class MenuElements {
@@ -231,7 +261,7 @@ export class MenuElements {
     this.currentEntry = this.menuEntries[this.currentSelection];
   }
 
-  populateElements(parentWindow) {
+  populateElements(parentWindow, attachedIndex) {
     let headerElements = $(this.idSel).find(".menu_elements_header");
     let populatedElements = $(this.idSel).find(".menu_elements_populated");
     headerElements.attr("id", this.ID + "_header");
@@ -242,6 +272,12 @@ export class MenuElements {
     // console.log(scrollableElements);
 
     this.menuEntries.forEach((entry, index) => {
+      console.log(entry.ID);
+      if (attachedIndex != undefined) {
+        let indexedID = `${entry.ID + "_" + attachedIndex}`;
+        entry.ID = indexedID;
+        entry.idSel = "#" + entry.ID;
+      }
       let entryTitle = getLocalizedString(entry.title);
       let parentID;
       if (entry instanceof MenuEntryHeader) parentID = headerID;
@@ -387,9 +423,11 @@ export class MenuEntryList extends MenuEntry {
 
     $(this.idSel).append(blankEntryList);
 
-    this.listItems.forEach((labelRight, index) => {
-      this.listCollection.items[index] = labelRight;
-    });
+    if (this.listItems != undefined && this.listItems.length > 0) {
+      this.listItems.forEach((labelRight, index) => {
+        this.listCollection.items[index] = labelRight;
+      });
+    }
 
     this.prepareList(this.idSel);
   }
@@ -595,16 +633,25 @@ export class MenuEntryHeader extends MenuEntry {
   }
 }
 
-export class MenuCategory extends MenuEntry {
+export class MenuCategory extends MenuEntryList {
   ID = "menu_category_default";
   title = "Menu Category";
   elementsList = [];
+  elementsCollection = [];
 
-  constructor(id, title, elementsList) {
-    super(id, title);
+  constructor(id, title, elementsList, elementsCollection) {
+    super(id, title, elementsList);
     this.ID = id;
     this.title = title;
     this.elementsList = elementsList;
+    this.elementsCollection = elementsCollection;
+  }
+
+  updateElements() {
+    console.log(this.parentElements);
+    let currentElements = this.elementsCollection[this.listCollection.index];
+    this.parentElements.switchElements(currentElements);
+    // this.parentElements.updateElements(this.parentElements.currentElementsIndex);
   }
 }
 

@@ -170,30 +170,33 @@ export let menuStatsSkillsShooting = new MenuEntryStat(
 export let menuStatsGeneralTime = new MenuEntry("menu_stats_general_time", "menu_stats_general_time_name");
 // export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
 
-export let menuStatsCategorySkills = new MenuCategory("menu_stats_category_skills", "menu_stats_category_skills_name", [
-  // menuStatsSkillsMichael,
-  // menuStatsSkillsFranklin,
-]);
-export let menuStatsCategoryGeneral = new MenuCategory(
-  "menu_stats_category_general",
-  "menu_stats_category_general_name",
-  [
-    // menuStatsGeneralMichael,
-  ]
-);
-
 export let menuStatsSkillsEntries = [menuStatsSkillsSpecial, menuStatsSkillsStamina, menuStatsSkillsShooting];
 export let menuStatsGeneralEntries = [menuStatsGeneralTime];
 
-export let menuStatsSkills = new MenuElements("menu_stats_skills", menuStatsSkillsEntries);
+export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
+export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsEntries);
+export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsEntries);
+export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsEntries);
 export let menuStatsGeneral = new MenuElements("menu_stats_general", menuStatsGeneralEntries);
+
+export let menuStatsCategorySkills = new MenuCategory(
+  "menu_stats_category_skills",
+  "menu_stats_category_skills_name",
+  ["Michael", "Franklin", "Trevor", "Online Character"],
+  [menuStatsSkillsMichael, menuStatsSkillsFranklin, menuStatsSkillsTrevor, menuStatsSkillsFreemode]
+);
+export let menuStatsCategoryGeneral = new MenuCategory(
+  "menu_stats_category_general",
+  "menu_stats_category_general_name",
+  ["Michael", "Franklin", "Trevor", "Online Character"]
+);
 
 export let menuStatsCategories = {
   ID: "menu_stats_categories",
   list: [menuStatsCategorySkills, menuStatsCategoryGeneral],
 };
 export let menuStatsArrows = new MenuArrows("menu_stats_arrows");
-export let menuStatsElements = [menuStatsSkills, menuStatsGeneral];
+export let menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneral];
 export let menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
 
 //#endregion
@@ -232,7 +235,7 @@ export let allMenuEntries = [
 ];
 
 export let allMenuElements = [
-  menuStatsSkills,
+  menuStatsSkillsMichael,
   menuStatsGeneral,
 
   menuSettingsGamepad,
