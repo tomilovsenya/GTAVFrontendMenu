@@ -698,11 +698,12 @@ export class MenuArrows {
   }
 
   createArrows(parentId) {
+    let elementsArea = $("#" + parentId).find(".menu_window_elements");
     let blankArrows = `<button id="${this.ID}" class="menu_arrows menu_arrows_full" tabindex="-1">
     <div id="${this.ID}_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
     <div id="${this.ID}_down" class="menu_arrows_zone menu_arrows_zone_down"></div></button>`;
 
-    $("#" + parentId).append(blankArrows);
+    elementsArea.append(blankArrows);
   }
 
   createEntry(title, parentId, parentElements, index) {

@@ -59,6 +59,7 @@
 
   --menu-wnd-width: 67.8125vw;
   --menu-wnd-height: 33.55vw;
+  --menu-wnd-height-arrows: calc(var(--menu-wnd-height) + var(--item-height));
   --menu-box-height: 43.125vw;
   --menu-box-padding-top: 5vw;
   --menu-box-padding-bottom: calc(100vh - var(--menu-box-height) - var(--menu-box-padding-top));
@@ -424,6 +425,16 @@ div.menu_window {
   animation: 250ms ease-out 0ms 1 normal none running fadeInInactiveAnimation;
   position: relative;
   display: flex;
+  flex-direction: row;
+  gap: var(--tab-margin);
+}
+
+div.menu_window_elements {
+  width: var(--menu-elements-width);
+  height: var(--menu-wnd-height-arrows);
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-margin);
 }
 
 div.menu_window_inactive {
@@ -776,7 +787,12 @@ div.menu_elements_header button.menu_entry {
   background-clip: padding-box;
 }
 
+div.menu_elements_noarrows {
+  max-height: var(--menu-wnd-height);
+}
+
 div.menu_elements_footer {
+  background-color: var(--black-bg-color);
   width: 100%;
 }
 
@@ -893,10 +909,11 @@ button.menu_arrows {
   background-origin: content-box;
   background-position: right;
   background-size: contain;
-  width: var(--menu-elements-width);
+  /* width: var(--menu-elements-width); */
+  width: 100%;
   height: var(--item-height);
   border: 0px;
-  margin-top: var(--item-margin);
+  /* margin-top: var(--item-margin); */
   float: right;
   display: flex;
   justify-content: flex-start;
@@ -1108,15 +1125,16 @@ div.menu_elements_full_width {
 }
 
 div.menu_elements {
-  background-color: var(--black-bg-color);
+  /* background-color: var(--black-bg-color); */
   /* width: 866px; */
   /* height: 686px; */
   /* width: var(--menu-elements-width); */
-  width: var(--menu-elements-width);
+  width: 100%;
   max-height: 100%;
   border: 0px;
   float: right;
   display: flex;
+  gap: var(--item-margin);
   flex-direction: column;
   justify-content: flex-start;
   /* margin-bottom: 0.95%; */
@@ -1132,6 +1150,7 @@ div.menu_elements_transparent {
 }
 
 div.menu_elements_populated {
+  background-color: var(--black-bg-color);
   gap: var(--item-margin);
 }
 
@@ -1152,7 +1171,7 @@ div.menu_elements_scrollable .menu_entry:last-of-type {
 }
 
 div.menu_elements_scrollable .menu_entry {
-  /* background-color: transparent; */
+  background-color: transparent;
 }
 
 div.menu_background_rockstar {
@@ -1477,7 +1496,7 @@ div#menu_stats {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  display: none;
+  /* display: none; */
   flex-wrap: nowrap;
   /* opacity: 50%; */
 }
@@ -1702,7 +1721,7 @@ div.menu_settings {
   flex-direction: row;
   justify-content: space-between;
   /* align-items: stretch; */
-  display: none;
+  /* display: none; */
   flex-wrap: nowrap;
   /* flex-wrap: nowrap; */
   /* display: none; */
