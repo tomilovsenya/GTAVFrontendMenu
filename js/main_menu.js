@@ -10,37 +10,17 @@ const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 
 let isCategorySelected = false;
 let activeTab = null;
-let activeCategory = null;
-let activeCategoryElements = null;
-let activeEntryMiddle = null;
-let activeScrollableElements = null;
 let initWindow = menuContent.MENU_TABS[2];
 let activeWindow = initWindow;
 
 export let currentWindow = menuContent.menuStats;
-let currentEntry;
-
-let currentOverflows = {
-  // Current overflow values for specific scrollable elements containers: [topOverflow, bottomOverflow]
-  overflowsDialogue: [-1, 8],
-  overflowsStatsGeneral: [-1, 16],
-  overflowsStatsCrimes: [-1, 16],
-};
 
 //
 // MODULES IMPORT
 //
 
 import * as menuContent from "./menu_modules/menu_content.js";
-import {
-  MenuCategory,
-  MenuElements,
-  MenuEntry,
-  MenuEntryList,
-  MenuWindow,
-  findMenuEntryByID,
-} from "./menu_modules/menu_entries.js";
-import { populateStatsBars } from "./menu_modules/menu_stats_skills.js";
+import { MenuCategory, MenuWindow, findMenuEntryByID } from "./menu_modules/menu_entries.js";
 import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
 import {
   getLocalizedString,
@@ -49,7 +29,6 @@ import {
   updateMenuLocalization,
 } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
-import { updateFriendCounter, updateFriendName } from "./menu_modules/menu_friends.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
@@ -217,20 +196,18 @@ window.addEventListener(
       localizeSingleMenu(menuContent.menuSettings, "russian");
     }
     if (["KeyH"].indexOf(e.code) > -1) {
-      console.log(currentWindow);
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
+    }
+    if (["KeyN"].indexOf(e.code) > -1) {
+    }
+    if (["KeyM"].indexOf(e.code) > -1) {
     }
     if (["PageUp"].indexOf(e.code) > -1) {
       currentWindow.currentElements.scrollElements(0);
     }
     if (["PageDown"].indexOf(e.code) > -1) {
       currentWindow.currentElements.scrollElements(1);
-    }
-    if (["KeyN"].indexOf(e.code) > -1) {
-      currentWindow.currentElements.resetEmptyElements();
-    }
-    if (["KeyM"].indexOf(e.code) > -1) {
     }
     if (["Enter"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -289,18 +266,14 @@ function clickTab() {
 
 function setTabActive() {
   $(this).addClass("menu_button_active");
-  activeTab.focus();
-  playSFX(SFX_TAB_NAVIGATE);
+  // activeTab.focus();
+  // playSFX(SFX_TAB_NAVIGATE);
   switchActiveWindow($(this));
   activeWindowHandler(activeTab);
 }
 
 function setTabDisabled() {
   $(this).removeClass("menu_button_active");
-  if (activeCategory != null) disableCategory(activeCategory);
-  else if (activeEntryMiddle != null) disableEntry(activeEntryMiddle);
-  activeCategory = null;
-  activeEntryMiddle = null;
 }
 
 //
@@ -382,31 +355,6 @@ export function scrollTab(scrollDir) {
 // SCROLL ELEMENTS
 //
 
-$("#menu_arrows_brief_up").click(function () {
-  scrollBrief(0);
-});
-$("#menu_arrows_brief_down").click(function () {
-  scrollBrief(1);
-});
-$("#menu_arrows_stats_up").click(function () {
-  scrollStats(0);
-});
-$("#menu_arrows_stats_down").click(function () {
-  scrollStats(1);
-});
-$("#menu_arrows_game_up").click(function () {
-  scrollGame(0);
-});
-$("#menu_arrows_game_down").click(function () {
-  scrollGame(1);
-});
-$("#menu_arrows_friends_up").click(function () {
-  scrollFriends(0);
-});
-$("#menu_arrows_friends_down").click(function () {
-  scrollFriends(1);
-});
-
 //
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
 //
@@ -467,13 +415,6 @@ function updateEventHandlers() {
   $(".menu_window").on("click", ".menu_arrows_zone_down", function () {
     currentWindow.clickArrow(1);
   });
-
-  // $("div.element_progress_zone_left").click(function () {
-  //   scrollPerc(0);
-  // });
-  // $("div.element_progress_zone_right").click(function () {
-  //   scrollPerc(1);
-  // });
 
   $(".menu_categories").on("click", ".menu_category", clickCategory);
   $(".menu_elements_populated").on("click", ".menu_entry", clickEntry);
