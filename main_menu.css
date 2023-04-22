@@ -776,6 +776,10 @@ div.menu_elements_header button.menu_entry {
   background-clip: padding-box;
 }
 
+div.menu_elements_footer {
+  width: 100%;
+}
+
 div.element_progress {
   width: 22.5%;
   height: 0.5vw;
@@ -1115,7 +1119,6 @@ div.menu_elements {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: var(--item-margin);
   /* margin-bottom: 0.95%; */
   /* z-index: 1; */
   /* align-self: right; */
@@ -1126,7 +1129,10 @@ div.menu_elements {
 
 div.menu_elements_transparent {
   background-color: transparent !important;
+}
 
+div.menu_elements_populated {
+  gap: var(--item-margin);
 }
 
 div.menu_elements_scrollable {
@@ -1536,6 +1542,7 @@ div.element_info {
   font-family: "London60";
   font-size: var(--menu-font-size);
   text-align: left;
+  width: auto;
   min-height: 27.5%;
   max-height: 27.5%;
   height: auto;
@@ -1543,6 +1550,7 @@ div.element_info {
   /* margin-top: 10px; */
   /* line-height: 26.5px; */
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   padding-left: var(--item-padding-sides);
   padding-right: 0.75%;
@@ -1551,7 +1559,7 @@ div.element_info {
 }
 
 span.element_info_text {
-  width: 95%;
+  width: 100%;
   line-height: 140%;
   letter-spacing: var(--menu-letter-spacing);
   /* padding-top: 8px; */
@@ -1559,11 +1567,14 @@ span.element_info_text {
   float: left;
 }
 
-img.element_info_icon {
-  width: 3%;
-  height: 3%;
+div.element_info_icon {
+  width: 1.5vw;
   float: right;
-  /* padding-top: 6px; */
+}
+
+img.element_info_icon {
+  width: 100%;
+  float: right;
   vertical-align: top;
   pointer-events: none;
 }

@@ -302,9 +302,11 @@ window.addEventListener(
     //   scrollTab(1);
     // }
     if (["KeyF"].indexOf(e.code) > -1) {
+      localizeSingleMenu(menuContent.menuStats, "american");
       localizeSingleMenu(menuContent.menuSettings, "american");
     }
     if (["KeyG"].indexOf(e.code) > -1) {
+      localizeSingleMenu(menuContent.menuStats, "russian");
       localizeSingleMenu(menuContent.menuSettings, "russian");
     }
     if (["KeyH"].indexOf(e.code) > -1) {
