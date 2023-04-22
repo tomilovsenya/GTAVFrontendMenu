@@ -109,8 +109,8 @@ async function loadMenu() {
   // playSFX(SFX_MENU_MUSIC);
   await localizeMenu();
   commonMenu.setMenuColor();
-  commonMenu.setHeaderTitle("Would You Fucking Work?");
-  commonMenu.setCharMoney(500, 10000);
+  commonMenu.setHeaderTitle("Frontend Main Menu");
+  commonMenu.setCharMoney(250000, 1000000000);
   commonMenu.updateHeaderStats();
   setInterval(commonMenu.updateHeaderStats, 1000);
   commonMenu.drawArrows();
