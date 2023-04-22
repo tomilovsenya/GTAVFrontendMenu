@@ -272,15 +272,17 @@ export class MenuElements {
   active = true;
   enterable = true;
   arrowsRequired = false;
+  evenEntriesDarker = false;
   parentWindow;
 
-  constructor(id, menuEntries, isEnterable) {
+  constructor(id, menuEntries, isEnterable, evenEntriesDarker) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
     this.enterable = isEnterable != undefined ? isEnterable : true;
     this.currentEntry = this.menuEntries[this.currentSelection];
     this.arrowsRequired = this.menuEntries.length > 16 ? true : false;
+    this.evenEntriesDarker = evenEntriesDarker != undefined ? evenEntriesDarker : false;
   }
 
   populateElements(parentWindow) {
@@ -359,6 +361,20 @@ export class MenuElements {
     this.updateSelection(newSelection);
   }
 
+  drawEvenEntriesDarker() {
+    if (!this.evenEntriesDarker) return;
+
+    let evenEntries = [];
+
+    this.menuEntries.forEach((entry, index) => {
+      if (index % 2 == 0) evenEntries.push(entry);
+    });
+
+    evenEntries.forEach((entry) => {
+      $(entry.idSel).addClass("");
+    });
+  }
+
   scrollEmptyElements(scrollDir) {
     if (scrollDir == 0) {
       if (this.currentEntryIndexTop == 0) return;
@@ -375,6 +391,8 @@ export class MenuElements {
       this.currentEntryIndexTop += 1;
       this.currentEntryIndexBottom += 1;
     }
+
+    if (this.evenEntriesDarker) this.#setDarkerBackground(this.currentEntryIndexTop % 2 == 0);
   }
 
   resetEmptyElementsScroll() {
@@ -383,6 +401,20 @@ export class MenuElements {
 
     let topEntry = $(this.menuEntries[this.currentEntryIndexTop].idSel)[0];
     if (topEntry != undefined) topEntry.scrollIntoViewIfNeeded(false);
+
+    if (this.evenEntriesDarker) this.#setDarkerBackground(true);
+  }
+
+  #setDarkerBackground(isEven) {
+    let populatedElements = $(this.idSel).find(".menu_elements_populated");
+
+    if (isEven) {
+      populatedElements.removeClass("menu_elements_odd_darker");
+      populatedElements.addClass("menu_elements_even_darker");
+    } else {
+      populatedElements.removeClass("menu_elements_even_darker");
+      populatedElements.addClass("menu_elements_odd_darker");
+    }
   }
 
   activate() {

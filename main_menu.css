@@ -1169,6 +1169,14 @@ div.menu_elements_populated {
   gap: var(--item-margin);
 }
 
+div.menu_elements_even_darker > .menu_entry:nth-child(even) {
+  background-color: #00000040 !important;
+}
+
+div.menu_elements_odd_darker > .menu_entry:nth-child(odd) {
+  background-color: #00000040 !important;
+}
+
 div.menu_elements_scrollable {
   width: 100%;
   /* background-color: var(--black-bg-color); */
