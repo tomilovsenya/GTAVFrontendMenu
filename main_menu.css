@@ -57,8 +57,8 @@
   --menu-safezone-top: 1vw;
   --menu-safezone-sides: 1.25vw;
 
-  --menu-wnd-width: 67.8125vw;
-  --menu-wnd-height: 33.55vw;
+  --menu-wnd-width: 67.5vw;
+  --menu-wnd-height: 34vw;
   --menu-wnd-height-arrows: calc(var(--menu-wnd-height) + var(--item-height));
   --menu-box-height: 43.125vw;
   --menu-box-padding-top: 5vw;
@@ -71,8 +71,9 @@
   --menu-elements-width: calc(var(--tab-width) * 4 + var(--tab-margin) * 3);
   --menu-elements-half-width: 49.825%;
 
-  --item-margin: 0.1625vw;
-  --item-height: 1.945vw;
+  /* --item-margin: 0.1625vw; */
+  --item-margin: calc((var(--menu-wnd-height) - (var(--item-height) * 16)) / 15);
+  --item-height: 1.95vw;
   --item-double-height: calc(var(--item-height) * 2 + var(--item-margin));
   --item-padding-sides: 0.6vw;
   --item-padding-top: 0.45vw;
