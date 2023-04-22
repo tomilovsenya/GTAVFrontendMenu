@@ -568,12 +568,14 @@ export class MenuEntryStat extends MenuEntry {
   statBars = 5;
   statID;
   statMeterBars = [];
+  statColor = "bg_color_default";
 
-  constructor(id, title, statPerc, statBars) {
+  constructor(id, title, statPerc, statBars, statColorClass) {
     super(id, title);
     this.statID = id + "_stat";
     this.statPerc = statPerc;
     this.statBars = statBars;
+    if (statColorClass != undefined) this.statColor = statColorClass;
 
     // if (progressPerc >= 0 && progressPerc <= 100) {
     //   let stepValue = 100 / this.progressSteps;
@@ -604,6 +606,8 @@ export class MenuEntryStat extends MenuEntry {
       let filledBar = $(`<div class="element_stat_perc_filled"></div>`);
       let elementStatPerc = $(`<div id="${this.statID + "_bar_" + i}" class="element_stat_perc"></div>`);
       elementStatPerc.append(filledBar);
+      filledBar.addClass(this.statColor);
+      elementStatPerc.addClass(this.statColor + "_alpha");
       this.statMeterBars.push(elementStatPerc);
     }
 

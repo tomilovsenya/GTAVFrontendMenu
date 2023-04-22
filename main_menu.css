@@ -319,36 +319,44 @@ C {
   background-color: inherit;
 }
 
+.bg_color_default {
+  background-color: var(--menu-color) !important;
+}
+
+.bg_color_default_alpha {
+  background-color: var(--menu-color-alpha) !important;
+}
+
 .bg_color_michael {
-  background-color: var(--hud-color-michael);
+  background-color: var(--hud-color-michael) !important;
 }
 
 .bg_color_michael_alpha {
-  background-color: rgba(101, 180, 212, 0.25);
+  background-color: rgba(101, 180, 212, 0.25) !important;
 }
 
 .bg_color_franklin {
-  background-color: var(--hud-color-franklin);
+  background-color: var(--hud-color-franklin) !important;
 }
 
 .bg_color_franklin_alpha {
-  background-color: rgba(171, 237, 171, 0.25);
+  background-color: rgba(171, 237, 171, 0.25) !important;
 }
 
 .bg_color_trevor {
-  background-color: var(--hud-color-trevor);
+  background-color: var(--hud-color-trevor) !important;
 }
 
 .bg_color_trevor_alpha {
-  background-color: rgba(255, 163, 87, 0.25);
+  background-color: rgba(255, 163, 87, 0.25) !important;
 }
 
 .bg_color_freemode {
-  background-color: var(--hud-color-freemode);
+  background-color: var(--hud-color-freemode) !important;
 }
 
 .bg_color_freemode_alpha {
-  background-color: rgba(45, 110, 185, 0.25);
+  background-color: rgba(45, 110, 185, 0.25) !important;
 }
 
 svg.blip_icon {
