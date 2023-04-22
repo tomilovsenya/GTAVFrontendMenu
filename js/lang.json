@@ -135,6 +135,26 @@
     "american": "On",
     "russian": "Вкл."
   },
+  {
+    "gxt": "menu_common_michael",
+    "american": "Michael",
+    "russian": "Майкл"
+  },
+  {
+    "gxt": "menu_common_franklin",
+    "american": "Franklin",
+    "russian": "Франклин"
+  },
+  {
+    "gxt": "menu_common_trevor",
+    "american": "Trevor",
+    "russian": "Тревор"
+  },
+  {
+    "gxt": "menu_common_freemode",
+    "american": "Online Character",
+    "russian": "Сетевой персонаж"
+  },
 
   {
     "gxt": "menu_brief_category_0",

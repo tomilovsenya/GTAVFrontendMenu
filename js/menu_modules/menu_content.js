@@ -447,13 +447,13 @@ export let menuStatsGeneralFreemode = new MenuElements("menu_stats_general_freem
 export let menuStatsCategorySkills = new MenuCategory(
   "menu_stats_category_skills",
   "menu_stats_category_skills_name",
-  ["Michael", "Franklin", "Trevor", "Online Character"],
+  ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
   [menuStatsSkillsMichael, menuStatsSkillsFranklin, menuStatsSkillsTrevor, menuStatsSkillsFreemode]
 );
 export let menuStatsCategoryGeneral = new MenuCategory(
   "menu_stats_category_general",
   "menu_stats_category_general_name",
-  ["Michael", "Franklin", "Trevor", "Online Character"],
+  ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
   [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode]
 );
 

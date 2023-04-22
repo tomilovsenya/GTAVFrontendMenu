@@ -503,9 +503,17 @@ function clickCategory() {
 
 export function clickEntry() {
   if (!currentWindow.active) return;
+
   let clickedEntry = findMenuEntryByID($(this).attr("id"));
-  if (clickedEntry.isEmpty) return;
+  if (clickedEntry == undefined) {
+    console.log("Entry not found by ID: " + $(this).attr("id"));
+    return;
+  }
   if (clickedEntry instanceof MenuCategory) return;
+  if (clickedEntry.isEmpty) {
+    console.log("Clicked entry is empty: " + $(this).attr("id"));
+    return;
+  }
 
   clickedEntry.parentElements.clickEntry(clickedEntry);
   // triggerEntry($(this));
@@ -1002,7 +1010,7 @@ function updateEventHandlers() {
   // });
 
   $(".menu_categories").on("click", ".menu_category", clickCategory);
-  $(".menu_elements").on("click", ".menu_entry", clickEntry);
+  $(".menu_elements_populated").on("click", ".menu_entry", clickEntry);
   $(".menu_window_inactive").click(function (e) {
     currentWindow.activate();
   });
