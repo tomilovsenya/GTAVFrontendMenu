@@ -147,67 +147,67 @@ export let menuSettings = new MenuWindow(
 //#region menuStats
 
 export let menuStatsSkillsMichaelSpecial = new MenuEntryStat(
-  "menu_stats_skills_special",
+  "menu_stats_skills_michael_special",
   "menu_stats_skills_special_name",
   50,
   5
 );
 export let menuStatsSkillsMichaelStamina = new MenuEntryStat(
-  "menu_stats_skills_stamina",
+  "menu_stats_skills_michael_stamina",
   "menu_stats_skills_stamina_name",
   25,
   5
 );
 export let menuStatsSkillsMichaelShooting = new MenuEntryStat(
-  "menu_stats_skills_shooting",
+  "menu_stats_skills_michael_shooting",
   "menu_stats_skills_shooting_name",
   65,
   5
 );
 export let menuStatsSkillsFranklinSpecial = new MenuEntryStat(
-  "menu_stats_skills_special",
+  "menu_stats_skills_franklin_special",
   "menu_stats_skills_special_name",
   80,
   5
 );
 export let menuStatsSkillsFranklinStamina = new MenuEntryStat(
-  "menu_stats_skills_stamina",
+  "menu_stats_skills_franklin_stamina",
   "menu_stats_skills_stamina_name",
   60,
   5
 );
 export let menuStatsSkillsFranklinShooting = new MenuEntryStat(
-  "menu_stats_skills_shooting",
+  "menu_stats_skills_franklin_shooting",
   "menu_stats_skills_shooting_name",
   20,
   5
 );
 export let menuStatsSkillsTrevorSpecial = new MenuEntryStat(
-  "menu_stats_skills_special",
+  "menu_stats_skills_trevor_special",
   "menu_stats_skills_special_name",
   70,
   5
 );
 export let menuStatsSkillsTrevorStamina = new MenuEntryStat(
-  "menu_stats_skills_stamina",
+  "menu_stats_skills_trevor_stamina",
   "menu_stats_skills_stamina_name",
   43,
   5
 );
 export let menuStatsSkillsTrevorShooting = new MenuEntryStat(
-  "menu_stats_skills_shooting",
+  "menu_stats_skills_trevor_shooting",
   "menu_stats_skills_shooting_name",
   56,
   5
 );
 export let menuStatsSkillsFreemodeStamina = new MenuEntryStat(
-  "menu_stats_skills_stamina",
+  "menu_stats_skills_freemode_stamina",
   "menu_stats_skills_stamina_name",
   43,
   5
 );
 export let menuStatsSkillsFreemodeShooting = new MenuEntryStat(
-  "menu_stats_skills_shooting",
+  "menu_stats_skills_freemode_shooting",
   "menu_stats_skills_shooting_name",
   56,
   5

@@ -90,7 +90,7 @@ export class MenuWindow {
 
       category.elementsCollection.forEach((elements, index) => {
         if (index > 0) {
-          elements.populateElements(this, index);
+          elements.populateElements(this);
           $(elements.idSel).hide();
         }
       });
@@ -261,7 +261,7 @@ export class MenuElements {
     this.currentEntry = this.menuEntries[this.currentSelection];
   }
 
-  populateElements(parentWindow, attachedIndex) {
+  populateElements(parentWindow) {
     let headerElements = $(this.idSel).find(".menu_elements_header");
     let populatedElements = $(this.idSel).find(".menu_elements_populated");
     headerElements.attr("id", this.ID + "_header");
@@ -272,12 +272,6 @@ export class MenuElements {
     // console.log(scrollableElements);
 
     this.menuEntries.forEach((entry, index) => {
-      console.log(entry.ID);
-      if (attachedIndex != undefined) {
-        let indexedID = `${entry.ID + "_" + attachedIndex}`;
-        entry.ID = indexedID;
-        entry.idSel = "#" + entry.ID;
-      }
       let entryTitle = getLocalizedString(entry.title);
       let parentID;
       if (entry instanceof MenuEntryHeader) parentID = headerID;
