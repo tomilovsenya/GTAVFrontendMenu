@@ -146,22 +146,70 @@ export let menuSettings = new MenuWindow(
 
 //#region menuStats
 
-export let menuStatsSkillsSpecial = new MenuEntryStat(
+export let menuStatsSkillsMichaelSpecial = new MenuEntryStat(
   "menu_stats_skills_special",
   "menu_stats_skills_special_name",
   50,
   5
 );
-export let menuStatsSkillsStamina = new MenuEntryStat(
+export let menuStatsSkillsMichaelStamina = new MenuEntryStat(
   "menu_stats_skills_stamina",
   "menu_stats_skills_stamina_name",
   25,
   5
 );
-export let menuStatsSkillsShooting = new MenuEntryStat(
+export let menuStatsSkillsMichaelShooting = new MenuEntryStat(
   "menu_stats_skills_shooting",
   "menu_stats_skills_shooting_name",
   65,
+  5
+);
+export let menuStatsSkillsFranklinSpecial = new MenuEntryStat(
+  "menu_stats_skills_special",
+  "menu_stats_skills_special_name",
+  80,
+  5
+);
+export let menuStatsSkillsFranklinStamina = new MenuEntryStat(
+  "menu_stats_skills_stamina",
+  "menu_stats_skills_stamina_name",
+  60,
+  5
+);
+export let menuStatsSkillsFranklinShooting = new MenuEntryStat(
+  "menu_stats_skills_shooting",
+  "menu_stats_skills_shooting_name",
+  20,
+  5
+);
+export let menuStatsSkillsTrevorSpecial = new MenuEntryStat(
+  "menu_stats_skills_special",
+  "menu_stats_skills_special_name",
+  70,
+  5
+);
+export let menuStatsSkillsTrevorStamina = new MenuEntryStat(
+  "menu_stats_skills_stamina",
+  "menu_stats_skills_stamina_name",
+  43,
+  5
+);
+export let menuStatsSkillsTrevorShooting = new MenuEntryStat(
+  "menu_stats_skills_shooting",
+  "menu_stats_skills_shooting_name",
+  56,
+  5
+);
+export let menuStatsSkillsFreemodeStamina = new MenuEntryStat(
+  "menu_stats_skills_stamina",
+  "menu_stats_skills_stamina_name",
+  43,
+  5
+);
+export let menuStatsSkillsFreemodeShooting = new MenuEntryStat(
+  "menu_stats_skills_shooting",
+  "menu_stats_skills_shooting_name",
+  56,
   5
 );
 // export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
@@ -170,13 +218,28 @@ export let menuStatsSkillsShooting = new MenuEntryStat(
 export let menuStatsGeneralTime = new MenuEntry("menu_stats_general_time", "menu_stats_general_time_name");
 // export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
 
-export let menuStatsSkillsEntries = [menuStatsSkillsSpecial, menuStatsSkillsStamina, menuStatsSkillsShooting];
+export let menuStatsSkillsMichaelEntries = [
+  menuStatsSkillsMichaelSpecial,
+  menuStatsSkillsMichaelStamina,
+  menuStatsSkillsMichaelShooting,
+];
+export let menuStatsSkillsFranklinEntries = [
+  menuStatsSkillsFranklinSpecial,
+  menuStatsSkillsFranklinStamina,
+  menuStatsSkillsFranklinShooting,
+];
+export let menuStatsSkillsTrevorEntries = [
+  menuStatsSkillsTrevorSpecial,
+  menuStatsSkillsTrevorStamina,
+  menuStatsSkillsTrevorShooting,
+];
+export let menuStatsSkillsFreemodeEntries = [menuStatsSkillsFreemodeStamina, menuStatsSkillsFreemodeShooting];
 export let menuStatsGeneralEntries = [menuStatsGeneralTime];
 
-export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
-export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsEntries);
-export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsEntries);
-export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsEntries);
+export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsMichaelEntries);
+export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsFranklinEntries);
+export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsTrevorEntries);
+export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsFreemodeEntries);
 export let menuStatsGeneral = new MenuElements("menu_stats_general", menuStatsGeneralEntries);
 
 export let menuStatsCategorySkills = new MenuCategory(
@@ -205,9 +268,9 @@ export let allMenuEntries = [
   menuStatsCategorySkills,
   menuStatsCategoryGeneral,
 
-  menuStatsSkillsSpecial,
-  menuStatsSkillsStamina,
-  menuStatsSkillsShooting,
+  menuStatsSkillsMichaelSpecial,
+  menuStatsSkillsMichaelStamina,
+  menuStatsSkillsMichaelShooting,
 
   menuStatsGeneralTime,
 

@@ -265,7 +265,7 @@ export class MenuElements {
     let headerElements = $(this.idSel).find(".menu_elements_header");
     let populatedElements = $(this.idSel).find(".menu_elements_populated");
     headerElements.attr("id", this.ID + "_header");
-    populatedElements.attr("id", this.ID + "_scrollable");
+    populatedElements.attr("id", this.ID + "_populated");
     let headerID = headerElements.attr("id");
     let scrollableID = populatedElements.attr("id");
     // console.log(headerElements);
