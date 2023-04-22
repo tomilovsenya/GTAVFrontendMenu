@@ -193,15 +193,26 @@ export class MenuWindow {
     } else {
       if (this.currentCategory != undefined) this.menuCategories.list[this.currentCategoryIndex].deactivate();
       this.currentCategoryIndex = newSelection;
+      this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
       this.menuCategories.list[this.currentCategoryIndex].activate();
 
       let oldElements = $("#" + this.currentElements.ID);
-      let newElements = $("#" + this.menuElements[newSelection].ID);
+      let newElements;
+
+      if (this.currentCategory.hasMultipleElements) {
+        newElements = $("#" + this.currentCategory.currentElements.ID);
+        console.log(newElements);
+      } else {
+        newElements = $("#" + this.menuElements[newSelection].ID);
+        console.log(newElements);
+      }
+
       this.currentElementsIndex = newSelection;
       oldElements.hide();
       newElements.show();
 
-      this.currentElements = this.menuElements[newSelection];
+      if (this.currentCategory.hasMultipleElements) this.currentElements = this.currentCategory.currentElements;
+      else this.currentElements = this.menuElements[newSelection];
     }
   }
 
@@ -632,6 +643,9 @@ export class MenuCategory extends MenuEntryList {
   title = "Menu Category";
   elementsList = [];
   elementsCollection = [];
+  currentElementsIndex = 0;
+  currentElements;
+  hasMultipleElements = false;
 
   constructor(id, title, elementsList, elementsCollection) {
     super(id, title, elementsList);
@@ -639,12 +653,20 @@ export class MenuCategory extends MenuEntryList {
     this.title = title;
     this.elementsList = elementsList;
     this.elementsCollection = elementsCollection;
+    if (elementsCollection != undefined) {
+      this.hasMultipleElements = this.elementsCollection.length > 1 ? true : false;
+      this.currentElements = this.elementsCollection[this.currentElementsIndex];
+    }
+    console.log(this.ID + this.hasMultipleElements);
   }
 
   updateElements() {
-    console.log(this.parentElements);
-    let currentElements = this.elementsCollection[this.listCollection.index];
-    this.parentElements.switchElements(currentElements);
+    if (!this.hasMultipleElements) return;
+
+    this.currentElementsIndex = this.listCollection.index;
+    this.currentElements = this.elementsCollection[this.currentElementsIndex];
+    console.log(this.currentElementsIndex);
+    this.parentElements.switchElements(this.currentElements);
     // this.parentElements.updateElements(this.parentElements.currentElementsIndex);
   }
 }

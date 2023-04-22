@@ -215,7 +215,19 @@ export let menuStatsSkillsFreemodeShooting = new MenuEntryStat(
 // export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsEntries);
 // export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsEntries);
 
-export let menuStatsGeneralTime = new MenuEntry("menu_stats_general_time", "menu_stats_general_time_name");
+export let menuStatsGeneralMichaelTime = new MenuEntry(
+  "menu_stats_general_michael_time",
+  "menu_stats_general_time_name"
+);
+export let menuStatsGeneralFranklinTime = new MenuEntry(
+  "menu_stats_general_franklin_time",
+  "menu_stats_general_time_name"
+);
+export let menuStatsGeneralTrevorTime = new MenuEntry("menu_stats_general_trevor_time", "menu_stats_general_time_name");
+export let menuStatsGeneralFreemodeTime = new MenuEntry(
+  "menu_stats_general_freemode_time",
+  "menu_stats_general_time_name"
+);
 // export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
 
 export let menuStatsSkillsMichaelEntries = [
@@ -234,13 +246,20 @@ export let menuStatsSkillsTrevorEntries = [
   menuStatsSkillsTrevorShooting,
 ];
 export let menuStatsSkillsFreemodeEntries = [menuStatsSkillsFreemodeStamina, menuStatsSkillsFreemodeShooting];
-export let menuStatsGeneralEntries = [menuStatsGeneralTime];
+
+export let menuStatsGeneralMichaelEntries = [menuStatsGeneralMichaelTime];
+export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
+export let menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
+export let menuStatsGeneralFreemodeEntries = [menuStatsGeneralFreemodeTime];
 
 export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsMichaelEntries);
 export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsFranklinEntries);
 export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsTrevorEntries);
 export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsFreemodeEntries);
-export let menuStatsGeneral = new MenuElements("menu_stats_general", menuStatsGeneralEntries);
+export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralMichaelEntries);
+export let menuStatsGeneralFranklin = new MenuElements("menu_stats_general_franklin", menuStatsGeneralFranklinEntries);
+export let menuStatsGeneralTrevor = new MenuElements("menu_stats_general_trevor", menuStatsGeneralTrevorEntries);
+export let menuStatsGeneralFreemode = new MenuElements("menu_stats_general_freemode", menuStatsGeneralFreemodeEntries);
 
 export let menuStatsCategorySkills = new MenuCategory(
   "menu_stats_category_skills",
@@ -251,7 +270,8 @@ export let menuStatsCategorySkills = new MenuCategory(
 export let menuStatsCategoryGeneral = new MenuCategory(
   "menu_stats_category_general",
   "menu_stats_category_general_name",
-  ["Michael", "Franklin", "Trevor", "Online Character"]
+  ["Michael", "Franklin", "Trevor", "Online Character"],
+  [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode]
 );
 
 export let menuStatsCategories = {
@@ -259,7 +279,7 @@ export let menuStatsCategories = {
   list: [menuStatsCategorySkills, menuStatsCategoryGeneral],
 };
 export let menuStatsArrows = new MenuArrows("menu_stats_arrows");
-export let menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneral];
+export let menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael];
 export let menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
 
 //#endregion
@@ -272,7 +292,7 @@ export let allMenuEntries = [
   menuStatsSkillsMichaelStamina,
   menuStatsSkillsMichaelShooting,
 
-  menuStatsGeneralTime,
+  menuStatsGeneralMichaelTime,
 
   menuSettingsCategoryGraphics,
   menuSettingsCategoryPause,
@@ -299,7 +319,7 @@ export let allMenuEntries = [
 
 export let allMenuElements = [
   menuStatsSkillsMichael,
-  menuStatsGeneral,
+  menuStatsGeneralMichael,
 
   menuSettingsGamepad,
   menuSettingsGraphics,
