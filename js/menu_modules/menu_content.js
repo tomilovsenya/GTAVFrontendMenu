@@ -501,7 +501,58 @@ export let menuStatsGeneralFreemodeTime = new MenuEntryList(
   ["0:00"],
   true
 );
-// export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralEntries);
+
+export let menuStatsChecklistEmpty0 = new MenuEntryList("menu_stats_checklist_empty_0", "", [""], true);
+export let menuStatsChecklistMichael = new MenuEntryList(
+  "menu_stats_checklist_michael",
+  "menu_stats_checklist_michael_name",
+  ["25d 2h 5m 40s"],
+  true
+);
+export let menuStatsChecklistFranklin = new MenuEntryList(
+  "menu_stats_checklist_franklin",
+  "menu_stats_checklist_franklin_name",
+  ["2d 2h 5m 40s"],
+  true
+);
+export let menuStatsChecklistTrevor = new MenuEntryList(
+  "menu_stats_checklist_trevor",
+  "menu_stats_checklist_trevor_name",
+  ["2d 2h 5m 40s"],
+  true
+);
+export let menuStatsChecklistEmpty1 = new MenuEntryList("menu_stats_checklist_empty_1", "", [""], true);
+export let menuStatsChecklistMissions = new MenuEntryList(
+  "menu_stats_checklist_missions",
+  "menu_stats_checklist_missions_name",
+  ["0 / 69"],
+  true
+);
+export let menuStatsChecklistHobbies = new MenuEntryList(
+  "menu_stats_checklist_hobbies",
+  "menu_stats_checklist_hobbies_name",
+  ["0 / 42"],
+  true
+);
+export let menuStatsChecklistStrangers = new MenuEntryList(
+  "menu_stats_checklist_strangers",
+  "menu_stats_checklist_strangers_name",
+  ["0 / 20"],
+  true
+);
+export let menuStatsChecklistRandom = new MenuEntryList(
+  "menu_stats_checklist_random",
+  "menu_stats_checklist_random_name",
+  ["0 / 14"],
+  true
+);
+export let menuStatsChecklistMisc = new MenuEntryList(
+  "menu_stats_checklist_misc",
+  "menu_stats_checklist_misc_name",
+  ["0 / 16"],
+  true
+);
+export let menuStatsChecklistEmpty2 = new MenuEntryList("menu_stats_checklist_empty_2", "", [""], true);
 
 export let menuStatsSkillsMichaelEntries = [
   menuStatsSkillsMichaelSpecial,
@@ -568,14 +619,69 @@ export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
 export let menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
 export let menuStatsGeneralFreemodeEntries = [menuStatsGeneralFreemodeTime];
 
-export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsMichaelEntries, false, true);
-export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsFranklinEntries, false, true);
-export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsTrevorEntries, false, true);
-export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsFreemodeEntries, false, true);
-export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralMichaelEntries, false, true);
-export let menuStatsGeneralFranklin = new MenuElements("menu_stats_general_franklin", menuStatsGeneralFranklinEntries, false, true);
-export let menuStatsGeneralTrevor = new MenuElements("menu_stats_general_trevor", menuStatsGeneralTrevorEntries, false, true);
-export let menuStatsGeneralFreemode = new MenuElements("menu_stats_general_freemode", menuStatsGeneralFreemodeEntries, false, true);
+export let menuStatsChecklistEntries = [
+  menuStatsChecklistEmpty0,
+  menuStatsChecklistMichael,
+  menuStatsChecklistFranklin,
+  menuStatsChecklistTrevor,
+  menuStatsChecklistEmpty1,
+  menuStatsChecklistMissions,
+  menuStatsChecklistHobbies,
+  menuStatsChecklistStrangers,
+  menuStatsChecklistRandom,
+  menuStatsChecklistMisc,
+  menuStatsChecklistEmpty2,
+];
+
+export let menuStatsSkillsMichael = new MenuElements(
+  "menu_stats_skills_michael",
+  menuStatsSkillsMichaelEntries,
+  false,
+  true
+);
+export let menuStatsSkillsFranklin = new MenuElements(
+  "menu_stats_skills_franklin",
+  menuStatsSkillsFranklinEntries,
+  false,
+  true
+);
+export let menuStatsSkillsTrevor = new MenuElements(
+  "menu_stats_skills_trevor",
+  menuStatsSkillsTrevorEntries,
+  false,
+  true
+);
+export let menuStatsSkillsFreemode = new MenuElements(
+  "menu_stats_skills_freemode",
+  menuStatsSkillsFreemodeEntries,
+  false,
+  true
+);
+export let menuStatsGeneralMichael = new MenuElements(
+  "menu_stats_general_michael",
+  menuStatsGeneralMichaelEntries,
+  false,
+  true
+);
+export let menuStatsGeneralFranklin = new MenuElements(
+  "menu_stats_general_franklin",
+  menuStatsGeneralFranklinEntries,
+  false,
+  true
+);
+export let menuStatsGeneralTrevor = new MenuElements(
+  "menu_stats_general_trevor",
+  menuStatsGeneralTrevorEntries,
+  false,
+  true
+);
+export let menuStatsGeneralFreemode = new MenuElements(
+  "menu_stats_general_freemode",
+  menuStatsGeneralFreemodeEntries,
+  false,
+  true
+);
+export let menuStatsChecklist = new MenuElements("menu_stats_checklist", menuStatsChecklistEntries, false, false);
 
 export let menuStatsCategorySkills = new MenuCategory(
   "menu_stats_category_skills",
@@ -589,13 +695,19 @@ export let menuStatsCategoryGeneral = new MenuCategory(
   ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
   [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode]
 );
+export let menuStatsCategoryChecklist = new MenuCategory(
+  "menu_stats_category_checklist",
+  "menu_stats_category_checklist_name",
+  undefined,
+  [menuStatsChecklist]
+);
 
 export let menuStatsCategories = {
   ID: "menu_stats_categories",
-  list: [menuStatsCategorySkills, menuStatsCategoryGeneral],
+  list: [menuStatsCategorySkills, menuStatsCategoryGeneral, menuStatsCategoryChecklist],
 };
 export let menuStatsArrows = new MenuArrows("menu_stats_arrows");
-export let menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael];
+export let menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsChecklist];
 export let menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
 
 //#endregion
@@ -603,6 +715,7 @@ export let menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuSta
 export let allMenuEntries = [
   menuStatsCategorySkills,
   menuStatsCategoryGeneral,
+  menuStatsCategoryChecklist,
 
   menuStatsSkillsMichaelSpecial,
   menuStatsSkillsMichaelStamina,
@@ -636,6 +749,8 @@ export let allMenuEntries = [
 export let allMenuElements = [
   menuStatsSkillsMichael,
   menuStatsGeneralMichael,
+  menuStatsCategoryChecklist,
+
   menuSettingsGamepad,
   menuSettingsGraphics,
   menuSettingsPause,

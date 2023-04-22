@@ -42,39 +42,39 @@ export function fillHundredCompletionWindow() {
 
 function setCompletionPercentage() {
   let completionString = completionPercentage + "%";
-  $("#menu_stats_100_completion_chart_percentage").html(completionString);
+  $("#menu_stats_checklist_chart_percentage").html(completionString);
 }
 
 function fillCategoriesCompletion() {
   setCategoryCompletion(
     compCats.missionsTasks[0],
     compCats.missionsTasks[1],
-    $("#menu_stats_100_completion_element_3"),
-    $("#menu_stats_100_completion_progress_0")
+    $("#menu_stats_checklist_missions"),
+    $("#menu_stats_checklist_progress_missions")
   );
   setCategoryCompletion(
     compCats.hobbiesTasks[0],
     compCats.hobbiesTasks[1],
-    $("#menu_stats_100_completion_element_4"),
-    $("#menu_stats_100_completion_progress_1")
+    $("#menu_stats_checklist_hobbies"),
+    $("#menu_stats_checklist_progress_hobbies")
   );
   setCategoryCompletion(
     compCats.strangersTasks[0],
     compCats.strangersTasks[1],
-    $("#menu_stats_100_completion_element_5"),
-    $("#menu_stats_100_completion_progress_2")
+    $("#menu_stats_checklist_strangers"),
+    $("#menu_stats_checklist_progress_strangers")
   );
   setCategoryCompletion(
     compCats.randomTasks[0],
     compCats.randomTasks[1],
-    $("#menu_stats_100_completion_element_6"),
-    $("#menu_stats_100_completion_progress_3")
+    $("#menu_stats_checklist_random"),
+    $("#menu_stats_checklist_progress_random")
   );
   setCategoryCompletion(
     compCats.miscTasks[0],
     compCats.miscTasks[1],
-    $("#menu_stats_100_completion_element_7"),
-    $("#menu_stats_100_completion_progress_4")
+    $("#menu_stats_checklist_misc"),
+    $("#menu_stats_checklist_progress_misc")
   );
 }
 
@@ -112,7 +112,7 @@ function fillCompletionBar(tasksCompleted, tasksTotal, progressBar) {
 //
 
 export function initHundredCompletionChart() {
-  const CHART_100_COMPLETION = document.getElementById("menu_stats_100_completion_chart").getContext("2d");
+  const CHART_100_COMPLETION = document.getElementById("menu_stats_checklist_chart_canvas").getContext("2d");
 
   const data = {
     labels: ["Missions", "Hobbies", "Strangers", "Events", "Misc", "Remaining"],
@@ -125,7 +125,7 @@ export function initHundredCompletionChart() {
     ],
   };
 
-  var menu_stats_100_completion_chart = new Chart(CHART_100_COMPLETION, {
+  var menu_stats_checklist_chart = new Chart(CHART_100_COMPLETION, {
     type: "doughnut",
     data: data,
     options: {

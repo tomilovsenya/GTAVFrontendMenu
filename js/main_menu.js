@@ -128,6 +128,7 @@ function initMenuContent() {
   setActiveWindow(menuContent.menuStats);
   fillReplayMissionList();
   initHundredCompletionChart();
+  fillHundredCompletionWindow();
 }
 
 function showMenu() {
@@ -313,7 +314,6 @@ window.addEventListener(
       console.log(currentWindow);
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
-      currentWindow.deactivate();
     }
     if (["PageUp"].indexOf(e.code) > -1) {
       currentWindow.currentElements.scrollElements(0);

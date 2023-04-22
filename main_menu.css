@@ -1156,6 +1156,13 @@ div.menu_elements {
   scroll-snap-type: mandatory;
 }
 
+div.menu_elements_divided {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  gap: var(--tab-margin);
+}
+
 div.menu_elements_nogap {
   gap: 0 !important;
 }
@@ -1164,16 +1171,33 @@ div.menu_elements_transparent {
   background-color: transparent !important;
 }
 
+div.menu_elements_black {
+  background-color: var(--black-bg-color) !important;
+}
+
 div.menu_elements_populated {
+  display: flex;
+  flex-direction: column;
   background-color: var(--black-bg-color);
   gap: var(--item-margin);
 }
 
-div.menu_elements_even_darker > .menu_entry:nth-child(even) {
+div.menu_elements_wide {
+  min-width: 75%;
+}
+
+div.menu_elements_narrow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-margin);
+}
+
+div.menu_elements_even_darker>.menu_entry:nth-child(even) {
   background-color: #00000040 !important;
 }
 
-div.menu_elements_odd_darker > .menu_entry:nth-child(odd) {
+div.menu_elements_odd_darker>.menu_entry:nth-child(odd) {
   background-color: #00000040 !important;
 }
 
@@ -1631,7 +1655,7 @@ div#menu_stats_general {
 
 /* MENU STATS: 100% COMPLETION */
 
-div#menu_stats_100_completion {
+div#menu_stats_checklist {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -1639,30 +1663,16 @@ div#menu_stats_100_completion {
   /* animation: fadeInAnimation ease 0.25s; */
 }
 
-div#menu_stats_100_completion .menu_elements_zone_left {
-  width: 75%;
-  float: left;
+div.menu_stats_checklist_chart_container {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: var(--item-margin);
-}
-
-div#menu_stats_100_completion .menu_elements_zone_left .menu_entry {
-  padding-right: 0;
-}
-
-div#menu_stats_100_completion .menu_elements_zone_right {
-  width: 25%;
-  float: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--item-margin);
+  flex-direction: row;
   align-items: center;
-  padding-right: var(--item-padding-sides);
+  justify-content: center;
+  height: calc(var(--item-height) * 5 + var(--item-margin) * 4);
 }
 
-div.menu_stats_100_completion_chart {
+div#menu_stats_checklist_chart {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1671,67 +1681,73 @@ div.menu_stats_100_completion_chart {
   /* padding-top: var(--item-height); */
   /* vertical-align: middle; */
   width: 60%;
-  height: calc(var(--item-height) * 5 + var(--item-margin) * 4);
 }
 
-canvas#menu_stats_100_completion_chart {
+canvas#menu_stats_checklist_chart_canvas {
   /* image-rendering: pixelated; */
   position: absolute;
   z-index: 1;
 }
 
-#menu_stats_100_completion_chart_percentage {
+div#menu_stats_checklist_progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-margin);
+}
+
+#menu_stats_checklist_chart_percentage {
   font-family: "London60";
   font-size: calc(var(--menu-font-size) * 1.5);
   color: var(--text-color);
   z-index: 2;
 }
 
-div#menu_stats_100_completion .element_progress {
+div#menu_stats_checklist .element_progress {
   width: 100%;
+  align-items: center;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_0 {
+div#menu_stats_checklist_progress_missions {
   background-color: #ffd90040;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_0>.element_progress_perc {
+div#menu_stats_checklist_progress_missions>.element_progress_perc {
   background-color: var(--hud-color-yellow);
   width: 10%;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_1 {
+div#menu_stats_checklist_progress_hobbies {
   background-color: #90ee9040;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_1>.element_progress_perc {
+div#menu_stats_checklist_progress_hobbies>.element_progress_perc {
   background-color: var(--hud-color-green);
   width: 20%;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_2 {
+div#menu_stats_checklist_progress_strangers {
   background-color: #87cefa40;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_2>.element_progress_perc {
+div#menu_stats_checklist_progress_strangers>.element_progress_perc {
   background-color: var(--hud-color-blue);
   width: 30%;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_3 {
+div#menu_stats_checklist_progress_random {
   background-color: #ffa07a40;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_3>.element_progress_perc {
+div#menu_stats_checklist_progress_random>.element_progress_perc {
   background-color: lightsalmon;
   width: 40%;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_4 {
+div#menu_stats_checklist_progress_misc {
   background-color: #8b000040;
 }
 
-div#menu_stats_100_completion #menu_stats_100_completion_progress_4>.element_progress_perc {
+div#menu_stats_checklist_progress_misc>.element_progress_perc {
   background-color: darkred;
   width: 50%;
 }
