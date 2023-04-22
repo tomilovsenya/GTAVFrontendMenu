@@ -980,6 +980,12 @@ function updateEventHandlers() {
   $(".menu_elements_scrollable").on("click", ".menu_entry_zone_right", function () {
     currentWindow.currentElements.currentEntry.clickZone(1);
   });
+  $(".menu_categories").on("click", ".menu_entry_zone_left", function () {
+    currentWindow.currentCategory.clickZone(0);
+  });
+  $(".menu_categories").on("click", ".menu_entry_zone_right", function () {
+    currentWindow.currentCategory.clickZone(1);
+  });
 
   $(".menu_window").on("click", ".menu_arrows_zone_up", function () {
     currentWindow.clickArrow(0);
@@ -995,8 +1001,8 @@ function updateEventHandlers() {
   //   scrollPerc(1);
   // });
 
-  $(".menu_window").on("click", ".menu_category", clickCategory);
-  $(".menu_window").on("click", ".menu_entry", clickEntry);
+  $(".menu_categories").on("click", ".menu_category", clickCategory);
+  $(".menu_elements").on("click", ".menu_entry", clickEntry);
   $(".menu_window_inactive").click(function (e) {
     currentWindow.activate();
   });

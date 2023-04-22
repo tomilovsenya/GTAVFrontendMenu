@@ -133,7 +133,8 @@ export class MenuWindow {
       this.activate();
       this.updateSelection(clickedCategory.index);
     } else if (this.currentContext == 0) {
-      if (clickedCategory.index == this.currentCategoryIndex) this.enterCategory(this.currentCategoryIndex);
+      if (clickedCategory.index == this.currentCategoryIndex && !clickedCategory.hasMultipleElements)
+        this.enterCategory(this.currentCategoryIndex);
       else this.updateSelection(clickedCategory.index);
     } else if (this.currentContext == 1) {
       this.escapeCategory();
@@ -263,6 +264,7 @@ export class MenuElements {
   currentSelection = -1;
   currentEntry;
   active = true;
+  clickable = true;
   parentWindow;
 
   constructor(id, menuEntries) {
@@ -299,6 +301,10 @@ export class MenuElements {
   clickEntry(clickedEntry) {
     // if (this.currentSelection == -1) return;
     // if (this.currentSelection == clickedEntry.index) return;
+    if (!this.clickable) {
+      console.log("Entry not clickable: " + this.ID);
+      return;
+    }
     if (clickedEntry == this.currentEntry && this.parentWindow.currentContext == 1) {
       console.log("Clicked already active entry: " + clickedEntry.ID);
       return;
@@ -657,11 +663,13 @@ export class MenuCategory extends MenuEntryList {
     this.title = title;
     this.elementsList = elementsList;
     this.elementsCollection = elementsCollection;
+    this.clickable = true;
     if (elementsCollection != undefined) {
       this.hasMultipleElements = this.elementsCollection.length > 1 ? true : false;
       this.currentElements = this.elementsCollection[this.currentElementsIndex];
+      this.clickable = !this.hasMultipleElements;
     }
-    console.log(this.ID + this.hasMultipleElements);
+    console.log(this.clickable);
   }
 
   updateElements() {
@@ -672,6 +680,11 @@ export class MenuCategory extends MenuEntryList {
     console.log(this.currentElementsIndex);
     this.parentElements.switchElements(this.currentElements);
     // this.parentElements.updateElements(this.parentElements.currentElementsIndex);
+  }
+
+  clickZone(clickDir) {
+    // console.log(this.parentElements);
+    this.parentElements.scrollHorizontal(clickDir);
   }
 }
 
