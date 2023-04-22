@@ -429,8 +429,16 @@ div.menu_window {
   gap: var(--tab-margin);
 }
 
+div.menu_window_categories {
+  min-width: var(--menu-categories-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-margin);
+}
+
 div.menu_window_elements {
-  width: var(--menu-elements-width);
+  /* width: var(--menu-elements-width); */
+  width: 100%;
   height: var(--menu-wnd-height-arrows);
   display: flex;
   flex-direction: column;
@@ -1086,7 +1094,8 @@ div.menu_categories {
   background-color: transparent;
   /* width: 431px; */
   /* height: 520px; */
-  width: var(--menu-categories-width);
+  /* width: var(--menu-categories-width); */
+  width: 100%;
   max-height: 100%;
   height: fit-content;
   /* margin-right: 3px; */
@@ -1143,6 +1152,10 @@ div.menu_elements {
   overflow: hidden;
   /* align-self: stretch; */
   scroll-snap-type: mandatory;
+}
+
+div.menu_elements_nogap {
+  gap: 0 !important;
 }
 
 div.menu_elements_transparent {
