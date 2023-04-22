@@ -568,14 +568,14 @@ export let menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
 export let menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];
 export let menuStatsGeneralFreemodeEntries = [menuStatsGeneralFreemodeTime];
 
-export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsMichaelEntries);
-export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsFranklinEntries);
-export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsTrevorEntries);
-export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsFreemodeEntries);
-export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralMichaelEntries);
-export let menuStatsGeneralFranklin = new MenuElements("menu_stats_general_franklin", menuStatsGeneralFranklinEntries);
-export let menuStatsGeneralTrevor = new MenuElements("menu_stats_general_trevor", menuStatsGeneralTrevorEntries);
-export let menuStatsGeneralFreemode = new MenuElements("menu_stats_general_freemode", menuStatsGeneralFreemodeEntries);
+export let menuStatsSkillsMichael = new MenuElements("menu_stats_skills_michael", menuStatsSkillsMichaelEntries, false);
+export let menuStatsSkillsFranklin = new MenuElements("menu_stats_skills_franklin", menuStatsSkillsFranklinEntries, false);
+export let menuStatsSkillsTrevor = new MenuElements("menu_stats_skills_trevor", menuStatsSkillsTrevorEntries, false);
+export let menuStatsSkillsFreemode = new MenuElements("menu_stats_skills_freemode", menuStatsSkillsFreemodeEntries, false);
+export let menuStatsGeneralMichael = new MenuElements("menu_stats_general_michael", menuStatsGeneralMichaelEntries, false);
+export let menuStatsGeneralFranklin = new MenuElements("menu_stats_general_franklin", menuStatsGeneralFranklinEntries, false);
+export let menuStatsGeneralTrevor = new MenuElements("menu_stats_general_trevor", menuStatsGeneralTrevorEntries, false);
+export let menuStatsGeneralFreemode = new MenuElements("menu_stats_general_freemode", menuStatsGeneralFreemodeEntries, false);
 
 export let menuStatsCategorySkills = new MenuCategory(
   "menu_stats_category_skills",

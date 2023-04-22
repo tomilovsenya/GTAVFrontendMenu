@@ -52,7 +52,6 @@ export class MenuWindow {
     this.currentContext = 0;
     $(this.#idSel).removeClass("menu_window_inactive");
     $(this.#idSel).addClass("menu_window_active");
-    //this.#toggleArrows(true);
   }
 
   deactivate() {
@@ -113,8 +112,8 @@ export class MenuWindow {
   }
 
   #toggleArrows(showArrows) {
-    if (showArrows) $(this.menuArrows.idSel).show();
-    else $(this.menuArrows.idSel).hide();
+    if (showArrows) this.menuArrows.show();
+    else this.menuArrows.hide();
   }
 
   goDeeper() {
@@ -149,8 +148,11 @@ export class MenuWindow {
   }
 
   clickArrow(clickedArrowScrollDir) {
-    if (clickedArrowScrollDir == 0) this.scrollVertical(0);
-    else if (clickedArrowScrollDir == 1) this.scrollVertical(1);
+    if (!this.currentElements.enterable) this.currentElements.scrollEmptyElements(clickedArrowScrollDir);
+    else {
+      if (clickedArrowScrollDir == 0) this.scrollVertical(0);
+      else if (clickedArrowScrollDir == 1) this.scrollVertical(1);
+    }
   }
 
   scrollVertical(scrollDir) {
@@ -210,6 +212,9 @@ export class MenuWindow {
 
       if (this.currentCategory.hasMultipleElements) this.currentElements = this.currentCategory.currentElements;
       else this.currentElements = this.menuElements[newSelection];
+
+      if (this.currentElements.arrowsRequired) this.#toggleArrows(true);
+      else this.#toggleArrows(false);
     }
   }
 
@@ -249,6 +254,9 @@ export class MenuWindow {
     this.currentElements.deactivate();
     this.currentElements = newElements;
     this.currentElements.activate();
+
+    if (this.currentElements.arrowsRequired) this.#toggleArrows(true);
+    else this.#toggleArrows(false);
     // this.updateSelection(this.currentCategoryIndex);
   }
 }
@@ -262,14 +270,17 @@ export class MenuElements {
   currentEntryIndexTop = 0;
   currentEntryIndexBottom = 15;
   active = true;
-  clickable = true;
+  enterable = true;
+  arrowsRequired = false;
   parentWindow;
 
-  constructor(id, menuEntries) {
+  constructor(id, menuEntries, isEnterable) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
+    this.enterable = isEnterable != undefined ? isEnterable : true;
     this.currentEntry = this.menuEntries[this.currentSelection];
+    this.arrowsRequired = this.menuEntries.length > 16 ? true : false;
   }
 
   populateElements(parentWindow) {
@@ -299,7 +310,7 @@ export class MenuElements {
   clickEntry(clickedEntry) {
     // if (this.currentSelection == -1) return;
     // if (this.currentSelection == clickedEntry.index) return;
-    if (!this.clickable) {
+    if (!clickedEntry.isClickable) {
       console.log("Entry not clickable: " + this.ID);
       return;
     }
@@ -391,6 +402,7 @@ export class MenuEntry {
   parentElements;
   index = 0;
   isEmpty = false;
+  isClickable = true;
 
   constructor(id, title) {
     this.ID = id;
@@ -698,13 +710,13 @@ export class MenuCategory extends MenuEntryList {
     this.title = title;
     this.elementsList = elementsList;
     this.elementsCollection = elementsCollection;
-    this.clickable = true;
+    this.isClickable = true;
     if (elementsCollection != undefined) {
       this.hasMultipleElements = this.elementsCollection.length > 1 ? true : false;
       this.currentElements = this.elementsCollection[this.currentElementsIndex];
-      this.clickable = !this.hasMultipleElements;
+      this.isClickable = !this.hasMultipleElements;
     }
-    console.log(this.clickable);
+    console.log(this.isClickable);
   }
 
   updateElements() {
@@ -754,6 +766,14 @@ export class MenuArrows {
     this.index = index;
     this.title = title;
     // console.log(this);
+  }
+
+  show() {
+    $(this.idSel).show();
+  }
+
+  hide() {
+    $(this.idSel).hide();
   }
 }
 
