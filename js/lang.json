@@ -126,6 +126,27 @@
   },
 
   {
+    "gxt": "menu_format_d",
+    "american": "d",
+    "russian": " д."
+  },
+  {
+    "gxt": "menu_format_h",
+    "american": "h",
+    "russian": " ч."
+  },
+  {
+    "gxt": "menu_format_m",
+    "american": "h",
+    "russian": " мин."
+  },
+  {
+    "gxt": "menu_format_s",
+    "american": "s",
+    "russian": " сек."
+  },
+
+  {
     "gxt": "menu_common_off",
     "american": "Off",
     "russian": "Выкл."

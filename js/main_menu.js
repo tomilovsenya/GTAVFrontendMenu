@@ -30,6 +30,7 @@ import { sendMissionText } from "./menu_modules/menu_brief.js";
 import { showInstrLoadingSpinner, hideInstrLoadingSpinner, setStartupInstr, setInstrContainerVisibility, handleInstructionalButtons } from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
+import { charMichaelStats, fillStatEntry } from "./menu_classes/menu_character.js";
 
 //
 // jQuery custom extension for getting element width in %
@@ -97,6 +98,7 @@ function initMenuContent() {
   fillReplayMissionList();
   initHundredCompletionChart();
   fillHundredCompletionWindow();
+  charMichaelStats.charStats.forEach(stat => fillStatEntry(stat));
 }
 
 function showMenu() {
