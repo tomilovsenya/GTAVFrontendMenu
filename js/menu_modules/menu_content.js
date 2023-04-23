@@ -156,6 +156,13 @@ export const menuStatsGeneralMichaelDeathsDrowning = new MenuEntryList("menu_sta
 export const menuStatsGeneralMichaelTimeSwimming = new MenuEntryList("menu_stats_general_michael_time_swimming", "menu_stats_general_time_swimming_name", ["0d 1h 5m 2s"], true);
 export const menuStatsGeneralMichaelDistanceSwimming = new MenuEntryList("menu_stats_general_michael_distance_swimming", "menu_stats_general_distance_swimming_name", ["0.13 miles"], true);
 export const menuStatsGeneralMichaelTimeUnderwater = new MenuEntryList("menu_stats_general_michael_time_underwater", "menu_stats_general_time_underwater_name", ["0d 0h 5m 22s"], true);
+export const menuStatsGeneralMichaelTimeWalking = new MenuEntryList("menu_stats_general_michael_time_walking", "menu_stats_general_time_walking_name", ["5 miles"], true);
+export const menuStatsGeneralMichaelDistanceWalking = new MenuEntryList("menu_stats_general_michael_distance_walking", "menu_stats_general_distance_walking_name", ["6 miles"], true);
+export const menuStatsGeneralMichaelDistanceRunning = new MenuEntryList("menu_stats_general_michael_distance_running", "menu_stats_general_distance_running_name", ["6 miles"], true);
+export const menuStatsGeneralMichaelFreefall = new MenuEntryList("menu_stats_general_michael_freefall", "menu_stats_general_freefall_name", ["25 ft"], true);
+export const menuStatsGeneralMichaelTimeCover = new MenuEntryList("menu_stats_general_michael_time_cover", "menu_stats_general_time_cover", ["25 ft"], true);
+export const menuStatsGeneralMichaelPhotos = new MenuEntryList("menu_stats_general_michael_photos", "menu_stats_general_photos", ["50"], true);
+export const menuStatsGeneralMichaelDances = new MenuEntryList("menu_stats_general_michael_dances", "menu_stats_general_dances", ["50"], true);
 
 export const menuStatsGeneralFranklinTime = new MenuEntryList("menu_stats_general_franklin_time", "menu_stats_general_time_name", ["0:00"], true);
 export const menuStatsGeneralTrevorTime = new MenuEntryList("menu_stats_general_trevor_time", "menu_stats_general_time_name", ["0:00"], true);
@@ -233,6 +240,13 @@ export const menuStatsGeneralMichaelEntries = [
   menuStatsGeneralMichaelTimeSwimming,
   menuStatsGeneralMichaelDistanceSwimming,
   menuStatsGeneralMichaelTimeUnderwater,
+  menuStatsGeneralMichaelTimeWalking,
+  menuStatsGeneralMichaelDistanceWalking,
+  menuStatsGeneralMichaelDistanceRunning,
+  menuStatsGeneralMichaelFreefall,
+  menuStatsGeneralMichaelTimeCover,
+  menuStatsGeneralMichaelPhotos,
+  menuStatsGeneralMichaelDances,
 ];
 export const menuStatsGeneralFranklinEntries = [menuStatsGeneralFranklinTime];
 export const menuStatsGeneralTrevorEntries = [menuStatsGeneralTrevorTime];

@@ -222,6 +222,7 @@
     "american": "100% Checklist",
     "russian": "Прохождение на 100%"
   },
+
   {
     "gxt": "menu_stats_skills_special_name",
     "american": "Special",
@@ -287,6 +288,132 @@
     "gxt": "menu_stats_skills_3_element_info_1",
     "american": "Stamina: How long Online Character can run, swim, or cycle at full speed before losing health due to over-exertion. Increase by practicing any of these disciplines as Online Character.",
     "russian": "Выносливость: позволяет сетевому персонажу дольше бежать, плыть или ехать на велосипеде с ускорением, не снижая уровень здоровья. Для повышения выносливости выполняйте любые из этих действий, выбрав сетевого персонажа."
+  },
+
+  {
+    "gxt": "menu_stats_general_time_played_name",
+    "american": "Time played as character",
+    "russian": "Время игры за персонажа"
+  },
+  {
+    "gxt": "menu_stats_general_time_fps_name",
+    "american": "Time played in first person",
+    "russian": "Время игры от первого лица"
+  },
+  {
+    "gxt": "menu_stats_general_missions_name",
+    "american": "Missions passed",
+    "russian": "Выполнено заданий"
+  },
+  {
+    "gxt": "menu_stats_general_last_mission_name",
+    "american": "Last Mission completed",
+    "russian": "Последнее выполненное задание"
+  },
+  {
+    "gxt": "menu_stats_general_letters_name",
+    "american": "Letter scraps",
+    "russian": "Обрывки письма"
+  },
+  {
+    "gxt": "menu_stats_general_peyotes_name",
+    "american": "Peyote plants",
+    "russian": "Лофофоры"
+  },
+  {
+    "gxt": "menu_stats_general_wildlife_name",
+    "american": "Wildlife photographs",
+    "russian": "Фотографии живой природы"
+  },
+  {
+    "gxt": "menu_stats_general_saved_name",
+    "american": "Times saved",
+    "russian": "Сохранений"
+  },
+  {
+    "gxt": "menu_stats_general_cheats_name",
+    "american": "Cheat codes activated",
+    "russian": "Активировано читов"
+  },
+  {
+    "gxt": "menu_stats_general_deaths_total_name",
+    "american": "Total deaths",
+    "russian": "Всего смертей"
+  },
+  {
+    "gxt": "menu_stats_general_deaths_explosion_name",
+    "american": "Deaths by explosion",
+    "russian": "Смертей от взрывов"
+  },
+  {
+    "gxt": "menu_stats_general_deaths_falling_name",
+    "american": "Deaths by falling",
+    "russian": "Смертей от падений"
+  },
+  {
+    "gxt": "menu_stats_general_deaths_fire_name",
+    "american": "Deaths by fire",
+    "russian": "Смертей от огня"
+  },
+  {
+    "gxt": "menu_stats_general_deaths_traffic_name",
+    "american": "Deaths by traffic",
+    "russian": "Смертей в ДТП"
+  },
+  {
+    "gxt": "menu_stats_general_deaths_drowning_name",
+    "american": "Deaths by drowning",
+    "russian": "Смертей от утопления"
+  },
+  {
+    "gxt": "menu_stats_general_time_swimming_name",
+    "american": "Time swimming",
+    "russian": "Время (вплавь)"
+  },
+  {
+    "gxt": "menu_stats_general_distance_swimming_name",
+    "american": "Distance traveled swimming",
+    "russian": "Расстояние (вплавь)"
+  },
+  {
+    "gxt": "menu_stats_general_time_underwater_name",
+    "american": "Time underwater",
+    "russian": "Время (под водой)"
+  },
+  {
+    "gxt": "menu_stats_general_time_walking_name",
+    "american": "Time walking",
+    "russian": "Время (пешком)"
+  },
+  {
+    "gxt": "menu_stats_general_distance_walking_name",
+    "american": "Distance traveled walking",
+    "russian": "Расстояние (пешком)"
+  },
+  {
+    "gxt": "menu_stats_general_distance_running_name",
+    "american": "Distance traveled running",
+    "russian": "Расстояние (бегом)"
+  },
+  {
+    "gxt": "menu_stats_general_freefall_name",
+    "american": "Farthest free-fall survived",
+    "russian": "Максимальная высота пережитого свободного падения"
+  },
+  {
+    "gxt": "menu_stats_general_time_cover",
+    "american": "Time in cover",
+    "russian": "Время (в укрытии)"
+  },
+  {
+    "gxt": "menu_stats_general_photos",
+    "american": "Photos taken",
+    "russian": "Сделано фотографий"
+  },
+  {
+    "gxt": "menu_stats_general_dances",
+    "american": "Private dances",
+    "russian": "Приватных танцев"
   },
 
   {
