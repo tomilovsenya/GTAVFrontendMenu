@@ -388,6 +388,11 @@ export class MenuElements {
     if (this.evenEntriesDarker) this.#setDarkerBackground(this.currentEntryIndexTop % 2 == 0);
   }
 
+  resetEnterableElementsScroll() {
+    let topEntry = $(this.menuEntries[0].idSel)[0];
+    if (topEntry != undefined) topEntry.scrollIntoViewIfNeeded(false);
+  }
+
   resetEmptyElementsScroll() {
     this.currentEntryIndexTop = 0;
     this.currentEntryIndexBottom = 15;
@@ -411,11 +416,21 @@ export class MenuElements {
   }
 
   activate() {
-    $(this.idSel).show();
+    this.show();
   }
 
   deactivate() {
-    if (!this.enterable) this.resetEmptyElementsScroll();
+    if (this.enterable) this.resetEnterableElementsScroll();
+    else this.resetEmptyElementsScroll();
+
+    this.hide();
+  }
+
+  show() {
+    $(this.idSel).show();
+  }
+
+  hide() {
     $(this.idSel).hide();
   }
 }
