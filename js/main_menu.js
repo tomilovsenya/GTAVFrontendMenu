@@ -16,8 +16,6 @@ let activeWindow = initWindow;
 let cursorVisible = false;
 let lastInput = 0; // 0 = K/M, 1 = PAD
 let isStickMoving = false;
-let stickMaxX = 0;
-let stickMaxY = 0;
 
 export let currentWindow = menuContent.menuSettings;
 
@@ -116,6 +114,7 @@ function initMenuContent() {
   initChecklistChart();
   globalStats.charStats.forEach((stat) => fillStatEntry(stat));
   charMichaelStats.charStats.forEach((stat) => fillStatEntry(stat));
+  setVideoMemory(6000, 6144);
 }
 
 function showMenu() {
