@@ -88,10 +88,23 @@
   --hud-color-tech: rgb(0 151 151);
 
   --hud-color-red: rgb(224 50 50);
+  --hud-color-red-alpha: rgba(224, 50, 50, 0.25);
+
   --hud-color-green: rgb(114 204 114);
+  --hud-color-green-alpha: rgba(114, 204, 114, 0.25);
   --hud-color-green-dark: rgb(57 102 57);
+
   --hud-color-blue: rgb(93 182 229);
+  --hud-color-blue-alpha: rgba(93, 182, 229, 0.25);
+
   --hud-color-yellow: rgb(240 200 80);
+  --hud-color-yellow-alpha: rgba(240, 200, 80, 0.25);
+
+  --hud-color-orange: rgb(255, 133, 85);
+  --hud-color-orange-alpha: rgba(255, 133, 85, 0.25);
+  --hud-color-orange-dark: rgb(127, 66, 42);
+
+  --hud-color-grey: rgb(60, 60, 60);
 }
 
 body {
@@ -1545,7 +1558,7 @@ div#menu_stats_general {
   scroll-snap-type: y mandatory;
 }
 
-/* MENU STATS: 100% COMPLETION */
+/* MENU STATS: 100% CHECKLIST */
 
 div#menu_stats_checklist {
   display: flex;
@@ -1600,48 +1613,43 @@ div#menu_stats_checklist .element_progress {
 }
 
 div#menu_stats_checklist_progress_missions {
-  background-color: #ffd90040;
+  background-color: var(--hud-color-yellow-alpha);
 }
 
 div#menu_stats_checklist_progress_missions>.element_progress_perc {
   background-color: var(--hud-color-yellow);
-  width: 10%;
 }
 
 div#menu_stats_checklist_progress_hobbies {
-  background-color: #90ee9040;
+  background-color: var(--hud-color-green-alpha);
 }
 
 div#menu_stats_checklist_progress_hobbies>.element_progress_perc {
   background-color: var(--hud-color-green);
-  width: 20%;
 }
 
 div#menu_stats_checklist_progress_strangers {
-  background-color: #87cefa40;
+  background-color: var(--hud-color-blue-alpha);
 }
 
 div#menu_stats_checklist_progress_strangers>.element_progress_perc {
   background-color: var(--hud-color-blue);
-  width: 30%;
 }
 
 div#menu_stats_checklist_progress_random {
-  background-color: #ffa07a40;
+  background-color: var(--hud-color-orange-alpha);
 }
 
 div#menu_stats_checklist_progress_random>.element_progress_perc {
-  background-color: lightsalmon;
-  width: 40%;
+  background-color: var(--hud-color-orange);
 }
 
 div#menu_stats_checklist_progress_misc {
-  background-color: #8b000040;
+  background-color: var(--hud-color-red-alpha);
 }
 
 div#menu_stats_checklist_progress_misc>.element_progress_perc {
-  background-color: darkred;
-  width: 50%;
+  background-color: var(--hud-color-red);
 }
 
 /*#endregion MenuTabStats*/

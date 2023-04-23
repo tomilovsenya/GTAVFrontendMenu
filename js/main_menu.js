@@ -21,7 +21,7 @@ export let currentWindow = menuContent.menuSettings;
 
 import * as menuContent from "./menu_modules/menu_content.js";
 import { MenuCategory, MenuWindow, findMenuEntryByID } from "./menu_classes/menu_entries.js";
-import { fillHundredCompletionWindow, initHundredCompletionChart } from "./menu_modules/menu_stats_100_completion.js";
+import { initChecklistChart } from "./menu_modules/menu_stats.js";
 import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
@@ -30,7 +30,7 @@ import { sendMissionText } from "./menu_modules/menu_brief.js";
 import { showInstrLoadingSpinner, hideInstrLoadingSpinner, setStartupInstr, setInstrContainerVisibility, handleInstructionalButtons } from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
-import { charMichaelStats, fillStatEntry } from "./menu_classes/menu_character.js";
+import { charMichaelStats, fillStatEntry, globalStats } from "./menu_classes/menu_character.js";
 
 //
 // jQuery custom extension for getting element width in %
@@ -96,8 +96,8 @@ function initMenuContent() {
   activeWindow.id.trigger("tabActive");
   setActiveWindow(menuContent.menuStats);
   fillReplayMissionList();
-  initHundredCompletionChart();
-  fillHundredCompletionWindow();
+  initChecklistChart();
+  globalStats.charStats.forEach((stat) => fillStatEntry(stat));
   charMichaelStats.charStats.forEach((stat) => fillStatEntry(stat));
 }
 
@@ -195,6 +195,7 @@ window.addEventListener(
       );
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
+      globalStats.passChartData();
     }
     if (["KeyN"].indexOf(e.code) > -1) {
     }
@@ -347,10 +348,6 @@ export function scrollTab(scrollDir) {
       break;
   }
 }
-
-//
-// SCROLL ELEMENTS
-//
 
 //
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
