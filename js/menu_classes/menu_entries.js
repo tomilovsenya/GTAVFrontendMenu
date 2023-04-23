@@ -491,13 +491,15 @@ export class MenuEntryList extends MenuEntry {
     items: [],
     index: 0,
   };
+  hideList = false;
 
-  constructor(id, title, listItems, isEmpty) {
+  constructor(id, title, listItems, isEmpty, hideList) {
     super(id, title);
     this.listItems = listItems;
     this.listID = id + "_list";
     this.listSel = "#" + this.listID;
     this.isEmpty = isEmpty != undefined ? isEmpty : false;
+    this.hideList = hideList != undefined ? hideList : false;
   }
 
   createEntry(title, parentId, parentElements, index) {
@@ -512,32 +514,39 @@ export class MenuEntryList extends MenuEntry {
       });
     }
 
-    this.prepareList(this.idSel);
+    this.#prepareList(this.idSel);
   }
 
   activate() {
     super.activate();
     this.updateList();
+    if (this.hideList) this.#toggleList(true);
   }
 
   deactivate() {
     super.deactivate();
     this.#removeArrows();
+    if (this.hideList) this.#toggleList(false);
   }
 
-  prepareList(menuEntryList) {
-    let rightList = $(menuEntryList).find(".element_list").first();
+  #toggleList(showList) {
+    if (showList) $(this.listSel).show();
+    else $(this.listSel).hide();
+  }
+
+  #prepareList(menuEntryList) {
     let blankEntryLabelRight = `<span class="element_label_right label_translatable"></span>`;
 
     this.listCollection.items.forEach((item, index) => {
       let listItemTitle = getLocalizedString(item);
-      rightList.append(blankEntryLabelRight);
-      let thisItem = rightList.find(".element_label_right").eq(index);
+      $(this.listSel).append(blankEntryLabelRight);
+      let thisItem = $(this.listSel).find(".element_label_right").eq(index);
       thisItem.text(listItemTitle);
       thisItem.attr("id", this.ID + "_" + index);
     });
 
-    rightList.find(".element_label_right").eq(0).nextAll().hide();
+    $(this.listSel).find(".element_label_right").eq(0).nextAll().hide();
+    if (this.hideList) $(this.listSel).hide();
   }
 
   updateList() {
@@ -729,7 +738,7 @@ export class MenuCategory extends MenuEntryList {
   currentElements;
   hasMultipleElements = false;
 
-  constructor(id, title, elementsList, elementsCollection) {
+  constructor(id, title, elementsList, elementsCollection, hideList) {
     super(id, title, elementsList);
     this.ID = id;
     this.title = title;
@@ -741,6 +750,7 @@ export class MenuCategory extends MenuEntryList {
       this.currentElements = this.elementsCollection[this.currentElementsIndex];
       this.isClickable = !this.hasMultipleElements;
     }
+    this.hideList = hideList != undefined ? hideList : false;
   }
 
   updateElements() {

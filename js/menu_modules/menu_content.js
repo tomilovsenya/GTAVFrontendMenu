@@ -266,13 +266,15 @@ export const menuStatsCategorySkills = new MenuCategory(
   "menu_stats_category_skills",
   "menu_stats_category_skills_name",
   ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
-  [menuStatsSkillsMichael, menuStatsSkillsFranklin, menuStatsSkillsTrevor, menuStatsSkillsFreemode]
+  [menuStatsSkillsMichael, menuStatsSkillsFranklin, menuStatsSkillsTrevor, menuStatsSkillsFreemode],
+  true
 );
 export const menuStatsCategoryGeneral = new MenuCategory(
   "menu_stats_category_general",
   "menu_stats_category_general_name",
   ["menu_common_michael", "menu_common_franklin", "menu_common_trevor", "menu_common_freemode"],
-  [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode]
+  [menuStatsGeneralMichael, menuStatsGeneralFranklin, menuStatsGeneralTrevor, menuStatsGeneralFreemode],
+  true
 );
 export const menuStatsCategoryChecklist = new MenuCategory("menu_stats_category_checklist", "menu_stats_category_checklist_name", undefined, [menuStatsChecklist]);
 
