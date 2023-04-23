@@ -238,6 +238,7 @@ div.instructional_buttons {
 }
 
 div.instructional_buttons_group {
+  height: 100%;
   display: flex;
   justify-items: flex-end;
   flex-wrap: wrap-reverse;
@@ -251,7 +252,6 @@ span.instructional_button_prompt {
 }
 
 div.ib_container {
-  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
