@@ -103,6 +103,8 @@ async function loadMenu() {
   menuContent.menuSettings.create();
 
   updateEventHandlers();
+  setInputMethod(0);
+  updateInstrIcons(0);
 }
 
 function initMenuContent() {
@@ -494,10 +496,26 @@ export function hideCursor(toHide) {
 }
 
 export function setInputMethod(inputMethod) {
+  if (inputMethod == lastInput) return;
   lastInput = inputMethod;
 
-  if (lastInput == 0) hideCursor(false);
-  else if (lastInput == 1) hideCursor(true);
+  if (lastInput == 0) {
+    hideCursor(false);
+  } else if (lastInput == 1) {
+    hideCursor(true);
+  }
+
+  updateInstrIcons(lastInput);
+}
+
+function updateInstrIcons(inputMethod) {
+  if (inputMethod == 0) {
+    $("#menu_instructional_buttons").find(".instructional_button_controller").hide();
+    $("#menu_instructional_buttons").find(".instructional_button_keyboard").show();
+  } else if (inputMethod == 1) {
+    $("#menu_instructional_buttons").find(".instructional_button_keyboard").hide();
+    $("#menu_instructional_buttons").find(".instructional_button_controller").show();
+  }
 }
 
 function setTabName(index, name) {

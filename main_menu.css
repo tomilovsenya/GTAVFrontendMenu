@@ -839,6 +839,14 @@ img.instructional_button {
   vertical-align: middle;
 }
 
+img.instructional_button_controller {
+  transform: scale(0.9);
+}
+
+img.instructional_button_controller_small {
+  transform: scale(0.75);
+}
+
 button.instructional_button_small {
   max-width: 1.25vw;
   font-size: 0.75vw;

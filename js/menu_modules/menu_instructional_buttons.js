@@ -22,7 +22,7 @@ const INPUT_FRONTEND_LEFT = { id: "INPUT_FRONTEND_LEFT", keys: ["KeyA", "ArrowLe
 const INPUT_FRONTEND_RIGHT = { id: "INPUT_FRONTEND_RIGHT", keys: ["KeyD", "ArrowRight", "DPAD_RIGHT"] };
 const INPUT_FRONTEND_ACCEPT = { id: "INPUT_FRONTEND_ACCEPT", keys: ["Enter", "FACE_1"] };
 const INPUT_FRONTEND_CANCEL = { id: "INPUT_FRONTEND_CANCEL", keys: ["Escape", "Backspace", "FACE_2"] };
-const INPUT_FRONTEND_Y = { id: "INPUT_FRONTEND_Y", keys: ["Tab"] };
+const INPUT_FRONTEND_SELECT = { id: "INPUT_FRONTEND_SELECT", keys: ["Tab", "SELECT"] };
 const INPUT_FRONTEND_RIGHT_AXIS_X_LEFT = { id: "INPUT_FRONTEND_RIGHT_AXIS_X_LEFT", keys: ["RIGHT_ANALOG_STICK_LEFT"] };
 const INPUT_FRONTEND_RIGHT_AXIS_X_RIGHT = { id: "INPUT_FRONTEND_RIGHT_AXIS_X_RIGHT", keys: ["RIGHT_ANALOG_STICK_RIGHT"] };
 const INPUT_FRONTEND_RIGHT_AXIS_Y_UP = { id: "INPUT_FRONTEND_RIGHT_AXIS_Y_UP", keys: ["PageUp", "RIGHT_ANALOG_STICK_UP"] };
@@ -37,7 +37,7 @@ const ALL_INPUTS = [
   INPUT_FRONTEND_RIGHT,
   INPUT_FRONTEND_ACCEPT,
   INPUT_FRONTEND_CANCEL,
-  INPUT_FRONTEND_Y,
+  INPUT_FRONTEND_SELECT,
 ];
 
 let TAB_SCROLLING_ALLOWED = true;
@@ -129,7 +129,7 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       }
 
       if (MENU_HIDE_ALLOWED) {
-        if (INPUT_FRONTEND_Y.keys.indexOf(buttonPressed) > -1) {
+        if (INPUT_FRONTEND_SELECT.keys.indexOf(buttonPressed) > -1) {
           toggleMenuVisibility();
           MENU_HIDDEN = !MENU_HIDDEN;
         }
