@@ -582,7 +582,7 @@ button.menu_button {
   white-space: nowrap;
 }
 
-button.menu_button:hover {
+button.menu_button:not(.menu_button_active):hover {
   background-color: var(--hover-color);
 }
 
@@ -590,10 +590,6 @@ button.menu_button_active {
   background-color: var(--focus-color);
   color: var(--text-color-focus);
   box-shadow: var(--menu-color) 0px -0.4vw;
-}
-
-button.menu_button_active:hover {
-  background-color: var(--focus-color) !important;
 }
 
 button#menu_arrow_left {
