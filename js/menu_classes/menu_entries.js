@@ -263,11 +263,12 @@ export class MenuElements {
   currentEntryIndexBottom = 15;
   active = true;
   enterable = true;
+  scrollable = false;
   arrowsRequired = false;
   evenEntriesDarker = false;
   parentWindow;
 
-  constructor(id, menuEntries, isEnterable, evenEntriesDarker) {
+  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
@@ -275,6 +276,7 @@ export class MenuElements {
     this.currentEntry = this.menuEntries[this.currentSelection];
     this.arrowsRequired = this.menuEntries.length > 16 ? true : false;
     this.evenEntriesDarker = evenEntriesDarker != undefined ? evenEntriesDarker : false;
+    this.scrollable = isScrollable != undefined ? isScrollable : this.enterable;
   }
 
   populateElements(parentWindow) {
@@ -339,7 +341,7 @@ export class MenuElements {
       case -1:
         return;
       case 0:
-        if (!this.enterable) this.scrollEmptyElements(scrollDir);
+        if (!this.enterable && this.scrollable) this.scrollEmptyElements(scrollDir);
         break;
       case 1:
         if (this.enterable) this.scrollEnterableElements(scrollDir);

@@ -13,6 +13,12 @@ let activeTab = null;
 let initWindow = menuContent.MENU_TABS[3];
 let activeWindow = initWindow;
 
+let cursorVisible = false;
+let lastInput = 0; // 0 = K/M, 1 = PAD
+let isStickMoving = false;
+let stickMaxX = 0;
+let stickMaxY = 0;
+
 export let currentWindow = menuContent.menuSettings;
 
 //
@@ -27,7 +33,16 @@ import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
-import { showInstrLoadingSpinner, hideInstrLoadingSpinner, setStartupInstr, setInstrContainerVisibility, handleInstructionalButtons, clickInstr } from "./menu_modules/menu_instructional_buttons.js";
+import {
+  showInstrLoadingSpinner,
+  hideInstrLoadingSpinner,
+  setStartupInstr,
+  setInstrContainerVisibility,
+  handleInstructionalButtons,
+  clickInstr,
+  handlePadButtons,
+  handlePadSticks,
+} from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 import { charMichaelStats, fillStatEntry, globalStats } from "./menu_classes/menu_character.js";
@@ -177,6 +192,7 @@ window.addEventListener(
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
 
+    setInputMethod(0);
     handleInstructionalButtons(THIS_PAGE, currentWindow, e.code, false);
 
     if (["KeyF"].indexOf(e.code) > -1) {
@@ -201,11 +217,8 @@ window.addEventListener(
     }
     if (["KeyM"].indexOf(e.code) > -1) {
     }
-    if (["PageUp"].indexOf(e.code) > -1) {
-      currentWindow.currentElements.scrollElements(0);
-    }
-    if (["PageDown"].indexOf(e.code) > -1) {
-      currentWindow.currentElements.scrollElements(1);
+    if (["PageUp", "PageDown"].indexOf(e.code) > -1) {
+      e.preventDefault();
     }
     if (["Tab"].indexOf(e.code) > -1) {
       e.preventDefault();
@@ -218,6 +231,55 @@ document.addEventListener(
   "keyup",
   function (e) {
     isButtonPressedDown = false;
+  },
+  false
+);
+
+window.addEventListener("mousemove", (event) => {
+  setInputMethod(0);
+});
+
+window.addEventListener(
+  "gc.controller.found",
+  function (event) {
+    var controller = event.detail.controller;
+    console.log("Controller found at index " + controller.index + ".");
+    console.log("'" + controller.name + "' is ready!");
+  },
+  false
+);
+
+window.addEventListener(
+  "gc.button.press",
+  function (event) {
+    handlePadButtons(THIS_PAGE, currentWindow, event.detail.name);
+    // console.log(event.detail.name);
+  },
+  false
+);
+
+window.addEventListener(
+  "gc.analog.start",
+  function (event) {
+    isStickMoving = true;
+  },
+  false
+);
+
+window.addEventListener(
+  "gc.analog.change",
+  function (event) {
+    if (!isStickMoving) return;
+    if (event.detail.position.x > 0.5 || event.detail.position.x < -0.5 || event.detail.position.y > 0.5 || event.detail.position.y < -0.5) isStickMoving = false;
+    handlePadSticks(THIS_PAGE, currentWindow, event.detail.name, event.detail.position);
+  },
+  false
+);
+
+window.addEventListener(
+  "gc.analog.end",
+  function (event) {
+    isStickMoving = false;
   },
   false
 );
@@ -425,6 +487,19 @@ export function hideMapBackground(isToHide) {
   }
 }
 
+export function hideCursor(toHide) {
+  cursorVisible = !toHide;
+  if (toHide) $(".menu_bounding_box").addClass("menu_cursor_hidden");
+  else $(".menu_bounding_box").removeClass("menu_cursor_hidden");
+}
+
+export function setInputMethod(inputMethod) {
+  lastInput = inputMethod;
+
+  if (lastInput == 0) hideCursor(false);
+  else if (lastInput == 1) hideCursor(true);
+}
+
 function setTabName(index, name) {
   let tab = $(".menu_button").eq(index);
   tab.html(name);
@@ -457,3 +532,4 @@ function activeWindowHandler(activeTab) {}
 //
 
 setFirstTab();
+Controller.search();

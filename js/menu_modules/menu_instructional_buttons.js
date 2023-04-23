@@ -1,6 +1,6 @@
 // import { toggleMenuVisibility } from "../main_menu.js";
 
-import { enterStoreMenu, scrollTab, currentWindow, THIS_PAGE, toggleMenuVisibility } from "../main_menu.js";
+import { enterStoreMenu, scrollTab, currentWindow, THIS_PAGE, toggleMenuVisibility, hideCursor, setInputMethod } from "../main_menu.js";
 import * as menuContent from "./menu_content.js";
 // import { enterMapFullscreen, escapeMapFullscreen, scrollLegendElements } from "./menu_map.js";
 
@@ -14,15 +14,19 @@ let instrLoadingSpinner = $("#IB_SAVING_SPINNER");
 
 const INSTRUCTIONAL_BUTTONS = $("#menu_instructional_buttons");
 
-const INPUT_FRONTEND_TAB_LEFT = { id: "INPUT_FRONTEND_TAB_LEFT", keys: ["KeyQ"] };
-const INPUT_FRONTEND_TAB_RIGHT = { id: "INPUT_FRONTEND_TAB_RIGHT", keys: ["KeyE"] };
-const INPUT_FRONTEND_UP = { id: "INPUT_FRONTEND_UP", keys: ["KeyW", "ArrowUp"] };
-const INPUT_FRONTEND_DOWN = { id: "INPUT_FRONTEND_DOWN", keys: ["KeyS", "ArrowDown"] };
-const INPUT_FRONTEND_LEFT = { id: "INPUT_FRONTEND_LEFT", keys: ["KeyA", "ArrowLeft"] };
-const INPUT_FRONTEND_RIGHT = { id: "INPUT_FRONTEND_RIGHT", keys: ["KeyD", "ArrowRight"] };
-const INPUT_FRONTEND_ACCEPT = { id: "INPUT_FRONTEND_ACCEPT", keys: ["Enter"] };
-const INPUT_FRONTEND_CANCEL = { id: "INPUT_FRONTEND_CANCEL", keys: ["Escape", "Backspace"] };
-const INPUT_FRONTEND_X = { id: "INPUT_FRONTEND_X", keys: ["Tab"] };
+const INPUT_FRONTEND_TAB_LEFT = { id: "INPUT_FRONTEND_TAB_LEFT", keys: ["KeyQ", "LEFT_SHOULDER"] };
+const INPUT_FRONTEND_TAB_RIGHT = { id: "INPUT_FRONTEND_TAB_RIGHT", keys: ["KeyE", "RIGHT_SHOULDER"] };
+const INPUT_FRONTEND_UP = { id: "INPUT_FRONTEND_UP", keys: ["KeyW", "ArrowUp", "DPAD_UP"] };
+const INPUT_FRONTEND_DOWN = { id: "INPUT_FRONTEND_DOWN", keys: ["KeyS", "ArrowDown", "DPAD_DOWN"] };
+const INPUT_FRONTEND_LEFT = { id: "INPUT_FRONTEND_LEFT", keys: ["KeyA", "ArrowLeft", "DPAD_LEFT"] };
+const INPUT_FRONTEND_RIGHT = { id: "INPUT_FRONTEND_RIGHT", keys: ["KeyD", "ArrowRight", "DPAD_RIGHT"] };
+const INPUT_FRONTEND_ACCEPT = { id: "INPUT_FRONTEND_ACCEPT", keys: ["Enter", "FACE_1"] };
+const INPUT_FRONTEND_CANCEL = { id: "INPUT_FRONTEND_CANCEL", keys: ["Escape", "Backspace", "FACE_2"] };
+const INPUT_FRONTEND_Y = { id: "INPUT_FRONTEND_Y", keys: ["Tab"] };
+const INPUT_FRONTEND_RIGHT_AXIS_X_LEFT = { id: "INPUT_FRONTEND_RIGHT_AXIS_X_LEFT", keys: ["RIGHT_ANALOG_STICK_LEFT"] };
+const INPUT_FRONTEND_RIGHT_AXIS_X_RIGHT = { id: "INPUT_FRONTEND_RIGHT_AXIS_X_RIGHT", keys: ["RIGHT_ANALOG_STICK_RIGHT"] };
+const INPUT_FRONTEND_RIGHT_AXIS_Y_UP = { id: "INPUT_FRONTEND_RIGHT_AXIS_Y_UP", keys: ["PageUp", "RIGHT_ANALOG_STICK_UP"] };
+const INPUT_FRONTEND_RIGHT_AXIS_Y_DOWN = { id: "INPUT_FRONTEND_RIGHT_AXIS_Y_DOWN", keys: ["PageDown", "RIGHT_ANALOG_STICK_DOWN"] };
 
 const ALL_INPUTS = [
   INPUT_FRONTEND_TAB_LEFT,
@@ -33,7 +37,7 @@ const ALL_INPUTS = [
   INPUT_FRONTEND_RIGHT,
   INPUT_FRONTEND_ACCEPT,
   INPUT_FRONTEND_CANCEL,
-  INPUT_FRONTEND_X,
+  INPUT_FRONTEND_Y,
 ];
 
 let TAB_SCROLLING_ALLOWED = true;
@@ -84,6 +88,35 @@ export function setInstrContainerVisibility(isVisible) {
   }
 }
 
+export function handlePadButtons(currentPage, currentContext, padButtonPressed) {
+  setInputMethod(1);
+  handleInstructionalButtons(currentPage, currentContext, padButtonPressed, false);
+}
+
+export function handlePadSticks(currentPage, currentContext, padStick, stickPos) {
+  let stickX = stickPos.x;
+  let stickY = stickPos.y;
+
+  let stickDir = ["_UP", "_DOWN", "_LEFT", "_RIGHT"];
+  let stickDirIndex = -1;
+
+  let isUp = stickY < -0.5;
+  let isDown = stickY > 0.5;
+  let isLeft = stickX < -0.5;
+  let isRight = stickX > 0.5;
+
+  if (isUp) stickDirIndex = 0;
+  else if (isDown) stickDirIndex = 1;
+  else if (isLeft) stickDirIndex = 2;
+  else if (isRight) stickDirIndex = 3;
+  else return;
+
+  let padStickDir = padStick + stickDir[stickDirIndex];
+
+  setInputMethod(1);
+  handleInstructionalButtons(currentPage, currentContext, padStickDir, false);
+}
+
 export function handleInstructionalButtons(currentPage, currentContext, buttonPressed, isClicked) {
   switch (currentPage) {
     case "MAIN_MENU":
@@ -96,7 +129,7 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       }
 
       if (MENU_HIDE_ALLOWED) {
-        if (INPUT_FRONTEND_X.keys.indexOf(buttonPressed) > -1) {
+        if (INPUT_FRONTEND_Y.keys.indexOf(buttonPressed) > -1) {
           toggleMenuVisibility();
           MENU_HIDDEN = !MENU_HIDDEN;
         }
@@ -137,6 +170,8 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       if (INPUT_FRONTEND_DOWN.keys.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(1);
       if (INPUT_FRONTEND_LEFT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(0);
       if (INPUT_FRONTEND_RIGHT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
+      if (INPUT_FRONTEND_RIGHT_AXIS_Y_UP.keys.indexOf(buttonPressed) > -1) currentWindow.currentElements.scrollElements(0);
+      if (INPUT_FRONTEND_RIGHT_AXIS_Y_DOWN.keys.indexOf(buttonPressed) > -1) currentWindow.currentElements.scrollElements(1);
       if (INPUT_FRONTEND_ACCEPT.keys.indexOf(buttonPressed) > -1) currentWindow.goDeeper();
       break;
     case menuContent.menuSettings:

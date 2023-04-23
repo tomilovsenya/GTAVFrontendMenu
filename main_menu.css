@@ -169,6 +169,14 @@ div.menu_bounding_box {
   justify-content: center;
 }
 
+div.menu_cursor_hidden * {
+  cursor: none;
+}
+
+div.menu_cursor_hidden button {
+  pointer-events: none;
+}
+
 div.menu_warning_message {
   background-color: black;
   width: 100vw;
