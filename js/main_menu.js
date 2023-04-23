@@ -3,7 +3,7 @@
 //
 
 const MENU_PAGE = document.documentElement;
-const THIS_PAGE = "MAIN_MENU";
+export const THIS_PAGE = "MAIN_MENU";
 const STORE_MENU = "/store_menu.html";
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
@@ -27,7 +27,7 @@ import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules
 import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
-import { showInstrLoadingSpinner, hideInstrLoadingSpinner, setStartupInstr, setInstrContainerVisibility, handleInstructionalButtons } from "./menu_modules/menu_instructional_buttons.js";
+import { showInstrLoadingSpinner, hideInstrLoadingSpinner, setStartupInstr, setInstrContainerVisibility, handleInstructionalButtons, clickInstr } from "./menu_modules/menu_instructional_buttons.js";
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 import { charMichaelStats, fillStatEntry, globalStats } from "./menu_classes/menu_character.js";
@@ -177,7 +177,7 @@ window.addEventListener(
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
 
-    handleInstructionalButtons(THIS_PAGE, activeWindow, e.code);
+    handleInstructionalButtons(THIS_PAGE, currentWindow, e.code, false);
 
     if (["KeyF"].indexOf(e.code) > -1) {
       localizeSingleMenu(menuContent.menuStats, "american");
@@ -207,10 +207,8 @@ window.addEventListener(
     if (["PageDown"].indexOf(e.code) > -1) {
       currentWindow.currentElements.scrollElements(1);
     }
-    if (["Enter"].indexOf(e.code) > -1) {
+    if (["Tab"].indexOf(e.code) > -1) {
       e.preventDefault();
-      if (!currentWindow.active) currentWindow.activate();
-      else currentWindow.goDeeper();
     }
   },
   false
@@ -394,6 +392,9 @@ function updateEventHandlers() {
   $(".menu_window_inactive").click(function (e) {
     currentWindow.activate();
   });
+  $("#menu_instructional_buttons").on("click", ".ib_container_clickable", function () {
+    clickInstr($(this).attr("data-input"));
+  });
 }
 
 //
@@ -405,11 +406,11 @@ let menuVisibility = true;
 export function toggleMenuVisibility() {
   if (menuVisibility) {
     FRONTEND_MAIN_MENU.css({ visibility: "hidden" });
-    activeWindow.window.css({ visibility: "hidden" });
+    $("#" + currentWindow.ID).css({ visibility: "hidden" });
     menuVisibility = false;
   } else {
     FRONTEND_MAIN_MENU.css({ visibility: "visible" });
-    activeWindow.window.css({ visibility: "visible" });
+    $("#" + currentWindow.ID).css({ visibility: "visible" });
     menuVisibility = true;
   }
 }

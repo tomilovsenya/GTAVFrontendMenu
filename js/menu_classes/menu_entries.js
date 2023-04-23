@@ -114,8 +114,10 @@ export class MenuWindow {
   }
 
   goDeeper() {
-    if (this.currentContext == -1) this.updateSelection(0);
-    else if (this.currentContext == 0) this.enterCategory(this.currentCategoryIndex);
+    if (this.currentContext == -1) {
+      this.activate();
+      this.updateSelection(0);
+    } else if (this.currentContext == 0) this.enterCategory(this.currentCategoryIndex);
     else console.log("Can't go deeper in " + this.ID);
   }
 
