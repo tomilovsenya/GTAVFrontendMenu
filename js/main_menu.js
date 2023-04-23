@@ -10,10 +10,10 @@ const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 
 let isCategorySelected = false;
 let activeTab = null;
-let initWindow = menuContent.MENU_TABS[2];
+let initWindow = menuContent.MENU_TABS[3];
 let activeWindow = initWindow;
 
-export let currentWindow = menuContent.menuStats;
+export let currentWindow = menuContent.menuSettings;
 
 //
 // MODULES IMPORT
@@ -104,6 +104,7 @@ function showMenu() {
   setInstrContainerVisibility(true);
   FRONTEND_MAIN_MENU.css({ visibility: "visible" });
   FRONTEND_MAIN_MENU.show();
+  switchActiveWindow();
 }
 
 function onMenuLoad() {
@@ -285,13 +286,13 @@ export function clickEntry() {
   if (!currentWindow.active) return;
 
   let clickedEntry = findMenuEntryByID($(this).attr("id"));
-  if (clickedEntry == undefined) {
-    console.log("Entry not found by ID: " + $(this).attr("id"));
+  if (clickedEntry == undefined || clickedEntry == 0) {
+    console.warn("Clicked entry not found by ID: " + $(this).attr("id"));
     return;
   }
   if (clickedEntry instanceof MenuCategory) return;
   if (clickedEntry.isEmpty) {
-    console.log("Clicked entry is empty: " + $(this).attr("id"));
+    console.warn("Clicked entry is empty: " + $(this).attr("id"));
     return;
   }
 

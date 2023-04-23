@@ -34,7 +34,23 @@ export const menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress("me
 
 export const menuSettingsGraphicsIgnoreLimits = new MenuEntryList("menu_settings_graphics_ignore_limits", "Ignore Suggested Limits", ["Off", "On"]);
 export const menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", ["DirectX 10", "DirectX 10.1", "DirectX 11"]);
-export const menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", ["800x600", "1280x720", "1920x1080", "2560x1440", "3840x2160"]);
+export const menuSettingsGraphicsEmpty0 = new MenuEntryList("menu_settings_graphics_empty_0", "", [""], true);
+export const menuSettingsGraphicsScreenType = new MenuEntryList("menu_settings_graphics_screen_type", "Screen Type", ["Fullscreen", "Windowed", "Windowed Borderless"]);
+export const menuSettingsGraphicsResolution = new MenuEntryList("menu_settings_graphics_resolution", "Resolution", ["800 x 600", "1280 x 720", "1920 x 1080", "2560 x 1440", "3840 x 2160"]);
+export const menuSettingsGraphicsAspectRatio = new MenuEntryList("menu_settings_graphics_aspect_ratio", "Aspect Ratio", ["Auto", "4:3", "5:4", "16:9", "16:10", "21:9"]);
+export const menuSettingsGraphicsRefreshRate = new MenuEntryList("menu_settings_graphics_refresh_rate", "Refresh Rate", ["Auto", "60Hz", "144Hz", "240Hz"]);
+export const menuSettingsGraphicsOutput = new MenuEntryList("menu_settings_graphics_output", "Output Monitor", ["Auto", "1", "2", "3"]);
+export const menuSettingsGraphicsEmpty1 = new MenuEntryList("menu_settings_graphics_empty_1", "", [""], true);
+export const menuSettingsGraphicsFXAA = new MenuEntryList("menu_settings_graphics_fxaa", "FXAA", ["menu_common_off", "menu_common_on"]);
+export const menuSettingsGraphicsMSAA = new MenuEntryList("menu_settings_graphics_msaa", "MSAA", ["menu_common_off", "X2", "X4", "X8"]);
+export const menuSettingsGraphicsTXAA = new MenuEntryList("menu_settings_graphics_txaa", "NVIDIA TXAA", ["menu_common_off", "menu_common_on"]);
+export const menuSettingsGraphicsVSync = new MenuEntryList("menu_settings_graphics_vsync", "VSync", ["menu_common_off", "menu_common_on", "50%"]);
+export const menuSettingsGraphicsFocus = new MenuEntryList("menu_settings_graphics_focus", "Pause Game on Focus Loss", ["menu_common_off", "menu_common_on"]);
+export const menuSettingsGraphicsEmpty2 = new MenuEntryList("menu_settings_graphics_empty_2", "", [""], true);
+export const menuSettingsGraphicsDensity = new MenuEntryProgress("menu_settings_graphics_density", "Population Density", 20, 10);
+export const menuSettingsGraphicsVariety = new MenuEntryProgress("menu_settings_graphics_variety", "Population Variety", 50, 10);
+export const menuSettingsGraphicsScaling = new MenuEntryProgress("menu_settings_graphics_scaling", "Distance Scaling", 80, 10);
+export const menuSettingsGraphicsEmpty3 = new MenuEntryList("menu_settings_graphics_empty_3", "", [""], true);
 
 export const menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", ["menu_common_on", "menu_common_off"]);
 export const menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", ["English", "Russian", "Italian", "Spanish"]);
@@ -51,7 +67,27 @@ export const menuSettingsGamepadEntries = [
   menuSettingsGamepadThirdLookSensitivity,
   menuSettingsGamepadFirstLookSensitivity,
 ];
-export const menuSettingsGraphicsEntries = [menuSettingsGraphicsIgnoreLimits, menuSettingsGraphicsDirectX, menuSettingsGraphicsResolution];
+export const menuSettingsGraphicsEntries = [
+  menuSettingsGraphicsIgnoreLimits,
+  menuSettingsGraphicsDirectX,
+  menuSettingsGraphicsEmpty0,
+  menuSettingsGraphicsScreenType,
+  menuSettingsGraphicsResolution,
+  menuSettingsGraphicsAspectRatio,
+  menuSettingsGraphicsRefreshRate,
+  menuSettingsGraphicsOutput,
+  menuSettingsGraphicsEmpty1,
+  menuSettingsGraphicsFXAA,
+  menuSettingsGraphicsMSAA,
+  menuSettingsGraphicsTXAA,
+  menuSettingsGraphicsVSync,
+  menuSettingsGraphicsFocus,
+  menuSettingsGraphicsEmpty2,
+  menuSettingsGraphicsDensity,
+  menuSettingsGraphicsVariety,
+  menuSettingsGraphicsScaling,
+  menuSettingsGraphicsEmpty3,
+];
 export const menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
 
 export const menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries);
@@ -284,7 +320,20 @@ export const allMenuEntries = [
 
   menuSettingsGraphicsIgnoreLimits,
   menuSettingsGraphicsDirectX,
+  menuSettingsGraphicsEmpty0,
+  menuSettingsGraphicsScreenType,
   menuSettingsGraphicsResolution,
+  menuSettingsGraphicsAspectRatio,
+  menuSettingsGraphicsRefreshRate,
+  menuSettingsGraphicsOutput,
+  menuSettingsGraphicsFXAA,
+  menuSettingsGraphicsMSAA,
+  menuSettingsGraphicsTXAA,
+  menuSettingsGraphicsVSync,
+  menuSettingsGraphicsFocus,
+  menuSettingsGraphicsDensity,
+  menuSettingsGraphicsVariety,
+  menuSettingsGraphicsScaling,
 
   menuSettingsPauseClock,
   menuSettingsPauseLanguage,

@@ -347,13 +347,22 @@ export class MenuElements {
 
   scrollEnterableElements(scrollDir) {
     let newSelection;
+    let beforeNewSelection;
+    let afterNewSelection;
+    let lastElementIndex = this.menuEntries.length - 1;
 
     if (scrollDir == 0) {
-      if (this.currentSelection == 0) newSelection = this.menuEntries.length - 1;
+      if (this.currentSelection == 0) newSelection = lastElementIndex;
       else newSelection = this.currentSelection - 1;
+
+      beforeNewSelection = newSelection - 1;
+      if (this.menuEntries[newSelection].isEmpty) newSelection = this.menuEntries[beforeNewSelection] != undefined ? newSelection - 1 : lastElementIndex;
     } else if (scrollDir == 1) {
-      if (this.currentSelection < this.menuEntries.length - 1) newSelection = this.currentSelection + 1;
+      if (this.currentSelection < lastElementIndex) newSelection = this.currentSelection + 1;
       else newSelection = 0;
+
+      afterNewSelection = newSelection + 1;
+      if (this.menuEntries[newSelection].isEmpty) newSelection = this.menuEntries[afterNewSelection] != undefined ? newSelection + 1 : 0;
     }
 
     this.updateSelection(newSelection);
@@ -793,9 +802,14 @@ export class MenuArrows {
 
 export function findMenuEntryByID(id) {
   let foundObject = allMenuEntries.find((entry) => entry.ID === id);
-  console.log("Found MenuEntry by ID: " + id);
-  console.log(foundObject);
-  return foundObject;
+  if (foundObject != undefined) {
+    console.log("Found MenuEntry by ID: " + id);
+    console.log(foundObject);
+    return foundObject;
+  } else {
+    console.warn("MenuEntry with such ID not found: " + id);
+    return 0;
+  }
 }
 
 export function findMenuElementsByID(id) {
@@ -805,7 +819,7 @@ export function findMenuElementsByID(id) {
     console.log(foundObject);
     return foundObject;
   } else {
-    console.log("MenuElements with such ID not found: " + id);
+    console.warn("MenuElements with such ID not found: " + id);
     return 0;
   }
 }
