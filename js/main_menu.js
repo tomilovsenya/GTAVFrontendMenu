@@ -98,7 +98,7 @@ function initMenuContent() {
   fillReplayMissionList();
   initHundredCompletionChart();
   fillHundredCompletionWindow();
-  charMichaelStats.charStats.forEach(stat => fillStatEntry(stat));
+  charMichaelStats.charStats.forEach((stat) => fillStatEntry(stat));
 }
 
 function showMenu() {
@@ -356,35 +356,14 @@ export function scrollTab(scrollDir) {
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL
 //
 
-$("#menu_brief_dialogue").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) scrollDialogue(0);
-  else scrollDialogue(1);
+$(".menu_elements_populated").bind("wheel", function (e) {
+  let scrollDir = e.originalEvent.deltaY / 40 < 0 ? 0 : 1;
+  currentWindow.currentElements.scrollElements(scrollDir);
 });
-$(".menu_stats")
-  .find(".menu_elements_scrollable")
-  .bind("wheel", function (e) {
-    if (e.originalEvent.deltaY / 40 < 0) scrollStats(0);
-    else scrollStats(1);
-  });
 $(".menu_categories").bind("wheel", function (e) {
-  if (isCategorySelected) return;
-  if (e.originalEvent.deltaX != 0) return;
-  if (e.originalEvent.deltaY / 40 < 0) scrollUpDown(0);
-  else scrollUpDown(1);
-});
-$(".menu_category_list").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY != 0) return;
-  if (e.originalEvent.deltaX / 120 < 0) scrollLeftRight(1);
-  else scrollLeftRight(0);
-});
-$(".menu_elements_scrollable").bind("wheel", function (e) {
-  if (!isCategorySelected) return;
-  if (e.originalEvent.deltaY / 40 < 0) scrollUpDown(0);
-  else scrollUpDown(1);
-});
-$("#menu_save_list").bind("wheel", function (e) {
-  if (e.originalEvent.deltaY / 40 < 0) scrollSaves(0, $("#menu_save_list"));
-  else scrollSaves(1, $("#menu_save_list"));
+  if (currentWindow.currentContext != 0) return;
+  let scrollDir = e.originalEvent.deltaY / 40 < 0 ? 0 : 1;
+  currentWindow.scrollVertical(scrollDir);
 });
 
 function updateEventHandlers() {
