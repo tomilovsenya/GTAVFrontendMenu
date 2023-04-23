@@ -185,6 +185,11 @@ window.addEventListener(
       localizeSingleMenu(menuContent.menuSettings, "russian");
     }
     if (["KeyH"].indexOf(e.code) > -1) {
+      showWarningMessage(
+        "WARNING",
+        "Testing Warning Message. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, suscipit velit. Deserunt quod quisquam modi aperiam tempore vero nam, aut, voluptatum officiis veniam nesciunt tempora assumenda. Labore sequi nihil id sapiente tenetur numquam? Perspiciatis necessitatibus impedit officia rem id exercitationem consectetur, animi, expedita harum voluptas natus distinctio repellendus hic quo.",
+        5000
+      );
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
     }

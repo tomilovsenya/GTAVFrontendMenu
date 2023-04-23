@@ -28,9 +28,9 @@ export const menuSettingsGamepadVibration = new MenuEntryList("menu_settings_gam
 export const menuSettingsGamepadInvertLook = new MenuEntryList("menu_settings_gamepad_invert_look", "menu_settings_gamepad_invert_look_name", ["menu_common_on", "menu_common_off"]);
 export const menuSettingsGamepadThirdControlType = new MenuEntryList("menu_settings_gamepad_third_control_type", "Third Person Control Type", ["Standard", "Alternate", "Southpaw"]);
 export const menuSettingsGamepadFirstControlType = new MenuEntryList("menu_settings_gamepad_first_control_type", "First Person Control Type", ["Standard", "Alternate", "Southpaw"]);
-export const menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress("menu_settings_gamepad_third_aim_sensitivity", "Third Person Aiming Sensitivity", 25, 5);
-export const menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress("menu_settings_gamepad_third_look_sensitivity", "Third Person Look-Around Sensitivity", 25, 5);
-export const menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress("menu_settings_gamepad_first_aim_sensitivity", "First Person Aiming Sensitivity", 25, 5);
+export const menuSettingsGamepadThirdAimSensitivity = new MenuEntryProgress("menu_settings_gamepad_third_aim_sensitivity", "Third Person Aiming Sensitivity", 25, 15);
+export const menuSettingsGamepadThirdLookSensitivity = new MenuEntryProgress("menu_settings_gamepad_third_look_sensitivity", "Third Person Look-Around Sensitivity", 25, 15);
+export const menuSettingsGamepadFirstLookSensitivity = new MenuEntryProgress("menu_settings_gamepad_first_aim_sensitivity", "First Person Aiming Sensitivity", 25, 15);
 
 export const menuSettingsGraphicsIgnoreLimits = new MenuEntryList("menu_settings_graphics_ignore_limits", "Ignore Suggested Limits", ["Off", "On"]);
 export const menuSettingsGraphicsDirectX = new MenuEntryList("menu_settings_graphics_directx", "DirectX Version", ["DirectX 10", "DirectX 10.1", "DirectX 11"]);

@@ -45,7 +45,7 @@
 /* --navbar-margin-arrow: calc(var(--menu-wnd-width) / -60); */
 
 :root {
-  --menu-background: url("images/bg/background.jpg");
+  --menu-background: url("images/bg/background4.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: #000000aa;
@@ -922,7 +922,8 @@ button.menu_arrows {
   /* width: var(--menu-elements-width); */
   width: 100%;
   height: var(--item-height);
-  border: 0px;
+  border: 0;
+  outline: 0;
   /* margin-top: var(--item-margin); */
   float: right;
   display: flex;

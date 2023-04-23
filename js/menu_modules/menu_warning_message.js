@@ -7,7 +7,7 @@ const WARNING_ALERT_TEST = {
   text: "Testing alert.",
 };
 
-export function showWarningMessage(messageHeader, messageText) {
+export function showWarningMessage(messageHeader, messageText, showTime) {
   if (isWarningMessageActive) return;
 
   let warningTemplate = $(".menu_warning_message");
@@ -20,6 +20,8 @@ export function showWarningMessage(messageHeader, messageText) {
   warningTemplate.css({ visibility: "visible" });
 
   isWarningMessageActive = true;
+
+  setTimeout(hideWarningMessage, showTime);
 }
 
 export function hideWarningMessage() {
