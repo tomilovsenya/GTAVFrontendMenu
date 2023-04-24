@@ -181,9 +181,12 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       if (INPUT_FRONTEND_RIGHT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
       if (INPUT_FRONTEND_ACCEPT.keys.indexOf(buttonPressed) > -1) currentWindow.goDeeper();
       break;
-    case menuContent.MENU_TAB_GAME:
-      if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);
-      if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollUpDown(1);
+    case menuContent.menuGame:
+      if (INPUT_FRONTEND_UP.keys.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(0);
+      if (INPUT_FRONTEND_DOWN.keys.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(1);
+      if (INPUT_FRONTEND_LEFT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(0);
+      if (INPUT_FRONTEND_RIGHT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
+      if (INPUT_FRONTEND_ACCEPT.keys.indexOf(buttonPressed) > -1) currentWindow.goDeeper();
       break;
     case menuContent.MENU_TAB_ONLINE:
       if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollUpDown(0);

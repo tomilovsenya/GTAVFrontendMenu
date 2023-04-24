@@ -642,33 +642,33 @@
   },
 
   {
-    "gxt": "menu_game_category_0",
+    "gxt": "menu_game_category_replay_mission_name",
     "american": "Replay Mission",
     "russian": "Начать задание заново"
   },
   {
-    "gxt": "menu_game_category_1",
+    "gxt": "menu_game_category_replay_strangers_name",
     "american": "Replay Stranger and Freaks",
     "russian": "Чудаки и прочие незнакомцы - заново"
   },
   {
-    "gxt": "menu_game_category_2",
+    "gxt": "menu_game_category_load_game_name",
     "american": "Load Game",
     "russian": "Загрузить игру"
   },
   {
-    "gxt": "menu_game_category_3",
+    "gxt": "menu_game_category_new_game_name",
     "american": "New Game",
     "russian": "Новая игра"
   },
   {
-    "gxt": "menu_game_category_4",
+    "gxt": "menu_game_category_exit_name",
     "american": "Exit Game",
     "russian": "Выйти из игры"
   },
 
   {
-    "gxt": "menu_game_elements_missions_0",
+    "gxt": "menu_game_replay_mission_prologue_name",
     "american": "Prologue",
     "russian": "Пролог"
   },
@@ -694,7 +694,7 @@
   },
 
   {
-    "gxt": "menu_game_elements_missions_1",
+    "gxt": "menu_game_replay_mission_franklin_1_name",
     "american": "Franklin & Lamar",
     "russian": "Франклин и Ламар"
   },
@@ -720,12 +720,12 @@
   },
 
   {
-    "gxt": "menu_game_elements_missions_2",
+    "gxt": "menu_game_replay_mission_franklin_2_name",
     "american": "Repossession",
     "russian": "Конфискация"
   },
   {
-    "gxt": "menu_game_elements_missions_3",
+    "gxt": "menu_game_replay_mission_franklin_3_name",
     "american": "Complications",
     "russian": "Затруднения"
   },

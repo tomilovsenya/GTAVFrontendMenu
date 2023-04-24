@@ -587,44 +587,43 @@
             </div>
           </div>
 
-          <div class="menu_window menu_game">
-            <div class="menu_categories">
-              <button id="menu_game_category_0" class="menu_entry menu_category menu_category_enter">
-                <span class="element_label">Replay Mission</span>
-              </button>
-              <button id="menu_game_category_1" class="menu_entry menu_category">
-                <span class="element_label">Replay Strangers and Freaks</span>
-              </button>
-              <button id="menu_game_category_2" class="menu_entry menu_category">
-                <span class="element_label">Load Game</span>
-              </button>
-              <button id="menu_game_category_3" class="menu_entry menu_category">
-                <span class="element_label">New Game</span>
-              </button>
-              <button id="menu_game_category_4" class="menu_entry menu_category">
-                <span class="element_label">Exit Game</span>
-              </button>
+          <div id="menu_game" class="menu_window menu_game">
+            <div class="menu_window_categories">
+              <div id="menu_game_categories" class="menu_categories"></div>
             </div>
-            <div id="menu_game_replay_mission" class="menu_elements">
-              <div id="menu_game_elements_missions" class="menu_elements menu_elements_scrollable menu_entries_middle"></div>
-              <div class="menu_game_mission_info">
-                <div class="menu_game_mission_info_header">
-                  <button class="menu_entry menu_entry_empty_double menu_elements_header">
-                    <span class="element_mission_name">Prologue</span>
-                  </button>
+
+            <div class="menu_window_elements menu_window_elements_half">
+              <div class="menu_elements_noarrows">
+                <div id="menu_game_replay_mission" class="menu_elements menu_elements_divided">
+                  <div id="menu_game_replay_mission_list" class="menu_elements menu_elements_populated menu_elements_scrollable menu_elements_half"></div>
                 </div>
-                <div class="menu_game_mission_info_objectives"></div>
-                <div class="menu_divider"></div>
-                <div class="menu_game_mission_info_result"></div>
+                <div id="menu_game_replay_strangers" class="menu_elements">
+                  <div class="menu_elements menu_elements_populated menu_elements_scrollable menu_entries_middle"></div>
+                </div>
               </div>
             </div>
-            <button id="menu_arrows_game" class="menu_arrows menu_arrows_game" tabindex="-1">
-              <span id="menu_game_elements_missions_counter" class="element_label"></span>
-              <div class="menu_arrows_zones">
-                <div id="menu_arrows_game_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-                <div id="menu_arrows_game_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+
+            <div class="menu_window_column">
+              <div class="menu_column_noarrows">
+                <div id="menu_game_replay_mission_info" class="menu_column">
+                  <button class="menu_entry menu_entry_empty menu_entry_empty_double">
+                    <span id="menu_game_replay_mission_info_title">Prologue</span>
+                  </button>
+                  <div id="menu_game_replay_mission_info_objectives" class="menu_elements">
+                    <div class="menu_entry_objective">
+                      <div class="menu_entry_objective_title">
+                        <span class="element_label menu_entry_objective_label">Completed</span>
+                        <span class="element_label menu_entry_objective_label_right">No</span>
+                        <div class="element_checkbox" data-check="true"></div>
+                      </div>
+                      <span class="element_label menu_entry_objective_descr">Complete the mission</span>
+                    </div>
+                  </div>
+                  <div class="menu_divider"></div>
+                  <div class="menu_game_mission_info_result"></div>
+                </div>
               </div>
-            </button>
+            </div>
           </div>
 
           <div class="menu_window menu_online">

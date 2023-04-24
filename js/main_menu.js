@@ -99,6 +99,7 @@ async function loadMenu() {
 
   menuContent.menuStats.create();
   menuContent.menuSettings.create();
+  menuContent.menuGame.create();
 
   updateEventHandlers();
   setInputMethod(0);

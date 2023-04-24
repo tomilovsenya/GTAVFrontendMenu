@@ -1,4 +1,4 @@
-import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
+import { MenuArrows, MenuEntryHeader, MenuEntryMedal, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
 import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
@@ -309,6 +309,39 @@ export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuS
 
 //#endregion
 
+//#region menuGame
+
+export const menuGameReplayMissionPrologue = new MenuEntryMedal("menu_game_replay_mission_prologue", "menu_game_replay_mission_prologue_name");
+export const menuGameReplayMissionFranklin1 = new MenuEntryMedal("menu_game_replay_mission_franklin_1", "menu_game_replay_mission_franklin_1_name");
+export const menuGameReplayMissionFranklin2 = new MenuEntryMedal("menu_game_replay_mission_franklin_2", "menu_game_replay_mission_franklin_2_name");
+export const menuGameReplayMissionFranklin3 = new MenuEntryMedal("menu_game_replay_mission_franklin_3", "menu_game_replay_mission_franklin_3_name");
+
+export const menuGameReplayStrangersTonya1 = new MenuEntryMedal("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
+
+export const menuGameCategoryLoadGame = new MenuCategory("menu_game_category_load_game", "menu_game_category_load_game_name");
+export const menuGameCategoryNewGame = new MenuCategory("menu_game_category_new_game", "menu_game_category_new_game_name");
+export const menuGameCategoryExit = new MenuCategory("menu_game_category_exit", "menu_game_category_exit_name");
+
+export const menuGameReplayMissionEntries = [menuGameReplayMissionPrologue, menuGameReplayMissionFranklin1, menuGameReplayMissionFranklin2, menuGameReplayMissionFranklin3];
+export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTonya1];
+
+export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries);
+export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries);
+
+export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");
+export const menuGameCategoryReplayStrangers = new MenuCategory("menu_game_category_replay_strangers", "menu_game_category_replay_strangers_name");
+
+export const menuGameCategories = {
+  ID: "menu_game_categories",
+  list: [menuGameCategoryReplayMission, menuGameCategoryReplayStrangers], //, menuGameCategoryLoadGame, menuGameCategoryNewGame, menuGameCategoryExit],
+};
+
+export const menuGameArrows = new MenuArrows("menu_game_arrows");
+export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers];
+export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGameElements, menuGameArrows);
+
+//#endregion
+
 export const allMenuEntries = [
   menuStatsCategorySkills,
   menuStatsCategoryGeneral,
@@ -354,11 +387,14 @@ export const allMenuEntries = [
   menuSettingsPauseClock,
   menuSettingsPauseLanguage,
   menuSettingsPauseRemember,
+
+  menuGameReplayMissionPrologue,
+  menuGameReplayMissionFranklin1,
 ];
 
-export const allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsCategoryChecklist, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
+export const allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsCategoryChecklist, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause, menuGameReplayMission];
 
-export const allMenuWindows = [undefined, menuBrief, menuStats, menuSettings, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+export const allMenuWindows = [undefined, menuBrief, menuStats, menuSettings, menuGame, undefined, undefined, undefined, undefined, undefined, undefined];
 //
 // MENU TABS
 //

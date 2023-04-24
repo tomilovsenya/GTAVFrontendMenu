@@ -46,7 +46,7 @@
 
   --menu-categories-width: calc(var(--tab-width) * 2 + var(--tab-margin));
   --menu-elements-width: calc(var(--tab-width) * 4 + var(--tab-margin) * 3);
-  --menu-elements-half-width: 49.825%;
+  --menu-column-width: calc(var(--tab-width) * 2 + var(--tab-margin));
 
   /* --item-margin: 0.1625vw; */
   --item-margin: calc((var(--menu-wnd-height) - (var(--item-height) * 16)) / 15);
@@ -447,6 +447,16 @@ div.menu_window_elements {
   overflow: hidden;
 }
 
+div.menu_window_elements_half {
+  /* width: var(--menu-elements-width); */
+  /* width: var(--menu-column-width) !important; */
+}
+
+div.menu_window_column {
+  min-width: var(--menu-column-width) !important;
+  display: flex;
+}
+
 div.menu_window_inactive {
   opacity: 0.5;
 }
@@ -774,10 +784,6 @@ div.menu_elements_header button.menu_entry {
   background-clip: padding-box;
 }
 
-div.menu_elements_noarrows {
-  max-height: var(--menu-wnd-height);
-}
-
 div.menu_elements_footer {
   background-color: var(--black-bg-color);
   width: 100%;
@@ -1091,11 +1097,6 @@ div.menu_entries_middle {
   overflow-y: hidden;
 }
 
-div.menu_elements_full_width {
-  min-width: 100%;
-
-}
-
 div.menu_elements {
   /* background-color: var(--black-bg-color); */
   /* width: 866px; */
@@ -1115,6 +1116,14 @@ div.menu_elements {
   overflow: hidden;
   /* align-self: stretch; */
   scroll-snap-type: mandatory;
+}
+
+div.menu_elements_full_width {
+  min-width: 100%;
+}
+
+div.menu_elements_half {
+  max-width: var(--tab-width * 2) !important;
 }
 
 div.menu_elements_divided {
@@ -1180,6 +1189,18 @@ div.menu_elements_scrollable .menu_entry:last-of-type {
 
 div.menu_elements_scrollable .menu_entry {
   background-color: transparent;
+}
+
+div.menu_elements_noarrows {
+  max-height: var(--menu-wnd-height);
+}
+
+div.menu_column_noarrows {
+  width: 100%;
+}
+
+div.menu_column {
+  width: 100%;
 }
 
 div.menu_background_rockstar {
@@ -1741,55 +1762,15 @@ div#menu_settings_facebook {
 
 /*#region MenuTabGame*/
 
-div.menu_game {
+div#menu_game {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  display: none;
-  /* display: none; */
   flex-wrap: nowrap;
 }
 
-div.menu_game .menu_elements {
-  width: var(--menu-elements-width);
-  /* height: 100%; */
-  /* height: 170%; */
-  /* height: fit-content; */
-  /* min-height: 100%; */
-  flex-direction: row;
-  background-color: transparent;
-  justify-content: space-between;
-  /* overflow: visible; */
-  /* background-color: violet; */
-  /* scroll-snap-type: mandatory; */
-}
-
-div.menu_game .menu_entries_middle {
-  width: var(--menu-elements-half-width);
-  display: flex;
-  flex-direction: column;
-  /* height: 100%; */
-  /* overflow: hidden; */
-  /* justify-self: flex-start; */
-  /* background-color: var(--black-bg-color); */
-}
-
-div.menu_game .menu_entries_middle .menu_entry {
+div#menu_game_replay_mission_info {
   background-color: var(--black-bg-color);
-  scroll-snap-align: start end;
-}
-
-div.menu_game .menu_entries_middle .menu_entry:hover {
-  background-color: var(--hover-color);
-}
-
-div.menu_game>.menu_elements .element_list {
-  width: 1vw;
-  height: 1vw;
-}
-
-div.menu_game .menu_entries_middle .menu_entry:last-of-type {
-  margin-bottom: 0;
 }
 
 div.element_medal_right {
@@ -1828,9 +1809,9 @@ div.element_medal_right[data-medal-type="2"] {
   background-image: url(images/icons/checkbox_ticked.svg);
 }
 
-div.menu_game .menu_game_mission_info {
+div#menu_game_replay_mission_info {
   background-color: transparent;
-  width: var(--menu-elements-half-width);
+  /* width: var(--menu-elements-half-width); */
   height: fit-content;
   max-height: 100%;
   border: 0px;
@@ -1844,16 +1825,16 @@ div.menu_game .menu_game_mission_info {
   top: 0;
 }
 
-div.menu_game .menu_game_mission_info button {
-  background-color: var(--black-bg-color);
+div#menu_game_replay_mission_info button {
+  background-color: var(--black-bg-color) !important;
 }
 
-div.menu_game .menu_entry_empty_double {
-  background-color: transparent;
+div#menu_game_replay_mission_info .menu_entry_empty_double {
+  /* background-color: transparent; */
   margin-bottom: var(--item-margin);
 }
 
-div.menu_game .element_mission_name {
+span#menu_game_replay_mission_info_title {
   /* color: var(--text-color); */
   color: gold;
   font-family: "SignPainterHouseScript";
@@ -1866,27 +1847,29 @@ div.menu_game .menu_game_mission_info_header .menu_entry_empty_double {
   margin-bottom: 0;
 }
 
-div.menu_game .menu_game_mission_info_objectives {
+div#menu_game_replay_mission_info_objectives {
   background-color: var(--black-bg-color);
   width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
-  margin-top: var(--item-margin);
+  /* margin-top: var(--item-margin); */
 }
 
-div.menu_game .menu_game_mission_info_objectives:empty {
+div#menu_game_replay_mission_info_objectives:empty {
   width: 0;
   margin-top: 0;
 }
 
 div.menu_entry_objective {
   max-width: 100%;
+  height: max-content;
   color: white;
   height: fit-content;
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
-  margin-bottom: 0.25vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
 }
 
 div.menu_game_mission_info_objectives .menu_entry_objective:first-of-type {
@@ -1976,7 +1959,7 @@ div.menu_friends .menu_elements {
 
 div.menu_friends_character {
   background-color: var(--black-bg-color);
-  width: var(--menu-elements-half-width);
+  width: var(--menu-column-width);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -1999,7 +1982,7 @@ button#menu_friends_character_status {
 }
 
 div.menu_friends_info {
-  width: var(--menu-elements-half-width);
+  width: var(--menu-column-width);
   height: 100%;
 }
 

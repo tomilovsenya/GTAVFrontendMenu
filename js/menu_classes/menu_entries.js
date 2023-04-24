@@ -41,6 +41,7 @@ export class MenuWindow {
     this.#toggleArrows(false);
     this.updateSelection(-1);
     this.deactivate();
+    console.log(this);
   }
 
   activate() {
@@ -77,7 +78,7 @@ export class MenuWindow {
     this.menuElements.forEach((elements, index) => {
       if (index > 0) elements.deactivate();
       elements.populateElements(this);
-      // console.log(elements);
+      console.log(elements);
     });
   }
 
@@ -784,6 +785,16 @@ export class MenuCategory extends MenuEntryList {
   clickZone(clickDir) {
     // console.log(this.parentElements);
     this.parentElements.scrollHorizontal(clickDir);
+  }
+}
+
+export class MenuEntryMedal extends MenuEntry {
+  constructor(id, title) {
+    super(id, title);
+  }
+
+  createEntry(title, parentId, parentElements, index) {
+    super.createEntry(title, parentId, parentElements, index);
   }
 }
 
