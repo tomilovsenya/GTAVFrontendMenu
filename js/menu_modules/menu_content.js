@@ -1,4 +1,4 @@
-import { MenuArrows, MenuEntryHeader, MenuEntryMedal, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
+import { MenuArrows, MenuEntryHeader, MenuEntryMission, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
 import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
@@ -311,12 +311,17 @@ export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuS
 
 //#region menuGame
 
-export const menuGameReplayMissionPrologue = new MenuEntryMedal("menu_game_replay_mission_prologue", "menu_game_replay_mission_prologue_name");
-export const menuGameReplayMissionFranklin1 = new MenuEntryMedal("menu_game_replay_mission_franklin_1", "menu_game_replay_mission_franklin_1_name");
-export const menuGameReplayMissionFranklin2 = new MenuEntryMedal("menu_game_replay_mission_franklin_2", "menu_game_replay_mission_franklin_2_name");
-export const menuGameReplayMissionFranklin3 = new MenuEntryMedal("menu_game_replay_mission_franklin_3", "menu_game_replay_mission_franklin_3_name");
+export const MissionPrologueObjectives = [
+  { label: "Bobcat Security", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
+  { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
+];
 
-export const menuGameReplayStrangersTonya1 = new MenuEntryMedal("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
+export const menuGameReplayMissionPrologue = new MenuEntryMission("menu_game_replay_mission_prologue", "menu_game_replay_mission_prologue_name", 0, MissionPrologueObjectives);
+export const menuGameReplayMissionFranklin1 = new MenuEntryMission("menu_game_replay_mission_franklin_1", "menu_game_replay_mission_franklin_1_name", 1);
+export const menuGameReplayMissionFranklin2 = new MenuEntryMission("menu_game_replay_mission_franklin_2", "menu_game_replay_mission_franklin_2_name", 2);
+export const menuGameReplayMissionFranklin3 = new MenuEntryMission("menu_game_replay_mission_franklin_3", "menu_game_replay_mission_franklin_3_name", 3);
+
+export const menuGameReplayStrangersTonya1 = new MenuEntryMission("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
 
 export const menuGameCategoryLoadGame = new MenuCategory("menu_game_category_load_game", "menu_game_category_load_game_name");
 export const menuGameCategoryNewGame = new MenuCategory("menu_game_category_new_game", "menu_game_category_new_game_name");
@@ -325,7 +330,7 @@ export const menuGameCategoryExit = new MenuCategory("menu_game_category_exit", 
 export const menuGameReplayMissionEntries = [menuGameReplayMissionPrologue, menuGameReplayMissionFranklin1, menuGameReplayMissionFranklin2, menuGameReplayMissionFranklin3];
 export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTonya1];
 
-export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries);
+export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true);
 export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries);
 
 export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");

@@ -268,8 +268,9 @@ export class MenuElements {
   arrowsRequired = false;
   evenEntriesDarker = false;
   parentWindow;
+  siblingColumnID;
 
-  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable) {
+  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable, siblingColumnID) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
@@ -278,6 +279,7 @@ export class MenuElements {
     this.arrowsRequired = this.menuEntries.length > 16 ? true : false;
     this.evenEntriesDarker = evenEntriesDarker != undefined ? evenEntriesDarker : false;
     this.scrollable = isScrollable != undefined ? isScrollable : this.enterable;
+    this.siblingColumnID = siblingColumnID;
   }
 
   populateElements(parentWindow) {
@@ -788,13 +790,55 @@ export class MenuCategory extends MenuEntryList {
   }
 }
 
-export class MenuEntryMedal extends MenuEntry {
-  constructor(id, title) {
+export class MenuEntryMission extends MenuEntryList {
+  medal = 0; // 0 = Bronze, 1 = Silver, 2 = Gold, 3 = Platinum
+  objectives = [];
+  medalClasses = ["element_medal_bronze", "element_medal_silver", "element_medal_gold", "element_medal_platinum"];
+
+  constructor(id, title, medal, objectives) {
     super(id, title);
+    this.medal = medal;
+    this.objectives = objectives;
   }
 
   createEntry(title, parentId, parentElements, index) {
     super.createEntry(title, parentId, parentElements, index);
+    this.drawMedal(this.medal);
+    if (this.objectives != undefined) this.fillMissionInfo();
+  }
+
+  drawMedal(medalType) {
+    let missionMedal = $(`<div id="${this.listID}_medal" class="element_medal_right"></div>`);
+
+    missionMedal.addClass(this.medalClasses[medalType]);
+    $(this.listSel).append(missionMedal);
+  }
+
+  fillMissionInfo() {
+    let titleLabel = $("#menu_game_replay_mission_info_title");
+    let objectivesCont = $("#menu_game_replay_mission_info_objectives");
+    let checkClasses = ["element_checkbox_empty", "element_checkbox_ticked"];
+
+    let resultsCont = $("#menu_game_replay_mission_info_results");
+    let resultText = getLocalizedString(`menu_game_replay_mission_medal_${this.medal}`);
+    let blankResult = `<button class="menu_entry menu_entry_empty"><span class="element_label">${resultText}</span>
+    <div class="element_list"><div class="element_medal_right ${this.medalClasses[this.medal]}"></div></div></button>`;
+
+    titleLabel.text(this.title);
+    resultsCont.append(blankResult);
+
+    this.objectives.forEach((objective, index) => {
+      let objectiveID = `${this.ID}_objective_${index}`;
+      let objectiveCheck = objective.check ? 1 : 0;
+      let blankObjective = `<div id="${objectiveID}" class="menu_entry_objective">
+    <div class="menu_entry_objective_title">
+      <span class="element_label menu_entry_objective_label">${objective.label}</span>
+      <span class="element_label menu_entry_objective_label_right">${objective.label_r}</span>
+      <div class="element_checkbox ${checkClasses[objectiveCheck]}"></div>
+    </div><span class="element_label menu_entry_objective_descr">${objective.descr}</span></div>`;
+
+      objectivesCont.append(blankObjective);
+    });
   }
 }
 

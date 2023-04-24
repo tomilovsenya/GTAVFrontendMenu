@@ -1774,22 +1774,26 @@ div#menu_game_replay_mission_info {
 }
 
 div.element_medal_right {
-  height: 100%;
-  width: 100%;
+  height: 1vw;
+  width: 1vw;
   background-color: white;
   border-radius: 50%;
   display: inline-block;
 }
 
-div.element_medal_right[data-medal-type="0"] {
+div.element_medal_platinum {
+  background-color: var(--hud-color-red);
+}
+
+div.element_medal_gold {
   background-color: var(--hud-color-gold);
 }
 
-div.element_medal_right[data-medal-type="1"] {
+div.element_medal_silver {
   background-color: var(--hud-color-silver);
 }
 
-div.element_medal_right[data-medal-type="2"] {
+div.element_medal_bronze {
   background-color: var(--hud-color-bronze);
 }
 
@@ -1801,11 +1805,11 @@ div.element_medal_right[data-medal-type="2"] {
   background-size: contain;
 }
 
-.element_checkbox[data-check="0"] {
+.element_checkbox_empty {
   background-image: url(images/icons/checkbox_empty.svg);
 }
 
-.element_checkbox[data-check="1"] {
+.element_checkbox_ticked {
   background-image: url(images/icons/checkbox_ticked.svg);
 }
 
