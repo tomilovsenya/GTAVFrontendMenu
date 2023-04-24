@@ -688,8 +688,8 @@ button.menu_entry {
   scroll-snap-align: start end;
 }
 
-div.menu_window_active .menu_entry:not(.menu_entry_active):hover {
-  background-color: var(--hover-color);
+div.menu_window_active .menu_entry:not(.menu_entry_active):not(.menu_entry_empty):hover {
+  background-color: var(--hover-color) !important;
 }
 
 button.menu_entry_active {
@@ -767,12 +767,6 @@ div.element_list {
 button.menu_entry_empty_double {
   min-height: var(--item-double-height);
   align-self: flex-start;
-}
-
-button.menu_entry_empty_double:hover,
-button.menu_entry_empty:hover {
-  /* background-color: var(--black-bg-color); */
-  background-color: transparent !important;
 }
 
 button.menu_entry_empty {
