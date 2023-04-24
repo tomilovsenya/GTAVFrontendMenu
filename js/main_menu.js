@@ -10,7 +10,7 @@ const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 
 let isCategorySelected = false;
 let activeTab = null;
-let initWindow = menuContent.MENU_TABS[3];
+let initWindow = menuContent.MENU_TABS[4];
 let activeWindow = initWindow;
 
 let cursorVisible = false;
@@ -28,7 +28,7 @@ import { MenuCategory, MenuWindow, findMenuEntryByID } from "./menu_classes/menu
 import { initChecklistChart } from "./menu_modules/menu_stats.js";
 import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
-import { fillReplayMissionList, updateMissionCounter, updateMissionInfo } from "./menu_modules/menu_game.js";
+import { updateMissionCounter } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
 import {
@@ -111,7 +111,6 @@ function initMenuContent() {
   setInitialTab();
   activeWindow.id.trigger("tabActive");
   setActiveWindow(menuContent.menuStats);
-  fillReplayMissionList();
   initChecklistChart();
   globalStats.charStats.forEach((stat) => fillStatEntry(stat));
   charMichaelStats.charStats.forEach((stat) => fillStatEntry(stat));

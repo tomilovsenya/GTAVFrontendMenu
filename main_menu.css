@@ -69,6 +69,7 @@
 
   /* HUD COLORS */
 
+  --hud-color-platinum: rgb(166 221 190);
   --hud-color-gold: rgb(214 181 99);
   --hud-color-silver: rgb(150 153 161);
   --hud-color-bronze: rgb(180 130 97);
@@ -886,8 +887,9 @@ button.menu_arrows {
   background-image: url(images/arrows_vertical.svg);
   background-repeat: no-repeat;
   background-origin: content-box;
-  background-position: right;
+  background-position: center;
   background-size: contain;
+  color: var(--text-color);
   /* width: var(--menu-elements-width); */
   width: 100%;
   height: var(--item-height);
@@ -904,9 +906,19 @@ button.menu_arrows {
   /* pointer-events: none; */
 }
 
+button.menu_arrows .element_label {
+  padding-left: var(--item-padding-sides);
+}
+
 button.menu_arrows_full {
   flex-direction: column;
   background-position: center;
+}
+
+button.menu_arrows_right_side {
+  background-position: right !important;
+  padding-right: 0.4vw;
+  justify-content: space-between;
 }
 
 button.menu_arrows_horizontal {
@@ -915,10 +927,15 @@ button.menu_arrows_horizontal {
 }
 
 div.menu_arrows_zones {
-  width: 6%;
+  /* background-color: rgba(0, 255, 255, 0.3); */
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+button.menu_arrows_right_side .menu_arrows_zones {
+  width: 6% !important;
 }
 
 div.menu_arrows_zone_up,
@@ -1769,6 +1786,14 @@ div#menu_game {
   flex-wrap: nowrap;
 }
 
+div#menu_game_replay_mission .menu_elements {
+  background-color: transparent;
+}
+
+div#menu_game_replay_mission .menu_entry {
+  background-color: var(--black-bg-color);
+}
+
 div#menu_game_replay_mission_info {
   background-color: var(--black-bg-color);
 }
@@ -1782,7 +1807,7 @@ div.element_medal_right {
 }
 
 div.element_medal_platinum {
-  background-color: var(--hud-color-red);
+  background-color: var(--hud-color-platinum);
 }
 
 div.element_medal_gold {

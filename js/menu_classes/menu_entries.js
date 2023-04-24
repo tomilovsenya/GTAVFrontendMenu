@@ -15,12 +15,14 @@ export class MenuWindow {
   currentElements;
   currentCategory;
   active = false;
+  onWindowCreation;
 
-  constructor(id, menuCategories, menuElements, menuArrows) {
+  constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation) {
     this.ID = id;
     this.#idSel = "#" + this.ID;
     this.menuCategories = menuCategories;
     this.menuElements = menuElements;
+    this.onWindowCreation = onWindowCreation;
 
     this.menuElements.forEach((element) => {
       element.menuEntries.forEach((entry) => {
@@ -38,8 +40,9 @@ export class MenuWindow {
     this.#populateCategoriesElements();
     this.#fillCategories();
     this.#createArrows();
-    this.#toggleArrows(false);
+    this.toggleArrows(false);
     this.updateSelection(-1);
+    if (this.onWindowCreation != undefined) this.onWindowCreation();
     this.deactivate();
     console.log(this);
   }
@@ -60,7 +63,7 @@ export class MenuWindow {
     this.currentContext = -1;
     $(this.#idSel).removeClass("menu_window_active");
     $(this.#idSel).addClass("menu_window_inactive");
-    this.#toggleArrows(false);
+    this.toggleArrows(false);
   }
 
   show() {
@@ -109,8 +112,8 @@ export class MenuWindow {
     this.menuArrows.createArrows(this.ID);
   }
 
-  #toggleArrows(showArrows) {
-    if (showArrows) this.menuArrows.show();
+  toggleArrows(showArrows) {
+    if (showArrows && this.currentElements.menuEntries.length > this.currentElements.arrowsThreshold) this.menuArrows.show();
     else this.menuArrows.hide();
   }
 
@@ -206,8 +209,8 @@ export class MenuWindow {
       if (this.currentCategory.hasMultipleElements) this.currentElements = this.currentCategory.currentElements;
       else this.currentElements = this.menuElements[newSelection];
 
-      if (this.currentElements.arrowsRequired) this.#toggleArrows(true);
-      else this.#toggleArrows(false);
+      if (this.currentElements.arrowsRequired) this.toggleArrows(true);
+      else this.toggleArrows(false);
     }
   }
 
@@ -225,14 +228,14 @@ export class MenuWindow {
     this.updateElements(activatedCategory);
     this.currentElements.currentSelection = 0;
     this.currentElements.updateSelection(0);
-    this.#toggleArrows(true);
+    this.toggleArrows(true);
   }
 
   escapeCategory() {
     let activeEntry = this.currentElements.currentEntry;
     this.currentContext = 0;
     activeEntry.deactivate();
-    this.#toggleArrows(false);
+    this.toggleArrows(false);
     // this.updateElements(activatedCategory);
   }
 
@@ -248,8 +251,8 @@ export class MenuWindow {
     this.currentElements = newElements;
     this.currentElements.activate();
 
-    if (this.currentElements.arrowsRequired) this.#toggleArrows(true);
-    else this.#toggleArrows(false);
+    if (this.currentElements.arrowsRequired) this.toggleArrows(true);
+    else this.toggleArrows(false);
     // this.updateSelection(this.currentCategoryIndex);
   }
 }
@@ -269,8 +272,10 @@ export class MenuElements {
   evenEntriesDarker = false;
   parentWindow;
   siblingColumnID;
+  onSelectionUpdate;
+  arrowsThreshold = 16;
 
-  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable, siblingColumnID) {
+  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable, onSelectionUpdate, arrowsThreshold) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
@@ -279,7 +284,8 @@ export class MenuElements {
     this.arrowsRequired = this.menuEntries.length > 16 ? true : false;
     this.evenEntriesDarker = evenEntriesDarker != undefined ? evenEntriesDarker : false;
     this.scrollable = isScrollable != undefined ? isScrollable : this.enterable;
-    this.siblingColumnID = siblingColumnID;
+    this.onSelectionUpdate = onSelectionUpdate;
+    this.arrowsThreshold = arrowsThreshold != undefined ? arrowsThreshold : this.arrowsThreshold;
   }
 
   populateElements(parentWindow) {
@@ -330,6 +336,8 @@ export class MenuElements {
 
     this.currentEntry = this.menuEntries[this.currentSelection];
     $(this.currentEntry.idSel)[0].scrollIntoViewIfNeeded(false);
+
+    if (this.onSelectionUpdate != undefined) this.onSelectionUpdate();
   }
 
   scrollSelection(scrollDir) {
@@ -804,7 +812,6 @@ export class MenuEntryMission extends MenuEntryList {
   createEntry(title, parentId, parentElements, index) {
     super.createEntry(title, parentId, parentElements, index);
     this.drawMedal(this.medal);
-    if (this.objectives != undefined) this.fillMissionInfo();
   }
 
   drawMedal(medalType) {
@@ -845,18 +852,27 @@ export class MenuEntryMission extends MenuEntryList {
 export class MenuArrows {
   ID = "menu_arrows_default";
   idSel;
+  arrowsClass = "menu_arrows_full";
+  labelID;
 
-  constructor(id) {
+  constructor(id, arrowsClass, labelID) {
     this.ID = id;
     this.idSel = "#" + id;
+    this.arrowsClass = arrowsClass != undefined ? arrowsClass : this.arrowsClass;
+    this.labelID = labelID != undefined ? labelID : this.labelID;
   }
 
   createArrows(parentId) {
     let elementsArea = $("#" + parentId).find(".menu_window_elements");
-    let blankArrows = `<button id="${this.ID}" class="menu_arrows menu_arrows_full" tabindex="-1">
+    let labelID = this.labelID != undefined ? this.labelID : this.ID + "_label";
+    let blankArrowsLabel = $(`<span id="${labelID}" class="element_label"></span>`);
+    let blankArrows = $(`<button id="${this.ID}" class="menu_arrows ${this.arrowsClass}" tabindex="-1">
+    <div class="menu_arrows_zones">
     <div id="${this.ID}_up" class="menu_arrows_zone menu_arrows_zone_up"></div>
-    <div id="${this.ID}_down" class="menu_arrows_zone menu_arrows_zone_down"></div></button>`;
+    <div id="${this.ID}_down" class="menu_arrows_zone menu_arrows_zone_down"></div>
+    </div></button>`);
 
+    if (this.labelID != undefined) blankArrows.prepend(blankArrowsLabel);
     elementsArea.append(blankArrows);
   }
 
