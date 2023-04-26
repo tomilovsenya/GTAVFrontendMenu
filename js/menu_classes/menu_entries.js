@@ -823,13 +823,11 @@ export class MenuEntryMission extends MenuEntryList {
       return;
     }
 
-    this.resultPerc = (this.objectives.filter((obj) => obj.check === true).length / this.objectives.length) * 100;
+    this.resultPerc = 50 + Math.ceil((this.objectives.filter((obj) => obj.check === true).length / this.objectives.length) * 50);
 
-    if (this.resultPerc < 50) {
-      this.medal = 0;
-      this.resultPerc = 50;
-    } else if (this.resultPerc >= 50 && this.resultPerc < 100) this.medal = 1;
-    else if (this.resultPerc == 100) this.medal = 2;
+    if (this.resultPerc <= 50) this.medal = 0;
+    else if (this.resultPerc > 50 && this.resultPerc < 100) this.medal = 1;
+    else if (this.resultPerc >= 100) this.medal = 2;
   }
 
   drawMedal(medalType) {
@@ -855,7 +853,7 @@ export class MenuEntryMission extends MenuEntryList {
     resultsCont.append(blankResult);
 
     if (this.objectives == undefined) return;
-    
+
     this.objectives.forEach((objective, index) => {
       let objectiveID = `${this.ID}_objective_${index}`;
       let objectiveCheck = objective.check ? 1 : 0;

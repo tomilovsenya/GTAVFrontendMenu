@@ -316,7 +316,6 @@ export const MissionPRO1Objectives = [
   { label: "Bobcat Security", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
   { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "", check: false, greyed: true },
   { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
-  { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
 ];
 
 export const MissionARM1Objectives = [{ label: "Nobody Killed", descr: "Don't kill the aliens.", label_r: "", check: true }];
@@ -325,7 +324,7 @@ export const MissionARM3Objectives = [{ label: "Simeon Beaten", descr: "Beat up 
 export const MissionFAM1Objectives = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
 export const MissionFRA0Objectives = [{ label: "Chop", descr: "Beat up Chop.", label_r: "", check: true }];
 
-export const menuGameReplayMissionPRO1 = new MenuEntryMission("menu_game_replay_mission_pro1", "mission_pro1_name", 0, undefined);
+export const menuGameReplayMissionPRO1 = new MenuEntryMission("menu_game_replay_mission_pro1", "mission_pro1_name", 0, MissionPRO1Objectives);
 export const menuGameReplayMissionARM1 = new MenuEntryMission("menu_game_replay_mission_arm1", "mission_arm1_name", 1, MissionARM1Objectives);
 export const menuGameReplayMissionARM2 = new MenuEntryMission("menu_game_replay_mission_arm2", "mission_arm2_name", 2, MissionARM2Objectives);
 export const menuGameReplayMissionARM3 = new MenuEntryMission("menu_game_replay_mission_arm3", "mission_arm3_name", 3, MissionARM3Objectives);
