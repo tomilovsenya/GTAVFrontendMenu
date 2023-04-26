@@ -799,9 +799,10 @@ export class MenuCategory extends MenuEntryList {
 }
 
 export class MenuEntryMission extends MenuEntryList {
-  medal = 0; // 0 = Bronze, 1 = Silver, 2 = Gold, 3 = Platinum
+  medal = 0; // 0 = Bronze, 1 = Silver, 2 = Gold, 3 = Platinum // Might delete later as it's auto-calculated based on objectives
   objectives = [];
   medalClasses = ["element_medal_bronze", "element_medal_silver", "element_medal_gold", "element_medal_platinum"];
+  resultPerc = 100;
 
   constructor(id, title, medal, objectives) {
     super(id, title);
@@ -811,7 +812,24 @@ export class MenuEntryMission extends MenuEntryList {
 
   createEntry(title, parentId, parentElements, index) {
     super.createEntry(title, parentId, parentElements, index);
+    this.calculateMedal();
     this.drawMedal(this.medal);
+  }
+
+  calculateMedal() {
+    if (this.objectives == undefined) {
+      console.error(`No objectives specified for MenuEntryMission: ${this.ID}`);
+      this.medal = 2;
+      return;
+    }
+
+    this.resultPerc = (this.objectives.filter((obj) => obj.check === true).length / this.objectives.length) * 100;
+
+    if (this.resultPerc < 50) {
+      this.medal = 0;
+      this.resultPerc = 50;
+    } else if (this.resultPerc >= 50 && this.resultPerc < 100) this.medal = 1;
+    else if (this.resultPerc == 100) this.medal = 2;
   }
 
   drawMedal(medalType) {
@@ -828,8 +846,10 @@ export class MenuEntryMission extends MenuEntryList {
 
     let resultsCont = $("#menu_game_replay_mission_info_results");
     let resultText = getLocalizedString(`menu_game_replay_mission_medal_${this.medal}`);
+
     let blankResult = `<button class="menu_entry menu_entry_empty"><span class="element_label">${resultText}</span>
-    <div class="element_list"><div class="element_medal_right ${this.medalClasses[this.medal]}"></div></div></button>`;
+    <div class="element_list"><div class="element_label_right">${Math.round(this.resultPerc)}%</div>
+    <div class="element_medal_right ${this.medalClasses[this.medal]}"></div></div></button>`;
 
     titleLabel.text(this.title);
     resultsCont.append(blankResult);
@@ -837,13 +857,14 @@ export class MenuEntryMission extends MenuEntryList {
     this.objectives.forEach((objective, index) => {
       let objectiveID = `${this.ID}_objective_${index}`;
       let objectiveCheck = objective.check ? 1 : 0;
-      let blankObjective = `<div id="${objectiveID}" class="menu_entry_objective">
+      let blankObjective = $(`<div id="${objectiveID}" class="menu_entry_objective">
     <div class="menu_entry_objective_title">
       <span class="element_label menu_entry_objective_label">${objective.label}</span>
       <span class="element_label menu_entry_objective_label_right">${objective.label_r}</span>
       <div class="element_checkbox ${checkClasses[objectiveCheck]}"></div>
-    </div><span class="element_label menu_entry_objective_descr">${objective.descr}</span></div>`;
+    </div><span class="element_label menu_entry_objective_descr">${objective.descr}</span></div>`);
 
+      if (objective.greyed != undefined && objective.greyed == true) blankObjective.addClass("menu_entry_greyed");
       objectivesCont.append(blankObjective);
     });
   }

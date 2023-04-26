@@ -773,6 +773,10 @@ button.menu_entry_empty {
   background-color: transparent !important;
 }
 
+.menu_entry_greyed {
+  opacity: 50%;
+}
+
 div.menu_elements_header button.menu_entry {
   margin: 0;
   background-color: transparent;
@@ -1858,12 +1862,9 @@ div#menu_game_replay_mission_info .menu_entry_empty_double {
 }
 
 span#menu_game_replay_mission_info_title {
-  /* color: var(--text-color); */
-  color: gold;
+  color: var(--hud-color-yellow);
   font-family: "SignPainterHouseScript";
   font-size: 2.5vw;
-  text-align: left;
-  margin-left: var(--item-margin);
 }
 
 div.menu_game .menu_game_mission_info_header .menu_entry_empty_double {
@@ -1923,8 +1924,13 @@ div.menu_entry_objective_title .menu_entry_objective_label {
   margin-right: auto;
 }
 
-div.menu_entry_objective_title .element_checkbox {
-  margin-left: 1vw;
+div.menu_entry_objective_title {
+  /* margin-left: 1vw; */
+  gap: 1vw;
+}
+
+div#menu_game_replay_mission_info_results .element_list {
+  gap: 1vw;
 }
 
 button.menu_arrows_game {

@@ -312,19 +312,25 @@ export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuS
 
 //#region menuGame
 
-export const MissionPrologueObjectives = [
+export const MissionPRO1Objectives = [
   { label: "Bobcat Security", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
+  { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "", check: false, greyed: true },
+  { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
   { label: "Bobcat Security 2", descr: "Rob Bobcat Security joint.", label_r: "Successful", check: true },
 ];
 
-export const MissionFranklin1Objectives = [{ label: "Nobody Killed", descr: "Don't kill the aliens.", label_r: "", check: true }];
-export const MissionFranklin2Objectives = [{ label: "Dude Killed", descr: "Kill the bike dude.", label_r: "", check: false }];
-export const MissionFranklin3Objectives = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
+export const MissionARM1Objectives = [{ label: "Nobody Killed", descr: "Don't kill the aliens.", label_r: "", check: true }];
+export const MissionARM2Objectives = [{ label: "Dude Killed", descr: "Kill the bike dude.", label_r: "", check: false }];
+export const MissionARM3Objectives = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
+export const MissionFAM1Objectives = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
+export const MissionFRA0Objectives = [{ label: "Chop", descr: "Beat up Chop.", label_r: "", check: true }];
 
-export const menuGameReplayMissionPrologue = new MenuEntryMission("menu_game_replay_mission_prologue", "menu_game_replay_mission_prologue_name", 0, MissionPrologueObjectives);
-export const menuGameReplayMissionFranklin1 = new MenuEntryMission("menu_game_replay_mission_franklin_1", "menu_game_replay_mission_franklin_1_name", 1, MissionFranklin1Objectives);
-export const menuGameReplayMissionFranklin2 = new MenuEntryMission("menu_game_replay_mission_franklin_2", "menu_game_replay_mission_franklin_2_name", 2, MissionFranklin2Objectives);
-export const menuGameReplayMissionFranklin3 = new MenuEntryMission("menu_game_replay_mission_franklin_3", "menu_game_replay_mission_franklin_3_name", 3, MissionFranklin3Objectives);
+export const menuGameReplayMissionPRO1 = new MenuEntryMission("menu_game_replay_mission_pro1", "mission_pro1_name", 0, MissionPRO1Objectives);
+export const menuGameReplayMissionARM1 = new MenuEntryMission("menu_game_replay_mission_arm1", "mission_arm1_name", 1, MissionARM1Objectives);
+export const menuGameReplayMissionARM2 = new MenuEntryMission("menu_game_replay_mission_arm2", "mission_arm2_name", 2, MissionARM2Objectives);
+export const menuGameReplayMissionARM3 = new MenuEntryMission("menu_game_replay_mission_arm3", "mission_arm3_name", 3, MissionARM3Objectives);
+export const menuGameReplayMissionFAM1 = new MenuEntryMission("menu_game_replay_mission_fam1", "mission_fam1_name", 0, MissionFAM1Objectives);
+export const menuGameReplayMissionFRA0 = new MenuEntryMission("menu_game_replay_mission_fra0", "mission_fra0_name", 0, MissionFRA0Objectives);
 
 export const menuGameReplayStrangersTonya1 = new MenuEntryMission("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
 
@@ -332,7 +338,14 @@ export const menuGameCategoryLoadGame = new MenuCategory("menu_game_category_loa
 export const menuGameCategoryNewGame = new MenuCategory("menu_game_category_new_game", "menu_game_category_new_game_name");
 export const menuGameCategoryExit = new MenuCategory("menu_game_category_exit", "menu_game_category_exit_name");
 
-export const menuGameReplayMissionEntries = [menuGameReplayMissionPrologue, menuGameReplayMissionFranklin1, menuGameReplayMissionFranklin2, menuGameReplayMissionFranklin3];
+export const menuGameReplayMissionEntries = [
+  menuGameReplayMissionPRO1,
+  menuGameReplayMissionARM1,
+  menuGameReplayMissionARM2,
+  menuGameReplayMissionARM3,
+  menuGameReplayMissionFAM1,
+  menuGameReplayMissionFRA0,
+];
 export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTonya1];
 
 export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true, updateMissionInfo);
@@ -401,10 +414,10 @@ export const allMenuEntries = [
   menuGameCategoryReplayMission,
   menuGameCategoryReplayStrangers,
 
-  menuGameReplayMissionPrologue,
-  menuGameReplayMissionFranklin1,
-  menuGameReplayMissionFranklin2,
-  menuGameReplayMissionFranklin3,
+  menuGameReplayMissionPRO1,
+  menuGameReplayMissionARM1,
+  menuGameReplayMissionARM2,
+  menuGameReplayMissionARM3,
 ];
 
 export const allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsCategoryChecklist, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause, menuGameReplayMission];

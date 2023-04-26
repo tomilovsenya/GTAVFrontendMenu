@@ -668,7 +668,7 @@
   },
 
   {
-    "gxt": "menu_game_replay_mission_prologue_name",
+    "gxt": "mission_pro1_name",
     "american": "Prologue",
     "russian": "Пролог"
   },
@@ -694,7 +694,7 @@
   },
 
   {
-    "gxt": "menu_game_replay_mission_franklin_1_name",
+    "gxt": "mission_arm1_name",
     "american": "Franklin & Lamar",
     "russian": "Франклин и Ламар"
   },
@@ -720,22 +720,22 @@
   },
 
   {
-    "gxt": "menu_game_replay_mission_franklin_2_name",
+    "gxt": "mission_arm2_name",
     "american": "Repossession",
     "russian": "Конфискация"
   },
   {
-    "gxt": "menu_game_replay_mission_franklin_3_name",
+    "gxt": "mission_arm3_name",
     "american": "Complications",
     "russian": "Затруднения"
   },
   {
-    "gxt": "menu_game_elements_missions_4",
+    "gxt": "mission_fam1_name",
     "american": "Father/Son",
     "russian": "Отец и сын"
   },
   {
-    "gxt": "menu_game_elements_missions_5",
+    "gxt": "mission_fra0_name",
     "american": "Chop",
     "russian": "Чоп"
   },
