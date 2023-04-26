@@ -854,17 +854,20 @@ export class MenuEntryMission extends MenuEntryList {
 
     if (this.objectives == undefined) return;
 
-    this.objectives.forEach((objective, index) => {
-      let objectiveID = `${this.ID}_objective_${index}`;
-      let objectiveCheck = objective.check ? 1 : 0;
-      let blankObjective = $(`<div id="${objectiveID}" class="menu_entry_objective">
+    this.objectives.forEach((obj, index) => {
+      let objID = `${this.ID}_objective_${index}`;
+      let objName = getLocalizedString(obj.label);
+      let objDescr = getLocalizedString(obj.descr);
+      let objLabelRight = getLocalizedString(obj.label_r);
+      let objCheck = obj.check ? 1 : 0;
+      let blankObjective = $(`<div id="${objID}" class="menu_entry_objective">
     <div class="menu_entry_objective_title">
-      <span class="element_label menu_entry_objective_label">${objective.label}</span>
-      <span class="element_label menu_entry_objective_label_right">${objective.label_r}</span>
-      <div class="element_checkbox ${checkClasses[objectiveCheck]}"></div>
-    </div><span class="element_label menu_entry_objective_descr">${objective.descr}</span></div>`);
+      <span class="element_label menu_entry_objective_label">${objName}</span>
+      <span class="element_label menu_entry_objective_label_right">${objLabelRight}</span>
+      <div class="element_checkbox ${checkClasses[objCheck]}"></div>
+    </div><span class="element_label menu_entry_objective_descr">${objDescr}</span></div>`);
 
-      if (objective.greyed != undefined && objective.greyed == true) blankObjective.addClass("menu_entry_greyed");
+      if (obj.greyed != undefined && obj.greyed == true) blankObjective.addClass("menu_entry_greyed");
       objectivesCont.append(blankObjective);
     });
   }
