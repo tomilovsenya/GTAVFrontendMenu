@@ -396,62 +396,9 @@ export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGame
 
 //#endregion
 
-export const allMenuEntries = [
-  menuStatsCategorySkills,
-  menuStatsCategoryGeneral,
-  menuStatsCategoryChecklist,
+export let allMenuEntries = [];
 
-  menuStatsSkillsMichaelSpecial,
-  menuStatsSkillsMichaelStamina,
-  menuStatsSkillsMichaelShooting,
-
-  menuStatsGeneralMichaelTimePlayed,
-
-  menuSettingsCategoryGraphics,
-  menuSettingsCategoryPause,
-  menuSettingsCategoryGamepad,
-
-  menuSettingsGamepadControlsFor,
-  menuSettingsGamepadTargeting,
-  menuSettingsGamepadVibration,
-  menuSettingsGamepadInvertLook,
-  menuSettingsGamepadThirdControlType,
-  menuSettingsGamepadFirstControlType,
-  menuSettingsGamepadThirdAimSensitivity,
-  menuSettingsGamepadThirdLookSensitivity,
-  menuSettingsGamepadFirstLookSensitivity,
-
-  menuSettingsGraphicsIgnoreLimits,
-  menuSettingsGraphicsDirectX,
-  menuSettingsGraphicsEmpty0,
-  menuSettingsGraphicsScreenType,
-  menuSettingsGraphicsResolution,
-  menuSettingsGraphicsAspectRatio,
-  menuSettingsGraphicsRefreshRate,
-  menuSettingsGraphicsOutput,
-  menuSettingsGraphicsFXAA,
-  menuSettingsGraphicsMSAA,
-  menuSettingsGraphicsTXAA,
-  menuSettingsGraphicsVSync,
-  menuSettingsGraphicsFocus,
-  menuSettingsGraphicsDensity,
-  menuSettingsGraphicsVariety,
-  menuSettingsGraphicsScaling,
-
-  menuSettingsPauseClock,
-  menuSettingsPauseLanguage,
-  menuSettingsPauseRemember,
-
-  menuGameCategoryReplayMission,
-  menuGameCategoryReplayStrangers,
-
-  menuGameReplayMissionPRO1,
-  menuGameReplayMissionARM1,
-  menuGameReplayMissionARM2,
-  menuGameReplayMissionARM3,
-];
-
-export const allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsCategoryChecklist, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause, menuGameReplayMission];
+export let allMenuElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsCategoryChecklist, menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause, menuGameReplayMission];
 
 export const allMenuWindows = [undefined, menuBrief, menuStats, menuSettings, menuGame, undefined, undefined, undefined, undefined, undefined, undefined];
 //

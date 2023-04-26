@@ -472,13 +472,13 @@ export class MenuEntry {
 
     blankEntry.append(blankEntryLabel);
     blankEntry.find(".element_label").text(this.title);
-    // console.log(parentId);
     $("#" + parentId).append(blankEntry);
     blankEntryLabel.text(title);
     this.parentElements = parentElements;
     this.index = index;
     this.title = title;
-    // console.log(this);
+
+    allMenuEntries.push(this); // Push created MenuEntry to [] storing all MenuEntries
   }
 
   activate() {
