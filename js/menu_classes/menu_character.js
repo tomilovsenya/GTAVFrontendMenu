@@ -35,7 +35,7 @@ charMichaelStats.charStats = [
   { id: "menu_stats_general_michael_time_played", type: "time", value: 1337 },
   { id: "menu_stats_general_michael_time_fps", type: "time", value: 228 },
   { id: "menu_stats_general_michael_missions", type: "int", value: 50 },
-  { id: "menu_stats_general_michael_last_mission", type: "gxt", value: "menu_game_elements_missions_0" },
+  { id: "menu_stats_general_michael_last_mission", type: "gxt", value: "mission_pro1_name" },
   { id: "menu_stats_general_michael_letters", type: "ints", value: [1, 50] },
   { id: "menu_stats_general_michael_peyotes", type: "ints", value: [5, 27] },
   { id: "menu_stats_general_michael_wildlife", type: "ints", value: [14, 20] },

@@ -1838,7 +1838,7 @@ div.element_medal_bronze {
 
 div#menu_game_replay_mission_info {
   background-color: transparent;
-  /* width: var(--menu-elements-half-width); */
+  width: 100%;
   height: fit-content;
   max-height: 100%;
   border: 0px;
@@ -1848,8 +1848,6 @@ div#menu_game_replay_mission_info {
   justify-content: flex-start;
   justify-self: flex-end;
   overflow: hidden;
-  position: sticky;
-  top: 0;
 }
 
 div#menu_game_replay_mission_info button {
