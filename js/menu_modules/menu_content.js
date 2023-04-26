@@ -312,23 +312,45 @@ export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuS
 
 //#region menuGame
 
-export const MissionARM1Objectives = [
+export const MissionObjARM1 = [
   { label: "mission_arm1_obj_0", descr: "mission_arm1_obj_0_descr", label_r: "", check: true },
   { label: "mission_arm1_obj_1", descr: "mission_arm1_obj_1_descr", label_r: "00:30", check: true },
   { label: "mission_arm1_obj_2", descr: "mission_arm1_obj_2_descr", label_r: "", check: false },
   { label: "mission_arm1_obj_3", descr: "mission_arm1_obj_3_descr", label_r: "", check: false },
 ];
-export const MissionARM2Objectives = [{ label: "Dude Killed", descr: "Kill the bike dude.", label_r: "", check: false }];
-export const MissionARM3Objectives = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
-export const MissionFAM1Objectives = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
-export const MissionFRA0Objectives = [{ label: "Chop", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjARM2 = [{ label: "Dude Killed", descr: "Kill the bike dude.", label_r: "", check: false }];
+export const MissionObjARM3 = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
+export const MissionObjFAM1 = [{ label: "Simeon Beaten", descr: "Beat up Simeon.", label_r: "", check: true }];
+export const MissionObjFRA0 = [{ label: "Chop", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjFAM3 = [{ label: "Marriage Counseling", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjFAM2 = [{ label: "Daddy's Little Girl", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjLS1 = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjLM1 = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjJH1 = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjJHP1A = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjJHP1B = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjJHP2A = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjJH2A = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjTRV1 = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
+export const MissionObjCHN1 = [{ label: "Friend Request", descr: "Beat up Chop.", label_r: "", check: true }];
 
 export const menuGameReplayMissionPRO1 = new MenuEntryMission("menu_game_replay_mission_pro1", "mission_pro1_name", 0, undefined);
-export const menuGameReplayMissionARM1 = new MenuEntryMission("menu_game_replay_mission_arm1", "mission_arm1_name", 1, MissionARM1Objectives);
-export const menuGameReplayMissionARM2 = new MenuEntryMission("menu_game_replay_mission_arm2", "mission_arm2_name", 2, MissionARM2Objectives);
-export const menuGameReplayMissionARM3 = new MenuEntryMission("menu_game_replay_mission_arm3", "mission_arm3_name", 3, MissionARM3Objectives);
-export const menuGameReplayMissionFAM1 = new MenuEntryMission("menu_game_replay_mission_fam1", "mission_fam1_name", 0, MissionFAM1Objectives);
-export const menuGameReplayMissionFRA0 = new MenuEntryMission("menu_game_replay_mission_fra0", "mission_fra0_name", 0, MissionFRA0Objectives);
+export const menuGameReplayMissionARM1 = new MenuEntryMission("menu_game_replay_mission_arm1", "mission_arm1_name", 1, MissionObjARM1);
+export const menuGameReplayMissionARM2 = new MenuEntryMission("menu_game_replay_mission_arm2", "mission_arm2_name", 2, MissionObjARM2);
+export const menuGameReplayMissionARM3 = new MenuEntryMission("menu_game_replay_mission_arm3", "mission_arm3_name", 3, MissionObjARM3);
+export const menuGameReplayMissionFAM1 = new MenuEntryMission("menu_game_replay_mission_fam1", "mission_fam1_name", 0, MissionObjFAM1);
+export const menuGameReplayMissionFRA0 = new MenuEntryMission("menu_game_replay_mission_fra0", "mission_fra0_name", 0, MissionObjFRA0);
+export const menuGameReplayMissionFAM3 = new MenuEntryMission("menu_game_replay_mission_fam3", "mission_fam3_name", 0, MissionObjFAM3);
+export const menuGameReplayMissionFAM2 = new MenuEntryMission("menu_game_replay_mission_fam2", "mission_fam2_name", 0, MissionObjFAM2);
+export const menuGameReplayMissionLS1 = new MenuEntryMission("menu_game_replay_mission_ls1", "mission_ls1_name", 0, MissionObjLS1);
+export const menuGameReplayMissionLM1 = new MenuEntryMission("menu_game_replay_mission_lm1", "mission_lm1_name", 0, MissionObjLM1);
+export const menuGameReplayMissionJH1 = new MenuEntryMission("menu_game_replay_mission_jh1", "mission_jh1_name", 0, MissionObjJH1);
+export const menuGameReplayMissionJHP1A = new MenuEntryMission("menu_game_replay_mission_jhp1a", "mission_jhp1a_name", 0, MissionObjJHP1A);
+export const menuGameReplayMissionJHP1B = new MenuEntryMission("menu_game_replay_mission_jhp1b", "mission_jhp1b_name", 0, MissionObjJHP1B);
+export const menuGameReplayMissionJHP2A = new MenuEntryMission("menu_game_replay_mission_jhp2a", "mission_jhp2a_name", 0, MissionObjJHP2A);
+export const menuGameReplayMissionJH2A = new MenuEntryMission("menu_game_replay_mission_jh2a", "mission_jh2a_name", 0, MissionObjJH2A);
+export const menuGameReplayMissionTRV1 = new MenuEntryMission("menu_game_replay_mission_trv1", "mission_trv1_name", 0, MissionObjTRV1);
+export const menuGameReplayMissionCHN1 = new MenuEntryMission("menu_game_replay_mission_chn1", "mission_chn1_name", 0, MissionObjCHN1);
 
 export const menuGameReplayStrangersTonya1 = new MenuEntryMission("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
 
@@ -343,6 +365,17 @@ export const menuGameReplayMissionEntries = [
   menuGameReplayMissionARM3,
   menuGameReplayMissionFAM1,
   menuGameReplayMissionFRA0,
+  menuGameReplayMissionFAM3,
+  menuGameReplayMissionFAM2,
+  menuGameReplayMissionLS1,
+  menuGameReplayMissionLM1,
+  menuGameReplayMissionJH1,
+  menuGameReplayMissionJHP1A,
+  menuGameReplayMissionJHP1B,
+  menuGameReplayMissionJHP2A,
+  menuGameReplayMissionJH2A,
+  menuGameReplayMissionTRV1,
+  menuGameReplayMissionCHN1,
 ];
 export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTonya1];
 

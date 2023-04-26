@@ -281,11 +281,11 @@ export class MenuElements {
     this.menuEntries = menuEntries;
     this.enterable = isEnterable != undefined ? isEnterable : true;
     this.currentEntry = this.menuEntries[this.currentSelection];
-    this.arrowsRequired = this.menuEntries.length > 16 ? true : false;
     this.evenEntriesDarker = evenEntriesDarker != undefined ? evenEntriesDarker : false;
     this.scrollable = isScrollable != undefined ? isScrollable : this.enterable;
-    this.onSelectionUpdate = onSelectionUpdate;
     this.arrowsThreshold = arrowsThreshold != undefined ? arrowsThreshold : this.arrowsThreshold;
+    this.arrowsRequired = this.menuEntries.length > this.arrowsThreshold && !this.enterable ? true : false;
+    this.onSelectionUpdate = onSelectionUpdate;
   }
 
   populateElements(parentWindow) {

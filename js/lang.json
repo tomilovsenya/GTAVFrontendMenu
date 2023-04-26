@@ -739,6 +739,36 @@
     "american": "Chop",
     "russian": "Чоп"
   },
+  {
+    "gxt": "mission_fam3_name",
+    "american": "Marriage Counseling",
+    "russian": "Семейная консультация"
+  },
+  {
+    "gxt": "mission_fam2_name",
+    "american": "Daddy's Little Girl",
+    "russian": "Папенькина дочка"
+  },
+  {
+    "gxt": "mission_ls1_name",
+    "american": "Friend Request",
+    "russian": "Добавить в друзья"
+  },
+  {
+    "gxt": "mission_lm1_name",
+    "american": "The Long Stretch",
+    "russian": "Стретч на свободе"
+  },
+  {
+    "gxt": "mission_jh1_name",
+    "american": "Casing the Jewel Store",
+    "russian": "Разведка ювелирного"
+  },
+  {
+    "gxt": "mission_jhp1a_name",
+    "american": "Bugstars Equipment",
+    "russian": "Снаряжение Bugstars"
+  },
 
   {
     "gxt": "menu_game_replay_mission_medal_0",
