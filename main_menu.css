@@ -1858,7 +1858,6 @@ div#menu_game_replay_mission_info button {
 
 div#menu_game_replay_mission_info .menu_entry_empty_double {
   /* background-color: transparent; */
-  margin-bottom: var(--item-margin);
 }
 
 span#menu_game_replay_mission_info_title {
@@ -1877,7 +1876,7 @@ div#menu_game_replay_mission_info_objectives {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  /* margin-top: var(--item-margin); */
+  margin-top: var(--item-margin);
 }
 
 div#menu_game_replay_mission_info_objectives:empty {
@@ -1886,10 +1885,10 @@ div#menu_game_replay_mission_info_objectives:empty {
 }
 
 div.menu_entry_objective {
-  max-width: 100%;
+  /* max-width: 100%; */
   height: max-content;
+  /* height: fit-content; */
   color: white;
-  height: fit-content;
   padding-left: var(--item-padding-sides);
   padding-right: var(--item-padding-sides);
   padding-top: 0.5vw;

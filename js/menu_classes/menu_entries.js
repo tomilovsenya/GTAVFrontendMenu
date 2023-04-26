@@ -854,6 +854,8 @@ export class MenuEntryMission extends MenuEntryList {
     titleLabel.text(this.title);
     resultsCont.append(blankResult);
 
+    if (this.objectives == undefined) return;
+    
     this.objectives.forEach((objective, index) => {
       let objectiveID = `${this.ID}_objective_${index}`;
       let objectiveCheck = objective.check ? 1 : 0;
