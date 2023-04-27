@@ -1854,10 +1854,6 @@ div#menu_game_replay_mission_info button {
   background-color: var(--black-bg-color) !important;
 }
 
-div#menu_game_replay_mission_info .menu_entry_empty_double {
-  /* background-color: transparent; */
-}
-
 span#menu_game_replay_mission_info_title {
   color: var(--hud-color-yellow);
   font-family: "SignPainterHouseScript";

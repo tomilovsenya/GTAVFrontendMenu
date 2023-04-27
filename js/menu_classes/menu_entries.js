@@ -468,7 +468,7 @@ export class MenuEntry {
   createEntry(title, parentId, parentElements, index) {
     let classesString = this.isEmpty ? "menu_entry menu_entry_empty" : "menu_entry";
     let blankEntry = $(`<button id="${this.ID}" class="${classesString}"></button>`);
-    let blankEntryLabel = $(`<span id="${this.ID + "_name"}" class="element_label label_translatable"></span>`);
+    let blankEntryLabel = $(`<span id="${this.ID}_name" class="element_label label_translatable"></span>`);
 
     blankEntry.append(blankEntryLabel);
     blankEntry.find(".element_label").text(this.title);
