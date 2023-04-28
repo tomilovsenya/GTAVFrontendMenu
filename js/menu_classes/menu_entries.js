@@ -343,6 +343,10 @@ export class MenuElements {
 
   updateSelection(newSelection) {
     if (this.currentSelection != -1) this.menuEntries[this.currentSelection].deactivate();
+    if (this.menuEntries[this.currentSelection].isEmpty) {
+      let firstNonEmpty = this.menuEntries.find((entry) => entry.isEmpty === false);
+      newSelection = firstNonEmpty.index;
+    }
     this.currentSelection = newSelection;
     this.menuEntries[this.currentSelection].activate();
 
@@ -374,22 +378,15 @@ export class MenuElements {
 
   scrollEnterableElements(scrollDir) {
     let newSelection;
-    let beforeNewSelection;
-    let afterNewSelection;
-    let lastElementIndex = this.menuEntries.length - 1;
+    let firstSelectable = this.menuEntries.find((entry) => entry.isEmpty === false);
+    let lastSelectable = this.menuEntries.findLast((entry) => entry.isEmpty === false);
 
     if (scrollDir == 0) {
-      if (this.currentSelection == 0) newSelection = lastElementIndex;
-      else newSelection = this.currentSelection - 1;
-
-      beforeNewSelection = newSelection - 1;
-      if (this.menuEntries[newSelection].isEmpty) newSelection = this.menuEntries[beforeNewSelection] != undefined ? newSelection - 1 : lastElementIndex;
+      let prevSelectable = this.menuEntries.findLast((entry, index) => entry.isEmpty === false && index < this.currentSelection);
+      newSelection = prevSelectable != undefined ? prevSelectable.index : lastSelectable.index;
     } else if (scrollDir == 1) {
-      if (this.currentSelection < lastElementIndex) newSelection = this.currentSelection + 1;
-      else newSelection = 0;
-
-      afterNewSelection = newSelection + 1;
-      if (this.menuEntries[newSelection].isEmpty) newSelection = this.menuEntries[afterNewSelection] != undefined ? newSelection + 1 : 0;
+      let nextSelectable = this.menuEntries.find((entry, index) => entry.isEmpty === false && index > this.currentSelection);
+      newSelection = nextSelectable != undefined ? nextSelectable.index : firstSelectable.index;
     }
 
     this.updateSelection(newSelection);
@@ -478,13 +475,12 @@ export class MenuElementsWindow {
   populateElements(parentWindow) {
     let blankElements = $(`<div id="${this.id}" class="menu_elements menu_elements_window menu_background_rockstar"></div>`);
     let blankWindow = $(`<div id="${this.id}_window" class="menu_window_text menu_window_text_full"></div>`);
-    let blankHeader = `<h1 class="menu_window_header">${this.headerText}</h1>`;
-    let blankText = `<span class="menu_window_text">${this.innerText}</span>`;
+    let blankHeader = `<h1 class="menu_window_header">${getLocalizedString(this.headerText)}</h1>`;
+    let blankText = `<span class="menu_window_text">${getLocalizedString(this.innerText)}</span>`;
 
     blankElements.append(blankWindow);
     blankWindow.append(blankHeader);
     blankWindow.append(blankText);
-    
     $(parentWindow.idSel).find(".menu_elements_noarrows").append(blankElements);
 
     this.deactivate();
@@ -507,17 +503,21 @@ export class MenuEntry {
   parentElements;
   index = 0;
   isEmpty = false;
+  isGreyed = false;
   isClickable = true;
 
-  constructor(id, title, rightLabel) {
+  constructor(id, title, rightLabel, isGreyed) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.title = title;
     this.rightLabel = rightLabel != undefined ? rightLabel : undefined;
+    this.isGreyed = isGreyed != undefined ? isGreyed : this.isGreyed;
+    if (this.isGreyed) this.isEmpty = true;
   }
 
   createEntry(title, parentId, parentElements, index, rightLabel) {
     let classesString = this.isEmpty ? "menu_entry menu_entry_empty" : "menu_entry";
+    if (this.isGreyed) classesString += " menu_entry_greyed";
     let blankEntry = $(`<button id="${this.ID}" class="${classesString}"></button>`);
     let blankEntryLabel = $(`<span id="${this.ID}_name" class="element_label label_translatable"></span>`);
     let blankEntryLabelRight = $(`<span id="${this.ID}_label" class="element_label label_translatable"></span>`);

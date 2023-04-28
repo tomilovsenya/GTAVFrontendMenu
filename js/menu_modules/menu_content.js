@@ -313,7 +313,7 @@ export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuS
 //#region menuGame
 
 export const MissionObjARM1 = [
-  { label: "mission_arm1_obj_0", descr: "mission_arm1_obj_0_descr", label_r: "", check: true },
+  { label: "mission_arm1_obj_0", descr: "mission_arm1_obj_0_descr", label_r: "", check: true, greyed: true },
   { label: "mission_arm1_obj_1", descr: "mission_arm1_obj_1_descr", label_r: "00:30", check: true },
   { label: "mission_arm1_obj_2", descr: "mission_arm1_obj_2_descr", label_r: "", check: false },
   { label: "mission_arm1_obj_3", descr: "mission_arm1_obj_3_descr", label_r: "", check: false },
@@ -382,15 +382,18 @@ export const menuGameReplayMissionEntries = [
 ];
 export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTON1, menuGameReplayStrangersTON2];
 
+export const menuGameLoadGameSaveTotal = new MenuEntry("menu_game_load_game_total_saves", "Total Saves: 2", "", true);
 export const menuGameLoadGameSave0 = new MenuEntrySave(1, "mission_pro1_name", 1.2, 1682680125);
 export const menuGameLoadGameSave1 = new MenuEntrySave(2, "mission_arm1_name", 1.6, 1683280125);
 
-export const menuGameLoadGameEntries = [menuGameLoadGameSave0, menuGameLoadGameSave1];
+export const menuGameLoadGameEntries = [menuGameLoadGameSaveTotal, menuGameLoadGameSave0, menuGameLoadGameSave1];
 
 export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true, updateMissionInfo, undefined, true);
 export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries, true, false, true, updateMissionInfo, undefined, true);
 export const menuGameLoadGame = new MenuElements("menu_game_load_game", menuGameLoadGameEntries, true, false, true, updateMissionInfo, undefined, false);
-export const menuGameNewGame = new MenuElementsWindow("menu_game_new_game", "New Game", "Start a new game.");
+export const menuGameNewGame = new MenuElementsWindow("menu_game_new_game", "menu_game_category_new_game_name", "menu_game_category_new_game_text");
+export const menuGameCredits = new MenuElementsWindow("menu_game_credits", "menu_game_category_credits_name", "menu_game_category_credits_text");
+export const menuGameExit = new MenuElementsWindow("menu_game_exit", "menu_game_category_exit_name", "menu_game_category_exit_text");
 
 export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");
 export const menuGameCategoryReplayStrangers = new MenuCategory("menu_game_category_replay_strangers", "menu_game_category_replay_strangers_name");
@@ -405,7 +408,7 @@ export const menuGameCategories = {
 };
 
 export const menuGameArrows = new MenuArrows("menu_game_arrows", "menu_arrows_right_side", "menu_game_arrows_counter");
-export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers, menuGameLoadGame, menuGameNewGame];
+export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers, menuGameLoadGame, menuGameNewGame, menuGameCredits, menuGameExit];
 export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGameElements, menuGameArrows, prepareMissionInfo, updateMissionInfo);
 
 //#endregion

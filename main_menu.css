@@ -773,7 +773,15 @@ button.menu_entry_empty {
   background-color: transparent !important;
 }
 
-.menu_entry_greyed {
+button.menu_entry_greyed {
+  background-color: var(--black-bg-color) !important;
+}
+
+button.menu_entry_greyed span {
+  opacity: 50%;
+}
+
+div.menu_entry_greyed {
   opacity: 50%;
 }
 

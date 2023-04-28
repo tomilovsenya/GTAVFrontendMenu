@@ -662,14 +662,29 @@
     "russian": "Новая игра"
   },
   {
+    "gxt": "menu_game_category_new_game_text",
+    "american": "Press <img class='instructional_button' src='images/buttons/btn_enter.svg'> to start a New Game.",
+    "russian": "Нажмите <img class='instructional_button' src='images/buttons/btn_enter.svg'>, чтобы начать новую игру."
+  },
+  {
     "gxt": "menu_game_category_credits_name",
     "american": "Credits",
     "russian": "Титры"
   },
   {
+    "gxt": "menu_game_category_credits_text",
+    "american": "Press <img class='instructional_button' src='images/buttons/btn_enter.svg'> to watch Credits.",
+    "russian": "Нажмите <img class='instructional_button' src='images/buttons/btn_enter.svg'>, чтобы посмотреть титры."
+  },
+  {
     "gxt": "menu_game_category_exit_name",
     "american": "Exit Game",
     "russian": "Выйти из игры"
+  },
+  {
+    "gxt": "menu_game_category_exit_text",
+    "american": "Press <img class='instructional_button' src='images/buttons/btn_enter.svg'> to exit to Windows.",
+    "russian": "Нажмите <img class='instructional_button' src='images/buttons/btn_enter.svg'>, чтобы выйти в Windows."
   },
 
   {
