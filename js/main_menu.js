@@ -190,6 +190,8 @@ let isButtonPressedDown = false;
 window.addEventListener(
   "keydown",
   function (e) {
+    e.preventDefault();
+    
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
 
@@ -212,17 +214,16 @@ window.addEventListener(
       );
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
-      globalStats.passChartData();
     }
     if (["KeyN"].indexOf(e.code) > -1) {
     }
     if (["KeyM"].indexOf(e.code) > -1) {
     }
     if (["PageUp", "PageDown"].indexOf(e.code) > -1) {
-      e.preventDefault();
     }
     if (["Tab"].indexOf(e.code) > -1) {
-      e.preventDefault();
+    }
+    if (["Enter"].indexOf(e.code) > -1) {
     }
   },
   false
