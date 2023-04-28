@@ -1,9 +1,9 @@
-import { MenuArrows, MenuEntryHeader, MenuEntryMission, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
+import { MenuArrows, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
 import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
 import { MenuCategory } from "../menu_classes/menu_entries.js";
-import { MenuEntrySave, clearMissionInfo, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
+import { MenuEntryMission, MenuEntrySave, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
 
 //
 // TESTING OF CLASS-BASED MENU SYSTEM
