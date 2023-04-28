@@ -259,6 +259,7 @@ let isOnlyTabSet = false;
 let prevTabs, nextTabs;
 
 function setTabOnly() {
+  return;
   let onlyTab = $(this);
   let navbarTabs = onlyTab.parent();
   let otherTabs = onlyTab.siblings();
@@ -283,6 +284,11 @@ function clickTab() {
   let clickedTab = findMenuTabByID($(this).attr("id"));
   if (clickedTab == undefined || clickedTab == 0) {
     console.warn("Clicked tab not found by ID: " + $(this).attr("id"));
+    return;
+  }
+
+  if (clickedTab == currentTab) {
+    currentTab.menuWindow.activate();
     return;
   }
 

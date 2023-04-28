@@ -984,7 +984,7 @@ export function findMenuEntryByID(id) {
   let foundObject = allMenuEntries.find((entry) => entry.ID === id);
   if (foundObject != undefined) {
     console.log("Found MenuEntry by ID: " + id);
-    console.log(foundObject);
+    // console.log(foundObject);
     return foundObject;
   } else {
     console.warn("MenuEntry with such ID not found: " + id);
@@ -996,7 +996,7 @@ export function findMenuElementsByID(id) {
   let foundObject = allMenuElements.find((entry) => entry.ID === id);
   if (foundObject != undefined) {
     console.log("Found MenuElements by ID: " + id);
-    console.log(foundObject);
+    // console.log(foundObject);
     return foundObject;
   } else {
     console.warn("MenuElements with such ID not found: " + id);
@@ -1008,7 +1008,7 @@ export function findMenuTabByID(id) {
   let foundObject = allMenuTabs.find((tab) => tab.id === id);
   if (foundObject != undefined) {
     console.log("Found MenuTab by ID: " + id);
-    console.log(foundObject);
+    // console.log(foundObject);
     return foundObject;
   } else {
     console.warn("MenuTab with such ID not found: " + id);
