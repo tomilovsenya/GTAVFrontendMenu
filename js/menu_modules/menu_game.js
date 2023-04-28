@@ -2,7 +2,7 @@
 // GAME TAB FUNCTIONS
 //
 
-import { menuGame } from "./menu_content.js";
+import { menuGame, menuGameReplayMission, menuGameReplayStrangers } from "./menu_content.js";
 
 export function updateMissionCounter() {
   let counterID = $("#menu_game_arrows_counter");
@@ -22,7 +22,9 @@ export function clearMissionInfo() {
   $("#menu_game_replay_mission_info_results").empty();
 }
 
-export function updateMissionInfo(currentCategory) {
+export function updateMissionInfo(currentElements) {
+  let categoriesToUpdate = ["menu_game_replay_mission", "menu_game_replay_strangers"];
+  if (!categoriesToUpdate.includes(currentElements.ID)) return;
   let currentMission = menuGame.currentElements.currentEntry != undefined ? menuGame.currentElements.currentEntry : menuGame.currentElements.menuEntries[0];
 
   clearMissionInfo();

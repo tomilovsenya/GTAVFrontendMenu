@@ -4,7 +4,7 @@ import { getLocalizedString } from "../menu_modules/menu_localization.js";
 
 export class MenuWindow {
   ID = "menu_window_default";
-  #idSel;
+  idSel;
   menuCategories = {};
   menuElements = [];
   menuEntriesAll = [];
@@ -20,7 +20,7 @@ export class MenuWindow {
 
   constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation, onSelectionUpdate) {
     this.ID = id;
-    this.#idSel = "#" + this.ID;
+    this.idSel = "#" + this.ID;
     this.menuCategories = menuCategories;
     this.menuElements = menuElements;
     this.onWindowCreation = onWindowCreation;
@@ -55,28 +55,28 @@ export class MenuWindow {
     this.active = true;
     this.updateSelection(0);
     this.currentContext = 0;
-    $(this.#idSel).removeClass("menu_window_inactive");
-    $(this.#idSel).addClass("menu_window_active");
+    $(this.idSel).removeClass("menu_window_inactive");
+    $(this.idSel).addClass("menu_window_active");
   }
 
   deactivate() {
     this.active = false;
     this.updateSelection(-1);
     this.currentContext = -1;
-    $(this.#idSel).removeClass("menu_window_active");
-    $(this.#idSel).addClass("menu_window_inactive");
+    $(this.idSel).removeClass("menu_window_active");
+    $(this.idSel).addClass("menu_window_inactive");
     this.toggleArrows(false);
   }
 
   show() {
-    $(this.#idSel).show();
-    $(this.#idSel).css({ visibility: "visible" });
+    $(this.idSel).show();
+    $(this.idSel).css({ visibility: "visible" });
     // $(this.#idSel).css({ display: "flex" });
   }
 
   hide() {
-    $(this.#idSel).hide();
-    $(this.#idSel).css({ visibility: "hidden" });
+    $(this.idSel).hide();
+    $(this.idSel).css({ visibility: "hidden" });
   }
 
   #populateAllElements() {
@@ -200,6 +200,7 @@ export class MenuWindow {
 
       let oldElements = this.currentElements;
       let newElements;
+      let newElementsColumn = $(this.idSel).find(".menu_window_column");
 
       if (this.currentCategory.hasMultipleElements) newElements = this.currentCategory.currentElements;
       else newElements = this.menuElements[newSelection];
@@ -208,13 +209,16 @@ export class MenuWindow {
       oldElements.deactivate();
       newElements.activate();
 
+      if (newElements.columnRequired) newElementsColumn.show();
+      else newElementsColumn.hide();
+
       if (this.currentCategory.hasMultipleElements) this.currentElements = this.currentCategory.currentElements;
       else this.currentElements = this.menuElements[newSelection];
 
       if (this.currentElements.arrowsRequired) this.toggleArrows(true);
       else this.toggleArrows(false);
 
-      if (this.onSelectionUpdate != undefined) this.onSelectionUpdate(newSelection);
+      if (this.onSelectionUpdate != undefined && this.currentElements != undefined) this.onSelectionUpdate(this.currentElements);
     }
   }
 
@@ -273,13 +277,14 @@ export class MenuElements {
   enterable = true;
   scrollable = false;
   arrowsRequired = false;
+  columnRequired = false;
   evenEntriesDarker = false;
   parentWindow;
   siblingColumnID;
   onSelectionUpdate;
   arrowsThreshold = 16;
 
-  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable, onSelectionUpdate, arrowsThreshold) {
+  constructor(id, menuEntries, isEnterable, evenEntriesDarker, isScrollable, onSelectionUpdate, arrowsThreshold, columnRequired) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.menuEntries = menuEntries;
@@ -289,6 +294,7 @@ export class MenuElements {
     this.scrollable = isScrollable != undefined ? isScrollable : this.enterable;
     this.arrowsThreshold = arrowsThreshold != undefined ? arrowsThreshold : this.arrowsThreshold;
     this.arrowsRequired = this.menuEntries.length > this.arrowsThreshold && !this.enterable ? true : false;
+    this.columnRequired = columnRequired != undefined ? columnRequired : this.columnRequired;
     this.onSelectionUpdate = onSelectionUpdate;
   }
 
@@ -302,10 +308,11 @@ export class MenuElements {
 
     this.menuEntries.forEach((entry, index) => {
       let entryTitle = getLocalizedString(entry.title);
+      let entryLabel = getLocalizedString(entry.rightLabel);
       let parentID;
       if (entry instanceof MenuEntryHeader) parentID = headerID;
       else parentID = scrollableID;
-      entry.createEntry(entryTitle, parentID, this, index);
+      entry.createEntry(entryTitle, parentID, this, index, entryLabel);
     });
     this.parentWindow = parentWindow;
   }
@@ -341,7 +348,7 @@ export class MenuElements {
     this.currentEntry = this.menuEntries[this.currentSelection];
     $(this.currentEntry.idSel)[0].scrollIntoViewIfNeeded(false);
 
-    if (this.onSelectionUpdate != undefined) this.onSelectionUpdate();
+    if (this.onSelectionUpdate != undefined) this.onSelectionUpdate(this);
   }
 
   scrollSelection(scrollDir) {
@@ -458,26 +465,31 @@ export class MenuEntry {
   ID = "default_id";
   idSel;
   title = "Menu Entry";
+  rightLabel;
   parentElements;
   index = 0;
   isEmpty = false;
   isClickable = true;
 
-  constructor(id, title) {
+  constructor(id, title, rightLabel) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.title = title;
+    this.rightLabel = rightLabel != undefined ? rightLabel : undefined;
   }
 
-  createEntry(title, parentId, parentElements, index) {
+  createEntry(title, parentId, parentElements, index, rightLabel) {
     let classesString = this.isEmpty ? "menu_entry menu_entry_empty" : "menu_entry";
     let blankEntry = $(`<button id="${this.ID}" class="${classesString}"></button>`);
     let blankEntryLabel = $(`<span id="${this.ID}_name" class="element_label label_translatable"></span>`);
+    let blankEntryLabelRight = $(`<span id="${this.ID}_label" class="element_label label_translatable"></span>`);
 
     blankEntry.append(blankEntryLabel);
+    if (this.rightLabel != undefined) blankEntry.append(blankEntryLabelRight);
     blankEntry.find(".element_label").text(this.title);
     $("#" + parentId).append(blankEntry);
     blankEntryLabel.text(title);
+    blankEntryLabelRight.text(rightLabel);
     this.parentElements = parentElements;
     this.index = index;
     this.title = title;

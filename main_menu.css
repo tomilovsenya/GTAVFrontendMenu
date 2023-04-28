@@ -1784,11 +1784,11 @@ div#menu_game {
   flex-wrap: nowrap;
 }
 
-div#menu_game_replay_mission .menu_elements {
+div#menu_game .menu_elements {
   background-color: transparent;
 }
 
-div#menu_game_replay_mission .menu_entry {
+div#menu_game .menu_entry {
   background-color: var(--black-bg-color);
 }
 

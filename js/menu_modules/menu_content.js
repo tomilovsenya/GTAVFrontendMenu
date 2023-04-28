@@ -382,8 +382,14 @@ export const menuGameReplayMissionEntries = [
 ];
 export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTON1, menuGameReplayStrangersTON2];
 
-export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true, updateMissionInfo);
-export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries, true, false, true, updateMissionInfo);
+export const menuGameLoadGameSave1 = new MenuEntry("menu_game_load_game_save_0", "01 - Prologue", "00:00");
+export const menuGameLoadGameSave2 = new MenuEntry("menu_game_load_game_save_1", "02 - Franklin and Lamar", "00:00");
+
+export const menuGameLoadGameEntries = [menuGameLoadGameSave1, menuGameLoadGameSave2];
+
+export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true, updateMissionInfo, undefined, true);
+export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries, true, false, true, updateMissionInfo, undefined, true);
+export const menuGameLoadGame = new MenuElements("menu_game_load_game", menuGameLoadGameEntries, true, false, true, undefined, undefined, false);
 
 export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");
 export const menuGameCategoryReplayStrangers = new MenuCategory("menu_game_category_replay_strangers", "menu_game_category_replay_strangers_name");
@@ -398,7 +404,7 @@ export const menuGameCategories = {
 };
 
 export const menuGameArrows = new MenuArrows("menu_game_arrows", "menu_arrows_right_side", "menu_game_arrows_counter");
-export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers];
+export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers, menuGameLoadGame];
 export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGameElements, menuGameArrows, prepareMissionInfo, updateMissionInfo);
 
 //#endregion
