@@ -354,10 +354,6 @@ export const menuGameReplayMissionCHN1 = new MenuEntryMission("menu_game_replay_
 
 export const menuGameReplayStrangersTonya1 = new MenuEntryMission("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
 
-export const menuGameCategoryLoadGame = new MenuCategory("menu_game_category_load_game", "menu_game_category_load_game_name");
-export const menuGameCategoryNewGame = new MenuCategory("menu_game_category_new_game", "menu_game_category_new_game_name");
-export const menuGameCategoryExit = new MenuCategory("menu_game_category_exit", "menu_game_category_exit_name");
-
 export const menuGameReplayMissionEntries = [
   menuGameReplayMissionPRO1,
   menuGameReplayMissionARM1,
@@ -384,10 +380,14 @@ export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strang
 
 export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");
 export const menuGameCategoryReplayStrangers = new MenuCategory("menu_game_category_replay_strangers", "menu_game_category_replay_strangers_name");
+export const menuGameCategoryLoadGame = new MenuCategory("menu_game_category_load_game", "menu_game_category_load_game_name");
+export const menuGameCategoryNewGame = new MenuCategory("menu_game_category_new_game", "menu_game_category_new_game_name");
+export const menuGameCategoryCredits = new MenuCategory("menu_game_category_credits", "menu_game_category_credits_name");
+export const menuGameCategoryExit = new MenuCategory("menu_game_category_exit", "menu_game_category_exit_name");
 
 export const menuGameCategories = {
   ID: "menu_game_categories",
-  list: [menuGameCategoryReplayMission, menuGameCategoryReplayStrangers], //, menuGameCategoryLoadGame, menuGameCategoryNewGame, menuGameCategoryExit],
+  list: [menuGameCategoryReplayMission, menuGameCategoryReplayStrangers, menuGameCategoryLoadGame, menuGameCategoryNewGame, menuGameCategoryCredits, menuGameCategoryExit],
 };
 
 export const menuGameArrows = new MenuArrows("menu_game_arrows", "menu_arrows_right_side", "menu_game_arrows_counter");

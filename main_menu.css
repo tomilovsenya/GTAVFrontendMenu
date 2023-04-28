@@ -22,7 +22,7 @@
 }
 
 :root {
-  --menu-background: url("images/bg/background5.jpg");
+  --menu-background: url("images/bg/background.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: rgba(0, 0, 0, 0.725);
