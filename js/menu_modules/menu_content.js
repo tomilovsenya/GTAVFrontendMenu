@@ -1,4 +1,4 @@
-import { MenuArrows, MenuElementsWindow, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuWindow } from "../menu_classes/menu_entries.js";
+import { MenuArrows, MenuElementsWindow, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuTab, MenuWindow } from "../menu_classes/menu_entries.js";
 import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
@@ -429,65 +429,19 @@ export let allMenuElements = [
 ];
 
 export const allMenuWindows = [undefined, menuBrief, menuStats, menuSettings, menuGame, undefined, undefined, undefined, undefined, undefined, undefined];
-//
-// MENU TABS
-//
 
-export const MENU_TAB_MAP = {
-  id: $("#tab_0"),
-  window: $(".menu_map"),
-};
-export const MENU_TAB_BRIEF = {
-  id: $("#tab_1"),
-  window: $(".menu_brief"),
-};
-export const MENU_TAB_STATS = {
-  id: $("#tab_2"),
-  window: $(".menu_stats"),
-};
-export const MENU_TAB_SETTINGS = {
-  id: $("#tab_3"),
-  window: $(".menu_settings"),
-};
-export const MENU_TAB_GAME = {
-  id: $("#tab_4"),
-  window: $(".menu_game"),
-};
-export const MENU_TAB_ONLINE = {
-  id: $("#tab_5"),
-  window: $(".menu_online"),
-};
-export const MENU_TAB_FRIENDS = {
-  id: $("#tab_6"),
-  window: $(".menu_friends"),
-};
-export const MENU_TAB_GALLERY = {
-  id: $("#tab_7"),
-  window: $(".menu_gallery"),
-};
-export const MENU_TAB_STORE = {
-  id: $("#tab_8"),
-  window: $(".menu_store"),
-};
-export const MENU_TAB_REPLAY = {
-  id: $("#tab_9"),
-  window: $(".menu_replay"),
-};
-export const MENU_TAB_SAVE = {
-  id: $("#tab_10"),
-  window: $("#menu_save"),
-};
+//#region menuTabs
 
-export const MENU_TABS = [
-  MENU_TAB_MAP,
-  MENU_TAB_BRIEF,
-  MENU_TAB_STATS,
-  MENU_TAB_SETTINGS,
-  MENU_TAB_GAME,
-  MENU_TAB_ONLINE,
-  MENU_TAB_FRIENDS,
-  MENU_TAB_GALLERY,
-  MENU_TAB_STORE,
-  MENU_TAB_REPLAY,
-  MENU_TAB_SAVE,
-];
+export const allMenuTabs = [];
+
+export let menuTabMap = new MenuTab("menu_tab_map", "menu_tab_map_name", 0, undefined);
+export let menuTabBrief = new MenuTab("menu_tab_brief", "menu_tab_brief_name", 1, menuBrief);
+export let menuTabStats = new MenuTab("menu_tab_stats", "menu_tab_stats_name", 2, menuStats);
+export let menuTabSettings = new MenuTab("menu_tab_settings", "menu_tab_settings_name", 3, menuSettings);
+export let menuTabGame = new MenuTab("menu_tab_game", "menu_tab_game_name", 4, menuGame);
+export let menuTabOnline = new MenuTab("menu_tab_online", "menu_tab_online_name", 5, undefined);
+export let menuTabFriends = new MenuTab("menu_tab_friends", "menu_tab_friends_name", 6, undefined);
+export let menuTabGallery = new MenuTab("menu_tab_gallery", "menu_tab_gallery_name", 7, undefined);
+export let menuTabStore = new MenuTab("menu_tab_store", "menu_tab_store_name", 8, undefined);
+
+//#endregion

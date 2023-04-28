@@ -69,58 +69,59 @@
     "american": "CASH",
     "russian": "НАЛИЧНЫЕ"
   },
+  
   {
-    "gxt": "tab_0",
+    "gxt": "menu_tab_map_name",
     "american": "MAP",
     "russian": "КАРТА"
   },
   {
-    "gxt": "tab_1",
+    "gxt": "menu_tab_brief_name",
     "american": "BRIEF",
     "russian": "ИСТОРИЯ"
   },
   {
-    "gxt": "tab_2",
+    "gxt": "menu_tab_stats_name",
     "american": "STATS",
     "russian": "СТАТИСТИКА"
   },
   {
-    "gxt": "tab_3",
+    "gxt": "menu_tab_settings_name",
     "american": "SETTINGS",
     "russian": "НАСТРОЙКИ"
   },
   {
-    "gxt": "tab_4",
+    "gxt": "menu_tab_game_name",
     "american": "GAME",
     "russian": "ИГРА"
   },
   {
-    "gxt": "tab_5",
+    "gxt": "menu_tab_online_name",
     "american": "ONLINE",
     "russian": "СЕТЬ"
   },
   {
-    "gxt": "tab_6",
+    "gxt": "menu_tab_friends_name",
     "american": "FRIENDS",
     "russian": "ДРУЗЬЯ"
   },
   {
-    "gxt": "tab_7",
+    "gxt": "menu_tab_gallery_name",
     "american": "GALLERY",
     "russian": "ГАЛЕРЕЯ"
   },
   {
-    "gxt": "tab_8",
+    "gxt": "menu_tab_store_name",
     "american": "STORE",
     "russian": "МАГАЗИН"
   },
   {
-    "gxt": "tab_9",
+    "gxt": "menu_tab_replay_name",
     "american": "ROCKSTAR EDITOR",
     "russian": "РЕДАКТОР ROCKSTAR"
   },
   {
-    "gxt": "tab_10",
+    "gxt": "menu_tab_save_name",
     "american": "SAVE",
     "russian": "СОХРАНЕНИЕ"
   },

@@ -38,7 +38,7 @@
   --menu-wnd-height: 34vw;
   --menu-wnd-height-arrows: calc(var(--menu-wnd-height) + var(--item-height));
   --menu-box-height: 43.125vw;
-  --menu-box-padding-top: 5vw;
+  --menu-box-padding-top: 10vh;
   --menu-box-padding-bottom: calc(100vh - var(--menu-box-height) - var(--menu-box-padding-top));
   --menu-font-size: 1.025vw;
   --menu-header-font-size: calc(var(--menu-font-size) * 4.18);

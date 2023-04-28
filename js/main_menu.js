@@ -1,34 +1,11 @@
 //
-// CONSTANTS
-//
-
-const MENU_PAGE = document.documentElement;
-export const THIS_PAGE = "MAIN_MENU";
-const STORE_MENU = "/store_menu.html";
-const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
-const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
-
-let isCategorySelected = false;
-let activeTab = null;
-let initWindow = menuContent.MENU_TABS[4];
-let activeWindow = initWindow;
-
-let cursorVisible = false;
-let lastInput = 0; // 0 = K/M, 1 = PAD
-let isStickMoving = false;
-
-export let currentWindow = menuContent.menuSettings;
-
-//
 // MODULES IMPORT
 //
 
-import * as menuContent from "./menu_modules/menu_content.js";
-import { MenuCategory, MenuWindow, findMenuEntryByID } from "./menu_classes/menu_entries.js";
+import { MenuCategory, MenuWindow, findMenuEntryByID, findMenuTabByID } from "./menu_classes/menu_entries.js";
 import { initChecklistChart } from "./menu_modules/menu_stats.js";
 import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
-import { updateMissionCounter } from "./menu_modules/menu_game.js";
 import { setVideoMemory } from "./menu_modules/menu_settings.js";
 import { sendMissionText } from "./menu_modules/menu_brief.js";
 import {
@@ -44,8 +21,28 @@ import {
 import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 import { charMichaelStats, fillStatEntry, globalStats } from "./menu_classes/menu_character.js";
+import * as menuContent from "./menu_modules/menu_content.js";
 
 //
+// CONSTANTS
+//
+
+const MENU_PAGE = document.documentElement;
+export const THIS_PAGE = "MAIN_MENU";
+const STORE_MENU = "/store_menu.html";
+const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
+const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
+
+const initTab = menuContent.menuTabSettings;
+
+let cursorVisible = false;
+let lastInput = 0; // 0 = K/M, 1 = PAD
+let isStickMoving = false;
+
+export let currentTab = initTab;
+export let currentWindow = currentTab.menuWindow;
+
+///
 // jQuery custom extension for getting element width in %
 //
 
@@ -85,9 +82,6 @@ export function showLoadingSpinner() {
 
 async function loadMenu() {
   showLoadingSpinner();
-  // FRONTEND_MAIN_MENU.hide();
-  // FRONTEND_MAIN_MENU.css({visibility: "hidden"});
-  // setFirstTab();
   // playSFX(SFX_MENU_MUSIC);
   await localizeMenu();
   commonMenu.setMenuColor();
@@ -95,12 +89,14 @@ async function loadMenu() {
   commonMenu.setCharMoney(250000, 1000000000);
   commonMenu.updateHeaderStats();
   setInterval(commonMenu.updateHeaderStats, 1000);
-  commonMenu.drawArrows();
 
+  menuContent.allMenuTabs.forEach((tab) => tab.createTab());
   menuContent.menuStats.create();
   menuContent.menuSettings.create();
   menuContent.menuGame.create();
 
+  prepareInitialWindow();
+  commonMenu.drawArrows();
   updateEventHandlers();
   setInputMethod(0);
   updateInstrIcons(0);
@@ -108,9 +104,6 @@ async function loadMenu() {
 
 function initMenuContent() {
   setStartupInstr();
-  setInitialTab();
-  activeWindow.id.trigger("tabActive");
-  setActiveWindow(menuContent.menuStats);
   initChecklistChart();
   globalStats.charStats.forEach((stat) => fillStatEntry(stat));
   charMichaelStats.charStats.forEach((stat) => fillStatEntry(stat));
@@ -122,7 +115,6 @@ function showMenu() {
   setInstrContainerVisibility(true);
   FRONTEND_MAIN_MENU.css({ visibility: "visible" });
   FRONTEND_MAIN_MENU.show();
-  switchActiveWindow();
 }
 
 function onMenuLoad() {
@@ -132,39 +124,10 @@ function onMenuLoad() {
 }
 
 window.onload = () => {
-  loadMenu().then(() => {
-    onMenuLoad();
-  });
+  loadMenu().then(() => onMenuLoad());
 };
-// window.onload = setTimeout(showMenu, 2000);
+// window.onload = setTimeout(onMenuLoad, 2000);
 // window.onload = onMenuLoad;
-
-//
-// ACTIVE WINDOWS LOGIC
-//
-
-function setActiveWindow(activatedWindow) {
-  if (!activatedWindow instanceof MenuWindow) return;
-  // if (activatedWindow == currentWindow) return;
-
-  currentWindow = activatedWindow;
-  activatedWindow.show();
-  console.log("Activated window: " + activatedWindow.ID);
-}
-
-function switchActiveWindow(activeTab) {
-  let selectedTab = $("#menu_navbar_tabs").find(".menu_button_active").eq(0).index();
-  let selectedWindow = menuContent.allMenuWindows[selectedTab];
-  console.log("Tab selected: " + selectedTab);
-
-  if (currentWindow != undefined) {
-    currentWindow.deactivate();
-    currentWindow.hide();
-    console.log("Deactivated window: " + currentWindow.ID);
-  }
-
-  if (selectedWindow != undefined) setActiveWindow(selectedWindow);
-}
 
 //
 // EVENT LISTENERS
@@ -190,8 +153,8 @@ let isButtonPressedDown = false;
 window.addEventListener(
   "keydown",
   function (e) {
-    e.preventDefault();
-    
+    // e.preventDefault();
+
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
 
@@ -214,8 +177,10 @@ window.addEventListener(
       );
     }
     if (["KeyJ"].indexOf(e.code) > -1) {
+      showInstrLoadingSpinner();
     }
     if (["KeyN"].indexOf(e.code) > -1) {
+      hideInstrLoadingSpinner();
     }
     if (["KeyM"].indexOf(e.code) > -1) {
     }
@@ -310,41 +275,29 @@ function setTabOnly() {
   commonMenu.drawArrows();
 }
 
+//
+// CLICK HANDLERS
+//
+
 function clickTab() {
-  if ($(this).is(activeTab)) return;
-  if (activeTab == null || activeTab == $(this)) {
-    activeTab = $(this);
-    activeTab.trigger("tabActive");
-    // console.log('Not active tab clicked')
-  } else if (activeTab != $(this)) {
-    activeTab.trigger("tabDisabled");
-    activeTab = $(this);
-    activeTab.trigger("tabActive");
-    // console.log('Other tab clicked')
+  let clickedTab = findMenuTabByID($(this).attr("id"));
+  if (clickedTab == undefined || clickedTab == 0) {
+    console.warn("Clicked tab not found by ID: " + $(this).attr("id"));
+    return;
   }
-}
 
-function setTabActive() {
-  $(this).addClass("menu_button_active");
-  // activeTab.focus();
-  // playSFX(SFX_TAB_NAVIGATE);
-  switchActiveWindow($(this));
-  activeWindowHandler(activeTab);
-}
+  currentTab.deactivate();
+  currentTab = clickedTab;
+  clickedTab.activate();
 
-function setTabDisabled() {
-  $(this).removeClass("menu_button_active");
+  switchActiveWindow(clickedTab.menuWindow);
 }
-
-//
-// CATEGORIES LOGIC
-//
 
 function clickCategory() {
   if (!currentWindow.active) return;
+
   let clickedCategory = findMenuEntryByID($(this).attr("id"));
   clickedCategory.parentElements.clickCategory(clickedCategory);
-  console.log("Clicked category: ");
 }
 
 export function clickEntry() {
@@ -365,50 +318,54 @@ export function clickEntry() {
 }
 
 //
-// FUNCTIONS
+// MAIN FUNCTIONS
 //
 
-// function triggerTab(tab) {
-//   activeTab.trigger
-// }
-
 export function scrollTab(scrollDir) {
-  if ($(".menu_buttons").children().length <= 1) return;
+  if (menuContent.allMenuTabs.length <= 1) {
+    console.warn("Can't scroll tabs as there's only 1 or less");
+    return;
+  }
+  if (currentTab != undefined) currentTab.deactivate();
+
   switch (scrollDir) {
     case 0:
-      if (activeTab == null) {
-        activeTab = $(".menu_buttons").children().last();
-        activeTab.trigger("tabActive");
-        // console.log('Was NULL, now: ' + activeTab.html())
-      } else {
-        let $next = activeTab.prev(".menu_button");
-        activeTab.trigger("tabDisabled");
-        if ($next.length != 0) {
-          activeTab = activeTab.prev(".menu_button");
-        } else activeTab = activeTab.siblings(".menu_button").last();
-        activeTab.trigger("tabActive");
-      }
-      activeTab[0].scrollIntoView(false);
+      currentTab = menuContent.allMenuTabs[currentTab.index - 1];
+      if (currentTab == undefined) currentTab = menuContent.allMenuTabs[menuContent.allMenuTabs.length - 1];
       break;
     case 1:
-      if (activeTab == null) {
-        activeTab = $(".menu_buttons").children().first();
-        activeTab.trigger("tabActive");
-        // console.log('Was NULL, now: ' + activeTab.html())
-      } else {
-        let $next = activeTab.next(".menu_button");
-        activeTab.trigger("tabDisabled");
-        if ($next.length != 0) {
-          activeTab = activeTab.next(".menu_button");
-        } else activeTab = activeTab.siblings(".menu_button").first();
-        activeTab.trigger("tabActive");
-      }
-      activeTab[0].scrollIntoView(false);
-      break;
-    default:
-      console.log("Function scrollTab(scrollDir) only accepts scrollDir = 0 (up) or 1 (down)");
+      currentTab = menuContent.allMenuTabs[currentTab.index + 1];
+      if (currentTab == undefined) currentTab = menuContent.allMenuTabs[0];
       break;
   }
+
+  currentTab.activate();
+  switchActiveWindow(currentTab.menuWindow);
+}
+
+function prepareInitialWindow() {
+  $(".menu_window").hide();
+  currentTab.activate();
+  switchActiveWindow(currentTab.menuWindow);
+}
+
+function setActiveWindow(activatedWindow) {
+  if (!activatedWindow instanceof MenuWindow) return;
+  // if (activatedWindow == currentWindow) return;
+
+  currentWindow = activatedWindow;
+  activatedWindow.show();
+  console.log("Activated window: " + activatedWindow.ID);
+}
+
+export function switchActiveWindow(activatedWindow) {
+  if (currentWindow != undefined) {
+    currentWindow.deactivate();
+    currentWindow.hide();
+  }
+
+  currentWindow = activatedWindow;
+  activatedWindow.show();
 }
 
 //
@@ -428,8 +385,6 @@ $(".menu_categories").bind("wheel", function (e) {
 function updateEventHandlers() {
   $(".menu_button").click(clickTab);
   $(".menu_button").dblclick("dblclick", setTabOnly);
-  $(".menu_button").on("tabActive", setTabActive);
-  $(".menu_button").on("tabDisabled", setTabDisabled);
 
   $(".menu_elements_scrollable").on("click", ".menu_entry_zone_left", function () {
     currentWindow.currentElements.currentEntry.clickZone(0);
@@ -523,20 +478,9 @@ function setTabName(index, name) {
   tab.html(name);
   // console.log(tab.html())
 }
+
 function setTabNameStar(index) {
   setTabName(index, "&starf; " + $(".menu_button").html());
-}
-function setInitialTab() {
-  activeTab = initWindow.id;
-  $(".menu_window").hide();
-  initWindow.window.show();
-  initWindow.id[0].scrollIntoView(false);
-}
-
-function setFirstTab() {
-  activeTab = $(".menu_button").first();
-  activeTab.trigger("tabActive");
-  console.log("First button is: " + activeTab.attr("id"));
 }
 
 export function enterStoreMenu() {
@@ -549,5 +493,5 @@ function activeWindowHandler(activeTab) {}
 // STARTUP FUNCTIONS AFTER EVERYTHING IS SET
 //
 
-setFirstTab();
+// setFirstTab();
 Controller.search();

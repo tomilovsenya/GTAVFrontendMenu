@@ -1,5 +1,5 @@
 import { MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
-import { allMenuElements, allMenuEntries } from "../menu_modules/menu_content.js";
+import { allMenuElements, allMenuEntries, allMenuTabs } from "../menu_modules/menu_content.js";
 import { getLocalizedString } from "../menu_modules/menu_localization.js";
 
 export class MenuWindow {
@@ -942,6 +942,44 @@ export class MenuArrows {
   }
 }
 
+export class MenuTab {
+  id;
+  idSel;
+  title;
+  index;
+  menuWindow;
+  isActive = false;
+
+  constructor(id, title, index, menuWindow) {
+    this.id = id;
+    this.idSel = "#" + this.id;
+    this.title = title;
+    this.index = index;
+    this.menuWindow = menuWindow;
+
+    allMenuTabs.splice(this.index, 0, this);
+  }
+
+  createTab() {
+    let menuNavbar = $("#menu_navbar_tabs");
+    let blankTab = $(`<button id="${this.id}" class="menu_button">${getLocalizedString(this.title)}</button>`);
+
+    menuNavbar.append(blankTab);
+  }
+
+  activate() {
+    $(this.idSel).addClass("menu_button_active");
+    $(this.idSel)[0].scrollIntoViewIfNeeded(false);
+    this.menuWindow.show();
+    // switchActiveWindow($(this));
+    // activeWindowHandler(activeTab);
+  }
+
+  deactivate() {
+    $(this.idSel).removeClass("menu_button_active");
+  }
+}
+
 export function findMenuEntryByID(id) {
   let foundObject = allMenuEntries.find((entry) => entry.ID === id);
   if (foundObject != undefined) {
@@ -962,6 +1000,18 @@ export function findMenuElementsByID(id) {
     return foundObject;
   } else {
     console.warn("MenuElements with such ID not found: " + id);
+    return 0;
+  }
+}
+
+export function findMenuTabByID(id) {
+  let foundObject = allMenuTabs.find((tab) => tab.id === id);
+  if (foundObject != undefined) {
+    console.log("Found MenuTab by ID: " + id);
+    console.log(foundObject);
+    return foundObject;
+  } else {
+    console.warn("MenuTab with such ID not found: " + id);
     return 0;
   }
 }
