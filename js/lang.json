@@ -662,6 +662,11 @@
     "russian": "Новая игра"
   },
   {
+    "gxt": "menu_game_category_credits_name",
+    "american": "Credits",
+    "russian": "Титры"
+  },
+  {
     "gxt": "menu_game_category_exit_name",
     "american": "Exit Game",
     "russian": "Выйти из игры"

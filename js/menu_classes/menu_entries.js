@@ -27,9 +27,10 @@ export class MenuWindow {
     this.onSelectionUpdate = onSelectionUpdate;
 
     this.menuElements.forEach((element) => {
-      element.menuEntries.forEach((entry) => {
-        this.menuEntriesAll.push(entry);
-      });
+      if (!element instanceof MenuElementsWindow)
+        element.menuEntries.forEach((entry) => {
+          this.menuEntriesAll.push(entry);
+        });
     });
 
     this.menuArrows = menuArrows;
@@ -457,6 +458,43 @@ export class MenuElements {
   }
 
   hide() {
+    $(this.idSel).hide();
+  }
+}
+
+export class MenuElementsWindow {
+  id;
+  idSel;
+  headerText = "Header";
+  innerText = "Window text.";
+
+  constructor(id, header, text) {
+    this.id = id;
+    this.idSel = "#" + this.id;
+    this.headerText = header;
+    this.innerText = text;
+  }
+
+  populateElements(parentWindow) {
+    let blankElements = $(`<div id="${this.id}" class="menu_elements menu_elements_window menu_background_rockstar"></div>`);
+    let blankWindow = $(`<div id="${this.id}_window" class="menu_window_text menu_window_text_full"></div>`);
+    let blankHeader = `<h1 class="menu_window_header">${this.headerText}</h1>`;
+    let blankText = `<span class="menu_window_text">${this.innerText}</span>`;
+
+    blankElements.append(blankWindow);
+    blankWindow.append(blankHeader);
+    blankWindow.append(blankText);
+    
+    $(parentWindow.idSel).find(".menu_elements_noarrows").append(blankElements);
+
+    this.deactivate();
+  }
+
+  activate() {
+    $(this.idSel).show();
+  }
+
+  deactivate() {
     $(this.idSel).hide();
   }
 }

@@ -1133,6 +1133,14 @@ div.menu_elements {
   scroll-snap-type: mandatory;
 }
 
+div.menu_elements_window {
+  background-color: var(--black-bg-color) !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
 div.menu_elements_full_width {
   min-width: 100%;
 }
@@ -1207,6 +1215,7 @@ div.menu_elements_scrollable .menu_entry {
 }
 
 div.menu_elements_noarrows {
+  height: 100%;
   max-height: var(--menu-wnd-height);
 }
 
