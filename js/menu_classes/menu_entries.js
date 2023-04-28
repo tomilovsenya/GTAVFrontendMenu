@@ -158,31 +158,49 @@ export class MenuWindow {
   }
 
   scrollVertical(scrollDir) {
-    if (this.currentContext == -1) return;
-    else if (this.currentContext == 0) {
-      let newSelection;
-      if (scrollDir == 0) {
-        if (this.currentCategoryIndex == 0) newSelection = this.menuCategories.list.length - 1;
-        else newSelection = this.currentCategoryIndex - 1;
-      } else if (scrollDir == 1) {
-        if (this.currentCategoryIndex < this.menuCategories.list.length - 1) newSelection = this.currentCategoryIndex + 1;
-        else newSelection = 0;
-      }
+    switch (this.currentContext) {
+      case -1:
+        return;
+      case 0: {
+        let newSelection;
 
-      this.updateSelection(newSelection);
-    } else if (this.currentContext == 1) this.currentElements.scrollElements(scrollDir);
+        switch (scrollDir) {
+          case 0: {
+            if (this.currentCategoryIndex == 0) newSelection = this.menuCategories.list.length - 1;
+            else newSelection = this.currentCategoryIndex - 1;
+            break;
+          }
+          case 1: {
+            if (this.currentCategoryIndex < this.menuCategories.list.length - 1) newSelection = this.currentCategoryIndex + 1;
+            else newSelection = 0;
+            break;
+          }
+        }
+
+        this.updateSelection(newSelection);
+        break;
+      }
+      case 1:
+        this.currentElements.scrollElements(scrollDir);
+        break;
+    }
   }
 
   scrollHorizontal(scrollDir) {
     if (this.currentContext == -1) return;
     this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
 
-    if (this.currentContext == 0) {
-      this.currentCategory.scrollList(scrollDir);
-      this.currentCategory.updateElements();
-    } else if (this.currentContext == 1) {
-      if (this.currentElements.currentEntry instanceof MenuEntryList) this.currentElements.currentEntry.scrollList(scrollDir);
-      if (this.currentElements.currentEntry instanceof MenuEntryProgress) this.currentElements.currentEntry.scrollProgress(scrollDir);
+    switch (this.currentContext) {
+      case 0: {
+        this.currentCategory.scrollList(scrollDir);
+        this.currentCategory.updateElements();
+        break;
+      }
+      case 1: {
+        if (this.currentElements.currentEntry instanceof MenuEntryList) this.currentElements.currentEntry.scrollList(scrollDir);
+        if (this.currentElements.currentEntry instanceof MenuEntryProgress) this.currentElements.currentEntry.scrollProgress(scrollDir);
+        break;
+      }
     }
   }
 
@@ -381,32 +399,42 @@ export class MenuElements {
     let firstSelectable = this.menuEntries.find((entry) => entry.isEmpty === false);
     let lastSelectable = this.menuEntries.findLast((entry) => entry.isEmpty === false);
 
-    if (scrollDir == 0) {
-      let prevSelectable = this.menuEntries.findLast((entry, index) => entry.isEmpty === false && index < this.currentSelection);
-      newSelection = prevSelectable != undefined ? prevSelectable.index : lastSelectable.index;
-    } else if (scrollDir == 1) {
-      let nextSelectable = this.menuEntries.find((entry, index) => entry.isEmpty === false && index > this.currentSelection);
-      newSelection = nextSelectable != undefined ? nextSelectable.index : firstSelectable.index;
+    switch (scrollDir) {
+      case 0: {
+        let prevSelectable = this.menuEntries.findLast((entry, index) => entry.isEmpty === false && index < this.currentSelection);
+        newSelection = prevSelectable != undefined ? prevSelectable.index : lastSelectable.index;
+        break;
+      }
+      case 1: {
+        let nextSelectable = this.menuEntries.find((entry, index) => entry.isEmpty === false && index > this.currentSelection);
+        newSelection = nextSelectable != undefined ? nextSelectable.index : firstSelectable.index;
+        break;
+      }
     }
 
     this.updateSelection(newSelection);
   }
 
   scrollEmptyElements(scrollDir) {
-    if (scrollDir == 0) {
-      if (this.currentEntryIndexTop == 0) return;
-      let prevIndex = this.currentEntryIndexTop - 1;
+    switch (scrollDir) {
+      case 0: {
+        if (this.currentEntryIndexTop == 0) return;
+        let prevIndex = this.currentEntryIndexTop - 1;
 
-      $(this.menuEntries[prevIndex].idSel)[0].scrollIntoViewIfNeeded(false);
-      this.currentEntryIndexTop -= 1;
-      this.currentEntryIndexBottom -= 1;
-    } else if (scrollDir == 1) {
-      if (this.currentEntryIndexBottom == this.menuEntries.length - 1) return;
-      let nextIndex = this.currentEntryIndexBottom + 1;
+        $(this.menuEntries[prevIndex].idSel)[0].scrollIntoViewIfNeeded(false);
+        this.currentEntryIndexTop -= 1;
+        this.currentEntryIndexBottom -= 1;
+        break;
+      }
+      case 1: {
+        if (this.currentEntryIndexBottom == this.menuEntries.length - 1) return;
+        let nextIndex = this.currentEntryIndexBottom + 1;
 
-      $(this.menuEntries[nextIndex].idSel)[0].scrollIntoViewIfNeeded(false);
-      this.currentEntryIndexTop += 1;
-      this.currentEntryIndexBottom += 1;
+        $(this.menuEntries[nextIndex].idSel)[0].scrollIntoViewIfNeeded(false);
+        this.currentEntryIndexTop += 1;
+        this.currentEntryIndexBottom += 1;
+        break;
+      }
     }
 
     if (this.evenEntriesDarker) this.#setDarkerBackground(this.currentEntryIndexTop % 2 == 0);
@@ -667,12 +695,17 @@ export class MenuEntryList extends MenuEntry {
     let listLength = this.listCollection.items.length;
     let listIndex = this.listCollection.index;
 
-    if (scrollDir == 0) {
-      if (listIndex > 0) this.listCollection.index--;
-      else this.listCollection.index = listLength - 1;
-    } else if (scrollDir == 1) {
-      if (listIndex < listLength - 1) this.listCollection.index++;
-      else this.listCollection.index = 0;
+    switch (scrollDir) {
+      case 0: {
+        if (listIndex > 0) this.listCollection.index--;
+        else this.listCollection.index = listLength - 1;
+        break;
+      }
+      case 1: {
+        if (listIndex < listLength - 1) this.listCollection.index++;
+        else this.listCollection.index = 0;
+        break;
+      }
     }
 
     this.updateList();
@@ -726,8 +759,14 @@ export class MenuEntryProgress extends MenuEntry {
   scrollProgress(scrollDir) {
     let newValue;
 
-    if (scrollDir == 0) newValue = this.progressPerc - 100 / this.progressSteps;
-    else if (scrollDir == 1) newValue = this.progressPerc + 100 / this.progressSteps;
+    switch (scrollDir) {
+      case 0:
+        newValue = this.progressPerc - 100 / this.progressSteps;
+        break;
+      case 1:
+        newValue = this.progressPerc + 100 / this.progressSteps;
+        break;
+    }
 
     newValue = newValue > 100 ? 100 : newValue < 0 ? 0 : newValue;
     this.updateProgress(newValue);
