@@ -108,6 +108,19 @@
   --hud-color-grey: rgb(60, 60, 60);
 }
 
+@media only screen and (max-width: 1280px) {
+  :root {
+    /* --menu-wnd-width: 92.5vw;
+    --menu-box-height: 58.84225vw; */
+  }
+
+  div.frontend_main_menu {
+    transform: scale(1.35);
+    position: relative;
+    top: 20%;
+  }
+}
+
 body {
   background-color: rgb(60, 60, 60);
   width: 100vw;
@@ -219,6 +232,62 @@ span#menu_warning_message_text {
   padding: 0.55vw 2.5vw 0.75vw 2.5vw;
 }
 
+/* #endregion Main */
+
+/* #region MenuFooter */
+
+div.menu_footer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-self: flex-end;
+  position: absolute;
+  bottom: var(--menu-safezone-top);
+}
+
+div.menu_feed {
+  /* background-color: var(--black-bg-color); */
+  max-width: 15vw;
+  /* height: 5vw; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: flex-end;
+  gap: var(--item-margin);
+  position: relative;
+  left: var(--menu-safezone-sides);
+  z-index: 100;
+}
+
+@keyframes feedMessageRoll {
+  0% {
+    opacity: 0;
+    offset-distance: 0%;
+  }
+
+  100% {
+    opacity: 1;
+    offset-distance: 100%;
+  }
+}
+
+div.menu_feed_message {
+  /* offset-path: path("M100 0 H20,0"); */
+  background-color: var(--black-bg-color);
+  min-width: 15vw;
+  max-width: 15vw;
+  color: var(--text-color);
+  font-family: "London60";
+  word-wrap: break-word;
+  padding: var(--item-padding-sides) var(--item-padding-top);
+  animation: feedMessageRoll ease 0.5s;
+}
+
 div#menu_instructional_buttons {
   visibility: hidden;
 }
@@ -239,9 +308,9 @@ div.instructional_buttons {
   gap: 1vw;
   z-index: 10;
   /* margin-top: -35px; */
-  margin-bottom: var(--menu-safezone-top);
-  margin-right: var(--menu-safezone-sides);
   padding: 0 0.5vw;
+  position: relative;
+  right: var(--menu-safezone-sides);
 }
 
 div.instructional_buttons_group {
@@ -285,20 +354,7 @@ div.ib_container:last-of-type {
   margin-right: 0;
 }
 
-@media only screen and (max-width: 1280px) {
-  :root {
-    /* --menu-wnd-width: 92.5vw;
-    --menu-box-height: 58.84225vw; */
-  }
-
-  div.frontend_main_menu {
-    transform: scale(1.35);
-    position: relative;
-    top: 20%;
-  }
-}
-
-/*#endregion Main*/
+/*#endregion MenuFooter*/
 
 /*#region Markup*/
 

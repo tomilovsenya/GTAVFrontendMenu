@@ -183,6 +183,7 @@ window.addEventListener(
       hideInstrLoadingSpinner();
     }
     if (["KeyM"].indexOf(e.code) > -1) {
+      sendFeedMessage("Test message", 5000, commonMenu.getHudColor("hud-color-red-alpha"));
     }
     if (["PageUp", "PageDown"].indexOf(e.code) > -1) {
     }
@@ -250,6 +251,40 @@ window.addEventListener(
   },
   false
 );
+
+//
+// CONSOLE HANDLERS
+//
+
+console.defaultLog = console.log.bind(console);
+console.logs = [];
+console.log = function () {
+  // default &  console.log()
+  console.defaultLog.apply(console, arguments);
+  // new & array data
+  console.logs.push(Array.from(arguments));
+  sendFeedMessage(Array.from(arguments), 2000, commonMenu.getHudColor("black-bg-color"));
+};
+
+console.defaultError = console.error.bind(console);
+console.errors = [];
+console.error = function () {
+  // default &  console.error()
+  console.defaultError.apply(console, arguments);
+  // new & array data
+  console.errors.push(Array.from(arguments));
+  sendFeedMessage(Array.from(arguments), 5000, commonMenu.getHudColor("hud-color-red-alpha"));
+};
+
+console.defaultWarn = console.warn.bind(console);
+console.warns = [];
+console.warn = function () {
+  // default &  console.warn()
+  console.defaultWarn.apply(console, arguments);
+  // new & array data
+  console.warns.push(Array.from(arguments));
+  sendFeedMessage(Array.from(arguments), 5000, commonMenu.getHudColor("hud-color-yellow-alpha"));
+};
 
 //
 // TABS LOGIC
@@ -371,6 +406,15 @@ export function switchActiveWindow(activatedWindow) {
   }
 
   setActiveWindow(activatedWindow);
+}
+
+function sendFeedMessage(text, duration, color) {
+  let theFeed = $("#menu_thefeed");
+  let blankMessage = $(`<div class="menu_feed_message">${text}</div>`);
+
+  blankMessage.css({ "background-color": color });
+  theFeed.append(blankMessage);
+  setTimeout(() => blankMessage.remove(), duration);
 }
 
 //
