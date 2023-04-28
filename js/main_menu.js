@@ -153,7 +153,7 @@ let isButtonPressedDown = false;
 window.addEventListener(
   "keydown",
   function (e) {
-    // e.preventDefault();
+    e.preventDefault();
 
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
@@ -290,7 +290,7 @@ function clickTab() {
   currentTab = clickedTab;
   clickedTab.activate();
 
-  switchActiveWindow(clickedTab.menuWindow);
+  switchActiveWindow(currentTab.menuWindow);
 }
 
 function clickCategory() {
@@ -364,8 +364,7 @@ export function switchActiveWindow(activatedWindow) {
     currentWindow.hide();
   }
 
-  currentWindow = activatedWindow;
-  activatedWindow.show();
+  setActiveWindow(activatedWindow);
 }
 
 //
@@ -493,5 +492,4 @@ function activeWindowHandler(activeTab) {}
 // STARTUP FUNCTIONS AFTER EVERYTHING IS SET
 //
 
-// setFirstTab();
 Controller.search();
