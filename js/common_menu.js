@@ -60,8 +60,8 @@ export function setHeaderTitle(headerTitle) {
 export function drawArrows() {
   let tabsNumber = $(".menu_buttons").children().length;
   if (tabsNumber <= 6) {
-    $(".menu_navbar_arrows").hide();
+    $(".menu_navbar_arrow").hide();
   } else {
-    $(".menu_navbar_arrows").show();
+    $(".menu_navbar_arrow").show();
   }
 }

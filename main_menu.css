@@ -65,7 +65,7 @@
   --navbar-height: 2vw;
   --navbar-margin-bottom: 1vw;
   --navbar-boxshadow-offset: 0.4vw;
-  --navbar-arrow-width: 1%;
+  --navbar-arrow-width: 2vw;
 
   /* HUD COLORS */
 
@@ -159,15 +159,13 @@ div.menu_backdrop {
 }
 
 div.menu_bounding_box {
-  aspect-ratio: 16 / 9;
+  /* aspect-ratio: 16 / 9; */
   width: 100vw;
-  /* min-width: 70%; */
   height: 100vh;
-  max-height: 56.25vw;
-  /* margin: 0 auto; */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 div.menu_cursor_hidden * {
@@ -287,12 +285,18 @@ div.ib_container:last-of-type {
   margin-right: 0;
 }
 
-/* @media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1280px) {
   :root {
-    --menu-wnd-width: 92.5vw;
-    --menu-box-height: 58.84225vw;
+    /* --menu-wnd-width: 92.5vw;
+    --menu-box-height: 58.84225vw; */
   }
-} */
+
+  div.frontend_main_menu {
+    transform: scale(1.35);
+    position: relative;
+    top: 20%;
+  }
+}
 
 /*#endregion Main*/
 
@@ -554,7 +558,7 @@ div.menu_navbar {
   justify-content: space-evenly;
   flex-direction: row;
   /* height: var(--navbar-height); */
-  width: calc(var(--menu-wnd-width) * 1.04);
+  width: var(--menu-wnd-width);
   margin-bottom: var(--navbar-margin-bottom);
   align-self: center;
   align-items: center;
@@ -624,42 +628,29 @@ button.menu_button_active {
   box-shadow: var(--menu-color) 0px -0.4vw;
 }
 
-button#menu_arrow_left {
+button.menu_navbar_arrow {
+  background-color: transparent;
+  background-image: url(images/arrow_right.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: var(--navbar-arrow-width);
   max-width: var(--navbar-arrow-width);
   height: var(--navbar-height);
   max-height: var(--navbar-height);
   border: 0;
   outline: 0;
-  background-color: transparent;
-  background-image: url(images/arrow_right.svg);
-  /* background-size: cover; */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transform: rotate(180deg);
-  /* margin-left: var(--navbar-margin-arrow); */
-  float: left;
-  align-self: flex-start;
-  flex-grow: 0;
+}
+
+button#menu_arrow_left {
+  transform: scale(-1);
+  position: relative;
+  left: -0.25vw;
 }
 
 button#menu_arrow_right {
-  width: var(--navbar-arrow-width);
-  max-width: var(--navbar-arrow-width);
-  height: var(--navbar-height);
-  max-height: var(--navbar-height);
-  border: 0;
-  outline: 0;
-  background-color: transparent;
-  background-image: url(images/arrow_right.svg);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* margin-right: var(--navbar-margin-arrow); */
-  float: right;
-  align-self: flex-end;
-  flex-grow: 0;
+  position: relative;
+  right: -0.25vw;
 }
 
 /*#endregion MenuNavBar */
