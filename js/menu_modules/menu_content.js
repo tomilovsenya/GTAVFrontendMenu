@@ -3,7 +3,7 @@ import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
 import { MenuCategory } from "../menu_classes/menu_entries.js";
-import { clearMissionInfo, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
+import { MenuEntrySave, clearMissionInfo, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
 
 //
 // TESTING OF CLASS-BASED MENU SYSTEM
@@ -358,8 +358,8 @@ export const StrangersObjTON1 = [
 ];
 export const StrangersObjTON2 = [{ label: "Pulling Favors Again", descr: "Help Tonya.", label_r: "", check: false }];
 
-export const menuGameReplayStrangersTON1 = new MenuEntryMission("menu_game_replay_strangers_ton1", "menu_game_replay_strangers_ton1_name", 0, StrangersObjTON1);
-export const menuGameReplayStrangersTON2 = new MenuEntryMission("menu_game_replay_strangers_ton2", "menu_game_replay_strangers_ton2_name", 0, StrangersObjTON2);
+export const menuGameReplayStrangersTON1 = new MenuEntryMission("menu_game_replay_strangers_ton1", "strangers_ton1_name", 0, StrangersObjTON1);
+export const menuGameReplayStrangersTON2 = new MenuEntryMission("menu_game_replay_strangers_ton2", "strangers_ton2_name", 0, StrangersObjTON2);
 
 export const menuGameReplayMissionEntries = [
   menuGameReplayMissionPRO1,
@@ -382,14 +382,14 @@ export const menuGameReplayMissionEntries = [
 ];
 export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTON1, menuGameReplayStrangersTON2];
 
-export const menuGameLoadGameSave1 = new MenuEntry("menu_game_load_game_save_0", "01 - Prologue", "00:00");
-export const menuGameLoadGameSave2 = new MenuEntry("menu_game_load_game_save_1", "02 - Franklin and Lamar", "00:00");
+export const menuGameLoadGameSave0 = new MenuEntrySave(1, "mission_pro1_name", 1.2, 1682680125);
+export const menuGameLoadGameSave1 = new MenuEntrySave(2, "mission_arm1_name", 1.6, 1683280125);
 
-export const menuGameLoadGameEntries = [menuGameLoadGameSave1, menuGameLoadGameSave2];
+export const menuGameLoadGameEntries = [menuGameLoadGameSave0, menuGameLoadGameSave1];
 
 export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true, updateMissionInfo, undefined, true);
 export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries, true, false, true, updateMissionInfo, undefined, true);
-export const menuGameLoadGame = new MenuElements("menu_game_load_game", menuGameLoadGameEntries, true, false, true, undefined, undefined, false);
+export const menuGameLoadGame = new MenuElements("menu_game_load_game", menuGameLoadGameEntries, true, false, true, updateMissionInfo, undefined, false);
 
 export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");
 export const menuGameCategoryReplayStrangers = new MenuCategory("menu_game_category_replay_strangers", "menu_game_category_replay_strangers_name");
