@@ -352,7 +352,14 @@ export const menuGameReplayMissionJH2A = new MenuEntryMission("menu_game_replay_
 export const menuGameReplayMissionTRV1 = new MenuEntryMission("menu_game_replay_mission_trv1", "mission_trv1_name", 0, MissionObjTRV1);
 export const menuGameReplayMissionCHN1 = new MenuEntryMission("menu_game_replay_mission_chn1", "mission_chn1_name", 0, MissionObjCHN1);
 
-export const menuGameReplayStrangersTonya1 = new MenuEntryMission("menu_game_replay_strangers_tonya_1", "menu_game_replay_strangers_tonya_1_name");
+export const StrangersObjTON1 = [
+  { label: "Pulling Favors", descr: "Help Tonya.", label_r: "", check: true },
+  { label: "Pulling Favors Again", descr: "Help Tonya.", label_r: "", check: false },
+];
+export const StrangersObjTON2 = [{ label: "Pulling Favors Again", descr: "Help Tonya.", label_r: "", check: false }];
+
+export const menuGameReplayStrangersTON1 = new MenuEntryMission("menu_game_replay_strangers_ton1", "menu_game_replay_strangers_ton1_name", 0, StrangersObjTON1);
+export const menuGameReplayStrangersTON2 = new MenuEntryMission("menu_game_replay_strangers_ton2", "menu_game_replay_strangers_ton2_name", 0, StrangersObjTON2);
 
 export const menuGameReplayMissionEntries = [
   menuGameReplayMissionPRO1,
@@ -373,10 +380,10 @@ export const menuGameReplayMissionEntries = [
   menuGameReplayMissionTRV1,
   menuGameReplayMissionCHN1,
 ];
-export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTonya1];
+export const menuGameReplayStrangersEntries = [menuGameReplayStrangersTON1, menuGameReplayStrangersTON2];
 
 export const menuGameReplayMission = new MenuElements("menu_game_replay_mission", menuGameReplayMissionEntries, true, false, true, updateMissionInfo);
-export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries);
+export const menuGameReplayStrangers = new MenuElements("menu_game_replay_strangers", menuGameReplayStrangersEntries, true, false, true, updateMissionInfo);
 
 export const menuGameCategoryReplayMission = new MenuCategory("menu_game_category_replay_mission", "menu_game_category_replay_mission_name");
 export const menuGameCategoryReplayStrangers = new MenuCategory("menu_game_category_replay_strangers", "menu_game_category_replay_strangers_name");
@@ -392,7 +399,7 @@ export const menuGameCategories = {
 
 export const menuGameArrows = new MenuArrows("menu_game_arrows", "menu_arrows_right_side", "menu_game_arrows_counter");
 export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers];
-export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGameElements, menuGameArrows, prepareMissionInfo);
+export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGameElements, menuGameArrows, prepareMissionInfo, updateMissionInfo);
 
 //#endregion
 

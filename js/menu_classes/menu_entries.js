@@ -16,13 +16,15 @@ export class MenuWindow {
   currentCategory;
   active = false;
   onWindowCreation;
+  onSelectionUpdate;
 
-  constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation) {
+  constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation, onSelectionUpdate) {
     this.ID = id;
     this.#idSel = "#" + this.ID;
     this.menuCategories = menuCategories;
     this.menuElements = menuElements;
     this.onWindowCreation = onWindowCreation;
+    this.onSelectionUpdate = onSelectionUpdate;
 
     this.menuElements.forEach((element) => {
       element.menuEntries.forEach((entry) => {
@@ -211,6 +213,8 @@ export class MenuWindow {
 
       if (this.currentElements.arrowsRequired) this.toggleArrows(true);
       else this.toggleArrows(false);
+
+      if (this.onSelectionUpdate != undefined) this.onSelectionUpdate(newSelection);
     }
   }
 
@@ -818,7 +822,7 @@ export class MenuEntryMission extends MenuEntryList {
 
   calculateMedal() {
     if (this.objectives == undefined) {
-      console.error(`No objectives specified for MenuEntryMission: ${this.ID}`);
+      console.warn(`No objectives specified for MenuEntryMission: ${this.ID}`);
       this.medal = 2;
       return;
     }

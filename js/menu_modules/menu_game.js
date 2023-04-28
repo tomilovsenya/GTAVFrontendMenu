@@ -6,7 +6,7 @@ import { menuGame } from "./menu_content.js";
 
 export function updateMissionCounter() {
   let counterID = $("#menu_game_arrows_counter");
-  let currentMission = menuGame.currentElements.currentEntry.index + 1;
+  let currentMission = menuGame.currentElements.currentEntry != undefined ? menuGame.currentElements.currentEntry.index + 1 : 1;
   let totalMissions = menuGame.currentElements.menuEntries.length;
   let counterString = `${currentMission} / ${totalMissions}`;
 
@@ -22,8 +22,10 @@ export function clearMissionInfo() {
   $("#menu_game_replay_mission_info_results").empty();
 }
 
-export function updateMissionInfo() {
+export function updateMissionInfo(currentCategory) {
+  let currentMission = menuGame.currentElements.currentEntry != undefined ? menuGame.currentElements.currentEntry : menuGame.currentElements.menuEntries[0];
+
   clearMissionInfo();
   updateMissionCounter();
-  menuGame.currentElements.currentEntry.fillMissionInfo();
+  currentMission.fillMissionInfo();
 }
