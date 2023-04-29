@@ -412,6 +412,8 @@ function sendFeedMessage(text, duration, color) {
   let theFeed = $("#menu_thefeed");
   let blankMessage = $(`<div class="menu_feed_message">${text}</div>`);
 
+  if (theFeed.children(".menu_feed_message").last().text() == text) return;
+
   blankMessage.css({ "background-color": color });
   theFeed.append(blankMessage);
   setTimeout(() => blankMessage.remove(), duration);

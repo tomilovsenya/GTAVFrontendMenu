@@ -47,7 +47,7 @@ export class MenuWindow {
     this.updateSelection(-1);
     if (this.onWindowCreation != undefined) this.onWindowCreation();
     this.deactivate();
-    console.log(this);
+    // console.log(this);
   }
 
   activate() {
@@ -84,7 +84,7 @@ export class MenuWindow {
     this.menuElements.forEach((elements, index) => {
       if (index > 0) elements.deactivate();
       elements.populateElements(this);
-      console.log(elements);
+      // console.log(elements);
     });
   }
 
