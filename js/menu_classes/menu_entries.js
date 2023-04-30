@@ -136,20 +136,34 @@ export class MenuWindow {
   }
 
   goDeeper() {
-    if (this.currentContext == -1) {
-      this.activate();
-      this.updateSelection(0);
-    } else if (this.currentContext == 0) this.enterCategory(this.currentCategoryIndex);
-    else if (IS_DEBUG) {
-      console.log("Can't go deeper in " + this.ID);
+    switch (this.currentContext) {
+      case -1:
+        this.activate();
+        this.updateSelection(0);
+        break;
+      case 0:
+        this.enterCategory(this.currentCategoryIndex);
+        break;
+      case 1:
+        this.currentElements.currentEntry.confirm();
+        break;
+      default:
+        if (IS_DEBUG) console.log("Can't go deeper in " + this.ID);
+        break;
     }
   }
 
   goBack() {
-    if (this.currentContext == 1) this.escapeCategory();
-    else if (this.currentContext == 0) this.deactivate();
-    else if (IS_DEBUG) {
-      console.log("Can't go back in " + this.ID);
+    switch (this.currentContext) {
+      case 1:
+        this.escapeCategory();
+        break;
+      case 0:
+        this.deactivate();
+        break;
+      default:
+        if (IS_DEBUG) console.log("Can't go back in " + this.ID);
+        break;
     }
   }
 
@@ -369,10 +383,9 @@ export class MenuElements {
       }
       return;
     }
-    if (clickedEntry == this.currentEntry && this.parentWindow.currentContext == 1) {
-      if (IS_DEBUG) {
-        console.log("Clicked already active entry: " + clickedEntry.ID);
-      }
+    if (clickedEntry.isActive) {
+      this.currentEntry.activate();
+      if (IS_DEBUG) console.log("Clicked already active entry: " + clickedEntry.ID);
       return;
     }
 
@@ -562,16 +575,19 @@ export class MenuEntry {
   rightLabel;
   parentElements;
   index = 0;
+  isActive = false;
   isEmpty = false;
   isGreyed = false;
   isClickable = true;
+  onConfirmation;
 
-  constructor(id, title, rightLabel, isGreyed) {
+  constructor(id, title, rightLabel, isGreyed, onConfirmation) {
     this.ID = id;
     this.idSel = "#" + this.ID;
     this.title = title;
     this.rightLabel = rightLabel != undefined ? rightLabel : undefined;
     this.isGreyed = isGreyed != undefined ? isGreyed : this.isGreyed;
+    this.onConfirmation = onConfirmation;
     if (this.isGreyed) this.isEmpty = true;
   }
 
@@ -596,10 +612,11 @@ export class MenuEntry {
   }
 
   activate() {
-    // if (this.parentElements.currentEntry == this) {
-    //   console.log("Can't activate already active entry: " + this.ID);
-    //   return;
-    // }
+    if (this.isActive) {
+      this.confirm();
+      if (IS_DEBUG) console.log("Confirming active entry: " + this.ID);
+      return;
+    }
 
     let clickLeft = `<div class="menu_entry_click_zone menu_entry_zone_left"></div>`;
     let clickRight = `<div class="menu_entry_click_zone menu_entry_zone_right"></div>`;
@@ -611,6 +628,8 @@ export class MenuEntry {
       $(this.idSel).append(clickRight);
     }
 
+    this.isActive = true;
+
     if (IS_DEBUG) {
       console.log("Activated MenuEntry: " + this.idSel);
     }
@@ -620,9 +639,15 @@ export class MenuEntry {
     $(this.idSel).removeClass("menu_entry_active");
     $(this.idSel).find(".menu_entry_click_zone").remove();
 
+    this.isActive = false;
+
     if (IS_DEBUG) {
       console.log("Deactivated MenuEntry: " + this.idSel);
     }
+  }
+
+  confirm() {
+    if (this.onConfirmation != undefined) this.onConfirmation();
   }
 
   clickZone(clickDir) {
