@@ -263,13 +263,12 @@ export class MenuWindow {
   }
 
   enterCategory(activatedCategory) {
-    let scrollableLength = $("#" + this.currentElements.ID)
-      .find(".menu_elements_scrollable")
-      .children(".menu_entry").length;
-    if (scrollableLength == 0) {
-      if (IS_DEBUG) {
-        console.log("Category not entered as there are no scrollable items in " + this.currentElements.ID);
-      }
+    let scrollableLength = $(this.currentElements.idSel).find(".menu_elements_scrollable").children(".menu_entry").length;
+    if (!this.currentElements.enterable) {
+      if (IS_DEBUG) console.log(`Category ${this.currentCategory.ID} not entered as its MenuElements are non-enterable: ${this.currentElements.ID}`);
+      return;
+    } else if (scrollableLength == 0) {
+      if (IS_DEBUG) console.log(`Category ${this.currentCategory.ID} not entered as its MenuElements contain no scrollable items: ${this.currentElements.ID}`);
       return;
     }
 
