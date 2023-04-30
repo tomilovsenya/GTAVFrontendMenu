@@ -16,6 +16,9 @@ export class MenuWindow {
   currentCategory;
   active = false;
   onWindowCreation;
+  onWindowShow;
+  onWindowActivation;
+  onWindowDeactivation;
   onSelectionUpdate;
 
   // constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation, onSelectionUpdate) {
@@ -38,6 +41,7 @@ export class MenuWindow {
     this.onWindowCreation = args.onWindowCreation;
     this.onWindowShow = args.onWindowShow;
     this.onWindowActivation = args.onWindowActivation;
+    this.onWindowDeactivation = args.onWindowDeactivation;
     this.onSelectionUpdate = args.onSelectionUpdate;
   }
 
@@ -68,6 +72,7 @@ export class MenuWindow {
     this.active = false;
     this.updateSelection(-1);
     this.currentContext = -1;
+    if (this.onWindowDeactivation != undefined) this.onWindowDeactivation();
     $(this.idSel).removeClass("menu_window_active");
     $(this.idSel).addClass("menu_window_inactive");
     this.toggleArrows(false);
@@ -285,7 +290,7 @@ export class MenuWindow {
 
     if (this.currentElements.arrowsRequired) this.toggleArrows(true);
     else this.toggleArrows(false);
-    
+
     if (this.onSelectionUpdate != undefined && this.currentElements != undefined) this.onSelectionUpdate(this.currentElements);
     // this.updateSelection(this.currentCategoryIndex);
   }
