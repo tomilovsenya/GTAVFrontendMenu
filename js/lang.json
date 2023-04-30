@@ -292,22 +292,27 @@
   },
 
   {
-    "gxt": "menu_stats_skills_element_info_1",
+    "gxt": "menu_stats_skills_michael_special_info",
     "american": "Special: How long Michael's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by scoring headshots, executing stealth takedowns, and maintaining high speeds in vehicles as Michael.",
     "russian": "Спецспособность: от этого параметра зависит, как долго Майкл может применять свою спецспособность. Шкала заполняется, когда он попадает противнику в голову, вырубает его или ездит на большой скорости. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
   },
   {
-    "gxt": "menu_stats_skills_1_element_info_1",
+    "gxt": "menu_stats_skills_michael_stamina_info",
+    "american": "Stamina: How long Michael can run, swim, or cycle at full speed before losing health due to over-exertion. Increase by practicing any of these disciplines as Michael.",
+    "russian": "Выносливость: позволяет Майклу дольше бежать, плыть или ехать на велосипеде с ускорением, не снижая уровень здоровья. Для повышения выносливости выполняйте любые из этих действий, выбрав Майкла."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_special_info",
     "american": "Special: How long Franklin's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by driving against the flow of traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.",
     "russian": "Спецспособность: от этого параметра зависит, как долго Франклин может применять свою спецспособность. Шкала заполняется, когда он едет по встречной полосе, в последний момент уходит от столкновений и развивает большую скорость на транспортных средствах. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
   },
   {
-    "gxt": "menu_stats_skills_2_element_info_1",
+    "gxt": "menu_stats_skills_trevor_special_info",
     "american": "Special: How long Trevor's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by taking damage, killing enemies, scoring headshots, and maintaining high speeds in vehicles as Trevor.",
     "russian": "Спецспособность: от этого параметра зависит, как долго Тревор может применять свою спецспособность. Шкала заполняется, когда он получает урон, развивает высокую скорость в транспортных средствах, убивает врагов и делает выстрелы в голову. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
   },
   {
-    "gxt": "menu_stats_skills_3_element_info_1",
+    "gxt": "menu_stats_skills_freemode_stamina_info",
     "american": "Stamina: How long Online Character can run, swim, or cycle at full speed before losing health due to over-exertion. Increase by practicing any of these disciplines as Online Character.",
     "russian": "Выносливость: позволяет сетевому персонажу дольше бежать, плыть или ехать на велосипеде с ускорением, не снижая уровень здоровья. Для повышения выносливости выполняйте любые из этих действий, выбрав сетевого персонажа."
   },
