@@ -285,6 +285,8 @@ export class MenuWindow {
 
     if (this.currentElements.arrowsRequired) this.toggleArrows(true);
     else this.toggleArrows(false);
+    
+    if (this.onSelectionUpdate != undefined && this.currentElements != undefined) this.onSelectionUpdate(this.currentElements);
     // this.updateSelection(this.currentCategoryIndex);
   }
 }
