@@ -1,8 +1,18 @@
 import { IS_DEBUG } from "../common_menu.js";
 import { menuSettingsPauseMusicPlay } from "../menu_modules/menu_content.js";
 
+var STEMS_PATHS = [
+  "/sfx/menu_music/menu_music_1.ogg",
+  "/sfx/menu_music/menu_music_2.ogg",
+  "/sfx/menu_music/menu_music_3.ogg",
+  "/sfx/menu_music/menu_music_4.ogg",
+  "/sfx/menu_music/menu_music_5.ogg",
+  "/sfx/menu_music/menu_music_6.ogg",
+  "/sfx/menu_music/menu_music_7.ogg",
+];
+
 var MENU_MUSIC_STEM_1 = new Howl({
-  src: ["/sfx/menu_music/menu_music_1.ogg"],
+  src: STEMS_PATHS[0],
   loop: true,
   volume: 0,
   preload: true,
@@ -16,7 +26,7 @@ var MENU_MUSIC_STEM_1 = new Howl({
   },
 });
 var MENU_MUSIC_STEM_2 = new Howl({
-  src: ["/sfx/menu_music/menu_music_2.ogg"],
+  src: STEMS_PATHS[1],
   loop: true,
   volume: 0,
   preload: true,
@@ -26,7 +36,7 @@ var MENU_MUSIC_STEM_2 = new Howl({
   },
 });
 var MENU_MUSIC_STEM_3 = new Howl({
-  src: ["/sfx/menu_music/menu_music_3.ogg"],
+  src: STEMS_PATHS[2],
   loop: true,
   volume: 0,
   preload: true,
@@ -36,7 +46,7 @@ var MENU_MUSIC_STEM_3 = new Howl({
   },
 });
 var MENU_MUSIC_STEM_4 = new Howl({
-  src: ["/sfx/menu_music/menu_music_4.ogg"],
+  src: STEMS_PATHS[3],
   loop: true,
   volume: 0,
   preload: true,
@@ -46,7 +56,7 @@ var MENU_MUSIC_STEM_4 = new Howl({
   },
 });
 var MENU_MUSIC_STEM_5 = new Howl({
-  src: ["/sfx/menu_music/menu_music_5.ogg"],
+  src: STEMS_PATHS[4],
   loop: true,
   volume: 0,
   preload: true,
@@ -56,7 +66,7 @@ var MENU_MUSIC_STEM_5 = new Howl({
   },
 });
 var MENU_MUSIC_STEM_6 = new Howl({
-  src: ["/sfx/menu_music/menu_music_6.ogg"],
+  src: STEMS_PATHS[5],
   loop: true,
   volume: 0,
   preload: true,
@@ -66,7 +76,7 @@ var MENU_MUSIC_STEM_6 = new Howl({
   },
 });
 var MENU_MUSIC_STEM_7 = new Howl({
-  src: ["/sfx/menu_music/menu_music_7.ogg"],
+  src: STEMS_PATHS[6],
   loop: true,
   volume: 0,
   preload: true,
