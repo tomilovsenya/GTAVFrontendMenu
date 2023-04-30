@@ -97,7 +97,15 @@ export const menuSettingsPause = new MenuElements("menu_settings_pause", menuSet
 
 export const menuSettingsArrows = new MenuArrows("menu_settings_arrows");
 export const menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
-export const menuSettings = new MenuWindow("menu_settings", menuSettingsCategories, menuSettingsElements, menuSettingsArrows);
+export const menuSettings = new MenuWindow({
+  id: "menu_settings",
+  menuCategories: menuSettingsCategories,
+  menuElements: menuSettingsElements,
+  menuArrows: menuSettingsArrows,
+  onWindowCreation: undefined,
+  onSelectionUpdate: undefined,
+});
+// ("menu_settings", menuSettingsCategories, menuSettingsElements, menuSettingsArrows);
 
 //#endregion
 
@@ -299,14 +307,30 @@ export const menuStatsCategories = {
 };
 export const menuStatsArrows = new MenuArrows("menu_stats_arrows");
 export const menuStatsElements = [menuStatsSkillsMichael, menuStatsGeneralMichael, menuStatsChecklist];
-export const menuStats = new MenuWindow("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
+export const menuStats = new MenuWindow({
+  id: "menu_stats",
+  menuCategories: menuStatsCategories,
+  menuElements: menuStatsElements,
+  menuArrows: menuStatsArrows,
+  onWindowCreation: undefined,
+  onSelectionUpdate: undefined,
+});
+// ("menu_stats", menuStatsCategories, menuStatsElements, menuStatsArrows);
 
 //#endregion
 
 //#region menuBrief
 
 export const menuBriefArrows = new MenuArrows("menu_brief_arrows");
-export const menuBrief = new MenuWindow("menu_brief", menuStatsCategories, menuStatsElements, menuBriefArrows);
+export const menuBrief = new MenuWindow({
+  id: "menu_brief",
+  menuCategories: menuStatsCategories,
+  menuElements: menuStatsElements,
+  menuArrows: menuBriefArrows,
+  onWindowCreation: undefined,
+  onSelectionUpdate: undefined,
+});
+// ("menu_brief", menuStatsCategories, menuStatsElements, menuBriefArrows);
 
 //#endregion
 
@@ -409,7 +433,14 @@ export const menuGameCategories = {
 
 export const menuGameArrows = new MenuArrows("menu_game_arrows", "menu_arrows_right_side", "menu_game_arrows_counter");
 export const menuGameElements = [menuGameReplayMission, menuGameReplayStrangers, menuGameLoadGame, menuGameNewGame, menuGameCredits, menuGameExit];
-export const menuGame = new MenuWindow("menu_game", menuGameCategories, menuGameElements, menuGameArrows, prepareMissionInfo, updateMissionInfo);
+export const menuGame = new MenuWindow({
+  id: "menu_game",
+  menuCategories: menuGameCategories,
+  menuElements: menuGameElements,
+  menuArrows: menuGameArrows,
+  onWindowCreation: prepareMissionInfo,
+  onSelectionUpdate: updateMissionInfo,
+});
 
 //#endregion
 

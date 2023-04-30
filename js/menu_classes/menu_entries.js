@@ -18,13 +18,15 @@ export class MenuWindow {
   onWindowCreation;
   onSelectionUpdate;
 
-  constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation, onSelectionUpdate) {
-    this.ID = id;
+  // constructor(id, menuCategories, menuElements, menuArrows, onWindowCreation, onSelectionUpdate) {
+  constructor(args) {
+    this.ID = args.id;
     this.idSel = "#" + this.ID;
-    this.menuCategories = menuCategories;
-    this.menuElements = menuElements;
-    this.onWindowCreation = onWindowCreation;
-    this.onSelectionUpdate = onSelectionUpdate;
+    this.menuCategories = args.menuCategories;
+    this.menuElements = args.menuElements;
+    this.menuArrows = args.menuArrows;
+    this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
+    this.currentElements = this.menuElements[this.currentElementsIndex];
 
     this.menuElements.forEach((element) => {
       if (!element instanceof MenuElementsWindow)
@@ -33,9 +35,10 @@ export class MenuWindow {
         });
     });
 
-    this.menuArrows = menuArrows;
-    this.currentElements = menuElements[this.currentElementsIndex];
-    this.currentCategory = this.menuCategories.list[this.currentCategoryIndex];
+    this.onWindowCreation = args.onWindowCreation;
+    this.onWindowShow = args.onWindowShow;
+    this.onWindowActivation = args.onWindowActivation;
+    this.onSelectionUpdate = args.onSelectionUpdate;
   }
 
   create() {
@@ -56,6 +59,7 @@ export class MenuWindow {
     this.active = true;
     this.updateSelection(0);
     this.currentContext = 0;
+    if (this.onWindowActivation != undefined) this.onWindowActivation();
     $(this.idSel).removeClass("menu_window_inactive");
     $(this.idSel).addClass("menu_window_active");
   }
@@ -70,6 +74,7 @@ export class MenuWindow {
   }
 
   show() {
+    if (this.onWindowShow != undefined) this.onWindowShow();
     $(this.idSel).show();
     $(this.idSel).css({ visibility: "visible" });
     // $(this.#idSel).css({ display: "flex" });
