@@ -751,6 +751,12 @@
   },
 
   {
+    "gxt": "menu_settings_category_pause_music_name",
+    "american": "Pause Menu Music",
+    "russian": "Музыка в меню паузы"
+  },
+
+  {
     "gxt": "menu_game_category_replay_mission_name",
     "american": "Replay Mission",
     "russian": "Начать задание заново"

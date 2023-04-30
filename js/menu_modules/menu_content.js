@@ -3,6 +3,7 @@ import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
 import { MenuCategory } from "../menu_classes/menu_entries.js";
+import { setMenuMusicVolume, toggleMenuMusic, updateMusicSync } from "../menu_classes/menu_music.js";
 import { MenuEntryMission, MenuEntrySave, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
 import { clearUpdateSkillsInfo, populateStatsSkillsInfo, prepareStatsWindow } from "./menu_stats.js";
 
@@ -15,10 +16,11 @@ import { clearUpdateSkillsInfo, populateStatsSkillsInfo, prepareStatsWindow } fr
 export const menuSettingsCategoryGamepad = new MenuCategory("menu_settings_category_gamepad", "menu_settings_category_gamepad_name");
 export const menuSettingsCategoryGraphics = new MenuCategory("menu_settings_category_graphics", "menu_settings_category_graphics_name");
 export const menuSettingsCategoryPause = new MenuCategory("menu_settings_category_pause", "menu_settings_category_pause_name");
+export const menuSettingsCategoryPauseMusic = new MenuCategory("menu_settings_category_pause_music", "menu_settings_category_pause_music_name");
 
 export const menuSettingsCategories = {
   ID: "menu_settings_categories",
-  list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause],
+  list: [menuSettingsCategoryGamepad, menuSettingsCategoryGraphics, menuSettingsCategoryPause, menuSettingsCategoryPauseMusic],
 };
 
 export const menuSettingsGamepadControlsFor = new MenuEntryList("menu_settings_gamepad_controls_for", "menu_settings_gamepad_controls_for_name", [
@@ -58,6 +60,10 @@ export const menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clo
 export const menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", ["English", "Russian", "Italian", "Spanish"]);
 export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", ["Always", "Sometimes", "Off"]);
 
+export const menuSettingsPauseMusicVolume = new MenuEntryProgress("menu_settings_pause_music_volume", "Menu Music Volume", 100, 10, setMenuMusicVolume);
+export const menuSettingsPauseMusicPlay = new MenuEntry("menu_settings_pause_music_play", "Play Menu Music", "", false, toggleMenuMusic);
+export const menuSettingsPauseMusicSync = new MenuEntry("menu_settings_pause_music_sync", "Sync Music", "", false, updateMusicSync);
+
 export const menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
   menuSettingsGamepadTargeting,
@@ -91,13 +97,15 @@ export const menuSettingsGraphicsEntries = [
   menuSettingsGraphicsEmpty3,
 ];
 export const menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
+export const menuSettingsPauseMusicEntries = [menuSettingsPauseMusicVolume, menuSettingsPauseMusicPlay, menuSettingsPauseMusicSync];
 
 export const menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries, true, false, true, undefined, 8);
 export const menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
 export const menuSettingsPause = new MenuElements("menu_settings_pause", menuSettingsPauseEntries);
+export const menuSettingsPauseMusic = new MenuElements("menu_settings_pause_music", menuSettingsPauseMusicEntries);
 
 export const menuSettingsArrows = new MenuArrows("menu_settings_arrows");
-export const menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause];
+export const menuSettingsElements = [menuSettingsGamepad, menuSettingsGraphics, menuSettingsPause, menuSettingsPauseMusic];
 export const menuSettings = new MenuWindow({
   id: "menu_settings",
   menuCategories: menuSettingsCategories,

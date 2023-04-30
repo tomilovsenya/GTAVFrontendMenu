@@ -22,7 +22,7 @@
 }
 
 :root {
-  --menu-background: url("images/bg/background.jpg");
+  --menu-background: url("images/bg/background5.jpg");
   --menu-color: lightskyblue;
   --menu-color-alpha: #87cefa40;
   --black-bg-color: rgba(0, 0, 0, 0.725);
@@ -899,6 +899,10 @@ div.menu_divider {
   height: var(--item-margin);
 }
 
+div.menu_elements_header .menu_entry:has(+ .menu_divider) {
+  margin-bottom: calc(var(--item-margin) / -1) !important;
+}
+
 button.instructional_button {
   min-width: 1.25vw;
   height: 1.25vw;
@@ -1213,6 +1217,12 @@ div.menu_elements {
   overflow: hidden;
   /* align-self: stretch; */
   scroll-snap-type: mandatory;
+}
+
+div.menu_elements_header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-margin);
 }
 
 div.menu_elements_window {

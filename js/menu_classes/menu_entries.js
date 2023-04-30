@@ -611,6 +611,16 @@ export class MenuEntry {
     allMenuEntries.push(this); // Push created MenuEntry to [] storing all MenuEntries
   }
 
+  setTitle(title) {
+    this.title = title;
+    $(`${this.idSel}_name`).text(title);
+  }
+
+  setRightLabel(rightLabel) {
+    this.rightLabel = rightLabel;
+    $(`${this.idSel}_label`).text(rightLabel);
+  }
+
   activate() {
     if (this.isActive) {
       this.confirm();
@@ -779,11 +789,13 @@ export class MenuEntryProgress extends MenuEntry {
   progressPerc = 0;
   progressSteps = 10;
   progressID;
+  onPercUpdate;
 
-  constructor(id, title, progressPerc, progressSteps) {
+  constructor(id, title, progressPerc, progressSteps, onPercUpdate) {
     super(id, title);
     this.progressID = id + "_progress";
     this.progressSteps = progressSteps;
+    this.onPercUpdate = onPercUpdate;
 
     if (progressPerc >= 0 && progressPerc <= 100) {
       let stepValue = 100 / this.progressSteps;
@@ -812,7 +824,8 @@ export class MenuEntryProgress extends MenuEntry {
     rightPerc.css({ width: `${progressValue}%` });
   }
 
-  updateProgress(newValue) {
+  setPerc(newValue) {
+    if (this.onPercUpdate != undefined) this.onPercUpdate(newValue);
     let rightPerc = $(this.idSel).find(".element_progress_perc").first();
 
     this.progressPerc = newValue;
@@ -832,7 +845,7 @@ export class MenuEntryProgress extends MenuEntry {
     }
 
     newValue = newValue > 100 ? 100 : newValue < 0 ? 0 : newValue;
-    this.updateProgress(newValue);
+    this.setPerc(newValue);
   }
 }
 
