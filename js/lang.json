@@ -69,7 +69,7 @@
     "american": "CASH",
     "russian": "НАЛИЧНЫЕ"
   },
-  
+
   {
     "gxt": "menu_tab_map_name",
     "american": "MAP",
@@ -302,15 +302,118 @@
     "russian": "Выносливость: позволяет Майклу дольше бежать, плыть или ехать на велосипеде с ускорением, не снижая уровень здоровья. Для повышения выносливости выполняйте любые из этих действий, выбрав Майкла."
   },
   {
+    "gxt": "menu_stats_skills_michael_shooting_info",
+    "american": "Shooting: Michael's skill in handling various firearms. Dampens recoil, reduces reload time, and increases ammo capacity. Increase by landing hits on enemies, scoring headshots, and successfully completing Shooting Range challenges as Michael.",
+    "russian": "Стрельба: умение Майкла обращаться с оружием. Уменьшает отдачу, ускоряет перезарядку и позволяет носить больше боеприпасов. Чтобы повысить данный параметр, стреляйте по врагам точнее и цельтесь в голову. Также вы можете пройти стрелковые испытания в тире, выбрав Майкла."
+  },
+  {
+    "gxt": "menu_stats_skills_michael_strength_info",
+    "american": "Strength: Michael's physical power and resilience. Boosts melee damage, speeds up ladder climbing, improves sporting ability, and reduces damage taken from various sources. Increase by scoring hits in melee combat and practicing sports as Michael.",
+    "russian": "Сила: повышает урон, который Майкл наносит в ближнем бою, скорость движения по лестницам и спортивные навыки. Снижает урон, который получает Франклин. Чтобы повысить силу, занимайтесь спортом и участвуйте в драках, выбрав Майкла."
+  },
+  {
+    "gxt": "menu_stats_skills_michael_stealth_info",
+    "american": "Stealth: Michael's skill at remaining undetected. Move more quickly and quietly when in stealth mode. Increase by remaining undetected in stealth mode and performing silent takedowns as Michael.",
+    "russian": "Скрытность: позволяет Майклу тише двигаться в режиме скрытности и в обычном режиме, а также ускоряет передвижения в режиме скрытности. Чтобы повысить этот параметр, используйте режим скрытности и вырубайте врагов, выбрав Майкла."
+  },
+  {
+    "gxt": "menu_stats_skills_michael_flying_info",
+    "american": "Flying: Michael's skill in the cockpit of various aircraft. Take off, land, and manage turbulence more easily. Increase by flying under control for sustained periods and succeeding at Flight School challenges as Michael.",
+    "russian": "Полёт: умение Майкла управлять авиатранспортом. Снижает турбулентность, облегчает взлёт и посадку. Чтобы повысить данный параметр, просто подолгу летайте или проходите испытания в лётной школе, выбрав Майкла."
+  },
+  {
+    "gxt": "menu_stats_skills_michael_driving_info",
+    "american": "Driving: Michael's skill behind the wheel or handlebars. Pop wheelies more easily and retain more control while airborne. Increase by holding wheelies and landing squarely out of big jumps as Michael.",
+    "russian": "Вождение: умение Майкла управлять наземным транспортом. Этот параметр повысит управляемость во время прыжка и облегчит езду на задних колёсах. Чтобы повысить данный параметр, подолгу ездите на задних колёсах и выполняйте длинные прыжки с приземлением на все четыре колеса, выбрав Майкла."
+  },
+  {
+    "gxt": "menu_stats_skills_michael_lung_capacity_info",
+    "american": "Lung Capacity: How long Michael can hold his breath underwater before losing health. Remain submerged for longer. Increase by diving and swimming underwater as Michael.",
+    "russian": "Объём лёгких: увеличивает время, которое Майкл может провести под водой, не теряя здоровья. Чтобы повысить параметр, плавайте под водой, выбрав Майкла."
+  },
+
+  {
     "gxt": "menu_stats_skills_franklin_special_info",
     "american": "Special: How long Franklin's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by driving against the flow of traffic, narrowly avoiding collisions, and maintaining high speeds in vehicles as Franklin.",
     "russian": "Спецспособность: от этого параметра зависит, как долго Франклин может применять свою спецспособность. Шкала заполняется, когда он едет по встречной полосе, в последний момент уходит от столкновений и развивает большую скорость на транспортных средствах. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
   },
   {
+    "gxt": "menu_stats_skills_franklin_stamina_info",
+    "american": "Stamina: How long Franklin can run, swim, or cycle at full speed before losing health due to over-exertion. Increase by practicing any of these disciplines as Franklin.",
+    "russian": "Выносливость: позволяет Франклину дольше бежать, плыть или ехать на велосипеде с ускорением, не снижая уровень здоровья. Для повышения выносливости выполняйте любые из этих действий, выбрав Франклина."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_shooting_info",
+    "american": "Shooting: Franklin's skill in handling various firearms. Dampens recoil, reduces reload time, and increases ammo capacity. Increase by landing hits on enemies, scoring headshots, and successfully completing Shooting Range challenges as Franklin.",
+    "russian": "Стрельба: умение Франклина обращаться с оружием. Уменьшает отдачу, ускоряет перезарядку и позволяет носить больше боеприпасов. Чтобы повысить данный параметр, стреляйте по врагам точнее и цельтесь в голову. Также вы можете пройти стрелковые испытания в тире, выбрав Франклина."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_strength_info",
+    "american": "Strength: Franklin's physical power and resilience. Boosts melee damage, speeds up ladder climbing, improves sporting ability, and reduces damage taken from various sources. Increase by scoring hits in melee combat and practicing sports as Franklin.",
+    "russian": "Сила: повышает урон, который Франклин наносит в ближнем бою, скорость движения по лестницам и спортивные навыки. Снижает урон, который получает Франклин. Чтобы повысить силу, занимайтесь спортом и участвуйте в драках, выбрав Франклина."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_stealth_info",
+    "american": "Stealth: Franklin's skill at remaining undetected. Move more quickly and quietly when in stealth mode. Increase by remaining undetected in stealth mode and performing silent takedowns as Franklin.",
+    "russian": "Скрытность: позволяет Франклину тише двигаться в режиме скрытности и в обычном режиме, а также ускоряет передвижения в режиме скрытности. Чтобы повысить этот параметр, используйте режим скрытности и вырубайте врагов, выбрав Франклина."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_flying_info",
+    "american": "Flying: Franklin's skill in the cockpit of various aircraft. Take off, land, and manage turbulence more easily. Increase by flying under control for sustained periods and succeeding at Flight School challenges as Franklin.",
+    "russian": "Полёт: умение Франклина управлять авиатранспортом. Снижает турбулентность, облегчает взлёт и посадку. Чтобы повысить данный параметр, просто подолгу летайте или проходите испытания в лётной школе, выбрав Франклина."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_driving_info",
+    "american": "Driving: Franklin's skill behind the wheel or handlebars. Pop wheelies more easily and retain more control while airborne. Increase by holding wheelies and landing squarely out of big jumps as Franklin.",
+    "russian": "Вождение: умение Франклина управлять наземным транспортом. Этот параметр повысит управляемость во время прыжка и облегчит езду на задних колёсах. Чтобы повысить данный параметр, подолгу ездите на задних колёсах и выполняйте длинные прыжки с приземлением на все четыре колеса, выбрав Франклина."
+  },
+  {
+    "gxt": "menu_stats_skills_franklin_lung_capacity_info",
+    "american": "Lung Capacity: How long Franklin can hold his breath underwater before losing health. Remain submerged for longer. Increase by diving and swimming underwater as Franklin.",
+    "russian": "Объём лёгких: увеличивает время, которое Франклин может провести под водой, не теряя здоровья. Чтобы повысить параметр, плавайте под водой, выбрав Франклина."
+  },
+
+  {
     "gxt": "menu_stats_skills_trevor_special_info",
     "american": "Special: How long Trevor's Special Ability can remain active when fully charged. Store more charge for a greater maximum duration. Increase by taking damage, killing enemies, scoring headshots, and maintaining high speeds in vehicles as Trevor.",
     "russian": "Спецспособность: от этого параметра зависит, как долго Тревор может применять свою спецспособность. Шкала заполняется, когда он получает урон, развивает высокую скорость в транспортных средствах, убивает врагов и делает выстрелы в голову. Чем больше заполнена шкала, тем дольше будет действовать спецспособность."
   },
+  {
+    "gxt": "menu_stats_skills_trevor_stamina_info",
+    "american": "Stamina: How long Trevor can run, swim, or cycle at full speed before losing health due to over-exertion. Increase by practicing any of these disciplines as Trevor.",
+    "russian": "Выносливость: позволяет Тревору дольше бежать, плыть или ехать на велосипеде с ускорением, не снижая уровень здоровья. Для повышения выносливости выполняйте любые из этих действий, выбрав Тревора."
+  },
+  {
+    "gxt": "menu_stats_skills_trevor_shooting_info",
+    "american": "Shooting: Trevor's skill in handling various firearms. Dampens recoil, reduces reload time, and increases ammo capacity. Increase by landing hits on enemies, scoring headshots, and successfully completing Shooting Range challenges as Trevor.",
+    "russian": "Стрельба: умение Тревора обращаться с оружием. Уменьшает отдачу, ускоряет перезарядку и позволяет носить больше боеприпасов. Чтобы повысить данный параметр, стреляйте по врагам точнее и цельтесь в голову. Также вы можете пройти стрелковые испытания в тире, выбрав Тревора."
+  },
+  {
+    "gxt": "menu_stats_skills_trevor_strength_info",
+    "american": "Strength: Trevor's physical power and resilience. Boosts melee damage, speeds up ladder climbing, improves sporting ability, and reduces damage taken from various sources. Increase by scoring hits in melee combat and practicing sports as Trevor.",
+    "russian": "Сила: повышает урон, который Тревор наносит в ближнем бою, скорость движения по лестницам и спортивные навыки. Снижает урон, который получает Франклин. Чтобы повысить силу, занимайтесь спортом и участвуйте в драках, выбрав Тревора."
+  },
+  {
+    "gxt": "menu_stats_skills_trevor_stealth_info",
+    "american": "Stealth: Trevor's skill at remaining undetected. Move more quickly and quietly when in stealth mode. Increase by remaining undetected in stealth mode and performing silent takedowns as Trevor.",
+    "russian": "Скрытность: позволяет Тревору тише двигаться в режиме скрытности и в обычном режиме, а также ускоряет передвижения в режиме скрытности. Чтобы повысить этот параметр, используйте режим скрытности и вырубайте врагов, выбрав Тревора."
+  },
+  {
+    "gxt": "menu_stats_skills_trevor_flying_info",
+    "american": "Flying: Trevor's skill in the cockpit of various aircraft. Take off, land, and manage turbulence more easily. Increase by flying under control for sustained periods and succeeding at Flight School challenges as Trevor.",
+    "russian": "Полёт: умение Тревора управлять авиатранспортом. Снижает турбулентность, облегчает взлёт и посадку. Чтобы повысить данный параметр, просто подолгу летайте или проходите испытания в лётной школе, выбрав Тревора."
+  },
+  {
+    "gxt": "menu_stats_skills_trevor_driving_info",
+    "american": "Driving: Trevor's skill behind the wheel or handlebars. Pop wheelies more easily and retain more control while airborne. Increase by holding wheelies and landing squarely out of big jumps as Trevor.",
+    "russian": "Вождение: умение Тревора управлять наземным транспортом. Этот параметр повысит управляемость во время прыжка и облегчит езду на задних колёсах. Чтобы повысить данный параметр, подолгу ездите на задних колёсах и выполняйте длинные прыжки с приземлением на все четыре колеса, выбрав Тревора."
+  },
+  {
+    "gxt": "menu_stats_skills_trevor_lung_capacity_info",
+    "american": "Lung Capacity: How long Trevor can hold his breath underwater before losing health. Remain submerged for longer. Increase by diving and swimming underwater as Trevor.",
+    "russian": "Объём лёгких: увеличивает время, которое Тревор может провести под водой, не теряя здоровья. Чтобы повысить параметр, плавайте под водой, выбрав Тревора."
+  },
+
   {
     "gxt": "menu_stats_skills_freemode_stamina_info",
     "american": "Stamina: How long Online Character can run, swim, or cycle at full speed before losing health due to over-exertion. Increase by practicing any of these disciplines as Online Character.",
