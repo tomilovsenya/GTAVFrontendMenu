@@ -22,6 +22,7 @@ import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 import { charMichaelStats, fillStatEntry, globalStats } from "./menu_classes/menu_character.js";
 import * as menuContent from "./menu_modules/menu_content.js";
+import { fadeInMenuMusic, fadeOutMenuMusic, playMenuMusic, stopMenuMusic } from "./menu_classes/menu_music.js";
 
 //
 // CONSTANTS
@@ -163,12 +164,10 @@ window.addEventListener(
     handleInstructionalButtons(THIS_PAGE, currentWindow, e.code, false);
 
     if (["KeyF"].indexOf(e.code) > -1) {
-      localizeSingleMenu(menuContent.menuStats, "american");
-      localizeSingleMenu(menuContent.menuSettings, "american");
+      fadeInMenuMusic();
     }
     if (["KeyG"].indexOf(e.code) > -1) {
-      localizeSingleMenu(menuContent.menuStats, "russian");
-      localizeSingleMenu(menuContent.menuSettings, "russian");
+      fadeOutMenuMusic();
     }
     if (["KeyH"].indexOf(e.code) > -1) {
       showWarningMessage(
@@ -184,7 +183,10 @@ window.addEventListener(
       hideInstrLoadingSpinner();
     }
     if (["KeyM"].indexOf(e.code) > -1) {
-      sendFeedMessage("Test message", 5000, commonMenu.getHudColor("hud-color-red-alpha"));
+      playMenuMusic();
+    }
+    if (["KeyL"].indexOf(e.code) > -1) {
+      stopMenuMusic();
     }
     if (["PageUp", "PageDown"].indexOf(e.code) > -1) {
     }
