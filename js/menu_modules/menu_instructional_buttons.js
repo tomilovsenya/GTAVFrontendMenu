@@ -50,7 +50,10 @@ let MAP_FULLSCREEN_ACTIVE = false;
 
 export function clickInstr(inputID) {
   let inputObject = ALL_INPUTS.find((input) => input.id === inputID);
-  console.log("Clicked instructional button : " + inputObject.id);
+
+  if (IS_DEBUG) {
+    console.log("Clicked instructional button : " + inputObject.id);
+  }
   handleInstructionalButtons(THIS_PAGE, currentWindow, inputObject.keys[0], true);
 }
 
@@ -141,7 +144,9 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
       break;
   }
 
-  if (isClicked) console.log("Clicked instructional button is emulated: " + buttonPressed);
+  if (isClicked && IS_DEBUG) {
+    console.log("Clicked instructional button is emulated: " + buttonPressed);
+  }
   if (MENU_HIDDEN) return;
 
   switch (currentContext) {

@@ -2,6 +2,8 @@
 // MENU LOCALIZATION
 //
 
+import { IS_DEBUG } from "../common_menu.js";
+
 let menuLanguages = ["american", "russian"];
 export let menuLanguage;
 let menuLangFile;
@@ -13,7 +15,9 @@ export async function localizeMenu() {
 
 function getPreferredLanguage() {
   let preferredLanguage = navigator.language || navigator.userLanguage;
-  console.log("Preferred browser language detected: " + preferredLanguage);
+  if (IS_DEBUG) {
+    console.log("Preferred browser language detected: " + preferredLanguage);
+  }
   if (preferredLanguage == "ru" || preferredLanguage == "ru-ru") menuLanguage = menuLanguages[1];
   else menuLanguage = menuLanguages[0];
 }

@@ -27,6 +27,7 @@ import * as menuContent from "./menu_modules/menu_content.js";
 // CONSTANTS
 //
 
+const IS_DEBUG = commonMenu.IS_DEBUG;
 const MENU_PAGE = document.documentElement;
 export const THIS_PAGE = "MAIN_MENU";
 const STORE_MENU = "/store_menu.html";
@@ -211,8 +212,10 @@ window.addEventListener(
   "gc.controller.found",
   function (event) {
     var controller = event.detail.controller;
-    console.log("Controller found at index " + controller.index + ".");
-    console.log("'" + controller.name + "' is ready!");
+    if (commonMenu.IS_DEBUG) {
+      console.log("Controller found at index " + controller.index + ".");
+      console.log("'" + controller.name + "' is ready!");
+    }
   },
   false
 );
@@ -396,7 +399,9 @@ function setActiveWindow(activatedWindow) {
 
   currentWindow = activatedWindow;
   activatedWindow.show();
-  console.log("Activated window: " + activatedWindow.ID);
+  if (IS_DEBUG) {
+    console.log("Activated window: " + activatedWindow.ID);
+  }
 }
 
 export function switchActiveWindow(activatedWindow) {

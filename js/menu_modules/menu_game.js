@@ -2,6 +2,7 @@
 // GAME TAB CLASSES AND FUNCTIONS
 //
 
+import { IS_DEBUG } from "../common_menu.js";
 import { MenuEntry, MenuEntryList } from "../menu_classes/menu_entries.js";
 import { menuGame } from "./menu_content.js";
 import { getLocalizedString } from "./menu_localization.js";
@@ -26,7 +27,9 @@ export class MenuEntryMission extends MenuEntryList {
 
   calculateMedal() {
     if (this.objectives == undefined) {
-      console.warn(`No objectives specified for MenuEntryMission: ${this.ID}`);
+      if (IS_DEBUG) {
+        console.warn(`No objectives specified for MenuEntryMission: ${this.ID}`);
+      }
       this.medal = 2;
       return;
     }

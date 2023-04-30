@@ -1,4 +1,4 @@
-import { MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
+import { IS_DEBUG, MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
 import { allMenuElements, allMenuEntries, allMenuTabs } from "../menu_modules/menu_content.js";
 import { getLocalizedString } from "../menu_modules/menu_localization.js";
 
@@ -54,7 +54,9 @@ export class MenuWindow {
     this.updateSelection(-1);
     if (this.onWindowCreation != undefined) this.onWindowCreation();
     this.deactivate();
-    // console.log(this);
+    if (IS_DEBUG) {
+      console.log("MenuWindow created: " + this.ID);
+    }
   }
 
   activate() {
@@ -94,7 +96,10 @@ export class MenuWindow {
     this.menuElements.forEach((elements, index) => {
       if (index > 0) elements.deactivate();
       elements.populateElements(this);
-      // console.log(elements);
+
+      if (IS_DEBUG) {
+        console.log(`${this.ID} - elements populated: ${elements.ID}`);
+      }
     });
   }
 
@@ -135,13 +140,17 @@ export class MenuWindow {
       this.activate();
       this.updateSelection(0);
     } else if (this.currentContext == 0) this.enterCategory(this.currentCategoryIndex);
-    else console.log("Can't go deeper in " + this.ID);
+    else if (IS_DEBUG) {
+      console.log("Can't go deeper in " + this.ID);
+    }
   }
 
   goBack() {
     if (this.currentContext == 1) this.escapeCategory();
     else if (this.currentContext == 0) this.deactivate();
-    else console.log("Can't go back in " + this.ID);
+    else if (IS_DEBUG) {
+      console.log("Can't go back in " + this.ID);
+    }
   }
 
   clickCategory(clickedCategory) {
@@ -159,7 +168,9 @@ export class MenuWindow {
     // $("#" + clickedCategory.ID).focusout();
     document.activeElement.blur();
 
-    console.log("Clicked MenuCategory with context: " + this.currentContext);
+    if (IS_DEBUG) {
+      console.log("Clicked MenuCategory with context: " + this.currentContext);
+    }
   }
 
   clickArrow(clickedArrowScrollDir) {
@@ -256,7 +267,9 @@ export class MenuWindow {
       .find(".menu_elements_scrollable")
       .children(".menu_entry").length;
     if (scrollableLength == 0) {
-      console.log("Category not entered as there are no scrollable items in " + this.currentElements.ID);
+      if (IS_DEBUG) {
+        console.log("Category not entered as there are no scrollable items in " + this.currentElements.ID);
+      }
       return;
     }
 
@@ -352,11 +365,15 @@ export class MenuElements {
     // if (this.currentSelection == -1) return;
     // if (this.currentSelection == clickedEntry.index) return;
     if (!clickedEntry.isClickable) {
-      console.log("Entry not clickable: " + this.ID);
+      if (IS_DEBUG) {
+        console.log("Entry not clickable: " + this.ID);
+      }
       return;
     }
     if (clickedEntry == this.currentEntry && this.parentWindow.currentContext == 1) {
-      console.log("Clicked already active entry: " + clickedEntry.ID);
+      if (IS_DEBUG) {
+        console.log("Clicked already active entry: " + clickedEntry.ID);
+      }
       return;
     }
 
@@ -368,7 +385,9 @@ export class MenuElements {
     }
 
     this.updateSelection(clickedEntry.index);
-    console.log("Clicked MenuEntry: " + clickedEntry.ID);
+    if (IS_DEBUG) {
+      console.log("Clicked MenuEntry: " + clickedEntry.ID);
+    }
   }
 
   updateSelection(newSelection) {
@@ -390,7 +409,9 @@ export class MenuElements {
     let currentSelection = this.menuEntries[this.currentSelection];
     if (currentSelection instanceof MenuEntryList) currentSelection.scrollList(scrollDir);
     else if (currentSelection instanceof MenuEntryProgress) currentSelection.scrollProgress(scrollDir);
-    else console.log("scrollSelection isn't supported for " + currentSelection.ID);
+    else if (IS_DEBUG) {
+      console.log("scrollSelection isn't supported for " + currentSelection.ID);
+    }
   }
 
   scrollElements(scrollDir) {
@@ -591,19 +612,25 @@ export class MenuEntry {
       $(this.idSel).append(clickRight);
     }
 
-    // console.log("Activated MenuEntry: " + this.idSel);
+    if (IS_DEBUG) {
+      console.log("Activated MenuEntry: " + this.idSel);
+    }
   }
 
   deactivate() {
     $(this.idSel).removeClass("menu_entry_active");
     $(this.idSel).find(".menu_entry_click_zone").remove();
 
-    // console.log("Deactivated MenuEntry: " + this.idSel);
+    if (IS_DEBUG) {
+      console.log("Deactivated MenuEntry: " + this.idSel);
+    }
   }
 
   clickZone(clickDir) {
     this.parentElements.scrollSelection(clickDir);
-    // console.log("Clicked zone");
+    if (IS_DEBUG) {
+      console.log("Clicked MenuEntry zone: " + clickDir);
+    }
   }
 }
 
@@ -859,7 +886,11 @@ export class MenuEntryStat extends MenuEntry {
 export class MenuEntryHeader extends MenuEntry {
   constructor(id, title, headerClass) {
     super(id, title);
-    console.log(this.idSel);
+
+    if (IS_DEBUG) {
+      console.log(this.idSel);
+    }
+
     $(this.idSel).addClass(headerClass);
   }
 }
@@ -898,7 +929,9 @@ export class MenuCategory extends MenuEntryList {
   }
 
   clickZone(clickDir) {
-    // console.log(this.parentElements);
+    if (IS_DEBUG) {
+      console.log("Clicked MenuCategory zone: " + clickDir);
+    }
     this.parentElements.scrollHorizontal(clickDir);
   }
 }
@@ -995,8 +1028,10 @@ export class MenuTab {
 export function findMenuEntryByID(id) {
   let foundObject = allMenuEntries.find((entry) => entry.ID === id);
   if (foundObject != undefined) {
-    console.log("Found MenuEntry by ID: " + id);
-    // console.log(foundObject);
+    if (IS_DEBUG) {
+      console.log("Found MenuEntry by ID: " + id);
+      console.log(foundObject);
+    }
     return foundObject;
   } else {
     console.warn("MenuEntry with such ID not found: " + id);
@@ -1007,8 +1042,10 @@ export function findMenuEntryByID(id) {
 export function findMenuElementsByID(id) {
   let foundObject = allMenuElements.find((entry) => entry.ID === id);
   if (foundObject != undefined) {
-    console.log("Found MenuElements by ID: " + id);
-    // console.log(foundObject);
+    if (IS_DEBUG) {
+      console.log("Found MenuElements by ID: " + id);
+      console.log(foundObject);
+    }
     return foundObject;
   } else {
     console.warn("MenuElements with such ID not found: " + id);
@@ -1019,8 +1056,10 @@ export function findMenuElementsByID(id) {
 export function findMenuTabByID(id) {
   let foundObject = allMenuTabs.find((tab) => tab.id === id);
   if (foundObject != undefined) {
-    console.log("Found MenuTab by ID: " + id);
-    // console.log(foundObject);
+    if (IS_DEBUG) {
+      console.log("Found MenuTab by ID: " + id);
+      console.log(foundObject);
+    }
     return foundObject;
   } else {
     console.warn("MenuTab with such ID not found: " + id);
