@@ -154,7 +154,7 @@ let isButtonPressedDown = false;
 window.addEventListener(
   "keydown",
   function (e) {
-    e.preventDefault();
+    if (!IS_DEBUG) e.preventDefault();
 
     if (isButtonPressedDown) return;
     isButtonPressedDown = true;
