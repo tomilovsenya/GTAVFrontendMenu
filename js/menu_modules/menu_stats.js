@@ -22,7 +22,7 @@ export function populateStatsSkillsInfo(currentElements) {
   $("#menu_stats").find(".menu_elements_footer").show();
 
   currentSkillsElements = currentElements;
-  // currentIndex = 0;
+  // infoIndex = 0;
   updateSkillsInfo(infoIndex);
   clearUpdateSkillsInfoInterval();
   setUpdateSkillsInfoInterval();
