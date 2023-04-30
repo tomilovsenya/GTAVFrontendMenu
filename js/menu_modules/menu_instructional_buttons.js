@@ -1,5 +1,6 @@
 // import { toggleMenuVisibility } from "../main_menu.js";
 
+import { IS_DEBUG } from "../common_menu.js";
 import { enterStoreMenu, scrollTab, currentWindow, THIS_PAGE, toggleMenuVisibility, hideCursor, setInputMethod } from "../main_menu.js";
 import * as menuContent from "./menu_content.js";
 // import { enterMapFullscreen, escapeMapFullscreen, scrollLegendElements } from "./menu_map.js";
@@ -51,10 +52,11 @@ let MAP_FULLSCREEN_ACTIVE = false;
 export function clickInstr(inputID) {
   let inputObject = ALL_INPUTS.find((input) => input.id === inputID);
 
+  handleInstructionalButtons(THIS_PAGE, currentWindow, inputObject.keys[0], true);
+  
   if (IS_DEBUG) {
     console.log("Clicked instructional button : " + inputObject.id);
   }
-  handleInstructionalButtons(THIS_PAGE, currentWindow, inputObject.keys[0], true);
 }
 
 export function changeInstrText(instButton, newText) {
