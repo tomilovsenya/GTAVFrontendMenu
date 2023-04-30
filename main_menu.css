@@ -23,8 +23,8 @@
 
 :root {
   --menu-background: url("images/bg/background5.jpg");
-  --menu-color: lightskyblue;
-  --menu-color-alpha: #87cefa40;
+  --menu-color: var(--hud-color-michael);
+  --menu-color-alpha: var(--hud-color-michael-alpha);
   --black-bg-color: rgba(0, 0, 0, 0.725);
   --text-color: rgba(240, 240, 240, 1);
   --text-color-focus: black;
@@ -77,12 +77,15 @@
   --hud-color-bronze: rgb(180 130 97);
 
   --hud-color-michael: rgb(101 180 212);
+  --hud-color-michael-alpha: rgba(101, 180, 212, 0.25);
   --hud-color-michael-dark: rgb(72 103 116);
 
   --hud-color-franklin: rgb(171 237 171);
+  --hud-color-franklin-alpha: rgb(171, 237, 171, 0.25);
   --hud-color-franklin-dark: rgb(85 118 85);
 
   --hud-color-trevor: rgb(255 163 87);
+  --hud-color-trevor-alpha: rgba(255, 163, 87, 0.25);
   --hud-color-trevor-dark: rgb(127 81 43);
 
   --hud-color-freemode: rgb(45 110 185);
@@ -874,7 +877,7 @@ div.element_progress {
   width: 22.5%;
   height: 0.5vw;
   float: right;
-  background-color: #6db9d773;
+  background-color: var(--menu-color-alpha);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -883,7 +886,7 @@ div.element_progress {
 div.element_progress_perc {
   background-color: var(--menu-color);
   float: left;
-  width: 70%;
+  width: 0%;
   height: 100%;
   position: absolute;
 }

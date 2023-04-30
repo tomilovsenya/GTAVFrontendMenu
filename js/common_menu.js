@@ -9,8 +9,8 @@ const CURRENT_PAGE = document.documentElement;
 
 export const HEADER_GTAV = "Grand Theft Auto V";
 export const HEADER_GTAO = "Grand Theft Auto Online";
-export const MENU_COLOR = getHudColor("hud-color-michael");
-export const MENU_COLOR_ALPHA = getHudColor("menu-color-alpha");
+export const MENU_COLOR = getHudColor("hud-color-franklin");
+export const MENU_COLOR_ALPHA = getHudColor("hud-color-franklin-alpha");
 
 let charBank = 0;
 let charCash = 0;
@@ -52,6 +52,7 @@ export function getHudColor(hudColor) {
 
 export function setMenuColor() {
   CURRENT_PAGE.style.setProperty("--menu-color", MENU_COLOR);
+  CURRENT_PAGE.style.setProperty("--menu-color-alpha", MENU_COLOR_ALPHA);
 }
 
 export function setHeaderTitle(headerTitle) {
