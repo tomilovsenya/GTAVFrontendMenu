@@ -11,7 +11,7 @@ var MENU_MUSIC_STEM_1 = new Howl({
     STEM_1.isFading = false;
   },
   onend: function () {
-    updateMusicSync();
+    if (MENU_MUSIC_LOOP_COUNT != 0 && MENU_MUSIC_LOOP_COUNT % MENU_MUSIC_SYNC_LOOPS == 0) updateMusicSync();
     MENU_MUSIC_LOOP_COUNT++;
   },
 });
@@ -112,7 +112,6 @@ export function setMenuMusicVolume(volume) {
 }
 
 export function updateMusicSync() {
-  if (MENU_MUSIC_LOOP_COUNT == 0 || MENU_MUSIC_LOOP_COUNT % MENU_MUSIC_SYNC_LOOPS != 0) return;
   if (IS_DEBUG) console.log("Menu Music sync updated at loop: " + MENU_MUSIC_LOOP_COUNT);
   MENU_MUSIC_STEMS.forEach((stem) => {
     if (!stem.isFading) stem.audio.seek(0);
@@ -127,6 +126,7 @@ function updateMusicPlayTime() {
 }
 
 function updateStemInfo() {
+  $("#menu_elements_header_menu_music_stems").text("Stems Playing: " + STEMS_PLAYING);
   MENU_MUSIC_STEMS.forEach((stem, index) => {
     $("#menu_settings_pause_music_stem_" + (index + 1))
       .find(".element_progress_perc")
@@ -210,10 +210,7 @@ function fadeInStem(stem, fadeTo, fadeDur) {
   thisStem.isFading = true;
   STEMS_PLAYING++;
 
-  if (IS_DEBUG) {
-    console.log("Faded in stem: " + stem);
-    $("#menu_header_text").text("Stems Playing: " + STEMS_PLAYING);
-  }
+  if (IS_DEBUG) console.log("Faded in stem: " + stem);
 }
 
 function fadeOutStem(stem, fadeDur) {
