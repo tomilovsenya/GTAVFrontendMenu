@@ -192,7 +192,8 @@ window.addEventListener(
     }
     if (["Tab"].indexOf(e.code) > -1) {
     }
-    if (["Enter"].indexOf(e.code) > -1) {
+    if (["Enter", "Space", "Tab"].indexOf(e.code) > -1) {
+      e.preventDefault();
     }
   },
   false
