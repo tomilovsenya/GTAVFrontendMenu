@@ -1,12 +1,20 @@
 :root {
-  --screen-fade-in-time: 1500ms;
-  --background-animation-time: 25000ms;
+  --screen-fade-in-time: 1750ms;
+  --background-animation-time: 12000ms;
+
+  --safezone-sides: 1.25vw;
+  --safezone-top: 1vw;
 }
 
 body {
   background-color: black;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
-  animation: var(--screen-fade-in-time) ease-out 0ms 1 normal none running fadeInScreenAnimation;
+  pointer-events: none;
+  user-select: none;
 }
 
 @keyframes fadeInScreenAnimation {
@@ -156,6 +164,82 @@ div#loading_screen_3 .loading_screen_fg_2 {
   left: 70% !important;
 }
 
+div#loading_screen_4 .loading_screen_bg {
+  background-image: url(loadingscreen4/background.png);
+}
+
+div#loading_screen_4 .loading_screen_fg {
+  background-image: url(loadingscreen4/foreground.png);
+  width: 20vw;
+  height: 50vw;
+}
+
+div#loading_screen_5 .loading_screen_bg {
+  background-image: url(loadingscreen5/background.png);
+}
+
+div#loading_screen_5 .loading_screen_fg {
+  background-image: url(loadingscreen5/foreground.png);
+  width: 30vw;
+  height: 50vw;
+}
+
+div#loading_screen_12 .loading_screen_bg {
+  background-image: url(loadingscreen12/background.png);
+}
+
+div#loading_screen_12 .loading_screen_fg {
+  background-image: url(loadingscreen12/foreground_michael.png);
+  width: 35vw;
+  height: 50vw;
+  left: 20% !important;
+}
+
+div#loading_screen_12 .loading_screen_fg_2 {
+  background-image: url(loadingscreen12/foreground.png);
+  width: 50vw;
+  height: 25vw;
+  left: 50% !important;
+}
+
+div#loading_screen_32 .loading_screen_bg {
+  background-image: url(loadingscreen32/background.png);
+}
+
+div#loading_screen_32 .loading_screen_fg {
+  background-image: url(loadingscreen32/foreground.png);
+  width: 85vw;
+  height: 50vw;
+  left: 0% !important;
+}
+
+div#loading_screen_logo {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  z-index: 100;
+  position: absolute;
+  margin: 0;
+}
+
+div#loading_screen_logo_container {
+  width: 15vw;
+  display: flex;
+  justify-content: end;
+  padding-left: var(--safezone-sides);
+  padding-bottom: var(--safezone-top);
+}
+
+img#loading_screen_logo_img {
+  width: 100%;
+}
+
+div#loading_screens_fullscreen {
+  animation: var(--screen-fade-in-time) ease-out 0ms 1 normal none running fadeInScreenAnimation;
+}
+
 .loading_screen {
   display: flex;
   flex-direction: column;
@@ -168,19 +252,19 @@ div#loading_screen_3 .loading_screen_fg_2 {
 }
 
 .loading_screen_fading_in_left {
-  animation: 1500ms ease-in-out 0ms 1 normal none running fadeInAnimationToLeft;
+  animation: var(--screen-fade-in-time) ease-in-out 0ms 1 normal none running fadeInAnimationToLeft;
 }
 
 .loading_screen_fading_in_right {
-  animation: 1500ms ease-in-out 0ms 1 normal none running fadeInAnimationToRight;
+  animation: var(--screen-fade-in-time) ease-in-out 0ms 1 normal none running fadeInAnimationToRight;
 }
 
 .loading_screen_fading_out_left {
-  animation: 1500ms ease-in-out 0ms 1 normal none running fadeOutAnimationLeft;
+  animation: var(--screen-fade-in-time) ease-in-out 0ms 1 normal none running fadeOutAnimationLeft;
 }
 
 .loading_screen_fading_out_right {
-  animation: 1500ms ease-in-out 0ms 1 normal none running fadeOutAnimationRight;
+  animation: var(--screen-fade-in-time) ease-in-out 0ms 1 normal none running fadeOutAnimationRight;
 }
 
 .loading_screen_bg {

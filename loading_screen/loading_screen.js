@@ -1,7 +1,9 @@
-let initScreen = $("#loading_screen_0");
+let firstScreen = $("#loading_screen_0");
+let initScreen = $("#loading_screen_12");
 let currentScreen = initScreen;
 let isCurrentStrictDir = false;
 let isNextStrictDir = false;
+let screenDisplayTime = 10000;
 
 $(".loading_screen").css({ visibility: "hidden" });
 startLoadingScreen(0);
@@ -9,12 +11,13 @@ startLoadingScreen(0);
 function startLoadingScreen(fadeDir) {
   initScreen.css({ visibility: "visible" });
   fadeInScreen(initScreen, fadeDir);
+  setInterval(showNextScreen, screenDisplayTime);
 }
 
 function showNextScreen(fadeDir) {
   if (fadeDir == -1) fadeDir = Math.round(Math.random());
 
-  let nextScreen = currentScreen.is(":last-child") ? initScreen : currentScreen.next(".loading_screen");
+  let nextScreen = currentScreen.is(":last-child") ? firstScreen : currentScreen.next(".loading_screen");
   let fadeCurrentDir = fadeDir;
   let fadeNextDir = fadeDir;
   isNextStrictDir = nextScreen.is("[data-dir]");
@@ -22,7 +25,7 @@ function showNextScreen(fadeDir) {
   fadeNextDir = isNextStrictDir ? nextScreen.attr("data-dir") : fadeDir;
   fadeCurrentDir = isCurrentStrictDir ? (currentScreen.attr("data-dir") == "0" ? 1 : 0) : fadeNextDir;
   if (isCurrentStrictDir) fadeNextDir = fadeCurrentDir;
-  
+
   fadeOutScreen(currentScreen, fadeCurrentDir);
   fadeInScreen(nextScreen, fadeNextDir);
   currentScreen = nextScreen;
