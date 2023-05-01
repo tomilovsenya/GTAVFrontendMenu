@@ -1,8 +1,10 @@
 /index.html
 /styles.css
+*.wav
+*.ogg
+*.db
 .old/
 .ref/
 .vscode/settings.json
-loading_screen/
 images/buttons/1.gfx
 sfx/menu_music/ps4
