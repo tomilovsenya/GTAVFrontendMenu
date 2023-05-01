@@ -1,7 +1,10 @@
 let initScreen = $("#loading_screen_0");
 let currentScreen = initScreen;
+let isCurrentStrictDir = false;
+let isNextStrictDir = false;
 
 $(".loading_screen").css({ visibility: "hidden" });
+startLoadingScreen(0);
 
 function startLoadingScreen(fadeDir) {
   initScreen.css({ visibility: "visible" });
@@ -9,14 +12,26 @@ function startLoadingScreen(fadeDir) {
 }
 
 function showNextScreen(fadeDir) {
+  if (fadeDir == -1) fadeDir = Math.round(Math.random());
+
   let nextScreen = currentScreen.is(":last-child") ? initScreen : currentScreen.next(".loading_screen");
-  fadeOutScreen(currentScreen, fadeDir);
-  fadeInScreen(nextScreen, fadeDir);
+  let fadeCurrentDir = fadeDir;
+  let fadeNextDir = fadeDir;
+  isNextStrictDir = nextScreen.is("[data-dir]");
+
+  fadeNextDir = isNextStrictDir ? nextScreen.attr("data-dir") : fadeDir;
+  fadeCurrentDir = isCurrentStrictDir ? (currentScreen.attr("data-dir") == "0" ? 1 : 0) : fadeNextDir;
+  if (isCurrentStrictDir) fadeNextDir = fadeCurrentDir;
+  
+  fadeOutScreen(currentScreen, fadeCurrentDir);
+  fadeInScreen(nextScreen, fadeNextDir);
   currentScreen = nextScreen;
 }
 
 function fadeInScreen(screenSel, fadeDir) {
   screenSel.addClass(`loading_screen_fading_in ${fadeDir == 0 ? "loading_screen_fading_in_left" : "loading_screen_fading_in_right"}`);
+  isCurrentStrictDir = screenSel.is("[data-dir]");
+  console.log("Current strict: " + isCurrentStrictDir);
 }
 
 function fadeOutScreen(screenSel, fadeDir) {
@@ -28,7 +43,7 @@ window.addEventListener("keydown", function (e) {
     startLoadingScreen(0);
   }
   if (["KeyG"].indexOf(e.code) > -1) {
-    showNextScreen(1);
+    showNextScreen(-1);
   }
   if (["KeyH"].indexOf(e.code) > -1) {
     showNextScreen(0);
