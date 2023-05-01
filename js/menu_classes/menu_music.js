@@ -15,6 +15,7 @@ var MENU_MUSIC_STEM_1 = new Howl({
   src: STEMS_PATHS[0],
   loop: true,
   volume: 0,
+  stereo: 0,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 1 faded");
@@ -29,6 +30,7 @@ var MENU_MUSIC_STEM_2 = new Howl({
   src: STEMS_PATHS[1],
   loop: true,
   volume: 0,
+  stereo: -0.25,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 2 faded");
@@ -39,6 +41,7 @@ var MENU_MUSIC_STEM_3 = new Howl({
   src: STEMS_PATHS[2],
   loop: true,
   volume: 0,
+  stereo: 0.25,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 3 faded");
@@ -49,6 +52,7 @@ var MENU_MUSIC_STEM_4 = new Howl({
   src: STEMS_PATHS[3],
   loop: true,
   volume: 0,
+  stereo: -0.5,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 4 faded");
@@ -59,6 +63,7 @@ var MENU_MUSIC_STEM_5 = new Howl({
   src: STEMS_PATHS[4],
   loop: true,
   volume: 0,
+  stereo: 0.5,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 5 faded");
@@ -69,6 +74,7 @@ var MENU_MUSIC_STEM_6 = new Howl({
   src: STEMS_PATHS[5],
   loop: true,
   volume: 0,
+  stereo: 0,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 6 faded");
@@ -79,6 +85,7 @@ var MENU_MUSIC_STEM_7 = new Howl({
   src: STEMS_PATHS[6],
   loop: true,
   volume: 0,
+  stereo: 0,
   preload: true,
   onfade: function () {
     if (IS_DEBUG) console.log("Stem 7 faded");
@@ -124,7 +131,10 @@ export function setMenuMusicVolume(volume) {
 export function updateMusicSync() {
   if (IS_DEBUG) console.log("Menu Music sync updated at loop: " + MENU_MUSIC_LOOP_COUNT);
   MENU_MUSIC_STEMS.forEach((stem) => {
-    if (!stem.isFading) stem.audio.seek(0);
+    if (!stem.isFading) {
+      stem.audio.seek(0);
+      stem.audio.fade(0, stem.audio.volume(), 100);
+    }
   });
 }
 
