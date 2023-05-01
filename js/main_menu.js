@@ -183,10 +183,8 @@ window.addEventListener(
       hideInstrLoadingSpinner();
     }
     if (["KeyM"].indexOf(e.code) > -1) {
-      playMenuMusic();
     }
     if (["KeyL"].indexOf(e.code) > -1) {
-      stopMenuMusic();
     }
     if (["PageUp", "PageDown"].indexOf(e.code) > -1) {
     }

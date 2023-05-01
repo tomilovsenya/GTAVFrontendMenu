@@ -162,6 +162,12 @@ body {
   /* animation: fadeInAnimation ease 0.25s; */
 }
 
+iframe#menu_loading_screen_background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
@@ -195,7 +201,7 @@ body {
 div.menu_backdrop {
   width: 100vw;
   height: 100vh;
-  backdrop-filter: blur(0.25vw);
+  /* backdrop-filter: blur(0.25vw); */
 }
 
 div.menu_bounding_box {
