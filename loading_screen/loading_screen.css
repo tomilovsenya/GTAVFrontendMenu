@@ -17,6 +17,8 @@ body {
   user-select: none;
 }
 
+/* #region Animations */
+
 @keyframes fadeInScreenAnimation {
   0% {
     transform: translate(150vw, 0);
@@ -98,6 +100,10 @@ body {
     transform: translate(-10vw, 0);
   }
 }
+
+/* #endregion */
+
+/* #region Loading Screen Textures */
 
 div#loading_screen_0 .loading_screen_bg {
   background-image: url(loadingscreen0/background.png);
@@ -507,6 +513,10 @@ div#loading_screen_35 .loading_screen_fg {
   height: 50vw;
 }
 
+/* #endregion */
+
+/* #region Loading Screen Page Layout */
+
 div#loading_screen_logo {
   width: 100vw;
   height: 100vh;
@@ -610,3 +620,5 @@ div#loading_screens_fullscreen {
   animation: 25000ms linear 0ms 1 normal none running moveForegroundAnimationLeft;
   animation-fill-mode: forwards;
 }
+
+/* #endregion */
