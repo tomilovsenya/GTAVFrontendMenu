@@ -16,10 +16,11 @@ const allLoadScreens = [
   { id: "loading_screen_32", dir: "-1" },
 ];
 
-let firstScreen = allLoadScreens[0];
-let initScreen = allLoadScreens[5];
+const firstScreen = allLoadScreens[0];
+const initScreen = allLoadScreens[5];
+const screenDisplayTime = 10000;
+const isRandomOrder = true;
 let currentScreen = initScreen;
-let screenDisplayTime = 10000;
 
 populateLoadingScreens(allLoadScreens);
 $(".loading_screen").css({ visibility: "hidden" });
@@ -45,28 +46,40 @@ function startLoadingScreen(fadeDir) {
 
   fadeInScreen(initScreen.idSel, fadeDir);
   setInterval(function () {
-    showNextScreen(-1);
+    showNextScreen(-1, isRandomOrder);
   }, screenDisplayTime);
 
   console.log("Started loading screen from: " + initScreen.id);
 }
 
-function showNextScreen(fadeDir) {
-  if (fadeDir == -1) fadeDir = Math.round(Math.random());
+function showNextScreen(fadeDir, isRandom) {
+  let nextScreen;
+  if (isRandom) {
+    let randomIndex = Math.round(Math.random() * (allLoadScreens.length - 1));
 
-  let nextScreen = currentScreen.index >= allLoadScreens.length - 1 ? firstScreen : allLoadScreens[currentScreen.index + 1];
+    if (randomIndex < 0) randomIndex = Math.round(Math.random() * (allLoadScreens.length - 2)) + 1;
+    if (randomIndex == currentScreen.index) {
+      if (currentScreen.index == 0) randomIndex = Math.round(Math.random() * (allLoadScreens.length - 2)) + 1;
+      randomIndex = randomIndex * 2 <= allLoadScreens.length ? randomIndex * 2 : Math.round(randomIndex / 2);
+      console.log(`Random index is same as the current screen's - ${currentScreen.index}; new index: ${randomIndex}`);
+    }
+
+    nextScreen = allLoadScreens[randomIndex];
+    console.log("Random screen selected: " + randomIndex);
+  } else nextScreen = currentScreen.index >= allLoadScreens.length - 1 ? firstScreen : allLoadScreens[currentScreen.index + 1];
+  
+  if (fadeDir == -1) fadeDir = Math.round(Math.random());
   let fadeCurrentDir = fadeDir;
   let fadeNextDir = fadeDir;
 
   fadeNextDir = nextScreen.dir != "-1" ? nextScreen.dir : fadeDir;
   fadeCurrentDir = currentScreen.dir != "-1" ? (currentScreen.dir == "0" ? 1 : 0) : fadeNextDir;
   if (currentScreen.dir != "-1") fadeNextDir = fadeCurrentDir;
+  console.log(`Is next ${nextScreen.id} strict: ${nextScreen.dir != "-1"}`);
 
   fadeOutScreen(currentScreen.idSel, fadeCurrentDir);
   fadeInScreen(nextScreen.idSel, fadeNextDir);
   currentScreen = nextScreen;
-
-  console.log(`Is next ${nextScreen.id} strict: ${nextScreen.dir != "-1"}`);
 }
 
 function fadeInScreen(screenSel, fadeDir) {
