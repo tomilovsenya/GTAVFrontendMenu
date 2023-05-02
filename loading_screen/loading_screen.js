@@ -1,4 +1,4 @@
-const allLoadScreens = [
+const loadScreensSP = [
   // Dir: Fade in/out direction: -1 = Random, 0 = From/To Left, 1 = From/To Right
   { id: "loading_screen_0", dir: "-1" },
   { id: "loading_screen_1", dir: "-1" },
@@ -24,9 +24,25 @@ const allLoadScreens = [
   { id: "loading_screen_21", dir: "-1" },
   { id: "loading_screen_22", dir: "-1" },
   { id: "loading_screen_23", dir: "-1" },
-  { id: "loading_screen_32", dir: "-1" },
 ];
 
+const loadScreensMP = [
+  // Dir: Fade in/out direction: -1 = Random, 0 = From/To Left, 1 = From/To Right
+  { id: "loading_screen_24", dir: "-1" },
+  { id: "loading_screen_25", dir: "-1" },
+  { id: "loading_screen_26", dir: "-1" },
+  { id: "loading_screen_27", dir: "-1" },
+  { id: "loading_screen_28", dir: "-1" },
+  { id: "loading_screen_29", dir: "-1" },
+  { id: "loading_screen_30", dir: "-1" },
+  { id: "loading_screen_31", dir: "-1" },
+  { id: "loading_screen_32", dir: "-1" },
+  { id: "loading_screen_33", dir: "-1" },
+  { id: "loading_screen_34", dir: "-1" },
+  { id: "loading_screen_35", dir: "-1" },
+];
+
+const allLoadScreens = loadScreensMP;
 const firstScreen = allLoadScreens[0];
 const initScreen = allLoadScreens[0];
 const screenDisplayTime = 10000;

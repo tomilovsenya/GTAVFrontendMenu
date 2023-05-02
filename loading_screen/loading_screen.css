@@ -380,6 +380,91 @@ div#loading_screen_23 .loading_screen_fg {
   left: 10% !important;
 }
 
+div#loading_screen_24 .loading_screen_bg {
+  background-image: url(loadingscreen24/background.png);
+}
+
+div#loading_screen_24 .loading_screen_fg {
+  background-image: url(loadingscreen24/foreground.png);
+  width: 35vw;
+  height: 50vw;
+}
+
+div#loading_screen_25 .loading_screen_bg {
+  background-image: url(loadingscreen25/background.png);
+}
+
+div#loading_screen_25 .loading_screen_fg {
+  background-image: url(loadingscreen25/foreground.png);
+  width: 50vw;
+  height: 50vw;
+}
+
+div#loading_screen_26 .loading_screen_bg {
+  background-image: url(loadingscreen26/background.png);
+}
+
+div#loading_screen_26 .loading_screen_fg {
+  background-image: url(loadingscreen26/foreground.png);
+  width: 32.5vw;
+  height: 50vw;
+  left: 15% !important;
+}
+
+div#loading_screen_27 .loading_screen_bg {
+  background-image: url(loadingscreen27/background.png);
+}
+
+div#loading_screen_27 .loading_screen_fg {
+  background-image: url(loadingscreen27/foreground.png);
+  width: 57.5vw;
+  height: 50vw;
+}
+
+div#loading_screen_28 .loading_screen_bg {
+  background-image: url(loadingscreen28/background.png);
+}
+
+div#loading_screen_28 .loading_screen_fg {
+  background-image: url(loadingscreen28/foreground.png);
+  width: 65vw;
+  height: 50vw;
+  left: 15% !important;
+}
+
+div#loading_screen_29 .loading_screen_bg {
+  background-image: url(loadingscreen29/background.png);
+}
+
+div#loading_screen_29 .loading_screen_fg {
+  background-image: url(loadingscreen29/foreground.png);
+  width: 28.5vw;
+  height: 50vw;
+  left: 40% !important;
+}
+
+div#loading_screen_30 .loading_screen_bg {
+  background-image: url(loadingscreen30/background.png);
+}
+
+div#loading_screen_30 .loading_screen_fg {
+  background-image: url(loadingscreen30/foreground.png);
+  width: 30vw;
+  height: 50vw;
+  left: 30% !important;
+}
+
+div#loading_screen_31 .loading_screen_bg {
+  background-image: url(loadingscreen31/background.png);
+}
+
+div#loading_screen_31 .loading_screen_fg {
+  background-image: url(loadingscreen31/foreground.png);
+  width: 28.5vw;
+  height: 50vw;
+  left: 50% !important;
+}
+
 div#loading_screen_32 .loading_screen_bg {
   background-image: url(loadingscreen32/background.png);
 }
@@ -389,6 +474,37 @@ div#loading_screen_32 .loading_screen_fg {
   width: 90vw;
   height: 50vw;
   left: 5% !important;
+}
+
+div#loading_screen_33 .loading_screen_bg {
+  background-image: url(loadingscreen33/background.png);
+}
+
+div#loading_screen_33 .loading_screen_fg {
+  background-image: url(loadingscreen33/foreground.png);
+  width: 28.5vw;
+  height: 50vw;
+  left: 25% !important;
+}
+
+div#loading_screen_34 .loading_screen_bg {
+  background-image: url(loadingscreen34/background.png);
+}
+
+div#loading_screen_34 .loading_screen_fg {
+  background-image: url(loadingscreen34/foreground.png);
+  width: 25vw;
+  height: 50vw;
+}
+
+div#loading_screen_35 .loading_screen_bg {
+  background-image: url(loadingscreen35/background.png);
+}
+
+div#loading_screen_35 .loading_screen_fg {
+  background-image: url(loadingscreen35/foreground.png);
+  width: 30vw;
+  height: 50vw;
 }
 
 div#loading_screen_logo {
