@@ -17,13 +17,13 @@ const allLoadScreens = [
 ];
 
 let firstScreen = allLoadScreens[0];
-let initScreen = allLoadScreens[2];
+let initScreen = allLoadScreens[5];
 let currentScreen = initScreen;
-let screenDisplayTime = 2500;
+let screenDisplayTime = 10000;
 
 populateLoadingScreens(allLoadScreens);
 $(".loading_screen").css({ visibility: "hidden" });
-startLoadingScreen(0);
+startLoadingScreen(0); // -1 and 1 are buggy yet
 
 function populateLoadingScreens(loadScreens) {
   loadScreens.forEach((screen, index) => {
@@ -41,11 +41,13 @@ function populateLoadingScreens(loadScreens) {
 }
 
 function startLoadingScreen(fadeDir) {
-  initScreen.idSel.css({ visibility: "visible" });
+  if (fadeDir == -1) fadeDir = Math.round(Math.random());
+
   fadeInScreen(initScreen.idSel, fadeDir);
   setInterval(function () {
     showNextScreen(-1);
   }, screenDisplayTime);
+
   console.log("Started loading screen from: " + initScreen.id);
 }
 
