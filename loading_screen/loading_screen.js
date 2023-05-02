@@ -13,11 +13,22 @@ const allLoadScreens = [
   { id: "loading_screen_10", dir: "-1" },
   { id: "loading_screen_11", dir: "-1" },
   { id: "loading_screen_12", dir: "-1" },
+  { id: "loading_screen_13", dir: "-1" },
+  { id: "loading_screen_14", dir: "-1" },
+  { id: "loading_screen_15", dir: "-1" },
+  { id: "loading_screen_16", dir: "-1" },
+  { id: "loading_screen_17", dir: "-1" },
+  { id: "loading_screen_18", dir: "-1" },
+  { id: "loading_screen_19", dir: "-1" },
+  { id: "loading_screen_20", dir: "-1" },
+  { id: "loading_screen_21", dir: "-1" },
+  { id: "loading_screen_22", dir: "-1" },
+  { id: "loading_screen_23", dir: "-1" },
   { id: "loading_screen_32", dir: "-1" },
 ];
 
 const firstScreen = allLoadScreens[0];
-const initScreen = allLoadScreens[5];
+const initScreen = allLoadScreens[0];
 const screenDisplayTime = 10000;
 const isRandomOrder = true;
 let currentScreen = initScreen;
@@ -67,7 +78,7 @@ function showNextScreen(fadeDir, isRandom) {
     nextScreen = allLoadScreens[randomIndex];
     console.log("Random screen selected: " + randomIndex);
   } else nextScreen = currentScreen.index >= allLoadScreens.length - 1 ? firstScreen : allLoadScreens[currentScreen.index + 1];
-  
+
   if (fadeDir == -1) fadeDir = Math.round(Math.random());
   let fadeCurrentDir = fadeDir;
   let fadeNextDir = fadeDir;
