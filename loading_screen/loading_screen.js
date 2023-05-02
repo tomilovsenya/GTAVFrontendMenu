@@ -1,31 +1,76 @@
-let firstScreen = $("#loading_screen_0");
-let initScreen = $("#loading_screen_12");
+const allLoadScreens = [
+  { id: "loading_screen_0", dir: "-1" },
+  { id: "loading_screen_1", dir: "-1" },
+  { id: "loading_screen_2", dir: "-1" },
+  { id: "loading_screen_3", dir: "0" },
+  { id: "loading_screen_4", dir: "-1" },
+  { id: "loading_screen_5", dir: "-1" },
+  { id: "loading_screen_6", dir: "-1" },
+  { id: "loading_screen_7", dir: "-1" },
+  { id: "loading_screen_8", dir: "-1" },
+  { id: "loading_screen_9", dir: "-1" },
+  { id: "loading_screen_10", dir: "-1" },
+  { id: "loading_screen_11", dir: "-1" },
+  { id: "loading_screen_12", dir: "-1" },
+  { id: "loading_screen_32", dir: "-1" },
+];
+
+let firstScreen = 0;
+let initScreen = 2;
 let currentScreen = initScreen;
+let currentScreenIndex = initScreen;
 let isCurrentStrictDir = false;
 let isNextStrictDir = false;
 let screenDisplayTime = 10000;
 
+populateLoadingScreens(allLoadScreens);
 $(".loading_screen").css({ visibility: "hidden" });
 startLoadingScreen(0);
+
+function populateLoadingScreens(loadScreens) {
+  loadScreens.forEach((screen, index) => {
+    let blankScreen = $(`<div id="${screen.id}" class="loading_screen">
+    <div class="loading_screen_bg"></div><div class="loading_screen_fg_area">
+    <div class="loading_screen_fg"></div><div class="loading_screen_fg_2"></div></div></div>`);
+
+    $("#loading_screens_fullscreen").append(blankScreen);
+
+    if (index == 0) firstScreen = $(`#${screen.id}`);
+    if (index == initScreen) {
+      initScreen = $(`#${screen.id}`);
+      currentScreen = $(`#${screen.id}`);
+      currentScreenIndex = index;
+    }
+
+    console.log("Created loadscreen with id: " + screen.id);
+  });
+}
 
 function startLoadingScreen(fadeDir) {
   initScreen.css({ visibility: "visible" });
   fadeInScreen(initScreen, fadeDir);
-  setInterval(showNextScreen, screenDisplayTime);
+  setInterval(function () {
+    showNextScreen(-1);
+  }, screenDisplayTime);
+  console.log("Started loading screen from: " + initScreen.attr("id"));
 }
 
 function showNextScreen(fadeDir) {
   if (fadeDir == -1) fadeDir = Math.round(Math.random());
 
   let nextScreen = currentScreen.is(":last-child") ? firstScreen : currentScreen.next(".loading_screen");
+  let nextScreenObj = allLoadScreens[currentScreenIndex + 1];
   let fadeCurrentDir = fadeDir;
   let fadeNextDir = fadeDir;
-  isNextStrictDir = nextScreen.is("[data-dir]");
+  isNextStrictDir = nextScreenObj.dir != "-1";
+  console.log(`Is next ${nextScreenObj.id} strict: ${isNextStrictDir}`);
 
-  fadeNextDir = isNextStrictDir ? nextScreen.attr("data-dir") : fadeDir;
-  fadeCurrentDir = isCurrentStrictDir ? (currentScreen.attr("data-dir") == "0" ? 1 : 0) : fadeNextDir;
+  fadeNextDir = isNextStrictDir ? nextScreenObj.dir : fadeDir;
+  fadeCurrentDir = isCurrentStrictDir ? (allLoadScreens[currentScreenIndex].dir == "0" ? 1 : 0) : fadeNextDir;
   if (isCurrentStrictDir) fadeNextDir = fadeCurrentDir;
 
+  if (currentScreenIndex < allLoadScreens.length) currentScreenIndex++;
+  else currentScreenIndex == 0;
   fadeOutScreen(currentScreen, fadeCurrentDir);
   fadeInScreen(nextScreen, fadeNextDir);
   currentScreen = nextScreen;
@@ -33,8 +78,8 @@ function showNextScreen(fadeDir) {
 
 function fadeInScreen(screenSel, fadeDir) {
   screenSel.addClass(`loading_screen_fading_in ${fadeDir == 0 ? "loading_screen_fading_in_left" : "loading_screen_fading_in_right"}`);
-  isCurrentStrictDir = screenSel.is("[data-dir]");
-  console.log("Current strict: " + isCurrentStrictDir);
+  isCurrentStrictDir = allLoadScreens[currentScreenIndex].dir != "-1";
+  console.log(`Is ${allLoadScreens[currentScreenIndex].id} strict: ${isCurrentStrictDir}`);
 }
 
 function fadeOutScreen(screenSel, fadeDir) {

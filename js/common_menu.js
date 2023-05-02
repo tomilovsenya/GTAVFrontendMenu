@@ -4,7 +4,7 @@ import { getLocalizedString, menuLanguage, updateMenuLocalization } from "./menu
 // COMMON VARIABLES
 //
 
-export const IS_DEBUG = true;
+export const IS_DEBUG = false;
 const CURRENT_PAGE = document.documentElement;
 
 export const HEADER_GTAV = "Grand Theft Auto V";
