@@ -133,9 +133,7 @@ window.addEventListener("keydown", function (e) {
 
 $("#loading_screens_fullscreen").on("animationend webkitAnimationEnd", ".loading_screen_fading_out", function () {
   $(this).css({ visibility: "hidden" });
-  $(this).removeClass("loading_screen_fading_out");
-  $(this).removeClass("loading_screen_fading_out_left");
-  $(this).removeClass("loading_screen_fading_out_right");
+  $(this).removeClass("loading_screen_fading_out loading_screen_fading_out_left loading_screen_fading_out_right");
   $(this).find(".loading_screen_bg").removeClass(`loading_screen_bg_moving`);
   $(this).find(".loading_screen_fg").removeClass(`loading_screen_fg_moving`);
   $(this).find(".loading_screen_fg_2").removeClass(`loading_screen_fg_2_moving`);
@@ -149,7 +147,5 @@ $("#loading_screens_fullscreen").on("animationstart webkitAnimationStart", ".loa
 });
 
 $("#loading_screens_fullscreen").on("animationend webkitAnimationEnd", ".loading_screen_fading_in", function () {
-  $(this).removeClass("loading_screen_fading_in");
-  $(this).removeClass("loading_screen_fading_in_left");
-  $(this).removeClass("loading_screen_fading_in_right");
+  $(this).removeClass("loading_screen_fading_in loading_screen_fading_in_left loading_screen_fading_in_right");
 });
