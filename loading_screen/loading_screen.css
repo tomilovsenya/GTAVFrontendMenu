@@ -1,5 +1,5 @@
 :root {
-  --screen-fade-in-time: 1250ms;
+  --screen-fade-in-time: 1000ms;
   --background-animation-time: 20000ms;
 
   --safezone-sides: 1.25vw;
@@ -77,7 +77,7 @@ body {
   }
 
   100% {
-    transform: rotateY(25deg);
+    transform: rotateY(50deg);
   }
 }
 
@@ -572,12 +572,15 @@ div#loading_screens_fullscreen {
 }
 
 .loading_screen_bg {
+  background-color: beige;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   align-self: center;
+  justify-self: center;
   z-index: -1;
+  margin: auto;
 }
 
 .loading_screen_bg_moving {
