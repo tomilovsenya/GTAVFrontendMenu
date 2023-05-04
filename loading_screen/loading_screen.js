@@ -118,13 +118,16 @@ function fadeOutScreen(screenSel, fadeDir) {
 
 window.addEventListener("keydown", function (e) {
   if (["KeyF"].indexOf(e.code) > -1) {
-    startLoadingScreen(0);
+    document.documentElement.requestFullscreen();
   }
-  if (["KeyG"].indexOf(e.code) > -1) {
-    showNextScreen(-1);
-  }
-  if (["KeyH"].indexOf(e.code) > -1) {
+  if (["ArrowLeft"].indexOf(e.code) > -1) {
     showNextScreen(0);
+  }
+  if (["ArrowRight"].indexOf(e.code) > -1) {
+    showNextScreen(1);
+  }
+  if (["ArrowDown"].indexOf(e.code) > -1) {
+    showNextScreen(-1);
   }
 });
 
