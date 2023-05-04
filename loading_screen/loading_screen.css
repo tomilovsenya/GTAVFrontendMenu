@@ -105,6 +105,16 @@ body {
 
 /* #region Loading Screen Textures */
 
+div#loading_screen_startup .loading_screen_bg {
+  background-image: url(loadingscreen_startup/beach_bg.png);
+}
+
+div#loading_screen_startup .loading_screen_fg {
+  background-image: url(loadingscreen_startup/beach_fg.png);
+  width: 26.5vw;
+  height: 50vw;
+}
+
 div#loading_screen_0 .loading_screen_bg {
   background-image: url(loadingscreen0/background.png);
 }
