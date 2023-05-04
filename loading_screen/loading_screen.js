@@ -81,18 +81,13 @@ function startLoadingScreen(fadeDir) {
 
 function showNextScreen(fadeDir, isRandom) {
   let nextScreen;
+
   if (isRandom) {
-    let randomIndex = Math.round(Math.random() * (allLoadScreens.length - 1));
+    let restLoadScreens = allLoadScreens.filter((screen) => screen != currentScreen);
+    let randomIndex = Math.round(Math.random() * (restLoadScreens.length - 1));
+    nextScreen = restLoadScreens[randomIndex];
 
-    if (randomIndex < 0) randomIndex = Math.round(Math.random() * (allLoadScreens.length - 2)) + 1;
-    if (randomIndex == currentScreen.index) {
-      if (currentScreen.index == 0) randomIndex = Math.round(Math.random() * (allLoadScreens.length - 2)) + 1;
-      randomIndex = randomIndex * 2 <= allLoadScreens.length ? randomIndex * 2 : Math.round(randomIndex / 2);
-      console.log(`Random index is same as the current screen's - ${currentScreen.index}; new index: ${randomIndex}`);
-    }
-
-    nextScreen = allLoadScreens[randomIndex];
-    console.log("Random screen selected: " + randomIndex);
+    console.log("Random screen selected: " + restLoadScreens[randomIndex].id);
   } else nextScreen = currentScreen.index >= allLoadScreens.length - 1 ? firstScreen : allLoadScreens[currentScreen.index + 1];
 
   if (fadeDir == -1) fadeDir = Math.round(Math.random());
