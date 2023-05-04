@@ -40,6 +40,10 @@ const loadScreensMP = [
   { id: "loading_screen_33", dir: "-1" },
   { id: "loading_screen_34", dir: "-1" },
   { id: "loading_screen_35", dir: "-1" },
+  { id: "loading_screen_100", dir: "0" },
+  { id: "loading_screen_101", dir: "-1" },
+  { id: "loading_screen_102", dir: "0" },
+  { id: "loading_screen_103", dir: "-1" },
 ];
 
 const allLoadScreens = loadScreensMP;

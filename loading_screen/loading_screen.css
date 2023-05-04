@@ -513,6 +513,57 @@ div#loading_screen_35 .loading_screen_fg {
   height: 50vw;
 }
 
+div#loading_screen_100 .loading_screen_bg {
+  background-image: url(loadingscreen100/background.png);
+}
+
+div#loading_screen_100 .loading_screen_fg {
+  background-image: url(loadingscreen100/foreground.png);
+  background-size: contain;
+  background-position: bottom;
+  width: 100%;
+  height: 100%;
+  left: 0% !important;
+}
+
+div#loading_screen_101 .loading_screen_bg {
+  background-image: url(loadingscreen101/background.png);
+}
+
+div#loading_screen_101 .loading_screen_fg {
+  background-image: url(loadingscreen101/foreground.png);
+  background-size: contain;
+  background-position: bottom;
+  width: 75%;
+  height: 75%;
+  left: 30% !important;
+}
+
+div#loading_screen_102 .loading_screen_bg {
+  background-image: url(loadingscreen102/background.png);
+}
+
+div#loading_screen_102 .loading_screen_fg {
+  background-image: url(loadingscreen102/foreground.png);
+  background-size: contain;
+  background-position: bottom;
+  width: 90%;
+  height: 90%;
+  left: 10% !important;
+}
+
+div#loading_screen_103 .loading_screen_bg {
+  background-image: url(loadingscreen103/background.png);
+}
+
+div#loading_screen_103 .loading_screen_fg {
+  background-image: url(loadingscreen103/foreground.png);
+  background-size: contain;
+  background-position: bottom;
+  width: 40%;
+  height: 85%;
+}
+
 /* #endregion */
 
 /* #region Loading Screen Page Layout */
