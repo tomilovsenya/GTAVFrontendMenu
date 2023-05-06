@@ -1,5 +1,4 @@
 import { IS_DEBUG, MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
-import { allMenuElements, allMenuEntries, allMenuTabs } from "../menu_modules/menu_content.js";
 import { getLocalizedString } from "../menu_modules/menu_localization.js";
 
 export class MenuWindow {
@@ -608,7 +607,12 @@ export class MenuEntry {
     this.index = index;
     this.title = title;
 
-    allMenuEntries.push(this); // Push created MenuEntry to [] storing all MenuEntries
+    import("../menu_modules/menu_content.js")
+      .then((module) => {
+        module.allMenuEntries.push(this); // Push created MenuEntry to [] storing all MenuEntries
+        console.log("Successfully imported and filled allMenuEntries");
+      })
+      .catch((error) => console.log("Menu content import failed"));
   }
 
   setTitle(title) {
@@ -1039,7 +1043,12 @@ export class MenuTab {
     this.index = index;
     this.menuWindow = menuWindow;
 
-    allMenuTabs.splice(this.index, 0, this);
+    import("../menu_modules/menu_content.js")
+      .then((module) => {
+        module.allMenuTabs.splice(this.index, 0, this); // Push created MenuTab to [] storing all MenuTabs
+        console.log("Successfully imported and filled allMenuTabs");
+      })
+      .catch((error) => console.log("Menu content import failed"));
   }
 
   createTab() {
@@ -1059,47 +1068,5 @@ export class MenuTab {
 
   deactivate() {
     $(this.idSel).removeClass("menu_button_active");
-  }
-}
-
-export function findMenuEntryByID(id) {
-  let foundObject = allMenuEntries.find((entry) => entry.ID === id);
-  if (foundObject != undefined) {
-    if (IS_DEBUG) {
-      console.log("Found MenuEntry by ID: " + id);
-      console.log(foundObject);
-    }
-    return foundObject;
-  } else {
-    console.warn("MenuEntry with such ID not found: " + id);
-    return 0;
-  }
-}
-
-export function findMenuElementsByID(id) {
-  let foundObject = allMenuElements.find((entry) => entry.ID === id);
-  if (foundObject != undefined) {
-    if (IS_DEBUG) {
-      console.log("Found MenuElements by ID: " + id);
-      console.log(foundObject);
-    }
-    return foundObject;
-  } else {
-    console.warn("MenuElements with such ID not found: " + id);
-    return 0;
-  }
-}
-
-export function findMenuTabByID(id) {
-  let foundObject = allMenuTabs.find((tab) => tab.id === id);
-  if (foundObject != undefined) {
-    if (IS_DEBUG) {
-      console.log("Found MenuTab by ID: " + id);
-      console.log(foundObject);
-    }
-    return foundObject;
-  } else {
-    console.warn("MenuTab with such ID not found: " + id);
-    return 0;
   }
 }

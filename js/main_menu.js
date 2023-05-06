@@ -2,7 +2,7 @@
 // MODULES IMPORT
 //
 
-import { MenuCategory, MenuWindow, findMenuEntryByID, findMenuTabByID } from "./menu_classes/menu_entries.js";
+import { MenuCategory, MenuWindow } from "./menu_classes/menu_entries.js";
 import { initChecklistChart } from "./menu_modules/menu_stats.js";
 import { getLocalizedString, localizeMenu, localizeSingleMenu, updateMenuLocalization } from "./menu_modules/menu_localization.js";
 import { drawMap, enterMapFullscreen, escapeMapFullscreen } from "./menu_modules/menu_map.js";
@@ -424,6 +424,49 @@ function sendFeedMessage(text, duration, color) {
   theFeed.append(blankMessage);
   setTimeout(() => blankMessage.remove(), duration);
 }
+
+function findMenuEntryByID(id) {
+  let foundObject = menuContent.allMenuEntries.find((entry) => entry.ID === id);
+  if (foundObject != undefined) {
+    if (IS_DEBUG) {
+      console.log("Found MenuEntry by ID: " + id);
+      console.log(foundObject);
+    }
+    return foundObject;
+  } else {
+    console.warn("MenuEntry with such ID not found: " + id);
+    return 0;
+  }
+}
+
+function findMenuElementsByID(id) {
+  let foundObject = menuContent.allMenuElements.find((entry) => entry.ID === id);
+  if (foundObject != undefined) {
+    if (IS_DEBUG) {
+      console.log("Found MenuElements by ID: " + id);
+      console.log(foundObject);
+    }
+    return foundObject;
+  } else {
+    console.warn("MenuElements with such ID not found: " + id);
+    return 0;
+  }
+}
+
+function findMenuTabByID(id) {
+  let foundObject = menuContent.allMenuTabs.find((tab) => tab.id === id);
+  if (foundObject != undefined) {
+    if (IS_DEBUG) {
+      console.log("Found MenuTab by ID: " + id);
+      console.log(foundObject);
+    }
+    return foundObject;
+  } else {
+    console.warn("MenuTab with such ID not found: " + id);
+    return 0;
+  }
+}
+
 
 //
 // BIND SCROLLING FUNCTIONS TO MOUSE WHEEL

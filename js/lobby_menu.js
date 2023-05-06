@@ -1,5 +1,3 @@
-import { setRightTextArrows } from "./common_menu.js";
-
 let activeEntryMiddle = null;
 
 $(".menu_category").click(clickCategory);
@@ -33,19 +31,13 @@ function triggerCategory(triggeredCategory) {
 function clickCategory() {
   setEntryActive($(this));
   if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
-  else
-    console.log(
-      "Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything"
-    );
+  else console.log("Clicked menu_entry without ID, possibly menu_entry_empty triggerCategory will return before doing anything");
 }
 
 function clickEntry() {
   triggerEntry($(this));
   if ($(this).attr("id")) console.log("Clicked: " + $(this).attr("id"));
-  else
-    console.log(
-      "Clicked menu_entry without ID, possibly menu_entry_empty, triggerEntry will return before doing anything"
-    );
+  else console.log("Clicked menu_entry without ID, possibly menu_entry_empty, triggerEntry will return before doing anything");
 }
 
 function setEntryActive(activatedEntry) {
