@@ -1,8 +1,13 @@
 :root {
-  --menu-color: var(--hud-color-heist)
+  --menu-color: var(--hud-color-heist);
+  --lobby-column-width: 49.75%;
 }
 
 /*#region MainMenu*/
+
+div.menu_backdrop {
+  backdrop-filter: blur(0.25vw);
+}
 
 div.frontend_main_menu {
   visibility: visible;
@@ -43,6 +48,27 @@ div.menu_navbar {
 button.menu_button {
   background-color: var(--menu-color);
   pointer-events: none;
+}
+
+div.menu_categories {
+  /* width: var(--lobby-column-width); */
+}
+
+div.menu_categories .menu_category {
+  /* background-color: var(--black-bg-color) !important; */
+}
+
+div.menu_elements {
+  min-width: var(--menu-elements-width);
+}
+
+div.menu_categories .menu_entry:has(+ .menu_divider) {
+  margin-bottom: calc(var(--item-margin) / -1) !important;
+}
+
+div.menu_categories_footer {
+  background-color: var(--black-bg-color);
+  margin-top: calc(var(--item-margin) / -1) !important;
 }
 
 /*#endregion MainMenu*/
@@ -163,7 +189,6 @@ div#lobby_elements {
 }
 
 div.lobby_players {
-  width: var(--menu-elements-half-width);
   height: fit-content;
   border: 0px;
   float: right;
@@ -182,7 +207,7 @@ div.lobby_players .menu_entry:last-of-type {
 
 div.lobby_details {
   background-color: transparent;
-  width: var(--menu-elements-half-width);
+  min-width: var(--lobby-column-width);
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -204,24 +229,24 @@ div.lobby_details_picture {
 }
 
 button#lobby_details_picture_title {
-  height: 2.25vw;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5) !important;
   justify-content: flex-end;
-  align-items: flex-end;
-  margin: 0;
+  align-items: center;
 }
 
 span#lobby_details_picture_title_text {
   font-family: "SignPainterHouseScript";
   font-size: 1.825vw;
   text-shadow: 0.045vw 0.045vw 0 black;
+  padding-right: 1%;
 }
 
 div.lobby_details_info {
   background-color: var(--black-bg-color);
-  /* background-color: rgba(238, 130, 238, 0.295); */
   width: 100%;
-  height: calc(var(--item-height) * 4 + var(--item-margin) * 3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-margin);
 }
 
 div.menu_window_arrows {
