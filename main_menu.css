@@ -90,8 +90,9 @@
 
   --hud-color-freemode: rgb(45 110 185);
   --hud-color-freemode-alpha: rgba(45, 110, 185, 0.25);
-  --hud-color-heist: rgb(37 102 40);
-  --hud-color-heist-bg: rgba(57, 102, 57, 0.66);
+  --hud-color-heist: rgb(33, 118, 37);
+  --hud-color-heist-shard: rgba(20, 40, 0, 0.66);
+  --hud-color-heist-dark: rgba(37, 102, 40);
   --hud-color-tech: rgb(0 151 151);
 
   --hud-color-red: rgb(224 50 50);

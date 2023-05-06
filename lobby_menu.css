@@ -80,7 +80,7 @@ div.menu_elements_scrollable .menu_entry {
 }
 
 div.menu_elements_scrollable .menu_entry:not(.menu_entry_empty) {
-  background-color: var(--hud-color-heist-bg);
+  background-color: var(--hud-color-heist-shard);
 }
 
 div.menu_elements_scrollable .element_list {
