@@ -69,72 +69,31 @@
             </div>
 
             <div id="lobby_elements" class="menu_elements">
-              <div class="lobby_players menu_elements_scrollable">
-                <button id="lobby_players_element_0" class="menu_entry">
-                  <span class="player_joined"></span>
-                  <span class="entry_label element_label_cond">tomilovsenya</span>
-                  <div class="element_list">
-                    <span class="player_status">HOST</span>
-                    <img class="player_control" src="images/icons/control_mouse.svg" alt="">
-                    <div class="player_rank">
-                      <span class="player_rank_bg"></span>
-                      <span class="player_rank_icon"></span>
-                      <span class="player_rank_number">228</span>
-                    </div>
-                  </div>
-                </button>
-                <button id="lobby_players_element_1" class="menu_entry">
-                  <span class="player_joined"></span>
-                  <span class="entry_label element_label_cond">DarkViperAU</span>
-                  <div class="element_list">
-                    <span class="player_status player_status_joined">JOINED</span>
-                    <img class="player_control" src="images/icons/control_mouse.svg" alt="">
-                    <div class="player_rank">
-                      <span class="player_rank_bg"></span>
-                      <span class="player_rank_icon"></span>
-                      <span class="player_rank_number player_rank_number_smaller">8000</span>
-                    </div>
-                  </div>
-                </button>
-                <button id="lobby_players_element_2" class="menu_entry">
-                  <span class="player_joined"></span>
-                  <span class="entry_label element_label_cond">Lamar</span>
-                  <div class="element_list">
-                    <span class="player_status player_status_joined">JOINED</span>
-                    <img class="player_control" src="images/icons/control_mouse.svg" alt="">
-                    <div class="player_rank">
-                      <span class="player_rank_bg"></span>
-                      <span class="player_rank_icon"></span>
-                      <span class="player_rank_number">333</span>
-                    </div>
-                  </div>
-                </button>
-                <button id="lobby_players_element_3" class="menu_entry menu_entry_empty"></button>
-              </div>
+              <div id="lobby_players" class="menu_elements_scrollable"></div>
 
               <div class="lobby_details">
                 <div class="lobby_details_picture">
-                  <button id="lobby_details_picture_title" class="menu_entry menu_entry_empty">
-                    <span id="lobby_details_picture_title_text" class="element_label">The Humane Labs Raid</span>
+                  <button id="lobby_details_title" class="menu_entry menu_entry_empty">
+                    <span id="lobby_details_title_text" class="element_label"></span>
                   </button>
                 </div>
                 <div class="lobby_details_info menu_elements_even_darker">
                   <button id="lobby_details_info_element_0" class="menu_entry menu_entry_empty menu_entry_empty_even">
                     <span class="element_label">Created By</span>
-                    <span class="element_label_right element_label_cond">Rockstar</span>
+                    <span id="lobby_details_creator_text" class="element_label_right element_label_cond">Rockstar</span>
                   </button>
                   <button id="lobby_details_info_element_1" class="menu_entry menu_entry_empty menu_entry_empty_even">
                     <span class="element_label">Opens at Rank</span>
-                    <span class="element_label_right">12</span>
+                    <span id="lobby_details_rank_text" class="element_label_right">12</span>
                   </button>
                   <button id="lobby_details_info_element_2" class="menu_entry menu_entry_empty menu_entry_empty_even">
                     <span class="element_label">Players</span>
-                    <span class="element_label_right">4</span>
+                    <span id="lobby_details_players_text" class="element_label_right">4</span>
                   </button>
                   <button id="lobby_details_info_element_3" class="menu_entry menu_entry_empty menu_entry_empty_even">
                     <span class="element_label">Type</span>
                     <div class="element_list">
-                      <span class="element_label_right">Heist</span>
+                      <span id="lobby_details_type_text" class="element_label_right">Heist</span>
                       <blip data-blip-type="icon" data-blip-color="green-heist">
                         <!-- <img class="blip_tick" src="images/icons/blip_tick.svg" alt=""> -->
                       </blip>

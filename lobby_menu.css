@@ -23,19 +23,12 @@ div.menu_window {
 div.menu_header {
   flex-direction: column;
   align-items: flex-start;
-  min-height: fit-content !important;
-  margin-bottom: 0;
-}
-
-p#menu_header_text {
-  font-size: 2.5vw !important;
+  overflow: visible;
 }
 
 span#menu_header_descr {
-  min-height: 2.75vw;
-  max-height: 2.75vw;
+  height: fit-content;
   font-family: "London60";
-  font-size: 0.9vw;
   letter-spacing: 0.0165vw;
   color: var(--text-color);
   text-shadow: 0.1vw 0.1vw 0.075vw black;
@@ -48,14 +41,6 @@ div.menu_navbar {
 button.menu_button {
   background-color: var(--menu-color);
   pointer-events: none;
-}
-
-div.menu_categories {
-  /* width: var(--lobby-column-width); */
-}
-
-div.menu_categories .menu_category {
-  /* background-color: var(--black-bg-color) !important; */
 }
 
 div.menu_elements {
@@ -74,13 +59,15 @@ div.menu_categories_footer {
 /*#endregion MainMenu*/
 
 /*#region LobbyMenu*/
+
 div.menu_elements_scrollable .menu_entry {
+  background-color: var(--black-bg-color) !important;
   padding-right: 0.25vw;
   pointer-events: none;
 }
 
 div.menu_elements_scrollable .menu_entry:not(.menu_entry_empty) {
-  background-color: var(--hud-color-heist-shard);
+  background-color: var(--hud-color-heist-shard) !important;
 }
 
 div.menu_elements_scrollable .element_list {
@@ -101,19 +88,28 @@ img.blip_tick {
 }
 
 span.player_status {
-  background-color: var(--hud-color-heist);
+  background-color: var(--black-bg-color);
   font-family: "Cologne60";
   font-size: 1.25vw;
   padding: 0 0.25vw;
   border-radius: 0.33vw;
 }
 
+span.player_status_host {
+  background-color: var(--menu-color);
+}
+
 span.player_status_joined {
   background-color: var(--hud-color-green);
 }
 
+span.player_status_joining {
+  background-color: var(--hud-color-orange);
+}
+
 img.player_control {
   height: 70%;
+  width: 50%;
 }
 
 div.player_rank {
@@ -228,16 +224,17 @@ div.lobby_details_picture {
   justify-content: flex-end;
 }
 
-button#lobby_details_picture_title {
+button#lobby_details_title {
   background-color: rgba(0, 0, 0, 0.5) !important;
   justify-content: flex-end;
   align-items: center;
 }
 
-span#lobby_details_picture_title_text {
+span#lobby_details_title_text {
   font-family: "SignPainterHouseScript";
   font-size: 1.825vw;
   text-shadow: 0.045vw 0.045vw 0 black;
+  padding-left: 1%;
   padding-right: 1%;
 }
 
