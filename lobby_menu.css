@@ -33,6 +33,7 @@ div.menu_header {
 span#menu_header_descr {
   height: fit-content;
   font-family: "London60";
+  font-size: var(--menu-font-size);
   letter-spacing: 0.0165vw;
   color: var(--text-color);
   text-shadow: 0.1vw 0.1vw 0.075vw black;
@@ -170,7 +171,7 @@ span.player_rank_bg {
 }
 
 span.player_rank_icon {
-  background-color: var(--hud-color-heist);
+  background-color: var(--menu-color);
   -webkit-mask-image: url(images/icons/player_rank.svg);
   -webkit-mask-size: cover;
   position: absolute;

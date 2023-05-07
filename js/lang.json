@@ -1080,5 +1080,26 @@
     "gxt": "lobby_players_status_blocked",
     "american": "BLOCKED",
     "russian": "ЗАБЛОКИРОВАН"
+  },
+
+  {
+    "gxt": "lobby_details_creator",
+    "american": "Created By",
+    "russian": "Создатель"
+  },
+  {
+    "gxt": "lobby_details_rank",
+    "american": "Opens at Rank",
+    "russian": "Мин. уровень"
+  },
+  {
+    "gxt": "lobby_details_players",
+    "american": "Players",
+    "russian": "Игроки"
+  },
+  {
+    "gxt": "lobby_details_type",
+    "american": "Type",
+    "russian": "Тип дела"
   }
 ]
