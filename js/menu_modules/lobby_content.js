@@ -16,6 +16,9 @@ class LobbyWindow {
   currentCategory;
   currentCategoryIndex = -1;
 
+  playersSlots = 0;
+  playersCount = 0;
+
   constructor(id, lobbyInfo, lobbyCategories) {
     this.id = id;
     this.idSel = "#" + this.ID;
@@ -52,6 +55,8 @@ class LobbyWindow {
     rankSel.text(this.rank);
     playersSel.text(this.players);
     typeSel.text(this.jobType);
+
+    this.fillPlayerSlots(this.players);
   }
 
   fillCategories() {
@@ -61,6 +66,21 @@ class LobbyWindow {
       $("#" + category.ID).addClass("menu_category");
       this.categoriesCount++;
     });
+  }
+
+  fillPlayerSlots(lobbySlots) {
+    this.playersSlots = lobbySlots;
+    for (let i = 0; i < lobbySlots; i++) {
+      let blankPlayer = $(`<button id="lobby_players_${i}" class="menu_entry menu_entry_empty"></button>`);
+      $("#lobby_players").append(blankPlayer);
+    }
+
+    this.updateSlotsText(1, this.lobbySlots);
+  }
+
+  updateSlotsText(joinedPlayers, totalPlayers) {
+    let tabText = `${getLocalizedString("lobby_tab_1_players")} ${joinedPlayers} ${getLocalizedString("lobby_tab_1_of")} ${this.playersSlots}`;
+    $("#lobby_tab_1").text(tabText);
   }
 
   clickCategory(clickedCategory) {
@@ -100,7 +120,9 @@ class LobbyWindow {
 }
 
 class LobbyEntry extends MenuEntryList {
-  constructor(id, title, listItems, isEmpty, hideList) {
+  isMenuColor = false;
+
+  constructor(id, title, listItems, isEmpty, hideList, isMenuColor) {
     super(id, title, listItems, isEmpty, hideList);
 
     this.ID = id;
@@ -108,6 +130,7 @@ class LobbyEntry extends MenuEntryList {
     this.listItems = listItems;
     this.isEmpty = isEmpty;
     this.hideList = hideList;
+    this.isMenuColor = this.isMenuColor != undefined ? isMenuColor : this.isMenuColor;
   }
 
   createEntry(title, parentId, parentElements, index, rightLabel) {
@@ -119,6 +142,7 @@ class LobbyEntry extends MenuEntryList {
 
     blankEntry.append(blankEntryLabel);
     if (this.rightLabel != undefined) blankEntry.append(blankEntryLabelRight);
+    if (this.isMenuColor) blankEntry.addClass("menu_entry_menu_color");
     blankEntry.find(".element_label").text(this.title);
     if (parentElements.categoriesCount <= 0) {
       $("#" + parentId).prepend(blankEntry);
@@ -173,8 +197,9 @@ class LobbyPlayer {
 const lobbyDifficulty = new LobbyEntry("lobby_category_diff", "Difficulty", ["Easy", "Medium", "Hard"], false, false);
 const lobbyClothing = new LobbyEntry("lobby_category_clothing", "Heist Clothing", ["Host Selected", "Player Saved"], false, false);
 const lobbyCamera = new LobbyEntry("lobby_category_camera", "Camera Lock", ["menu_common_off", "First Person", "Third Person"], false, false);
+const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings", [], false, false, true);
 
-const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera] };
+const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 4, jobType: "Heist" };
 export const lobbyWindow = new LobbyWindow("lobby_menu", lobbyInfo, lobbyCategories);
 

@@ -4,21 +4,18 @@ import { localizeMenu } from "./menu_modules/menu_localization.js";
 
 const lobbyPlayersSel = $("#lobby_players");
 
-let playersSlots = 0;
-let playersCount = 0;
-
 //
 // STARTUP FUNCTIONS
 //
 
 const LOBBY_MENU = $("div.frontend_main_menu");
+const LOBBY_LOADING_SPINNER = $("div.menu_loading_spinner");
 
 async function loadLobby() {
   await localizeMenu();
 }
 
 function initLobbyContent() {
-  fillPlayerSlots(10);
   lobbyWindow.create();
 }
 
@@ -28,6 +25,7 @@ function onLobbyLoad() {
 }
 
 function showLobby() {
+  LOBBY_LOADING_SPINNER.hide();
   LOBBY_MENU.css({ visibility: "visible" });
   LOBBY_MENU.addClass("menu_fade");
 }
@@ -64,14 +62,6 @@ function addLobbyPlayer(playerName, playerRank, statusFlag, controlFlag) {
 
   lobbyPlayersSel.children().eq(playersCount).replaceWith(blankPlayer);
   playersCount++;
-}
-
-function fillPlayerSlots(lobbySlots) {
-  playersSlots = lobbySlots;
-  for (let i = 0; i < lobbySlots; i++) {
-    let blankPlayer = $(`<button id="lobby_players_${i}" class="menu_entry menu_entry_empty"></button>`);
-    lobbyPlayersSel.append(blankPlayer);
-  }
 }
 
 function clickCategory() {

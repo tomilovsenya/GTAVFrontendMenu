@@ -781,9 +781,22 @@ div.menu_window_active .menu_entry:not(.menu_entry_active):not(.menu_entry_empty
   background-color: var(--hover-color) !important;
 }
 
-button.menu_entry_active {
+button.menu_entry_active:not(.menu_entry_menu_color) {
   background-color: var(--focus-color) !important;
   color: var(--text-color-focus) !important;
+}
+
+button.menu_entry_active:is(.menu_entry_menu_color) {
+  background-color: var(--menu-color) !important;
+  /* color: var(--text-color-focus) !important; */
+}
+
+button.menu_entry_menu_color {
+  background-color: var(--menu-color-alpha);
+}
+
+button.menu_entry_menu_color:not(.menu_entry_active):not(.menu_entry_empty):hover {
+  background-color: var(--menu-color-alpha);
 }
 
 button.menu_entry:not(button.menu_entry_active) .menu_entry_zone_left,

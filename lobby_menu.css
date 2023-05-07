@@ -1,5 +1,7 @@
 :root {
   --menu-color: var(--hud-color-heist);
+  --menu-color-alpha: var(--hud-color-heist-shard);
+  --menu-color-hover: rgb(var(var(--menu-color)) / 0.5);
   --lobby-column-width: 49.75%;
 }
 

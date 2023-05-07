@@ -1028,5 +1028,26 @@
     "gxt": "store_pack_2_descr",
     "american": "Requires access to Grand Theft Auto Online for Xbox Series X|S to receive benefits. GTA+ is a monthly membership program delivering exclusive benefits including GTA$ and more each month. Available for GTA Online for Xbox Series X|S, GTA+ members can enjoy: • GTA$500,000 deposited monthly. • Access to claim vehicle-related benefits, including discounts and early access, or bonus cars, aircraft, and more. • Access to claim property-related benefits, including discounts and add-ons, or bonus properties. • Outfits, liveries, and other cosmetic items. • GTA$ and RP accelerator bonuses, and discounts on items. • Access to Member-only Shark Cards, which provide more value. Rockstar Games, Inc. © 2008–2022. Rockstar Games, Rockstar North, Grand Theft Auto, GTA Five, Grand Theft Auto Online, and R* are marks/logos/copyrights of Take-Two Interactive. All other marks and trademarks are properties of their respective owners. All rights reserved.",
     "russian": "Для получения бонусов требуется версия Grand Theft Auto Online для Xbox Series X|S. GTA+ – это ежемесячная подписка, дающая вам эксклюзивные бонусы каждый месяц, куда входят GTA $ и многое другое. Подписчикам программы GTA+, доступной для GTA Online на платформе Xbox Series X|S, полагаются: • 500 000 GTA $ каждый месяц • Бонусы на транспорт, в том числе скидки, ранний доступ, бонусные автомобили, авиатехника и не только • Бонусы на недвижимость, куда входят скидки, улучшения или бонусные объекты недвижимости • Костюмы, раскраски и прочие косметические товары • Бонусные GTA $ и RP, а также скидки на различные предметы • Доступ к более выгодным картам «Акула», эксклюзивным для подписчиков Rockstar Games, Inc. © 2008–2022. Rockstar Games, Rockstar North, Grand Theft Auto, GTA Five, Grand Theft Auto Online и R* являются знаками, логотипами или объектами интеллектуальной собственности Take-Two Interactive. Все остальные обозначения и товарные знаки являются собственностью соответствующих владельцев. Все права сохранены."
+  },
+
+  {
+    "gxt": "lobby_tab_0",
+    "american": "SETTINGS",
+    "russian": "НАСТРОЙКИ"
+  },
+  {
+    "gxt": "lobby_tab_1_players",
+    "american": "PLAYERS",
+    "russian": "ИГРОКИ"
+  },
+  {
+    "gxt": "lobby_tab_1_of",
+    "american": "OF",
+    "russian": "ИЗ"
+  },
+  {
+    "gxt": "lobby_tab_2",
+    "american": "DETAILS",
+    "russian": "ПОДРОБНОСТИ"
   }
 ]
