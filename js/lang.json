@@ -1049,5 +1049,31 @@
     "gxt": "lobby_tab_2",
     "american": "DETAILS",
     "russian": "ПОДРОБНОСТИ"
+  },
+
+  {
+    "gxt": "lobby_players_status_host",
+    "american": "HOST",
+    "russian": "ХОСТ"
+  },
+  {
+    "gxt": "lobby_players_status_joining",
+    "american": "JOINING",
+    "russian": "ВХОДИТ"
+  },
+  {
+    "gxt": "lobby_players_status_joined",
+    "american": "JOINED",
+    "russian": "ВОШЁЛ"
+  },
+  {
+    "gxt": "lobby_players_status_invited",
+    "american": "INVITED",
+    "russian": "ПРИГЛАШЁН"
+  },
+  {
+    "gxt": "lobby_players_status_blocked",
+    "american": "BLOCKED",
+    "russian": "ЗАБЛОКИРОВАН"
   }
 ]

@@ -217,11 +217,11 @@ class LobbyPlayer {
     this.index = playerIndex;
 
     let playerStatuses = [
-      { text: "HOST", class: "player_status_host" },
-      { text: "JOINING", class: "player_status_joining" },
-      { text: "JOINED", class: "player_status_joined" },
-      { text: "INVITED", class: "player_status_invited" },
-      { text: "BLOCKED", class: "player_status_blocked" },
+      { text: getLocalizedString("lobby_players_status_host"), class: "player_status_host", showRank: true },
+      { text: getLocalizedString("lobby_players_status_joining"), class: "player_status_joining", showRank: false },
+      { text: getLocalizedString("lobby_players_status_joined"), class: "player_status_joined", showRank: true },
+      { text: getLocalizedString("lobby_players_status_invited"), class: "player_status_invited", showRank: false },
+      { text: getLocalizedString("lobby_players_status_blocked"), class: "player_status_blocked", showRank: false },
     ];
     let playerControls = ["images/icons/control_pad.svg", "images/icons/control_mouse.svg"];
 
@@ -250,10 +250,11 @@ const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings"
 const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 1);
 const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 2, 1);
 const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 1, 1);
+const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 3, 1);
 
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 4, jobType: "Heist" };
-const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1, lobbyPlayer2];
+const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1, lobbyPlayer2, lobbyPlayer3];
 export const lobbyWindow = new LobbyWindow("lobby_window", lobbyInfo, lobbyCategories, lobbyPlayers);
 
 export let allLobbyEntries = [];

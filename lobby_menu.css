@@ -110,6 +110,10 @@ span.player_status_joining {
   background-color: var(--hud-color-orange);
 }
 
+span.player_status_invited {
+  background-color: var(--hud-color-red);
+}
+
 img.player_control {
   height: 70%;
   width: 50%;
