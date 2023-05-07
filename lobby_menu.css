@@ -111,7 +111,7 @@ span.player_status_joining {
   background-color: var(--hud-color-orange);
 }
 
-span.player_status_invited, span.player_status_blocked {
+span.player_status_invited, span.player_status_blocked, span.player_status_left {
   background-color: var(--hud-color-red);
 }
 

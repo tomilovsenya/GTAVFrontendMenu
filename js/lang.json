@@ -1067,6 +1067,11 @@
     "russian": "ВОШЁЛ"
   },
   {
+    "gxt": "lobby_players_status_left",
+    "american": "LEFT",
+    "russian": "ВЫШЕЛ"
+  },
+  {
     "gxt": "lobby_players_status_invited",
     "american": "INVITED",
     "russian": "ПРИГЛАШЁН"

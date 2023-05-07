@@ -280,8 +280,9 @@ class LobbyPlayer {
     else if (this.rank < 100) rankClassesString += " player_rank_number_bigger";
     let playerStatuses = [
       { text: getLocalizedString("lobby_players_status_host"), class: "player_status_host", showRank: true },
-      { text: getLocalizedString("lobby_players_status_joining"), class: "player_status_joining", showRank: false },
       { text: getLocalizedString("lobby_players_status_joined"), class: "player_status_joined", showRank: true },
+      { text: getLocalizedString("lobby_players_status_joining"), class: "player_status_joining", showRank: false },
+      { text: getLocalizedString("lobby_players_status_left"), class: "player_status_left", showRank: false },
       { text: getLocalizedString("lobby_players_status_invited"), class: "player_status_invited", showRank: false },
       { text: getLocalizedString("lobby_players_status_blocked"), class: "player_status_blocked", showRank: false },
     ];
@@ -304,9 +305,9 @@ const lobbyCamera = new LobbyEntry("lobby_category_camera", "Camera Lock", ["men
 const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings", [], false, false, true);
 
 const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 0);
-const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 2, 1);
+const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 1, 1);
 const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 2, 1);
-export const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 3, 1);
+export const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 4, 1);
 
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 8, jobType: "Heist" };
