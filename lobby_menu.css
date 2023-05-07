@@ -91,6 +91,26 @@ img.blip_tick {
   /* mask */
 }
 
+div.player_name {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+span.player_crew_tag {
+  min-width: 2vw;
+  background-color: white;
+  color: var(--text-color-focus);
+  font-family: "Cologne60";
+  font-size: 1.4vw;
+  line-height: 1.25vw;
+  text-align: center;
+  padding: 0 0.25vw;
+  border: 0.1vw solid grey;
+  border-radius: 5%;
+}
+
 span.player_status {
   background-color: var(--black-bg-color);
   font-family: "Cologne60";

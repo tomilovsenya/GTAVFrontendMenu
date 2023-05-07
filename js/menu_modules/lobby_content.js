@@ -228,14 +228,16 @@ class LobbyPlayer {
   idSel;
   name = "DefaultName";
   rank = 100;
+  crew = {};
   statusFlag = 0;
   controlFlag = 1;
   index = 0;
   isCreated = false;
 
-  constructor(playerName, playerRank, statusFlag, controlFlag, index) {
+  constructor(playerName, playerRank, playerCrew, statusFlag, controlFlag, index) {
     this.name = playerName;
     this.rank = playerRank;
+    this.crew = playerCrew;
     this.statusFlag = statusFlag;
     this.controlFlag = controlFlag;
     this.index = index != undefined ? index : 0;
@@ -252,8 +254,9 @@ class LobbyPlayer {
   create(parentSel, playerIndex) {
     this.updateProperties(playerIndex);
 
-    let blankPlayer = $(`<button id="${this.id}" class="menu_entry">
-    <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list"></div></button>`);
+    let blankPlayer = $(`<button id="${this.id}" class="menu_entry"><span class="player_joined"></span>
+    <div class="player_name"><span class="entry_label element_label_cond">${this.name}</span></div><div class="element_list"></div></button>`);
+    if (this.crew != undefined) blankPlayer.find(".player_name").append(`<span class="player_crew_tag">${this.crew.tag}</span>`);
 
     $(parentSel).find("#lobby_players").children(".menu_entry").eq(this.index).replaceWith(blankPlayer);
     this.isCreated = true;
@@ -304,10 +307,12 @@ const lobbyClothing = new LobbyEntry("lobby_category_clothing", "Heist Clothing"
 const lobbyCamera = new LobbyEntry("lobby_category_camera", "Camera Lock", ["menu_common_off", "First Person", "Third Person"], false, false);
 const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings", [], false, false, true);
 
-const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 0);
-const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 1, 1);
-const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 2, 1);
-export const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 4, 1);
+const crewRSG = { name: "Rockstar Games", tag: "RSG" };
+
+const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, crewRSG, 0, 0);
+const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, undefined, 1, 1);
+const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, undefined, 2, 1);
+export const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, undefined, 4, 1);
 
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 8, jobType: "Heist" };
