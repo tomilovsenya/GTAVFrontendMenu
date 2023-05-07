@@ -74,7 +74,7 @@ class LobbyWindow {
   fillPlayerSlots(lobbySlots) {
     this.playersSlots = lobbySlots;
     for (let i = 0; i < lobbySlots; i++) {
-      let blankPlayer = $(`<button id="lobby_players_${i}" class="menu_entry menu_entry_empty"></button>`);
+      let blankPlayer = $(`<button id="lobby_players_player_${i}" class="menu_entry menu_entry_empty"></button>`);
       $("#lobby_players").append(blankPlayer);
     }
 
@@ -83,7 +83,7 @@ class LobbyWindow {
 
   fillPlayers() {
     if (this.playersCount >= this.playersSlots) {
-      console.warn(`Can't add more players as all ${this.playersSlots} slots are already full`);
+      if (IS_DEBUG) console.warn(`Can't add more players as all ${this.playersSlots} slots are already full`);
       return;
     }
 
@@ -101,8 +101,32 @@ class LobbyWindow {
   }
 
   addPlayer(newPlayer) {
-    newPlayer.create(this.idSel);
+    if (this.playersCount >= this.playersSlots) {
+      if (IS_DEBUG) console.warn(`Can't add more players as all ${this.playersSlots} slots are already full`);
+      return;
+    }
+    if (this.lobbyPlayers.includes(newPlayer)) {
+      if (IS_DEBUG) console.warn(`Can't add ${newPlayer.id} as it's already is in ${this.id}`);
+      return;
+    }
+
+    newPlayer.create(this.idSel, this.playersCount);
+    this.lobbyPlayers.push(newPlayer);
     this.playersCount++;
+    this.updateSlotsText(this.playersCount, this.playersSlots);
+  }
+
+  removePlayer(removedPlayer) {
+    if (!this.lobbyPlayers.includes(removedPlayer)) {
+      if (IS_DEBUG) console.warn(`Can't remove player ${removedPlayer.name} as it's not in ${this.id} players list`);
+      return;
+    }
+
+    let blankPlayer = $(`<button id="lobby_players_player_${removedPlayer.index}" class="menu_entry menu_entry_empty"></button>`);
+    $(removedPlayer.idSel).replaceWith(blankPlayer);
+
+    this.lobbyPlayers = this.lobbyPlayers.filter((players) => players !== removedPlayer);
+    this.playersCount--;
     this.updateSlotsText(this.playersCount, this.playersSlots);
   }
 
@@ -202,6 +226,8 @@ class LobbyEntry extends MenuEntryList {
 }
 
 class LobbyPlayer {
+  id = "lobby_players_0";
+  idSel;
   name = "DefaultName";
   rank = 100;
   statusFlag = 0;
@@ -213,11 +239,19 @@ class LobbyPlayer {
     this.rank = playerRank;
     this.statusFlag = statusFlag;
     this.controlFlag = controlFlag;
+    this.index = index != undefined ? index : 0;
+    this.id = "lobby_players_player_" + this.index;
+    this.idSel = "#" + this.id;
+  }
+
+  updateProperties(index) {
     this.index = index;
+    this.id = "lobby_players_player_" + this.index;
+    this.idSel = "#" + this.id;
   }
 
   create(parentSel, playerIndex) {
-    this.index = playerIndex;
+    this.updateProperties(playerIndex);
 
     let playerStatuses = [
       { text: getLocalizedString("lobby_players_status_host"), class: "player_status_host", showRank: true },
@@ -233,7 +267,7 @@ class LobbyPlayer {
     else if (this.rank < 100) rankClassesString = "player_rank_number_bigger";
     else rankClassesString = "";
 
-    let blankPlayer = $(`<button id="lobby_players_${this.index}" class="menu_entry">
+    let blankPlayer = $(`<button id="${this.id}" class="menu_entry">
     <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list">
     <span class="player_status ${playerStatuses[this.statusFlag].class}">${playerStatuses[this.statusFlag].text}</span>
     <div class="player_control ${controlStatuses[this.controlFlag]}"></div>
@@ -241,8 +275,10 @@ class LobbyPlayer {
     <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div></div></button>`);
 
     $(parentSel).find("#lobby_players").children(".menu_entry").eq(this.index).replaceWith(blankPlayer);
-    console.log(parentSel);
+    if (IS_DEBUG) console.log("Created LobbyEntry: " + this.id);
   }
+
+  remove(parentSel) {}
 }
 
 const lobbyDifficulty = new LobbyEntry("lobby_category_diff", "Difficulty", ["Easy", "Medium", "Hard"], false, false);
@@ -253,11 +289,11 @@ const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings"
 const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 0);
 const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 2, 1);
 const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 1, 1);
-const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 3, 1);
+export const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 3, 1);
 
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
-const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 4, jobType: "Heist" };
-const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1, lobbyPlayer2, lobbyPlayer3];
+const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 8, jobType: "Heist" };
+const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1, lobbyPlayer2];
 export const lobbyWindow = new LobbyWindow("lobby_window", lobbyInfo, lobbyCategories, lobbyPlayers);
 
 export let allLobbyEntries = [];

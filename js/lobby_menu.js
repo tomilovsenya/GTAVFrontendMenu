@@ -1,5 +1,5 @@
 import { IS_DEBUG } from "./common_menu.js";
-import { allLobbyEntries, lobbyWindow } from "./menu_modules/lobby_content.js";
+import { allLobbyEntries, lobbyPlayer3, lobbyWindow } from "./menu_modules/lobby_content.js";
 import { localizeMenu } from "./menu_modules/menu_localization.js";
 
 //
@@ -65,8 +65,10 @@ window.addEventListener("keydown", function (e) {
   if (!IS_DEBUG) e.preventDefault();
 
   if (["KeyF"].indexOf(e.code) > -1) {
+    lobbyWindow.addPlayer(lobbyPlayer3);
   }
   if (["KeyG"].indexOf(e.code) > -1) {
+    lobbyWindow.removePlayer(lobbyPlayer3);
   }
   if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
     lobbyWindow.scrollVertical(0);
