@@ -122,9 +122,7 @@ class LobbyWindow {
       return;
     }
 
-    let blankPlayer = $(`<button id="lobby_players_player_${removedPlayer.index}" class="menu_entry menu_entry_empty"></button>`);
-    $(removedPlayer.idSel).replaceWith(blankPlayer);
-
+    removedPlayer.remove(removedPlayer.idSel, removedPlayer.index);
     this.lobbyPlayers = this.lobbyPlayers.filter((players) => players !== removedPlayer);
     this.playersCount--;
     this.updateSlotsText(this.playersCount, this.playersSlots);
@@ -233,6 +231,7 @@ class LobbyPlayer {
   statusFlag = 0;
   controlFlag = 1;
   index = 0;
+  isCreated = false;
 
   constructor(playerName, playerRank, statusFlag, controlFlag, index) {
     this.name = playerName;
@@ -253,6 +252,33 @@ class LobbyPlayer {
   create(parentSel, playerIndex) {
     this.updateProperties(playerIndex);
 
+    let blankPlayer = $(`<button id="${this.id}" class="menu_entry">
+    <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list"></div></button>`);
+
+    $(parentSel).find("#lobby_players").children(".menu_entry").eq(this.index).replaceWith(blankPlayer);
+    this.isCreated = true;
+    this.updateStatus(this.statusFlag);
+    if (IS_DEBUG) console.log("Created LobbyEntry: " + this.id);
+  }
+
+  remove(playerSel, playerIndex) {
+    let blankPlayer = $(`<button id="lobby_players_player_${playerIndex}" class="menu_entry menu_entry_empty"></button>`);
+
+    $(playerSel).replaceWith(blankPlayer);
+    this.isCreated = false;
+  }
+
+  updateStatus(statusFlag) {
+    if (!this.isCreated) {
+      if (IS_DEBUG) console.log("Can't update status of item that's not created: " + this.id);
+      return;
+    }
+
+    let controlStatuses = ["player_control_pad", "player_control_mouse"];
+    let rankClassesString;
+    if (this.rank >= 1000) rankClassesString = "player_rank_number_smaller";
+    else if (this.rank < 100) rankClassesString = "player_rank_number_bigger";
+    else rankClassesString = "";
     let playerStatuses = [
       { text: getLocalizedString("lobby_players_status_host"), class: "player_status_host", showRank: true },
       { text: getLocalizedString("lobby_players_status_joining"), class: "player_status_joining", showRank: false },
@@ -260,25 +286,17 @@ class LobbyPlayer {
       { text: getLocalizedString("lobby_players_status_invited"), class: "player_status_invited", showRank: false },
       { text: getLocalizedString("lobby_players_status_blocked"), class: "player_status_blocked", showRank: false },
     ];
-    let controlStatuses = ["player_control_pad", "player_control_mouse"];
+    let newStatus = playerStatuses[statusFlag];
 
-    let rankClassesString;
-    if (this.rank >= 1000) rankClassesString = "player_rank_number_smaller";
-    else if (this.rank < 100) rankClassesString = "player_rank_number_bigger";
-    else rankClassesString = "";
-
-    let blankPlayer = $(`<button id="${this.id}" class="menu_entry">
-    <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list">
-    <span class="player_status ${playerStatuses[this.statusFlag].class}">${playerStatuses[this.statusFlag].text}</span>
-    <div class="player_control ${controlStatuses[this.controlFlag]}"></div>
+    let blankStatus = $(`<span class="player_status ${newStatus.class}">${newStatus.text}</span>`);
+    let blankRank = $(`<div class="player_control ${controlStatuses[this.controlFlag]}"></div>
     <div class="player_rank"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
-    <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div></div></button>`);
+    <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div>`);
 
-    $(parentSel).find("#lobby_players").children(".menu_entry").eq(this.index).replaceWith(blankPlayer);
-    if (IS_DEBUG) console.log("Created LobbyEntry: " + this.id);
+    $(this.idSel).find(".element_list").empty();
+    $(this.idSel).find(".element_list").prepend(blankStatus);
+    if (newStatus.showRank) $(this.idSel).find(".element_list").append(blankRank);
   }
-
-  remove(parentSel) {}
 }
 
 const lobbyDifficulty = new LobbyEntry("lobby_category_diff", "Difficulty", ["Easy", "Medium", "Hard"], false, false);

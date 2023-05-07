@@ -70,6 +70,9 @@ window.addEventListener("keydown", function (e) {
   if (["KeyG"].indexOf(e.code) > -1) {
     lobbyWindow.removePlayer(lobbyPlayer3);
   }
+  if (["KeyH"].indexOf(e.code) > -1) {
+    lobbyPlayer3.updateStatus(1);
+  }
   if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
     lobbyWindow.scrollVertical(0);
   }
