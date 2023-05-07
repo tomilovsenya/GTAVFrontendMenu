@@ -62,6 +62,8 @@ function findMenuEntryByID(id) {
 //
 
 window.addEventListener("keydown", function (e) {
+  if (!IS_DEBUG) e.preventDefault();
+
   if (["KeyF"].indexOf(e.code) > -1) {
   }
   if (["KeyG"].indexOf(e.code) > -1) {

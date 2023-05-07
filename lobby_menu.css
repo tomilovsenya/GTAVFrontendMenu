@@ -155,7 +155,11 @@ span.player_rank_number {
 }
 
 span.player_rank_number_smaller {
-  font-size: 1.15vw;
+  font-size: 1.15vw !important;
+}
+
+span.player_rank_number_bigger {
+  font-size: 1.75vw !important;
 }
 
 span.player_joined {
@@ -166,18 +170,9 @@ span.player_joined {
   left: 0;
 }
 
-div.menu_categories .menu_category {
-  /* margin-bottom: 0; */
-}
-
 div.menu_categories .menu_entry_empty,
 div.menu_elements_scrollable .menu_entry_empty {
   background-color: var(--black-bg-color);
-}
-
-div#lobby_window {
-  width: var(--menu-wnd-width);
-  height: var(--menu-wnd-height);
 }
 
 div#lobby_elements {
@@ -185,23 +180,6 @@ div#lobby_elements {
   height: fit-content;
   flex-direction: row;
   justify-content: space-between;
-}
-
-div.lobby_players {
-  height: fit-content;
-  border: 0px;
-  float: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  justify-self: flex-end;
-  overflow: hidden;
-  position: sticky;
-  top: 0;
-}
-
-div.lobby_players .menu_entry:last-of-type {
-  margin-bottom: 0;
 }
 
 div.lobby_details {

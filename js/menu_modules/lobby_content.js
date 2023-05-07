@@ -225,12 +225,17 @@ class LobbyPlayer {
     ];
     let playerControls = ["images/icons/control_pad.svg", "images/icons/control_mouse.svg"];
 
+    let rankClassesString;
+    if (this.rank >= 1000) rankClassesString = "player_rank_number_smaller";
+    else if (this.rank < 100) rankClassesString = "player_rank_number_bigger";
+    else rankClassesString = "";
+
     let blankPlayer = $(`<button id="lobby_players_${this.index}" class="menu_entry">
     <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list">
     <span class="player_status ${playerStatuses[this.statusFlag].class}">${playerStatuses[this.statusFlag].text}</span>
     <img class="player_control" src="${playerControls[this.controlFlag]}" alt="">
     <div class="player_rank"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
-    <span class="player_rank_number player_rank_number_smaller">${this.rank}</span></div></div></button>`);
+    <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div></div></button>`);
 
     $(parentSel).find("#lobby_players").children(".menu_entry").eq(this.index).replaceWith(blankPlayer);
     console.log(parentSel);
@@ -243,11 +248,12 @@ const lobbyCamera = new LobbyEntry("lobby_category_camera", "Camera Lock", ["men
 const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings", [], false, false, true);
 
 const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 1);
-const lobbyPlayer1 = new LobbyPlayer("GTADev1", 2500, 2, 1);
+const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 2, 1);
+const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 1, 1);
 
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 4, jobType: "Heist" };
-const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1];
+const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1, lobbyPlayer2];
 export const lobbyWindow = new LobbyWindow("lobby_window", lobbyInfo, lobbyCategories, lobbyPlayers);
 
 export let allLobbyEntries = [];
