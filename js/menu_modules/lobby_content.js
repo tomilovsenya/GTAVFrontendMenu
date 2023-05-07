@@ -275,10 +275,9 @@ class LobbyPlayer {
     }
 
     let controlStatuses = ["player_control_pad", "player_control_mouse"];
-    let rankClassesString;
-    if (this.rank >= 1000) rankClassesString = "player_rank_number_smaller";
-    else if (this.rank < 100) rankClassesString = "player_rank_number_bigger";
-    else rankClassesString = "";
+    let rankClassesString = "player_rank";
+    if (this.rank >= 1000) rankClassesString += " player_rank_number_smaller";
+    else if (this.rank < 100) rankClassesString += " player_rank_number_bigger";
     let playerStatuses = [
       { text: getLocalizedString("lobby_players_status_host"), class: "player_status_host", showRank: true },
       { text: getLocalizedString("lobby_players_status_joining"), class: "player_status_joining", showRank: false },
@@ -290,7 +289,7 @@ class LobbyPlayer {
 
     let blankStatus = $(`<span class="player_status ${newStatus.class}">${newStatus.text}</span>`);
     let blankRank = $(`<div class="player_control ${controlStatuses[this.controlFlag]}"></div>
-    <div class="player_rank"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
+    <div class="${rankClassesString}"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
     <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div>`);
 
     $(this.idSel).find(".element_list").empty();
@@ -306,7 +305,7 @@ const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings"
 
 const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 0);
 const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 2, 1);
-const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 1, 1);
+const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 2, 1);
 export const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 3, 1);
 
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
