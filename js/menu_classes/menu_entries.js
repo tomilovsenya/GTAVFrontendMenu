@@ -703,7 +703,7 @@ export class MenuEntryList extends MenuEntry {
       });
     }
 
-    this.#prepareList(this.idSel);
+    this.prepareList(this.idSel);
   }
 
   activate() {
@@ -723,7 +723,7 @@ export class MenuEntryList extends MenuEntry {
     else $(this.listSel).hide();
   }
 
-  #prepareList(menuEntryList) {
+  prepareList(menuEntryList) {
     let blankEntryLabelRight = `<span class="element_label_right label_translatable"></span>`;
 
     this.listCollection.items.forEach((item, index) => {

@@ -1,42 +1,14 @@
+import { lobbyWindow } from "./menu_modules/lobby_content.js";
+import { localizeMenu } from "./menu_modules/menu_localization.js";
+
 const lobbyPlayersSel = $("#lobby_players");
 
 let playersSlots = 0;
 let playersCount = 0;
 
-class LobbyPlayer {
-  name = "DefaultName";
-  rank = 100;
-  statusFlag = 0;
-  controlFlag = 1;
-
-  constructor(playerName, playerRank, statusFlag, controlFlag) {
-    this.name = playerName;
-    this.rank = playerRank;
-    this.statusFlag = statusFlag;
-    this.controlFlag = controlFlag;
-  }
-
-  add() {}
-}
-
-function setLobbyInfo(titleString, descrString, creatorString, minRank, playersCount, jobType) {
-  let headerSel = $("#menu_header_text");
-  let descrSel = $("#menu_header_descr");
-  let detailsSel = $("#lobby_details_title_text");
-  let creatorSel = $("#lobby_details_creator_text");
-  let rankSel = $("#lobby_details_rank_text");
-  let playersSel = $("#lobby_details_players_text");
-  let typeSel = $("#lobby_details_type_text");
-
-  headerSel.text(titleString);
-  descrSel.text(descrString);
-
-  detailsSel.text(titleString);
-  creatorSel.text(creatorString);
-  rankSel.text(minRank);
-  playersSel.text(playersCount);
-  typeSel.text(jobType);
-}
+//
+// FUNCTIONS
+//
 
 function addLobbyPlayer(playerName, playerRank, statusFlag, controlFlag) {
   if (playersCount >= playersSlots) {
@@ -72,11 +44,45 @@ function fillPlayerSlots(lobbySlots) {
   }
 }
 
+function clickCategory() {
+  if (!currentWindow.active) return;
+
+  let clickedCategory = findMenuEntryByID($(this).attr("id"));
+  clickedCategory.parentElements.clickCategory(clickedCategory);
+}
+
+function findMenuEntryByID(id) {
+  let foundObject = menuContent.allMenuEntries.find((entry) => entry.ID === id);
+  if (foundObject != undefined) {
+    if (IS_DEBUG) {
+      console.log("Found MenuEntry by ID: " + id);
+      console.log(foundObject);
+    }
+    return foundObject;
+  } else {
+    console.warn("MenuEntry with such ID not found: " + id);
+    return 0;
+  }
+}
+
+//
+// EVENT HANDLERS
+//
+
 window.addEventListener("keydown", function (e) {
   if (["KeyF"].indexOf(e.code) > -1) {
     addLobbyPlayer("GTADev" + playersCount, Math.round(Math.random() * 1500), 0, 1);
   }
+  if (["KeyG"].indexOf(e.code) > -1) {
+    lobbyWindow.create();
+  }
 });
 
-fillPlayerSlots(5);
-setLobbyInfo("Frontend Lobby Menu", "Job brief description.", "GTAMen", 15, 8, "Heist Finale");
+$(".menu_categories").on("click", ".menu_category", clickCategory);
+
+//
+// STARTUP FUNCTIONS
+//
+
+await localizeMenu();
+fillPlayerSlots(10);
