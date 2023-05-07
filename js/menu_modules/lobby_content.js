@@ -223,7 +223,7 @@ class LobbyPlayer {
       { text: getLocalizedString("lobby_players_status_invited"), class: "player_status_invited", showRank: false },
       { text: getLocalizedString("lobby_players_status_blocked"), class: "player_status_blocked", showRank: false },
     ];
-    let playerControls = ["images/icons/control_pad.svg", "images/icons/control_mouse.svg"];
+    let controlStatuses = ["player_control_pad", "player_control_mouse"];
 
     let rankClassesString;
     if (this.rank >= 1000) rankClassesString = "player_rank_number_smaller";
@@ -233,7 +233,7 @@ class LobbyPlayer {
     let blankPlayer = $(`<button id="lobby_players_${this.index}" class="menu_entry">
     <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list">
     <span class="player_status ${playerStatuses[this.statusFlag].class}">${playerStatuses[this.statusFlag].text}</span>
-    <img class="player_control" src="${playerControls[this.controlFlag]}" alt="">
+    <div class="player_control ${controlStatuses[this.controlFlag]}"></div>
     <div class="player_rank"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
     <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div></div></button>`);
 
@@ -247,7 +247,7 @@ const lobbyClothing = new LobbyEntry("lobby_category_clothing", "Heist Clothing"
 const lobbyCamera = new LobbyEntry("lobby_category_camera", "Camera Lock", ["menu_common_off", "First Person", "Third Person"], false, false);
 const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings", [], false, false, true);
 
-const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 1);
+const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 0);
 const lobbyPlayer1 = new LobbyPlayer("GTADev1", 10, 2, 1);
 const lobbyPlayer2 = new LobbyPlayer("GTADev2", 2500, 1, 1);
 const lobbyPlayer3 = new LobbyPlayer("GTADev3", 500, 3, 1);

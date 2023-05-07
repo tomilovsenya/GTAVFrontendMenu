@@ -1,4 +1,5 @@
 :root {
+  --menu-background: url("images/HumaneLabsRaid06.jpg");
   --menu-color: var(--hud-color-heist);
   --menu-color-alpha: var(--hud-color-heist-shard);
   --menu-color-hover: rgb(var(var(--menu-color)) / 0.5);
@@ -73,8 +74,8 @@ div.menu_elements_scrollable .menu_entry:not(.menu_entry_empty) {
   background-color: var(--hud-color-heist-shard) !important;
 }
 
-div.menu_elements_scrollable .element_list {
-  gap: 0.75vw;
+div#lobby_players .element_list {
+  gap: 0.25vw;
 }
 
 div.lobby_details .element_list {
@@ -114,9 +115,20 @@ span.player_status_invited {
   background-color: var(--hud-color-red);
 }
 
-img.player_control {
+div.player_control {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.5vw;
   height: 70%;
-  width: 50%;
+}
+
+div.player_control_pad {
+  background-image: url(images/icons/control_pad.svg);
+}
+
+div.player_control_mouse {
+  background-image: url(images/icons/control_mouse.svg);
 }
 
 div.player_rank {
