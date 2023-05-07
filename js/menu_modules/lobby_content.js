@@ -78,7 +78,7 @@ class LobbyWindow {
       $("#lobby_players").append(blankPlayer);
     }
 
-    this.updateSlotsText(1, this.lobbySlots);
+    this.updateSlotsText(this.playersCount, this.playersSlots);
   }
 
   fillPlayers() {
@@ -91,16 +91,19 @@ class LobbyWindow {
       player.create(this.idSel, this.playersCount);
       this.playersCount++;
     });
+
+    this.updateSlotsText(this.playersCount, this.playersSlots);
   }
 
   updateSlotsText(joinedPlayers, totalPlayers) {
-    let tabText = `${getLocalizedString("lobby_tab_1_players")} ${joinedPlayers} ${getLocalizedString("lobby_tab_1_of")} ${this.playersSlots}`;
+    let tabText = `${getLocalizedString("lobby_tab_1_players")} ${joinedPlayers} ${getLocalizedString("lobby_tab_1_of")} ${totalPlayers}`;
     $("#lobby_tab_1").text(tabText);
   }
 
   addPlayer(newPlayer) {
     newPlayer.create(this.idSel);
     this.playersCount++;
+    this.updateSlotsText(this.playersCount, this.playersSlots);
   }
 
   clickCategory(clickedCategory) {
