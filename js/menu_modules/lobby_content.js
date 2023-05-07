@@ -4,6 +4,7 @@ import { getLocalizedString } from "./menu_localization.js";
 
 class LobbyWindow {
   id = "default_lobby";
+  idSel;
   title = "Lobby Default Title";
   descr = "Job default description.";
   creator = "Default Creator";
@@ -15,13 +16,14 @@ class LobbyWindow {
   currentContext = 0;
   currentCategory;
   currentCategoryIndex = -1;
+  lobbyPlayers = [];
 
   playersSlots = 0;
   playersCount = 0;
 
-  constructor(id, lobbyInfo, lobbyCategories) {
+  constructor(id, lobbyInfo, lobbyCategories, lobbyPlayers) {
     this.id = id;
-    this.idSel = "#" + this.ID;
+    this.idSel = "#" + this.id;
     this.title = lobbyInfo.title;
     this.descr = lobbyInfo.descr;
     this.creator = lobbyInfo.creator;
@@ -29,11 +31,14 @@ class LobbyWindow {
     this.players = lobbyInfo.players;
     this.jobType = lobbyInfo.jobType;
     this.lobbyCategories = lobbyCategories;
+    this.lobbyPlayers = lobbyPlayers;
   }
 
   create() {
     this.fillInfo();
     this.fillCategories();
+    this.fillPlayerSlots(this.players);
+    this.fillPlayers();
     this.currentContext = 0;
     this.updateSelection(0);
   }
@@ -55,8 +60,6 @@ class LobbyWindow {
     rankSel.text(this.rank);
     playersSel.text(this.players);
     typeSel.text(this.jobType);
-
-    this.fillPlayerSlots(this.players);
   }
 
   fillCategories() {
@@ -78,9 +81,26 @@ class LobbyWindow {
     this.updateSlotsText(1, this.lobbySlots);
   }
 
+  fillPlayers() {
+    if (this.playersCount >= this.playersSlots) {
+      console.warn(`Can't add more players as all ${this.playersSlots} slots are already full`);
+      return;
+    }
+
+    this.lobbyPlayers.forEach((player) => {
+      player.create(this.idSel, this.playersCount);
+      this.playersCount++;
+    });
+  }
+
   updateSlotsText(joinedPlayers, totalPlayers) {
     let tabText = `${getLocalizedString("lobby_tab_1_players")} ${joinedPlayers} ${getLocalizedString("lobby_tab_1_of")} ${this.playersSlots}`;
     $("#lobby_tab_1").text(tabText);
+  }
+
+  addPlayer(newPlayer) {
+    newPlayer.create(this.idSel);
+    this.playersCount++;
   }
 
   clickCategory(clickedCategory) {
@@ -183,15 +203,38 @@ class LobbyPlayer {
   rank = 100;
   statusFlag = 0;
   controlFlag = 1;
+  index = 0;
 
-  constructor(playerName, playerRank, statusFlag, controlFlag) {
+  constructor(playerName, playerRank, statusFlag, controlFlag, index) {
     this.name = playerName;
     this.rank = playerRank;
     this.statusFlag = statusFlag;
     this.controlFlag = controlFlag;
+    this.index = index;
   }
 
-  add() {}
+  create(parentSel, playerIndex) {
+    this.index = playerIndex;
+
+    let playerStatuses = [
+      { text: "HOST", class: "player_status_host" },
+      { text: "JOINING", class: "player_status_joining" },
+      { text: "JOINED", class: "player_status_joined" },
+      { text: "INVITED", class: "player_status_invited" },
+      { text: "BLOCKED", class: "player_status_blocked" },
+    ];
+    let playerControls = ["images/icons/control_pad.svg", "images/icons/control_mouse.svg"];
+
+    let blankPlayer = $(`<button id="lobby_players_${this.index}" class="menu_entry">
+    <span class="player_joined"></span><span class="entry_label element_label_cond">${this.name}</span><div class="element_list">
+    <span class="player_status ${playerStatuses[this.statusFlag].class}">${playerStatuses[this.statusFlag].text}</span>
+    <img class="player_control" src="${playerControls[this.controlFlag]}" alt="">
+    <div class="player_rank"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
+    <span class="player_rank_number player_rank_number_smaller">${this.rank}</span></div></div></button>`);
+
+    $(parentSel).find("#lobby_players").children(".menu_entry").eq(this.index).replaceWith(blankPlayer);
+    console.log(parentSel);
+  }
 }
 
 const lobbyDifficulty = new LobbyEntry("lobby_category_diff", "Difficulty", ["Easy", "Medium", "Hard"], false, false);
@@ -199,9 +242,13 @@ const lobbyClothing = new LobbyEntry("lobby_category_clothing", "Heist Clothing"
 const lobbyCamera = new LobbyEntry("lobby_category_camera", "Camera Lock", ["menu_common_off", "First Person", "Third Person"], false, false);
 const lobbyConfirm = new LobbyEntry("lobby_category_confirm", "Confirm Settings", [], false, false, true);
 
+const lobbyPlayer0 = new LobbyPlayer("GTADev0", 250, 0, 1);
+const lobbyPlayer1 = new LobbyPlayer("GTADev1", 2500, 2, 1);
+
 const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyClothing, lobbyCamera, lobbyConfirm] };
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 4, jobType: "Heist" };
-export const lobbyWindow = new LobbyWindow("lobby_menu", lobbyInfo, lobbyCategories);
+const lobbyPlayers = [lobbyPlayer0, lobbyPlayer1];
+export const lobbyWindow = new LobbyWindow("lobby_window", lobbyInfo, lobbyCategories, lobbyPlayers);
 
 export let allLobbyEntries = [];
 
