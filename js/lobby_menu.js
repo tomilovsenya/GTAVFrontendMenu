@@ -1,10 +1,40 @@
-import { lobbyWindow } from "./menu_modules/lobby_content.js";
+import { IS_DEBUG } from "./common_menu.js";
+import { allLobbyEntries, lobbyWindow } from "./menu_modules/lobby_content.js";
 import { localizeMenu } from "./menu_modules/menu_localization.js";
 
 const lobbyPlayersSel = $("#lobby_players");
 
 let playersSlots = 0;
 let playersCount = 0;
+
+//
+// STARTUP FUNCTIONS
+//
+
+const LOBBY_MENU = $("div.frontend_main_menu");
+
+async function loadLobby() {
+  await localizeMenu();
+}
+
+function initLobbyContent() {
+  fillPlayerSlots(10);
+  lobbyWindow.create();
+}
+
+function onLobbyLoad() {
+  initLobbyContent();
+  showLobby();
+}
+
+function showLobby() {
+  LOBBY_MENU.css({ visibility: "visible" });
+  LOBBY_MENU.addClass("menu_fade");
+}
+
+window.onload = () => {
+  loadLobby().then(() => onLobbyLoad());
+};
 
 //
 // FUNCTIONS
@@ -45,14 +75,14 @@ function fillPlayerSlots(lobbySlots) {
 }
 
 function clickCategory() {
-  if (!currentWindow.active) return;
+  // if (!currentWindow.active) return;
 
   let clickedCategory = findMenuEntryByID($(this).attr("id"));
   clickedCategory.parentElements.clickCategory(clickedCategory);
 }
 
 function findMenuEntryByID(id) {
-  let foundObject = menuContent.allMenuEntries.find((entry) => entry.ID === id);
+  let foundObject = allLobbyEntries.find((entry) => entry.ID === id);
   if (foundObject != undefined) {
     if (IS_DEBUG) {
       console.log("Found MenuEntry by ID: " + id);
@@ -74,15 +104,13 @@ window.addEventListener("keydown", function (e) {
     addLobbyPlayer("GTADev" + playersCount, Math.round(Math.random() * 1500), 0, 1);
   }
   if (["KeyG"].indexOf(e.code) > -1) {
-    lobbyWindow.create();
+  }
+  if (["ArrowUp", "KeyW"].indexOf(e.code) > -1) {
+    lobbyWindow.scrollVertical(0);
+  }
+  if (["ArrowDown", "KeyS"].indexOf(e.code) > -1) {
+    lobbyWindow.scrollVertical(1);
   }
 });
 
 $(".menu_categories").on("click", ".menu_category", clickCategory);
-
-//
-// STARTUP FUNCTIONS
-//
-
-await localizeMenu();
-fillPlayerSlots(10);

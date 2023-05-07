@@ -1,3 +1,4 @@
+import { IS_DEBUG } from "../common_menu.js";
 import { MenuCategory, MenuEntry, MenuEntryList, MenuWindow } from "../menu_classes/menu_entries.js";
 import { getLocalizedString } from "./menu_localization.js";
 
@@ -11,6 +12,9 @@ class LobbyWindow {
   jobType = "Default Job";
   lobbyCategories = {};
   categoriesCount = 0;
+  currentContext = 0;
+  currentCategory;
+  currentCategoryIndex = -1;
 
   constructor(id, lobbyInfo, lobbyCategories) {
     this.id = id;
@@ -27,6 +31,8 @@ class LobbyWindow {
   create() {
     this.fillInfo();
     this.fillCategories();
+    this.currentContext = 0;
+    this.updateSelection(0);
   }
 
   fillInfo() {
@@ -55,6 +61,41 @@ class LobbyWindow {
       $("#" + category.ID).addClass("menu_category");
       this.categoriesCount++;
     });
+  }
+
+  clickCategory(clickedCategory) {
+    if (this.currentContext == 0) this.updateSelection(clickedCategory.index);
+  }
+
+  updateSelection(newSelection) {
+    if (this.currentCategory != undefined && this.currentCategory.index == newSelection) {
+      if (IS_DEBUG) console.log("Clicked already active category: " + this.currentCategory.ID);
+      return;
+    }
+    if (this.currentCategory != undefined) this.currentCategory.deactivate();
+
+    this.currentCategoryIndex = newSelection;
+    this.currentCategory = lobbyCategories.list[this.currentCategoryIndex];
+    this.currentCategory.activate();
+  }
+
+  scrollVertical(scrollDir) {
+    let newSelection;
+
+    switch (scrollDir) {
+      case 0: {
+        if (this.currentCategoryIndex == 0) newSelection = this.lobbyCategories.list.length - 1;
+        else newSelection = this.currentCategoryIndex - 1;
+        break;
+      }
+      case 1: {
+        if (this.currentCategoryIndex < this.lobbyCategories.list.length - 1) newSelection = this.currentCategoryIndex + 1;
+        else newSelection = 0;
+        break;
+      }
+    }
+
+    this.updateSelection(newSelection);
   }
 }
 
@@ -137,6 +178,6 @@ const lobbyCategories = { id: "lobby_categories", list: [lobbyDifficulty, lobbyC
 const lobbyInfo = { title: "Humane Labs Raid", descr: "Humane Labs descr.", creator: "Rockstar", rank: 25, players: 4, jobType: "Heist" };
 export const lobbyWindow = new LobbyWindow("lobby_menu", lobbyInfo, lobbyCategories);
 
-let allLobbyEntries = [];
+export let allLobbyEntries = [];
 
 // lobbyCategories.createEntry(lobbyCategories.title, "lobby_categories");

@@ -140,7 +140,8 @@
 }
 
 @media (aspect-ratio: 21/9) {
-  :root {}
+  :root {
+  }
 
   div.frontend_main_menu {
     /* background-color: var(--hud-color-trevor-alpha) !important; */
@@ -265,6 +266,10 @@ span#menu_warning_message_text {
   border-top: 0.2vw solid white;
   border-bottom: 0.2vw solid white;
   padding: 0.55vw 2.5vw 0.75vw 2.5vw;
+}
+
+.menu_fade {
+  animation: fadeInAnimation ease .25s;
 }
 
 /* #endregion Main */
@@ -498,7 +503,6 @@ div.frontend_main_menu {
   align-items: center;
   justify-content: center;
   justify-self: center;
-  animation: fadeInAnimation ease 0.25s;
   overflow: visible;
   z-index: 1;
   visibility: hidden;
@@ -1086,7 +1090,7 @@ div.menu_loading_spinner {
   /* display: none; */
 }
 
-div.menu_loading_spinner>img.menu_loading_spinner {
+div.menu_loading_spinner > img.menu_loading_spinner {
   width: 3vw;
   height: 3vw;
   animation: spin 750ms infinite linear;
@@ -1289,11 +1293,11 @@ div.menu_elements_narrow {
   gap: var(--item-margin);
 }
 
-div.menu_elements_even_darker>.menu_entry:nth-child(even) {
+div.menu_elements_even_darker > .menu_entry:nth-child(even) {
   background-color: #00000040 !important;
 }
 
-div.menu_elements_odd_darker>.menu_entry:nth-child(odd) {
+div.menu_elements_odd_darker > .menu_entry:nth-child(odd) {
   background-color: #00000040 !important;
 }
 
@@ -1457,7 +1461,7 @@ div.menu_brief {
   /* opacity: 50%; */
 }
 
-div.menu_brief>div.menu_elements {
+div.menu_brief > div.menu_elements {
   height: 100%;
   overflow: hidden;
   display: flex;
@@ -1780,7 +1784,7 @@ div#menu_stats_checklist_progress_missions {
   background-color: var(--hud-color-yellow-alpha);
 }
 
-div#menu_stats_checklist_progress_missions>.element_progress_perc {
+div#menu_stats_checklist_progress_missions > .element_progress_perc {
   background-color: var(--hud-color-yellow);
 }
 
@@ -1788,7 +1792,7 @@ div#menu_stats_checklist_progress_hobbies {
   background-color: var(--hud-color-green-alpha);
 }
 
-div#menu_stats_checklist_progress_hobbies>.element_progress_perc {
+div#menu_stats_checklist_progress_hobbies > .element_progress_perc {
   background-color: var(--hud-color-green);
 }
 
@@ -1796,7 +1800,7 @@ div#menu_stats_checklist_progress_strangers {
   background-color: var(--hud-color-blue-alpha);
 }
 
-div#menu_stats_checklist_progress_strangers>.element_progress_perc {
+div#menu_stats_checklist_progress_strangers > .element_progress_perc {
   background-color: var(--hud-color-blue);
 }
 
@@ -1804,7 +1808,7 @@ div#menu_stats_checklist_progress_random {
   background-color: var(--hud-color-orange-alpha);
 }
 
-div#menu_stats_checklist_progress_random>.element_progress_perc {
+div#menu_stats_checklist_progress_random > .element_progress_perc {
   background-color: var(--hud-color-orange);
 }
 
@@ -1812,7 +1816,7 @@ div#menu_stats_checklist_progress_misc {
   background-color: var(--hud-color-red-alpha);
 }
 
-div#menu_stats_checklist_progress_misc>.element_progress_perc {
+div#menu_stats_checklist_progress_misc > .element_progress_perc {
   background-color: var(--hud-color-red);
 }
 
@@ -1831,7 +1835,8 @@ div.menu_settings .menu_elements_header {
   background-color: var(--black-bg-color);
 }
 
-div.menu_settings .menu_elements_header img {}
+div.menu_settings .menu_elements_header img {
+}
 
 div#menu_settings_gamepad .menu_elements_header {
   background-color: var(--black-bg-color);
@@ -1843,7 +1848,8 @@ div#menu_settings_gamepad .menu_elements_header {
   align-items: center;
 }
 
-div#menu_settings_gamepad_header {}
+div#menu_settings_gamepad_header {
+}
 
 div.menu_settings_gamepad_header_buttons {
   width: 100%;

@@ -10,7 +10,7 @@ div.menu_backdrop {
 }
 
 div.frontend_main_menu {
-  visibility: visible;
+  visibility: hidden;
 }
 
 div.menu_window {
