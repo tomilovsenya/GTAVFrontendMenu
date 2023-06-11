@@ -140,15 +140,16 @@ div.player_control {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 1.5vw;
   height: 70%;
 }
 
 div.player_control_pad {
+  width: 1.5vw;
   background-image: url(images/icons/control_pad.svg);
 }
 
 div.player_control_mouse {
+  width: 1.5vw;
   background-image: url(images/icons/control_mouse.svg);
 }
 

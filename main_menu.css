@@ -203,7 +203,7 @@ iframe#menu_loading_screen_background {
 div.menu_backdrop {
   width: 100vw;
   height: 100vh;
-  /* backdrop-filter: blur(0.25vw); */
+  backdrop-filter: blur(0.25vw);
 }
 
 div.menu_bounding_box {

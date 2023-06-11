@@ -279,9 +279,12 @@ export class LobbyPlayer {
     }
 
     let controlStatuses = ["player_control_pad", "player_control_mouse"];
+    if (this.controlFlag > controlStatuses.length - 1) this.controlFlag = controlStatuses.length - 1;
+
     let rankClassesString = "player_rank";
     if (this.rank >= 1000) rankClassesString += " player_rank_number_smaller";
     else if (this.rank < 100) rankClassesString += " player_rank_number_bigger";
+    
     let playerStatuses = [
       { text: getLocalizedString("lobby_players_status_host"), class: "player_status_host", showRank: true },
       { text: getLocalizedString("lobby_players_status_joined"), class: "player_status_joined", showRank: true },
@@ -293,7 +296,7 @@ export class LobbyPlayer {
     let newStatus = playerStatuses[statusFlag];
 
     let blankStatus = $(`<span class="player_status ${newStatus.class}">${newStatus.text}</span>`);
-    let blankRank = $(`<div class="player_control ${controlStatuses[this.controlFlag]}"></div>
+    let blankRank = $(`<div class="player_control ${this.controlFlag != -1 ? controlStatuses[this.controlFlag] : ""}"></div>
       <div class="${rankClassesString}"><span class="player_rank_bg"></span><span class="player_rank_icon"></span>
       <span class="player_rank_number ${rankClassesString}">${this.rank}</span></div>`);
 
