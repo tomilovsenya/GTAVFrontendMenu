@@ -1264,6 +1264,10 @@ div.menu_elements_black {
   background-color: var(--black-bg-color) !important;
 }
 
+div.menu_elements_black .menu_entry:not(.menu_entry_active) {
+  background-color: transparent !important;
+}
+
 div.menu_elements_populated {
   display: flex;
   flex-direction: column;
