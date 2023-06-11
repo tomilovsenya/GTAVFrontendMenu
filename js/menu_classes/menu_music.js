@@ -95,6 +95,7 @@ var MENU_MUSIC_STEM_7 = new Howl({
 
 var IS_MENU_MUSIC_PLAYING = false;
 var HAS_MENU_MUSIC_FADED_IN = false;
+var IS_MUSIC_AUTO_PLAY_ENABLED = true;
 
 var MENU_MUSIC_PLAY_TIME = 0;
 var MENU_MUSIC_LOOP_COUNT = 0;
@@ -102,12 +103,18 @@ var MENU_MUSIC_SYNC_LOOPS = 3;
 
 var MENU_MUSIC_FADE_IN_TIME = 20000;
 var MENU_MUSIC_FADE_OUT_TIME = 1000;
+var MENU_MUSIC_AUTO_PLAY_TIME = 5000;
 var STEM_FADE_IN_TIME = 10000;
 var INTENSITY_CHANGE_INTERVAL = 25000;
 
 var INTENSITY_CHANGE_HANDLER;
 var PLAY_TIME_HANDLER;
 var STEM_INFO_HANDLER;
+
+var MUSIC_AUTO_PLAY_HANDLER = setTimeout(function () {
+  if (!IS_MUSIC_AUTO_PLAY_ENABLED) return;
+  toggleMenuMusic();
+}, MENU_MUSIC_AUTO_PLAY_TIME);
 
 var STEM_1 = { id: undefined, audio: MENU_MUSIC_STEM_1, volume: 0, isPlaying: false, isFading: false };
 var STEM_2 = { id: undefined, audio: MENU_MUSIC_STEM_2, volume: 0, isPlaying: false, isFading: false };
