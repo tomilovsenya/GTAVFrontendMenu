@@ -4,5 +4,6 @@
 .ref/
 .vscode/settings.json
 loading_screen/
-images/buttons/1.gfx
-sfx/menu_music/ps4
+*.gfx
+*.wav
+*.ogg
