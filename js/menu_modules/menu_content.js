@@ -5,6 +5,7 @@ import { MenuEntryList } from "../menu_classes/menu_entries.js";
 import { MenuCategory } from "../menu_classes/menu_entries.js";
 import { setMenuMusicVolume, toggleMenuMusic, toggleMenuMusicReverb } from "../menu_classes/menu_music.js";
 import { MenuEntryMission, MenuEntrySave, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
+import { updateMenuLocalization } from "./menu_localization.js";
 import { clearUpdateSkillsInfo, populateStatsSkillsInfo, prepareStatsWindow } from "./menu_stats.js";
 
 //
@@ -57,12 +58,19 @@ export const menuSettingsGraphicsScaling = new MenuEntryProgress("menu_settings_
 export const menuSettingsGraphicsEmpty3 = new MenuEntryList("menu_settings_graphics_empty_3", "", [""], true);
 
 export const menuSettingsPauseClock = new MenuEntryList("menu_settings_pause_clock", "menu_settings_pause_clock_name", ["menu_common_on", "menu_common_off"]);
-export const menuSettingsPauseLanguage = new MenuEntryList("menu_settings_pause_language", "Language", ["English", "Russian", "Italian", "Spanish"]);
+export const menuSettingsPauseLanguage = new MenuEntryList(
+  "menu_settings_pause_language",
+  "menu_settings_pause_language_name",
+  ["menu_settings_pause_language_0", "menu_settings_pause_language_1"],
+  false,
+  false,
+  updateMenuLocalization
+);
 export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_remember", "Remember Settings", ["Always", "Sometimes", "Off"]);
 
-export const menuSettingsPauseMusicVolume = new MenuEntryProgress("menu_settings_pause_music_volume", "Menu Music Volume", 100, 10, setMenuMusicVolume);
-export const menuSettingsPauseMusicPlay = new MenuEntry("menu_settings_pause_music_play", "Play Menu Music", "", false, toggleMenuMusic);
-export const menuSettingsPauseMusicReverb = new MenuEntryList("menu_settings_pause_music_reverb", "Reverb", ["Off", "On"], false, false, toggleMenuMusicReverb);
+export const menuSettingsPauseMusicVolume = new MenuEntryProgress("menu_settings_pause_music_volume", "menu_settings_pause_music_volume_name", 100, 10, setMenuMusicVolume);
+export const menuSettingsPauseMusicPlay = new MenuEntry("menu_settings_pause_music_play", "menu_settings_pause_music_play_name", "", false, toggleMenuMusic);
+export const menuSettingsPauseMusicReverb = new MenuEntryList("menu_settings_pause_music_reverb", "menu_settings_pause_music_reverb_name", ["Off", "On"], false, false, toggleMenuMusicReverb);
 
 export const menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,

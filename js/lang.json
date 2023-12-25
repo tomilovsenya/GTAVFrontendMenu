@@ -743,17 +743,41 @@
     "american": "Show Clock",
     "russian": "Показывать часы"
   },
-
   {
-    "gxt": "menu_settings_pause_element_2",
-    "american": "New Item",
-    "russian": "Новый элемент"
+    "gxt": "menu_settings_pause_language_name",
+    "american": "Language",
+    "russian": "Язык"
+  },
+  {
+    "gxt": "menu_settings_pause_language_0",
+    "american": "English",
+    "russian": "Английский"
+  },
+  {
+    "gxt": "menu_settings_pause_language_1",
+    "american": "Russian",
+    "russian": "Русский"
   },
 
   {
     "gxt": "menu_settings_category_pause_music_name",
     "american": "Pause Menu Music",
     "russian": "Музыка в меню паузы"
+  },
+  {
+    "gxt": "menu_settings_pause_music_volume_name",
+    "american": "Volume",
+    "russian": "Громкость"
+  },
+  {
+    "gxt": "menu_settings_pause_music_play_name",
+    "american": "Play Menu Music",
+    "russian": "Играть музыку в меню"
+  },
+  {
+    "gxt": "menu_settings_pause_music_reverb_name",
+    "american": "Reverb",
+    "russian": "Реверберация"
   },
 
   {
