@@ -65,7 +65,8 @@ function getRndStem() {
 }
 
 export function setMenuMusicVolume(volume) {
-  MENU_MUSIC_STEMS_AUDIO.volume = volume / 100;
+  // MENU_MUSIC_STEMS_AUDIO.volume = volume / 100;
+  MENU_MUSIC_STEMS_AUDIO.masterVolume.gain.setTargetAtTime(volume / 100, Pz.context.currentTime, 0.025);
 }
 
 function updateMusicPlayTime() {
@@ -81,11 +82,6 @@ function updateStemInfo() {
     $("#menu_settings_pause_music_stem_" + (index + 1))
       .find(".element_progress_perc")
       .css({ width: `${stem.audio.fadeNode.gain.value * 100}%` });
-  });
-  MENU_MUSIC_STEMS.forEach((stem, index) => {
-    $("#menu_settings_pause_music_stem_" + (index + 1))
-      .find(".element_label")
-      .text(`Stem ${index} (${stem.isFading == true ? "Fading" : "Not Fading"})`);
   });
 }
 
