@@ -677,14 +677,16 @@ export class MenuEntryList extends MenuEntry {
     index: 0,
   };
   hideList = false;
+  onListConfirmation;
 
-  constructor(id, title, listItems, isEmpty, hideList) {
+  constructor(id, title, listItems, isEmpty, hideList, onListConfirmation) {
     super(id, title);
     this.listItems = listItems;
     this.listID = id + "_list";
     this.listSel = "#" + this.listID;
     this.isEmpty = isEmpty != undefined ? isEmpty : false;
     this.hideList = hideList != undefined ? hideList : false;
+    this.onListConfirmation = onListConfirmation;
   }
 
   createEntry(title, parentId, parentElements, index) {
@@ -712,6 +714,13 @@ export class MenuEntryList extends MenuEntry {
     super.deactivate();
     this.#removeArrows();
     if (this.hideList) this.#toggleList(false);
+  }
+
+  confirm() {
+    if (this.onListConfirmation != undefined) this.onListConfirmation(this.listCollection.index);
+    if (IS_DEBUG) {
+      console.log(`Confirmed MenuEntryList ${this.ID} at ListItem index ${this.listCollection.index}`);
+    }
   }
 
   #toggleList(showList) {

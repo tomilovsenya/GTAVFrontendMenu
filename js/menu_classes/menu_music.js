@@ -100,15 +100,16 @@ export function toggleMenuMusic() {
   }
 }
 
-export function toggleMenuMusicReverb() {
-  if (IS_MENU_MUSIC_REVERB_ENABLED == false) {
-    MENU_MUSIC_STEMS_AUDIO.addEffect(MENU_MUSIC_REVERB);
-    menuSettingsPauseMusicReverb.setTitle("Disable Reverb");
-    IS_MENU_MUSIC_REVERB_ENABLED = true;
-  } else {
-    MENU_MUSIC_STEMS_AUDIO.removeEffect(MENU_MUSIC_REVERB);
-    menuSettingsPauseMusicReverb.setTitle("Enable Reverb");
-    IS_MENU_MUSIC_REVERB_ENABLED = false;
+export function toggleMenuMusicReverb(listIndex) {
+  switch (listIndex) {
+    case 0:
+      MENU_MUSIC_STEMS_AUDIO.removeEffect(MENU_MUSIC_REVERB);
+      IS_MENU_MUSIC_REVERB_ENABLED = false;
+      break;
+    case 1:
+      MENU_MUSIC_STEMS_AUDIO.addEffect(MENU_MUSIC_REVERB);
+      IS_MENU_MUSIC_REVERB_ENABLED = true;
+      break;
   }
 }
 
@@ -125,8 +126,7 @@ export function playMenuMusic() {
   MENU_MUSIC_5.fadeNode.gain.value = 0;
   MENU_MUSIC_6.fadeNode.gain.value = 0;
   MENU_MUSIC_7.fadeNode.gain.value = 0;
-  
-  toggleMenuMusicReverb();
+
   fadeInStem(MENU_MUSIC_INIT_STEM, STEM_FADE_IN_GAIN, MENU_MUSIC_FADE_IN_TIME / 1000);
 
   INTENSITY_CHANGE_HANDLER = setInterval(function () {

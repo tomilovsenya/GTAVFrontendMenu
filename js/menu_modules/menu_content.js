@@ -62,7 +62,7 @@ export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_
 
 export const menuSettingsPauseMusicVolume = new MenuEntryProgress("menu_settings_pause_music_volume", "Menu Music Volume", 100, 10, setMenuMusicVolume);
 export const menuSettingsPauseMusicPlay = new MenuEntry("menu_settings_pause_music_play", "Play Menu Music", "", false, toggleMenuMusic);
-export const menuSettingsPauseMusicReverb = new MenuEntry("menu_settings_pause_music_reverb", "Enable Reverb", "", false, toggleMenuMusicReverb);
+export const menuSettingsPauseMusicReverb = new MenuEntryList("menu_settings_pause_music_reverb", "Reverb", ["Off", "On"], false, false, toggleMenuMusicReverb);
 
 export const menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
