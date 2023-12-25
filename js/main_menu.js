@@ -22,7 +22,7 @@ import * as commonMenu from "./common_menu.js";
 import { hideWarningMessage, isWarningMessageActive, showWarningMessage } from "./menu_modules/menu_warning_message.js";
 import { charMichaelStats, fillStatEntry, globalStats } from "./menu_classes/menu_character.js";
 import * as menuContent from "./menu_modules/menu_content.js";
-import { fadeInMenuMusic, fadeOutMenuMusic, playMenuMusic, stopMenuMusic } from "./menu_classes/menu_music.js";
+import { playMenuMusic, stopMenuMusic } from "./menu_classes/menu_music.js";
 
 //
 // CONSTANTS

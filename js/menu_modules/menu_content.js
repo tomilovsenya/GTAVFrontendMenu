@@ -3,7 +3,7 @@ import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
 import { MenuCategory } from "../menu_classes/menu_entries.js";
-import { setMenuMusicVolume, toggleMenuMusic, updateMusicSync } from "../menu_classes/menu_music.js";
+import { setMenuMusicVolume, toggleMenuMusic, toggleMenuMusicReverb } from "../menu_classes/menu_music.js";
 import { MenuEntryMission, MenuEntrySave, prepareMissionInfo, updateMissionInfo } from "./menu_game.js";
 import { clearUpdateSkillsInfo, populateStatsSkillsInfo, prepareStatsWindow } from "./menu_stats.js";
 
@@ -62,7 +62,7 @@ export const menuSettingsPauseRemember = new MenuEntryList("menu_settings_pause_
 
 export const menuSettingsPauseMusicVolume = new MenuEntryProgress("menu_settings_pause_music_volume", "Menu Music Volume", 100, 10, setMenuMusicVolume);
 export const menuSettingsPauseMusicPlay = new MenuEntry("menu_settings_pause_music_play", "Play Menu Music", "", false, toggleMenuMusic);
-export const menuSettingsPauseMusicSync = new MenuEntry("menu_settings_pause_music_sync", "Sync Music", "", false, updateMusicSync);
+export const menuSettingsPauseMusicReverb = new MenuEntry("menu_settings_pause_music_reverb", "Enable Reverb", "", false, toggleMenuMusicReverb);
 
 export const menuSettingsGamepadEntries = [
   menuSettingsGamepadControlsFor,
@@ -97,7 +97,7 @@ export const menuSettingsGraphicsEntries = [
   menuSettingsGraphicsEmpty3,
 ];
 export const menuSettingsPauseEntries = [menuSettingsPauseClock, menuSettingsPauseLanguage, menuSettingsPauseRemember];
-export const menuSettingsPauseMusicEntries = [menuSettingsPauseMusicVolume, menuSettingsPauseMusicPlay, menuSettingsPauseMusicSync];
+export const menuSettingsPauseMusicEntries = [menuSettingsPauseMusicVolume, menuSettingsPauseMusicPlay, menuSettingsPauseMusicReverb];
 
 export const menuSettingsGamepad = new MenuElements("menu_settings_gamepad", menuSettingsGamepadEntries, true, false, true, undefined, 8);
 export const menuSettingsGraphics = new MenuElements("menu_settings_graphics", menuSettingsGraphicsEntries);
