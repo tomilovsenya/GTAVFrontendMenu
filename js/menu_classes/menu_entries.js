@@ -322,6 +322,85 @@ export class MenuWindow {
   }
 }
 
+export class MenuWindowFrame {
+  ID = "menu_window_frame_default";
+  idSel;
+  menuElements = [];
+  active = false;
+  currentContext = -2;
+  onWindowCreation;
+  onWindowShow;
+  onWindowActivation;
+  onWindowDeactivation;
+
+  constructor(args) {
+    this.ID = args.id;
+    this.idSel = "#" + this.ID;
+    this.menuElements = args.menuElements;
+
+    this.onWindowCreation = args.onWindowCreation;
+    this.onWindowShow = args.onWindowShow;
+    this.onWindowActivation = args.onWindowActivation;
+    this.onWindowDeactivation = args.onWindowDeactivation;
+    this.onSelectionUpdate = args.onSelectionUpdate;
+  }
+
+  create() {
+    if (this.onWindowCreation != undefined) this.onWindowCreation();
+    this.#populateAllElements();
+    this.deactivate();
+    if (IS_DEBUG) {
+      console.log("MenuWindow created: " + this.ID);
+    }
+  }
+
+  activate() {
+    if (this.active) return;
+
+    this.active = true;
+    if (this.onWindowActivation != undefined) this.onWindowActivation();
+    $(this.idSel).removeClass("menu_window_inactive");
+    $(this.idSel).addClass("menu_window_active");
+  }
+
+  deactivate() {
+    this.active = false;
+    if (this.onWindowDeactivation != undefined) this.onWindowDeactivation();
+    $(this.idSel).removeClass("menu_window_active");
+    $(this.idSel).addClass("menu_window_inactive");
+  }
+
+  show() {
+    if (this.onWindowShow != undefined) this.onWindowShow();
+    $(this.idSel).show();
+    $(this.idSel).css({ visibility: "visible" });
+  }
+
+  hide() {
+    $(this.idSel).hide();
+    $(this.idSel).css({ visibility: "hidden" });
+  }
+
+  #populateAllElements() {
+    this.menuElements.populateElements(this);
+
+    if (IS_DEBUG) {
+      console.log(`${this.ID} - elements populated: ${this.menuElements.ID}`);
+    }
+  }
+
+  goBack() {
+    switch (this.currentContext) {
+      case 0:
+        this.deactivate();
+        break;
+      default:
+        if (IS_DEBUG) console.log("Can't go back in " + this.ID);
+        break;
+    }
+  }
+}
+
 export class MenuElements {
   ID = "menu_default";
   idSel;
@@ -370,11 +449,17 @@ export class MenuElements {
       if (entry instanceof MenuEntryHeader) parentID = headerID;
       else parentID = scrollableID;
       entry.createEntry(entryTitle, parentID, this, index, entryLabel);
+      if (IS_DEBUG) {
+        console.log("Created entry: " + entry.ID);
+      }
     });
     this.parentWindow = parentWindow;
   }
 
   clickEntry(clickedEntry) {
+    if (IS_DEBUG) {
+      console.log("Attempting to click: " + clickedEntry.ID);
+    }
     // if (this.currentSelection == -1) return;
     // if (this.currentSelection == clickedEntry.index) return;
     if (!clickedEntry.isClickable) {
@@ -529,6 +614,14 @@ export class MenuElements {
 
   hide() {
     $(this.idSel).hide();
+  }
+}
+
+export class MenuMapLegend extends MenuElements {
+  // ID = "menu_map_legend_default";
+
+  constructor(id, legendEntries, onSelectionUpdate, arrowsThreshold) {
+    super(id, legendEntries, false, false, true, onSelectionUpdate, arrowsThreshold, false);
   }
 }
 

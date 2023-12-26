@@ -3,6 +3,7 @@
 //
 
 import { clickEntry, hideMapBackground } from "../main_menu.js";
+import { menuMap, menuMapLegend } from "./menu_content.js";
 
 var mapImage = $("#menu_map_image");
 var mapImageUrl = mapImage.attr("src");
@@ -40,7 +41,7 @@ var menuMainMap = L.map("menu_map", {
   zoom: 0,
   zoomControl: false,
   minZoom: 0,
-  maxZoom: 0.5,
+  maxZoom: 5,
   boxZoom: false,
   zoomSnap: 0,
   zoomAnimation: false,
@@ -159,7 +160,8 @@ export function enterMapFullscreen() {
   // });
   addMapAreas();
   invalidateMap();
-  clickLegendEntry(firstLegendElement);
+  menuMapLegend.currentSelection = 0;
+  menuMapLegend.updateSelection(0);
 }
 
 export function escapeMapFullscreen() {
@@ -192,20 +194,20 @@ $("#menu_map").click("click", function () {
   enterMapFullscreen();
 });
 
-$(".menu_entry_legend").on("entryActive", function () {
-  $(this).addClass("menu_entry_active");
-});
+// $(".menu_entry_legend").on("entryActive", function () {
+//   $(this).addClass("menu_entry_active");
+// });
 
-$(".menu_entry_legend").on("entryDisabled", function () {
-  $(this).removeClass("menu_entry_active");
-});
+// $(".menu_entry_legend").on("entryDisabled", function () {
+//   $(this).removeClass("menu_entry_active");
+// });
 
-$("#menu_arrows_map_legend_up").click("click", function () {
-  scrollLegendElements(0);
-});
-$("#menu_arrows_map_legend_down").click("click", function () {
-  scrollLegendElements(1);
-});
+// $("#menu_arrows_map_legend_up").click("click", function () {
+//   scrollLegendElements(0);
+// });
+// $("#menu_arrows_map_legend_down").click("click", function () {
+//   scrollLegendElements(1);
+// });
 
 function updateLegendCounter() {
   let currentLegendElement =

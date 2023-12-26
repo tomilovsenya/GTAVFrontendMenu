@@ -1,4 +1,4 @@
-import { MenuArrows, MenuElementsWindow, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuTab, MenuWindow } from "../menu_classes/menu_entries.js";
+import { MenuArrows, MenuElementsWindow, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuMapLegend, MenuTab, MenuWindow, MenuWindowFrame } from "../menu_classes/menu_entries.js";
 import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
@@ -463,9 +463,25 @@ export const menuGame = new MenuWindow({
 
 //#endregion
 
+//#region menuMap
+
+export const menuMapLegendMichael = new MenuEntry("menu_map_legend_m", "Michael", "", false, undefined);
+export const menuMapLegendFranklin = new MenuEntry("menu_map_legend_f", "Impounded Vehicle", "", false, undefined);
+
+export const menuMapLegendEntries = [menuMapLegendMichael, menuMapLegendFranklin];
+export const menuMapLegend = new MenuElements("menu_map_fullscreen_legend", menuMapLegendEntries, true, false, true, undefined, undefined, true);
+
+export const menuMap = new MenuWindowFrame({
+  id: "menu_map",
+  menuElements: menuMapLegend,
+  // onWindowCreation: prepareMissionInfo,
+  // onSelectionUpdate: updateMissionInfo,
+});
+
 export let allMenuEntries = [];
 
 export let allMenuElements = [
+  menuMapLegend,
   menuStatsSkillsMichael,
   menuStatsGeneralMichael,
   menuStatsCategoryChecklist,
@@ -478,13 +494,13 @@ export let allMenuElements = [
   menuGameNewGame,
 ];
 
-export const allMenuWindows = [undefined, menuBrief, menuStats, menuSettings, menuGame, undefined, undefined, undefined, undefined, undefined, undefined];
+export const allMenuWindows = [menuMap, menuBrief, menuStats, menuSettings, menuGame, undefined, undefined, undefined, undefined, undefined, undefined];
 
 //#region menuTabs
 
 export const allMenuTabs = [];
 
-export let menuTabMap = new MenuTab("menu_tab_map", "menu_tab_map_name", 0, undefined);
+export let menuTabMap = new MenuTab("menu_tab_map", "menu_tab_map_name", 0, menuMap);
 export let menuTabBrief = new MenuTab("menu_tab_brief", "menu_tab_brief_name", 1, menuBrief);
 export let menuTabStats = new MenuTab("menu_tab_stats", "menu_tab_stats_name", 2, menuStats);
 export let menuTabSettings = new MenuTab("menu_tab_settings", "menu_tab_settings_name", 3, menuSettings);

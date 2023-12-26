@@ -3,6 +3,7 @@
 import { IS_DEBUG } from "../common_menu.js";
 import { enterStoreMenu, scrollTab, currentWindow, THIS_PAGE, toggleMenuVisibility, hideCursor, setInputMethod } from "../main_menu.js";
 import * as menuContent from "./menu_content.js";
+import { enterMapFullscreen, escapeMapFullscreen } from "./menu_map.js";
 // import { enterMapFullscreen, escapeMapFullscreen, scrollLegendElements } from "./menu_map.js";
 
 //
@@ -53,7 +54,7 @@ export function clickInstr(inputID) {
   let inputObject = ALL_INPUTS.find((input) => input.id === inputID);
 
   handleInstructionalButtons(THIS_PAGE, currentWindow, inputObject.keys[0], true);
-  
+
   if (IS_DEBUG) {
     console.log("Clicked instructional button : " + inputObject.id);
   }
@@ -152,21 +153,25 @@ export function handleInstructionalButtons(currentPage, currentContext, buttonPr
   if (MENU_HIDDEN) return;
 
   switch (currentContext) {
-    case menuContent.MENU_TAB_MAP:
-      if (INPUT_FRONTEND_ACCEPT.indexOf(buttonPressed) > -1) {
+    case menuContent.menuMap:
+      if (INPUT_FRONTEND_ACCEPT.keys.indexOf(buttonPressed) > -1) {
         TAB_SCROLLING_ALLOWED = false;
         MAP_FULLSCREEN_ACTIVE = true;
         enterMapFullscreen();
       }
-      if (INPUT_FRONTEND_CANCEL.indexOf(buttonPressed) > -1) {
+      if (INPUT_FRONTEND_CANCEL.keys.indexOf(buttonPressed) > -1) {
         TAB_SCROLLING_ALLOWED = true;
         MAP_FULLSCREEN_ACTIVE = false;
         escapeMapFullscreen();
       }
       if (MAP_FULLSCREEN_ACTIVE) {
-        if (INPUT_FRONTEND_UP.indexOf(buttonPressed) > -1) scrollLegendElements(0);
-        if (INPUT_FRONTEND_DOWN.indexOf(buttonPressed) > -1) scrollLegendElements(1);
+        if (INPUT_FRONTEND_UP.keys.indexOf(buttonPressed) > -1) scrollLegendElements(0);
+        if (INPUT_FRONTEND_DOWN.keys.indexOf(buttonPressed) > -1) scrollLegendElements(1);
       }
+      if (INPUT_FRONTEND_UP.keys.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(0);
+      if (INPUT_FRONTEND_DOWN.keys.indexOf(buttonPressed) > -1) currentWindow.scrollVertical(1);
+      if (INPUT_FRONTEND_LEFT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(0);
+      if (INPUT_FRONTEND_RIGHT.keys.indexOf(buttonPressed) > -1) currentWindow.scrollHorizontal(1);
       break;
     case menuContent.MENU_TAB_BRIEF:
       if (INPUT_FRONTEND_UP.keys.indexOf(buttonPressed) > -1) scrollUpDown(0);

@@ -35,7 +35,7 @@ const STORE_MENU = "/store_menu.html";
 const NAVBAR_LEFT_ARROW = $("#menu_arrow_left");
 const NAVBAR_RIGHT_ARROW = $("#menu_arrow_right");
 
-const initTab = menuContent.menuTabSettings;
+const initTab = menuContent.menuTabMap;
 
 let cursorVisible = false;
 let lastInput = 0; // 0 = K/M, 1 = PAD
@@ -93,6 +93,7 @@ async function loadMenu() {
   setInterval(commonMenu.updateHeaderStats, 1000);
 
   menuContent.allMenuTabs.forEach((tab) => tab.createTab());
+  menuContent.menuMap.create();
   menuContent.menuStats.create();
   menuContent.menuSettings.create();
   menuContent.menuGame.create();

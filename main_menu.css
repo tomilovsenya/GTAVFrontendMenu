@@ -801,6 +801,7 @@ button.menu_entry .menu_entry_zone_right {
 }
 
 button.menu_entry_legend {
+  background-color: var(--black-bg-color);
   gap: 0.5vw;
 }
 
@@ -1336,7 +1337,7 @@ div.menu_background_rockstar {
 
 /*#region MenuTabMap*/
 
-div.menu_map {
+div#menu_map {
   background-color: var(--black-bg-color);
   border: 0px;
   margin-bottom: 0px;
@@ -1365,12 +1366,13 @@ div.menu_map:not(.menu_map_fullscreen) #menu_map_fullscreen_elements {
 }
 
 div#menu_map_fullscreen_elements {
+  background-color: rgba(127, 255, 212, 0.242);
   width: 100vw;
   height: 100vh;
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-top: var(--menu-safezone-top);
   padding-bottom: var(--menu-safezone-top);
   z-index: 1000;
@@ -1385,7 +1387,7 @@ button#menu_map_fullscreen_area_name {
   pointer-events: none;
 }
 
-div.menu_map_fullscreen_legend {
+div#menu_map_fullscreen_legend {
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -1395,7 +1397,8 @@ div.menu_map_fullscreen_legend {
   gap: var(--item-margin);
 }
 
-div.menu_map_fullscreen_legend .menu_elements_scrollable {
+div#menu_map_fullscreen_legend .menu_elements_scrollable {
+  background-color: transparent;
   max-height: calc(var(--item-height) * 19 + var(--item-margin) * 18);
   display: flex;
   flex-direction: column;
@@ -1404,7 +1407,8 @@ div.menu_map_fullscreen_legend .menu_elements_scrollable {
   overflow-y: hidden;
 }
 
-div.menu_map_fullscreen_legend .menu_entry_legend {
+div#menu_map_fullscreen_legend .menu_entry {
+  background-color: var(--black-bg-color);
   width: min-content;
 }
 
