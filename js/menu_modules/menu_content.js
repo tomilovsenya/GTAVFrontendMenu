@@ -1,4 +1,4 @@
-import { MenuArrows, MenuElementsWindow, MenuEntryHeader, MenuEntryProgress, MenuEntryStat, MenuMapLegend, MenuTab, MenuWindow, MenuWindowFrame } from "../menu_classes/menu_entries.js";
+import { MenuArrows, MenuElementsWindow, MenuEntryHeader, MenuEntryLegend, MenuEntryProgress, MenuEntryStat, MenuMapLegend, MenuTab, MenuWindow, MenuWindowFrame } from "../menu_classes/menu_entries.js";
 import { MenuElements } from "../menu_classes/menu_entries.js";
 import { MenuEntry } from "../menu_classes/menu_entries.js";
 import { MenuEntryList } from "../menu_classes/menu_entries.js";
@@ -465,8 +465,8 @@ export const menuGame = new MenuWindow({
 
 //#region menuMap
 
-export const menuMapLegendMichael = new MenuEntry("menu_map_legend_m", "Michael", "", false, undefined);
-export const menuMapLegendFranklin = new MenuEntry("menu_map_legend_f", "Impounded Vehicle", "", false, undefined);
+export const menuMapLegendMichael = new MenuEntryLegend("menu_map_legend_m", "Michael", "blip_heist");
+export const menuMapLegendFranklin = new MenuEntryLegend("menu_map_legend_f", "Impounded Vehicle", "", false, undefined);
 
 export const menuMapLegendEntries = [menuMapLegendMichael, menuMapLegendFranklin];
 export const menuMapLegend = new MenuElements("menu_map_fullscreen_legend", menuMapLegendEntries, true, false, true, undefined, undefined, true);

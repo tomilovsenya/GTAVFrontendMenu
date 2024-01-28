@@ -887,6 +887,24 @@ export class MenuEntryList extends MenuEntry {
   }
 }
 
+export class MenuEntryLegend extends MenuEntryList {
+  blipID = "blip_default";
+
+  constructor(id, title, blipID) {
+    super(id, title, [], false, true, undefined);
+
+    this.blipID = blipID;
+  }
+
+  createEntry(title, parentId, parentElements, index) {
+    super.createEntry(title, parentId, parentElements, index);
+    let blankEntryBlip = `<div id="${this.blipID}" class="element_blip"></div>`;
+
+    $(this.idSel).append(blankEntryBlip);
+    $(this.idSel).addClass("menu_entry_legend");
+  }
+}
+
 export class MenuEntryProgress extends MenuEntry {
   progressPerc = 0;
   progressSteps = 10;

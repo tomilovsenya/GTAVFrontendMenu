@@ -170,6 +170,8 @@ export function escapeMapFullscreen() {
   menuMainMap.options.minZoom = -1;
   // menuMainMap.fitBounds(mapImageBounds);
   invalidateMap();
+  menuMapLegend.currentSelection = -1;
+  menuMapLegend.updateSelection(-1);
 }
 
 $(".menu_entry_legend").click("click", function () {
