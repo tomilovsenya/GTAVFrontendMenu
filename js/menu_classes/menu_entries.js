@@ -1,4 +1,4 @@
-import { IS_DEBUG, MENU_COLOR, MENU_COLOR_ALPHA } from "../common_menu.js";
+import { IS_DEBUG, MENU_COLOR, MENU_COLOR_ALPHA, playSoundFrontend } from "../common_menu.js";
 import { allMenuElements, allMenuEntries, allMenuTabs } from "../menu_modules/menu_content.js";
 import { getLocalizedString } from "../menu_modules/menu_localization.js";
 
@@ -140,12 +140,15 @@ export class MenuWindow {
       case -1:
         this.activate();
         this.updateSelection(0);
+        playSoundFrontend("SELECT");
         break;
       case 0:
         this.enterCategory(this.currentCategoryIndex);
+        playSoundFrontend("SELECT");
         break;
       case 1:
         this.currentElements.currentEntry.confirm();
+        playSoundFrontend("SELECT");
         break;
       default:
         if (IS_DEBUG) console.log("Can't go deeper in " + this.ID);
@@ -157,9 +160,11 @@ export class MenuWindow {
     switch (this.currentContext) {
       case 1:
         this.escapeCategory();
+        playSoundFrontend("CANCEL");
         break;
       case 0:
         this.deactivate();
+        playSoundFrontend("CANCEL");
         break;
       default:
         if (IS_DEBUG) console.log("Can't go back in " + this.ID);
@@ -213,10 +218,12 @@ export class MenuWindow {
         }
 
         this.updateSelection(newSelection);
+        playSoundFrontend("NAV_UP_DOWN");
         break;
       }
       case 1:
         this.currentElements.scrollElements(scrollDir);
+        playSoundFrontend("NAV_UP_DOWN");
         break;
     }
   }
@@ -229,11 +236,13 @@ export class MenuWindow {
       case 0: {
         this.currentCategory.scrollList(scrollDir);
         this.currentCategory.updateElements();
+        playSoundFrontend("NAV_LEFT_RIGHT");
         break;
       }
       case 1: {
         if (this.currentElements.currentEntry instanceof MenuEntryList) this.currentElements.currentEntry.scrollList(scrollDir);
         if (this.currentElements.currentEntry instanceof MenuEntryProgress) this.currentElements.currentEntry.scrollProgress(scrollDir);
+        playSoundFrontend("NAV_LEFT_RIGHT");
         break;
       }
     }

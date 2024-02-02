@@ -12,6 +12,10 @@ export const HEADER_GTAO = "Grand Theft Auto Online";
 export const MENU_COLOR = getHudColor("hud-color-freemode");
 export const MENU_COLOR_ALPHA = getHudColor("hud-color-freemode-alpha");
 
+export const FRONTEND_SOUNDS = [
+  
+]
+
 let charBank = 0;
 let charCash = 0;
 
@@ -66,4 +70,9 @@ export function drawArrows() {
   } else {
     $(".menu_navbar_arrow").show();
   }
+}
+
+export function playSoundFrontend(soundName) {
+  var sound = new Audio("/sfx/" + soundName + ".wav");
+  sound.play();
 }
