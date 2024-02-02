@@ -36,6 +36,28 @@ body {
   }
 }
 
+@keyframes fadeOutFrame {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes fadeInFrame {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    display: flex;
+    opacity: 1;
+  }
+}
+
 .landing_bounding_box {
   width: 100%;
   height: 100%;
@@ -81,6 +103,10 @@ body {
   padding: 0 1.25vw !important;
 }
 
+.menu_button_active {
+  box-shadow: none !important;
+}
+
 #landing_navbar_tabs .landing_button {
   max-width: none !important;
   min-width: none !important;
@@ -94,17 +120,33 @@ body {
   scroll-behavior: smooth;
   padding-top: 3.5vw;
   overflow: hidden;
+  /* position: relative; */
 }
 
 .landing_window {
-  background-size: cover;
+  /* background-size: cover;
   background-position: center;
+  background-repeat: no-repeat; */
+  /* background-position: -2vw; */
   min-width: 94.75vw;
   height: 81vh;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin-bottom: 2.25vw;
+  position: relative;
+}
+
+.landing_window_frame {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  position: relative;
 }
 
 .landing_window_fading_in {
@@ -119,12 +161,31 @@ body {
   animation: 1000ms ease-out 0ms 1 normal forwards running fadeOutWindow;
 }
 
+.landing_frame_fading_in {
+  animation: 1000ms ease-out 750ms 1 normal forwards running fadeInFrame;
+}
+
+.landing_frame_fading_out {
+  animation: 500ms ease-out 0ms 1 normal forwards running fadeOutFrame;
+}
+
 #landing_window_online {
   background-image: url(images/landing/landing_online_bg.jpg);
 }
 
-#landing_window_story {
+#landing_window_story_franklin {
   background-image: url(images/landing/landing_story_franklin_bg.png);
+  /* opacity: 0; */
+}
+
+#landing_window_story_michael {
+  background-image: url(images/landing/landing_story_michael_bg.png);
+  opacity: 0;
+}
+
+#landing_window_story_trevor {
+  background-image: url(images/landing/landing_story_trevor_bg.png);
+  opacity: 0;
 }
 
 .landing_window_info {
@@ -135,6 +196,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  z-index: 5 !important;
 }
 
 .landing_window_logo {
@@ -194,6 +256,7 @@ span.landing_window_text {
   min-width: 50%;
   height: 110%;
   align-self: end;
+  position: relative;
 }
 
 #landing_window_char_online {
@@ -202,6 +265,25 @@ span.landing_window_text {
 
 #landing_window_char_franklin {
   background-image: url(images/landing/landing_story_franklin_char.png);
+}
+
+#landing_window_char_michael {
+  background-image: url(images/landing/landing_story_michael_char.png);
+}
+
+#landing_window_char_trevor {
+  background-image: url(images/landing/landing_story_trevor_char.png);
+}
+
+.landing_window_grad {
+  /* background-color: rgba(0, 255, 255, 0.646); */
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 0, 0, 0) 75%);
+  opacity: 75%;
+  min-width: 110%;
+  height: 100%;
+  position: absolute;
+  bottom: -0.1vw;
+  z-index: 0;
 }
 
 .landing_subtitle {
