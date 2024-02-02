@@ -4,6 +4,10 @@ body {
   overflow: hidden;
 }
 
+:root {
+  --menu-safezone-sides: 2.5vw;
+}
+
 @keyframes fadeInChar {
   0% {
     transform: translateX(1vw);
@@ -22,15 +26,18 @@ body {
 
   100% {
     opacity: 1;
+    background-position-x: center;
   }
 }
 
 @keyframes fadeOutWindow {
   0% {
+    background-position-x: center;
     opacity: 1;
   }
 
   100% {
+    background-position-x: center;
     opacity: 0;
     visibility: hidden;
   }
@@ -38,10 +45,12 @@ body {
 
 @keyframes fadeOutFrame {
   0% {
+    background-position-x: center;
     opacity: 1;
   }
 
   100% {
+    background-position-x: center;
     opacity: 0;
     display: none;
   }
@@ -54,6 +63,7 @@ body {
 
   100% {
     display: flex;
+    background-position-x: center;
     opacity: 1;
   }
 }
@@ -65,13 +75,14 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 1.5vw;
+  position: relative;
 }
 
 .frontend_landing_page {
+  /* background-color: rgb(25, 0, 255); */
   position: relative;
   width: 94.75vw;
   height: 81vh;
-  /* background-color: rgb(25, 0, 255); */
 }
 
 #landing_navbar {
@@ -94,6 +105,7 @@ body {
   height: 1.5vw;
   font-size: 1.05vw;
   pointer-events: unset !important;
+  z-index: 10;
 }
 
 .landing_buttons {
@@ -102,6 +114,7 @@ body {
   align-items: center;
   height: 2.15vw;
   /* padding-left: 2.8vw; */
+  z-index: 10;
 }
 
 .landing_button {
@@ -135,6 +148,10 @@ body {
   background-position: center;
   background-repeat: no-repeat; */
   /* background-position: -2vw; */
+  background-position-x: 0.1vw;
+  background-position-y: center;
+  background-size: cover;
+  background-size: 105%;
   min-width: 94.75vw;
   height: 81vh;
   display: flex;
@@ -142,11 +159,14 @@ body {
   flex-direction: row;
   margin-bottom: 2.25vw;
   position: relative;
+  z-index: 5;
 }
 
 .landing_window_frame {
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover; */
+  background-size: 105%;
+  background-position-x: 0.1vw;
+  background-position-y: center;
   background-repeat: no-repeat;
   min-width: 100%;
   height: 100%;
@@ -298,7 +318,7 @@ span.landing_window_text {
 .landing_window_grad {
   /* background-color: rgba(0, 255, 255, 0.646); */
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 0, 0, 0) 75%);
-  opacity: 75%;
+  opacity: 90%;
   min-width: 110%;
   height: 100%;
   position: absolute;
@@ -306,10 +326,28 @@ span.landing_window_text {
   z-index: 0;
 }
 
+.landing_footer {
+  /* background-color: rgba(137, 43, 226, 0.363); */
+  z-index: 0;
+}
+
+#landing_footer_subtitle {
+  align-self: flex-end;
+  padding-left: var(--menu-safezone-sides);
+}
+
 .landing_subtitle {
   font-family: "London60";
   font-size: 1.325vw;
   font-weight: 100;
   color: white;
+  /* display: none; */
+}
+
+.instructional_button_controller {
+  display: none;
+}
+
+#IB_SAVING_SPINNER {
   display: none;
 }

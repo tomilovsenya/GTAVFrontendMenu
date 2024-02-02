@@ -2,7 +2,7 @@ let windowOnline = $("#landing_window_online");
 let windowStory = $("#landing_window_story");
 let allTabs = $("#landing_navbar_tabs").find(".landing_button");
 let allWindows = $(".landing_windows").find(".landing_window");
-let allSubtitles = $(".frontend_landing_page").find(".landing_subtitle");
+let allSubtitles = $(".landing_footer").find(".landing_subtitle");
 
 let currentTab, currentWindow, currentFrame;
 
