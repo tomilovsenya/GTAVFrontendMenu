@@ -20,21 +20,37 @@
                 </nav>
                 <button class="instructional_button instructional_button_controller">R1</button>
             </div>
-            <div class="landing_window">
-                <div class="landing_window_info">
-                    <div class="landing_window_logo"></div>
-                    <div class="landing_window_info_text">
-                        <h1 class="landing_window_title">PLAY GTA ONLINE</h1>
-                        <span class="landing_window_text">Create a new GTA Online character and get GTA$4,000,000 to kick-start your Criminal Career. Or sign in to Social Club and migrate your existing GTA Online profile.</span>
+            <div class="landing_windows">
+                <div id="landing_window_online" class="landing_window">
+                    <div class="landing_window_info">
+                        <div id="landing_window_logo_online" class="landing_window_logo"></div>
+                        <div class="landing_window_info_text">
+                            <h1 class="landing_window_title">PLAY GTA ONLINE</h1>
+                            <span class="landing_window_text">Create a new GTA Online character and get GTA$4,000,000 to kick-start your Criminal Career. Or sign in to Social Club and migrate your existing GTA Online profile.</span>
+                        </div>
                     </div>
+                    <div id="landing_window_char_online" class="landing_window_chars"></div>
                 </div>
-                <div class="landing_window_char"></div>
+                <div id="landing_window_story" class="landing_window">
+                    <div class="landing_window_info">
+                        <div id="landing_window_logo_story" class="landing_window_logo"></div>
+                        <div class="landing_window_info_text">
+                            <h1 class="landing_window_title">GRAND THEFT AUTO V STORY MODE</h1>
+                            <span class="landing_window_text">Enter the sun-soaked metropolis of Los Santos and experience the story of Franklin, Michael and Trevor.</span>
+                        </div>
+                    </div>
+                    <div id="landing_window_char_franklin" class="landing_window_char"></div>
+                </div>
             </div>
             <!-- <span class="landing_subtitle">Enter GTA Online's Freemode.</span> -->
             <span class="landing_subtitle">Revel in the unrivaled chaos of Los Santos with GTA Online.</span>
         </div>
     </div>
 </body>
+
+<script src="js/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.13.1/jquery-ui.js" type="text/javascript"></script>
+<script src="js/landing_page.js" type="text/javascript"></script>
 
 </html>
 

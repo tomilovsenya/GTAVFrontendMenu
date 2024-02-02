@@ -4,6 +4,38 @@ body {
   overflow: hidden;
 }
 
+@keyframes fadeInChar {
+  0% {
+    transform: translateX(1vw);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInWindow {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutWindow {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .landing_bounding_box {
   width: 100%;
   height: 100%;
@@ -14,6 +46,9 @@ body {
 }
 
 .frontend_landing_page {
+  position: relative;
+  width: 94.75vw;
+  height: 81vh;
   /* background-color: rgb(25, 0, 255); */
 }
 
@@ -23,7 +58,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1.25vw;
-  margin-bottom: 1.75vw;
+  margin-bottom: -1.75vw;
 }
 
 #landing_navbar .instructional_button {
@@ -52,15 +87,44 @@ body {
   width: 5vw;
 }
 
+.landing_windows {
+  /* background-color: rgba(143, 188, 143, 0.444); */
+  display: flex;
+  gap: 10vw;
+  scroll-behavior: smooth;
+  padding-top: 3.5vw;
+  overflow: hidden;
+}
+
 .landing_window {
-  background-image: url(images/landing/landing_online_bg.jpg);
   background-size: cover;
-  width: 94.75vw;
+  background-position: center;
+  min-width: 94.75vw;
   height: 81vh;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin-bottom: 2.25vw;
+}
+
+.landing_window_fading_in {
+  animation: 1000ms ease-out 0ms 1 normal forwards running fadeInWindow;
+}
+
+.landing_window_char_fading_in {
+  animation: 5s ease-out 0ms 1 normal none running fadeInChar;
+}
+
+.landing_window_fading_out {
+  animation: 1000ms ease-out 0ms 1 normal forwards running fadeOutWindow;
+}
+
+#landing_window_online {
+  background-image: url(images/landing/landing_online_bg.jpg);
+}
+
+#landing_window_story {
+  background-image: url(images/landing/landing_story_franklin_bg.png);
 }
 
 .landing_window_info {
@@ -75,12 +139,19 @@ body {
 
 .landing_window_logo {
   /* background-color: rgba(226, 43, 205, 0.78); */
-  background-image: url(images/landing/landing_online_logo.svg);
   background-size: contain;
   background-repeat: no-repeat;
   width: 25vw;
   height: 25vw;
   margin-top: 7vw !important;
+}
+
+#landing_window_logo_online {
+  background-image: url(images/landing/landing_online_logo.svg);
+}
+
+#landing_window_logo_story {
+  background-image: url(images/landing/landing_story_logo.svg);
 }
 
 .landing_window_info_text {
@@ -106,16 +177,31 @@ span.landing_window_text {
   color: white;
 }
 
-.landing_window_char {
+.landing_window_chars {
   /* background-color: rgba(80, 226, 43, 0.259); */
-  background-image: url(images/landing/landing_online_characters.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-clip: content-box;
   min-width: 60%;
   height: 105%;
   align-self: end;
   justify-self: end;
+}
+
+.landing_window_char {
+  /* background-color: rgba(80, 226, 43, 0.259); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 50%;
+  height: 110%;
+  align-self: end;
+}
+
+#landing_window_char_online {
+  background-image: url(images/landing/landing_online_characters.png);
+}
+
+#landing_window_char_franklin {
+  background-image: url(images/landing/landing_story_franklin_char.png);
 }
 
 .landing_subtitle {
