@@ -2,6 +2,7 @@ let windowOnline = $("#landing_window_online");
 let windowStory = $("#landing_window_story");
 let allTabs = $("#landing_navbar_tabs").find(".landing_button");
 let allWindows = $(".landing_windows").find(".landing_window");
+let allSubtitles = $(".frontend_landing_page").find(".landing_subtitle");
 
 let currentTab, currentWindow, currentFrame;
 
@@ -24,11 +25,14 @@ window.addEventListener(
       // changeWindow(windowStory);
     }
     if (["KeyF"].indexOf(e.code) > -1) {
-      changeFrame(currentFrame.next());
     }
   },
   false
 );
+
+setInterval(() => {
+  changeFrame(currentFrame.next());
+}, 10000);
 
 $(".landing_window_char, .landing_window_chars").on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
   $(this).removeClass("landing_window_char_fading_in");
@@ -64,6 +68,8 @@ function activateTab(newTab) {
   newTab.addClass("menu_button_active");
 
   changeWindow(allWindows.eq(currentTab.index()));
+  allSubtitles.hide();
+  allSubtitles.eq(currentTab.index()).show();
 }
 
 function deactivateTab(newTab) {

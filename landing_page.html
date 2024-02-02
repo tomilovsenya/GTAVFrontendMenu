@@ -12,13 +12,13 @@
     <div class="landing_bounding_box">
         <div class="frontend_landing_page">
             <div id="landing_navbar">
-                <button class="instructional_button instructional_button_controller">L1</button>
+                <button id="IB_PREV_TAB" class="instructional_button instructional_button_keyboard" onclick="scrollTab(0)">Q</button>
                 <nav id="landing_navbar_tabs" class="landing_buttons" tabindex="-1">
                     <button id="landing_button_online" class="menu_button landing_button">ONLINE</button>
-                    <!-- <button id="landing_button_gtaplus" class="menu_button landing_button">GTA+</button> -->
+                    <button id="landing_button_gtaplus" class="menu_button landing_button">GTA+</button>
                     <button id="landing_button_story" class="menu_button landing_button">STORY</button>
                 </nav>
-                <button class="instructional_button instructional_button_controller">R1</button>
+                <button id="IB_NEXT_TAB" class="instructional_button instructional_button_keyboard" onclick="scrollTab(1)">E</button>
             </div>
             <div class="landing_windows">
                 <div id="landing_window_online" class="landing_window">
@@ -30,6 +30,17 @@
                         </div>
                     </div>
                     <div id="landing_window_char_online" class="landing_window_chars"></div>
+                    <div class="landing_window_grad"></div>
+                </div>
+                <div id="landing_window_gtaplus" class="landing_window">
+                    <div class="landing_window_info">
+                        <div id="landing_window_logo_gtaplus" class="landing_window_logo"></div>
+                        <div class="landing_window_info_text">
+                            <h1 class="landing_window_title">GTA+ SUBSCRIPTION</h1>
+                            <span class="landing_window_text">Kick 2024 off in style with a raft of new GTA+ Membership benefits to enhance your GTA Online experience on PC. Claim the new Albany Cavalcade XL SUV and deck it out in a free Camo livery or new Chameleon Paints. Utilizing the 100-vehicle storage capacity of The Vinewood Club Garage is also complimentary to Members, as are a number of new clothing items.</span>
+                        </div>
+                    </div>
+                    <div id="landing_window_char_gtaplus" class="landing_window_char"></div>
                     <div class="landing_window_grad"></div>
                 </div>
                 <div id="landing_window_story" class="landing_window">
@@ -68,8 +79,9 @@
                     </div>
                 </div>
             </div>
-            <!-- <span class="landing_subtitle">Enter GTA Online's Freemode.</span> -->
-            <span class="landing_subtitle">Revel in the unrivaled chaos of Los Santos with GTA Online.</span>
+            <span id="landing_subtitle_online" class="landing_subtitle">Revel in the unrivaled chaos of Los Santos with GTA Online.</span>
+            <span id="landing_subtitle_gtaplus" class="landing_subtitle">Select to sign up to GTA+. Visit rsg.ms/gtaplus for additional terms.</span>
+            <span id="landing_subtitle_story" class="landing_subtitle">Play Grand Theft Auto V's Story Mode.</span>
         </div>
     </div>
 </body>

@@ -83,10 +83,17 @@ body {
   margin-bottom: -1.75vw;
 }
 
-#landing_navbar .instructional_button {
+#landing_navbar .instructional_button_controller {
   width: 1.5vw;
   height: 1vw;
   font-size: 1.05vw;
+}
+
+#landing_navbar .instructional_button {
+  width: 1.5vw;
+  height: 1.5vw;
+  font-size: 1.05vw;
+  pointer-events: unset !important;
 }
 
 .landing_buttons {
@@ -173,6 +180,10 @@ body {
   background-image: url(images/landing/landing_online_bg.jpg);
 }
 
+#landing_window_gtaplus {
+  background-image: url(images/landing/landing_gtaplus_bg.png);
+}
+
 #landing_window_story_franklin {
   background-image: url(images/landing/landing_story_franklin_bg.png);
   /* opacity: 0; */
@@ -210,6 +221,10 @@ body {
 
 #landing_window_logo_online {
   background-image: url(images/landing/landing_online_logo.svg);
+}
+
+#landing_window_logo_gtaplus {
+  background-image: url(images/landing/landing_gtaplus_logo.svg);
 }
 
 #landing_window_logo_story {
@@ -263,6 +278,11 @@ span.landing_window_text {
   background-image: url(images/landing/landing_online_characters.png);
 }
 
+#landing_window_char_gtaplus {
+  background-image: url(images/landing/landing_gtaplus_char.png);
+  height: 107.5%;
+}
+
 #landing_window_char_franklin {
   background-image: url(images/landing/landing_story_franklin_char.png);
 }
@@ -291,4 +311,5 @@ span.landing_window_text {
   font-size: 1.325vw;
   font-weight: 100;
   color: white;
+  display: none;
 }
