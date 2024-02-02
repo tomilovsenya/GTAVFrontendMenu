@@ -53,14 +53,74 @@ body {
 }
 
 .landing_window {
-  background-color: rgba(195, 20, 7, 0.541);
+  background-image: url(images/landing/landing_online_bg.jpg);
+  background-size: cover;
   width: 94.75vw;
   height: 81vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   margin-bottom: 2.25vw;
+}
+
+.landing_window_info {
+  /* background-color: rgba(137, 43, 226, 0.259); */
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing_window_logo {
+  /* background-color: rgba(226, 43, 205, 0.78); */
+  background-image: url(images/landing/landing_online_logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25vw;
+  height: 25vw;
+  margin-top: 7vw !important;
+}
+
+.landing_window_info_text {
+  /* background-color: rgba(43, 214, 226, 0.78); */
+  width: 70%;
+  margin-left: 1vw;
+  margin-bottom: 0.75vw;
+  align-self: flex-start;
+}
+
+h1.landing_window_title {
+  font-family: "Cologne60";
+  font-size: 2.5vw;
+  font-weight: 100;
+  color: white;
+  margin: 0;
+}
+
+span.landing_window_text {
+  font-family: "London60";
+  font-size: 1.25vw;
+  font-weight: 100;
+  color: white;
+}
+
+.landing_window_char {
+  /* background-color: rgba(80, 226, 43, 0.259); */
+  background-image: url(images/landing/landing_online_characters.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  min-width: 60%;
+  height: 105%;
+  align-self: end;
+  justify-self: end;
 }
 
 .landing_subtitle {
   font-family: "London60";
   font-size: 1.325vw;
+  font-weight: 100;
   color: white;
 }
