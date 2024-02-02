@@ -1,0 +1,66 @@
+body {
+  background-color: black;
+  background-image: none;
+  overflow: hidden;
+}
+
+.landing_bounding_box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5vw;
+}
+
+.frontend_landing_page {
+  /* background-color: rgb(25, 0, 255); */
+}
+
+#landing_navbar {
+  /* background-color: rgb(253, 255, 127); */
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 1.25vw;
+  margin-bottom: 1.75vw;
+}
+
+#landing_navbar .instructional_button {
+  width: 1.5vw;
+  height: 1vw;
+  font-size: 1.05vw;
+}
+
+.landing_buttons {
+  /* background-color: brown !important; */
+  display: flex;
+  align-items: center;
+  height: 2.15vw;
+  /* padding-left: 2.8vw; */
+}
+
+.landing_button {
+  font-size: 1.4vw !important;
+  width: fit-content !important;
+  padding: 0 1.25vw !important;
+}
+
+#landing_navbar_tabs .landing_button {
+  max-width: none !important;
+  min-width: none !important;
+  width: 5vw;
+}
+
+.landing_window {
+  background-color: rgba(195, 20, 7, 0.541);
+  width: 94.75vw;
+  height: 81vh;
+  margin-bottom: 2.25vw;
+}
+
+.landing_subtitle {
+  font-family: "London60";
+  font-size: 1.325vw;
+  color: white;
+}
