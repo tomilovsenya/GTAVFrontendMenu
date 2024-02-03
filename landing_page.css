@@ -4,6 +4,10 @@ body {
   overflow: hidden;
 }
 
+* {
+  cursor: url("images/buttons/cursor_arrow.svg") 0 0, auto;
+}
+
 :root {
   --menu-safezone-sides: 2.5vw;
   --ease-out-bg: cubic-bezier(0, 0.55, 0.45, 1);
