@@ -458,7 +458,7 @@ span.landing_window_text {
   background-position-x: center;
   background-position-y: top;
   width: 100%;
-  /* height: 45%; */
+  height: 50%;
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
@@ -523,7 +523,10 @@ span.landing_window_text {
 }
 
 .landing_window_card_info_text {
-  max-width: 40%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
   z-index: 5 !important;
 }
 
@@ -533,7 +536,6 @@ span.landing_window_text {
 
 .landing_window_card_info_text .landing_window_title {
   font-size: 2.25vw;
-  margin-bottom: 1vw;
 }
 
 .landing_window_card_info_text .landing_window_text {
