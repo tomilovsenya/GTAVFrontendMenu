@@ -445,6 +445,7 @@ span.landing_window_text {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-content: space-between;
   /* gap: 0.75vw; */
 }
 
@@ -460,7 +461,7 @@ span.landing_window_text {
 
 .landing_window_grid_news {
   /* background-color: slategrey; */
-  width: 64%;
+  width: 64.5%;
   justify-content: space-between;
   align-content: space-between;
   gap: 1vw;
@@ -469,7 +470,7 @@ span.landing_window_text {
 
 .landing_window_grid_persistent {
   /* background-color: slateblue; */
-  width: 34%;
+  width: 34.5%;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -507,6 +508,10 @@ span.landing_window_text {
   position: relative;
   overflow: hidden;
   opacity: 1;
+}
+
+.landing_window_grid_card:not(:focus) .landing_window_text {
+  display: none;
 }
 
 .landing_window_grid_card:focus::before {
@@ -593,7 +598,7 @@ span.landing_window_text {
   color: black;
   max-width: fit-content;
   padding: 0.125vw 0.35vw;
-  border-radius: 10%;
+  border-radius: 0.25vw;
   position: relative;
   overflow: hidden;
 }
