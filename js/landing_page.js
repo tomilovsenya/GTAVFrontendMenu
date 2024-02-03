@@ -10,6 +10,7 @@ window.onload = () => {
   currentTab = allTabs.first();
   currentWindow = allWindows.first();
   currentFrame = windowStory.find(".landing_window_frame").first();
+  currentCard = currentWindow.find(".landing_window_grid_card:focus");
 
   activateTab(currentTab);
 };
@@ -24,7 +25,17 @@ window.addEventListener(
       scrollTab(1);
       // changeWindow(windowStory);
     }
-    if (["KeyF"].indexOf(e.code) > -1) {
+    if (["KeyA", "ArrowLeft"].indexOf(e.code) > -1) {
+      scrollCard(0, currentWindow);
+    }
+    if (["KeyD", "ArrowRight"].indexOf(e.code) > -1) {
+      scrollCard(1, currentWindow);
+    }
+    if (["KeyW", "ArrowUp"].indexOf(e.code) > -1) {
+      scrollCard(2, currentWindow);
+    }
+    if (["KeyS", "ArrowDown"].indexOf(e.code) > -1) {
+      scrollCard(3, currentWindow);
     }
   },
   false
@@ -102,6 +113,87 @@ function scrollTab(scrollDir) {
 
   activateTab(currentTab);
   // switchActiveWindow(currentTab.menuWindow);
+}
+
+function scrollCard(scrollDir, currGrid) {
+  currentCard = currentWindow.find(".landing_window_grid_card:focus");
+
+  let currTab = parseInt(currentCard.attr("tabIndex"));
+  let newCard;
+
+  if (scrollDir == 0) {
+    switch (currTab) {
+      case 1:
+      case 2:
+        currTab += 3;
+        break;
+      case 3:
+        currTab -= 1;
+        break;
+      case 4:
+        currTab -= 3;
+        break;
+      case 5:
+        currTab -= 2;
+        break;
+    }
+    newCard = currGrid.find(`.landing_window_grid_card[tabIndex=${currTab}]`).first();
+  }
+  if (scrollDir == 1) {
+    switch (currTab) {
+      case 1:
+        currTab += 3;
+        break;
+      case 2:
+        currTab += 1;
+        break;
+      case 3:
+        currTab += 2;
+        break;
+      case 4:
+      case 5:
+        currTab -= 3;
+        break;
+    }
+    newCard = currGrid.find(`.landing_window_grid_card[tabIndex=${currTab}]`).first();
+  }
+  if (scrollDir == 2 || scrollDir == 3) {
+    switch (currTab) {
+      case 1:
+        currTab += 1;
+        break;
+      case 2:
+        currTab -= 1;
+        break;
+      case 3:
+        currTab -= 2;
+        break;
+    }
+
+    newCard = currGrid.find(`.landing_window_grid_card[tabIndex=${currTab}]`).first();
+
+    if (scrollDir == 2) {
+      switch (currTab) {
+        case 4:
+        case 5:
+          newCard = currentCard.prev();
+          break;
+      }
+
+      if (newCard.length == 0) newCard = currentCard.siblings().last();
+    } else {
+      switch (currTab) {
+        case 4:
+        case 5:
+          newCard = currentCard.next();
+          break;
+      }
+
+      if (newCard.length == 0) newCard = currentCard.siblings().first();
+    }
+  }
+
+  newCard.focus();
 }
 
 $(".landing_button").click(function (e) {
