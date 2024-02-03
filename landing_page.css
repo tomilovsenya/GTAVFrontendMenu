@@ -11,6 +11,18 @@ body {
 :root {
   --menu-safezone-sides: 2.5vw;
   --ease-out-bg: cubic-bezier(0, 0.55, 0.45, 1);
+
+  --online-news-card1-bg: url(https://videos-rockstargames-com.akamaized.net/screencaps/12427/_global/1920.jpg);
+  --online-news-card2-bg: url(https://media-rockstargames-com.akamaized.net/tina-uploads/posts/ak5a3o482o9829/f22a6773a544ca4fd2ffabe62704a21e76da6cba.jpg);
+  --online-news-card3-bg: url(https://media-rockstargames-com.akamaized.net/tina-uploads/posts/75711722414ka2/76bb6359369a1db866a40f0353773b2dfa96b9dd.jpg);
+  --online-news-card1-pos-y: inherit;
+  --online-news-card2-pos-y: bottom;
+  --online-news-card3-pos-y: inherit;
+}
+
+.bg_blue {
+  background-color: var(--hud-color-freemode);
+  color: white;
 }
 
 @keyframes fadeInLanding {
@@ -80,6 +92,34 @@ body {
     display: flex;
     background-position-x: center;
     opacity: 1;
+  }
+}
+
+@keyframes fadeInCard {
+  0% {
+    background-size: 105%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    background-size: 101%;
+    opacity: 1;
+  }
+}
+
+@keyframes shineCardBadge {
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
   }
 }
 
@@ -382,4 +422,120 @@ span.landing_window_text {
 
 #IB_SAVING_SPINNER {
   display: none;
+}
+
+.landing_window_grid {
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.75vw;
+}
+
+.landing_window_grid_news {
+  /* background-color: slateblue; */
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1vw;
+}
+
+#landing_window_online_grid_double {
+  background-color: rgb(205, 90, 174);
+}
+
+.landing_window_grid_vertical {
+  background-color: seagreen;
+  width: 100%;
+  min-height: 100%;
+  align-self: flex-end;
+}
+
+.landing_window_grid_card {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
+  width: 100%;
+  /* height: 45%; */
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.75vw 1vw;
+  position: relative;
+  animation: fadeInCard 5s forwards ease-in-out;
+}
+
+.landing_window_grid_card_half {
+  background-color: rgba(255, 228, 196, 0.552);
+  flex-basis: 49%;
+  flex-grow: 2;
+  flex-wrap: nowrap !important;
+}
+
+.landing_window_grid_card .landing_window_grad {
+  min-width: unset !important;
+  max-width: 100%;
+  width: 100%;
+  left: 0;
+}
+
+#landing_window_online_grid_single_card {
+  background-image: var(--online-news-card1-bg);
+  background-position-y: var(--online-news-card1-pos-y);
+}
+
+#landing_window_online_grid_single_card2 {
+  background-image: var(--online-news-card2-bg);
+  background-position-y: var(--online-news-card2-pos-y);
+}
+
+#landing_window_online_grid_single_card3 {
+  background-image: var(--online-news-card3-bg);
+  background-position-y: var(--online-news-card3-pos-y);
+}
+
+.landing_window_card_badge {
+  background-color: var(--hud-color-yellow);
+  font-family: "Cologne60";
+  font-size: 1.25vw;
+  color: black;
+  max-width: fit-content;
+  padding: 0.125vw 0.35vw;
+  border-radius: 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing_window_card_badge:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+  top: 0;
+  left: -100%;
+  animation: shineCardBadge 10s 2.5s infinite ease-in-out;
+  opacity: 50%;
+}
+
+.landing_window_card_info_text {
+  max-width: 40%;
+  z-index: 5 !important;
+}
+
+.landing_window_grid_card_half .landing_window_card_info_text {
+  max-width: 100%;
+}
+
+.landing_window_card_info_text .landing_window_title {
+  font-size: 2.25vw;
+  margin-bottom: 1vw;
+}
+
+.landing_window_card_info_text .landing_window_text {
+  font-size: 1.125vw;
 }
