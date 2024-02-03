@@ -21,8 +21,8 @@ body {
 }
 
 .bg_blue {
-  background-color: var(--hud-color-freemode);
-  color: white;
+  background-color: var(--hud-color-freemode) !important;
+  color: white !important;
 }
 
 @keyframes fadeInLanding {
