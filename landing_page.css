@@ -507,6 +507,31 @@ span.landing_window_text {
   background-size: 101%;
 }
 
+@keyframes fadeInInfoText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.landing_window_grid_card:focus .landing_window_card_info_text {
+  opacity: 1;
+  animation: fadeInLanding 1s forwards ease-in-out;
+}
+
+.landing_window_grid_card:focus .landing_window_text {
+  display: inline;
+}
+
+.landing_window_grid_card:not(:focus) .landing_window_text {
+  display: none;
+}
+
 .landing_window_grid_card:hover::before {
   content: "";
   width: 100%;
@@ -518,10 +543,6 @@ span.landing_window_text {
   left: 0;
   width: 100%;
   z-index: 10;
-}
-
-.landing_window_grid_card:not(:focus) .landing_window_text {
-  display: none;
 }
 
 .landing_window_grid_card:focus::before {
@@ -624,22 +645,18 @@ span.landing_window_text {
 }
 
 .landing_window_card_info_text {
-  max-width: 50%;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 1vw;
+  gap: 0.5vw;
   margin-top: auto;
   z-index: 5 !important;
 }
 
-.landing_window_grid_card_half .landing_window_card_info_text {
-  max-width: 100%;
+.landing_window_grid_card_single .landing_window_card_info_text {
+  max-width: 50%;
 }
 
 .landing_window_card_info_text .landing_window_title {
-  font-size: 2.25vw;
-}
-
-.landing_window_card_info_text .landing_window_text {
-  font-size: 1.125vw;
+  font-size: 2.125vw;
 }

@@ -1,3 +1,4 @@
+const LANDING_PAGE = document.documentElement;
 const windowOnline = $("#landing_window_online");
 const windowPlus = $("#landing_window_gtaplus");
 const windowStory = $("#landing_window_story");
@@ -39,6 +40,9 @@ window.addEventListener(
     if (["KeyS", "ArrowDown"].indexOf(e.code) > -1) {
       scrollCard(3, currentWindow);
     }
+    if (["KeyF"].indexOf(e.code) > -1) {
+      goFullScreen();
+    }
   },
   false
 );
@@ -52,8 +56,8 @@ $(".landing_window_char, .landing_window_chars").on("animationend webkitAnimatio
 });
 
 function goFullScreen() {
-  if (MENU_PAGE.requestFullscreen) {
-    MENU_PAGE.requestFullscreen();
+  if (LANDING_PAGE.requestFullscreen) {
+    LANDING_PAGE.requestFullscreen();
   }
 }
 
