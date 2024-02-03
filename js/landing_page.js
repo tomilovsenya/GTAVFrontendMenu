@@ -38,6 +38,12 @@ $(".landing_window_char, .landing_window_chars").on("animationend webkitAnimatio
   $(this).removeClass("landing_window_char_fading_in");
 });
 
+function goFullScreen() {
+  if (MENU_PAGE.requestFullscreen) {
+    MENU_PAGE.requestFullscreen();
+  }
+}
+
 function changeWindow(newWindow) {
   if (newWindow == currentWindow) return;
 
@@ -99,5 +105,12 @@ function scrollTab(scrollDir) {
 }
 
 $(".landing_button").click(function (e) {
+  if ($(this).is(".menu_button_active")) return;
   activateTab($(this));
+});
+$(".landing_window_zone_left").click(function (e) {
+  scrollTab(0);
+});
+$(".landing_window_zone_right").click(function (e) {
+  scrollTab(1);
 });

@@ -13,6 +13,16 @@ body {
   --ease-out-bg: cubic-bezier(0, 0.55, 0.45, 1);
 }
 
+@keyframes fadeInLanding {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeInChar {
   0% {
     transform: translateX(0.75vw);
@@ -88,6 +98,7 @@ body {
   position: relative;
   width: 94.75vw;
   height: 81vh;
+  /* animation: 1000ms var(--ease-out-bg) 0ms 1 normal forwards running fadeInLanding; */
 }
 
 #landing_navbar {
@@ -327,6 +338,24 @@ span.landing_window_text {
   position: absolute;
   bottom: -0.1vw;
   z-index: 0;
+}
+
+.landing_window_zone {
+  /* background-color: rgba(184, 135, 11, 0.418); */
+  height: 100%;
+  width: 5vw;
+  position: absolute;
+  z-index: 100;
+}
+
+.landing_window_zone_left {
+  left: 0;
+  cursor: url("images/buttons/cursor_left.svg") 0 0, auto;
+}
+
+.landing_window_zone_right {
+  right: 0;
+  cursor: url("images/buttons/cursor_right.svg") 22 0, auto;
 }
 
 .landing_footer {
