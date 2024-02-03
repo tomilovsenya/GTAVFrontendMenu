@@ -1,9 +1,11 @@
-let windowOnline = $("#landing_window_online");
-let windowStory = $("#landing_window_story");
+const windowOnline = $("#landing_window_online");
+const windowPlus = $("#landing_window_gtaplus");
+const windowStory = $("#landing_window_story");
+const frameChangeRate = 5000;
+
 let allTabs = $("#landing_navbar_tabs").find(".landing_button");
 let allWindows = $(".landing_windows").find(".landing_window");
 let allSubtitles = $(".landing_footer").find(".landing_subtitle");
-
 let currentTab, currentWindow, currentFrame, currentCard;
 
 window.onload = () => {
@@ -43,7 +45,7 @@ window.addEventListener(
 
 setInterval(() => {
   changeFrame(currentFrame.next());
-}, 10000);
+}, frameChangeRate);
 
 $(".landing_window_char, .landing_window_chars").on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
   $(this).removeClass("landing_window_char_fading_in");

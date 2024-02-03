@@ -505,9 +505,19 @@ span.landing_window_text {
 
 .landing_window_grid_card:focus {
   background-size: 101%;
-  position: relative;
-  overflow: hidden;
-  opacity: 1;
+}
+
+.landing_window_grid_card:hover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 0.35vw solid grey;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .landing_window_grid_card:not(:focus) .landing_window_text {
@@ -517,8 +527,6 @@ span.landing_window_text {
 .landing_window_grid_card:focus::before {
   content: "";
   width: 100%;
-  min-width: unset !important;
-  max-width: 100%;
   height: 100%;
   position: absolute;
   border: 0.35vw solid white;
