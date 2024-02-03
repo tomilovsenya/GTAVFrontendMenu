@@ -20,7 +20,7 @@ body {
   --online-persistent-card3-bg: url(images/landing/landing_online_grid_pers_career.jpg);
   --online-persistent-card4-bg: url(images/landing/landing_online_grid_pers_freemode.jpg);
   --online-news-card1-pos-y: inherit;
-  --online-news-card2-pos-y: bottom;
+  --online-news-card2-pos-y: center;
   --online-news-card3-pos-y: inherit;
   --online-persistent-card-pos-y: center;
   --online-persistent-card2-pos-y: center;
@@ -105,17 +105,21 @@ body {
 
 @keyframes fadeInCard {
   0% {
-    background-size: 105%;
     opacity: 0;
   }
 
-  10% {
+  100% {
     opacity: 1;
+  }
+}
+
+@keyframes activateCard {
+  0% {
+    background-size: 105%;
   }
 
   100% {
     background-size: 101%;
-    opacity: 1;
   }
 }
 
@@ -128,6 +132,18 @@ body {
   }
   100% {
     left: 100%;
+  }
+}
+
+@keyframes shineCardBorder {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -435,12 +451,11 @@ span.landing_window_text {
 
 .landing_window_grid {
   /* background-color: springgreen; */
-  max-width: 94.75vw !important;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0.75vw;
+  /* gap: 0.75vw; */
 }
 
 .landing_window_grid_base {
@@ -455,7 +470,7 @@ span.landing_window_text {
 
 .landing_window_grid_news {
   /* background-color: slategrey; */
-  width: 65%;
+  width: 64%;
   justify-content: space-between;
   align-content: space-between;
   gap: 1vw;
@@ -464,7 +479,7 @@ span.landing_window_text {
 
 .landing_window_grid_persistent {
   /* background-color: slateblue; */
-  width: 35%;
+  width: 34%;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -479,10 +494,11 @@ span.landing_window_text {
 
 .landing_window_grid_card {
   background-size: cover;
+  background-size: 105%;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: top;
-  width: 100%;
+  max-width: 100%;
   height: 49%;
   display: flex;
   flex-basis: 100%;
@@ -491,7 +507,29 @@ span.landing_window_text {
   box-sizing: border-box;
   padding: 0.75vw 1vw;
   position: relative;
-  animation: fadeInCard 5s forwards ease-in-out;
+  animation: fadeInCard 500ms forwards ease-in-out;
+}
+
+.landing_window_grid_card_active {
+  position: relative;
+  overflow: hidden;
+  animation: activateCard 3500ms forwards ease-in-out;
+}
+
+.landing_window_grid_card_active::before {
+  content: "";
+  width: 100%;
+  min-width: unset !important;
+  max-width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 0.35vw solid white;
+  box-sizing:  border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  animation: shineCardBorder 1s infinite ease-in-out;
 }
 
 .landing_window_grid_card_half {

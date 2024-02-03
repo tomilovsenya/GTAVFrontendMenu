@@ -114,3 +114,7 @@ $(".landing_window_zone_left").click(function (e) {
 $(".landing_window_zone_right").click(function (e) {
   scrollTab(1);
 });
+
+$(".landing_window_grid_card").click(function (e) {
+  $(this).addClass("landing_window_grid_card_active");
+});
