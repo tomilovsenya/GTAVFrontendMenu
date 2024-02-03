@@ -113,16 +113,6 @@ body {
   }
 }
 
-@keyframes activateCard {
-  0% {
-    background-size: 105%;
-  }
-
-  100% {
-    background-size: 101%;
-  }
-}
-
 @keyframes shineCardBadge {
   0% {
     left: -100%;
@@ -500,6 +490,7 @@ span.landing_window_text {
   background-position-y: top;
   max-width: 100%;
   height: 49%;
+  opacity: 0;
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
@@ -507,16 +498,18 @@ span.landing_window_text {
   box-sizing: border-box;
   padding: 0.75vw 1vw;
   position: relative;
-  animation: fadeInCard 500ms forwards ease-in-out;
+  outline: 0;
+  transition: background-size 3.5s ease-in-out;
 }
 
-.landing_window_grid_card_active {
+.landing_window_grid_card:focus {
+  background-size: 101%;
   position: relative;
   overflow: hidden;
-  animation: activateCard 3500ms forwards ease-in-out;
+  opacity: 1;
 }
 
-.landing_window_grid_card_active::before {
+.landing_window_grid_card:focus::before {
   content: "";
   width: 100%;
   min-width: unset !important;
@@ -524,7 +517,7 @@ span.landing_window_text {
   height: 100%;
   position: absolute;
   border: 0.35vw solid white;
-  box-sizing:  border-box;
+  box-sizing: border-box;
   top: 0;
   left: 0;
   width: 100%;
@@ -554,36 +547,43 @@ span.landing_window_text {
 #landing_window_online_news_card {
   background-image: var(--online-news-card1-bg);
   background-position-y: var(--online-news-card1-pos-y);
+  animation: fadeInCard 500ms 0ms forwards ease-in-out;
 }
 
 #landing_window_online_news_card2 {
   background-image: var(--online-news-card2-bg);
   background-position-y: var(--online-news-card2-pos-y);
+  animation: fadeInCard 500ms 125ms forwards ease-in-out;
 }
 
 #landing_window_online_news_card3 {
   background-image: var(--online-news-card3-bg);
   background-position-y: var(--online-news-card3-pos-y);
+  animation: fadeInCard 500ms 250ms forwards ease-in-out;
 }
 
 #landing_window_online_persistent_card {
   background-image: var(--online-persistent-card-bg);
   background-position-y: var(--online-persistent-card-pos-y);
+  animation: fadeInCard 500ms 375ms forwards ease-in-out;
 }
 
 #landing_window_online_persistent_card2 {
   background-image: var(--online-persistent-card2-bg);
   background-position-y: var(--online-persistent-card2-pos-y);
+  animation: fadeInCard 500ms 500ms forwards ease-in-out;
 }
 
 #landing_window_online_persistent_card3 {
   background-image: var(--online-persistent-card3-bg);
   background-position-y: var(--online-persistent-card3-pos-y);
+  animation: fadeInCard 500ms 625ms forwards ease-in-out;
 }
 
 #landing_window_online_persistent_card4 {
   background-image: var(--online-persistent-card4-bg);
   background-position-y: var(--online-persistent-card4-pos-y);
+  animation: fadeInCard 500ms 750ms forwards ease-in-out;
 }
 
 .landing_window_card_badge {

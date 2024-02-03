@@ -4,7 +4,7 @@ let allTabs = $("#landing_navbar_tabs").find(".landing_button");
 let allWindows = $(".landing_windows").find(".landing_window");
 let allSubtitles = $(".landing_footer").find(".landing_subtitle");
 
-let currentTab, currentWindow, currentFrame;
+let currentTab, currentWindow, currentFrame, currentCard;
 
 window.onload = () => {
   currentTab = allTabs.first();
@@ -113,8 +113,4 @@ $(".landing_window_zone_left").click(function (e) {
 });
 $(".landing_window_zone_right").click(function (e) {
   scrollTab(1);
-});
-
-$(".landing_window_grid_card").click(function (e) {
-  $(this).addClass("landing_window_grid_card_active");
 });
