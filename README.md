@@ -4,7 +4,9 @@ The ```GTA V Pause Menu``` recreated using HTML, CSS and JavaScript (with some b
 
 Base resolution is 1920×1080. Auto-scales for other resolutions though still not perfect.
 
-Demo available here: https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.html
+Demo available here: [GTAVFrontendMenu/main_menu.html](https://tomilovsenya.github.io/GTAVFrontendMenu/main_menu.html)
+
+Gen9 Landing Page Demo available here: [GTAVFrontendMenu/landing_page.html](https://tomilovsenya.github.io/GTAVFrontendMenu/landing_page.html)
 
 ## Controls
 * ```Q / E``` Change Tab
