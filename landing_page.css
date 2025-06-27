@@ -9,6 +9,9 @@ body {
 }
 
 :root {
+  /* --landing-page-width: 94.75vw; */
+  --landing-page-width: calc(100vw - var(--menu-safezone-sides) * 2);
+  --landing-page-height: 81vh;
   --menu-safezone-sides: 2.5vw;
   --ease-out-bg: cubic-bezier(0, 0.55, 0.45, 1);
 
@@ -150,8 +153,8 @@ body {
 .frontend_landing_page {
   /* background-color: rgb(25, 0, 255); */
   position: relative;
-  width: 94.75vw;
-  height: 81vh;
+  width: var(--landing-page-width);
+  height: var(--landing-page-height);
   /* animation: 1000ms var(--ease-out-bg) 0ms 1 normal forwards running fadeInLanding; */
 }
 
@@ -183,7 +186,6 @@ body {
   display: flex;
   align-items: center;
   height: 2.15vw;
-  /* padding-left: 2.8vw; */
   z-index: 10;
 }
 
@@ -210,7 +212,6 @@ body {
   scroll-behavior: smooth;
   padding-top: 3.5vw;
   overflow: hidden;
-  /* position: relative; */
 }
 
 .landing_window {
@@ -221,7 +222,7 @@ body {
   background-position-y: center;
   background-size: cover;
   background-size: 105%;
-  min-width: 94.75vw;
+  min-width: 100%;
   height: 81vh;
   display: flex;
   justify-content: space-between;
@@ -505,6 +506,7 @@ span.landing_window_text {
 
 .landing_window_grid_card:focus {
   background-size: 101%;
+  cursor: url("images/buttons/cursor_link.svg") 11 0, auto;
 }
 
 @keyframes fadeInInfoText {

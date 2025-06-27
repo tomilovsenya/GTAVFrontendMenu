@@ -1,214 +1,162 @@
 const LANDING_PAGE = document.documentElement;
-const windowOnline = $("#landing_window_online");
-const windowPlus = $("#landing_window_gtaplus");
-const windowStory = $("#landing_window_story");
 const frameChangeRate = 5000;
 
-let allTabs = $("#landing_navbar_tabs").find(".landing_button");
-let allWindows = $(".landing_windows").find(".landing_window");
-let allSubtitles = $(".landing_footer").find(".landing_subtitle");
-let currentTab, currentWindow, currentFrame, currentCard;
+const $tabs = $("#landing_navbar_tabs .landing_button");
+const $windows = $(".landing_windows .landing_window");
+const $subtitles = $(".landing_footer .landing_subtitle");
+
+const $windowOnline = $("#landing_window_online");
+const $windowPlus = $("#landing_window_gtaplus");
+const $windowStory = $("#landing_window_story");
+
+let $currentTab, $currentWindow, $currentFrame, $currentCard;
 
 window.onload = () => {
-  currentTab = allTabs.first();
-  currentWindow = allWindows.first();
-  currentFrame = windowStory.find(".landing_window_frame").first();
-  currentCard = currentWindow.find(".landing_window_grid_card:focus");
+  $currentTab = $tabs.first();
+  $currentWindow = $windows.first();
+  $currentFrame = $windowStory.find(".landing_window_frame").first();
+  $currentCard = $currentWindow.find(".landing_window_grid_card:focus");
 
-  activateTab(currentTab);
+  activateTab($currentTab);
 };
 
-window.addEventListener(
-  "keydown",
-  function (e) {
-    if (["KeyQ"].indexOf(e.code) > -1) {
-      scrollTab(0);
-    }
-    if (["KeyE"].indexOf(e.code) > -1) {
-      scrollTab(1);
-      // changeWindow(windowStory);
-    }
-    if (["KeyA", "ArrowLeft"].indexOf(e.code) > -1) {
-      scrollCard(0, currentWindow);
-    }
-    if (["KeyD", "ArrowRight"].indexOf(e.code) > -1) {
-      scrollCard(1, currentWindow);
-    }
-    if (["KeyW", "ArrowUp"].indexOf(e.code) > -1) {
-      scrollCard(2, currentWindow);
-    }
-    if (["KeyS", "ArrowDown"].indexOf(e.code) > -1) {
-      scrollCard(3, currentWindow);
-    }
-    if (["KeyF"].indexOf(e.code) > -1) {
-      goFullScreen();
-    }
-  },
-  false
-);
+// ---- Keydown Controls ----
+window.addEventListener("keydown", (e) => {
+  const keyMap = {
+    KeyQ: () => scrollTab(0),
+    KeyE: () => scrollTab(1),
+    KeyA: () => scrollCard(0, $currentWindow),
+    ArrowLeft: () => scrollCard(0, $currentWindow),
+    KeyD: () => scrollCard(1, $currentWindow),
+    ArrowRight: () => scrollCard(1, $currentWindow),
+    KeyW: () => scrollCard(2, $currentWindow),
+    ArrowUp: () => scrollCard(2, $currentWindow),
+    KeyS: () => scrollCard(3, $currentWindow),
+    ArrowDown: () => scrollCard(3, $currentWindow),
+    KeyF: goFullScreen,
+  };
 
+  if (keyMap[e.code]) keyMap[e.code]();
+});
+
+// ---- Frame Auto-Cycling ----
 setInterval(() => {
-  changeFrame(currentFrame.next());
+  changeFrame($currentFrame.next());
 }, frameChangeRate);
 
-$(".landing_window_char, .landing_window_chars").on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
-  $(this).removeClass("landing_window_char_fading_in");
-});
+// ---- Animation Cleanup ----
+$(".landing_window_char, .landing_window_chars").on(
+  "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
+  function () {
+    $(this).removeClass("landing_window_char_fading_in");
+  }
+);
+
+// ---- Functions ----
 
 function goFullScreen() {
-  if (LANDING_PAGE.requestFullscreen) {
-    LANDING_PAGE.requestFullscreen();
+  LANDING_PAGE.requestFullscreen?.();
+}
+
+function changeWindow($newWindow) {
+  if ($newWindow.is($currentWindow)) return;
+
+  $currentWindow.addClass("landing_window_fading_out");
+
+  $newWindow
+    .removeClass("landing_window_fading_out")
+    .addClass("landing_window_fading_in")
+    .find(".landing_window_char, .landing_window_chars")
+    .addClass("landing_window_char_fading_in");
+
+  $newWindow[0].scrollIntoView(false);
+  $currentWindow = $newWindow;
+}
+
+function changeFrame($newFrame) {
+  if (!$newFrame.length) {
+    $newFrame = $windowStory.find(".landing_window_frame").first();
   }
+
+  $currentFrame.addClass("landing_frame_fading_out");
+  $newFrame
+    .removeClass("landing_frame_fading_out")
+    .addClass("landing_frame_fading_in")
+    .css({ opacity: "0" });
+
+  $currentFrame = $newFrame;
 }
 
-function changeWindow(newWindow) {
-  if (newWindow == currentWindow) return;
+function activateTab($newTab) {
+  $currentTab?.removeClass("menu_button_active");
+  $currentTab = $newTab.addClass("menu_button_active");
 
-  currentWindow.addClass("landing_window_fading_out");
+  changeWindow($windows.eq($currentTab.index()));
 
-  newWindow.removeClass("landing_window_fading_out");
-  newWindow.addClass("landing_window_fading_in");
-  newWindow.find(".landing_window_char, .landing_window_chars").addClass("landing_window_char_fading_in");
-  newWindow[0].scrollIntoView(false);
-
-  currentWindow = newWindow;
+  $subtitles.hide().eq($currentTab.index()).show();
 }
 
-function changeFrame(newFrame) {
-  if (newFrame.length == 0) newFrame = windowStory.find(".landing_window_frame").first();
-
-  currentFrame.addClass("landing_frame_fading_out");
-  newFrame.removeClass("landing_frame_fading_out");
-  newFrame.addClass("landing_frame_fading_in");
-  newFrame.css({ opacity: "0" });
-
-  currentFrame = newFrame;
-}
-
-function activateTab(newTab) {
-  currentTab.removeClass("menu_button_active");
-  currentTab = newTab;
-  newTab.addClass("menu_button_active");
-
-  changeWindow(allWindows.eq(currentTab.index()));
-  allSubtitles.hide();
-  allSubtitles.eq(currentTab.index()).show();
-}
-
-function deactivateTab(newTab) {
-  newTab.removeClass("menu_button_active");
-}
-
-function scrollTab(scrollDir) {
-  if (allTabs.length <= 1) {
-    console.warn("Can't scroll tabs as there's only 1 or less");
+function scrollTab(direction) {
+  if ($tabs.length <= 1) {
+    console.warn("Can't scroll tabs - only 1 or fewer tabs exist.");
     return;
   }
-  if (currentTab != undefined) deactivateTab(currentTab);
 
-  switch (scrollDir) {
-    case 0:
-      currentTab = currentTab.prev();
-      if (currentTab.length == 0) currentTab = allTabs.last();
-      break;
-    case 1:
-      currentTab = currentTab.next();
-      if (currentTab.length == 0) currentTab = allTabs.first();
-      break;
+  $currentTab?.removeClass("menu_button_active");
+
+  if (direction === 0) {
+    $currentTab = $currentTab.prev().length ? $currentTab.prev() : $tabs.last();
+  } else {
+    $currentTab = $currentTab.next().length ? $currentTab.next() : $tabs.first();
   }
 
-  activateTab(currentTab);
-  // switchActiveWindow(currentTab.menuWindow);
+  activateTab($currentTab);
 }
 
-function scrollCard(scrollDir, currGrid) {
-  currentCard = currentWindow.find(".landing_window_grid_card:focus");
+function scrollCard(direction, $grid) {
+  $currentCard = $currentWindow.find(".landing_window_grid_card:focus");
+  const currTabIndex = parseInt($currentCard.attr("tabIndex"), 10);
+  let newTabIndex = currTabIndex;
+  let $newCard;
 
-  let currTab = parseInt(currentCard.attr("tabIndex"));
-  let newCard;
+  const navMap = {
+    0: { // Left
+      1: 4, 2: 5, 3: 2, 4: 1, 5: 3,
+    },
+    1: { // Right
+      1: 4, 2: 3, 3: 5, 4: 1, 5: 2,
+    },
+    2: { // Up
+      1: 2, 2: 1, 3: 1,
+    },
+    3: { // Down
+      1: 2, 2: 1, 3: 1,
+    },
+  };
 
-  if (scrollDir == 0) {
-    switch (currTab) {
-      case 1:
-      case 2:
-        currTab += 3;
-        break;
-      case 3:
-        currTab -= 1;
-        break;
-      case 4:
-        currTab -= 3;
-        break;
-      case 5:
-        currTab -= 2;
-        break;
-    }
-    newCard = currGrid.find(`.landing_window_grid_card[tabIndex=${currTab}]`).first();
+  if (navMap[direction] && navMap[direction][currTabIndex]) {
+    newTabIndex = navMap[direction][currTabIndex];
   }
-  if (scrollDir == 1) {
-    switch (currTab) {
-      case 1:
-        currTab += 3;
-        break;
-      case 2:
-        currTab += 1;
-        break;
-      case 3:
-        currTab += 2;
-        break;
-      case 4:
-      case 5:
-        currTab -= 3;
-        break;
-    }
-    newCard = currGrid.find(`.landing_window_grid_card[tabIndex=${currTab}]`).first();
-  }
-  if (scrollDir == 2 || scrollDir == 3) {
-    switch (currTab) {
-      case 1:
-        currTab += 1;
-        break;
-      case 2:
-        currTab -= 1;
-        break;
-      case 3:
-        currTab -= 2;
-        break;
-    }
 
-    newCard = currGrid.find(`.landing_window_grid_card[tabIndex=${currTab}]`).first();
+  $newCard = $grid.find(`.landing_window_grid_card[tabIndex=${newTabIndex}]`).first();
 
-    if (scrollDir == 2) {
-      switch (currTab) {
-        case 4:
-        case 5:
-          newCard = currentCard.prev();
-          break;
-      }
-
-      if (newCard.length == 0) newCard = currentCard.siblings().last();
-    } else {
-      switch (currTab) {
-        case 4:
-        case 5:
-          newCard = currentCard.next();
-          break;
-      }
-
-      if (newCard.length == 0) newCard = currentCard.siblings().first();
+  // Handle Up/Down special behavior for tabs 4 and 5
+  if ((direction === 2 || direction === 3) && (currTabIndex === 4 || currTabIndex === 5)) {
+    $newCard = direction === 2 ? $currentCard.prev() : $currentCard.next();
+    if (!$newCard.length) {
+      $newCard = direction === 2 ? $currentCard.siblings().last() : $currentCard.siblings().first();
     }
   }
 
-  newCard.focus();
+  $newCard.focus();
 }
 
-$(".landing_button").click(function (e) {
-  if ($(this).is(".menu_button_active")) return;
-  activateTab($(this));
+// ---- Click Handlers ----
+$(".landing_button").on("click", function () {
+  if (!$(this).hasClass("menu_button_active")) {
+    activateTab($(this));
+  }
 });
-$(".landing_window_zone_left").click(function (e) {
-  scrollTab(0);
-});
-$(".landing_window_zone_right").click(function (e) {
-  scrollTab(1);
-});
+
+$(".landing_window_zone_left").on("click", () => scrollTab(0));
+$(".landing_window_zone_right").on("click", () => scrollTab(1));
